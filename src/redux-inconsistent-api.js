@@ -1,24 +1,26 @@
-import actionTypes from './action-types';
-import generateReducers from './reducer';
+import generateReducer from './reducer';
+import generateActionTypes from './action-types';
 import generateActionCreators from './action-creators';
-import generateDefaultInitialState from './utils';
+import {generateDefaultInitialState} from './utils';
 
 // resourceName: a string representing the name of the resource. For instance,
 //  "books". This will be the name of the store slice in Redux.
 // options: a list of options to configure the resource. Refer to the docs
 //  for the complete list of options
 function reduxInconsistentApi(resourceName, options = {}) {
-  const initialState = options.initialState || generateDefaultInitialState();
-  const idAttribute = options.idAttribute || 'id';
+  const {initialState, idAttribute, customHandlers} = options;
+  const initial = initialState || generateDefaultInitialState();
+  const idAttr = idAttribute || 'id';
+  const handlers = customHandlers || {};
+
+  const types = generateActionTypes(resourceName);
 
   return {
-    initialState,
-    reducer: generateReducers(idAttribute, initialState),
-    actionCreators: generateActionTypes(idAttribute),
+    actionTypes: types,
+    initialState: initial,
+    reducer: generateReducer(idAttr, initialState, handlers),
+    actionCreators: generateActionCreators(idAttr),
   };
 }
-
-// We attach the `actionTypes` onto the constructor as a handy reference
-reduxInconsistentApi.actionTypes = asyncActionTypes;
 
 export default reduxInconsistentApi;
