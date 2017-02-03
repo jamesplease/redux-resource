@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import reduxInconsistentApi from '../../src/redux-inconsistent-api';
 
 describe('actionTypes', function() {
@@ -49,5 +50,23 @@ describe('actionTypes', function() {
     expect(actionTypes.DELETE_HELLO_FAILURE).to.equal('DELETE_HELLO_FAILURE');
     expect(actionTypes.DELETE_HELLO_ABORTED).to.equal('DELETE_HELLO_ABORTED');
     expect(actionTypes.DELETE_HELLO_RESET_RESOLUTION).to.equal('DELETE_HELLO_RESET_RESOLUTION');
+  });
+
+  describe('only allowing readMany', () => {
+    const actionTypes = reduxInconsistentApi('hello', {
+      allowedOperations: {
+        create: false,
+        readMany: true,
+        readOne: false,
+        update: false,
+        del: false
+      }
+    }).actionTypes;
+    expect(_.size(actionTypes)).to.equal(5);
+    expect(actionTypes.RETRIEVE_HELLOS).to.equal('RETRIEVE_HELLOS');
+    expect(actionTypes.RETRIEVE_HELLOS_SUCCESS).to.equal('RETRIEVE_HELLOS_SUCCESS');
+    expect(actionTypes.RETRIEVE_HELLOS_FAILURE).to.equal('RETRIEVE_HELLOS_FAILURE');
+    expect(actionTypes.RETRIEVE_HELLOS_ABORTED).to.equal('RETRIEVE_HELLOS_ABORTED');
+    expect(actionTypes.RETRIEVE_HELLOS_RESET_RESOLUTION).to.equal('RETRIEVE_HELLOS_RESET_RESOLUTION');
   });
 });

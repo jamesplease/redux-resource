@@ -46,6 +46,7 @@
     "gulp-uglify": "2.0.0",
     "isparta": "4.0.0",
     "json-loader": "0.5.4",
+    "lodash": "^4.17.4",
     "mocha": "3.0.2",
     "sinon": "1.17.5",
     "sinon-chai": "2.8.0",
