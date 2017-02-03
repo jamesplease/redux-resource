@@ -21,7 +21,7 @@ describe('reduxInconsistentApi', function() {
   });
 
   describe('passing in initialState', () => {
-    it('should set the correct initialState', () => {
+    it('should set the correct initialState when the defaults are not replaced', () => {
       const result = reduxInconsistentApi('hello', {
         initialState: {
           hello: 'oink',
@@ -30,7 +30,25 @@ describe('reduxInconsistentApi', function() {
       });
 
       expect(result.initialState).to.deep.equal({
+        resources: [],
+        resourcesMeta: {},
         hello: 'oink',
+        pizza: true
+      });
+    });
+
+    it('should set the correct initialState when the defaults are replaced', () => {
+      const result = reduxInconsistentApi('hello', {
+        initialState: {
+          resources: [{id: 1}],
+          resourcesMeta: {1: true},
+          pizza: true
+        }
+      });
+
+      expect(result.initialState).to.deep.equal({
+        resources: [{id: 1}],
+        resourcesMeta: {1: true},
         pizza: true
       });
     });

@@ -9,7 +9,7 @@ import {generateDefaultInitialState} from './utils';
 //  for the complete list of options
 function reduxInconsistentApi(resourceName, options = {}) {
   const {initialState, idAttribute, customHandlers} = options;
-  const initial = initialState || generateDefaultInitialState();
+  const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
   const handlers = customHandlers || {};
 
