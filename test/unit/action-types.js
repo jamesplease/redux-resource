@@ -15,13 +15,22 @@ describe('actionTypes', function() {
     expect(actionTypes.CREATE_HELLO_RESET_RESOLUTION).to.equal('CREATE_HELLO_RESET_RESOLUTION');
   });
 
-  describe('retrieve', () => {
+  describe('retrieveOne', () => {
     const actionTypes = reduxInconsistentApi('hello').actionTypes;
     expect(actionTypes.RETRIEVE_HELLO).to.equal('RETRIEVE_HELLO');
     expect(actionTypes.RETRIEVE_HELLO_SUCCESS).to.equal('RETRIEVE_HELLO_SUCCESS');
     expect(actionTypes.RETRIEVE_HELLO_FAILURE).to.equal('RETRIEVE_HELLO_FAILURE');
     expect(actionTypes.RETRIEVE_HELLO_ABORTED).to.equal('RETRIEVE_HELLO_ABORTED');
     expect(actionTypes.RETRIEVE_HELLO_RESET_RESOLUTION).to.equal('RETRIEVE_HELLO_RESET_RESOLUTION');
+  });
+
+  describe('retrieveMany', () => {
+    const actionTypes = reduxInconsistentApi('hello').actionTypes;
+    expect(actionTypes.RETRIEVE_HELLOS).to.equal('RETRIEVE_HELLOS');
+    expect(actionTypes.RETRIEVE_HELLOS_SUCCESS).to.equal('RETRIEVE_HELLOS_SUCCESS');
+    expect(actionTypes.RETRIEVE_HELLOS_FAILURE).to.equal('RETRIEVE_HELLOS_FAILURE');
+    expect(actionTypes.RETRIEVE_HELLOS_ABORTED).to.equal('RETRIEVE_HELLOS_ABORTED');
+    expect(actionTypes.RETRIEVE_HELLOS_RESET_RESOLUTION).to.equal('RETRIEVE_HELLOS_RESET_RESOLUTION');
   });
 
   describe('update', () => {

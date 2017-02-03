@@ -8,18 +8,20 @@ import {generateDefaultInitialState} from './utils';
 // options: a list of options to configure the resource. Refer to the docs
 //  for the complete list of options
 function reduxInconsistentApi(resourceName, options = {}) {
-  const {initialState, idAttribute, customHandlers} = options;
+  const {initialState, idAttribute, customHandlers, pluralForm} = options;
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
   const handlers = customHandlers || {};
+  const pluralName = pluralForm ? pluralForm : resourceName + 's';
 
-  const types = generateActionTypes(resourceName);
+  const types = generateActionTypes(resourceName, pluralName);
 
   return {
     actionTypes: types,
     initialState: initial,
-    reducer: generateReducer(idAttr, initialState, handlers),
+    reducer: generateReducer({idAttr, initialState, handlers, types, resourceName, pluralForm: pluralName}),
     actionCreators: generateActionCreators(idAttr),
+    pluralForm: pluralName
   };
 }
 

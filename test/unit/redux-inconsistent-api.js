@@ -16,7 +16,8 @@ describe('reduxInconsistentApi', function() {
     const result = reduxInconsistentApi('hello');
     expect(result.initialState).to.deep.equal({
       resources: [],
-      resourcesMeta: {}
+      resourcesMeta: {},
+      resourcesListMeta: {}
     });
   });
 
@@ -32,6 +33,7 @@ describe('reduxInconsistentApi', function() {
       expect(result.initialState).to.deep.equal({
         resources: [],
         resourcesMeta: {},
+        resourcesListMeta: {},
         hello: 'oink',
         pizza: true
       });
@@ -42,6 +44,7 @@ describe('reduxInconsistentApi', function() {
         initialState: {
           resources: [{id: 1}],
           resourcesMeta: {1: true},
+          resourcesListMeta: {hungry: 'always'},
           pizza: true
         }
       });
@@ -49,6 +52,7 @@ describe('reduxInconsistentApi', function() {
       expect(result.initialState).to.deep.equal({
         resources: [{id: 1}],
         resourcesMeta: {1: true},
+        resourcesListMeta: {hungry: 'always'},
         pizza: true
       });
     });
