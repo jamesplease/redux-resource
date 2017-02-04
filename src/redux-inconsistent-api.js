@@ -1,7 +1,7 @@
 import generateReducer from './reducer';
 import generateActionTypes from './action-types';
 import generateActionCreators from './action-creators';
-import {generateDefaultInitialState} from './utils';
+import {generateDefaultInitialState, resourceStatuses} from './utils';
 
 const allowAllCrudOperations = {
   create: true,
@@ -40,5 +40,7 @@ function reduxInconsistentApi(resourceName, options = {}) {
     pluralForm: pluralName
   };
 }
+
+reduxInconsistentApi.resourceStatuses = resourceStatuses;
 
 export default reduxInconsistentApi;

@@ -1,6 +1,16 @@
-// This file is for utility methods to manage the most common reducer pattern
-// in which resources and their status are maintained in collection
-// `resources: []` and hashmap `resourcesMeta: {}`.
+// These are statuses for in-flight requests. If a request has no status,
+// then it would have a status of `null`.
+export const resourceStatuses = {
+  PENDING: 'PENDING',
+  SUCCESS: 'SUCCESS',
+  FAILED: 'FAILED',
+  ABORTED: 'ABORTED',
+};
+
+export const initialResourceMetaState = {
+  updatingStatus: null,
+  isDeleting: false
+};
 
 // resourcesMeta: the metadata Object from a resource store slice
 // resourceMeta: the new metadataObject from a given resourceMeta
@@ -17,6 +27,22 @@ export function updateResourcesMeta(resourcesMeta, resourceMeta, id) {
       ...resourceMeta
     }
   };
+}
+
+// Similar to `updateResourcesMeta`, but it accepts an array of IDs instead of
+// a single ID.
+export function updateManyResourcesMeta(resourcesMeta, resourceMetaUpdate, ids) {
+  const next = {...resourcesMeta};
+
+  ids.forEach((id) => {
+    const current = next[id];
+    next[id] = {
+      ...current,
+      ...resourceMetaUpdate
+    };
+  });
+
+  return next;
 }
 
 // resources: the Array of resources

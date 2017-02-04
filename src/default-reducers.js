@@ -1,4 +1,7 @@
-import {updateResourcesMeta, addOrUpdateResource} from './utils';
+import {
+  updateResourcesMeta, updateManyResourcesMeta, addOrUpdateResource,
+  resourceStatuses, initialResourceMetaState
+} from './utils';
 
 // Create reducers
 export function create(state, action) {
@@ -49,28 +52,55 @@ export function retrieveOneResetResolution(state, action) {
 
 // Retrieve many reducers
 export function retrieveMany(state, action) {
-  const {id} = action;
-  console.log('retrieveMany');
   return {
     ...state,
-    id
+    resourcesListMeta: {
+      retrievingStatus: resourceStatuses.PENDING
+    }
   };
 }
 
 export function retrieveManyFailure(state, action) {
-  console.log('retrieveMany_failure');
+  return {
+    ...state,
+    resourcesListMeta: {
+      retrievingStatus: resourceStatuses.FAILED
+    }
+  };
 }
 
 export function retrieveManySuccess(state, action) {
-  console.log('retrieveMany_success');
+  const resources = action.resources;
+  // This needs to use `idAttr`.
+  const ids = resources.map(r => r.id);
+  return {
+    ...state,
+    resources,
+    // We have new resources, so we need to update their meta state with the
+    // initial meta state.
+    resourcesMeta: updateManyResourcesMeta(state.resourcesMeta, initialResourceMetaState, ids),
+    resourcesListMeta: {
+      retrievingStatus: resourceStatuses.SUCCESS
+    }
+  };
 }
 
 export function retrieveManyAborted(state, action) {
-  console.log('retrieveMany_aborted');
+  return {
+    ...state,
+    resourcesListMeta: {
+      retrievingStatus: resourceStatuses.ABORTED
+    }
+  };
 }
 
 export function retrieveManyResetResolution(state, action) {
-  console.log('retrieveManyset_resolution');
+  return {
+    ...state,
+    resourcesListMeta: {
+      retrievingStatus: null
+    }
+  };
 }
 
 // Update reducers
