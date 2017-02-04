@@ -1,10 +1,11 @@
-// These are statuses for in-flight requests. If a request has no status,
-// then it would have a status of `null`.
+// These are statuses for in-flight requests. If a request has no status
+// associated with it, then it would have a status of `NULL`.
 export const resourceStatuses = {
   PENDING: 'PENDING',
-  SUCCESS: 'SUCCESS',
+  SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
   ABORTED: 'ABORTED',
+  NULL: null
 };
 
 export const initialResourceMetaState = {
@@ -52,11 +53,11 @@ export function updateManyResourcesMeta(resourcesMeta, resourceMetaUpdate, ids) 
 // resources: the Array of resources
 // resource: the new resource object to be added or updated
 // id: the ID of the resource being updated
-export function addOrUpdateResource(resources, resource, id) {
+export function createOrUpdateResource(resources, resource, id, idAttr) {
   // Attempt to find the resource by its ID. If the ID doesn't exist, or if
   // no resource by that ID exists, then we append it to the end as a new
   // resource.
-  const resourceIndex = id && resources.findIndex(item => item.id === id);
+  const resourceIndex = id && resources.findIndex(item => item[idAttr] === id);
   if (!id || resourceIndex === -1) {
     return [...resources, resource];
   }
