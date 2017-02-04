@@ -50,10 +50,12 @@ describe('reducers: readMany', function() {
       resourcesMeta: {
         2: {
           updatingStatus: null,
-          isDeleting: false
+          retrievingStatus: null,
+          isDeleting: false,
         },
         100: {
           updatingStatus: null,
+          retrievingStatus: null,
           isDeleting: false
         }
       },

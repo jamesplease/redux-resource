@@ -8,7 +8,11 @@ export const resourceStatuses = {
 };
 
 export const initialResourceMetaState = {
+  // The status of any existing request to update this resource
   updatingStatus: null,
+  // The status of any existing request to fetch this resource
+  retrievingStatus: null,
+  // Whether or not a request is in flight to delete this resource
   isDeleting: false
 };
 
