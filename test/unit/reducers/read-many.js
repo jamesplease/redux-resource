@@ -60,7 +60,42 @@ describe('reducers: readMany', function() {
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.SUCCESS
+        retrievingStatus: resourceStatuses.SUCCEEDED
+      }
+    });
+  });
+
+  it('should handle `RETRIEVE_HELLOS_SUCCESS` with a custom idAttribute', () => {
+    const result = reduxInconsistentApi('hello', {
+      idAttribute: 'namePls'
+    });
+    const reduced = result.reducer(result.initialState, {
+      type: 'RETRIEVE_HELLOS_SUCCESS',
+      resources: [
+        {namePls: 2, hungry: true, pasta: 'yespls'},
+        {namePls: 100, hungry: false},
+      ]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [
+        {namePls: 2, hungry: true, pasta: 'yespls'},
+        {namePls: 100, hungry: false},
+      ],
+      resourcesMeta: {
+        2: {
+          updatingStatus: null,
+          retrievingStatus: null,
+          isDeleting: false,
+        },
+        100: {
+          updatingStatus: null,
+          retrievingStatus: null,
+          isDeleting: false
+        }
+      },
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.SUCCEEDED
       }
     });
   });
