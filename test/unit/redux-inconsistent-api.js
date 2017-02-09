@@ -1,19 +1,19 @@
-import reduxInconsistentApi from '../../src/redux-inconsistent-api';
+import simpleResource from '../../src';
 
-describe('reduxInconsistentApi', function() {
+describe('simpleResource', function() {
   it('should be a function', () => {
-    expect(reduxInconsistentApi).to.be.a('function');
+    expect(simpleResource).to.be.a('function');
   });
 
   it('should return an object with the proper shape', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     expect(result).to.be.an('object');
     expect(result).to.contain.all.keys('initialState', 'reducer',
       'actionCreators', 'actionTypes');
   });
 
   it('should have the correct initialState', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     expect(result.initialState).to.deep.equal({
       resources: [],
       resourcesMeta: {},
@@ -23,7 +23,7 @@ describe('reduxInconsistentApi', function() {
 
   describe('passing in initialState', () => {
     it('should set the correct initialState when the defaults are not replaced', () => {
-      const result = reduxInconsistentApi('hello', {
+      const result = simpleResource('hello', {
         initialState: {
           hello: 'oink',
           pizza: true
@@ -40,7 +40,7 @@ describe('reduxInconsistentApi', function() {
     });
 
     it('should set the correct initialState when the defaults are replaced', () => {
-      const result = reduxInconsistentApi('hello', {
+      const result = simpleResource('hello', {
         initialState: {
           resources: [{id: 1}],
           resourcesMeta: {1: true},
