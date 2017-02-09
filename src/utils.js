@@ -66,11 +66,9 @@ export function upsertResource(resources, resource, id, idAttr) {
 
   // Otherwise, it does exist and we add it to the list at the appropriate
   // location
-  return [
-    ...resources.slice(0, resourceIndex),
-    resource,
-    ...resources.slice(resourceIndex + 1)
-  ];
+  const shallowClone = [...resources];
+  shallowClone.splice(resourceIndex, 1, resource);
+  return shallowClone;
 }
 
 export function generateDefaultInitialState() {

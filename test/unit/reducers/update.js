@@ -1,8 +1,8 @@
 import simpleResource from '../../../src';
 const {resourceStatuses} = simpleResource;
 
-describe('reducers: delete', function() {
-  it('should handle `DELETE_HELLO`', () => {
+describe('reducers: update', function() {
+  it('should handle `UPDATE_HELLO`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -14,7 +14,7 @@ describe('reducers: delete', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO',
+      type: 'UPDATE_HELLO',
       id: 3
     });
 
@@ -26,14 +26,14 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.PENDING
+          updatingStatus: resourceStatuses.PENDING
         }
       },
       resourcesListMeta: {}
     });
   });
 
-  it('should handle `DELETE_HELLO_FAILURE`', () => {
+  it('should handle `UPDATE_HELLO_FAILURE`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -45,7 +45,7 @@ describe('reducers: delete', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_FAILURE',
+      type: 'UPDATE_HELLO_FAILURE',
       id: 3
     });
 
@@ -57,31 +57,26 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.FAILED
+          updatingStatus: resourceStatuses.FAILED
         }
       },
       resourcesListMeta: {}
     });
   });
 
-  it('should handle `DELETE_HELLO_ABORTED`', () => {
+  it('should handle `UPDATE_HELLO_ABORTED`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
           {id: 1},
           {id: 3},
           {id: 4},
-        ],
-        resourcesMeta: {
-          3: {
-            deletingStatus: 'sandwiches'
-          }
-        }
+        ]
       }
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_ABORTED',
+      type: 'UPDATE_HELLO_ABORTED',
       id: 3
     });
 
@@ -93,31 +88,26 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.ABORTED
+          updatingStatus: resourceStatuses.ABORTED
         }
       },
       resourcesListMeta: {}
     });
   });
 
-  it('should handle `DELETE_HELLO_RESET_RESOLUTION`', () => {
+  it('should handle `UPDATE_HELLO_RESET_RESOLUTION`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
           {id: 1},
           {id: 3},
           {id: 4},
-        ],
-        resourcesMeta: {
-          3: {
-            deletingStatus: 'sandwiches'
-          }
-        }
+        ]
       }
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_RESET_RESOLUTION',
+      type: 'UPDATE_HELLO_RESET_RESOLUTION',
       id: 3
     });
 
@@ -129,47 +119,43 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.NULL
+          updatingStatus: resourceStatuses.NULL
         }
       },
       resourcesListMeta: {}
     });
   });
 
-  it('should handle `DELETE_HELLO_SUCCESS`', () => {
+  it('should handle `UPDATE_HELLO_SUCCESS`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
           {id: 1},
           {id: 3},
           {id: 4},
-        ],
-        resourcesMeta: {
-          2: {
-            name: 'what'
-          },
-          3: {
-            deletingStatus: 'sandwiches'
-          }
-        }
+        ]
       }
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_SUCCESS',
-      id: 3
+      type: 'UPDATE_HELLO_SUCCESS',
+      id: 3,
+      resource: {
+        id: 3,
+        name: 'please'
+      }
     });
 
     expect(reduced).to.deep.equal({
       resources: [
         {id: 1},
+        {id: 3, name: 'please'},
         {id: 4},
       ],
       resourcesMeta: {
-        2: {
-          name: 'what'
-        },
-        3: null
+        3: {
+          updatingStatus: resourceStatuses.SUCCEEDED
+        }
       },
       resourcesListMeta: {}
     });

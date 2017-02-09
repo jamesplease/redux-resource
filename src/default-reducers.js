@@ -138,23 +138,61 @@ export function retrieveManyResetResolution(idAttr, state, action) {
 
 // Update reducers
 export function update(idAttr, state, action) {
-  console.log('update');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    updatingStatus: resourceStatuses.PENDING
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }
 
 export function updateFailure(idAttr, state, action) {
-  console.log('update_failure');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    updatingStatus: resourceStatuses.FAILED
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }
 
 export function updateSuccess(idAttr, state, action) {
-  console.log('update_success');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    updatingStatus: resourceStatuses.SUCCEEDED
+  }, action[idAttr]);
+
+  const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
+
+  return {
+    ...state,
+    resourcesMeta,
+    resources
+  };
 }
 
 export function updateAborted(idAttr, state, action) {
-  console.log('update_aborted');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    updatingStatus: resourceStatuses.ABORTED
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }
 
 export function updateResetResolution(idAttr, state, action) {
-  console.log('update_reset_resolution');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    updatingStatus: resourceStatuses.NULL
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }
 
 // Delete reducers
