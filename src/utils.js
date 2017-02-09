@@ -53,7 +53,7 @@ export function updateManyResourcesMeta(resourcesMeta, resourceMetaUpdate, ids) 
 // resources: the Array of resources
 // resource: the new resource object to be added or updated
 // id: the ID of the resource being updated
-export function createOrUpdateResource(resources, resource, id, idAttr) {
+export function upsertResource(resources, resource, id, idAttr) {
   // Attempt to find the resource by its ID. If the ID doesn't exist, or if
   // no resource by that ID exists, then we append it to the end as a new
   // resource.

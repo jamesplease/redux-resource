@@ -1,5 +1,5 @@
 import {
-  updateResourcesMeta, updateManyResourcesMeta, createOrUpdateResource,
+  updateResourcesMeta, updateManyResourcesMeta, upsertResource,
   resourceStatuses, initialResourceMetaState
 } from './utils';
 
@@ -52,7 +52,7 @@ export function retrieveOneSuccess(idAttr, state, action) {
     retrievingStatus: resourceStatuses.SUCCEEDED
   }, action[idAttr]);
 
-  const resources = createOrUpdateResource(state.resources, action.resource, action[idAttr], idAttr);
+  const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
 
   return {
     ...state,
