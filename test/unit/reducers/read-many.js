@@ -49,14 +49,14 @@ describe('reducers: readMany', function() {
       ],
       resourcesMeta: {
         2: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false,
+          updatingStatus: resourceStatuses.NULL,
+          retrievingStatus: resourceStatuses.NULL,
+          deletingStatus: resourceStatuses.NULL,
         },
         100: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false
+          updatingStatus: resourceStatuses.NULL,
+          retrievingStatus: resourceStatuses.NULL,
+          deletingStatus: resourceStatuses.NULL
         }
       },
       resourcesListMeta: {
@@ -84,14 +84,14 @@ describe('reducers: readMany', function() {
       ],
       resourcesMeta: {
         2: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false,
+          updatingStatus: resourceStatuses.NULL,
+          retrievingStatus: resourceStatuses.NULL,
+          deletingStatus: resourceStatuses.NULL,
         },
         100: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false
+          updatingStatus: resourceStatuses.NULL,
+          retrievingStatus: resourceStatuses.NULL,
+          deletingStatus: resourceStatuses.NULL
         }
       },
       resourcesListMeta: {
@@ -136,7 +136,7 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        retrievingStatus: null
+        retrievingStatus: resourceStatuses.NULL
       }
     });
   });

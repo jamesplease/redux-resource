@@ -5,16 +5,18 @@ export const resourceStatuses = {
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
   ABORTED: 'ABORTED',
-  NULL: null
+  NULL: 'NULL'
 };
 
 export const initialResourceMetaState = {
   // The status of any existing request to update this resource
-  updatingStatus: null,
+  updatingStatus: resourceStatuses.NULL,
   // The status of any existing request to fetch this resource
-  retrievingStatus: null,
-  // Whether or not a request is in flight to delete this resource
-  isDeleting: false
+  retrievingStatus: resourceStatuses.NULL,
+  // The status of an any existing request to delete this resource. Note that
+  // this will never be "SUCCEEDED," as a successful delete removes the
+  // resource from the store.
+  deletingStatus: resourceStatuses.NULL
 };
 
 // resourcesMeta: the metadata Object from a resource store slice

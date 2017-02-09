@@ -159,21 +159,65 @@ export function updateResetResolution(idAttr, state, action) {
 
 // Delete reducers
 export function del(idAttr, state, action) {
-  console.log('del');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    deletingStatus: resourceStatuses.PENDING
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }
 
 export function delFailure(idAttr, state, action) {
-  console.log('del_failure');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    deletingStatus: resourceStatuses.FAILED
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }
 
 export function delSuccess(idAttr, state, action) {
-  console.log('del_success');
+  const id = action[idAttr];
+
+  // Remove this resource from the resources meta.
+  const resourcesMeta = {
+    // Shallow clone the meta
+    ...state.resourcesMeta,
+    [id]: null
+  };
+
+  // Shallow clone the existing resource array, removing the deleted resource
+  const resources = state.resources.filter(r => r.id !== id);
+
+  return {
+    ...state,
+    resourcesMeta,
+    resources
+  };
 }
 
 export function delAborted(idAttr, state, action) {
-  console.log('del_aborted');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    deletingStatus: resourceStatuses.ABORTED
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }
 
 export function delResetResolution(idAttr, state, action) {
-  console.log('del_reset_resolution');
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
+    deletingStatus: resourceStatuses.NULL
+  }, action[idAttr]);
+
+  return {
+    ...state,
+    resourcesMeta,
+  };
 }

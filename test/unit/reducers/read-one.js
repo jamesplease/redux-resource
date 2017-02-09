@@ -123,7 +123,7 @@ describe('reducers: readOne', function() {
       resources: [],
       resourcesMeta: {
         3: {
-          retrievingStatus: null
+          retrievingStatus: resourceStatuses.NULL
         }
       },
       resourcesListMeta: {}
