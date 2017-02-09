@@ -1,14 +1,14 @@
 import _ from 'lodash';
-import reduxInconsistentApi from '../../src/redux-inconsistent-api';
+import simpleResource from '../../src';
 
 describe('actionTypes', function() {
   it('should be an object', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     expect(result.actionTypes).to.be.an('object');
   });
 
   describe('create', () => {
-    const actionTypes = reduxInconsistentApi('hello').actionTypes;
+    const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.CREATE_HELLO).to.equal('CREATE_HELLO');
     expect(actionTypes.CREATE_HELLO_SUCCESS).to.equal('CREATE_HELLO_SUCCESS');
     expect(actionTypes.CREATE_HELLO_FAILURE).to.equal('CREATE_HELLO_FAILURE');
@@ -17,7 +17,7 @@ describe('actionTypes', function() {
   });
 
   describe('retrieveOne', () => {
-    const actionTypes = reduxInconsistentApi('hello').actionTypes;
+    const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.RETRIEVE_HELLO).to.equal('RETRIEVE_HELLO');
     expect(actionTypes.RETRIEVE_HELLO_SUCCESS).to.equal('RETRIEVE_HELLO_SUCCESS');
     expect(actionTypes.RETRIEVE_HELLO_FAILURE).to.equal('RETRIEVE_HELLO_FAILURE');
@@ -26,7 +26,7 @@ describe('actionTypes', function() {
   });
 
   describe('retrieveMany', () => {
-    const actionTypes = reduxInconsistentApi('hello').actionTypes;
+    const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.RETRIEVE_HELLOS).to.equal('RETRIEVE_HELLOS');
     expect(actionTypes.RETRIEVE_HELLOS_SUCCESS).to.equal('RETRIEVE_HELLOS_SUCCESS');
     expect(actionTypes.RETRIEVE_HELLOS_FAILURE).to.equal('RETRIEVE_HELLOS_FAILURE');
@@ -35,7 +35,7 @@ describe('actionTypes', function() {
   });
 
   describe('update', () => {
-    const actionTypes = reduxInconsistentApi('hello').actionTypes;
+    const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.UPDATE_HELLO).to.equal('UPDATE_HELLO');
     expect(actionTypes.UPDATE_HELLO_SUCCESS).to.equal('UPDATE_HELLO_SUCCESS');
     expect(actionTypes.UPDATE_HELLO_FAILURE).to.equal('UPDATE_HELLO_FAILURE');
@@ -44,7 +44,7 @@ describe('actionTypes', function() {
   });
 
   describe('delete', () => {
-    const actionTypes = reduxInconsistentApi('hello').actionTypes;
+    const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.DELETE_HELLO).to.equal('DELETE_HELLO');
     expect(actionTypes.DELETE_HELLO_SUCCESS).to.equal('DELETE_HELLO_SUCCESS');
     expect(actionTypes.DELETE_HELLO_FAILURE).to.equal('DELETE_HELLO_FAILURE');
@@ -53,7 +53,7 @@ describe('actionTypes', function() {
   });
 
   describe('only allowing readMany', () => {
-    const actionTypes = reduxInconsistentApi('hello', {
+    const actionTypes = simpleResource('hello', {
       allowedOperations: {
         create: false,
         readMany: true,

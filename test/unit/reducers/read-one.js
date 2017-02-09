@@ -1,9 +1,9 @@
-import reduxInconsistentApi from '../../../src/redux-inconsistent-api';
-const {resourceStatuses} = reduxInconsistentApi;
+import simpleResource from '../../../src';
+const {resourceStatuses} = simpleResource;
 
 describe('reducers: readOne', function() {
   it('should handle `RETRIEVE_HELLO`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLO',
       id: 3
@@ -21,7 +21,7 @@ describe('reducers: readOne', function() {
   });
 
   it('should handle `RETRIEVE_HELLO_FAILURE`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLO_FAILURE',
       id: 3
@@ -39,7 +39,7 @@ describe('reducers: readOne', function() {
   });
 
   it('should handle `RETRIEVE_HELLO_SUCCESS`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLO_SUCCESS',
       id: 3,
@@ -66,7 +66,7 @@ describe('reducers: readOne', function() {
   });
 
   it('should handle `RETRIEVE_HELLO_SUCCESS` with a custom idAttribute', () => {
-    const result = reduxInconsistentApi('hello', {
+    const result = simpleResource('hello', {
       idAttribute: 'whatPls'
     });
     const reduced = result.reducer(result.initialState, {
@@ -95,7 +95,7 @@ describe('reducers: readOne', function() {
   });
 
   it('should handle `RETRIEVE_HELLO_ABORTED`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLO_ABORTED',
       id: 3
@@ -113,7 +113,7 @@ describe('reducers: readOne', function() {
   });
 
   it('should handle `RETRIEVE_HELLO_RESET_RESOLUTION`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLO_RESET_RESOLUTION',
       id: 3

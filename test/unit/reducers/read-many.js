@@ -1,9 +1,9 @@
-import reduxInconsistentApi from '../../../src/redux-inconsistent-api';
-const {resourceStatuses} = reduxInconsistentApi;
+import simpleResource from '../../../src';
+const {resourceStatuses} = simpleResource;
 
 describe('reducers: readMany', function() {
   it('should handle `RETRIEVE_HELLOS`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLOS'
     });
@@ -18,7 +18,7 @@ describe('reducers: readMany', function() {
   });
 
   it('should handle `RETRIEVE_HELLOS_FAILURE`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLOS_FAILURE'
     });
@@ -33,7 +33,7 @@ describe('reducers: readMany', function() {
   });
 
   it('should handle `RETRIEVE_HELLOS_SUCCESS`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLOS_SUCCESS',
       resources: [
@@ -66,7 +66,7 @@ describe('reducers: readMany', function() {
   });
 
   it('should handle `RETRIEVE_HELLOS_SUCCESS` with a custom idAttribute', () => {
-    const result = reduxInconsistentApi('hello', {
+    const result = simpleResource('hello', {
       idAttribute: 'namePls'
     });
     const reduced = result.reducer(result.initialState, {
@@ -101,7 +101,7 @@ describe('reducers: readMany', function() {
   });
 
   it('should handle `RETRIEVE_HELLOS_ABORTED`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLOS_ABORTED'
     });
@@ -116,7 +116,7 @@ describe('reducers: readMany', function() {
   });
 
   it('should handle `RETRIEVE_HELLOS_RESET_RESOLUTION`', () => {
-    const result = reduxInconsistentApi('hello');
+    const result = simpleResource('hello');
 
     // We set some value on `retrievingStatus` to check that this nulls it
     const resourcesListMetaState = {

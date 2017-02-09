@@ -15,7 +15,7 @@ const allowAllCrudOperations = {
 //  "books". This will be the name of the store slice in Redux.
 // options: a list of options to configure the resource. Refer to the docs
 //  for the complete list of options
-function reduxInconsistentApi(resourceName, options = {}) {
+function simpleResource(resourceName, options = {}) {
   const {initialState, idAttribute, customHandlers, pluralForm, allowedOperations} = options;
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
@@ -41,6 +41,6 @@ function reduxInconsistentApi(resourceName, options = {}) {
   };
 }
 
-reduxInconsistentApi.resourceStatuses = resourceStatuses;
+simpleResource.resourceStatuses = resourceStatuses;
 
-export default reduxInconsistentApi;
+export default simpleResource;
