@@ -1,5 +1,5 @@
 import simpleResource from '../../../src';
-const {resourceStatuses} = simpleResource;
+const {xhrStatuses} = simpleResource;
 
 describe('reducers: readOne', function() {
   it('should handle `RETRIEVE_HELLO`', () => {
@@ -16,7 +16,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'PENDING'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
     });
   });
 
@@ -34,7 +37,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'FAILED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
     });
   });
 
@@ -61,7 +67,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'SUCCEEDED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
     });
   });
 
@@ -90,7 +99,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'SUCCEEDED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
     });
   });
 
@@ -108,7 +120,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'ABORTED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
     });
   });
 
@@ -123,10 +138,13 @@ describe('reducers: readOne', function() {
       resources: [],
       resourcesMeta: {
         3: {
-          retrievingStatus: null
+          retrievingStatus: xhrStatuses.NULL
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
     });
   });
 });

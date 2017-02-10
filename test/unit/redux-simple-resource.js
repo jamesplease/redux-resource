@@ -1,4 +1,5 @@
 import simpleResource from '../../src';
+import {xhrStatuses} from '../../src/utils';
 
 describe('simpleResource', function() {
   it('should be a function', () => {
@@ -17,7 +18,10 @@ describe('simpleResource', function() {
     expect(result.initialState).to.deep.equal({
       resources: [],
       resourcesMeta: {},
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
     });
   });
 
@@ -33,7 +37,10 @@ describe('simpleResource', function() {
       expect(result.initialState).to.deep.equal({
         resources: [],
         resourcesMeta: {},
-        resourcesListMeta: {},
+        resourcesListMeta: {
+          retrievingStatus: xhrStatuses.NULL,
+          creatingStatus: xhrStatuses.NULL
+        },
         hello: 'oink',
         pizza: true
       });

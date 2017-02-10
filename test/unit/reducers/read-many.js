@@ -1,5 +1,5 @@
 import simpleResource from '../../../src';
-const {resourceStatuses} = simpleResource;
+const {xhrStatuses} = simpleResource;
 
 describe('reducers: readMany', function() {
   it('should handle `RETRIEVE_HELLOS`', () => {
@@ -12,7 +12,8 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.PENDING
+        creatingStatus: xhrStatuses.NULL,
+        retrievingStatus: xhrStatuses.PENDING
       }
     });
   });
@@ -27,7 +28,8 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.FAILED
+        creatingStatus: xhrStatuses.NULL,
+        retrievingStatus: xhrStatuses.FAILED
       }
     });
   });
@@ -49,18 +51,19 @@ describe('reducers: readMany', function() {
       ],
       resourcesMeta: {
         2: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false,
+          updatingStatus: xhrStatuses.NULL,
+          retrievingStatus: xhrStatuses.NULL,
+          deletingStatus: xhrStatuses.NULL,
         },
         100: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false
+          updatingStatus: xhrStatuses.NULL,
+          retrievingStatus: xhrStatuses.NULL,
+          deletingStatus: xhrStatuses.NULL
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.SUCCEEDED
+        creatingStatus: xhrStatuses.NULL,
+        retrievingStatus: xhrStatuses.SUCCEEDED
       }
     });
   });
@@ -84,18 +87,19 @@ describe('reducers: readMany', function() {
       ],
       resourcesMeta: {
         2: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false,
+          updatingStatus: xhrStatuses.NULL,
+          retrievingStatus: xhrStatuses.NULL,
+          deletingStatus: xhrStatuses.NULL,
         },
         100: {
-          updatingStatus: null,
-          retrievingStatus: null,
-          isDeleting: false
+          updatingStatus: xhrStatuses.NULL,
+          retrievingStatus: xhrStatuses.NULL,
+          deletingStatus: xhrStatuses.NULL
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.SUCCEEDED
+        creatingStatus: xhrStatuses.NULL,
+        retrievingStatus: xhrStatuses.SUCCEEDED
       }
     });
   });
@@ -110,7 +114,8 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.ABORTED
+        creatingStatus: xhrStatuses.NULL,
+        retrievingStatus: xhrStatuses.ABORTED
       }
     });
   });
@@ -121,6 +126,7 @@ describe('reducers: readMany', function() {
     // We set some value on `retrievingStatus` to check that this nulls it
     const resourcesListMetaState = {
       resourcesListMeta: {
+        creatingStatus: xhrStatuses.NULL,
         retrievingStatus: 'sandwiches'
       }
     };
@@ -136,7 +142,8 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        retrievingStatus: null
+        creatingStatus: xhrStatuses.NULL,
+        retrievingStatus: xhrStatuses.NULL
       }
     });
   });

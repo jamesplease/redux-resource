@@ -1,20 +1,22 @@
 // These are statuses for in-flight requests. If a request has no status
 // associated with it, then it would have a status of `NULL`.
-export const resourceStatuses = {
+export const xhrStatuses = {
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
   ABORTED: 'ABORTED',
-  NULL: null
+  NULL: 'NULL'
 };
 
 export const initialResourceMetaState = {
   // The status of any existing request to update this resource
-  updatingStatus: null,
+  updatingStatus: xhrStatuses.NULL,
   // The status of any existing request to fetch this resource
-  retrievingStatus: null,
-  // Whether or not a request is in flight to delete this resource
-  isDeleting: false
+  retrievingStatus: xhrStatuses.NULL,
+  // The status of an any existing request to delete this resource. Note that
+  // this will never be "SUCCEEDED," as a successful delete removes the
+  // resource from the store.
+  deletingStatus: xhrStatuses.NULL
 };
 
 // resourcesMeta: the metadata Object from a resource store slice
@@ -64,11 +66,9 @@ export function upsertResource(resources, resource, id, idAttr) {
 
   // Otherwise, it does exist and we add it to the list at the appropriate
   // location
-  return [
-    ...resources.slice(0, resourceIndex),
-    resource,
-    ...resources.slice(resourceIndex + 1)
-  ];
+  const shallowClone = [...resources];
+  shallowClone.splice(resourceIndex, 1, resource);
+  return shallowClone;
 }
 
 export function generateDefaultInitialState() {
@@ -81,6 +81,9 @@ export function generateDefaultInitialState() {
     // This is metadata about the entire collection of resources. For instance,
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
-    resourcesListMeta: {}
+    resourcesListMeta: {
+      retrievingStatus: xhrStatuses.NULL,
+      creatingStatus: xhrStatuses.NULL
+    }
   };
 }

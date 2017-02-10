@@ -1,7 +1,7 @@
 import generateReducer from './reducer';
 import generateActionTypes from './action-types';
 import generateActionCreators from './action-creators';
-import {generateDefaultInitialState, resourceStatuses} from './utils';
+import {generateDefaultInitialState, xhrStatuses} from './utils';
 
 const allowAllCrudOperations = {
   create: true,
@@ -41,6 +41,6 @@ function simpleResource(resourceName, options = {}) {
   };
 }
 
-simpleResource.resourceStatuses = resourceStatuses;
+simpleResource.xhrStatuses = xhrStatuses;
 
 export default simpleResource;
