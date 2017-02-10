@@ -12,6 +12,7 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
+        creatingStatus: resourceStatuses.NULL,
         retrievingStatus: resourceStatuses.PENDING
       }
     });
@@ -27,6 +28,7 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
+        creatingStatus: resourceStatuses.NULL,
         retrievingStatus: resourceStatuses.FAILED
       }
     });
@@ -60,6 +62,7 @@ describe('reducers: readMany', function() {
         }
       },
       resourcesListMeta: {
+        creatingStatus: resourceStatuses.NULL,
         retrievingStatus: resourceStatuses.SUCCEEDED
       }
     });
@@ -95,6 +98,7 @@ describe('reducers: readMany', function() {
         }
       },
       resourcesListMeta: {
+        creatingStatus: resourceStatuses.NULL,
         retrievingStatus: resourceStatuses.SUCCEEDED
       }
     });
@@ -110,6 +114,7 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
+        creatingStatus: resourceStatuses.NULL,
         retrievingStatus: resourceStatuses.ABORTED
       }
     });
@@ -121,6 +126,7 @@ describe('reducers: readMany', function() {
     // We set some value on `retrievingStatus` to check that this nulls it
     const resourcesListMetaState = {
       resourcesListMeta: {
+        creatingStatus: resourceStatuses.NULL,
         retrievingStatus: 'sandwiches'
       }
     };
@@ -136,6 +142,7 @@ describe('reducers: readMany', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
+        creatingStatus: resourceStatuses.NULL,
         retrievingStatus: resourceStatuses.NULL
       }
     });

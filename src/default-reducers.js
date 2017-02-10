@@ -88,6 +88,7 @@ export function retrieveMany(idAttr, state, action) {
   return {
     ...state,
     resourcesListMeta: {
+      ...state.resourcesListMeta,
       retrievingStatus: resourceStatuses.PENDING
     }
   };
@@ -97,6 +98,7 @@ export function retrieveManyFailure(idAttr, state, action) {
   return {
     ...state,
     resourcesListMeta: {
+      ...state.resourcesListMeta,
       retrievingStatus: resourceStatuses.FAILED
     }
   };
@@ -113,6 +115,7 @@ export function retrieveManySuccess(idAttr, state, action) {
     // initial meta state.
     resourcesMeta: updateManyResourcesMeta(state.resourcesMeta, initialResourceMetaState, ids),
     resourcesListMeta: {
+      ...state.resourcesListMeta,
       retrievingStatus: resourceStatuses.SUCCEEDED
     }
   };
@@ -122,6 +125,7 @@ export function retrieveManyAborted(idAttr, state, action) {
   return {
     ...state,
     resourcesListMeta: {
+      ...state.resourcesListMeta,
       retrievingStatus: resourceStatuses.ABORTED
     }
   };
@@ -131,6 +135,7 @@ export function retrieveManyResetResolution(idAttr, state, action) {
   return {
     ...state,
     resourcesListMeta: {
+      ...state.resourcesListMeta,
       retrievingStatus: resourceStatuses.NULL
     }
   };
