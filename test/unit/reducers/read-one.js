@@ -16,7 +16,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'PENDING'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -34,7 +37,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'FAILED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -61,7 +67,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'SUCCEEDED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -90,7 +99,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'SUCCEEDED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -108,7 +120,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: 'ABORTED'
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -126,7 +141,10 @@ describe('reducers: readOne', function() {
           retrievingStatus: resourceStatuses.NULL
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 });

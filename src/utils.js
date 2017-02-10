@@ -81,6 +81,9 @@ export function generateDefaultInitialState() {
     // This is metadata about the entire collection of resources. For instance,
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
-    resourcesListMeta: {}
+    resourcesListMeta: {
+      retrievingStatus: resourceStatuses.NULL,
+      creatingStatus: resourceStatuses.NULL
+    }
   };
 }

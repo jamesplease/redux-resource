@@ -29,7 +29,10 @@ describe('reducers: delete', function() {
           deletingStatus: resourceStatuses.PENDING
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -60,7 +63,10 @@ describe('reducers: delete', function() {
           deletingStatus: resourceStatuses.FAILED
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -96,7 +102,10 @@ describe('reducers: delete', function() {
           deletingStatus: resourceStatuses.ABORTED
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -132,7 +141,10 @@ describe('reducers: delete', function() {
           deletingStatus: resourceStatuses.NULL
         }
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 
@@ -171,7 +183,10 @@ describe('reducers: delete', function() {
         },
         3: null
       },
-      resourcesListMeta: {}
+      resourcesListMeta: {
+        retrievingStatus: resourceStatuses.NULL,
+        creatingStatus: resourceStatuses.NULL
+      }
     });
   });
 });
