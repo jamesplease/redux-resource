@@ -27,8 +27,10 @@ function simpleResource(resourceName, options = {}) {
   };
 
   const types = generateActionTypes(resourceName, pluralName, allowedCrudOperations);
+  const actionCreators = generateActionCreators(allowedCrudOperations);
 
   return {
+    actionCreators,
     actionTypes: types,
     initialState: initial,
     reducer: generateReducer({
@@ -36,7 +38,6 @@ function simpleResource(resourceName, options = {}) {
       allowedOperations: allowedCrudOperations,
       idAttr, initialState, handlers, types, resourceName
     }),
-    actionCreators: generateActionCreators(idAttr),
     pluralForm: pluralName
   };
 }
