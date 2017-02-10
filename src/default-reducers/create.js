@@ -1,9 +1,8 @@
 import {
-  updateResourcesMeta, updateManyResourcesMeta, upsertResource,
-  xhrStatuses, initialResourceMetaState
+  upsertResource, xhrStatuses
 } from '../utils';
 
-export function create(idAttr, state, action) {
+export function create(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -13,7 +12,7 @@ export function create(idAttr, state, action) {
   };
 }
 
-export function createFailure(idAttr, state, action) {
+export function createFailure(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -35,7 +34,7 @@ export function createSuccess(idAttr, state, action) {
   };
 }
 
-export function createAborted(idAttr, state, action) {
+export function createAborted(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -45,7 +44,7 @@ export function createAborted(idAttr, state, action) {
   };
 }
 
-export function createResetResolution(idAttr, state, action) {
+export function createResetResolution(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {

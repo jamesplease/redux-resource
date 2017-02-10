@@ -1,9 +1,8 @@
 import {
-  updateResourcesMeta, updateManyResourcesMeta, upsertResource,
-  xhrStatuses, initialResourceMetaState
+  updateManyResourcesMeta, xhrStatuses, initialResourceMetaState
 } from '../utils';
 
-export function retrieveMany(idAttr, state, action) {
+export function retrieveMany(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -13,7 +12,7 @@ export function retrieveMany(idAttr, state, action) {
   };
 }
 
-export function retrieveManyFailure(idAttr, state, action) {
+export function retrieveManyFailure(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -40,7 +39,7 @@ export function retrieveManySuccess(idAttr, state, action) {
   };
 }
 
-export function retrieveManyAborted(idAttr, state, action) {
+export function retrieveManyAborted(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -50,7 +49,7 @@ export function retrieveManyAborted(idAttr, state, action) {
   };
 }
 
-export function retrieveManyResetResolution(idAttr, state, action) {
+export function retrieveManyResetResolution(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {

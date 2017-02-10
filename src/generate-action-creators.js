@@ -1,29 +1,28 @@
-import xhr from 'xhr';
 import * as actionCreators from './default-action-creators';
 
 export default function(allowedCrudOperations) {
   const {create, readOne, readMany, update, del} = allowedCrudOperations;
-  const actionCreators = {};
+  const actions = {};
 
   if (create) {
-    actionCreators.create = actionCreators.create;
+    actions.create = actionCreators.create;
   }
 
   if (readOne) {
-    actionCreators.readOne = actionCreators.readOne;
+    actions.readOne = actionCreators.readOne;
   }
 
   if (readMany) {
-    actionCreators.readMany = actionCreators.readMany;
+    actions.readMany = actionCreators.readMany;
   }
 
   if (update) {
-    actionCreators.update = actionCreators.update;
+    actions.update = actionCreators.update;
   }
 
   if (del) {
-    actionCreators.del = actionCreators.del;
+    actions.del = actionCreators.del;
   }
 
-  return actionCreators;
+  return actions;
 }

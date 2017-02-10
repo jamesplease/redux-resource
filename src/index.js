@@ -20,7 +20,7 @@ function simpleResource(resourceName, options = {}) {
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
   const handlers = customHandlers || {};
-  const pluralName = pluralForm ? pluralForm : resourceName + 's';
+  const pluralName = pluralForm ? pluralForm : `${resourceName}s`;
   const allowedCrudOperations = {
     ...allowAllCrudOperations,
     ...allowedOperations

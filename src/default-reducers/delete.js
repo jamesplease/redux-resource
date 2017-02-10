@@ -1,7 +1,4 @@
-import {
-  updateResourcesMeta, updateManyResourcesMeta, upsertResource,
-  xhrStatuses, initialResourceMetaState
-} from '../utils';
+import {updateResourcesMeta, xhrStatuses} from '../utils';
 
 export function del(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {

@@ -4,7 +4,7 @@ import * as defaultReducers from './default-reducers';
 // state and the action. This function merges in the default handlers, which
 // handle basic CRUD actions, with your customHandlers, which you pass in
 // when creating a resource.
-function getHandlers({customHandlers, types, resourceName, pluralForm, allowedOperations, idAttr}) {
+function getHandlers({customHandlers, resourceName, pluralForm, allowedOperations, idAttr}) {
   const capitalResourceName = resourceName.toUpperCase();
   const capitalPluralName = pluralForm.toUpperCase();
   const {create, readOne, readMany, update, del} = allowedOperations;
@@ -61,12 +61,12 @@ function getHandlers({customHandlers, types, resourceName, pluralForm, allowedOp
   return {
     ...defaultHandlers,
     ...customHandlers
-  }
+  };
 }
 
 export default function generateReducers(options) {
-  const {idAttr, initialState, customHandlers, types, resourceName, pluralForm, allowedOperations} = options;
-  const handlers = getHandlers({customHandlers, types, resourceName, pluralForm, allowedOperations, idAttr});
+  const {idAttr, initialState, customHandlers, resourceName, pluralForm, allowedOperations} = options;
+  const handlers = getHandlers({customHandlers, resourceName, pluralForm, allowedOperations, idAttr});
 
   return function reducer(state = initialState, action) {
     const handler = handlers[action.type];
@@ -75,5 +75,5 @@ export default function generateReducers(options) {
     }
     const result = handler(state, action);
     return result ? result : state;
-  }
+  };
 }

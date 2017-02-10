@@ -1,4 +1,7 @@
 {
+  "extends": [
+    "./node_modules/pleaserc/.eslintrc"
+  ],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
