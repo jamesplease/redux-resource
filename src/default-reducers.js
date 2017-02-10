@@ -5,23 +5,55 @@ import {
 
 // Create reducers
 export function create(idAttr, state, action) {
-  console.log('create');
+  return {
+    ...state,
+    resourcesListMeta: {
+      ...state.resourcesListMeta,
+      creatingStatus: resourceStatuses.PENDING
+    }
+  };
 }
 
 export function createFailure(idAttr, state, action) {
-  console.log('create_failure');
+  return {
+    ...state,
+    resourcesListMeta: {
+      ...state.resourcesListMeta,
+      creatingStatus: resourceStatuses.FAILED
+    }
+  };
 }
 
 export function createSuccess(idAttr, state, action) {
-  console.log('create_success');
+  const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
+  return {
+    ...state,
+    resources,
+    resourcesListMeta: {
+      ...state.resourcesListMeta,
+      creatingStatus: resourceStatuses.SUCCEEDED
+    }
+  };
 }
 
 export function createAborted(idAttr, state, action) {
-  console.log('create_aborted');
+  return {
+    ...state,
+    resourcesListMeta: {
+      ...state.resourcesListMeta,
+      creatingStatus: resourceStatuses.ABORTED
+    }
+  };
 }
 
 export function createResetResolution(idAttr, state, action) {
-  console.log('create_reset_resolution');
+  return {
+    ...state,
+    resourcesListMeta: {
+      ...state.resourcesListMeta,
+      creatingStatus: resourceStatuses.NULL
+    }
+  };
 }
 
 // Retrieve one reducers
