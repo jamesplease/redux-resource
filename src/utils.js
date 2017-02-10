@@ -1,6 +1,6 @@
 // These are statuses for in-flight requests. If a request has no status
 // associated with it, then it would have a status of `NULL`.
-export const resourceStatuses = {
+export const xhrStatuses = {
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
@@ -10,13 +10,13 @@ export const resourceStatuses = {
 
 export const initialResourceMetaState = {
   // The status of any existing request to update this resource
-  updatingStatus: resourceStatuses.NULL,
+  updatingStatus: xhrStatuses.NULL,
   // The status of any existing request to fetch this resource
-  retrievingStatus: resourceStatuses.NULL,
+  retrievingStatus: xhrStatuses.NULL,
   // The status of an any existing request to delete this resource. Note that
   // this will never be "SUCCEEDED," as a successful delete removes the
   // resource from the store.
-  deletingStatus: resourceStatuses.NULL
+  deletingStatus: xhrStatuses.NULL
 };
 
 // resourcesMeta: the metadata Object from a resource store slice
@@ -82,8 +82,8 @@ export function generateDefaultInitialState() {
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
     resourcesListMeta: {
-      retrievingStatus: resourceStatuses.NULL,
-      creatingStatus: resourceStatuses.NULL
+      retrievingStatus: xhrStatuses.NULL,
+      creatingStatus: xhrStatuses.NULL
     }
   };
 }

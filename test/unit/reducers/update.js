@@ -1,5 +1,5 @@
 import simpleResource from '../../../src';
-const {resourceStatuses} = simpleResource;
+const {xhrStatuses} = simpleResource;
 
 describe('reducers: update', function() {
   it('should handle `UPDATE_HELLO`', () => {
@@ -26,12 +26,12 @@ describe('reducers: update', function() {
       ],
       resourcesMeta: {
         3: {
-          updatingStatus: resourceStatuses.PENDING
+          updatingStatus: xhrStatuses.PENDING
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -60,12 +60,12 @@ describe('reducers: update', function() {
       ],
       resourcesMeta: {
         3: {
-          updatingStatus: resourceStatuses.FAILED
+          updatingStatus: xhrStatuses.FAILED
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -94,12 +94,12 @@ describe('reducers: update', function() {
       ],
       resourcesMeta: {
         3: {
-          updatingStatus: resourceStatuses.ABORTED
+          updatingStatus: xhrStatuses.ABORTED
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -128,12 +128,12 @@ describe('reducers: update', function() {
       ],
       resourcesMeta: {
         3: {
-          updatingStatus: resourceStatuses.NULL
+          updatingStatus: xhrStatuses.NULL
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -166,12 +166,12 @@ describe('reducers: update', function() {
       ],
       resourcesMeta: {
         3: {
-          updatingStatus: resourceStatuses.SUCCEEDED
+          updatingStatus: xhrStatuses.SUCCEEDED
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });

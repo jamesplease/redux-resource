@@ -1,5 +1,5 @@
 import simpleResource from '../../../src';
-const {resourceStatuses} = simpleResource;
+const {xhrStatuses} = simpleResource;
 
 describe('reducers: readOne', function() {
   it('should handle `RETRIEVE_HELLO`', () => {
@@ -17,8 +17,8 @@ describe('reducers: readOne', function() {
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -38,8 +38,8 @@ describe('reducers: readOne', function() {
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -68,8 +68,8 @@ describe('reducers: readOne', function() {
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -100,8 +100,8 @@ describe('reducers: readOne', function() {
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -121,8 +121,8 @@ describe('reducers: readOne', function() {
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -138,12 +138,12 @@ describe('reducers: readOne', function() {
       resources: [],
       resourcesMeta: {
         3: {
-          retrievingStatus: resourceStatuses.NULL
+          retrievingStatus: xhrStatuses.NULL
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });

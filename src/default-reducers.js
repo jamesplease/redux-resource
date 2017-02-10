@@ -1,6 +1,6 @@
 import {
   updateResourcesMeta, updateManyResourcesMeta, upsertResource,
-  resourceStatuses, initialResourceMetaState
+  xhrStatuses, initialResourceMetaState
 } from './utils';
 
 // Create reducers
@@ -9,7 +9,7 @@ export function create(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      creatingStatus: resourceStatuses.PENDING
+      creatingStatus: xhrStatuses.PENDING
     }
   };
 }
@@ -19,7 +19,7 @@ export function createFailure(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      creatingStatus: resourceStatuses.FAILED
+      creatingStatus: xhrStatuses.FAILED
     }
   };
 }
@@ -31,7 +31,7 @@ export function createSuccess(idAttr, state, action) {
     resources,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      creatingStatus: resourceStatuses.SUCCEEDED
+      creatingStatus: xhrStatuses.SUCCEEDED
     }
   };
 }
@@ -41,7 +41,7 @@ export function createAborted(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      creatingStatus: resourceStatuses.ABORTED
+      creatingStatus: xhrStatuses.ABORTED
     }
   };
 }
@@ -51,7 +51,7 @@ export function createResetResolution(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      creatingStatus: resourceStatuses.NULL
+      creatingStatus: xhrStatuses.NULL
     }
   };
 }
@@ -59,7 +59,7 @@ export function createResetResolution(idAttr, state, action) {
 // Retrieve one reducers
 export function retrieveOne(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: resourceStatuses.PENDING
+    retrievingStatus: xhrStatuses.PENDING
   }, action[idAttr]);
 
   return {
@@ -70,7 +70,7 @@ export function retrieveOne(idAttr, state, action) {
 
 export function retrieveOneFailure(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: resourceStatuses.FAILED
+    retrievingStatus: xhrStatuses.FAILED
   }, action[idAttr]);
 
   return {
@@ -81,7 +81,7 @@ export function retrieveOneFailure(idAttr, state, action) {
 
 export function retrieveOneSuccess(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: resourceStatuses.SUCCEEDED
+    retrievingStatus: xhrStatuses.SUCCEEDED
   }, action[idAttr]);
 
   const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
@@ -95,7 +95,7 @@ export function retrieveOneSuccess(idAttr, state, action) {
 
 export function retrieveOneAborted(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: resourceStatuses.ABORTED
+    retrievingStatus: xhrStatuses.ABORTED
   }, action[idAttr]);
 
   return {
@@ -106,7 +106,7 @@ export function retrieveOneAborted(idAttr, state, action) {
 
 export function retrieveOneResetResolution(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: resourceStatuses.NULL
+    retrievingStatus: xhrStatuses.NULL
   }, action[idAttr]);
 
   return {
@@ -121,7 +121,7 @@ export function retrieveMany(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      retrievingStatus: resourceStatuses.PENDING
+      retrievingStatus: xhrStatuses.PENDING
     }
   };
 }
@@ -131,7 +131,7 @@ export function retrieveManyFailure(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      retrievingStatus: resourceStatuses.FAILED
+      retrievingStatus: xhrStatuses.FAILED
     }
   };
 }
@@ -148,7 +148,7 @@ export function retrieveManySuccess(idAttr, state, action) {
     resourcesMeta: updateManyResourcesMeta(state.resourcesMeta, initialResourceMetaState, ids),
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      retrievingStatus: resourceStatuses.SUCCEEDED
+      retrievingStatus: xhrStatuses.SUCCEEDED
     }
   };
 }
@@ -158,7 +158,7 @@ export function retrieveManyAborted(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      retrievingStatus: resourceStatuses.ABORTED
+      retrievingStatus: xhrStatuses.ABORTED
     }
   };
 }
@@ -168,7 +168,7 @@ export function retrieveManyResetResolution(idAttr, state, action) {
     ...state,
     resourcesListMeta: {
       ...state.resourcesListMeta,
-      retrievingStatus: resourceStatuses.NULL
+      retrievingStatus: xhrStatuses.NULL
     }
   };
 }
@@ -176,7 +176,7 @@ export function retrieveManyResetResolution(idAttr, state, action) {
 // Update reducers
 export function update(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    updatingStatus: resourceStatuses.PENDING
+    updatingStatus: xhrStatuses.PENDING
   }, action[idAttr]);
 
   return {
@@ -187,7 +187,7 @@ export function update(idAttr, state, action) {
 
 export function updateFailure(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    updatingStatus: resourceStatuses.FAILED
+    updatingStatus: xhrStatuses.FAILED
   }, action[idAttr]);
 
   return {
@@ -198,7 +198,7 @@ export function updateFailure(idAttr, state, action) {
 
 export function updateSuccess(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    updatingStatus: resourceStatuses.SUCCEEDED
+    updatingStatus: xhrStatuses.SUCCEEDED
   }, action[idAttr]);
 
   const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
@@ -212,7 +212,7 @@ export function updateSuccess(idAttr, state, action) {
 
 export function updateAborted(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    updatingStatus: resourceStatuses.ABORTED
+    updatingStatus: xhrStatuses.ABORTED
   }, action[idAttr]);
 
   return {
@@ -223,7 +223,7 @@ export function updateAborted(idAttr, state, action) {
 
 export function updateResetResolution(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    updatingStatus: resourceStatuses.NULL
+    updatingStatus: xhrStatuses.NULL
   }, action[idAttr]);
 
   return {
@@ -235,7 +235,7 @@ export function updateResetResolution(idAttr, state, action) {
 // Delete reducers
 export function del(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: resourceStatuses.PENDING
+    deletingStatus: xhrStatuses.PENDING
   }, action[idAttr]);
 
   return {
@@ -246,7 +246,7 @@ export function del(idAttr, state, action) {
 
 export function delFailure(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: resourceStatuses.FAILED
+    deletingStatus: xhrStatuses.FAILED
   }, action[idAttr]);
 
   return {
@@ -277,7 +277,7 @@ export function delSuccess(idAttr, state, action) {
 
 export function delAborted(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: resourceStatuses.ABORTED
+    deletingStatus: xhrStatuses.ABORTED
   }, action[idAttr]);
 
   return {
@@ -288,7 +288,7 @@ export function delAborted(idAttr, state, action) {
 
 export function delResetResolution(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: resourceStatuses.NULL
+    deletingStatus: xhrStatuses.NULL
   }, action[idAttr]);
 
   return {

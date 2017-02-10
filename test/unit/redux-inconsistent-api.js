@@ -1,5 +1,5 @@
 import simpleResource from '../../src';
-import {resourceStatuses} from '../../src/utils';
+import {xhrStatuses} from '../../src/utils';
 
 describe('simpleResource', function() {
   it('should be a function', () => {
@@ -19,8 +19,8 @@ describe('simpleResource', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -38,8 +38,8 @@ describe('simpleResource', function() {
         resources: [],
         resourcesMeta: {},
         resourcesListMeta: {
-          retrievingStatus: resourceStatuses.NULL,
-          creatingStatus: resourceStatuses.NULL
+          retrievingStatus: xhrStatuses.NULL,
+          creatingStatus: xhrStatuses.NULL
         },
         hello: 'oink',
         pizza: true

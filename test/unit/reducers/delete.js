@@ -1,5 +1,5 @@
 import simpleResource from '../../../src';
-const {resourceStatuses} = simpleResource;
+const {xhrStatuses} = simpleResource;
 
 describe('reducers: delete', function() {
   it('should handle `DELETE_HELLO`', () => {
@@ -26,12 +26,12 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.PENDING
+          deletingStatus: xhrStatuses.PENDING
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -60,12 +60,12 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.FAILED
+          deletingStatus: xhrStatuses.FAILED
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -99,12 +99,12 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.ABORTED
+          deletingStatus: xhrStatuses.ABORTED
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -138,12 +138,12 @@ describe('reducers: delete', function() {
       ],
       resourcesMeta: {
         3: {
-          deletingStatus: resourceStatuses.NULL
+          deletingStatus: xhrStatuses.NULL
         }
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -184,8 +184,8 @@ describe('reducers: delete', function() {
         3: null
       },
       resourcesListMeta: {
-        retrievingStatus: resourceStatuses.NULL,
-        creatingStatus: resourceStatuses.NULL
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
       }
     });
   });

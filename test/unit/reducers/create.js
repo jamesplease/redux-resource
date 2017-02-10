@@ -1,5 +1,5 @@
 import simpleResource from '../../../src';
-const {resourceStatuses} = simpleResource;
+const {xhrStatuses} = simpleResource;
 
 describe('reducers: create', function() {
   it('should handle `CREATE_HELLO`', () => {
@@ -12,8 +12,8 @@ describe('reducers: create', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        creatingStatus: resourceStatuses.PENDING,
-        retrievingStatus: resourceStatuses.NULL
+        creatingStatus: xhrStatuses.PENDING,
+        retrievingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -28,8 +28,8 @@ describe('reducers: create', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        creatingStatus: resourceStatuses.FAILED,
-        retrievingStatus: resourceStatuses.NULL
+        creatingStatus: xhrStatuses.FAILED,
+        retrievingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -44,8 +44,8 @@ describe('reducers: create', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        creatingStatus: resourceStatuses.ABORTED,
-        retrievingStatus: resourceStatuses.NULL
+        creatingStatus: xhrStatuses.ABORTED,
+        retrievingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -60,8 +60,8 @@ describe('reducers: create', function() {
       resources: [],
       resourcesMeta: {},
       resourcesListMeta: {
-        creatingStatus: resourceStatuses.NULL,
-        retrievingStatus: resourceStatuses.NULL
+        creatingStatus: xhrStatuses.NULL,
+        retrievingStatus: xhrStatuses.NULL
       }
     });
   });
@@ -82,8 +82,8 @@ describe('reducers: create', function() {
       ],
       resourcesMeta: {},
       resourcesListMeta: {
-        creatingStatus: resourceStatuses.SUCCEEDED,
-        retrievingStatus: resourceStatuses.NULL
+        creatingStatus: xhrStatuses.SUCCEEDED,
+        retrievingStatus: xhrStatuses.NULL
       }
     });
   });
