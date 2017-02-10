@@ -1,4 +1,3 @@
-import actionTypes from './action-types';
 import * as defaultReducers from './default-reducers';
 
 // "handlers" are the functions that compute the new state given the existing
