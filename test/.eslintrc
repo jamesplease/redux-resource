@@ -1,5 +1,8 @@
 {
-  "extends": "./setup/.globals.json",
+  "extends": [
+    "../node_modules/pleaserc/.eslintrc-test",
+    "./setup/.globals.json"
+  ],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"

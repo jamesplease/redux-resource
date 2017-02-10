@@ -1,6 +1,5 @@
 import {
-  updateResourcesMeta, updateManyResourcesMeta, upsertResource,
-  xhrStatuses, initialResourceMetaState
+  updateResourcesMeta, upsertResource, xhrStatuses
 } from '../utils';
 
 export function retrieveOne(idAttr, state, action) {

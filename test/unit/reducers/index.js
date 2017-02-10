@@ -1,5 +1,4 @@
 import simpleResource from '../../../src';
-const {xhrStatuses} = simpleResource;
 
 describe('reducer', function() {
   it('should be a function', () => {

@@ -1,6 +1,6 @@
-import generateReducer from './reducer';
-import generateActionTypes from './action-types';
-import generateActionCreators from './action-creators';
+import generateReducer from './generate-reducer';
+import generateActionTypes from './generate-action-types';
+import generateActionCreators from './generate-action-creators';
 import {generateDefaultInitialState, xhrStatuses} from './utils';
 
 const allowAllCrudOperations = {
@@ -20,7 +20,7 @@ function simpleResource(resourceName, options = {}) {
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
   const handlers = customHandlers || {};
-  const pluralName = pluralForm ? pluralForm : resourceName + 's';
+  const pluralName = pluralForm ? pluralForm : `${resourceName}s`;
   const allowedCrudOperations = {
     ...allowAllCrudOperations,
     ...allowedOperations
