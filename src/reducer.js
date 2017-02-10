@@ -71,6 +71,9 @@ export default function generateReducers(options) {
 
   return function reducer(state = initialState, action) {
     const handler = handlers[action.type];
+    if (!handler) {
+      return state;
+    }
     const result = handler(state, action);
     return result ? result : state;
   }
