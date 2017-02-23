@@ -1,5 +1,4 @@
-import simpleResource from '../../src';
-import {xhrStatuses} from '../../src/utils';
+import simpleResource, {xhrStatuses} from '../../src';
 
 describe('simpleResource', function() {
   it('should be a function', () => {

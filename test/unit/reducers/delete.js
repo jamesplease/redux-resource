@@ -1,5 +1,4 @@
-import simpleResource from '../../../src';
-const {xhrStatuses} = simpleResource;
+import simpleResource, {xhrStatuses} from '../../../src';
 
 describe('reducers: delete', function() {
   it('should handle `DELETE_HELLO`', () => {

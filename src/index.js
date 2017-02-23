@@ -42,6 +42,5 @@ function simpleResource(resourceName, options = {}) {
   };
 }
 
-simpleResource.xhrStatuses = xhrStatuses;
-
+export {xhrStatuses};
 export default simpleResource;
