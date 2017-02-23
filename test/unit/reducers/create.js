@@ -1,5 +1,4 @@
-import simpleResource from '../../../src';
-const {xhrStatuses} = simpleResource;
+import simpleResource, {xhrStatuses} from '../../../src';
 
 describe('reducers: create', function() {
   it('should handle `CREATE_HELLO`', () => {

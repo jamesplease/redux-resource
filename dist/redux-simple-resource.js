@@ -59,6 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.xhrStatuses = undefined;
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
@@ -120,10 +121,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	}
 	
-	simpleResource.xhrStatuses = _utils.xhrStatuses;
-	
+	exports.xhrStatuses = _utils.xhrStatuses;
 	exports.default = simpleResource;
-	module.exports = exports['default'];
 
 /***/ },
 /* 1 */
