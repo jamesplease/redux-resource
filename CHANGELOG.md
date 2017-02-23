@@ -1,3 +1,9 @@
+### [0.0.5](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.5)
+
+**Breaking**
+
+- Action type names are now shorter
+
 ### [0.0.4](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.4)
 
 - Fix a bug where `initialState` was returning undefined in reducers
