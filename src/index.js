@@ -36,7 +36,8 @@ function simpleResource(resourceName, options = {}) {
     reducer: generateReducer({
       pluralForm: pluralName,
       allowedOperations: allowedCrudOperations,
-      idAttr, initialState, handlers, types, resourceName
+      initialState: initial,
+      idAttr, handlers, types, resourceName
     }),
     pluralForm: pluralName
   };
