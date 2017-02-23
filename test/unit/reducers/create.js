@@ -17,10 +17,10 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLOS_FAILURE`', () => {
+  it('should handle `CREATE_HELLOS_FAIL`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_FAILURE'
+      type: 'CREATE_HELLO_FAIL'
     });
 
     expect(reduced).to.deep.equal({
@@ -33,10 +33,10 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLOS_ABORTED`', () => {
+  it('should handle `CREATE_HELLOS_ABORT`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_ABORTED'
+      type: 'CREATE_HELLO_ABORT'
     });
 
     expect(reduced).to.deep.equal({
@@ -49,10 +49,10 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLOS_RESET_RESOLUTION`', () => {
+  it('should handle `CREATE_HELLOS_RESET`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_RESET_RESOLUTION'
+      type: 'CREATE_HELLO_RESET'
     });
 
     expect(reduced).to.deep.equal({
@@ -65,10 +65,10 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLO_SUCCESS`', () => {
+  it('should handle `CREATE_HELLO_SUCCEED`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_SUCCESS',
+      type: 'CREATE_HELLO_SUCCEED',
       resource: {
         id: 10,
         hungry: true

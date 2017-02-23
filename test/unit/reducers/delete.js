@@ -35,7 +35,7 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_FAILURE`', () => {
+  it('should handle `DELETE_HELLO_FAIL`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -47,7 +47,7 @@ describe('reducers: delete', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_FAILURE',
+      type: 'DELETE_HELLO_FAIL',
       id: 3
     });
 
@@ -69,7 +69,7 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_ABORTED`', () => {
+  it('should handle `DELETE_HELLO_ABORT`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -86,7 +86,7 @@ describe('reducers: delete', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_ABORTED',
+      type: 'DELETE_HELLO_ABORT',
       id: 3
     });
 
@@ -108,7 +108,7 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_RESET_RESOLUTION`', () => {
+  it('should handle `DELETE_HELLO_RESET`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -125,7 +125,7 @@ describe('reducers: delete', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_RESET_RESOLUTION',
+      type: 'DELETE_HELLO_RESET',
       id: 3
     });
 
@@ -147,7 +147,7 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_SUCCESS`', () => {
+  it('should handle `DELETE_HELLO_SUCCEED`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -167,7 +167,7 @@ describe('reducers: delete', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_SUCCESS',
+      type: 'DELETE_HELLO_SUCCEED',
       id: 3
     });
 

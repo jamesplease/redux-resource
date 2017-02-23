@@ -3,10 +3,10 @@
 // as `crudAction`.
 const mapConstant = (resourceName, crudAction) => ({
   [`${crudAction}_${resourceName}`]: `${crudAction}_${resourceName}`,
-  [`${crudAction}_${resourceName}_SUCCESS`]: `${crudAction}_${resourceName}_SUCCESS`,
-  [`${crudAction}_${resourceName}_FAILURE`]: `${crudAction}_${resourceName}_FAILURE`,
-  [`${crudAction}_${resourceName}_ABORTED`]: `${crudAction}_${resourceName}_ABORTED`,
-  [`${crudAction}_${resourceName}_RESET_RESOLUTION`]: `${crudAction}_${resourceName}_RESET_RESOLUTION`,
+  [`${crudAction}_${resourceName}_SUCCEED`]: `${crudAction}_${resourceName}_SUCCEED`,
+  [`${crudAction}_${resourceName}_FAIL`]: `${crudAction}_${resourceName}_FAIL`,
+  [`${crudAction}_${resourceName}_ABORT`]: `${crudAction}_${resourceName}_ABORT`,
+  [`${crudAction}_${resourceName}_RESET`]: `${crudAction}_${resourceName}_RESET`,
 });
 
 // This is a map of the four CRUD operations to the five async action types

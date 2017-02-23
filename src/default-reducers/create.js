@@ -12,7 +12,7 @@ export function create(idAttr, state) {
   };
 }
 
-export function createFailure(idAttr, state) {
+export function createFail(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -22,7 +22,7 @@ export function createFailure(idAttr, state) {
   };
 }
 
-export function createSuccess(idAttr, state, action) {
+export function createSucceed(idAttr, state, action) {
   const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
   return {
     ...state,
@@ -34,7 +34,7 @@ export function createSuccess(idAttr, state, action) {
   };
 }
 
-export function createAborted(idAttr, state) {
+export function createAbort(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -44,7 +44,7 @@ export function createAborted(idAttr, state) {
   };
 }
 
-export function createResetResolution(idAttr, state) {
+export function createReset(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
