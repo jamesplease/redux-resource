@@ -1,4 +1,8 @@
-### [0.0.3](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.2)
+### [0.0.4](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.4)
+
+- Fix a bug where `initialState` was returning undefined in reducers
+
+### [0.0.3](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.3)
 
 - `xhrStatuses` is now a named export
 
