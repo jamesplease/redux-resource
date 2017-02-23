@@ -115,7 +115,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    reducer: (0, _generateReducer2.default)({
 	      pluralForm: pluralName,
 	      allowedOperations: allowedCrudOperations,
-	      idAttr: idAttr, initialState: initialState, handlers: handlers, types: types, resourceName: resourceName
+	      initialState: initial,
+	      idAttr: idAttr, handlers: handlers, types: types, resourceName: resourceName
 	    }),
 	    pluralForm: pluralName
 	  };
