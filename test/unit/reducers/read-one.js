@@ -22,10 +22,10 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLO_FAILURE`', () => {
+  it('should handle `RETRIEVE_HELLO_FAIL`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLO_FAILURE',
+      type: 'RETRIEVE_HELLO_FAIL',
       id: 3
     });
 
@@ -43,10 +43,10 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLO_SUCCESS`', () => {
+  it('should handle `RETRIEVE_HELLO_SUCCEED`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLO_SUCCESS',
+      type: 'RETRIEVE_HELLO_SUCCEED',
       id: 3,
       resource: {
         id: 3,
@@ -73,12 +73,12 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLO_SUCCESS` with a custom idAttribute', () => {
+  it('should handle `RETRIEVE_HELLO_SUCCEED` with a custom idAttribute', () => {
     const result = simpleResource('hello', {
       idAttribute: 'whatPls'
     });
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLO_SUCCESS',
+      type: 'RETRIEVE_HELLO_SUCCEED',
       whatPls: 3,
       resource: {
         whatPls: 3,
@@ -105,10 +105,10 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLO_ABORTED`', () => {
+  it('should handle `RETRIEVE_HELLO_ABORT`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLO_ABORTED',
+      type: 'RETRIEVE_HELLO_ABORT',
       id: 3
     });
 
@@ -126,10 +126,10 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLO_RESET_RESOLUTION`', () => {
+  it('should handle `RETRIEVE_HELLO_RESET`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLO_RESET_RESOLUTION',
+      type: 'RETRIEVE_HELLO_RESET',
       id: 3
     });
 

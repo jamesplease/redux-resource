@@ -169,15 +169,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      del = allowedOperations.del;
 	
 	
-	  var createHandlers = create ? (_ref2 = {}, _defineProperty(_ref2, 'CREATE_' + capitalResourceName, defaultReducers.create.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_FAILURE', defaultReducers.createFailure.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_SUCCESS', defaultReducers.createSuccess.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_ABORTED', defaultReducers.createAborted.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_RESET_RESOLUTION', defaultReducers.createResetResolution.bind(null, idAttr)), _ref2) : {};
+	  var createHandlers = create ? (_ref2 = {}, _defineProperty(_ref2, 'CREATE_' + capitalResourceName, defaultReducers.create.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_FAIL', defaultReducers.createFail.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_SUCCEED', defaultReducers.createSucceed.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_ABORT', defaultReducers.createAbort.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_RESET', defaultReducers.createReset.bind(null, idAttr)), _ref2) : {};
 	
-	  var readOneHandlers = readOne ? (_ref3 = {}, _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName, defaultReducers.retrieveOne.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_FAILURE', defaultReducers.retrieveOneFailure.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_SUCCESS', defaultReducers.retrieveOneSuccess.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_ABORTED', defaultReducers.retrieveOneAborted.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_RESET_RESOLUTION', defaultReducers.retrieveOneResetResolution.bind(null, idAttr)), _ref3) : {};
+	  var readOneHandlers = readOne ? (_ref3 = {}, _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName, defaultReducers.retrieveOne.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_FAIL', defaultReducers.retrieveOneFail.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_SUCCEED', defaultReducers.retrieveOneSucceed.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_ABORT', defaultReducers.retrieveOneAbort.bind(null, idAttr)), _defineProperty(_ref3, 'RETRIEVE_' + capitalResourceName + '_RESET', defaultReducers.retrieveOneReset.bind(null, idAttr)), _ref3) : {};
 	
-	  var readManyHandlers = readMany ? (_ref4 = {}, _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName, defaultReducers.retrieveMany.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_FAILURE', defaultReducers.retrieveManyFailure.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_SUCCESS', defaultReducers.retrieveManySuccess.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_ABORTED', defaultReducers.retrieveManyAborted.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_RESET_RESOLUTION', defaultReducers.retrieveManyResetResolution.bind(null, idAttr)), _ref4) : {};
+	  var readManyHandlers = readMany ? (_ref4 = {}, _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName, defaultReducers.retrieveMany.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_FAIL', defaultReducers.retrieveManyFail.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_SUCCEED', defaultReducers.retrieveManySucceed.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_ABORT', defaultReducers.retrieveManyAbort.bind(null, idAttr)), _defineProperty(_ref4, 'RETRIEVE_' + capitalPluralName + '_RESET', defaultReducers.retrieveManyReset.bind(null, idAttr)), _ref4) : {};
 	
-	  var updateHandlers = update ? (_ref5 = {}, _defineProperty(_ref5, 'UPDATE_' + capitalResourceName, defaultReducers.update.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_FAILURE', defaultReducers.updateFailure.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_SUCCESS', defaultReducers.updateSuccess.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_ABORTED', defaultReducers.updateAborted.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_RESET_RESOLUTION', defaultReducers.updateResetResolution.bind(null, idAttr)), _ref5) : {};
+	  var updateHandlers = update ? (_ref5 = {}, _defineProperty(_ref5, 'UPDATE_' + capitalResourceName, defaultReducers.update.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_FAIL', defaultReducers.updateFail.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_SUCCEED', defaultReducers.updateSucceed.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_ABORT', defaultReducers.updateAbort.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_RESET', defaultReducers.updateReset.bind(null, idAttr)), _ref5) : {};
 	
-	  var deleteHandlers = del ? (_ref6 = {}, _defineProperty(_ref6, 'DELETE_' + capitalResourceName, defaultReducers.del.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_FAILURE', defaultReducers.delFailure.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_SUCCESS', defaultReducers.delSuccess.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_ABORTED', defaultReducers.delAborted.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_RESET_RESOLUTION', defaultReducers.delResetResolution.bind(null, idAttr)), _ref6) : {};
+	  var deleteHandlers = del ? (_ref6 = {}, _defineProperty(_ref6, 'DELETE_' + capitalResourceName, defaultReducers.del.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_FAIL', defaultReducers.delFail.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_SUCCEED', defaultReducers.delSucceed.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_ABORT', defaultReducers.delAbort.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_RESET', defaultReducers.delReset.bind(null, idAttr)), _ref6) : {};
 	
 	  // Default handlers manage the five states of CRUD.
 	  var defaultHandlers = _extends({}, createHandlers, readOneHandlers, readManyHandlers, updateHandlers, deleteHandlers);
@@ -292,10 +292,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	exports.create = create;
-	exports.createFailure = createFailure;
-	exports.createSuccess = createSuccess;
-	exports.createAborted = createAborted;
-	exports.createResetResolution = createResetResolution;
+	exports.createFail = createFail;
+	exports.createSucceed = createSucceed;
+	exports.createAbort = createAbort;
+	exports.createReset = createReset;
 	
 	var _utils = __webpack_require__(4);
 	
@@ -307,7 +307,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function createFailure(idAttr, state) {
+	function createFail(idAttr, state) {
 	  return _extends({}, state, {
 	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
 	      creatingStatus: _utils.xhrStatuses.FAILED
@@ -315,7 +315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function createSuccess(idAttr, state, action) {
+	function createSucceed(idAttr, state, action) {
 	  var resources = (0, _utils.upsertResource)(state.resources, action.resource, action[idAttr], idAttr);
 	  return _extends({}, state, {
 	    resources: resources,
@@ -325,7 +325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function createAborted(idAttr, state) {
+	function createAbort(idAttr, state) {
 	  return _extends({}, state, {
 	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
 	      creatingStatus: _utils.xhrStatuses.ABORTED
@@ -333,7 +333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function createResetResolution(idAttr, state) {
+	function createReset(idAttr, state) {
 	  return _extends({}, state, {
 	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
 	      creatingStatus: _utils.xhrStatuses.NULL
@@ -454,10 +454,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	exports.retrieveOne = retrieveOne;
-	exports.retrieveOneFailure = retrieveOneFailure;
-	exports.retrieveOneSuccess = retrieveOneSuccess;
-	exports.retrieveOneAborted = retrieveOneAborted;
-	exports.retrieveOneResetResolution = retrieveOneResetResolution;
+	exports.retrieveOneFail = retrieveOneFail;
+	exports.retrieveOneSucceed = retrieveOneSucceed;
+	exports.retrieveOneAbort = retrieveOneAbort;
+	exports.retrieveOneReset = retrieveOneReset;
 	
 	var _utils = __webpack_require__(4);
 	
@@ -471,7 +471,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveOneFailure(idAttr, state, action) {
+	function retrieveOneFail(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    retrievingStatus: _utils.xhrStatuses.FAILED
 	  }, action[idAttr]);
@@ -481,7 +481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveOneSuccess(idAttr, state, action) {
+	function retrieveOneSucceed(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    retrievingStatus: _utils.xhrStatuses.SUCCEEDED
 	  }, action[idAttr]);
@@ -494,7 +494,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveOneAborted(idAttr, state, action) {
+	function retrieveOneAbort(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    retrievingStatus: _utils.xhrStatuses.ABORTED
 	  }, action[idAttr]);
@@ -504,7 +504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveOneResetResolution(idAttr, state, action) {
+	function retrieveOneReset(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    retrievingStatus: _utils.xhrStatuses.NULL
 	  }, action[idAttr]);
@@ -527,10 +527,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	exports.retrieveMany = retrieveMany;
-	exports.retrieveManyFailure = retrieveManyFailure;
-	exports.retrieveManySuccess = retrieveManySuccess;
-	exports.retrieveManyAborted = retrieveManyAborted;
-	exports.retrieveManyResetResolution = retrieveManyResetResolution;
+	exports.retrieveManyFail = retrieveManyFail;
+	exports.retrieveManySucceed = retrieveManySucceed;
+	exports.retrieveManyAbort = retrieveManyAbort;
+	exports.retrieveManyReset = retrieveManyReset;
 	
 	var _utils = __webpack_require__(4);
 	
@@ -542,7 +542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveManyFailure(idAttr, state) {
+	function retrieveManyFail(idAttr, state) {
 	  return _extends({}, state, {
 	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.FAILED
@@ -550,7 +550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveManySuccess(idAttr, state, action) {
+	function retrieveManySucceed(idAttr, state, action) {
 	  var resources = action.resources;
 	  // This needs to use `idAttr`.
 	  var ids = resources.map(function (r) {
@@ -567,7 +567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveManyAborted(idAttr, state) {
+	function retrieveManyAbort(idAttr, state) {
 	  return _extends({}, state, {
 	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.ABORTED
@@ -575,7 +575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function retrieveManyResetResolution(idAttr, state) {
+	function retrieveManyReset(idAttr, state) {
 	  return _extends({}, state, {
 	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.NULL
@@ -596,10 +596,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	exports.update = update;
-	exports.updateFailure = updateFailure;
-	exports.updateSuccess = updateSuccess;
-	exports.updateAborted = updateAborted;
-	exports.updateResetResolution = updateResetResolution;
+	exports.updateFail = updateFail;
+	exports.updateSucceed = updateSucceed;
+	exports.updateAbort = updateAbort;
+	exports.updateReset = updateReset;
 	
 	var _utils = __webpack_require__(4);
 	
@@ -613,7 +613,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function updateFailure(idAttr, state, action) {
+	function updateFail(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    updatingStatus: _utils.xhrStatuses.FAILED
 	  }, action[idAttr]);
@@ -623,7 +623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function updateSuccess(idAttr, state, action) {
+	function updateSucceed(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    updatingStatus: _utils.xhrStatuses.SUCCEEDED
 	  }, action[idAttr]);
@@ -636,7 +636,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function updateAborted(idAttr, state, action) {
+	function updateAbort(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    updatingStatus: _utils.xhrStatuses.ABORTED
 	  }, action[idAttr]);
@@ -646,7 +646,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function updateResetResolution(idAttr, state, action) {
+	function updateReset(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    updatingStatus: _utils.xhrStatuses.NULL
 	  }, action[idAttr]);
@@ -669,10 +669,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	exports.del = del;
-	exports.delFailure = delFailure;
-	exports.delSuccess = delSuccess;
-	exports.delAborted = delAborted;
-	exports.delResetResolution = delResetResolution;
+	exports.delFail = delFail;
+	exports.delSucceed = delSucceed;
+	exports.delAbort = delAbort;
+	exports.delReset = delReset;
 	
 	var _utils = __webpack_require__(4);
 	
@@ -688,7 +688,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function delFailure(idAttr, state, action) {
+	function delFail(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    deletingStatus: _utils.xhrStatuses.FAILED
 	  }, action[idAttr]);
@@ -698,7 +698,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function delSuccess(idAttr, state, action) {
+	function delSucceed(idAttr, state, action) {
 	  var id = action[idAttr];
 	
 	  // Remove this resource from the resources meta.
@@ -715,7 +715,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function delAborted(idAttr, state, action) {
+	function delAbort(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    deletingStatus: _utils.xhrStatuses.ABORTED
 	  }, action[idAttr]);
@@ -725,7 +725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	}
 	
-	function delResetResolution(idAttr, state, action) {
+	function delReset(idAttr, state, action) {
 	  var resourcesMeta = (0, _utils.updateResourcesMeta)(state.resourcesMeta, {
 	    deletingStatus: _utils.xhrStatuses.NULL
 	  }, action[idAttr]);
@@ -755,7 +755,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var mapConstant = function mapConstant(resourceName, crudAction) {
 	  var _ref;
 	
-	  return _ref = {}, _defineProperty(_ref, crudAction + '_' + resourceName, crudAction + '_' + resourceName), _defineProperty(_ref, crudAction + '_' + resourceName + '_SUCCESS', crudAction + '_' + resourceName + '_SUCCESS'), _defineProperty(_ref, crudAction + '_' + resourceName + '_FAILURE', crudAction + '_' + resourceName + '_FAILURE'), _defineProperty(_ref, crudAction + '_' + resourceName + '_ABORTED', crudAction + '_' + resourceName + '_ABORTED'), _defineProperty(_ref, crudAction + '_' + resourceName + '_RESET_RESOLUTION', crudAction + '_' + resourceName + '_RESET_RESOLUTION'), _ref;
+	  return _ref = {}, _defineProperty(_ref, crudAction + '_' + resourceName, crudAction + '_' + resourceName), _defineProperty(_ref, crudAction + '_' + resourceName + '_SUCCEED', crudAction + '_' + resourceName + '_SUCCEED'), _defineProperty(_ref, crudAction + '_' + resourceName + '_FAIL', crudAction + '_' + resourceName + '_FAIL'), _defineProperty(_ref, crudAction + '_' + resourceName + '_ABORT', crudAction + '_' + resourceName + '_ABORT'), _defineProperty(_ref, crudAction + '_' + resourceName + '_RESET', crudAction + '_' + resourceName + '_RESET'), _ref;
 	};
 	
 	// This is a map of the four CRUD operations to the five async action types

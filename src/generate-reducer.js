@@ -11,42 +11,42 @@ function getHandlers({customHandlers, resourceName, pluralForm, allowedOperation
 
   const createHandlers = create ? {
     [`CREATE_${capitalResourceName}`]: defaultReducers.create.bind(null, idAttr),
-    [`CREATE_${capitalResourceName}_FAILURE`]: defaultReducers.createFailure.bind(null, idAttr),
-    [`CREATE_${capitalResourceName}_SUCCESS`]: defaultReducers.createSuccess.bind(null, idAttr),
-    [`CREATE_${capitalResourceName}_ABORTED`]: defaultReducers.createAborted.bind(null, idAttr),
-    [`CREATE_${capitalResourceName}_RESET_RESOLUTION`]: defaultReducers.createResetResolution.bind(null, idAttr)
+    [`CREATE_${capitalResourceName}_FAIL`]: defaultReducers.createFail.bind(null, idAttr),
+    [`CREATE_${capitalResourceName}_SUCCEED`]: defaultReducers.createSucceed.bind(null, idAttr),
+    [`CREATE_${capitalResourceName}_ABORT`]: defaultReducers.createAbort.bind(null, idAttr),
+    [`CREATE_${capitalResourceName}_RESET`]: defaultReducers.createReset.bind(null, idAttr)
   } : {};
 
   const readOneHandlers = readOne ? {
     [`RETRIEVE_${capitalResourceName}`]: defaultReducers.retrieveOne.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_FAILURE`]: defaultReducers.retrieveOneFailure.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_SUCCESS`]: defaultReducers.retrieveOneSuccess.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_ABORTED`]: defaultReducers.retrieveOneAborted.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_RESET_RESOLUTION`]: defaultReducers.retrieveOneResetResolution.bind(null, idAttr)
+    [`RETRIEVE_${capitalResourceName}_FAIL`]: defaultReducers.retrieveOneFail.bind(null, idAttr),
+    [`RETRIEVE_${capitalResourceName}_SUCCEED`]: defaultReducers.retrieveOneSucceed.bind(null, idAttr),
+    [`RETRIEVE_${capitalResourceName}_ABORT`]: defaultReducers.retrieveOneAbort.bind(null, idAttr),
+    [`RETRIEVE_${capitalResourceName}_RESET`]: defaultReducers.retrieveOneReset.bind(null, idAttr)
   } : {};
 
   const readManyHandlers = readMany ? {
     [`RETRIEVE_${capitalPluralName}`]: defaultReducers.retrieveMany.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_FAILURE`]: defaultReducers.retrieveManyFailure.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_SUCCESS`]: defaultReducers.retrieveManySuccess.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_ABORTED`]: defaultReducers.retrieveManyAborted.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_RESET_RESOLUTION`]: defaultReducers.retrieveManyResetResolution.bind(null, idAttr)
+    [`RETRIEVE_${capitalPluralName}_FAIL`]: defaultReducers.retrieveManyFail.bind(null, idAttr),
+    [`RETRIEVE_${capitalPluralName}_SUCCEED`]: defaultReducers.retrieveManySucceed.bind(null, idAttr),
+    [`RETRIEVE_${capitalPluralName}_ABORT`]: defaultReducers.retrieveManyAbort.bind(null, idAttr),
+    [`RETRIEVE_${capitalPluralName}_RESET`]: defaultReducers.retrieveManyReset.bind(null, idAttr)
   } : {};
 
   const updateHandlers = update ? {
     [`UPDATE_${capitalResourceName}`]: defaultReducers.update.bind(null, idAttr),
-    [`UPDATE_${capitalResourceName}_FAILURE`]: defaultReducers.updateFailure.bind(null, idAttr),
-    [`UPDATE_${capitalResourceName}_SUCCESS`]: defaultReducers.updateSuccess.bind(null, idAttr),
-    [`UPDATE_${capitalResourceName}_ABORTED`]: defaultReducers.updateAborted.bind(null, idAttr),
-    [`UPDATE_${capitalResourceName}_RESET_RESOLUTION`]: defaultReducers.updateResetResolution.bind(null, idAttr)
+    [`UPDATE_${capitalResourceName}_FAIL`]: defaultReducers.updateFail.bind(null, idAttr),
+    [`UPDATE_${capitalResourceName}_SUCCEED`]: defaultReducers.updateSucceed.bind(null, idAttr),
+    [`UPDATE_${capitalResourceName}_ABORT`]: defaultReducers.updateAbort.bind(null, idAttr),
+    [`UPDATE_${capitalResourceName}_RESET`]: defaultReducers.updateReset.bind(null, idAttr)
   } : {};
 
   const deleteHandlers = del ? {
     [`DELETE_${capitalResourceName}`]: defaultReducers.del.bind(null, idAttr),
-    [`DELETE_${capitalResourceName}_FAILURE`]: defaultReducers.delFailure.bind(null, idAttr),
-    [`DELETE_${capitalResourceName}_SUCCESS`]: defaultReducers.delSuccess.bind(null, idAttr),
-    [`DELETE_${capitalResourceName}_ABORTED`]: defaultReducers.delAborted.bind(null, idAttr),
-    [`DELETE_${capitalResourceName}_RESET_RESOLUTION`]: defaultReducers.delResetResolution.bind(null, idAttr)
+    [`DELETE_${capitalResourceName}_FAIL`]: defaultReducers.delFail.bind(null, idAttr),
+    [`DELETE_${capitalResourceName}_SUCCEED`]: defaultReducers.delSucceed.bind(null, idAttr),
+    [`DELETE_${capitalResourceName}_ABORT`]: defaultReducers.delAbort.bind(null, idAttr),
+    [`DELETE_${capitalResourceName}_RESET`]: defaultReducers.delReset.bind(null, idAttr)
   } : {};
 
   // Default handlers manage the five states of CRUD.

@@ -1,6 +1,6 @@
 {
   "name": "redux-simple-resource",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Redux for when your APIs aren't consistent",
   "main": "dist/redux-simple-resource.js",
   "scripts": {

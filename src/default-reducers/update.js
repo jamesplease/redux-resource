@@ -13,7 +13,7 @@ export function update(idAttr, state, action) {
   };
 }
 
-export function updateFailure(idAttr, state, action) {
+export function updateFail(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     updatingStatus: xhrStatuses.FAILED
   }, action[idAttr]);
@@ -24,7 +24,7 @@ export function updateFailure(idAttr, state, action) {
   };
 }
 
-export function updateSuccess(idAttr, state, action) {
+export function updateSucceed(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     updatingStatus: xhrStatuses.SUCCEEDED
   }, action[idAttr]);
@@ -38,7 +38,7 @@ export function updateSuccess(idAttr, state, action) {
   };
 }
 
-export function updateAborted(idAttr, state, action) {
+export function updateAbort(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     updatingStatus: xhrStatuses.ABORTED
   }, action[idAttr]);
@@ -49,7 +49,7 @@ export function updateAborted(idAttr, state, action) {
   };
 }
 
-export function updateResetResolution(idAttr, state, action) {
+export function updateReset(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     updatingStatus: xhrStatuses.NULL
   }, action[idAttr]);

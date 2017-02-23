@@ -11,7 +11,7 @@ export function del(idAttr, state, action) {
   };
 }
 
-export function delFailure(idAttr, state, action) {
+export function delFail(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     deletingStatus: xhrStatuses.FAILED
   }, action[idAttr]);
@@ -22,7 +22,7 @@ export function delFailure(idAttr, state, action) {
   };
 }
 
-export function delSuccess(idAttr, state, action) {
+export function delSucceed(idAttr, state, action) {
   const id = action[idAttr];
 
   // Remove this resource from the resources meta.
@@ -42,7 +42,7 @@ export function delSuccess(idAttr, state, action) {
   };
 }
 
-export function delAborted(idAttr, state, action) {
+export function delAbort(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     deletingStatus: xhrStatuses.ABORTED
   }, action[idAttr]);
@@ -53,7 +53,7 @@ export function delAborted(idAttr, state, action) {
   };
 }
 
-export function delResetResolution(idAttr, state, action) {
+export function delReset(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     deletingStatus: xhrStatuses.NULL
   }, action[idAttr]);

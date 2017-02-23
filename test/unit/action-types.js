@@ -10,46 +10,46 @@ describe('actionTypes', function() {
   describe('create', () => {
     const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.CREATE_HELLO).to.equal('CREATE_HELLO');
-    expect(actionTypes.CREATE_HELLO_SUCCESS).to.equal('CREATE_HELLO_SUCCESS');
-    expect(actionTypes.CREATE_HELLO_FAILURE).to.equal('CREATE_HELLO_FAILURE');
-    expect(actionTypes.CREATE_HELLO_ABORTED).to.equal('CREATE_HELLO_ABORTED');
-    expect(actionTypes.CREATE_HELLO_RESET_RESOLUTION).to.equal('CREATE_HELLO_RESET_RESOLUTION');
+    expect(actionTypes.CREATE_HELLO_SUCCEED).to.equal('CREATE_HELLO_SUCCEED');
+    expect(actionTypes.CREATE_HELLO_FAIL).to.equal('CREATE_HELLO_FAIL');
+    expect(actionTypes.CREATE_HELLO_ABORT).to.equal('CREATE_HELLO_ABORT');
+    expect(actionTypes.CREATE_HELLO_RESET).to.equal('CREATE_HELLO_RESET');
   });
 
   describe('retrieveOne', () => {
     const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.RETRIEVE_HELLO).to.equal('RETRIEVE_HELLO');
-    expect(actionTypes.RETRIEVE_HELLO_SUCCESS).to.equal('RETRIEVE_HELLO_SUCCESS');
-    expect(actionTypes.RETRIEVE_HELLO_FAILURE).to.equal('RETRIEVE_HELLO_FAILURE');
-    expect(actionTypes.RETRIEVE_HELLO_ABORTED).to.equal('RETRIEVE_HELLO_ABORTED');
-    expect(actionTypes.RETRIEVE_HELLO_RESET_RESOLUTION).to.equal('RETRIEVE_HELLO_RESET_RESOLUTION');
+    expect(actionTypes.RETRIEVE_HELLO_SUCCEED).to.equal('RETRIEVE_HELLO_SUCCEED');
+    expect(actionTypes.RETRIEVE_HELLO_FAIL).to.equal('RETRIEVE_HELLO_FAIL');
+    expect(actionTypes.RETRIEVE_HELLO_ABORT).to.equal('RETRIEVE_HELLO_ABORT');
+    expect(actionTypes.RETRIEVE_HELLO_RESET).to.equal('RETRIEVE_HELLO_RESET');
   });
 
   describe('retrieveMany', () => {
     const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.RETRIEVE_HELLOS).to.equal('RETRIEVE_HELLOS');
-    expect(actionTypes.RETRIEVE_HELLOS_SUCCESS).to.equal('RETRIEVE_HELLOS_SUCCESS');
-    expect(actionTypes.RETRIEVE_HELLOS_FAILURE).to.equal('RETRIEVE_HELLOS_FAILURE');
-    expect(actionTypes.RETRIEVE_HELLOS_ABORTED).to.equal('RETRIEVE_HELLOS_ABORTED');
-    expect(actionTypes.RETRIEVE_HELLOS_RESET_RESOLUTION).to.equal('RETRIEVE_HELLOS_RESET_RESOLUTION');
+    expect(actionTypes.RETRIEVE_HELLOS_SUCCEED).to.equal('RETRIEVE_HELLOS_SUCCEED');
+    expect(actionTypes.RETRIEVE_HELLOS_FAIL).to.equal('RETRIEVE_HELLOS_FAIL');
+    expect(actionTypes.RETRIEVE_HELLOS_ABORT).to.equal('RETRIEVE_HELLOS_ABORT');
+    expect(actionTypes.RETRIEVE_HELLOS_RESET).to.equal('RETRIEVE_HELLOS_RESET');
   });
 
   describe('update', () => {
     const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.UPDATE_HELLO).to.equal('UPDATE_HELLO');
-    expect(actionTypes.UPDATE_HELLO_SUCCESS).to.equal('UPDATE_HELLO_SUCCESS');
-    expect(actionTypes.UPDATE_HELLO_FAILURE).to.equal('UPDATE_HELLO_FAILURE');
-    expect(actionTypes.UPDATE_HELLO_ABORTED).to.equal('UPDATE_HELLO_ABORTED');
-    expect(actionTypes.UPDATE_HELLO_RESET_RESOLUTION).to.equal('UPDATE_HELLO_RESET_RESOLUTION');
+    expect(actionTypes.UPDATE_HELLO_SUCCEED).to.equal('UPDATE_HELLO_SUCCEED');
+    expect(actionTypes.UPDATE_HELLO_FAIL).to.equal('UPDATE_HELLO_FAIL');
+    expect(actionTypes.UPDATE_HELLO_ABORT).to.equal('UPDATE_HELLO_ABORT');
+    expect(actionTypes.UPDATE_HELLO_RESET).to.equal('UPDATE_HELLO_RESET');
   });
 
   describe('delete', () => {
     const actionTypes = simpleResource('hello').actionTypes;
     expect(actionTypes.DELETE_HELLO).to.equal('DELETE_HELLO');
-    expect(actionTypes.DELETE_HELLO_SUCCESS).to.equal('DELETE_HELLO_SUCCESS');
-    expect(actionTypes.DELETE_HELLO_FAILURE).to.equal('DELETE_HELLO_FAILURE');
-    expect(actionTypes.DELETE_HELLO_ABORTED).to.equal('DELETE_HELLO_ABORTED');
-    expect(actionTypes.DELETE_HELLO_RESET_RESOLUTION).to.equal('DELETE_HELLO_RESET_RESOLUTION');
+    expect(actionTypes.DELETE_HELLO_SUCCEED).to.equal('DELETE_HELLO_SUCCEED');
+    expect(actionTypes.DELETE_HELLO_FAIL).to.equal('DELETE_HELLO_FAIL');
+    expect(actionTypes.DELETE_HELLO_ABORT).to.equal('DELETE_HELLO_ABORT');
+    expect(actionTypes.DELETE_HELLO_RESET).to.equal('DELETE_HELLO_RESET');
   });
 
   describe('only allowing readMany', () => {
@@ -64,9 +64,9 @@ describe('actionTypes', function() {
     }).actionTypes;
     expect(_.size(actionTypes)).to.equal(5);
     expect(actionTypes.RETRIEVE_HELLOS).to.equal('RETRIEVE_HELLOS');
-    expect(actionTypes.RETRIEVE_HELLOS_SUCCESS).to.equal('RETRIEVE_HELLOS_SUCCESS');
-    expect(actionTypes.RETRIEVE_HELLOS_FAILURE).to.equal('RETRIEVE_HELLOS_FAILURE');
-    expect(actionTypes.RETRIEVE_HELLOS_ABORTED).to.equal('RETRIEVE_HELLOS_ABORTED');
-    expect(actionTypes.RETRIEVE_HELLOS_RESET_RESOLUTION).to.equal('RETRIEVE_HELLOS_RESET_RESOLUTION');
+    expect(actionTypes.RETRIEVE_HELLOS_SUCCEED).to.equal('RETRIEVE_HELLOS_SUCCEED');
+    expect(actionTypes.RETRIEVE_HELLOS_FAIL).to.equal('RETRIEVE_HELLOS_FAIL');
+    expect(actionTypes.RETRIEVE_HELLOS_ABORT).to.equal('RETRIEVE_HELLOS_ABORT');
+    expect(actionTypes.RETRIEVE_HELLOS_RESET).to.equal('RETRIEVE_HELLOS_RESET');
   });
 });

@@ -13,7 +13,7 @@ export function retrieveOne(idAttr, state, action) {
   };
 }
 
-export function retrieveOneFailure(idAttr, state, action) {
+export function retrieveOneFail(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     retrievingStatus: xhrStatuses.FAILED
   }, action[idAttr]);
@@ -24,7 +24,7 @@ export function retrieveOneFailure(idAttr, state, action) {
   };
 }
 
-export function retrieveOneSuccess(idAttr, state, action) {
+export function retrieveOneSucceed(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     retrievingStatus: xhrStatuses.SUCCEEDED
   }, action[idAttr]);
@@ -38,7 +38,7 @@ export function retrieveOneSuccess(idAttr, state, action) {
   };
 }
 
-export function retrieveOneAborted(idAttr, state, action) {
+export function retrieveOneAbort(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     retrievingStatus: xhrStatuses.ABORTED
   }, action[idAttr]);
@@ -49,7 +49,7 @@ export function retrieveOneAborted(idAttr, state, action) {
   };
 }
 
-export function retrieveOneResetResolution(idAttr, state, action) {
+export function retrieveOneReset(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
     retrievingStatus: xhrStatuses.NULL
   }, action[idAttr]);

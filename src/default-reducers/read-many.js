@@ -12,7 +12,7 @@ export function retrieveMany(idAttr, state) {
   };
 }
 
-export function retrieveManyFailure(idAttr, state) {
+export function retrieveManyFail(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -22,7 +22,7 @@ export function retrieveManyFailure(idAttr, state) {
   };
 }
 
-export function retrieveManySuccess(idAttr, state, action) {
+export function retrieveManySucceed(idAttr, state, action) {
   const resources = action.resources;
   // This needs to use `idAttr`.
   const ids = resources.map(r => r[idAttr]);
@@ -39,7 +39,7 @@ export function retrieveManySuccess(idAttr, state, action) {
   };
 }
 
-export function retrieveManyAborted(idAttr, state) {
+export function retrieveManyAbort(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {
@@ -49,7 +49,7 @@ export function retrieveManyAborted(idAttr, state) {
   };
 }
 
-export function retrieveManyResetResolution(idAttr, state) {
+export function retrieveManyReset(idAttr, state) {
   return {
     ...state,
     resourcesListMeta: {

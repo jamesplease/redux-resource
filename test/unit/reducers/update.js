@@ -35,7 +35,7 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_HELLO_FAILURE`', () => {
+  it('should handle `UPDATE_HELLO_FAIL`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -47,7 +47,7 @@ describe('reducers: update', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_HELLO_FAILURE',
+      type: 'UPDATE_HELLO_FAIL',
       id: 3
     });
 
@@ -69,7 +69,7 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_HELLO_ABORTED`', () => {
+  it('should handle `UPDATE_HELLO_ABORT`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -81,7 +81,7 @@ describe('reducers: update', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_HELLO_ABORTED',
+      type: 'UPDATE_HELLO_ABORT',
       id: 3
     });
 
@@ -103,7 +103,7 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_HELLO_RESET_RESOLUTION`', () => {
+  it('should handle `UPDATE_HELLO_RESET`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -115,7 +115,7 @@ describe('reducers: update', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_HELLO_RESET_RESOLUTION',
+      type: 'UPDATE_HELLO_RESET',
       id: 3
     });
 
@@ -137,7 +137,7 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_HELLO_SUCCESS`', () => {
+  it('should handle `UPDATE_HELLO_SUCCEED`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -149,7 +149,7 @@ describe('reducers: update', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_HELLO_SUCCESS',
+      type: 'UPDATE_HELLO_SUCCEED',
       id: 3,
       resource: {
         id: 3,
