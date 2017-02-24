@@ -3,6 +3,7 @@
 A powerful Redux system for interacting with remote resources.
 
 [![Travis build status](http://img.shields.io/travis/jmeas/redux-simple-resource.svg?style=flat)](https://travis-ci.org/jmeas/redux-simple-resource)
+[![Test Coverage](https://codeclimate.com/github/jmeas/redux-simple-resource/badges/coverage.svg)](https://codeclimate.com/github/jmeas/redux-simple-resource)
 
 ### Table of Contents
 
