@@ -1,5 +1,6 @@
 import {
-  updateManyResourcesMeta, xhrStatuses, initialResourceMetaState
+  updateManyResourcesMeta, xhrStatuses, initialResourceMetaState,
+  upsertManyResources
 } from '../utils';
 
 export function retrieveMany(idAttr, state) {
@@ -26,9 +27,20 @@ export function retrieveManySucceed(idAttr, state, action) {
   const resources = action.resources;
   // This needs to use `idAttr`.
   const ids = resources.map(r => r[idAttr]);
+
+
+  const replace = typeof action.replace !== 'undefined' ? action.replace : true;
+
+  let newResources;
+  if (!replace) {
+    newResources = upsertManyResources(state.resources, resources, idAttr, false);
+  } else {
+    newResources = resources;
+  }
+
   return {
     ...state,
-    resources,
+    resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
     resourcesMeta: updateManyResourcesMeta(state.resourcesMeta, initialResourceMetaState, ids),

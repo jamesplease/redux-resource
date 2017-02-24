@@ -44,7 +44,14 @@ describe('reducers: readOne', function() {
   });
 
   it('should handle `RETRIEVE_HELLO_SUCCEED`', () => {
-    const result = simpleResource('hello');
+    const result = simpleResource('hello', {
+      initialState: {
+        resources: [
+          {id: 3, hunger: false}
+        ]
+      }
+    });
+
     const reduced = result.reducer(result.initialState, {
       type: 'RETRIEVE_HELLO_SUCCEED',
       id: 3,
@@ -59,6 +66,45 @@ describe('reducers: readOne', function() {
         {
           id: 3,
           sandwiches: 'yum'
+        }
+      ],
+      resourcesMeta: {
+        3: {
+          retrievingStatus: 'SUCCEEDED'
+        }
+      },
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
+    });
+  });
+
+  it('should handle `RETRIEVE_HELLO_SUCCEED` with `replace: false`', () => {
+    const result = simpleResource('hello', {
+      initialState: {
+        resources: [
+          {id: 3, hunger: false}
+        ]
+      }
+    });
+
+    const reduced = result.reducer(result.initialState, {
+      type: 'RETRIEVE_HELLO_SUCCEED',
+      id: 3,
+      replace: false,
+      resource: {
+        id: 3,
+        sandwiches: 'yum'
+      }
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [
+        {
+          id: 3,
+          sandwiches: 'yum',
+          hunger: false
         }
       ],
       resourcesMeta: {
