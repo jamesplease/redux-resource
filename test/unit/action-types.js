@@ -54,7 +54,7 @@ describe('actionTypes', function() {
 
   describe('only allowing readMany', () => {
     const actionTypes = simpleResource('hello', {
-      allowedOperations: {
+      supportedActions: {
         create: false,
         readMany: true,
         readOne: false,

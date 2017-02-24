@@ -100,12 +100,12 @@ const person = createResource('person', {
 });
 ```
 
-##### `allowedOperations`
+##### `supportedActions`
 
 Action creators will be created for all CRUD actions, and the generated reducer
 supports all of those actions. Sometimes, you won't need to support all CRUD
-actions on a resource. In those situations, you can use this to disable the creation
-of particular action creator types. The five CRUD actions are:
+actions on a resource. In those situations, you can use this to disable the
+creation of particular action creator types. The five CRUD actions are:
 
 - `readOne`
 - `readMany`
@@ -124,7 +124,7 @@ that. It's up to you.
 ```js
 // In this application, the cat resource can only be fetched as a list.
 const cat = createResource('cat', {
-  allowedOperations: {
+  supportedActions: {
     readOne: false,
     readMany: true,
     del: false,

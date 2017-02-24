@@ -3,7 +3,7 @@ import generateActionTypes from './generate-action-types';
 import generateActionCreators from './generate-action-creators';
 import {generateDefaultInitialState, xhrStatuses} from './utils';
 
-const allowAllCrudOperations = {
+const supportAllActions = {
   create: true,
   readOne: true,
   readMany: true,
@@ -16,18 +16,18 @@ const allowAllCrudOperations = {
 // options: a list of options to configure the resource. Refer to the docs
 //  for the complete list of options
 function simpleResource(resourceName, options = {}) {
-  const {initialState, idAttribute, customHandlers, pluralForm, allowedOperations} = options;
+  const {initialState, idAttribute, customHandlers, pluralForm, supportedActions} = options;
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
   const handlers = customHandlers || {};
   const pluralName = pluralForm ? pluralForm : `${resourceName}s`;
-  const allowedCrudOperations = {
-    ...allowAllCrudOperations,
-    ...allowedOperations
+  const supportedCrudActions = {
+    ...supportAllActions,
+    ...supportedActions
   };
 
-  const types = generateActionTypes(resourceName, pluralName, allowedCrudOperations);
-  const actionCreators = generateActionCreators(allowedCrudOperations);
+  const types = generateActionTypes(resourceName, pluralName, supportedCrudActions);
+  const actionCreators = generateActionCreators(supportedCrudActions);
 
   return {
     actionCreators,
@@ -35,7 +35,7 @@ function simpleResource(resourceName, options = {}) {
     initialState: initial,
     reducer: generateReducer({
       pluralForm: pluralName,
-      allowedOperations: allowedCrudOperations,
+      supportedActions: supportedCrudActions,
       initialState: initial,
       idAttr, handlers, types, resourceName
     }),
