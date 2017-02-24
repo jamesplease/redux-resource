@@ -69,4 +69,18 @@ describe('actionTypes', function() {
     expect(actionTypes.RETRIEVE_HELLOS_ABORT).to.equal('RETRIEVE_HELLOS_ABORT');
     expect(actionTypes.RETRIEVE_HELLOS_RESET).to.equal('RETRIEVE_HELLOS_RESET');
   });
+
+  describe('passing in various names', () => {
+    const helloThereActionTypes = simpleResource('hello there').actionTypes;
+    expect(helloThereActionTypes.RETRIEVE_HELLO_THERES).to.equal('RETRIEVE_HELLO_THERES');
+
+    const bookCaseActionTypes = simpleResource('bookCase').actionTypes;
+    expect(bookCaseActionTypes.RETRIEVE_BOOK_CASES).to.equal('RETRIEVE_BOOK_CASES');
+
+    const jsonViewerActionTypes = simpleResource('JSONViewer').actionTypes;
+    expect(jsonViewerActionTypes.RETRIEVE_JSON_VIEWERS).to.equal('RETRIEVE_JSON_VIEWERS');
+
+    const catPersonActionTypes = simpleResource('cat-person', {pluralForm: 'cat-people'}).actionTypes;
+    expect(catPersonActionTypes.RETRIEVE_CAT_PEOPLE).to.equal('RETRIEVE_CAT_PEOPLE');
+  });
 });
