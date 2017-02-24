@@ -1,7 +1,7 @@
 {
   "name": "redux-simple-resource",
   "version": "0.0.5",
-  "description": "Redux for when your APIs aren't consistent",
+  "description": "A powerful Redux framework for interacting with remote resources.",
   "main": "dist/redux-simple-resource.js",
   "scripts": {
     "test": "gulp",
@@ -15,7 +15,27 @@
     "type": "git",
     "url": "https://github.com/jmeas/redux-simple-resource.git"
   },
-  "keywords": [],
+  "keywords": [
+    "redux",
+    "api",
+    "boilerplate",
+    "resource",
+    "restful",
+    "rest",
+    "react",
+    "flux",
+    "framework",
+    "crud",
+    "http",
+    "xhr",
+    "state",
+    "data",
+    "store",
+    "reducer",
+    "action",
+    "type",
+    "creator"
+  ],
   "author": "James Smith <jellyes2@gmail.com>",
   "license": "MIT",
   "bugs": {
