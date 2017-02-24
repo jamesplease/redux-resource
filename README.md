@@ -15,16 +15,15 @@ A powerful Redux system for interacting with remote resources.
   - [xhrStatuses](#xhrstatuses)
 - [Guides](#guides)
   - [XHR Statuses](#xhr-statuses)
-  - [Opinionated decisions](#opinionated-decisions)
+  - [Shallow Cloning](#shallow-cloning)
   - [What is a "simple" resource?](#what-is-a-simple-resource)
 
 ### Motivation
 
 Use this project to reduce Redux boilerplate for CRUD'ing remote resources.
 
-✓ Default reducers, action creators, and action types created for you  
+✓ Default reducers, action types, and initial state created for you  
 ✓ All features are opt-out: pick and choose what works for you  
-✓ Supports aborting the default XHRs  
 ✓ Stores "metadata" for resources and resource lists  
 ✓ Works great with consistent and inconsistent backends  
 ✓ [Unopinionated technology decisions](#unopinionated-decisions)  
@@ -61,9 +60,6 @@ const reducers = combineReducers({
 });
 
 const store = createStore(reducers);
-
-// Make an HTTP request to create a book
-book.actionCreators.create(bookData);
 ```
 
 ## API
@@ -82,9 +78,8 @@ This method returns an object with the following properties:
 | Name | Description |
 |------|-------------|
 |reducer | A reducer that manages CRUD'ing the resource |
-|actionCreators | Action creators for CRUD'ing the resource |
 |pluralForm | The pluralized name of `resourceName` |
-|actionTypes | The CRUD action types emitted by the action creators |
+|actionTypes | The CRUD action types to be used in user-defined action creators |
 |initialState | The initial state returned by reducer |
 
 The optional `options` Object can be used to customize all of the default
@@ -103,10 +98,10 @@ const person = createResource('person', {
 
 ##### `supportedActions`
 
-Action creators will be created for all CRUD actions, and the generated reducer
+Action types will be created for all CRUD actions, and the generated reducer
 supports all of those actions. Sometimes, you won't need to support all CRUD
 actions on a resource. In those situations, you can use this to disable the
-creation of particular action creator types. The five CRUD actions are:
+creation of particular action types. The five CRUD actions are:
 
 - `readOne`
 - `readMany`
@@ -114,12 +109,12 @@ creation of particular action creator types. The five CRUD actions are:
 - `update`
 - `delete`
 
-Pass `false` as the value for any of these to prevent those action creators
+Pass `false` as the value for any of these to prevent those action types
 and reducer handlers from being created.
 
 Keep in mind that you may not choose to ever use this option, even if your
 resource only supports a subset of CRUD. You could simply choose to not use the
-other generated action creators, and there would be no issues with you doing
+other generated action types, and there would be no issues with you doing
 that. It's up to you.
 
 ```js
@@ -281,45 +276,19 @@ This status is applied to a request that has not begun. There may also come a
 time when your application no longer cares about the result of a request. At
 that time, you have the option to set the XHR status to `NULL`.
 
-### Unopinionated decisions
+### Shallow cloning
 
-Although every feature of `redux-simple-resource` is opt out, there are a few
-decisions that disagreeing with would (currently) require rewriting a lot of
-code (which goes against the point of using a tool like this). They are:
+redux-simple-resource makes updates to the store via shallow cloning. This
+system works well if you:
 
-- The use of [`xhr`](https://github.com/naugtur/xhr) for HTTP requests.
-- The use of shallow cloning for pseudo-immutability.
-
-#### Using `xhr`
-
-This decision fits into the goals of keeping this library simple and
-unopinionated. XHR is nice because it is a small wrapper around native the
-native XMLHttpRequest API; it's as low-level as you can get without using
-the native API.
-
-Because all of the action creators can be overridden, you are free to use any
-tool you want. In the future, there may be a hook to replace XHR without needing
-to rewrite the whole action creator. If this interests you, then follow along on
-[this issue](https://github.com/jmeas/redux-simple-resource/issues/12).
-
-#### Shallow cloning
-
-This continues along the lines of keeping the library simple and unopinionated.
-Shallow cloning works great if you follow two guidelines:
-
-1. keep your store data simple and shallow
+1. keep your store data shallow (in other words, avoid deeply nested objects)
 2. never modify data from the store
 
 I've worked on large projects that follow these patterns, and it's worked great.
-Some of these projects also tried out Immutable, yet later removed it because
-it didn't seem to add much value, yet did add an API learning curve.
 
-If you are a strong believer in Immutable.js, then this library is probably
-not for you.
-
-If you need deep cloning, then know that there are plans to add a hook to
-replace the shallow cloning with a custom cloning function. If this interests
-you, then follow along on
+If you absolutely need deep cloning, rather than shallow cloning, then know that
+there are plans to add a hook to replace the shallow cloning with a custom
+cloning function. If this interests you, then follow along on
 [this issue](https://github.com/jmeas/redux-simple-resource/issues/11).
 
 ### What is a simple resource?
