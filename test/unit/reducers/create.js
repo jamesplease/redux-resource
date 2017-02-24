@@ -66,18 +66,20 @@ describe('reducers: create', function() {
   });
 
   it('should handle `CREATE_HELLO_SUCCEED`', () => {
-    const result = simpleResource('hello');
+    const result = simpleResource('hello', {
+      idAttribute: 'movieId'
+    });
     const reduced = result.reducer(result.initialState, {
       type: 'CREATE_HELLO_SUCCEED',
       resource: {
-        id: 10,
+        movieId: 10,
         hungry: true
       }
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {id: 10, hungry: true}
+        {movieId: 10, hungry: true}
       ],
       resourcesMeta: {
         10: {
