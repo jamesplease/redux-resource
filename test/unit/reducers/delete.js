@@ -188,4 +188,47 @@ describe('reducers: delete', function() {
       }
     });
   });
+
+  it('should handle `DELETE_HELLO_SUCCEED` with a custom idAttribute', () => {
+    const result = simpleResource('hello', {
+      idAttribute: 'movieId',
+      initialState: {
+        resources: [
+          {movieId: 1},
+          {movieId: 3},
+          {movieId: 4},
+        ],
+        resourcesMeta: {
+          2: {
+            name: 'what'
+          },
+          3: {
+            deletingStatus: 'sandwiches'
+          }
+        }
+      }
+    });
+
+    const reduced = result.reducer(result.initialState, {
+      type: 'DELETE_HELLO_SUCCEED',
+      movieId: 3
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [
+        {movieId: 1},
+        {movieId: 4},
+      ],
+      resourcesMeta: {
+        2: {
+          name: 'what'
+        },
+        3: null
+      },
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
+    });
+  });
 });

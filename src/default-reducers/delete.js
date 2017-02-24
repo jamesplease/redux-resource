@@ -33,7 +33,7 @@ export function delSucceed(idAttr, state, action) {
   };
 
   // Shallow clone the existing resource array, removing the deleted resource
-  const resources = state.resources.filter(r => r.id !== id);
+  const resources = state.resources.filter(r => r[idAttr] !== id);
 
   return {
     ...state,
