@@ -18,20 +18,20 @@ describe('actionTypes', function() {
 
   describe('retrieveOne', () => {
     const actionTypes = simpleResource('hello').actionTypes;
-    expect(actionTypes.RETRIEVE_HELLO).to.equal('RETRIEVE_HELLO');
-    expect(actionTypes.RETRIEVE_HELLO_SUCCEED).to.equal('RETRIEVE_HELLO_SUCCEED');
-    expect(actionTypes.RETRIEVE_HELLO_FAIL).to.equal('RETRIEVE_HELLO_FAIL');
-    expect(actionTypes.RETRIEVE_HELLO_ABORT).to.equal('RETRIEVE_HELLO_ABORT');
-    expect(actionTypes.RETRIEVE_HELLO_RESET).to.equal('RETRIEVE_HELLO_RESET');
+    expect(actionTypes.READ_ONE_HELLO).to.equal('READ_ONE_HELLO');
+    expect(actionTypes.READ_ONE_HELLO_SUCCEED).to.equal('READ_ONE_HELLO_SUCCEED');
+    expect(actionTypes.READ_ONE_HELLO_FAIL).to.equal('READ_ONE_HELLO_FAIL');
+    expect(actionTypes.READ_ONE_HELLO_ABORT).to.equal('READ_ONE_HELLO_ABORT');
+    expect(actionTypes.READ_ONE_HELLO_RESET).to.equal('READ_ONE_HELLO_RESET');
   });
 
   describe('retrieveMany', () => {
     const actionTypes = simpleResource('hello').actionTypes;
-    expect(actionTypes.RETRIEVE_HELLOS).to.equal('RETRIEVE_HELLOS');
-    expect(actionTypes.RETRIEVE_HELLOS_SUCCEED).to.equal('RETRIEVE_HELLOS_SUCCEED');
-    expect(actionTypes.RETRIEVE_HELLOS_FAIL).to.equal('RETRIEVE_HELLOS_FAIL');
-    expect(actionTypes.RETRIEVE_HELLOS_ABORT).to.equal('RETRIEVE_HELLOS_ABORT');
-    expect(actionTypes.RETRIEVE_HELLOS_RESET).to.equal('RETRIEVE_HELLOS_RESET');
+    expect(actionTypes.READ_MANY_HELLOS).to.equal('READ_MANY_HELLOS');
+    expect(actionTypes.READ_MANY_HELLOS_SUCCEED).to.equal('READ_MANY_HELLOS_SUCCEED');
+    expect(actionTypes.READ_MANY_HELLOS_FAIL).to.equal('READ_MANY_HELLOS_FAIL');
+    expect(actionTypes.READ_MANY_HELLOS_ABORT).to.equal('READ_MANY_HELLOS_ABORT');
+    expect(actionTypes.READ_MANY_HELLOS_RESET).to.equal('READ_MANY_HELLOS_RESET');
   });
 
   describe('update', () => {
@@ -63,24 +63,24 @@ describe('actionTypes', function() {
       }
     }).actionTypes;
     expect(_.size(actionTypes)).to.equal(5);
-    expect(actionTypes.RETRIEVE_HELLOS).to.equal('RETRIEVE_HELLOS');
-    expect(actionTypes.RETRIEVE_HELLOS_SUCCEED).to.equal('RETRIEVE_HELLOS_SUCCEED');
-    expect(actionTypes.RETRIEVE_HELLOS_FAIL).to.equal('RETRIEVE_HELLOS_FAIL');
-    expect(actionTypes.RETRIEVE_HELLOS_ABORT).to.equal('RETRIEVE_HELLOS_ABORT');
-    expect(actionTypes.RETRIEVE_HELLOS_RESET).to.equal('RETRIEVE_HELLOS_RESET');
+    expect(actionTypes.READ_MANY_HELLOS).to.equal('READ_MANY_HELLOS');
+    expect(actionTypes.READ_MANY_HELLOS_SUCCEED).to.equal('READ_MANY_HELLOS_SUCCEED');
+    expect(actionTypes.READ_MANY_HELLOS_FAIL).to.equal('READ_MANY_HELLOS_FAIL');
+    expect(actionTypes.READ_MANY_HELLOS_ABORT).to.equal('READ_MANY_HELLOS_ABORT');
+    expect(actionTypes.READ_MANY_HELLOS_RESET).to.equal('READ_MANY_HELLOS_RESET');
   });
 
   describe('passing in various names', () => {
     const helloThereActionTypes = simpleResource('hello there').actionTypes;
-    expect(helloThereActionTypes.RETRIEVE_HELLO_THERES).to.equal('RETRIEVE_HELLO_THERES');
+    expect(helloThereActionTypes.READ_MANY_HELLO_THERES).to.equal('READ_MANY_HELLO_THERES');
 
     const bookCaseActionTypes = simpleResource('bookCase').actionTypes;
-    expect(bookCaseActionTypes.RETRIEVE_BOOK_CASES).to.equal('RETRIEVE_BOOK_CASES');
+    expect(bookCaseActionTypes.READ_MANY_BOOK_CASES).to.equal('READ_MANY_BOOK_CASES');
 
     const jsonViewerActionTypes = simpleResource('JSONViewer').actionTypes;
-    expect(jsonViewerActionTypes.RETRIEVE_JSON_VIEWERS).to.equal('RETRIEVE_JSON_VIEWERS');
+    expect(jsonViewerActionTypes.READ_MANY_JSON_VIEWERS).to.equal('READ_MANY_JSON_VIEWERS');
 
     const catPersonActionTypes = simpleResource('cat-person', {pluralForm: 'cat-people'}).actionTypes;
-    expect(catPersonActionTypes.RETRIEVE_CAT_PEOPLE).to.equal('RETRIEVE_CAT_PEOPLE');
+    expect(catPersonActionTypes.READ_MANY_CAT_PEOPLE).to.equal('READ_MANY_CAT_PEOPLE');
   });
 });

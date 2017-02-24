@@ -18,19 +18,19 @@ function getHandlers({customHandlers, resourceName, pluralForm, supportedActions
   } : {};
 
   const readOneHandlers = readOne ? {
-    [`RETRIEVE_${capitalResourceName}`]: defaultReducers.retrieveOne.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_FAIL`]: defaultReducers.retrieveOneFail.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_SUCCEED`]: defaultReducers.retrieveOneSucceed.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_ABORT`]: defaultReducers.retrieveOneAbort.bind(null, idAttr),
-    [`RETRIEVE_${capitalResourceName}_RESET`]: defaultReducers.retrieveOneReset.bind(null, idAttr)
+    [`READ_ONE_${capitalResourceName}`]: defaultReducers.retrieveOne.bind(null, idAttr),
+    [`READ_ONE_${capitalResourceName}_FAIL`]: defaultReducers.retrieveOneFail.bind(null, idAttr),
+    [`READ_ONE_${capitalResourceName}_SUCCEED`]: defaultReducers.retrieveOneSucceed.bind(null, idAttr),
+    [`READ_ONE_${capitalResourceName}_ABORT`]: defaultReducers.retrieveOneAbort.bind(null, idAttr),
+    [`READ_ONE_${capitalResourceName}_RESET`]: defaultReducers.retrieveOneReset.bind(null, idAttr)
   } : {};
 
   const readManyHandlers = readMany ? {
-    [`RETRIEVE_${capitalPluralName}`]: defaultReducers.retrieveMany.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_FAIL`]: defaultReducers.retrieveManyFail.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_SUCCEED`]: defaultReducers.retrieveManySucceed.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_ABORT`]: defaultReducers.retrieveManyAbort.bind(null, idAttr),
-    [`RETRIEVE_${capitalPluralName}_RESET`]: defaultReducers.retrieveManyReset.bind(null, idAttr)
+    [`READ_MANY_${capitalPluralName}`]: defaultReducers.retrieveMany.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_FAIL`]: defaultReducers.retrieveManyFail.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_SUCCEED`]: defaultReducers.retrieveManySucceed.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_ABORT`]: defaultReducers.retrieveManyAbort.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_RESET`]: defaultReducers.retrieveManyReset.bind(null, idAttr)
   } : {};
 
   const updateHandlers = update ? {
