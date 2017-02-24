@@ -28,7 +28,7 @@ function simpleResource(resourceName, options = {}) {
     ...supportedActions
   };
 
-  const types = generateActionTypes(snakeCaseName, snakeCasePluralName, supportedCrudActions);
+  const types = generateActionTypes(snakeCaseName, snakeCasePluralName, supportedCrudActions, Object.keys(handlers));
   return {
     actionTypes: types,
     initialState: initial,
@@ -36,7 +36,8 @@ function simpleResource(resourceName, options = {}) {
       pluralForm: pluralName,
       supportedActions: supportedCrudActions,
       initialState: initial,
-      idAttr, handlers, types, resourceName
+      customHandlers: handlers,
+      idAttr, types, resourceName
     }),
     pluralForm: pluralName
   };

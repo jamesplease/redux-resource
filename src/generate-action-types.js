@@ -10,7 +10,7 @@ const mapConstant = (resourceName, crudAction) => ({
 });
 
 // This is a map of the four CRUD actions to the five async action types
-export default (resourceName, pluralForm, supportedActions) => {
+export default (resourceName, pluralForm, supportedActions, customHandlers) => {
   const capitalResourceName = resourceName.toUpperCase();
   const capitalPluralName = pluralForm.toUpperCase();
   const {create, readOne, readMany, update, del} = supportedActions;
@@ -21,11 +21,15 @@ export default (resourceName, pluralForm, supportedActions) => {
   const updateTypes = update ? mapConstant(capitalResourceName, 'UPDATE') : {};
   const deleteTypes = del ? mapConstant(capitalResourceName, 'DELETE') : {};
 
+  const custom = {};
+  customHandlers.forEach(value => (custom[value] = value));
+
   return {
     ...createTypes,
     ...readOneTypes,
     ...readManyTypes,
     ...updateTypes,
     ...deleteTypes,
+    ...custom
   };
 };
