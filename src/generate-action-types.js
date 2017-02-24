@@ -9,11 +9,11 @@ const mapConstant = (resourceName, crudAction) => ({
   [`${crudAction}_${resourceName}_RESET`]: `${crudAction}_${resourceName}_RESET`,
 });
 
-// This is a map of the four CRUD operations to the five async action types
-export default (resourceName, pluralForm, allowedOperations) => {
+// This is a map of the four CRUD actions to the five async action types
+export default (resourceName, pluralForm, supportedActions) => {
   const capitalResourceName = resourceName.toUpperCase();
   const capitalPluralName = pluralForm.toUpperCase();
-  const {create, readOne, readMany, update, del} = allowedOperations;
+  const {create, readOne, readMany, update, del} = supportedActions;
 
   const createTypes = create ? mapConstant(capitalResourceName, 'CREATE') : {};
   const readOneTypes = readOne ? mapConstant(capitalResourceName, 'RETRIEVE') : {};

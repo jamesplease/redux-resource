@@ -1,7 +1,7 @@
 import * as actionCreators from './default-action-creators';
 
-export default function(allowedCrudOperations) {
-  const {create, readOne, readMany, update, del} = allowedCrudOperations;
+export default function(supportedCrudActions) {
+  const {create, readOne, readMany, update, del} = supportedCrudActions;
   const actions = {};
 
   if (create) {
