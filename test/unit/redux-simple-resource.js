@@ -9,7 +9,7 @@ describe('simpleResource', function() {
     const result = simpleResource('hello');
     expect(result).to.be.an('object');
     expect(result).to.contain.all.keys('initialState', 'reducer',
-      'actionCreators', 'actionTypes');
+    'actionTypes', 'pluralForm');
   });
 
   it('should have the correct initialState', () => {

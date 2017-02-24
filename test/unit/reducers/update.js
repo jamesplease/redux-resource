@@ -142,7 +142,7 @@ describe('reducers: update', function() {
       initialState: {
         resources: [
           {id: 1},
-          {id: 3},
+          {id: 3, last_name: 'please'},
           {id: 4},
         ]
       }
@@ -161,6 +161,45 @@ describe('reducers: update', function() {
       resources: [
         {id: 1},
         {id: 3, name: 'please'},
+        {id: 4},
+      ],
+      resourcesMeta: {
+        3: {
+          updatingStatus: xhrStatuses.SUCCEEDED
+        }
+      },
+      resourcesListMeta: {
+        retrievingStatus: xhrStatuses.NULL,
+        creatingStatus: xhrStatuses.NULL
+      }
+    });
+  });
+
+  it('should handle `UPDATE_HELLO_SUCCEED` with `replace: false`', () => {
+    const result = simpleResource('hello', {
+      initialState: {
+        resources: [
+          {id: 1},
+          {id: 3, last_name: 'please'},
+          {id: 4},
+        ]
+      }
+    });
+
+    const reduced = result.reducer(result.initialState, {
+      type: 'UPDATE_HELLO_SUCCEED',
+      id: 3,
+      replace: false,
+      resource: {
+        id: 3,
+        name: 'please'
+      }
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [
+        {id: 1},
+        {id: 3, name: 'please', last_name: 'please'},
         {id: 4},
       ],
       resourcesMeta: {

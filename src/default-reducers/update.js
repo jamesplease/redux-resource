@@ -29,7 +29,8 @@ export function updateSucceed(idAttr, state, action) {
     updatingStatus: xhrStatuses.SUCCEEDED
   }, action[idAttr]);
 
-  const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
+  const replace = typeof action.replace !== 'undefined' ? action.replace : true;
+  const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr, replace);
 
   return {
     ...state,

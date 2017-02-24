@@ -1,7 +1,6 @@
 import snakeCase from 'lodash.snakecase';
 import generateReducer from './generate-reducer';
 import generateActionTypes from './generate-action-types';
-import generateActionCreators from './generate-action-creators';
 import {generateDefaultInitialState, xhrStatuses} from './utils';
 
 const supportAllActions = {
@@ -30,10 +29,7 @@ function simpleResource(resourceName, options = {}) {
   };
 
   const types = generateActionTypes(snakeCaseName, snakeCasePluralName, supportedCrudActions);
-  const actionCreators = generateActionCreators(supportedCrudActions);
-
   return {
-    actionCreators,
     actionTypes: types,
     initialState: initial,
     reducer: generateReducer({

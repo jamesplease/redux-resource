@@ -55,7 +55,7 @@ export function updateManyResourcesMeta(resourcesMeta, resourceMetaUpdate, ids) 
 // resources: the Array of resources
 // resource: the new resource object to be added or updated
 // id: the ID of the resource being updated
-export function upsertResource(resources, resource, id, idAttr) {
+export function upsertResource(resources, resource, id, idAttr, replace) {
   // Attempt to find the resource by its ID. If the ID doesn't exist, or if
   // no resource by that ID exists, then we append it to the end as a new
   // resource.
@@ -64,10 +64,50 @@ export function upsertResource(resources, resource, id, idAttr) {
     return [...resources, resource];
   }
 
+  const shallowClone = [...resources];
+
+  let resourceToInsert;
+  if (!replace) {
+    const currentResource = shallowClone[resourceIndex];
+    resourceToInsert = {
+      ...currentResource,
+      ...resource
+    };
+  } else {
+    resourceToInsert = resource;
+  }
+
   // Otherwise, it does exist and we add it to the list at the appropriate
   // location
+  shallowClone.splice(resourceIndex, 1, resourceToInsert);
+  return shallowClone;
+}
+
+export function upsertManyResources(resources, newResources, idAttr, replace) {
   const shallowClone = [...resources];
-  shallowClone.splice(resourceIndex, 1, resource);
+
+  newResources.forEach(resource => {
+    const id = resource[idAttr];
+    const resourceIndex = id && resources.findIndex(item => item[idAttr] === id);
+
+    if (!id || resourceIndex === -1) {
+      return shallowClone.push(resource);
+    }
+
+    let resourceToInsert;
+    if (!replace) {
+      const currentResource = shallowClone[resourceIndex];
+      resourceToInsert = {
+        ...currentResource,
+        ...resource
+      };
+    } else {
+      resourceToInsert = resource;
+    }
+
+    shallowClone.splice(resourceIndex, 1, resourceToInsert);
+  });
+
   return shallowClone;
 }
 

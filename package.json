@@ -59,7 +59,6 @@
     "mainVarName": "simpleResource"
   },
   "dependencies": {
-    "lodash.snakecase": "^4.1.1",
-    "xhr": "^2.3.2"
+    "lodash.snakecase": "^4.1.1"
   }
 }
