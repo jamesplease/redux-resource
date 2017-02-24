@@ -1,5 +1,5 @@
 import {
-  upsertResource, xhrStatuses
+  upsertResource, xhrStatuses, updateResourcesMeta, initialResourceMetaState
 } from '../utils';
 
 export function create(idAttr, state) {
@@ -23,10 +23,14 @@ export function createFail(idAttr, state) {
 }
 
 export function createSucceed(idAttr, state, action) {
+  const newResourceId = action.resource[idAttr];
   const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
+  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, initialResourceMetaState, newResourceId);
+
   return {
     ...state,
     resources,
+    resourcesMeta,
     resourcesListMeta: {
       ...state.resourcesListMeta,
       creatingStatus: xhrStatuses.SUCCEEDED
