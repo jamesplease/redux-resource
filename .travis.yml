@@ -4,6 +4,8 @@ node_js:
   - "7"
 sudo: false
 script: "gulp coverage"
+notifications:
+  email: false
 after_success:
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < coverage/lcov.info
