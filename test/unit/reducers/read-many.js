@@ -1,10 +1,10 @@
 import simpleResource, {xhrStatuses} from '../../../src';
 
 describe('reducers: readMany', function() {
-  it('should handle `RETRIEVE_HELLOS`', () => {
+  it('should handle `READ_MANY_HELLOS`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLOS'
+      type: 'READ_MANY_HELLOS'
     });
 
     expect(reduced).to.deep.equal({
@@ -17,10 +17,10 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLOS_FAIL`', () => {
+  it('should handle `READ_MANY_HELLOS_FAIL`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLOS_FAIL'
+      type: 'READ_MANY_HELLOS_FAIL'
     });
 
     expect(reduced).to.deep.equal({
@@ -33,7 +33,7 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLOS_SUCCEED`', () => {
+  it('should handle `READ_MANY_HELLOS_SUCCEED`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -45,7 +45,7 @@ describe('reducers: readMany', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLOS_SUCCEED',
+      type: 'READ_MANY_HELLOS_SUCCEED',
       resources: [
         {id: 2, hungry: true, pasta: 'yespls'},
         {id: 100, hungry: false},
@@ -76,7 +76,7 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLOS_SUCCEED` with `replace: false`', () => {
+  it('should handle `READ_MANY_HELLOS_SUCCEED` with `replace: false`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -88,7 +88,7 @@ describe('reducers: readMany', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLOS_SUCCEED',
+      type: 'READ_MANY_HELLOS_SUCCEED',
       replace: false,
       resources: [
         {id: 2, hungry: true, pasta: 'yespls'},
@@ -122,12 +122,12 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLOS_SUCCEED` with a custom idAttribute', () => {
+  it('should handle `READ_MANY_HELLOS_SUCCEED` with a custom idAttribute', () => {
     const result = simpleResource('hello', {
       idAttribute: 'namePls'
     });
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLOS_SUCCEED',
+      type: 'READ_MANY_HELLOS_SUCCEED',
       resources: [
         {namePls: 2, hungry: true, pasta: 'yespls'},
         {namePls: 100, hungry: false},
@@ -158,10 +158,10 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLOS_ABORT`', () => {
+  it('should handle `READ_MANY_HELLOS_ABORT`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'RETRIEVE_HELLOS_ABORT'
+      type: 'READ_MANY_HELLOS_ABORT'
     });
 
     expect(reduced).to.deep.equal({
@@ -174,7 +174,7 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `RETRIEVE_HELLOS_RESET`', () => {
+  it('should handle `READ_MANY_HELLOS_RESET`', () => {
     const result = simpleResource('hello');
 
     // We set some value on `retrievingStatus` to check that this nulls it
@@ -189,7 +189,7 @@ describe('reducers: readMany', function() {
       ...result.initialState,
       ...resourcesListMetaState
     }, {
-      type: 'RETRIEVE_HELLOS_RESET'
+      type: 'READ_MANY_HELLOS_RESET'
     });
 
     expect(reduced).to.deep.equal({
