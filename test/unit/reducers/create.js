@@ -79,7 +79,13 @@ describe('reducers: create', function() {
       resources: [
         {id: 10, hungry: true}
       ],
-      resourcesMeta: {},
+      resourcesMeta: {
+        10: {
+          updatingStatus: xhrStatuses.NULL,
+          retrievingStatus: xhrStatuses.NULL,
+          deletingStatus: xhrStatuses.NULL
+        }
+      },
       resourcesListMeta: {
         creatingStatus: xhrStatuses.SUCCEEDED,
         retrievingStatus: xhrStatuses.NULL
