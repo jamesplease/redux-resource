@@ -40,7 +40,7 @@ export function retrieveManySucceed(idAttr, state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    resourcesMeta: updateManyResourcesMeta(state.resourcesMeta, initialResourceMetaState, ids),
+    resourcesMeta: updateManyResourcesMeta(state.resourcesMeta, initialResourceMetaState, ids, replace),
     resourcesListMeta: {
       ...state.resourcesListMeta,
       retrievingStatus: xhrStatuses.SUCCEEDED

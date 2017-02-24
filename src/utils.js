@@ -38,8 +38,8 @@ export function updateResourcesMeta(resourcesMeta, resourceMeta, id) {
 
 // Similar to `updateResourcesMeta`, but it accepts an array of IDs instead of
 // a single ID.
-export function updateManyResourcesMeta(resourcesMeta, resourceMetaUpdate, ids) {
-  const next = {...resourcesMeta};
+export function updateManyResourcesMeta(resourcesMeta, resourceMetaUpdate, ids, replace) {
+  const next = replace ? {} : {...resourcesMeta};
 
   ids.forEach((id) => {
     const current = next[id];

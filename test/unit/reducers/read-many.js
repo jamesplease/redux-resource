@@ -40,7 +40,10 @@ describe('reducers: readMany', function() {
           {id: 100, sandwiches: 'yummm'},
           {id: 23},
           {id: 55},
-        ]
+        ],
+        resourcesMeta: {
+          23: 'sandwiches'
+        }
       }
     });
 
@@ -83,7 +86,10 @@ describe('reducers: readMany', function() {
           {id: 100, sandwiches: 'yummm'},
           {id: 23},
           {id: 55},
-        ]
+        ],
+        resourcesMeta: {
+          23: 'sandwiches'
+        }
       }
     });
 
@@ -109,6 +115,7 @@ describe('reducers: readMany', function() {
           retrievingStatus: xhrStatuses.NULL,
           deletingStatus: xhrStatuses.NULL,
         },
+        23: 'sandwiches',
         100: {
           updatingStatus: xhrStatuses.NULL,
           retrievingStatus: xhrStatuses.NULL,
@@ -131,7 +138,10 @@ describe('reducers: readMany', function() {
       resources: [
         {namePls: 2, hungry: true, pasta: 'yespls'},
         {namePls: 100, hungry: false},
-      ]
+      ],
+      resourcesMeta: {
+        23: 'sandwiches'
+      }
     });
 
     expect(reduced).to.deep.equal({
