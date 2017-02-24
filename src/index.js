@@ -1,3 +1,4 @@
+import snakeCase from 'lodash.snakecase';
 import generateReducer from './generate-reducer';
 import generateActionTypes from './generate-action-types';
 import generateActionCreators from './generate-action-creators';
@@ -20,13 +21,15 @@ function simpleResource(resourceName, options = {}) {
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
   const handlers = customHandlers || {};
+  const snakeCaseName = snakeCase(resourceName);
   const pluralName = pluralForm ? pluralForm : `${resourceName}s`;
+  const snakeCasePluralName = snakeCase(pluralName);
   const supportedCrudActions = {
     ...supportAllActions,
     ...supportedActions
   };
 
-  const types = generateActionTypes(resourceName, pluralName, supportedCrudActions);
+  const types = generateActionTypes(snakeCaseName, snakeCasePluralName, supportedCrudActions);
   const actionCreators = generateActionCreators(supportedCrudActions);
 
   return {
