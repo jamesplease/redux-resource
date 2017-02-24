@@ -1,0 +1,17 @@
+engines:
+  eslint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+ratings:
+   paths:
+   - "src/**.js"
+exclude_paths:
+- "gulpfile.js"
+- "README.md"
+- "package.json"
+- "test/**/*"
+- "dist/**/*"
