@@ -42,6 +42,7 @@
   "bugs": {
     "url": "https://github.com/jmeas/redux-simple-resource/issues"
   },
+  "files": ["dist"],
   "homepage": "https://github.com/jmeas/redux-simple-resource",
   "devDependencies": {
     "babel-core": "6.14.0",
