@@ -79,6 +79,6 @@
     "mainVarName": "createResource"
   },
   "dependencies": {
-    "lodash.snakecase": "^4.1.1"
+    "lodash.snakecase": "^4.0.0"
   }
 }
