@@ -46,11 +46,11 @@ export function upsertResource({resources, resource, id, idAttribute, replace}) 
   // no resource by that ID exists, then we append it to the end as a new
   // resource.
   const resourceIndex = id && resources.findIndex(item => item[idAttribute] === id);
+  const shallowClone = Array.prototype.slice.call(resources);
   if (!id || resourceIndex === -1) {
-    return [...resources, resource];
+    shallowClone.push(resource);
+    return shallowClone;
   }
-
-  const shallowClone = [...resources];
 
   let resourceToInsert;
   if (!replace) {
@@ -71,7 +71,7 @@ export function upsertResource({resources, resource, id, idAttribute, replace}) 
 
 // Similar to `upsertResource`, but for many resources.
 export function upsertManyResources({resources, newResources, idAttribute, replace}) {
-  const shallowClone = replace ? [] : [...resources];
+  const shallowClone = replace ? [] : Array.prototype.slice.call(resources);
 
   newResources.forEach(resource => {
     const id = resource[idAttribute];
