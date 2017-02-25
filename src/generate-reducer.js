@@ -24,11 +24,11 @@ function getActionReducers({actionReducers, resourceName, pluralForm, supportedA
   } : {};
 
   const readOneReducers = readOne ? {
-    [`READ_ONE_${capitalResourceName}`]: defaultReducers.retrieveOne.bind(null, idAttr),
-    [`READ_ONE_${capitalResourceName}_FAIL`]: defaultReducers.retrieveOneFail.bind(null, idAttr),
-    [`READ_ONE_${capitalResourceName}_SUCCEED`]: defaultReducers.retrieveOneSucceed.bind(null, idAttr),
-    [`READ_ONE_${capitalResourceName}_ABORT`]: defaultReducers.retrieveOneAbort.bind(null, idAttr),
-    [`READ_ONE_${capitalResourceName}_RESET`]: defaultReducers.retrieveOneReset.bind(null, idAttr)
+    [`READ_${capitalResourceName}`]: defaultReducers.retrieveOne.bind(null, idAttr),
+    [`READ_${capitalResourceName}_FAIL`]: defaultReducers.retrieveOneFail.bind(null, idAttr),
+    [`READ_${capitalResourceName}_SUCCEED`]: defaultReducers.retrieveOneSucceed.bind(null, idAttr),
+    [`READ_${capitalResourceName}_ABORT`]: defaultReducers.retrieveOneAbort.bind(null, idAttr),
+    [`READ_${capitalResourceName}_RESET`]: defaultReducers.retrieveOneReset.bind(null, idAttr)
   } : {};
 
   const readManyReducers = readMany ? {

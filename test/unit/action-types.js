@@ -21,11 +21,11 @@ describe('actionTypes', function() {
   describe('retrieveOne', () => {
     it('should have the right actionTypes', () => {
       const actionTypes = simpleResource('hello').actionTypes;
-      expect(actionTypes.READ_ONE_HELLO).to.equal('READ_ONE_HELLO');
-      expect(actionTypes.READ_ONE_HELLO_SUCCEED).to.equal('READ_ONE_HELLO_SUCCEED');
-      expect(actionTypes.READ_ONE_HELLO_FAIL).to.equal('READ_ONE_HELLO_FAIL');
-      expect(actionTypes.READ_ONE_HELLO_ABORT).to.equal('READ_ONE_HELLO_ABORT');
-      expect(actionTypes.READ_ONE_HELLO_RESET).to.equal('READ_ONE_HELLO_RESET');
+      expect(actionTypes.READ_HELLO).to.equal('READ_HELLO');
+      expect(actionTypes.READ_HELLO_SUCCEED).to.equal('READ_HELLO_SUCCEED');
+      expect(actionTypes.READ_HELLO_FAIL).to.equal('READ_HELLO_FAIL');
+      expect(actionTypes.READ_HELLO_ABORT).to.equal('READ_HELLO_ABORT');
+      expect(actionTypes.READ_HELLO_RESET).to.equal('READ_HELLO_RESET');
     });
   });
 

@@ -379,7 +379,7 @@ for each of the built-in CRUD operations:
 `READ_MANY_BOOKS`
 
 // These operate on a single resource
-`READ_ONE_BOOK`
+`READ_BOOK`
 `DELETE_BOOK`
 `UPDATE_BOOK`
 `CREATE_BOOK`
@@ -541,11 +541,11 @@ redux-simple-resource creates CRUD-related action types for you.
 The action types for read one, for instance, are:
 
 ```js
-`READ_ONE_BOOK`
-`READ_ONE_BOOK_FAIL`
-`READ_ONE_BOOK_ABORT`
-`READ_ONE_BOOK_SUCCEED`
-`READ_ONE_BOOK_RESET`
+`READ_BOOK`
+`READ_BOOK_FAIL`
+`READ_BOOK_ABORT`
+`READ_BOOK_SUCCEED`
+`READ_BOOK_RESET`
 ```
 
 These five types reflect the five [XHR Statuses](#xhr-statuses), as each of
@@ -590,7 +590,7 @@ an `xhrStatuses.PENDING` state.
 These are the start action types:
 
 ```js
-`READ_ONE_{RESOURCE}`
+`READ_{RESOURCE}`
 `READ_MANY_{PLURAL_RESOURCE}`
 `CREATE_{RESOURCE}`
 `UPDATE_{RESOURCE}`
@@ -601,7 +601,7 @@ An example start action type is:
 
 ```js
 {
-  type: READ_ONE_BOOK,
+  type: READ_BOOK,
   id: 5
 }
 ```
@@ -614,7 +614,7 @@ This will update the metadata for this particular action to be in an
 These are the five FAIL action types:
 
 ```js
-`READ_ONE_{RESOURCE}_FAIL`
+`READ_{RESOURCE}_FAIL`
 `READ_MANY_{PLURAL_RESOURCE}_FAIL`
 `CREATE_{RESOURCE}_FAIL`
 `UPDATE_{RESOURCE}_FAIL`
@@ -625,7 +625,7 @@ An example fail action type is:
 
 ```js
 {
-  type: READ_ONE_BOOK_FAIL,
+  type: READ_BOOK_FAIL,
   id: 5
 }
 ```
@@ -636,7 +636,7 @@ This will update the metadata for this particular action to be in an
 `xhrStatuses.ABORTED` state.
 
 ```js
-`READ_ONE_{RESOURCE}_ABORT`
+`READ_{RESOURCE}_ABORT`
 `READ_MANY_{PLURAL_RESOURCE}_ABORT`
 `CREATE_{RESOURCE}_ABORT`
 `UPDATE_{RESOURCE}_ABORT`
@@ -664,7 +664,7 @@ Example success actions are:
 
 ```js
 {
-  type: 'UPDATE_ONE_BOOK_SUCCESS',
+  type: 'UPDATE_BOOK_SUCCESS',
   id: 10,
   resource: {
     id: 10,
@@ -687,7 +687,7 @@ Example success actions are:
 
 ```js
 {
-  type: 'DELETE_ONE_BOOK_SUCCESS',
+  type: 'DELETE_BOOK_SUCCESS',
   id: 10
 }
 ```
@@ -705,7 +705,7 @@ An example reset action is:
 
 ```js
 {
-  type: 'DELETE_ONE_BOOK_RESET',
+  type: 'DELETE_BOOK_RESET',
   id: 10
 }
 ```
@@ -838,9 +838,9 @@ default one. For instance,
 
 ```js
 // Dispatch the default action
-dispatch({type: 'READ_ONE_BOOK_SUCCESS', id: 5});
+dispatch({type: 'READ_BOOK_SUCCESS', id: 5});
 // Dispatch your default action
-dispatch({type: 'READ_ONE_BOOK_SUCCESS_EXTRA_THINGS', id: 5});
+dispatch({type: 'READ_BOOK_SUCCESS_EXTRA_THINGS', id: 5});
 ```
 
 If you're worried about performance, give it a try. If you can demonstrate that

@@ -16,7 +16,7 @@ export default (resourceName, pluralForm, supportedActions, customTypes) => {
   const {create, readOne, readMany, update, del} = supportedActions;
 
   const createTypes = create ? mapConstant(capitalResourceName, 'CREATE') : {};
-  const readOneTypes = readOne ? mapConstant(capitalResourceName, 'READ_ONE') : {};
+  const readOneTypes = readOne ? mapConstant(capitalResourceName, 'READ') : {};
   const readManyTypes = readMany ? mapConstant(capitalPluralName, 'READ_MANY') : {};
   const updateTypes = update ? mapConstant(capitalResourceName, 'UPDATE') : {};
   const deleteTypes = del ? mapConstant(capitalResourceName, 'DELETE') : {};
