@@ -15,7 +15,7 @@ const supportAllActions = {
 //  "books". This will be the name of the store slice in Redux.
 // options: a list of options to configure the resource. Refer to the docs
 //  for the complete list of options
-function simpleResource(resourceName, options = {}) {
+function createResource(resourceName, options = {}) {
   const {initialState, idAttribute, customHandlers, pluralForm, supportedActions} = options;
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
@@ -44,4 +44,4 @@ function simpleResource(resourceName, options = {}) {
 }
 
 export {xhrStatuses};
-export default simpleResource;
+export default createResource;
