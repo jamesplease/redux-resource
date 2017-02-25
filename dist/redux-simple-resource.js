@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.upsertManyResources = exports.upsertResource = exports.updateManyResourcesMeta = exports.updateResourcesMeta = exports.xhrStatuses = undefined;
+	exports.upsertManyResources = exports.upsertResource = exports.updateManyResourceMetas = exports.updateResourceMeta = exports.xhrStatuses = undefined;
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
@@ -81,16 +81,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var supportAllActions = {
 	  create: true,
-	  readOne: true,
+	  read: true,
 	  readMany: true,
 	  update: true,
 	  del: true
 	};
 	
-	// resourceName: a string representing the name of the resource. For instance,
-	//  "books". This will be the name of the store slice in Redux.
-	// options: a list of options to configure the resource. Refer to the docs
-	//  for the complete list of options
+	// Create a resource.
+	//
+	// `resourceName`: a singular name for your resource. For instance, "book".
+	// `options`: configure this resource. Refer to the API documentation for
+	//   all of the supported options.
 	function createResource(resourceName) {
 	  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 	  var initialState = options.initialState,
@@ -128,8 +129,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	exports.xhrStatuses = _utils.xhrStatuses;
-	exports.updateResourcesMeta = _utils.updateResourcesMeta;
-	exports.updateManyResourcesMeta = _utils.updateManyResourcesMeta;
+	exports.updateResourceMeta = _utils.updateResourceMeta;
+	exports.updateManyResourceMetas = _utils.updateManyResourceMetas;
 	exports.upsertResource = _utils.upsertResource;
 	exports.upsertManyResources = _utils.upsertManyResources;
 	exports.default = createResource;
@@ -620,7 +621,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var capitalResourceName = resourceName.toUpperCase();
 	  var capitalPluralName = pluralForm.toUpperCase();
 	  var create = supportedActions.create,
-	      readOne = supportedActions.readOne,
+	      read = supportedActions.read,
 	      readMany = supportedActions.readMany,
 	      update = supportedActions.update,
 	      del = supportedActions.del;
@@ -628,16 +629,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  var createReducers = create ? (_ref2 = {}, _defineProperty(_ref2, 'CREATE_' + capitalResourceName, defaultReducers.create.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_FAIL', defaultReducers.createFail.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_SUCCEED', defaultReducers.createSucceed.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_ABORT', defaultReducers.createAbort.bind(null, idAttr)), _defineProperty(_ref2, 'CREATE_' + capitalResourceName + '_RESET', defaultReducers.createReset.bind(null, idAttr)), _ref2) : {};
 	
-	  var readOneReducers = readOne ? (_ref3 = {}, _defineProperty(_ref3, 'READ_ONE_' + capitalResourceName, defaultReducers.retrieveOne.bind(null, idAttr)), _defineProperty(_ref3, 'READ_ONE_' + capitalResourceName + '_FAIL', defaultReducers.retrieveOneFail.bind(null, idAttr)), _defineProperty(_ref3, 'READ_ONE_' + capitalResourceName + '_SUCCEED', defaultReducers.retrieveOneSucceed.bind(null, idAttr)), _defineProperty(_ref3, 'READ_ONE_' + capitalResourceName + '_ABORT', defaultReducers.retrieveOneAbort.bind(null, idAttr)), _defineProperty(_ref3, 'READ_ONE_' + capitalResourceName + '_RESET', defaultReducers.retrieveOneReset.bind(null, idAttr)), _ref3) : {};
+	  var readReducers = read ? (_ref3 = {}, _defineProperty(_ref3, 'READ_' + capitalResourceName, defaultReducers.read.bind(null, idAttr)), _defineProperty(_ref3, 'READ_' + capitalResourceName + '_FAIL', defaultReducers.readFail.bind(null, idAttr)), _defineProperty(_ref3, 'READ_' + capitalResourceName + '_SUCCEED', defaultReducers.readSucceed.bind(null, idAttr)), _defineProperty(_ref3, 'READ_' + capitalResourceName + '_ABORT', defaultReducers.readAbort.bind(null, idAttr)), _defineProperty(_ref3, 'READ_' + capitalResourceName + '_RESET', defaultReducers.readReset.bind(null, idAttr)), _ref3) : {};
 	
-	  var readManyReducers = readMany ? (_ref4 = {}, _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName, defaultReducers.retrieveMany.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_FAIL', defaultReducers.retrieveManyFail.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_SUCCEED', defaultReducers.retrieveManySucceed.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_ABORT', defaultReducers.retrieveManyAbort.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_RESET', defaultReducers.retrieveManyReset.bind(null, idAttr)), _ref4) : {};
+	  var readManyReducers = readMany ? (_ref4 = {}, _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName, defaultReducers.readMany.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_FAIL', defaultReducers.readManyFail.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_SUCCEED', defaultReducers.readManySucceed.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_ABORT', defaultReducers.readManyAbort.bind(null, idAttr)), _defineProperty(_ref4, 'READ_MANY_' + capitalPluralName + '_RESET', defaultReducers.readManyReset.bind(null, idAttr)), _ref4) : {};
 	
 	  var updateReducers = update ? (_ref5 = {}, _defineProperty(_ref5, 'UPDATE_' + capitalResourceName, defaultReducers.update.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_FAIL', defaultReducers.updateFail.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_SUCCEED', defaultReducers.updateSucceed.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_ABORT', defaultReducers.updateAbort.bind(null, idAttr)), _defineProperty(_ref5, 'UPDATE_' + capitalResourceName + '_RESET', defaultReducers.updateReset.bind(null, idAttr)), _ref5) : {};
 	
 	  var deleteReducers = del ? (_ref6 = {}, _defineProperty(_ref6, 'DELETE_' + capitalResourceName, defaultReducers.del.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_FAIL', defaultReducers.delFail.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_SUCCEED', defaultReducers.delSucceed.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_ABORT', defaultReducers.delAbort.bind(null, idAttr)), _defineProperty(_ref6, 'DELETE_' + capitalResourceName + '_RESET', defaultReducers.delReset.bind(null, idAttr)), _ref6) : {};
 	
-	  // Default reducers manage the five states of CRUD.
-	  var allDefaultActionReducers = _extends({}, createReducers, readOneReducers, readManyReducers, updateReducers, deleteReducers);
+	  var allDefaultActionReducers = _extends({}, createReducers, readReducers, readManyReducers, updateReducers, deleteReducers);
 	
 	  return _extends({}, allDefaultActionReducers, actionReducers);
 	}
@@ -660,6 +660,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!actionReducer) {
 	      return state;
 	    }
+	
 	    var result = actionReducer(state, action);
 	    return result ? result : state;
 	  };
@@ -688,14 +689,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	});
 	
-	var _readOne = __webpack_require__(6);
+	var _read = __webpack_require__(6);
 	
-	Object.keys(_readOne).forEach(function (key) {
+	Object.keys(_read).forEach(function (key) {
 	  if (key === "default" || key === "__esModule") return;
 	  Object.defineProperty(exports, key, {
 	    enumerable: true,
 	    get: function get() {
-	      return _readOne[key];
+	      return _read[key];
 	    }
 	  });
 	});
@@ -758,7 +759,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function create(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      creatingStatus: _utils.xhrStatuses.PENDING
 	    })
 	  });
@@ -766,7 +767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function createFail(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      creatingStatus: _utils.xhrStatuses.FAILED
 	    })
 	  });
@@ -780,16 +781,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    id: action[idAttribute],
 	    idAttribute: idAttribute
 	  });
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: _utils.initialResourceMetaState,
-	    id: newResourceId
+	    id: newResourceId,
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
 	    resources: resources,
-	    resourcesMeta: resourcesMeta,
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceMeta: resourceMeta,
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      creatingStatus: _utils.xhrStatuses.SUCCEEDED
 	    })
 	  });
@@ -797,7 +799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function createAbort(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      creatingStatus: _utils.xhrStatuses.ABORTED
 	    })
 	  });
@@ -805,7 +807,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function createReset(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      creatingStatus: _utils.xhrStatuses.NULL
 	    })
 	  });
@@ -823,8 +825,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	exports.updateResourcesMeta = updateResourcesMeta;
-	exports.updateManyResourcesMeta = updateManyResourcesMeta;
+	exports.updateResourceMeta = updateResourceMeta;
+	exports.updateManyResourceMetas = updateManyResourceMetas;
 	exports.upsertResource = upsertResource;
 	exports.upsertManyResources = upsertManyResources;
 	exports.generateDefaultInitialState = generateDefaultInitialState;
@@ -843,37 +845,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	  NULL: 'NULL'
 	};
 	
-	var initialResourceMetaState = exports.initialResourceMetaState = {
-	  // The status of any existing request to update this resource
-	  updatingStatus: xhrStatuses.NULL,
-	  // The status of any existing request to fetch this resource
-	  retrievingStatus: xhrStatuses.NULL,
-	  // The status of an any existing request to delete this resource. Note that
-	  // this will never be "SUCCEEDED," as a successful delete removes the
-	  // resource from the store.
-	  deletingStatus: xhrStatuses.NULL
-	};
-	
-	// resourcesMeta: the metadata Object from a resource store slice
-	// resourceMeta: the new metadataObject from a given resourceMeta
-	// id: the ID of the resource to be updated
-	function updateResourcesMeta(_ref) {
-	  var resourcesMeta = _ref.resourcesMeta,
+	// Updates a single resource's metadata
+	function updateResourceMeta(_ref) {
+	  var resourceMeta = _ref.resourceMeta,
 	      newMeta = _ref.newMeta,
-	      id = _ref.id;
+	      id = _ref.id,
+	      replace = _ref.replace;
 	
-	  return _extends({}, resourcesMeta, _defineProperty({}, id, _extends({}, resourcesMeta[id], newMeta)));
+	  var existingMeta = replace ? {} : resourceMeta[id];
+	  return _extends({}, resourceMeta, _defineProperty({}, id, _extends({}, existingMeta, newMeta)));
 	}
 	
-	// Similar to `updateResourcesMeta`, but it accepts an array of IDs instead of
-	// a single ID.
-	function updateManyResourcesMeta(_ref2) {
-	  var resourcesMeta = _ref2.resourcesMeta,
+	// Similar to `updateResourceMeta`, but it accepts an array of IDs instead of
+	// a single ID. Used for bulk updating meta.
+	function updateManyResourceMetas(_ref2) {
+	  var resourceMeta = _ref2.resourceMeta,
 	      newMeta = _ref2.newMeta,
 	      ids = _ref2.ids,
 	      replace = _ref2.replace;
 	
-	  var next = replace ? {} : _extends({}, resourcesMeta);
+	  var next = replace ? {} : _extends({}, resourceMeta);
 	
 	  ids.forEach(function (id) {
 	    var current = next[id];
@@ -883,9 +874,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return next;
 	}
 	
-	// resources: the Array of resources
-	// resource: the new resource object to be added or updated
-	// id: the ID of the resource being updated
+	// Insert a new resource or update an existing resource.
 	function upsertResource(_ref3) {
 	  var resources = _ref3.resources,
 	      resource = _ref3.resource,
@@ -919,13 +908,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return shallowClone;
 	}
 	
+	// Similar to `upsertResource`, but for many resources.
 	function upsertManyResources(_ref4) {
 	  var resources = _ref4.resources,
 	      newResources = _ref4.newResources,
 	      idAttribute = _ref4.idAttribute,
 	      replace = _ref4.replace;
 	
-	  var shallowClone = [].concat(_toConsumableArray(resources));
+	  var shallowClone = replace ? [] : [].concat(_toConsumableArray(resources));
 	
 	  newResources.forEach(function (resource) {
 	    var id = resource[idAttribute];
@@ -951,17 +941,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return shallowClone;
 	}
 	
+	var initialResourceMetaState = exports.initialResourceMetaState = {
+	  // The status of any existing request to update this resource
+	  updatingStatus: xhrStatuses.NULL,
+	  // The status of any existing request to fetch this resource
+	  retrievingStatus: xhrStatuses.NULL,
+	  // The status of an any existing request to delete this resource. Note that
+	  // this will never be "SUCCEEDED," as a successful delete removes the
+	  // resource from the store.
+	  deletingStatus: xhrStatuses.NULL
+	};
+	
 	function generateDefaultInitialState() {
 	  return {
 	    // These are the actual resources that the server sends back.
 	    resources: [],
 	    // This is metadata about _specific_ resources. For instance, if a DELETE
 	    // is in flight for a book with ID 24, then you could find that here.
-	    resourcesMeta: {},
+	    resourceMeta: {},
 	    // This is metadata about the entire collection of resources. For instance,
 	    // on page load, you might fetch all of the resources. The XHR status for
 	    // that request would live here.
-	    resourcesListMeta: {
+	    resourceListMeta: {
 	      retrievingStatus: xhrStatuses.NULL,
 	      creatingStatus: xhrStatuses.NULL
 	    }
@@ -980,43 +981,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	exports.retrieveOne = retrieveOne;
-	exports.retrieveOneFail = retrieveOneFail;
-	exports.retrieveOneSucceed = retrieveOneSucceed;
-	exports.retrieveOneAbort = retrieveOneAbort;
-	exports.retrieveOneReset = retrieveOneReset;
+	exports.read = read;
+	exports.readFail = readFail;
+	exports.readSucceed = readSucceed;
+	exports.readAbort = readAbort;
+	exports.readReset = readReset;
 	
 	var _utils = __webpack_require__(5);
 	
-	function retrieveOne(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	function read(idAttr, state, action) {
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { retrievingStatus: _utils.xhrStatuses.PENDING },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
-	function retrieveOneFail(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	function readFail(idAttr, state, action) {
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { retrievingStatus: _utils.xhrStatuses.FAILED },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
-	function retrieveOneSucceed(idAttribute, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	function readSucceed(idAttribute, state, action) {
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { retrievingStatus: _utils.xhrStatuses.SUCCEEDED },
-	    id: action[idAttribute]
+	    id: action[idAttribute],
+	    replace: false
 	  });
 	
 	  var replace = typeof action.replace !== 'undefined' ? action.replace : true;
@@ -1028,32 +1032,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta,
+	    resourceMeta: resourceMeta,
 	    resources: resources
 	  });
 	}
 	
-	function retrieveOneAbort(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	function readAbort(idAttr, state, action) {
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { retrievingStatus: _utils.xhrStatuses.ABORTED },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
-	function retrieveOneReset(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	function readReset(idAttr, state, action) {
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { retrievingStatus: _utils.xhrStatuses.NULL },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 
@@ -1069,31 +1075,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	exports.retrieveMany = retrieveMany;
-	exports.retrieveManyFail = retrieveManyFail;
-	exports.retrieveManySucceed = retrieveManySucceed;
-	exports.retrieveManyAbort = retrieveManyAbort;
-	exports.retrieveManyReset = retrieveManyReset;
+	exports.readMany = readMany;
+	exports.readManyFail = readManyFail;
+	exports.readManySucceed = readManySucceed;
+	exports.readManyAbort = readManyAbort;
+	exports.readManyReset = readManyReset;
 	
 	var _utils = __webpack_require__(5);
 	
-	function retrieveMany(idAttr, state) {
+	function readMany(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.PENDING
 	    })
 	  });
 	}
 	
-	function retrieveManyFail(idAttr, state) {
+	function readManyFail(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.FAILED
 	    })
 	  });
 	}
 	
-	function retrieveManySucceed(idAttribute, state, action) {
+	function readManySucceed(idAttribute, state, action) {
 	  var resources = action.resources;
 	  var ids = resources.map(function (r) {
 	    return r[idAttribute];
@@ -1116,28 +1122,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    resources: newResources,
 	    // We have new resources, so we need to update their meta state with the
 	    // initial meta state.
-	    resourcesMeta: (0, _utils.updateManyResourcesMeta)({
-	      resourcesMeta: state.resourcesMeta,
+	    resourceMeta: (0, _utils.updateManyResourceMetas)({
+	      resourceMeta: state.resourceMeta,
 	      newMeta: _utils.initialResourceMetaState,
 	      ids: ids, replace: replace
 	    }),
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.SUCCEEDED
 	    })
 	  });
 	}
 	
-	function retrieveManyAbort(idAttr, state) {
+	function readManyAbort(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.ABORTED
 	    })
 	  });
 	}
 	
-	function retrieveManyReset(idAttr, state) {
+	function readManyReset(idAttr, state) {
 	  return _extends({}, state, {
-	    resourcesListMeta: _extends({}, state.resourcesListMeta, {
+	    resourceListMeta: _extends({}, state.resourceListMeta, {
 	      retrievingStatus: _utils.xhrStatuses.NULL
 	    })
 	  });
@@ -1164,34 +1170,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _utils = __webpack_require__(5);
 	
 	function update(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { updatingStatus: _utils.xhrStatuses.PENDING },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
 	function updateFail(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { updatingStatus: _utils.xhrStatuses.FAILED },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
 	function updateSucceed(idAttribute, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { updatingStatus: _utils.xhrStatuses.SUCCEEDED },
-	    id: action[idAttribute]
+	    id: action[idAttribute],
+	    replace: false
 	  });
 	
 	  var replace = typeof action.replace !== 'undefined' ? action.replace : true;
@@ -1203,32 +1212,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta,
+	    resourceMeta: resourceMeta,
 	    resources: resources
 	  });
 	}
 	
 	function updateAbort(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { updatingStatus: _utils.xhrStatuses.ABORTED },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
 	function updateReset(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { updatingStatus: _utils.xhrStatuses.NULL },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 
@@ -1255,26 +1266,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function del(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { deletingStatus: _utils.xhrStatuses.PENDING },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
 	function delFail(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { deletingStatus: _utils.xhrStatuses.FAILED },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
@@ -1282,7 +1295,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var id = action[idAttr];
 	
 	  // Remove this resource from the resources meta.
-	  var resourcesMeta = _extends({}, state.resourcesMeta, _defineProperty({}, id, null));
+	  var resourceMeta = _extends({}, state.resourceMeta, _defineProperty({}, id, null));
 	
 	  // Shallow clone the existing resource array, removing the deleted resource
 	  var resources = state.resources.filter(function (r) {
@@ -1290,32 +1303,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta,
+	    resourceMeta: resourceMeta,
 	    resources: resources
 	  });
 	}
 	
 	function delAbort(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { deletingStatus: _utils.xhrStatuses.ABORTED },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 	
 	function delReset(idAttr, state, action) {
-	  var resourcesMeta = (0, _utils.updateResourcesMeta)({
-	    resourcesMeta: state.resourcesMeta,
+	  var resourceMeta = (0, _utils.updateResourceMeta)({
+	    resourceMeta: state.resourceMeta,
 	    newMeta: { deletingStatus: _utils.xhrStatuses.NULL },
-	    id: action[idAttr]
+	    id: action[idAttr],
+	    replace: false
 	  });
 	
 	  return _extends({}, state, {
-	    resourcesMeta: resourcesMeta
+	    resourceMeta: resourceMeta
 	  });
 	}
 
@@ -1334,7 +1349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	// This function generates the five statuses from a single CRUD action.
-	// For instance, you'd probably pass "CREATE", "RETRIEVE", "UPDATE", or "DELETE"
+	// For instance, you'd probably pass "CREATE", "READ", "UPDATE", or "DELETE"
 	// as `crudAction`.
 	var mapConstant = function mapConstant(resourceName, crudAction) {
 	  var _ref;
@@ -1348,14 +1363,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var capitalResourceName = resourceName.toUpperCase();
 	  var capitalPluralName = pluralForm.toUpperCase();
 	  var create = supportedActions.create,
-	      readOne = supportedActions.readOne,
+	      read = supportedActions.read,
 	      readMany = supportedActions.readMany,
 	      update = supportedActions.update,
 	      del = supportedActions.del;
 	
 	
 	  var createTypes = create ? mapConstant(capitalResourceName, 'CREATE') : {};
-	  var readOneTypes = readOne ? mapConstant(capitalResourceName, 'READ_ONE') : {};
+	  var readTypes = read ? mapConstant(capitalResourceName, 'READ') : {};
 	  var readManyTypes = readMany ? mapConstant(capitalPluralName, 'READ_MANY') : {};
 	  var updateTypes = update ? mapConstant(capitalResourceName, 'UPDATE') : {};
 	  var deleteTypes = del ? mapConstant(capitalResourceName, 'DELETE') : {};
@@ -1365,7 +1380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return custom[value] = value;
 	  });
 	
-	  return _extends({}, createTypes, readOneTypes, readManyTypes, updateTypes, deleteTypes, custom);
+	  return _extends({}, createTypes, readTypes, readManyTypes, updateTypes, deleteTypes, custom);
 	};
 	
 	module.exports = exports['default'];
