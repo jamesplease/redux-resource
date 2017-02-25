@@ -306,11 +306,11 @@ the resource, and `id` is the ID of the resource that you are updating.
 This does not directly modify the `resourcesMeta` object; instead, it returns
 a shallow clone.
 
-| Name | Description |
-|------|-------------|
-|resourcesMeta | The current meta object for **all** resources |
-|newMeta | The new metadata |
-|id | The ID of the resource to update |
+| Name | Required | Description |
+|------|-------------|----------|
+|resourcesMeta | Yes | The current meta object for **all** resources |
+|newMeta | Yes | The new metadata |
+|id | Yes | The ID of the resource to update |
 
 ### `updateManyResourcesMeta({ resourcesMeta, newMeta, ids, replace })`
 
@@ -325,35 +325,35 @@ any existing metadata for each resource.
 
 This method does not enable you to update multiple IDs with different metadata.
 
-| Name | Description |
-|------|-------------|
-|resourcesMeta | The current meta object for **all** resources |
-|newMeta | The new metadata |
-|ids | An array of IDs to update |
-|replace | Whether or not to replace the current list, or to merge in the new data |
+| Name | Required | Description |
+|------|-------------|----------|
+|resourcesMeta | Yes | The current meta object for **all** resources |
+|newMeta | Yes | The new metadata |
+|ids | Yes | An array of IDs to update |
+|replace | No | Whether or not to replace the current list, or to merge in the new data. Defaults to `false` |
 
 ### `upsertResource({ resources, resource, id, idAttribute, replace })`
 
 Insert or update a resource to the list of resources.
 
-| Name | Description |
-|------|-------------|
-|resources | The current list of resources from the store |
-|resource | The new resource to add |
-|id | The id value of the new resource |
-|idAttribute | The id key of the new resource |
-|replace | Whether or not to replace the resource (if it already exists) |
+| Name | Required | Description |
+|------|-------------|----------|
+|resources | Yes | The current list of resources from the store |
+|resource | Yes | The new resource to add |
+|id | Yes | The id value of the new resource |
+|idAttribute | No | The id key of the new resource. Defaults to `"id"` |
+|replace | No | Whether or not to replace the resource (if it already exists). Defaults to `false` |
 
 ### `upsertManyResources({ resources, newResources, idAttribute, replace })`
 
 Insert or update a list of resources to the list of resources.
 
-| Name | Description |
-|------|-------------|
-|resources | The current list of resources from the store |
-|newResources | The new resources to add |
-|idAttribute | The id key of the new resources |
-|replace | Whether or not to replace the existing resource list, or to merge new with old |
+| Name | Required | Description |
+|------|-------------|----------|
+|resources | Yes | The current list of resources from the store |
+|newResources | Yes | The new resources to add |
+|idAttribute | No | The id key of the new resources. Defaults to `"id"` |
+|replace | No | Whether or not to replace the existing resource list, or to merge new with old. Defaults to `false` |
 
 ## Guides
 
@@ -584,11 +584,11 @@ an `xhrStatuses.PENDING` state.
 These are the start action types:
 
 ```js
-READ_ONE_{RESOURCE}
-READ_MANY_{PLURAL_RESOURCE}
-CREATE_{RESOURCE}
-UPDATE_{RESOURCE}
-DELETE_{RESOURCE}
+`READ_ONE_{RESOURCE}`
+`READ_MANY_{PLURAL_RESOURCE}`
+`CREATE_{RESOURCE}`
+`UPDATE_{RESOURCE}`
+`DELETE_{RESOURCE}`
 ```
 
 An example start action type is:
@@ -608,11 +608,11 @@ This will update the metadata for this particular action to be in an
 These are the five FAIL action types:
 
 ```js
-READ_ONE_{RESOURCE}_FAIL
-READ_MANY_{PLURAL_RESOURCE}_FAIL
-CREATE_{RESOURCE}_FAIL
-UPDATE_{RESOURCE}_FAIL
-DELETE_{RESOURCE}_FAIL
+`READ_ONE_{RESOURCE}_FAIL`
+`READ_MANY_{PLURAL_RESOURCE}_FAIL`
+`CREATE_{RESOURCE}_FAIL`
+`UPDATE_{RESOURCE}_FAIL`
+`DELETE_{RESOURCE}_FAIL`
 ```
 
 An example fail action type is:
@@ -630,11 +630,11 @@ This will update the metadata for this particular action to be in an
 `xhrStatuses.ABORTED` state.
 
 ```js
-READ_ONE_{RESOURCE}_ABORT
-READ_MANY_{PLURAL_RESOURCE}_ABORT
-CREATE_{RESOURCE}_ABORT
-UPDATE_{RESOURCE}_ABORT
-DELETE_{RESOURCE}_ABORT
+`READ_ONE_{RESOURCE}_ABORT`
+`READ_MANY_{PLURAL_RESOURCE}_ABORT`
+`CREATE_{RESOURCE}_ABORT`
+`UPDATE_{RESOURCE}_ABORT`
+`DELETE_{RESOURCE}_ABORT`
 ```
 
 An example fail abort action type is:
