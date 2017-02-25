@@ -1,10 +1,10 @@
 import simpleResource, {xhrStatuses} from '../../../src';
 
 describe('reducers: readOne', function() {
-  it('should handle `READ_ONE_HELLO`', () => {
+  it('should handle `READ_HELLO`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_ONE_HELLO',
+      type: 'READ_HELLO',
       id: 3
     });
 
@@ -22,10 +22,10 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `READ_ONE_HELLO_FAIL`', () => {
+  it('should handle `READ_HELLO_FAIL`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_ONE_HELLO_FAIL',
+      type: 'READ_HELLO_FAIL',
       id: 3
     });
 
@@ -43,7 +43,7 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `READ_ONE_HELLO_SUCCEED`', () => {
+  it('should handle `READ_HELLO_SUCCEED`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -53,7 +53,7 @@ describe('reducers: readOne', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_ONE_HELLO_SUCCEED',
+      type: 'READ_HELLO_SUCCEED',
       id: 3,
       resource: {
         id: 3,
@@ -80,7 +80,7 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `READ_ONE_HELLO_SUCCEED` with `replace: false`', () => {
+  it('should handle `READ_HELLO_SUCCEED` with `replace: false`', () => {
     const result = simpleResource('hello', {
       initialState: {
         resources: [
@@ -90,7 +90,7 @@ describe('reducers: readOne', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_ONE_HELLO_SUCCEED',
+      type: 'READ_HELLO_SUCCEED',
       id: 3,
       replace: false,
       resource: {
@@ -119,12 +119,12 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `READ_ONE_HELLO_SUCCEED` with a custom idAttribute', () => {
+  it('should handle `READ_HELLO_SUCCEED` with a custom idAttribute', () => {
     const result = simpleResource('hello', {
       idAttribute: 'whatPls'
     });
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_ONE_HELLO_SUCCEED',
+      type: 'READ_HELLO_SUCCEED',
       whatPls: 3,
       resource: {
         whatPls: 3,
@@ -151,10 +151,10 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `READ_ONE_HELLO_ABORT`', () => {
+  it('should handle `READ_HELLO_ABORT`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_ONE_HELLO_ABORT',
+      type: 'READ_HELLO_ABORT',
       id: 3
     });
 
@@ -172,10 +172,10 @@ describe('reducers: readOne', function() {
     });
   });
 
-  it('should handle `READ_ONE_HELLO_RESET`', () => {
+  it('should handle `READ_HELLO_RESET`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_ONE_HELLO_RESET',
+      type: 'READ_HELLO_RESET',
       id: 3
     });
 
