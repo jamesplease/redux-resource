@@ -22,7 +22,7 @@ export const initialResourceMetaState = {
 // resourcesMeta: the metadata Object from a resource store slice
 // resourceMeta: the new metadataObject from a given resourceMeta
 // id: the ID of the resource to be updated
-export function updateResourcesMeta(resourcesMeta, newMeta, id) {
+export function updateResourcesMeta({resourcesMeta, newMeta, id}) {
   return {
     // Shallow clone the current resourcesMeta
     ...resourcesMeta,
@@ -38,7 +38,7 @@ export function updateResourcesMeta(resourcesMeta, newMeta, id) {
 
 // Similar to `updateResourcesMeta`, but it accepts an array of IDs instead of
 // a single ID.
-export function updateManyResourcesMeta(resourcesMeta, newMeta, ids, replace) {
+export function updateManyResourcesMeta({resourcesMeta, newMeta, ids, replace}) {
   const next = replace ? {} : {...resourcesMeta};
 
   ids.forEach((id) => {
@@ -55,7 +55,7 @@ export function updateManyResourcesMeta(resourcesMeta, newMeta, ids, replace) {
 // resources: the Array of resources
 // resource: the new resource object to be added or updated
 // id: the ID of the resource being updated
-export function upsertResource(resources, resource, id, idAttribute, replace) {
+export function upsertResource({resources, resource, id, idAttribute, replace}) {
   // Attempt to find the resource by its ID. If the ID doesn't exist, or if
   // no resource by that ID exists, then we append it to the end as a new
   // resource.
@@ -83,7 +83,7 @@ export function upsertResource(resources, resource, id, idAttribute, replace) {
   return shallowClone;
 }
 
-export function upsertManyResources(resources, newResources, idAttribute, replace) {
+export function upsertManyResources({resources, newResources, idAttribute, replace}) {
   const shallowClone = [...resources];
 
   newResources.forEach(resource => {
