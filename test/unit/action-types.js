@@ -18,7 +18,7 @@ describe('actionTypes', function() {
     });
   });
 
-  describe('readOne', () => {
+  describe('read', () => {
     it('should have the right actionTypes', () => {
       const actionTypes = simpleResource('hello').actionTypes;
       expect(actionTypes.READ_HELLO).to.equal('READ_HELLO');
@@ -84,7 +84,7 @@ describe('actionTypes', function() {
         supportedActions: {
           create: false,
           readMany: true,
-          readOne: false,
+          read: false,
           update: false,
           del: false
         }

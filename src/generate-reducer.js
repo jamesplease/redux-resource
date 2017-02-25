@@ -13,7 +13,7 @@ import * as defaultReducers from './default-reducers';
 function getActionReducers({actionReducers, resourceName, pluralForm, supportedActions, idAttr}) {
   const capitalResourceName = resourceName.toUpperCase();
   const capitalPluralName = pluralForm.toUpperCase();
-  const {create, readOne, readMany, update, del} = supportedActions;
+  const {create, read, readMany, update, del} = supportedActions;
 
   const createReducers = create ? {
     [`CREATE_${capitalResourceName}`]: defaultReducers.create.bind(null, idAttr),
@@ -23,12 +23,12 @@ function getActionReducers({actionReducers, resourceName, pluralForm, supportedA
     [`CREATE_${capitalResourceName}_RESET`]: defaultReducers.createReset.bind(null, idAttr)
   } : {};
 
-  const readOneReducers = readOne ? {
-    [`READ_${capitalResourceName}`]: defaultReducers.readOne.bind(null, idAttr),
-    [`READ_${capitalResourceName}_FAIL`]: defaultReducers.readOneFail.bind(null, idAttr),
-    [`READ_${capitalResourceName}_SUCCEED`]: defaultReducers.readOneSucceed.bind(null, idAttr),
-    [`READ_${capitalResourceName}_ABORT`]: defaultReducers.readOneAbort.bind(null, idAttr),
-    [`READ_${capitalResourceName}_RESET`]: defaultReducers.readOneReset.bind(null, idAttr)
+  const readReducers = read ? {
+    [`READ_${capitalResourceName}`]: defaultReducers.read.bind(null, idAttr),
+    [`READ_${capitalResourceName}_FAIL`]: defaultReducers.readFail.bind(null, idAttr),
+    [`READ_${capitalResourceName}_SUCCEED`]: defaultReducers.readSucceed.bind(null, idAttr),
+    [`READ_${capitalResourceName}_ABORT`]: defaultReducers.readAbort.bind(null, idAttr),
+    [`READ_${capitalResourceName}_RESET`]: defaultReducers.readReset.bind(null, idAttr)
   } : {};
 
   const readManyReducers = readMany ? {
@@ -55,10 +55,9 @@ function getActionReducers({actionReducers, resourceName, pluralForm, supportedA
     [`DELETE_${capitalResourceName}_RESET`]: defaultReducers.delReset.bind(null, idAttr)
   } : {};
 
-  // Default reducers manage the five states of CRUD.
   const allDefaultActionReducers = {
     ...createReducers,
-    ...readOneReducers,
+    ...readReducers,
     ...readManyReducers,
     ...updateReducers,
     ...deleteReducers,
@@ -79,6 +78,7 @@ export default function generateReducers(options) {
     if (!actionReducer) {
       return state;
     }
+
     const result = actionReducer(state, action);
     return result ? result : state;
   };

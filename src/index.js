@@ -8,7 +8,7 @@ import {
 
 const supportAllActions = {
   create: true,
-  readOne: true,
+  read: true,
   readMany: true,
   update: true,
   del: true

@@ -13,10 +13,10 @@ const mapConstant = (resourceName, crudAction) => ({
 export default (resourceName, pluralForm, supportedActions, customTypes) => {
   const capitalResourceName = resourceName.toUpperCase();
   const capitalPluralName = pluralForm.toUpperCase();
-  const {create, readOne, readMany, update, del} = supportedActions;
+  const {create, read, readMany, update, del} = supportedActions;
 
   const createTypes = create ? mapConstant(capitalResourceName, 'CREATE') : {};
-  const readOneTypes = readOne ? mapConstant(capitalResourceName, 'READ') : {};
+  const readTypes = read ? mapConstant(capitalResourceName, 'READ') : {};
   const readManyTypes = readMany ? mapConstant(capitalPluralName, 'READ_MANY') : {};
   const updateTypes = update ? mapConstant(capitalResourceName, 'UPDATE') : {};
   const deleteTypes = del ? mapConstant(capitalResourceName, 'DELETE') : {};
@@ -26,7 +26,7 @@ export default (resourceName, pluralForm, supportedActions, customTypes) => {
 
   return {
     ...createTypes,
-    ...readOneTypes,
+    ...readTypes,
     ...readManyTypes,
     ...updateTypes,
     ...deleteTypes,

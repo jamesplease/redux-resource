@@ -129,7 +129,7 @@ supports all of those actions. Sometimes, you won't need to support all CRUD
 actions on a resource. In those situations, you can use this to disable the
 creation of particular action types. The five CRUD actions are:
 
-- `readOne`
+- `read`
 - `readMany`
 - `create`
 - `update`
@@ -148,7 +148,7 @@ up to you.
 // "cat" resource.
 const cat = createResource('cat', {
   supportedActions: {
-    readOne: false,
+    read: false,
     readMany: true,
     del: false,
     update: false,

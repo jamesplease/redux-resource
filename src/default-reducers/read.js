@@ -2,7 +2,7 @@ import {
   updateResourceMeta, upsertResource, xhrStatuses
 } from '../utils';
 
-export function readOne(idAttr, state, action) {
+export function read(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
     newMeta: {retrievingStatus: xhrStatuses.PENDING},
@@ -16,7 +16,7 @@ export function readOne(idAttr, state, action) {
   };
 }
 
-export function readOneFail(idAttr, state, action) {
+export function readFail(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
     newMeta: {retrievingStatus: xhrStatuses.FAILED},
@@ -30,7 +30,7 @@ export function readOneFail(idAttr, state, action) {
   };
 }
 
-export function readOneSucceed(idAttribute, state, action) {
+export function readSucceed(idAttribute, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
     newMeta: {retrievingStatus: xhrStatuses.SUCCEEDED},
@@ -53,7 +53,7 @@ export function readOneSucceed(idAttribute, state, action) {
   };
 }
 
-export function readOneAbort(idAttr, state, action) {
+export function readAbort(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
     newMeta: {retrievingStatus: xhrStatuses.ABORTED},
@@ -67,7 +67,7 @@ export function readOneAbort(idAttr, state, action) {
   };
 }
 
-export function readOneReset(idAttr, state, action) {
+export function readReset(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
     newMeta: {retrievingStatus: xhrStatuses.NULL},
