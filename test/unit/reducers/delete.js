@@ -23,12 +23,12 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           deletingStatus: xhrStatuses.PENDING
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -57,12 +57,12 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           deletingStatus: xhrStatuses.FAILED
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -77,7 +77,7 @@ describe('reducers: delete', function() {
           {id: 3},
           {id: 4},
         ],
-        resourcesMeta: {
+        resourceMeta: {
           3: {
             deletingStatus: 'sandwiches'
           }
@@ -96,12 +96,12 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           deletingStatus: xhrStatuses.ABORTED
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -116,7 +116,7 @@ describe('reducers: delete', function() {
           {id: 3},
           {id: 4},
         ],
-        resourcesMeta: {
+        resourceMeta: {
           3: {
             deletingStatus: 'sandwiches'
           }
@@ -135,12 +135,12 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           deletingStatus: xhrStatuses.NULL
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -155,7 +155,7 @@ describe('reducers: delete', function() {
           {id: 3},
           {id: 4},
         ],
-        resourcesMeta: {
+        resourceMeta: {
           2: {
             name: 'what'
           },
@@ -176,13 +176,13 @@ describe('reducers: delete', function() {
         {id: 1},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         2: {
           name: 'what'
         },
         3: null
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -198,7 +198,7 @@ describe('reducers: delete', function() {
           {movieId: 3},
           {movieId: 4},
         ],
-        resourcesMeta: {
+        resourceMeta: {
           2: {
             name: 'what'
           },
@@ -219,13 +219,13 @@ describe('reducers: delete', function() {
         {movieId: 1},
         {movieId: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         2: {
           name: 'what'
         },
         3: null
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }

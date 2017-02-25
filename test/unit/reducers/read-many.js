@@ -9,8 +9,8 @@ describe('reducers: readMany', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {},
-      resourcesListMeta: {
+      resourceMeta: {},
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: xhrStatuses.PENDING
       }
@@ -25,8 +25,8 @@ describe('reducers: readMany', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {},
-      resourcesListMeta: {
+      resourceMeta: {},
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: xhrStatuses.FAILED
       }
@@ -41,7 +41,7 @@ describe('reducers: readMany', function() {
           {id: 23},
           {id: 55},
         ],
-        resourcesMeta: {
+        resourceMeta: {
           23: 'sandwiches'
         }
       }
@@ -60,7 +60,7 @@ describe('reducers: readMany', function() {
         {id: 2, hungry: true, pasta: 'yespls'},
         {id: 100, hungry: false},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         2: {
           updatingStatus: xhrStatuses.NULL,
           retrievingStatus: xhrStatuses.NULL,
@@ -72,7 +72,7 @@ describe('reducers: readMany', function() {
           deletingStatus: xhrStatuses.NULL
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: xhrStatuses.SUCCEEDED
       }
@@ -87,7 +87,7 @@ describe('reducers: readMany', function() {
           {id: 23},
           {id: 55},
         ],
-        resourcesMeta: {
+        resourceMeta: {
           23: 'sandwiches'
         }
       }
@@ -109,7 +109,7 @@ describe('reducers: readMany', function() {
         {id: 55},
         {id: 2, hungry: true, pasta: 'yespls'},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         2: {
           updatingStatus: xhrStatuses.NULL,
           retrievingStatus: xhrStatuses.NULL,
@@ -122,7 +122,7 @@ describe('reducers: readMany', function() {
           deletingStatus: xhrStatuses.NULL
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: xhrStatuses.SUCCEEDED
       }
@@ -139,7 +139,7 @@ describe('reducers: readMany', function() {
         {namePls: 2, hungry: true, pasta: 'yespls'},
         {namePls: 100, hungry: false},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         23: 'sandwiches'
       }
     });
@@ -149,7 +149,7 @@ describe('reducers: readMany', function() {
         {namePls: 2, hungry: true, pasta: 'yespls'},
         {namePls: 100, hungry: false},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         2: {
           updatingStatus: xhrStatuses.NULL,
           retrievingStatus: xhrStatuses.NULL,
@@ -161,7 +161,7 @@ describe('reducers: readMany', function() {
           deletingStatus: xhrStatuses.NULL
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: xhrStatuses.SUCCEEDED
       }
@@ -176,8 +176,8 @@ describe('reducers: readMany', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {},
-      resourcesListMeta: {
+      resourceMeta: {},
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: xhrStatuses.ABORTED
       }
@@ -188,8 +188,8 @@ describe('reducers: readMany', function() {
     const result = simpleResource('hello');
 
     // We set some value on `retrievingStatus` to check that this nulls it
-    const resourcesListMetaState = {
-      resourcesListMeta: {
+    const resourceListMetaState = {
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: 'sandwiches'
       }
@@ -197,15 +197,15 @@ describe('reducers: readMany', function() {
 
     const reduced = result.reducer({
       ...result.initialState,
-      ...resourcesListMetaState
+      ...resourceListMetaState
     }, {
       type: 'READ_MANY_HELLOS_RESET'
     });
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {},
-      resourcesListMeta: {
+      resourceMeta: {},
+      resourceListMeta: {
         creatingStatus: xhrStatuses.NULL,
         retrievingStatus: xhrStatuses.NULL
       }

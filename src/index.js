@@ -2,8 +2,8 @@ import snakeCase from 'lodash.snakecase';
 import generateReducer from './generate-reducer';
 import generateActionTypes from './generate-action-types';
 import {
-  generateDefaultInitialState, xhrStatuses, updateResourcesMeta,
-  updateManyResourcesMeta, upsertResource, upsertManyResources
+  generateDefaultInitialState, xhrStatuses, updateResourceMeta,
+  updateManyResourceMetas, upsertResource, upsertManyResources
 } from './utils';
 
 const supportAllActions = {
@@ -52,7 +52,7 @@ function createResource(resourceName, options = {}) {
 }
 
 export {
-  xhrStatuses, updateResourcesMeta, updateManyResourcesMeta, upsertResource,
+  xhrStatuses, updateResourceMeta, updateManyResourceMetas, upsertResource,
   upsertManyResources
 };
 export default createResource;

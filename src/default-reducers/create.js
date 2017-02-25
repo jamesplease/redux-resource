@@ -1,12 +1,12 @@
 import {
-  upsertResource, xhrStatuses, updateResourcesMeta, initialResourceMetaState
+  upsertResource, xhrStatuses, updateResourceMeta, initialResourceMetaState
 } from '../utils';
 
 export function create(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       creatingStatus: xhrStatuses.PENDING
     }
   };
@@ -15,8 +15,8 @@ export function create(idAttr, state) {
 export function createFail(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       creatingStatus: xhrStatuses.FAILED
     }
   };
@@ -30,8 +30,8 @@ export function createSucceed(idAttribute, state, action) {
     id: action[idAttribute],
     idAttribute
   });
-  const resourcesMeta = updateResourcesMeta({
-    resourcesMeta: state.resourcesMeta,
+  const resourceMeta = updateResourceMeta({
+    resourceMeta: state.resourceMeta,
     newMeta: initialResourceMetaState,
     id: newResourceId,
     replace: false
@@ -40,9 +40,9 @@ export function createSucceed(idAttribute, state, action) {
   return {
     ...state,
     resources,
-    resourcesMeta,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       creatingStatus: xhrStatuses.SUCCEEDED
     }
   };
@@ -51,8 +51,8 @@ export function createSucceed(idAttribute, state, action) {
 export function createAbort(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       creatingStatus: xhrStatuses.ABORTED
     }
   };
@@ -61,8 +61,8 @@ export function createAbort(idAttr, state) {
 export function createReset(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       creatingStatus: xhrStatuses.NULL
     }
   };

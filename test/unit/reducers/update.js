@@ -23,12 +23,12 @@ describe('reducers: update', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           updatingStatus: xhrStatuses.PENDING
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -57,12 +57,12 @@ describe('reducers: update', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           updatingStatus: xhrStatuses.FAILED
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -91,12 +91,12 @@ describe('reducers: update', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           updatingStatus: xhrStatuses.ABORTED
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -125,12 +125,12 @@ describe('reducers: update', function() {
         {id: 3},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           updatingStatus: xhrStatuses.NULL
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -163,12 +163,12 @@ describe('reducers: update', function() {
         {id: 3, name: 'please'},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           updatingStatus: xhrStatuses.SUCCEEDED
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -202,12 +202,12 @@ describe('reducers: update', function() {
         {movieId: 3, name: 'please'},
         {movieId: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           updatingStatus: xhrStatuses.SUCCEEDED
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -241,12 +241,12 @@ describe('reducers: update', function() {
         {id: 3, name: 'please', last_name: 'please'},
         {id: 4},
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           updatingStatus: xhrStatuses.SUCCEEDED
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
