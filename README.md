@@ -12,13 +12,19 @@ A Redux framework for interacting with remote resources.
   - [Why This Project?](#why-this-project)
 - [Getting Started](#getting-started)
 - [API](#api)
-  - [createResource](#createresource-resourcename-options-)
+  - [createResource()](#createresource-resourcename-options-)
   - [xhrStatuses](#xhrstatuses)
+  - [updateResourcesMeta()](#updateresourcesmeta-resourcesmeta-newmeta-id-)
+  - [updateManyResourcesMeta()](#updatemanyresourcesmeta-resourcesmeta-newmeta-ids-replace-)
+  - [upsertResource()](#upsertresource-resources-resource-id-idattribute-replace-)
+  - [upsertManyResources()](#upsertmanyresources-resources-newresources-idattribute-replace-)
 - [Guides](#guides)
   - [Resource Names](#resource-names)
   - [Resource Metadata](#resource-metadata)
   - [XHR Statuses](#xhr-statuses)
   - [Action Types](#action-types)
+  - [Structure of the Store](#structure-of-the-store)
+  - [Customizing the Default Reducers](#customizing-the-default-reducers)
   - [Shallow Cloning](#shallow-cloning)
   - [What is a "simple" resource?](#what-is-a-simple-resource)
 
@@ -66,8 +72,9 @@ const store = createStore(reducers);
 
 ## API
 
-This library exports two objects: the default export, `createResource`, and a
-named export, `xhrStatuses`.
+The default export of this library is `createResource`. There are several
+named exports, which are utilities that may help you when working with
+redux-simple-resource.
 
 ### `createResource( resourceName, [options] )`
 
@@ -291,6 +298,64 @@ class MyComponent extends Component {
 }
 ```
 
+### `updateResourcesMeta({ resourcesMeta, newMeta, id })`
+
+Use this method to update the metadata for a single resource. `resourcesMeta`
+is **all** of the existing meta, `newMeta` is the new meta to assign to
+the resource, and `id` is the ID of the resource that you are updating.
+
+This does not directly modify the `resourcesMeta` object; instead, it returns
+a shallow clone.
+
+| Name | Required | Description |
+|------|-------------|----------|
+|resourcesMeta | Yes | The current meta object for **all** resources |
+|newMeta | Yes | The new metadata |
+|id | Yes | The ID of the resource to update |
+
+### `updateManyResourcesMeta({ resourcesMeta, newMeta, ids, replace })`
+
+Similar to `updateResourcesMeta`, but this enables you to update a list of `ids`
+with the same `newMeta`. `resourcesMeta` is **all** of the existing meta.
+
+If `replace: true` is passed, then the existing meta is discarded, and what you
+pass in will be all of the meta in the store.
+
+Pass `replace: false` to keep all existing meta, and to merge in `newMeta` with
+any existing metadata for each resource.
+
+This method does not enable you to update multiple IDs with different metadata.
+
+| Name | Required | Description |
+|------|-------------|----------|
+|resourcesMeta | Yes | The current meta object for **all** resources |
+|newMeta | Yes | The new metadata |
+|ids | Yes | An array of IDs to update |
+|replace | No | Whether or not to replace the current list, or to merge in the new data. Defaults to `false` |
+
+### `upsertResource({ resources, resource, id, idAttribute, replace })`
+
+Insert or update a resource to the list of resources.
+
+| Name | Required | Description |
+|------|-------------|----------|
+|resources | Yes | The current list of resources from the store |
+|resource | Yes | The new resource to add |
+|id | Yes | The id value of the new resource |
+|idAttribute | No | The id key of the new resource. Defaults to `"id"` |
+|replace | No | Whether or not to replace the resource (if it already exists). Defaults to `false` |
+
+### `upsertManyResources({ resources, newResources, idAttribute, replace })`
+
+Insert or update a list of resources to the list of resources.
+
+| Name | Required | Description |
+|------|-------------|----------|
+|resources | Yes | The current list of resources from the store |
+|newResources | Yes | The new resources to add |
+|idAttribute | No | The id key of the new resources. Defaults to `"id"` |
+|replace | No | Whether or not to replace the existing resource list, or to merge new with old. Defaults to `false` |
+
 ## Guides
 
 ### Resource Names
@@ -345,6 +410,10 @@ of the box. The metadata that it gives you are related to CRUD actions. If you
 fire off a request to delete a resource, for instance, then
 redux-simple-resource will take care of updating that resource's metadata with
 [the status of that XHR request](#xhr-statuses).
+
+You can use this built-in metadata to easily show loading spinners, error
+messages, success messages, and other UI features that conditionally appear
+based on the status of XHR requests against a resource.
 
 And, of course, you can add in your own metadata, too.
 
@@ -520,11 +589,11 @@ an `xhrStatuses.PENDING` state.
 These are the start action types:
 
 ```js
-READ_ONE_{RESOURCE}
-READ_MANY_{PLURAL_RESOURCE}
-CREATE_{RESOURCE}
-UPDATE_{RESOURCE}
-DELETE_{RESOURCE}
+`READ_ONE_{RESOURCE}`
+`READ_MANY_{PLURAL_RESOURCE}`
+`CREATE_{RESOURCE}`
+`UPDATE_{RESOURCE}`
+`DELETE_{RESOURCE}`
 ```
 
 An example start action type is:
@@ -544,11 +613,11 @@ This will update the metadata for this particular action to be in an
 These are the five FAIL action types:
 
 ```js
-READ_ONE_{RESOURCE}_FAIL
-READ_MANY_{PLURAL_RESOURCE}_FAIL
-CREATE_{RESOURCE}_FAIL
-UPDATE_{RESOURCE}_FAIL
-DELETE_{RESOURCE}_FAIL
+`READ_ONE_{RESOURCE}_FAIL`
+`READ_MANY_{PLURAL_RESOURCE}_FAIL`
+`CREATE_{RESOURCE}_FAIL`
+`UPDATE_{RESOURCE}_FAIL`
+`DELETE_{RESOURCE}_FAIL`
 ```
 
 An example fail action type is:
@@ -566,11 +635,11 @@ This will update the metadata for this particular action to be in an
 `xhrStatuses.ABORTED` state.
 
 ```js
-READ_ONE_{RESOURCE}_ABORT
-READ_MANY_{PLURAL_RESOURCE}_ABORT
-CREATE_{RESOURCE}_ABORT
-UPDATE_{RESOURCE}_ABORT
-DELETE_{RESOURCE}_ABORT
+`READ_ONE_{RESOURCE}_ABORT`
+`READ_MANY_{PLURAL_RESOURCE}_ABORT`
+`CREATE_{RESOURCE}_ABORT`
+`UPDATE_{RESOURCE}_ABORT`
+`DELETE_{RESOURCE}_ABORT`
 ```
 
 An example fail abort action type is:
@@ -640,6 +709,12 @@ An example reset action is:
 }
 ```
 
+#### Custom Action Types
+
+Custom action types are also supported by this library. For an explanation,
+and an example, refer to
+[the API docs](https://github.com/jmeas/redux-simple-resource#actionreducers).
+
 #### Example Action Creator
 
 This is an example action creator to update a cat resource. It is an [action
@@ -703,6 +778,77 @@ componentWillUnmount() {
   }
 }
 ```
+
+### Structure of the Store
+
+redux-simple-resource creates the overall structure of the store for resources.
+The default initial state that is created for you represents this overall
+structure:
+
+```js
+{
+  // These are the actual resources that the server sends back.
+  resources: [],
+  // This is metadata about _specific_ resources. For instance, if a DELETE
+  // is in flight for a book with ID 24, then you could find that here.
+  // For more, see the Resource Meta guide in this README.
+  resourcesMeta: {},
+  // This is metadata about the entire collection of resources. For instance,
+  // on page load, you might fetch all of the resources. The XHR status for
+  // that request would live here.
+  // For more, see the Resource Meta guide in this README.
+  resourcesListMeta: {
+    retrievingStatus: xhrStatuses.NULL,
+    creatingStatus: xhrStatuses.NULL
+  }
+}
+```
+
+For instance, if you're building a component that interacts with a particular
+book resource, then you may use the following `mapStateToProps`:
+
+```js
+mapStateToProps(state, props) {
+  // Grab our book
+  const book = _.find(state.books.resources, {id: props.bookId});
+  // Grab its metadata
+  const bookMeta = state.resourcesMeta[props.bookId];
+
+  // Pass that into the component
+  return {
+    book,
+    bookMeta
+  };
+}
+```
+
+### Customizing the Default Reducers
+
+Sometimes, the default reducers may not do exactly what you want. Maybe you
+want to handle a particular action in a different way. Or perhaps you want to
+add more metadata with a different type.
+
+If the way a particular action type is reduced is not what you want, then you
+do not need to dispatch an action with that action type.
+
+If you wish to add additional data to the store after a particular action, then
+we recommend that you fire a separate, custom action immediately after the
+default one. For instance,
+
+```js
+// Dispatch the default action
+dispatch({type: 'READ_ONE_BOOK_SUCCESS', id: 5});
+// Dispatch your default action
+dispatch({type: 'READ_ONE_BOOK_SUCCESS_EXTRA_THINGS', id: 5});
+```
+
+If you're worried about performance, give it a try. If you can demonstrate that
+this pattern causes performance issues, then we will consider alternative
+solutions.
+
+tl;dr: we do not recommend attempting to modify the built-in reducers. Either
+don't dispatch those action types, or dispatch separate actions with custom
+types before or after the built-in types.
 
 ### Shallow Cloning
 

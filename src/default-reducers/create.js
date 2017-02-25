@@ -22,10 +22,19 @@ export function createFail(idAttr, state) {
   };
 }
 
-export function createSucceed(idAttr, state, action) {
-  const newResourceId = action.resource[idAttr];
-  const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr);
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, initialResourceMetaState, newResourceId);
+export function createSucceed(idAttribute, state, action) {
+  const newResourceId = action.resource[idAttribute];
+  const resources = upsertResource({
+    resources: state.resources,
+    resource: action.resource,
+    id: action[idAttribute],
+    idAttribute
+  });
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: initialResourceMetaState,
+    id: newResourceId
+  });
 
   return {
     ...state,

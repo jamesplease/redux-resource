@@ -3,9 +3,11 @@ import {
 } from '../utils';
 
 export function retrieveOne(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: xhrStatuses.PENDING
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {retrievingStatus: xhrStatuses.PENDING},
+    id: action[idAttr]
+  });
 
   return {
     ...state,
@@ -14,9 +16,11 @@ export function retrieveOne(idAttr, state, action) {
 }
 
 export function retrieveOneFail(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: xhrStatuses.FAILED
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {retrievingStatus: xhrStatuses.FAILED},
+    id: action[idAttr]
+  });
 
   return {
     ...state,
@@ -24,13 +28,20 @@ export function retrieveOneFail(idAttr, state, action) {
   };
 }
 
-export function retrieveOneSucceed(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: xhrStatuses.SUCCEEDED
-  }, action[idAttr]);
+export function retrieveOneSucceed(idAttribute, state, action) {
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {retrievingStatus: xhrStatuses.SUCCEEDED},
+    id: action[idAttribute]
+  });
 
   const replace = typeof action.replace !== 'undefined' ? action.replace : true;
-  const resources = upsertResource(state.resources, action.resource, action[idAttr], idAttr, replace);
+  const resources = upsertResource({
+    resources: state.resources,
+    resource: action.resource,
+    id: action[idAttribute],
+    idAttribute, replace
+  });
 
   return {
     ...state,
@@ -40,9 +51,11 @@ export function retrieveOneSucceed(idAttr, state, action) {
 }
 
 export function retrieveOneAbort(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: xhrStatuses.ABORTED
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {retrievingStatus: xhrStatuses.ABORTED},
+    id: action[idAttr]
+  });
 
   return {
     ...state,
@@ -51,9 +64,11 @@ export function retrieveOneAbort(idAttr, state, action) {
 }
 
 export function retrieveOneReset(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    retrievingStatus: xhrStatuses.NULL
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {retrievingStatus: xhrStatuses.NULL},
+    id: action[idAttr]
+  });
 
   return {
     ...state,

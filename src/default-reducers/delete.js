@@ -1,9 +1,11 @@
 import {updateResourcesMeta, xhrStatuses} from '../utils';
 
 export function del(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: xhrStatuses.PENDING
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {deletingStatus: xhrStatuses.PENDING},
+    id: action[idAttr]
+  });
 
   return {
     ...state,
@@ -12,9 +14,11 @@ export function del(idAttr, state, action) {
 }
 
 export function delFail(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: xhrStatuses.FAILED
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {deletingStatus: xhrStatuses.FAILED},
+    id: action[idAttr]
+  });
 
   return {
     ...state,
@@ -43,9 +47,11 @@ export function delSucceed(idAttr, state, action) {
 }
 
 export function delAbort(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: xhrStatuses.ABORTED
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {deletingStatus: xhrStatuses.ABORTED},
+    id: action[idAttr]
+  });
 
   return {
     ...state,
@@ -54,9 +60,11 @@ export function delAbort(idAttr, state, action) {
 }
 
 export function delReset(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta(state.resourcesMeta, {
-    deletingStatus: xhrStatuses.NULL
-  }, action[idAttr]);
+  const resourcesMeta = updateResourcesMeta({
+    resourcesMeta: state.resourcesMeta,
+    newMeta: {deletingStatus: xhrStatuses.NULL},
+    id: action[idAttr]
+  });
 
   return {
     ...state,

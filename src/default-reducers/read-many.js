@@ -23,14 +23,19 @@ export function retrieveManyFail(idAttr, state) {
   };
 }
 
-export function retrieveManySucceed(idAttr, state, action) {
+export function retrieveManySucceed(idAttribute, state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r[idAttr]);
+  const ids = resources.map(r => r[idAttribute]);
   const replace = typeof action.replace !== 'undefined' ? action.replace : true;
 
   let newResources;
   if (!replace) {
-    newResources = upsertManyResources(state.resources, resources, idAttr, false);
+    newResources = upsertManyResources({
+      resources: state.resources,
+      replace: false,
+      newResources: resources,
+      idAttribute
+    });
   } else {
     newResources = resources;
   }
@@ -40,7 +45,11 @@ export function retrieveManySucceed(idAttr, state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    resourcesMeta: updateManyResourcesMeta(state.resourcesMeta, initialResourceMetaState, ids, replace),
+    resourcesMeta: updateManyResourcesMeta({
+      resourcesMeta: state.resourcesMeta,
+      newMeta: initialResourceMetaState,
+      ids, replace
+    }),
     resourcesListMeta: {
       ...state.resourcesListMeta,
       retrievingStatus: xhrStatuses.SUCCEEDED
