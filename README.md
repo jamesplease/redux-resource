@@ -312,6 +312,7 @@ a shallow clone.
 |resourcesMeta | Yes | The current meta object for **all** resources |
 |newMeta | Yes | The new metadata |
 |id | Yes | The ID of the resource to update |
+|replace | No | Whether or not to replace any existing meta for this resource. Defaults to `false` |
 
 ### `updateManyResourcesMeta({ resourcesMeta, newMeta, ids, replace })`
 

@@ -22,14 +22,15 @@ export const initialResourceMetaState = {
 // resourcesMeta: the metadata Object from a resource store slice
 // resourceMeta: the new metadataObject from a given resourceMeta
 // id: the ID of the resource to be updated
-export function updateResourcesMeta({resourcesMeta, newMeta, id}) {
+export function updateResourcesMeta({resourcesMeta, newMeta, id, replace}) {
+  const existingMeta = replace ? {} : resourcesMeta[id];
   return {
     // Shallow clone the current resourcesMeta
     ...resourcesMeta,
     // Update the key that is the "id" of the resource
     [id]: {
       // Shallow clone the existing metadata for this resource
-      ...resourcesMeta[id],
+      ...existingMeta,
       // Shallow clone the passed-in metadata
       ...newMeta
     }

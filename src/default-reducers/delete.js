@@ -4,7 +4,8 @@ export function del(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {deletingStatus: xhrStatuses.PENDING},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -17,7 +18,8 @@ export function delFail(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {deletingStatus: xhrStatuses.FAILED},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -50,7 +52,8 @@ export function delAbort(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {deletingStatus: xhrStatuses.ABORTED},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -63,7 +66,8 @@ export function delReset(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {deletingStatus: xhrStatuses.NULL},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
