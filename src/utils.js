@@ -8,20 +8,7 @@ export const xhrStatuses = {
   NULL: 'NULL'
 };
 
-export const initialResourceMetaState = {
-  // The status of any existing request to update this resource
-  updatingStatus: xhrStatuses.NULL,
-  // The status of any existing request to fetch this resource
-  retrievingStatus: xhrStatuses.NULL,
-  // The status of an any existing request to delete this resource. Note that
-  // this will never be "SUCCEEDED," as a successful delete removes the
-  // resource from the store.
-  deletingStatus: xhrStatuses.NULL
-};
-
-// resourceMeta: the metadata Object from a resource store slice
-// resourceMeta: the new metadataObject from a given resourceMeta
-// id: the ID of the resource to be updated
+// Updates a single resource's metadata
 export function updateResourceMeta({resourceMeta, newMeta, id, replace}) {
   const existingMeta = replace ? {} : resourceMeta[id];
   return {
@@ -38,7 +25,7 @@ export function updateResourceMeta({resourceMeta, newMeta, id, replace}) {
 }
 
 // Similar to `updateResourceMeta`, but it accepts an array of IDs instead of
-// a single ID.
+// a single ID. Used for bulk updating meta.
 export function updateManyResourceMetas({resourceMeta, newMeta, ids, replace}) {
   const next = replace ? {} : {...resourceMeta};
 
@@ -53,9 +40,7 @@ export function updateManyResourceMetas({resourceMeta, newMeta, ids, replace}) {
   return next;
 }
 
-// resources: the Array of resources
-// resource: the new resource object to be added or updated
-// id: the ID of the resource being updated
+// Insert a new resource or update an existing resource.
 export function upsertResource({resources, resource, id, idAttribute, replace}) {
   // Attempt to find the resource by its ID. If the ID doesn't exist, or if
   // no resource by that ID exists, then we append it to the end as a new
@@ -84,6 +69,7 @@ export function upsertResource({resources, resource, id, idAttribute, replace}) 
   return shallowClone;
 }
 
+// Similar to `upsertResource`, but for many resources.
 export function upsertManyResources({resources, newResources, idAttribute, replace}) {
   const shallowClone = replace ? [] : [...resources];
 
@@ -111,6 +97,17 @@ export function upsertManyResources({resources, newResources, idAttribute, repla
 
   return shallowClone;
 }
+
+export const initialResourceMetaState = {
+  // The status of any existing request to update this resource
+  updatingStatus: xhrStatuses.NULL,
+  // The status of any existing request to fetch this resource
+  retrievingStatus: xhrStatuses.NULL,
+  // The status of an any existing request to delete this resource. Note that
+  // this will never be "SUCCEEDED," as a successful delete removes the
+  // resource from the store.
+  deletingStatus: xhrStatuses.NULL
+};
 
 export function generateDefaultInitialState() {
   return {

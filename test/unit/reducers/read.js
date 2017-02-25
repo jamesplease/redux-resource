@@ -1,6 +1,6 @@
 import simpleResource, {xhrStatuses} from '../../../src';
 
-describe('reducers: readOne', function() {
+describe('reducers: read', function() {
   it('should handle `READ_HELLO`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {
