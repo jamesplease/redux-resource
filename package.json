@@ -76,7 +76,7 @@
   },
   "babelBoilerplateOptions": {
     "entryFileName": "index.js",
-    "mainVarName": "simpleResource"
+    "mainVarName": "createResource"
   },
   "dependencies": {
     "lodash.snakecase": "^4.1.1"
