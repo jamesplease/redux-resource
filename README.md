@@ -390,6 +390,15 @@ for each of the built-in CRUD operations:
 `CREATE_BOOK`
 ```
 
+redux-simple-resource will snake case any camel case name that you pass in.
+For instance, here's the read one action type for different resource names:
+
+| `resourceName` | read one action type |
+|----------------|----------------------|
+| cat            | READ_CAT             |
+| catperson      | READ_CATPERSON       |
+| catPerson      | READ_CAT_PERSON      |
+
 For now, redux-simple-resource only supports reads of multiple resources,
 although you can add [`actionReducers`](#actionreducers) to manage multiple
 writes. In the future, redux-simple-resource may come with built-in write-many
