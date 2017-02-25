@@ -19,6 +19,7 @@ A Redux framework for interacting with remote resources.
   - [Resource Metadata](#resource-metadata)
   - [XHR Statuses](#xhr-statuses)
   - [Action Types](#action-types)
+  - [Customizing the Default Reducers](#customizing-the-default-reducers)
   - [Shallow Cloning](#shallow-cloning)
   - [What is a "simple" resource?](#what-is-a-simple-resource)
 
@@ -768,6 +769,34 @@ componentWillUnmount() {
   }
 }
 ```
+
+### Customizing the Default Reducers
+
+Sometimes, the default reducers may not do exactly what you want. Maybe you
+want to handle a particular action in a different way. Or perhaps you want to
+add more metadata with a different type.
+
+If the way a particular action type is reduced is not what you want, then you
+do not need to dispatch an action with that action type.
+
+If you wish to add additional data to the store after a particular action, then
+we recommend that you fire a separate, custom action immediately after the
+default one. For instance,
+
+```js
+// Dispatch the default action
+dispatch({type: 'READ_ONE_BOOK_SUCCESS', id: 5});
+// Dispatch your default action
+dispatch({type: 'READ_ONE_BOOK_SUCCESS_EXTRA_THINGS', id: 5});
+```
+
+If you're worried about performance, give it a try. If you can demonstrate that
+this pattern causes performance issues, then we will consider alternative
+solutions.
+
+tl;dr: we do not recommend attempting to modify the built-in reducers. Either
+don't dispatch those action types, or dispatch separate actions with custom
+types before or after the built-in types.
 
 ### Shallow Cloning
 
