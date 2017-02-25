@@ -19,14 +19,14 @@ export const initialResourceMetaState = {
   deletingStatus: xhrStatuses.NULL
 };
 
-// resourcesMeta: the metadata Object from a resource store slice
+// resourceMeta: the metadata Object from a resource store slice
 // resourceMeta: the new metadataObject from a given resourceMeta
 // id: the ID of the resource to be updated
-export function updateResourcesMeta({resourcesMeta, newMeta, id, replace}) {
-  const existingMeta = replace ? {} : resourcesMeta[id];
+export function updateResourceMeta({resourceMeta, newMeta, id, replace}) {
+  const existingMeta = replace ? {} : resourceMeta[id];
   return {
-    // Shallow clone the current resourcesMeta
-    ...resourcesMeta,
+    // Shallow clone the current resourceMeta
+    ...resourceMeta,
     // Update the key that is the "id" of the resource
     [id]: {
       // Shallow clone the existing metadata for this resource
@@ -37,10 +37,10 @@ export function updateResourcesMeta({resourcesMeta, newMeta, id, replace}) {
   };
 }
 
-// Similar to `updateResourcesMeta`, but it accepts an array of IDs instead of
+// Similar to `updateResourceMeta`, but it accepts an array of IDs instead of
 // a single ID.
-export function updateManyResourcesMeta({resourcesMeta, newMeta, ids, replace}) {
-  const next = replace ? {} : {...resourcesMeta};
+export function updateManyResourceMetas({resourceMeta, newMeta, ids, replace}) {
+  const next = replace ? {} : {...resourceMeta};
 
   ids.forEach((id) => {
     const current = next[id];
@@ -85,7 +85,7 @@ export function upsertResource({resources, resource, id, idAttribute, replace}) 
 }
 
 export function upsertManyResources({resources, newResources, idAttribute, replace}) {
-  const shallowClone = [...resources];
+  const shallowClone = replace ? [] : [...resources];
 
   newResources.forEach(resource => {
     const id = resource[idAttribute];
@@ -118,11 +118,11 @@ export function generateDefaultInitialState() {
     resources: [],
     // This is metadata about _specific_ resources. For instance, if a DELETE
     // is in flight for a book with ID 24, then you could find that here.
-    resourcesMeta: {},
+    resourceMeta: {},
     // This is metadata about the entire collection of resources. For instance,
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
-    resourcesListMeta: {
+    resourceListMeta: {
       retrievingStatus: xhrStatuses.NULL,
       creatingStatus: xhrStatuses.NULL
     }

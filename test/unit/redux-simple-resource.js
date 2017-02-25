@@ -16,8 +16,8 @@ describe('simpleResource', function() {
     const result = simpleResource('hello');
     expect(result.initialState).to.deep.equal({
       resources: [],
-      resourcesMeta: {},
-      resourcesListMeta: {
+      resourceMeta: {},
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -35,8 +35,8 @@ describe('simpleResource', function() {
 
       expect(result.initialState).to.deep.equal({
         resources: [],
-        resourcesMeta: {},
-        resourcesListMeta: {
+        resourceMeta: {},
+        resourceListMeta: {
           retrievingStatus: xhrStatuses.NULL,
           creatingStatus: xhrStatuses.NULL
         },
@@ -49,16 +49,16 @@ describe('simpleResource', function() {
       const result = simpleResource('hello', {
         initialState: {
           resources: [{id: 1}],
-          resourcesMeta: {1: true},
-          resourcesListMeta: {hungry: 'always'},
+          resourceMeta: {1: true},
+          resourceListMeta: {hungry: 'always'},
           pizza: true
         }
       });
 
       expect(result.initialState).to.deep.equal({
         resources: [{id: 1}],
-        resourcesMeta: {1: true},
-        resourcesListMeta: {hungry: 'always'},
+        resourceMeta: {1: true},
+        resourceListMeta: {hungry: 'always'},
         pizza: true
       });
     });

@@ -1,13 +1,13 @@
 import {
-  updateManyResourcesMeta, xhrStatuses, initialResourceMetaState,
+  updateManyResourceMetas, xhrStatuses, initialResourceMetaState,
   upsertManyResources
 } from '../utils';
 
 export function retrieveMany(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       retrievingStatus: xhrStatuses.PENDING
     }
   };
@@ -16,8 +16,8 @@ export function retrieveMany(idAttr, state) {
 export function retrieveManyFail(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       retrievingStatus: xhrStatuses.FAILED
     }
   };
@@ -45,13 +45,13 @@ export function retrieveManySucceed(idAttribute, state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    resourcesMeta: updateManyResourcesMeta({
-      resourcesMeta: state.resourcesMeta,
+    resourceMeta: updateManyResourceMetas({
+      resourceMeta: state.resourceMeta,
       newMeta: initialResourceMetaState,
       ids, replace
     }),
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       retrievingStatus: xhrStatuses.SUCCEEDED
     }
   };
@@ -60,8 +60,8 @@ export function retrieveManySucceed(idAttribute, state, action) {
 export function retrieveManyAbort(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       retrievingStatus: xhrStatuses.ABORTED
     }
   };
@@ -70,8 +70,8 @@ export function retrieveManyAbort(idAttr, state) {
 export function retrieveManyReset(idAttr, state) {
   return {
     ...state,
-    resourcesListMeta: {
-      ...state.resourcesListMeta,
+    resourceListMeta: {
+      ...state.resourceListMeta,
       retrievingStatus: xhrStatuses.NULL
     }
   };

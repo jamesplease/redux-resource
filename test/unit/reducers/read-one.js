@@ -10,12 +10,12 @@ describe('reducers: readOne', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           retrievingStatus: 'PENDING'
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -31,12 +31,12 @@ describe('reducers: readOne', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           retrievingStatus: 'FAILED'
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -68,12 +68,12 @@ describe('reducers: readOne', function() {
           sandwiches: 'yum'
         }
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           retrievingStatus: 'SUCCEEDED'
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -107,12 +107,12 @@ describe('reducers: readOne', function() {
           hunger: false
         }
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           retrievingStatus: 'SUCCEEDED'
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -139,12 +139,12 @@ describe('reducers: readOne', function() {
           sandwiches: 'yum'
         }
       ],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           retrievingStatus: 'SUCCEEDED'
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -160,12 +160,12 @@ describe('reducers: readOne', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           retrievingStatus: 'ABORTED'
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }
@@ -181,12 +181,12 @@ describe('reducers: readOne', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourcesMeta: {
+      resourceMeta: {
         3: {
           retrievingStatus: xhrStatuses.NULL
         }
       },
-      resourcesListMeta: {
+      resourceListMeta: {
         retrievingStatus: xhrStatuses.NULL,
         creatingStatus: xhrStatuses.NULL
       }

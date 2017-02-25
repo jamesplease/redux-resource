@@ -1,10 +1,10 @@
 import {
-  updateResourcesMeta, upsertResource, xhrStatuses
+  updateResourceMeta, upsertResource, xhrStatuses
 } from '../utils';
 
 export function update(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta({
-    resourcesMeta: state.resourcesMeta,
+  const resourceMeta = updateResourceMeta({
+    resourceMeta: state.resourceMeta,
     newMeta: {updatingStatus: xhrStatuses.PENDING},
     id: action[idAttr],
     replace: false
@@ -12,13 +12,13 @@ export function update(idAttr, state, action) {
 
   return {
     ...state,
-    resourcesMeta,
+    resourceMeta,
   };
 }
 
 export function updateFail(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta({
-    resourcesMeta: state.resourcesMeta,
+  const resourceMeta = updateResourceMeta({
+    resourceMeta: state.resourceMeta,
     newMeta: {updatingStatus: xhrStatuses.FAILED},
     id: action[idAttr],
     replace: false
@@ -26,13 +26,13 @@ export function updateFail(idAttr, state, action) {
 
   return {
     ...state,
-    resourcesMeta,
+    resourceMeta,
   };
 }
 
 export function updateSucceed(idAttribute, state, action) {
-  const resourcesMeta = updateResourcesMeta({
-    resourcesMeta: state.resourcesMeta,
+  const resourceMeta = updateResourceMeta({
+    resourceMeta: state.resourceMeta,
     newMeta: {updatingStatus: xhrStatuses.SUCCEEDED},
     id: action[idAttribute],
     replace: false
@@ -48,14 +48,14 @@ export function updateSucceed(idAttribute, state, action) {
 
   return {
     ...state,
-    resourcesMeta,
+    resourceMeta,
     resources
   };
 }
 
 export function updateAbort(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta({
-    resourcesMeta: state.resourcesMeta,
+  const resourceMeta = updateResourceMeta({
+    resourceMeta: state.resourceMeta,
     newMeta: {updatingStatus: xhrStatuses.ABORTED},
     id: action[idAttr],
     replace: false
@@ -63,13 +63,13 @@ export function updateAbort(idAttr, state, action) {
 
   return {
     ...state,
-    resourcesMeta,
+    resourceMeta,
   };
 }
 
 export function updateReset(idAttr, state, action) {
-  const resourcesMeta = updateResourcesMeta({
-    resourcesMeta: state.resourcesMeta,
+  const resourceMeta = updateResourceMeta({
+    resourceMeta: state.resourceMeta,
     newMeta: {updatingStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
@@ -77,6 +77,6 @@ export function updateReset(idAttr, state, action) {
 
   return {
     ...state,
-    resourcesMeta,
+    resourceMeta,
   };
 }
