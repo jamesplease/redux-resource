@@ -10,7 +10,7 @@
     "watch": "gulp watch",
     "build": "gulp build",
     "coverage": "gulp coverage",
-    "prepublish": "gulp lint && gulp build"
+    "prepublish": "gulp build"
   },
   "repository": {
     "type": "git",
