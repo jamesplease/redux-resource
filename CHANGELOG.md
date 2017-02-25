@@ -1,3 +1,26 @@
+## [0.0.7](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.7) (2/25/17)
+
+**Breaking**
+
+- `updateResourcesMeta` has been renamed to `updateResourceMeta`
+- `updateManyResourcesMeta` has been renamed to `updateManyResourceMetas`
+- `READ_ONE_X` action types have been renamed to `READ_X` for better consistency
+  with the other action types that operate on a single resource.
+- `supportedActions.readOne` has been renamed to `supportedActions.read` for
+  better consistency with the other action types that operate on a single
+  resource.
+
+**New features**
+
+- `updateResourceMeta` now accepts a `replace` option
+
+**Bug fixes**
+
+- Data is now stored on the proper location in the store: `resourceMeta` and
+  `resourceListMeta`. Previously, the library was incorrectly storing them on
+  `resourcesMeta` and `resourcesListMeta`.
+- `replace: true` now actually replaces the list in `updateManyResources()`.
+
 ## [0.0.6](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.6) (2/25/17)
 
 **Breaking**
