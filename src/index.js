@@ -1,8 +1,7 @@
-import snakeCase from 'lodash.snakecase';
 import generateReducer from './generate-reducer';
 import generateActionTypes from './generate-action-types';
 import {
-  generateDefaultInitialState, xhrStatuses, updateResourceMeta,
+  generateDefaultInitialState, snakeCase, xhrStatuses, updateResourceMeta,
   updateManyResourceMetas, upsertResource, upsertManyResources
 } from './utils';
 

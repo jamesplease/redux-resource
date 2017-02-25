@@ -100,7 +100,7 @@ describe('actionTypes', function() {
 
   describe('passing in various names', () => {
     it('should have the right actionTypes', () => {
-      const helloThereActionTypes = simpleResource('hello there').actionTypes;
+      const helloThereActionTypes = simpleResource('helloThere').actionTypes;
       expect(helloThereActionTypes.READ_MANY_HELLO_THERES).to.equal('READ_MANY_HELLO_THERES');
 
       const bookCaseActionTypes = simpleResource('bookCase').actionTypes;
@@ -109,7 +109,7 @@ describe('actionTypes', function() {
       const jsonViewerActionTypes = simpleResource('JSONViewer').actionTypes;
       expect(jsonViewerActionTypes.READ_MANY_JSON_VIEWERS).to.equal('READ_MANY_JSON_VIEWERS');
 
-      const catPersonActionTypes = simpleResource('cat-person', {pluralForm: 'cat-people'}).actionTypes;
+      const catPersonActionTypes = simpleResource('catPerson', {pluralForm: 'catPeople'}).actionTypes;
       expect(catPersonActionTypes.READ_MANY_CAT_PEOPLE).to.equal('READ_MANY_CAT_PEOPLE');
     });
   });
