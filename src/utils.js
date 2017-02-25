@@ -85,7 +85,7 @@ export function upsertResource({resources, resource, id, idAttribute, replace}) 
 }
 
 export function upsertManyResources({resources, newResources, idAttribute, replace}) {
-  const shallowClone = [...resources];
+  const shallowClone = replace ? [] : [...resources];
 
   newResources.forEach(resource => {
     const id = resource[idAttribute];
