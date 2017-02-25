@@ -18,7 +18,7 @@ describe('actionTypes', function() {
     });
   });
 
-  describe('retrieveOne', () => {
+  describe('readOne', () => {
     it('should have the right actionTypes', () => {
       const actionTypes = simpleResource('hello').actionTypes;
       expect(actionTypes.READ_HELLO).to.equal('READ_HELLO');
@@ -29,7 +29,7 @@ describe('actionTypes', function() {
     });
   });
 
-  describe('retrieveMany', () => {
+  describe('readMany', () => {
     it('should have the right actionTypes', () => {
       const actionTypes = simpleResource('hello').actionTypes;
       expect(actionTypes.READ_MANY_HELLOS).to.equal('READ_MANY_HELLOS');

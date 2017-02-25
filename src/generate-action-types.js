@@ -1,5 +1,5 @@
 // This function generates the five statuses from a single CRUD action.
-// For instance, you'd probably pass "CREATE", "RETRIEVE", "UPDATE", or "DELETE"
+// For instance, you'd probably pass "CREATE", "READ", "UPDATE", or "DELETE"
 // as `crudAction`.
 const mapConstant = (resourceName, crudAction) => ({
   [`${crudAction}_${resourceName}`]: `${crudAction}_${resourceName}`,
