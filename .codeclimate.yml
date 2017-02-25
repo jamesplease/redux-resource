@@ -2,13 +2,7 @@ engines:
   eslint:
     enabled: false
   duplication:
-    enabled: true
-    config:
-      languages:
-      - javascript
-ratings:
-   paths:
-   - "src/**.js"
+    enabled: false
 exclude_paths:
 - "gulpfile.js"
 - "README.md"

@@ -9,7 +9,8 @@
     "test-browser": "gulp test-browser",
     "watch": "gulp watch",
     "build": "gulp build",
-    "coverage": "gulp coverage"
+    "coverage": "gulp coverage",
+    "prepublish": "gulp lint && gulp build"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
   "bugs": {
     "url": "https://github.com/jmeas/redux-simple-resource/issues"
   },
+  "files": ["dist"],
   "homepage": "https://github.com/jmeas/redux-simple-resource",
   "devDependencies": {
     "babel-core": "6.14.0",
