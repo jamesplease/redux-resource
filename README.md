@@ -23,6 +23,7 @@ A Redux framework for interacting with remote resources.
   - [Resource Metadata](#resource-metadata)
   - [XHR Statuses](#xhr-statuses)
   - [Action Types](#action-types)
+  - [Structure of the Store](#structure-of-the-store)
   - [Customizing the Default Reducers](#customizing-the-default-reducers)
   - [Shallow Cloning](#shallow-cloning)
   - [What is a "simple" resource?](#what-is-a-simple-resource)
@@ -410,6 +411,10 @@ fire off a request to delete a resource, for instance, then
 redux-simple-resource will take care of updating that resource's metadata with
 [the status of that XHR request](#xhr-statuses).
 
+You can use this built-in metadata to easily show loading spinners, error
+messages, success messages, and other UI features that conditionally appear
+based on the status of XHR requests against a resource.
+
 And, of course, you can add in your own metadata, too.
 
 #### Individual Resource Metadata
@@ -771,6 +776,49 @@ componentWillUnmount() {
   if (this.updateXhr) {
     this.updateXhr.abort();
   }
+}
+```
+
+### Structure of the Store
+
+redux-simple-resource creates the overall structure of the store for resources.
+The default initial state that is created for you represents this overall
+structure:
+
+```js
+{
+  // These are the actual resources that the server sends back.
+  resources: [],
+  // This is metadata about _specific_ resources. For instance, if a DELETE
+  // is in flight for a book with ID 24, then you could find that here.
+  // For more, see the Resource Meta guide in this README.
+  resourcesMeta: {},
+  // This is metadata about the entire collection of resources. For instance,
+  // on page load, you might fetch all of the resources. The XHR status for
+  // that request would live here.
+  // For more, see the Resource Meta guide in this README.
+  resourcesListMeta: {
+    retrievingStatus: xhrStatuses.NULL,
+    creatingStatus: xhrStatuses.NULL
+  }
+}
+```
+
+For instance, if you're building a component that interacts with a particular
+book resource, then you may use the following `mapStateToProps`:
+
+```js
+mapStateToProps(state, props) {
+  // Grab our book
+  const book = _.find(state.books.resources, {id: props.bookId});
+  // Grab its metadata
+  const bookMeta = state.resourcesMeta[props.bookId];
+
+  // Pass that into the component
+  return {
+    book,
+    bookMeta
+  };
 }
 ```
 
