@@ -699,6 +699,12 @@ An example reset action is:
 }
 ```
 
+#### Custom Action Types
+
+Custom action types are also supported by this library. For an explanation,
+and an example, refer to
+[the API docs](https://github.com/jmeas/redux-simple-resource#actionreducers).
+
 #### Example Action Creator
 
 This is an example action creator to update a cat resource. It is an [action
