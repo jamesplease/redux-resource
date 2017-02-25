@@ -39,6 +39,7 @@ Use this project to reduce Redux boilerplate when CRUD'ing remote resources.
 ✓ Store ["metadata"](#resource-metadata) for resources and resource lists  
 ✓ Works well with most APIs  
 ✓ Unopinionated technology decisions  
+✓ Zero dependencies  
 
 #### Why this project?
 
@@ -80,8 +81,12 @@ redux-simple-resource.
 
 This is the default export of this library. Be sure to pass a singular version
 of your resource as `resourceName`. For instance, if this resource is for
-"books", then `resourceName` should be "book". The `resourceName` is used
-to generate action types. For more, read
+"books", then `resourceName` should be "book".
+
+For multi-word resource names, use camel case. For instance, "cat person" should
+be input as "catPerson".
+
+The `resourceName` is used to generate action types. For more, read
 [the guide on Resource Names](#resource-names).
 
 This method returns an object with the following properties:

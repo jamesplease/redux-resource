@@ -109,6 +109,13 @@ export const initialResourceMetaState = {
   deletingStatus: xhrStatuses.NULL
 };
 
+export function snakeCase(str) {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1_$2')
+    .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1_$2$3')
+    .toLowerCase();
+}
+
 export function generateDefaultInitialState() {
   return {
     // These are the actual resources that the server sends back.
