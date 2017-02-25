@@ -3,7 +3,7 @@ import {
   upsertManyResources
 } from '../utils';
 
-export function retrieveMany(idAttr, state) {
+export function readMany(idAttr, state) {
   return {
     ...state,
     resourceListMeta: {
@@ -13,7 +13,7 @@ export function retrieveMany(idAttr, state) {
   };
 }
 
-export function retrieveManyFail(idAttr, state) {
+export function readManyFail(idAttr, state) {
   return {
     ...state,
     resourceListMeta: {
@@ -23,7 +23,7 @@ export function retrieveManyFail(idAttr, state) {
   };
 }
 
-export function retrieveManySucceed(idAttribute, state, action) {
+export function readManySucceed(idAttribute, state, action) {
   const resources = action.resources;
   const ids = resources.map(r => r[idAttribute]);
   const replace = typeof action.replace !== 'undefined' ? action.replace : true;
@@ -57,7 +57,7 @@ export function retrieveManySucceed(idAttribute, state, action) {
   };
 }
 
-export function retrieveManyAbort(idAttr, state) {
+export function readManyAbort(idAttr, state) {
   return {
     ...state,
     resourceListMeta: {
@@ -67,7 +67,7 @@ export function retrieveManyAbort(idAttr, state) {
   };
 }
 
-export function retrieveManyReset(idAttr, state) {
+export function readManyReset(idAttr, state) {
   return {
     ...state,
     resourceListMeta: {
