@@ -1,3 +1,11 @@
+## [0.0.9](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.9) (2/25/17)
+
+**Breaking**
+
+- `lodash.snakecase` has been removed as a dependency. This reduces the minified
+  bundle size by 4kb, yet means that you can now only pass in camel case
+  resource names.
+
 ## [0.0.8](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.8) (2/25/17)
 
 - The npm package now only ships with the `dist` folder to keep the module small
