@@ -14,10 +14,11 @@ const supportAllActions = {
   del: true
 };
 
-// resourceName: a string representing the name of the resource. For instance,
-//  "books". This will be the name of the store slice in Redux.
-// options: a list of options to configure the resource. Refer to the docs
-//  for the complete list of options
+// Create a resource.
+//
+// `resourceName`: a singular name for your resource. For instance, "book".
+// `options`: configure this resource. Refer to the API documentation for
+//   all of the supported options.
 function createResource(resourceName, options = {}) {
   const {initialState, idAttribute, actionReducers, pluralForm, supportedActions} = options;
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
