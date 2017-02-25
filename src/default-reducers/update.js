@@ -6,7 +6,8 @@ export function update(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {updatingStatus: xhrStatuses.PENDING},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -19,7 +20,8 @@ export function updateFail(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {updatingStatus: xhrStatuses.FAILED},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -32,7 +34,8 @@ export function updateSucceed(idAttribute, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {updatingStatus: xhrStatuses.SUCCEEDED},
-    id: action[idAttribute]
+    id: action[idAttribute],
+    replace: false
   });
 
   const replace = typeof action.replace !== 'undefined' ? action.replace : true;
@@ -54,7 +57,8 @@ export function updateAbort(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {updatingStatus: xhrStatuses.ABORTED},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -67,7 +71,8 @@ export function updateReset(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {updatingStatus: xhrStatuses.NULL},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {

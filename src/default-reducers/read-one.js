@@ -6,7 +6,8 @@ export function retrieveOne(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {retrievingStatus: xhrStatuses.PENDING},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -19,7 +20,8 @@ export function retrieveOneFail(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {retrievingStatus: xhrStatuses.FAILED},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -32,7 +34,8 @@ export function retrieveOneSucceed(idAttribute, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {retrievingStatus: xhrStatuses.SUCCEEDED},
-    id: action[idAttribute]
+    id: action[idAttribute],
+    replace: false
   });
 
   const replace = typeof action.replace !== 'undefined' ? action.replace : true;
@@ -54,7 +57,8 @@ export function retrieveOneAbort(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {retrievingStatus: xhrStatuses.ABORTED},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {
@@ -67,7 +71,8 @@ export function retrieveOneReset(idAttr, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: {retrievingStatus: xhrStatuses.NULL},
-    id: action[idAttr]
+    id: action[idAttr],
+    replace: false
   });
 
   return {

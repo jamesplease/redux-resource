@@ -33,7 +33,8 @@ export function createSucceed(idAttribute, state, action) {
   const resourcesMeta = updateResourcesMeta({
     resourcesMeta: state.resourcesMeta,
     newMeta: initialResourceMetaState,
-    id: newResourceId
+    id: newResourceId,
+    replace: false
   });
 
   return {
