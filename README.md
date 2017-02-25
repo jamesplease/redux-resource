@@ -66,8 +66,9 @@ const store = createStore(reducers);
 
 ## API
 
-This library exports two objects: the default export, `createResource`, and a
-named export, `xhrStatuses`.
+The default export of this library is `createResource`. There are several
+named exports, which are utilities that may help you when working with
+redux-simple-resource.
 
 ### `createResource( resourceName, [options] )`
 
@@ -290,6 +291,64 @@ class MyComponent extends Component {
   }
 }
 ```
+
+### `updateResourcesMeta({ resourcesMeta, newMeta, id })`
+
+Use this method to update the metadata for a single resource. `resourcesMeta`
+is **all** of the existing meta, `newMeta` is the new meta to assign to
+the resource, and `id` is the ID of the resource that you are updating.
+
+This does not directly modify the `resourcesMeta` object; instead, it returns
+a shallow clone.
+
+| Name | Description |
+|------|-------------|
+|resourcesMeta | The current meta object for **all** resources |
+|newMeta | The new metadata |
+|id | The ID of the resource to update |
+
+### `updateManyResourcesMeta({ resourcesMeta, newMeta, ids, replace })`
+
+Similar to `updateResourcesMeta`, but this enables you to update a list of `ids`
+with the same `newMeta`. `resourcesMeta` is **all** of the existing meta.
+
+If `replace: true` is passed, then the existing meta is discarded, and what you
+pass in will be all of the meta in the store.
+
+Pass `replace: false` to keep all existing meta, and to merge in `newMeta` with
+any existing metadata for each resource.
+
+This method does not enable you to update multiple IDs with different metadata.
+
+| Name | Description |
+|------|-------------|
+|resourcesMeta | The current meta object for **all** resources |
+|newMeta | The new metadata |
+|ids | An array of IDs to update |
+|replace | Whether or not to replace the current list, or to merge in the new data |
+
+### `upsertResource({ resources, resource, id, idAttribute, replace })`
+
+Insert or update a resource to the list of resources.
+
+| Name | Description |
+|------|-------------|
+|resources | The current list of resources from the store |
+|resource | The new resource to add |
+|id | The id value of the new resource |
+|idAttribute | The id key of the new resource |
+|replace | Whether or not to replace the resource (if it already exists) |
+
+### `upsertManyResources({ resources, newResources, idAttribute, replace })`
+
+Insert or update a list of resources to the list of resources.
+
+| Name | Description |
+|------|-------------|
+|resources | The current list of resources from the store |
+|newResources | The new resources to add |
+|idAttribute | The id key of the new resources |
+|replace | Whether or not to replace the existing resource list, or to merge new with old |
 
 ## Guides
 
