@@ -129,7 +129,7 @@ creation of particular action types. The five CRUD actions are:
 - `delete`
 
 Pass `false` as the value for any of these to prevent those action types
-and reducer handlers from being created.
+and reducers from being created.
 
 Keep in mind that you may not choose to use this option, even if your resource
 only supports a subset of CRUD. You could simply choose to not use the other
@@ -137,7 +137,7 @@ generated action types, and there would be no issues with you doing that. It's
 up to you.
 
 ```js
-// Only "READ_MANY" action types and reducer handlers will be created for this
+// Only "READ_MANY" action types and reducers will be created for this
 // "cat" resource.
 const cat = createResource('cat', {
   supportedActions: {
@@ -196,40 +196,51 @@ Example usage is below:
 ```js
 const food = createResource('food', {
   initialState: {
-    // Add this property to the default initial state. Custom action type
-    // handlers in the reducer could modify this property
+    // Add this property to the default initial state. Custom action reducers
+    // could be used to modify this property. For more, see the `actionReducers`
+    // option.
     peopleAreHungry: true
   }
 });
 ```
 
-##### `customHandlers`
+##### `actionReducers`
 
 You will likely need to handle more action types than the built-in CRUD action
-types. You can add in custom "handlers" for action types with this option.
+types. You can add in custom reducers to handle individual action types with
+this option.
 
-Pass an Object, where the keys are the action type you wish to register a
-handler for, and the value is the function that gets called.
+You may be used to `createReducers()` in Redux, which associates a reducer
+with a particular "slice" of your store. This is similar, except each reducer
+is for a particular action type.
 
-The function will be called with two arguments: `state, action`, just like
-a reducer. You must return the new state.
+Pass in an Array of objects that define an `actionType` and `reducer`, where
+the `actionType` is the type to associate with `reducer`.
 
-If you use switch statements in your reducers, then this feature is like
+The `reducer` is like any other reducer in Redux: it receives two arguments,
+and should return the new state.
+
+```
+(state, action) => newState
+```
+
+If you use switch statements in your reducers, then this feature is just like
 defining a new `case` block in your switch statement.
 
 ```js
 const pet = createResource('pet', {
-  customHandlers: {
-    // This method will be called whenever an action with type `SELECT_PET` is
-    // dispatched on the store.
-    SELECT_PET(state, action) {
-      // Modify the state as necessary...
-      var newState = generateNewState(state);
+  actionReducers: [
+    {
+      type: 'SELECT_PET',
+      reducer(state, action) {
+        // Modify the state as necessary...
+        var newState = generateNewState(state);
 
-      // Then return it.
-      return newState;
+        // Then return it.
+        return newState;
+      }
     }
-  }
+  ]
 })
 ```
 
@@ -309,9 +320,9 @@ for each of the built-in CRUD operations:
 ```
 
 For now, redux-simple-resource only supports reads of multiple resources,
-although you can add [`customHandlers`](#customhandlers) to manage multiple
+although you can add [`actionReducers`](#actionreducers) to manage multiple
 writes. In the future, redux-simple-resource may come with built-in write-many
-action types and reducer handlers (like `DELETE_BOOKS`).
+action types and reducers (like `DELETE_BOOKS`).
 
 ### Resource Metadata
 

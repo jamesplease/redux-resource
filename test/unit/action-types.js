@@ -65,9 +65,14 @@ describe('actionTypes', function() {
   describe('custom', () => {
     it('should have the right actionTypes', () => {
       const actionTypes = simpleResource('hello', {
-        customHandlers: {
-          WHO_IS_HUNGRY() {}
-        }
+        actionReducers: [
+          {
+            actionType: 'WHO_IS_HUNGRY',
+            reducer(state) {
+              return state;
+            }
+          }
+        ]
       }).actionTypes;
       expect(actionTypes.WHO_IS_HUNGRY).to.equal('WHO_IS_HUNGRY');
     });
