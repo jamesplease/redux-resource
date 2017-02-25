@@ -1,4 +1,8 @@
-## [0.0.7](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.7) (2/25/17)
+## [0.0.8](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.8) (2/25/17)
+
+- The npm package now only ships with the `dist` folder to keep the module small
+
+## [0.0.7](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.7) (2/25/17)
 
 **Breaking**
 
@@ -21,7 +25,7 @@
   `resourcesMeta` and `resourcesListMeta`.
 - `replace: true` now actually replaces the list in `updateManyResources()`.
 
-## [0.0.6](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.6) (2/25/17)
+## [0.0.6](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.6) (2/25/17)
 
 **Breaking**
 
@@ -49,26 +53,26 @@
 - The action types that are included in the `actionReducers` options are now
   available on the `actionTypes` property of the resource
 
-## [0.0.5](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.5) (2/23/17)
+## [0.0.5](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.5) (2/23/17)
 
 **Breaking**
 
 - Action type names are now shorter
 
-## [0.0.4](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.4) (2/23/17)
+## [0.0.4](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.4) (2/23/17)
 
 - Fix a bug where `initialState` was returning undefined in reducers
 
-## [0.0.3](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.3) (2/23/17)
+## [0.0.3](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.3) (2/23/17)
 
 - `xhrStatuses` is now a named export
 
-## [0.0.2](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.2) (2/23/17)
+## [0.0.2](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.2) (2/23/17)
 
 - `xhrStatuses` added to main exported Object
 - Most reducers added
 - Action types generated
 
-## [0.0.1](https://github.com/jmeas/redux-simple-resource/releases/tag/v0.0.1)
+## [0.0.1](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.1)
 
 - The first release
