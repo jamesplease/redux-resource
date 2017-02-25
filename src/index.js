@@ -16,10 +16,10 @@ const supportAllActions = {
 // options: a list of options to configure the resource. Refer to the docs
 //  for the complete list of options
 function createResource(resourceName, options = {}) {
-  const {initialState, idAttribute, customHandlers, pluralForm, supportedActions} = options;
+  const {initialState, idAttribute, actionReducers, pluralForm, supportedActions} = options;
   const initial = Object.assign({}, generateDefaultInitialState(), initialState);
   const idAttr = idAttribute || 'id';
-  const handlers = customHandlers || {};
+  const reducers = actionReducers || [];
   const snakeCaseName = snakeCase(resourceName);
   const pluralName = pluralForm ? pluralForm : `${resourceName}s`;
   const snakeCasePluralName = snakeCase(pluralName);
@@ -28,7 +28,12 @@ function createResource(resourceName, options = {}) {
     ...supportedActions
   };
 
-  const types = generateActionTypes(snakeCaseName, snakeCasePluralName, supportedCrudActions, Object.keys(handlers));
+  const mappedReducers = reducers.reduce((memo, actionReducer) => {
+    memo[actionReducer.actionType] = actionReducer.reducer;
+    return memo;
+  }, {});
+
+  const types = generateActionTypes(snakeCaseName, snakeCasePluralName, supportedCrudActions, Object.keys(mappedReducers));
   return {
     actionTypes: types,
     initialState: initial,
@@ -36,7 +41,7 @@ function createResource(resourceName, options = {}) {
       pluralForm: pluralName,
       supportedActions: supportedCrudActions,
       initialState: initial,
-      customHandlers: handlers,
+      actionReducers: mappedReducers,
       idAttr, types, resourceName
     }),
     pluralForm: pluralName

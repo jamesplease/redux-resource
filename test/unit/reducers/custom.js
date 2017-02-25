@@ -3,14 +3,17 @@ import simpleResource, {xhrStatuses} from '../../../src';
 describe('reducers: custom', function() {
   it('should handle `CUSTOM_TYPE`', () => {
     const result = simpleResource('hello', {
-      customHandlers: {
-        CUSTOM_TYPE(state, action) {
-          return {
-            ...state,
-            pizza: action.pizza
-          };
+      actionReducers: [
+        {
+          actionType: 'CUSTOM_TYPE',
+          reducer(state, action) {
+            return {
+              ...state,
+              pizza: action.pizza
+            };
+          }
         }
-      }
+      ]
     });
 
     const reduced = result.reducer(result.initialState, {
