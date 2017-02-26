@@ -10,7 +10,8 @@
     "watch": "gulp watch",
     "build": "gulp build",
     "coverage": "gulp coverage",
-    "prepublish": "gulp build"
+    "prepublish": "gulp build",
+    "www": "jekyll serve --source docs"
   },
   "repository": {
     "type": "git",
