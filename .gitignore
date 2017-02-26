@@ -31,3 +31,4 @@ tmp
 .lock-wscript
 
 dist
+_site
