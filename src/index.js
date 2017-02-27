@@ -41,7 +41,7 @@ function createResource(resourceName, options = {}) {
     actionTypes: types,
     initialState: initial,
     reducer: generateReducer({
-      pluralForm: pluralName,
+      pluralForm: snakeCasePluralName,
       supportedActions: supportedCrudActions,
       initialState: initial,
       actionReducers: mappedReducers,

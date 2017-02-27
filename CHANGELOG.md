@@ -1,3 +1,10 @@
+## [0.0.10](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.10) (2/27/17)
+
+**Bug fixes**
+
+- Multi-word resource names were not generating the correct reducer handlers for
+  read many. This issue has been resolved.
+
 ## [0.0.9](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.9) (2/25/17)
 
 **Breaking**
