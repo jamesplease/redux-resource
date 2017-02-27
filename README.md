@@ -243,7 +243,7 @@ defining a new `case` block in your switch statement.
 const pet = createResource('pet', {
   actionReducers: [
     {
-      type: 'SELECT_PET',
+      actionType: 'SELECT_PET',
       reducer(state, action) {
         // Modify the state as necessary...
         var newState = generateNewState(state);
