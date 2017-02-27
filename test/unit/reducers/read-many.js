@@ -34,7 +34,7 @@ describe('reducers: readMany', function() {
   });
 
   it('should handle `READ_MANY_HELLOS_SUCCEED`', () => {
-    const result = simpleResource('hello', {
+    const result = simpleResource('catPerson', {
       initialState: {
         resources: [
           {id: 100, sandwiches: 'yummm'},
@@ -48,7 +48,7 @@ describe('reducers: readMany', function() {
     });
 
     const reduced = result.reducer(result.initialState, {
-      type: 'READ_MANY_HELLOS_SUCCEED',
+      type: 'READ_MANY_CAT_PERSONS_SUCCEED',
       resources: [
         {id: 2, hungry: true, pasta: 'yespls'},
         {id: 100, hungry: false},
