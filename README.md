@@ -303,7 +303,7 @@ class MyComponent extends Component {
 }
 ```
 
-### `updateResourceMeta({ resourceMeta, newMeta, id })`
+### `updateResourceMeta({ resourceMeta, newMeta, id, replace })`
 
 Use this method to update the metadata for a single resource. `resourceMeta`
 is **all** of the existing meta, `newMeta` is the new meta to assign to
@@ -319,7 +319,7 @@ a shallow clone.
 |id | Yes | The ID of the resource to update |
 |replace | No | Whether or not to replace any existing meta for this resource. Defaults to `false` |
 
-### `updateManyResourceMetas({ resourceMetas, newMeta, ids, replace })`
+### `updateManyResourceMetas({ resourceMeta, newMeta, ids, replace })`
 
 Similar to `updateResourceMeta`, but this enables you to update a list of `ids`
 with the same `newMeta`. `resourceMeta` is **all** of the existing meta.
@@ -328,13 +328,13 @@ If `replace: true` is passed, then the existing meta is discarded, and what you
 pass in will be all of the meta in the store.
 
 Pass `replace: false` to keep all existing meta, and to merge in `newMeta` with
-any existing metadata for each resource.
+any existing metadata for each resource. (default behavior)
 
 This method does not enable you to update multiple IDs with different metadata.
 
 | Name | Required | Description |
 |------|-------------|----------|
-|resourceMetas | Yes | The current meta object for **all** resources. |
+|resourceMeta | Yes | The current meta object for **all** resources. |
 |newMeta | Yes | The new metadata |
 |ids | Yes | An array of IDs to update |
 |replace | No | Whether or not to replace the current list, or to merge in the new data. Defaults to `false` |
