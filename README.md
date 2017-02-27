@@ -14,7 +14,7 @@ A Redux framework for interacting with remote resources.
 - [API](#api)
   - [createResource()](#createresource-resourcename-options-)
   - [xhrStatuses](#xhrstatuses)
-  - [updateResourceMeta()](#updateresourcemeta-resourcemeta-newmeta-id-)
+  - [updateResourceMeta()](#updateresourcemeta-resourcemeta-newmeta-id-replace-)
   - [updateManyResourceMetas()](#updatemanyresourcemetas-resourcemeta-newmeta-ids-replace-)
   - [upsertResource()](#upsertresource-resources-resource-id-idattribute-replace-)
   - [upsertManyResources()](#upsertmanyresources-resources-newresources-idattribute-replace-)
