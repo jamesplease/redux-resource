@@ -25,12 +25,12 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updatingStatus: xhrStatuses.PENDING
+          updateXhrStatus: xhrStatuses.PENDING
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -59,12 +59,12 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updatingStatus: xhrStatuses.FAILED
+          updateXhrStatus: xhrStatuses.FAILED
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -93,12 +93,12 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updatingStatus: xhrStatuses.ABORTED
+          updateXhrStatus: xhrStatuses.ABORTED
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -127,12 +127,12 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updatingStatus: xhrStatuses.NULL
+          updateXhrStatus: xhrStatuses.NULL
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -165,12 +165,12 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updatingStatus: xhrStatuses.SUCCEEDED
+          updateXhrStatus: xhrStatuses.SUCCEEDED
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -204,12 +204,12 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updatingStatus: xhrStatuses.SUCCEEDED
+          updateXhrStatus: xhrStatuses.SUCCEEDED
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -243,12 +243,12 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updatingStatus: xhrStatuses.SUCCEEDED
+          updateXhrStatus: xhrStatuses.SUCCEEDED
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });

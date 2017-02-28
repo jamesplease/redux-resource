@@ -5,7 +5,7 @@ import {
 export function read(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {retrievingStatus: xhrStatuses.PENDING},
+    newMeta: {readXhrStatus: xhrStatuses.PENDING},
     id: action[idAttr],
     replace: false
   });
@@ -19,7 +19,7 @@ export function read(idAttr, state, action) {
 export function readFail(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {retrievingStatus: xhrStatuses.FAILED},
+    newMeta: {readXhrStatus: xhrStatuses.FAILED},
     id: action[idAttr],
     replace: false
   });
@@ -33,7 +33,7 @@ export function readFail(idAttr, state, action) {
 export function readSucceed(idAttribute, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {retrievingStatus: xhrStatuses.SUCCEEDED},
+    newMeta: {readXhrStatus: xhrStatuses.SUCCEEDED},
     id: action[idAttribute],
     replace: false
   });
@@ -56,7 +56,7 @@ export function readSucceed(idAttribute, state, action) {
 export function readAbort(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {retrievingStatus: xhrStatuses.ABORTED},
+    newMeta: {readXhrStatus: xhrStatuses.ABORTED},
     id: action[idAttr],
     replace: false
   });
@@ -70,7 +70,7 @@ export function readAbort(idAttr, state, action) {
 export function readReset(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {retrievingStatus: xhrStatuses.NULL},
+    newMeta: {readXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
   });

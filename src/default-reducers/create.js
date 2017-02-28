@@ -7,7 +7,7 @@ export function create(idAttr, state) {
     ...state,
     resourceListMeta: {
       ...state.resourceListMeta,
-      creatingStatus: xhrStatuses.PENDING
+      createXhrStatus: xhrStatuses.PENDING
     }
   };
 }
@@ -17,7 +17,7 @@ export function createFail(idAttr, state) {
     ...state,
     resourceListMeta: {
       ...state.resourceListMeta,
-      creatingStatus: xhrStatuses.FAILED
+      createXhrStatus: xhrStatuses.FAILED
     }
   };
 }
@@ -43,7 +43,7 @@ export function createSucceed(idAttribute, state, action) {
     resourceMeta,
     resourceListMeta: {
       ...state.resourceListMeta,
-      creatingStatus: xhrStatuses.SUCCEEDED
+      createXhrStatus: xhrStatuses.SUCCEEDED
     }
   };
 }
@@ -53,7 +53,7 @@ export function createAbort(idAttr, state) {
     ...state,
     resourceListMeta: {
       ...state.resourceListMeta,
-      creatingStatus: xhrStatuses.ABORTED
+      createXhrStatus: xhrStatuses.ABORTED
     }
   };
 }
@@ -63,7 +63,7 @@ export function createReset(idAttr, state) {
     ...state,
     resourceListMeta: {
       ...state.resourceListMeta,
-      creatingStatus: xhrStatuses.NULL
+      createXhrStatus: xhrStatuses.NULL
     }
   };
 }
