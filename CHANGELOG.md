@@ -1,3 +1,11 @@
+## [1.0.0-alpha1](https://github.com/jmeas/redux-simple-resource/releases/tag/1.0.0-alpha1) (2/27/17)
+
+**Breaking changes**
+
+- The store values representing the XHR Statuses for the different actions
+  has been renamed. For instance, `retrievingStatus` is now `readXhrStatus`,
+  `updatingStatus` is now `updateXhrStatus`, and so on.
+
 ## [0.0.10](https://github.com/jmeas/redux-simple-resource/releases/tag/0.0.10) (2/27/17)
 
 **Bug fixes**
