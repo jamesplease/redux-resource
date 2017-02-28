@@ -25,12 +25,12 @@ describe('reducers: delete', function() {
       ],
       resourceMeta: {
         3: {
-          deletingStatus: xhrStatuses.PENDING
+          deleteXhrStatus: xhrStatuses.PENDING
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -59,12 +59,12 @@ describe('reducers: delete', function() {
       ],
       resourceMeta: {
         3: {
-          deletingStatus: xhrStatuses.FAILED
+          deleteXhrStatus: xhrStatuses.FAILED
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -79,7 +79,7 @@ describe('reducers: delete', function() {
         ],
         resourceMeta: {
           3: {
-            deletingStatus: 'sandwiches'
+            deleteXhrStatus: 'sandwiches'
           }
         }
       }
@@ -98,12 +98,12 @@ describe('reducers: delete', function() {
       ],
       resourceMeta: {
         3: {
-          deletingStatus: xhrStatuses.ABORTED
+          deleteXhrStatus: xhrStatuses.ABORTED
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -118,7 +118,7 @@ describe('reducers: delete', function() {
         ],
         resourceMeta: {
           3: {
-            deletingStatus: 'sandwiches'
+            deleteXhrStatus: 'sandwiches'
           }
         }
       }
@@ -137,12 +137,12 @@ describe('reducers: delete', function() {
       ],
       resourceMeta: {
         3: {
-          deletingStatus: xhrStatuses.NULL
+          deleteXhrStatus: xhrStatuses.NULL
         }
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -160,7 +160,7 @@ describe('reducers: delete', function() {
             name: 'what'
           },
           3: {
-            deletingStatus: 'sandwiches'
+            deleteXhrStatus: 'sandwiches'
           }
         }
       }
@@ -183,8 +183,8 @@ describe('reducers: delete', function() {
         3: null
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -203,7 +203,7 @@ describe('reducers: delete', function() {
             name: 'what'
           },
           3: {
-            deletingStatus: 'sandwiches'
+            deleteXhrStatus: 'sandwiches'
           }
         }
       }
@@ -226,8 +226,8 @@ describe('reducers: delete', function() {
         3: null
       },
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });

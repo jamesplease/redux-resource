@@ -100,13 +100,13 @@ export function upsertManyResources({resources, newResources, idAttribute, repla
 
 export const initialResourceMetaState = {
   // The status of any existing request to update this resource
-  updatingStatus: xhrStatuses.NULL,
+  updateXhrStatus: xhrStatuses.NULL,
   // The status of any existing request to fetch this resource
-  retrievingStatus: xhrStatuses.NULL,
+  readXhrStatus: xhrStatuses.NULL,
   // The status of an any existing request to delete this resource. Note that
   // this will never be "SUCCEEDED," as a successful delete removes the
   // resource from the store.
-  deletingStatus: xhrStatuses.NULL
+  deleteXhrStatus: xhrStatuses.NULL
 };
 
 export function snakeCase(str) {
@@ -127,8 +127,8 @@ export function generateDefaultInitialState() {
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
     resourceListMeta: {
-      retrievingStatus: xhrStatuses.NULL,
-      creatingStatus: xhrStatuses.NULL
+      readXhrStatus: xhrStatuses.NULL,
+      createXhrStatus: xhrStatuses.NULL
     }
   };
 }

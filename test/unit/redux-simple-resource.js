@@ -18,8 +18,8 @@ describe('simpleResource', function() {
       resources: [],
       resourceMeta: {},
       resourceListMeta: {
-        retrievingStatus: xhrStatuses.NULL,
-        creatingStatus: xhrStatuses.NULL
+        readXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: xhrStatuses.NULL
       }
     });
   });
@@ -37,8 +37,8 @@ describe('simpleResource', function() {
         resources: [],
         resourceMeta: {},
         resourceListMeta: {
-          retrievingStatus: xhrStatuses.NULL,
-          creatingStatus: xhrStatuses.NULL
+          readXhrStatus: xhrStatuses.NULL,
+          createXhrStatus: xhrStatuses.NULL
         },
         hello: 'oink',
         pizza: true
