@@ -766,7 +766,7 @@ function updateCat(id, data) {
         } else {
           dispatch({
             type: cat.actionTypes.UPDATE_CAT_SUCCEED,
-            category: body,
+            resource: body,
             id
           });
         }
