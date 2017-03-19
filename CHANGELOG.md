@@ -1,3 +1,9 @@
+## [1.0.0](https://github.com/jmeas/redux-simple-resource/releases/tag/1.0.0) (3/19/17)
+
+This shares the same release notes as `1.0.0-alpha1`, and is used to
+formally suggest that we're done with pre-release API iteration and
+ready to ship.
+
 ## [1.0.0-alpha1](https://github.com/jmeas/redux-simple-resource/releases/tag/1.0.0-alpha1) (2/27/17)
 
 **Breaking changes**
