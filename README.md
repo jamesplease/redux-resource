@@ -51,7 +51,7 @@ difference between this library and other options is that this library
 
 Install this library through [npm ⇗](https://www.npmjs.com).
 
-`npm install redux-simple-resource@1.0.0-alpha1`
+`npm install redux-simple-resource`
 
 Then, import it and create a resource.
 
