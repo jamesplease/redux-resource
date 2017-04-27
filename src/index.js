@@ -19,8 +19,16 @@ const supportAllActions = {
 // `options`: configure this resource. Refer to the API documentation for
 //   all of the supported options.
 function createResource(resourceName, options = {}) {
-  const {initialState, idAttribute, actionReducers, pluralForm, supportedActions} = options;
-  const initial = Object.assign({}, generateDefaultInitialState(), initialState);
+  const {initialState = {}, idAttribute, actionReducers, pluralForm, supportedActions} = options;
+  const defaultInitialState = generateDefaultInitialState();
+  const initial = {
+    ...defaultInitialState,
+    ...initialState,
+    resourceListMeta: {
+      ...defaultInitialState.resourceListMeta,
+      ...initialState.resourceListMeta
+    }
+  };
   const idAttr = idAttribute || 'id';
   const reducers = actionReducers || [];
   const snakeCaseName = snakeCase(resourceName);
