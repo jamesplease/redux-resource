@@ -58,7 +58,11 @@ describe('simpleResource', function() {
       expect(result.initialState).to.deep.equal({
         resources: [{id: 1}],
         resourceMeta: {1: true},
-        resourceListMeta: {hungry: 'always'},
+        resourceListMeta: {
+          hungry: 'always',
+          readXhrStatus: xhrStatuses.NULL,
+          createXhrStatus: xhrStatuses.NULL
+        },
         pizza: true
       });
     });
