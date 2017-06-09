@@ -1,39 +1,39 @@
 import {
-  updateResourceMeta, upsertResource, xhrStatuses
+  updateResourceMeta, upsertResource, requestStatuses
 } from '../utils';
 
 export function read(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {readXhrStatus: xhrStatuses.PENDING},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {readStatus: requestStatuses.PENDING},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function readFail(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {readXhrStatus: xhrStatuses.FAILED},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {readStatus: requestStatuses.FAILED},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function readSucceed(idAttribute, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {readXhrStatus: xhrStatuses.SUCCEEDED},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {readStatus: requestStatuses.SUCCEEDED},
     id: action[idAttribute],
     replace: false
   });
@@ -48,35 +48,35 @@ export function readSucceed(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
     resources
   };
 }
 
 export function readAbort(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {readXhrStatus: xhrStatuses.ABORTED},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {readStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function readReset(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {readXhrStatus: xhrStatuses.NULL},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {readStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }

@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../../src';
+import simpleResource, {requestStatuses} from '../../../src';
 
 describe('reducers: custom', function() {
   it('should handle `CUSTOM_TYPE`', () => {
@@ -23,11 +23,11 @@ describe('reducers: custom', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.NULL
+      meta: {},
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
       },
       pizza: 'delicious'
     });

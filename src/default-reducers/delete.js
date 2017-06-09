@@ -1,30 +1,30 @@
-import {updateResourceMeta, xhrStatuses} from '../utils';
+import {updateResourceMeta, requestStatuses} from '../utils';
 
 export function del(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {deleteXhrStatus: xhrStatuses.PENDING},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {deleteStatus: requestStatuses.PENDING},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function delFail(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {deleteXhrStatus: xhrStatuses.FAILED},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {deleteStatus: requestStatuses.FAILED},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
@@ -32,9 +32,9 @@ export function delSucceed(idAttr, state, action) {
   const id = action[idAttr];
 
   // Remove this resource from the resources meta.
-  const resourceMeta = {
+  const meta = {
     // Shallow clone the meta
-    ...state.resourceMeta,
+    ...state.meta,
     [id]: null
   };
 
@@ -43,35 +43,35 @@ export function delSucceed(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
     resources
   };
 }
 
 export function delAbort(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {deleteXhrStatus: xhrStatuses.ABORTED},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {deleteStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function delReset(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
-    newMeta: {deleteXhrStatus: xhrStatuses.NULL},
+  const meta = updateResourceMeta({
+    meta: state.meta,
+    newMeta: {deleteStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }

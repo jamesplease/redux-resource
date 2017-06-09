@@ -1,14 +1,14 @@
 import {
-  updateManyResourceMetas, xhrStatuses, initialResourceMetaState,
+  updateManyResourceMetas, requestStatuses, initialResourceMetaState,
   upsertManyResources
 } from '../utils';
 
 export function readMany(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      readXhrStatus: xhrStatuses.PENDING
+    listMeta: {
+      ...state.listMeta,
+      readStatus: requestStatuses.PENDING
     }
   };
 }
@@ -16,9 +16,9 @@ export function readMany(idAttr, state) {
 export function readManyFail(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      readXhrStatus: xhrStatuses.FAILED
+    listMeta: {
+      ...state.listMeta,
+      readStatus: requestStatuses.FAILED
     }
   };
 }
@@ -45,14 +45,14 @@ export function readManySucceed(idAttribute, state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    resourceMeta: updateManyResourceMetas({
-      resourceMeta: state.resourceMeta,
+    meta: updateManyResourceMetas({
+      meta: state.meta,
       newMeta: initialResourceMetaState,
       ids, replace
     }),
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      readXhrStatus: xhrStatuses.SUCCEEDED
+    listMeta: {
+      ...state.listMeta,
+      readStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -60,9 +60,9 @@ export function readManySucceed(idAttribute, state, action) {
 export function readManyAbort(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      readXhrStatus: xhrStatuses.ABORTED
+    listMeta: {
+      ...state.listMeta,
+      readStatus: requestStatuses.NULL
     }
   };
 }
@@ -70,9 +70,9 @@ export function readManyAbort(idAttr, state) {
 export function readManyReset(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      readXhrStatus: xhrStatuses.NULL
+    listMeta: {
+      ...state.listMeta,
+      readStatus: requestStatuses.NULL
     }
   };
 }

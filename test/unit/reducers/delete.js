@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../../src';
+import simpleResource, {requestStatuses} from '../../../src';
 
 describe('reducers: delete', function() {
   it('should handle `DELETE_HELLO`', () => {
@@ -23,15 +23,15 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.PENDING
+          deleteStatus: requestStatuses.PENDING
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -58,15 +58,15 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.FAILED
+          deleteStatus: requestStatuses.FAILED
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -79,9 +79,9 @@ describe('reducers: delete', function() {
           {id: 3},
           {id: 4},
         ],
-        resourceMeta: {
+        meta: {
           3: {
-            deleteXhrStatus: 'sandwiches'
+            deleteStatus: 'sandwiches'
           }
         }
       }
@@ -98,15 +98,15 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.ABORTED
+          deleteStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -119,9 +119,9 @@ describe('reducers: delete', function() {
           {id: 3},
           {id: 4},
         ],
-        resourceMeta: {
+        meta: {
           3: {
-            deleteXhrStatus: 'sandwiches'
+            deleteStatus: 'sandwiches'
           }
         }
       }
@@ -138,15 +138,15 @@ describe('reducers: delete', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.NULL
+          deleteStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -159,12 +159,12 @@ describe('reducers: delete', function() {
           {id: 3},
           {id: 4},
         ],
-        resourceMeta: {
+        meta: {
           2: {
             name: 'what'
           },
           3: {
-            deleteXhrStatus: 'sandwiches'
+            deleteStatus: 'sandwiches'
           }
         }
       }
@@ -180,16 +180,16 @@ describe('reducers: delete', function() {
         {id: 1},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         2: {
           name: 'what'
         },
         3: null
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -203,12 +203,12 @@ describe('reducers: delete', function() {
           {movieId: 3},
           {movieId: 4},
         ],
-        resourceMeta: {
+        meta: {
           2: {
             name: 'what'
           },
           3: {
-            deleteXhrStatus: 'sandwiches'
+            deleteStatus: 'sandwiches'
           }
         }
       }
@@ -224,16 +224,16 @@ describe('reducers: delete', function() {
         {movieId: 1},
         {movieId: 4},
       ],
-      resourceMeta: {
+      meta: {
         2: {
           name: 'what'
         },
         3: null
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });

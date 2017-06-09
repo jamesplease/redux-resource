@@ -1,19 +1,18 @@
 // These are statuses for in-flight requests. If a request has no status
 // associated with it, then it would have a status of `NULL`.
-export const xhrStatuses = {
+export const requestStatuses = {
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
-  ABORTED: 'ABORTED',
   NULL: 'NULL'
 };
 
 // Updates a single resource's metadata
-export function updateResourceMeta({resourceMeta, newMeta, id, replace}) {
-  const existingMeta = replace ? {} : resourceMeta[id];
+export function updateResourceMeta({meta, newMeta, id, replace}) {
+  const existingMeta = replace ? {} : meta[id];
   return {
-    // Shallow clone the current resourceMeta
-    ...resourceMeta,
+    // Shallow clone the current meta
+    ...meta,
     // Update the key that is the "id" of the resource
     [id]: {
       // Shallow clone the existing metadata for this resource
@@ -26,8 +25,8 @@ export function updateResourceMeta({resourceMeta, newMeta, id, replace}) {
 
 // Similar to `updateResourceMeta`, but it accepts an array of IDs instead of
 // a single ID. Used for bulk updating meta.
-export function updateManyResourceMetas({resourceMeta, newMeta, ids, replace}) {
-  const next = replace ? {} : {...resourceMeta};
+export function updateManyResourceMetas({meta, newMeta, ids, replace}) {
+  const next = replace ? {} : {...meta};
 
   ids.forEach((id) => {
     const current = next[id];
@@ -100,13 +99,13 @@ export function upsertManyResources({resources, newResources, idAttribute, repla
 
 export const initialResourceMetaState = {
   // The status of any existing request to update this resource
-  updateXhrStatus: xhrStatuses.NULL,
+  updateStatus: requestStatuses.NULL,
   // The status of any existing request to fetch this resource
-  readXhrStatus: xhrStatuses.NULL,
+  readStatus: requestStatuses.NULL,
   // The status of an any existing request to delete this resource. Note that
   // this will never be "SUCCEEDED," as a successful delete removes the
   // resource from the store.
-  deleteXhrStatus: xhrStatuses.NULL
+  deleteStatus: requestStatuses.NULL
 };
 
 export function snakeCase(str) {
@@ -122,14 +121,14 @@ export function generateDefaultInitialState() {
     resources: [],
     // This is metadata about _specific_ resources. For instance, if a DELETE
     // is in flight for a book with ID 24, then you could find that here.
-    resourceMeta: {},
+    meta: {},
     // This is metadata about the entire collection of resources. For instance,
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
-    resourceListMeta: {
-      readXhrStatus: xhrStatuses.NULL,
-      createXhrStatus: xhrStatuses.NULL,
-      createManyXhrStatus: xhrStatuses.NULL
+    listMeta: {
+      readStatus: requestStatuses.NULL,
+      createStatus: requestStatuses.NULL,
+      createManyStatus: requestStatuses.NULL
     }
   };
 }

@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../../src';
+import simpleResource, {requestStatuses} from '../../../src';
 
 describe('reducers: deleteMany', function() {
   it('should handle `DELETE_MANY_HELLOS`', () => {
@@ -23,18 +23,18 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.PENDING
+          deleteStatus: requestStatuses.PENDING
         },
         4: {
-          deleteXhrStatus: xhrStatuses.PENDING
+          deleteStatus: requestStatuses.PENDING
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -61,18 +61,18 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.FAILED
+          deleteStatus: requestStatuses.FAILED
         },
         4: {
-          deleteXhrStatus: xhrStatuses.FAILED
+          deleteStatus: requestStatuses.FAILED
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -99,18 +99,18 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.ABORTED
+          deleteStatus: requestStatuses.NULL
         },
         4: {
-          deleteXhrStatus: xhrStatuses.ABORTED
+          deleteStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -137,18 +137,18 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          deleteXhrStatus: xhrStatuses.NULL
+          deleteStatus: requestStatuses.NULL
         },
         4: {
-          deleteXhrStatus: xhrStatuses.NULL
+          deleteStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -161,12 +161,12 @@ describe('reducers: deleteMany', function() {
           {id: 3},
           {id: 4},
         ],
-        resourceMeta: {
+        meta: {
           1: {
             name: 'what'
           },
           3: {
-            deleteXhrStatus: 'sandwiches'
+            deleteStatus: 'sandwiches'
           }
         }
       }
@@ -181,17 +181,17 @@ describe('reducers: deleteMany', function() {
       resources: [
         {id: 1},
       ],
-      resourceMeta: {
+      meta: {
         1: {
           name: 'what'
         },
         3: null,
         4: null
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });

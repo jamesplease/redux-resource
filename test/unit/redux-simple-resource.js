@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../src';
+import simpleResource, {requestStatuses} from '../../src';
 
 describe('simpleResource', function() {
   it('should be a function', () => {
@@ -16,11 +16,11 @@ describe('simpleResource', function() {
     const result = simpleResource('hello');
     expect(result.initialState).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      meta: {},
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -36,11 +36,11 @@ describe('simpleResource', function() {
 
       expect(result.initialState).to.deep.equal({
         resources: [],
-        resourceMeta: {},
-        resourceListMeta: {
-          readXhrStatus: xhrStatuses.NULL,
-          createManyXhrStatus: xhrStatuses.NULL,
-          createXhrStatus: xhrStatuses.NULL
+        meta: {},
+        listMeta: {
+          readStatus: requestStatuses.NULL,
+          createManyStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
         },
         hello: 'oink',
         pizza: true
@@ -51,20 +51,20 @@ describe('simpleResource', function() {
       const result = simpleResource('hello', {
         initialState: {
           resources: [{id: 1}],
-          resourceMeta: {1: true},
-          resourceListMeta: {hungry: 'always'},
+          meta: {1: true},
+          listMeta: {hungry: 'always'},
           pizza: true
         }
       });
 
       expect(result.initialState).to.deep.equal({
         resources: [{id: 1}],
-        resourceMeta: {1: true},
-        resourceListMeta: {
+        meta: {1: true},
+        listMeta: {
           hungry: 'always',
-          readXhrStatus: xhrStatuses.NULL,
-          createManyXhrStatus: xhrStatuses.NULL,
-          createXhrStatus: xhrStatuses.NULL
+          readStatus: requestStatuses.NULL,
+          createManyStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
         },
         pizza: true
       });

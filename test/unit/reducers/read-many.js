@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../../src';
+import simpleResource, {requestStatuses} from '../../../src';
 
 describe('reducers: readMany', function() {
   it('should handle `READ_MANY_HELLOS`', () => {
@@ -9,11 +9,11 @@ describe('reducers: readMany', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.PENDING
+      meta: {},
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.PENDING
       }
     });
   });
@@ -26,11 +26,11 @@ describe('reducers: readMany', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.FAILED
+      meta: {},
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.FAILED
       }
     });
   });
@@ -43,7 +43,7 @@ describe('reducers: readMany', function() {
           {id: 23},
           {id: 55},
         ],
-        resourceMeta: {
+        meta: {
           23: 'sandwiches'
         }
       }
@@ -62,22 +62,22 @@ describe('reducers: readMany', function() {
         {id: 2, hungry: true, pasta: 'yespls'},
         {id: 100, hungry: false},
       ],
-      resourceMeta: {
+      meta: {
         2: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL,
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
         },
         100: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.SUCCEEDED
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.SUCCEEDED
       }
     });
   });
@@ -90,7 +90,7 @@ describe('reducers: readMany', function() {
           {id: 23},
           {id: 55},
         ],
-        resourceMeta: {
+        meta: {
           23: 'sandwiches'
         }
       }
@@ -112,23 +112,23 @@ describe('reducers: readMany', function() {
         {id: 55},
         {id: 2, hungry: true, pasta: 'yespls'},
       ],
-      resourceMeta: {
+      meta: {
         2: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL,
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
         },
         23: 'sandwiches',
         100: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.SUCCEEDED
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.SUCCEEDED
       }
     });
   });
@@ -143,7 +143,7 @@ describe('reducers: readMany', function() {
         {namePls: 2, hungry: true, pasta: 'yespls'},
         {namePls: 100, hungry: false},
       ],
-      resourceMeta: {
+      meta: {
         23: 'sandwiches'
       }
     });
@@ -153,22 +153,22 @@ describe('reducers: readMany', function() {
         {namePls: 2, hungry: true, pasta: 'yespls'},
         {namePls: 100, hungry: false},
       ],
-      resourceMeta: {
+      meta: {
         2: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL,
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
         },
         100: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.SUCCEEDED
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.SUCCEEDED
       }
     });
   });
@@ -181,11 +181,11 @@ describe('reducers: readMany', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.ABORTED
+      meta: {},
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
       }
     });
   });
@@ -193,29 +193,29 @@ describe('reducers: readMany', function() {
   it('should handle `READ_MANY_HELLOS_RESET`', () => {
     const result = simpleResource('hello');
 
-    // We set some value on `readXhrStatus` to check that this nulls it
-    const resourceListMetaState = {
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: 'sandwiches'
+    // We set some value on `readStatus` to check that this nulls it
+    const listMetaState = {
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: 'sandwiches'
       }
     };
 
     const reduced = result.reducer({
       ...result.initialState,
-      ...resourceListMetaState
+      ...listMetaState
     }, {
       type: 'READ_MANY_HELLOS_RESET'
     });
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.NULL
+      meta: {},
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
       }
     });
   });

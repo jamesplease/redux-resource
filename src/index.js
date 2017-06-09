@@ -1,7 +1,7 @@
 import generateReducer from './generate-reducer';
 import generateActionTypes from './generate-action-types';
 import {
-  generateDefaultInitialState, snakeCase, xhrStatuses, updateResourceMeta,
+  generateDefaultInitialState, snakeCase, requestStatuses, updateResourceMeta,
   updateManyResourceMetas, upsertResource, upsertManyResources
 } from './utils';
 
@@ -27,9 +27,9 @@ function createResource(resourceName, options = {}) {
   const initial = {
     ...defaultInitialState,
     ...initialState,
-    resourceListMeta: {
-      ...defaultInitialState.resourceListMeta,
-      ...initialState.resourceListMeta
+    listMeta: {
+      ...defaultInitialState.listMeta,
+      ...initialState.listMeta
     }
   };
   const idAttr = idAttribute || 'id';
@@ -63,7 +63,7 @@ function createResource(resourceName, options = {}) {
 }
 
 export {
-  xhrStatuses, updateResourceMeta, updateManyResourceMetas, upsertResource,
+  requestStatuses, updateResourceMeta, updateManyResourceMetas, upsertResource,
   upsertManyResources
 };
 export default createResource;

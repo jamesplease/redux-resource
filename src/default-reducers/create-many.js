@@ -1,14 +1,14 @@
 import {
-  updateManyResourceMetas, xhrStatuses, initialResourceMetaState,
+  updateManyResourceMetas, requestStatuses, initialResourceMetaState,
   upsertManyResources
 } from '../utils';
 
 export function createMany(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      createManyXhrStatus: xhrStatuses.PENDING
+    listMeta: {
+      ...state.listMeta,
+      createManyStatus: requestStatuses.PENDING
     }
   };
 }
@@ -16,9 +16,9 @@ export function createMany(idAttr, state) {
 export function createManyFail(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      createManyXhrStatus: xhrStatuses.FAILED
+    listMeta: {
+      ...state.listMeta,
+      createManyStatus: requestStatuses.FAILED
     }
   };
 }
@@ -39,15 +39,15 @@ export function createManySucceed(idAttribute, state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    resourceMeta: updateManyResourceMetas({
-      resourceMeta: state.resourceMeta,
+    meta: updateManyResourceMetas({
+      meta: state.meta,
       replace: false,
       newMeta: initialResourceMetaState,
       ids
     }),
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      createManyXhrStatus: xhrStatuses.SUCCEEDED
+    listMeta: {
+      ...state.listMeta,
+      createManyStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -55,9 +55,9 @@ export function createManySucceed(idAttribute, state, action) {
 export function createManyAbort(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      createManyXhrStatus: xhrStatuses.ABORTED
+    listMeta: {
+      ...state.listMeta,
+      createManyStatus: requestStatuses.NULL
     }
   };
 }
@@ -65,9 +65,9 @@ export function createManyAbort(idAttr, state) {
 export function createManyReset(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
-      createManyXhrStatus: xhrStatuses.NULL
+    listMeta: {
+      ...state.listMeta,
+      createManyStatus: requestStatuses.NULL
     }
   };
 }

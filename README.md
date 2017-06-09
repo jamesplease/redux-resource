@@ -13,7 +13,7 @@ A Redux framework for interacting with remote resources.
 - [Getting Started](#getting-started)
 - [API](#api)
   - [createResource()](#createresource-resourcename-options-)
-  - [xhrStatuses](#xhrstatuses)
+  - [requestStatuses](#xhrstatuses)
   - [updateResourceMeta()](#updateresourcemeta-resourcemeta-newmeta-id-replace-)
   - [updateManyResourceMetas()](#updatemanyresourcemetas-resourcemeta-newmeta-ids-replace-)
   - [upsertResource()](#upsertresource-resources-resource-id-idattribute-replace-)
@@ -197,15 +197,15 @@ initial state is:
   // This is metadata about _specific_ resources. For instance, if a DELETE
   // is in flight for a book with ID 24, then you could find that here.
   // For more, see the Resource Meta guide in this README.
-  resourceMeta: {},
+  meta: {},
   // This is metadata about the entire collection of resources. For instance,
   // on page load, you might fetch all of the resources. The XHR status for
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
-  resourceListMeta: {
-    readXhrStatus: xhrStatuses.NULL,
-    createXhrStatus: xhrStatuses.NULL,
-    createManyXhrStatus: xhrStatuses.NULL
+  listMeta: {
+    readStatus: requestStatuses.NULL,
+    createStatus: requestStatuses.NULL,
+    createManyStatus: requestStatuses.NULL
   }
 }
 ```
@@ -263,18 +263,17 @@ const pet = createResource('pet', {
 })
 ```
 
-### `xhrStatuses`
+### `requestStatuses`
 
 This is a named export from this library. It is an Object that represents
 the different states that an XHR request can be in.
 
 ```js
-// xhrStatuses
+// requestStatuses
 {
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
-  ABORTED: 'ABORTED',
   NULL: 'NULL'
 }
 ```
@@ -287,7 +286,7 @@ resources. Let's see what this might look like:
 
 ```js
 import React, {Component} from 'react';
-import {xhrStatuses} from 'redux-simple-resource';
+import {requestStatuses} from 'redux-simple-resource';
 
 // Within a component's render, you may use it to conditionally render some JSX.
 class MyComponent extends Component {
@@ -298,10 +297,10 @@ class MyComponent extends Component {
   render() {
     // This is a value that is pulled from the store, and automatically kept
     // up-to-date for you. For more, see the Guides section below.
-    const {resourceMeta} = this.props;
+    const {listMeta} = this.props;
 
     // Render loading text if a retrieve request is in flight
-    if (resourceMeta.readXhrStatus === xhrStatuses.PENDING) {
+    if (listMeta.readStatus === requestStatuses.PENDING) {
       return (<div>Loading data</div>);
     } else {
       return (<div>Not loading data</div>);
@@ -310,26 +309,26 @@ class MyComponent extends Component {
 }
 ```
 
-### `updateResourceMeta({ resourceMeta, newMeta, id, replace })`
+### `updateResourceMeta({ meta, newMeta, id, replace })`
 
-Use this method to update the metadata for a single resource. `resourceMeta`
+Use this method to update the metadata for a single resource. `meta`
 is **all** of the existing meta, `newMeta` is the new meta to assign to
 the resource, and `id` is the ID of the resource that you are updating.
 
-This does not directly modify the `resourceMeta` object; instead, it returns
+This does not directly modify the `meta` object; instead, it returns
 a shallow clone.
 
 | Name | Required | Description |
 |------|-------------|----------|
-|resourceMeta | Yes | The current meta object for **all** resources |
+|meta | Yes | The current meta object for **all** resources |
 |newMeta | Yes | The new metadata |
 |id | Yes | The ID of the resource to update |
 |replace | No | Whether or not to replace any existing meta for this resource. Defaults to `false` |
 
-### `updateManyResourceMetas({ resourceMeta, newMeta, ids, replace })`
+### `updateManyResourceMetas({ meta, newMeta, ids, replace })`
 
 Similar to `updateResourceMeta`, but this enables you to update a list of `ids`
-with the same `newMeta`. `resourceMeta` is **all** of the existing meta.
+with the same `newMeta`. `meta` is **all** of the existing meta.
 
 If `replace: true` is passed, then the existing meta is discarded, and what you
 pass in will be all of the meta in the store.
@@ -341,7 +340,7 @@ This method does not enable you to update multiple IDs with different metadata.
 
 | Name | Required | Description |
 |------|-------------|----------|
-|resourceMeta | Yes | The current meta object for **all** resources. |
+|meta | Yes | The current meta object for **all** resources. |
 |newMeta | Yes | The new metadata |
 |ids | Yes | An array of IDs to update |
 |replace | No | Whether or not to replace the current list, or to merge in the new data. Defaults to `false` |
@@ -440,20 +439,20 @@ And, of course, you can add in your own metadata, too.
 #### Individual Resource Metadata
 
 The built-in metadata for individual resources is stored in each store slice
-as `resourceMeta`. This is an object, where each key is the ID of your object.
+as `meta`. This is an object, where each key is the ID of your object.
 
 The built-in metadata for each resource is below:
 
 ```js
 {
   // The status of any existing request to update the resource
-  updateXhrStatus: xhrStatuses.NULL,
+  updateStatus: requestStatuses.NULL,
   // The status of any existing request to fetch the resource
-  readXhrStatus: xhrStatuses.NULL,
+  readStatus: requestStatuses.NULL,
   // The status of an any existing request to delete the resource. Note that
   // this will never be "SUCCEEDED," as a successful delete removes the
   // resource, and its metadata, from the store.
-  deleteXhrStatus: xhrStatuses.NULL
+  deleteStatus: requestStatuses.NULL
 }
 ```
 
@@ -467,17 +466,17 @@ delete it, then a piece of the store might look like:
     {id: 1, name: 'sarah'},
     {id: 6, name: 'brian'},
   ]
-  resourceMeta: {
+  meta: {
     1: {
-      updateXhrStatus: xhrStatuses.NULL,
+      updateStatus: requestStatuses.NULL,
       // The request is in flight!
-      readXhrStatus: xhrStatuses.PENDING,
-      deleteXhrStatus: xhrStatuses.NULL,
+      readStatus: requestStatuses.PENDING,
+      deleteStatus: requestStatuses.NULL,
     },
     6: {
-      updateXhrStatus: xhrStatuses.NULL,
-      readXhrStatus: xhrStatuses.NULL,
-      deleteXhrStatus: xhrStatuses.NULL,
+      updateStatus: requestStatuses.NULL,
+      readStatus: requestStatuses.NULL,
+      deleteStatus: requestStatuses.NULL,
     }
   },
   ...otherThings
@@ -499,16 +498,16 @@ of create requests is stored in the list metadata in redux-simple-resource.
 The default list metadata is:
 
 ```js
-resourceListMeta: {
-  readXhrStatus: xhrStatuses.NULL,
-  createXhrStatus: xhrStatuses.NULL,
-  createManyXhrStatus: xhrStatuses.NULL
+listMeta: {
+  readStatus: requestStatuses.NULL,
+  createStatus: requestStatuses.NULL,
+  createManyStatus: requestStatuses.NULL
 }
 ```
 
 You can also store your own custom metadata on the list. For instance, if a
 user can select a series of items in a list, you may choose to keep an array
-of selected IDs in the `resourceListMeta`. Or, you might instead add a
+of selected IDs in the `listMeta`. Or, you might instead add a
 `selected: true` boolean to each resource's individual meta. Both solutions
 would work fine.
 
@@ -536,23 +535,24 @@ A success response was returned.
 
 An error response was returned.
 
-##### `ABORTED`
-
-The request was aborted by the client; a response will never be received.
-
 ##### `NULL`
 
-This status is applied to a request that has not begun. For instance, when a
-resource is first created, its read, update, and delete request statuses are
-all `NULL`, because none of those requests have been made.
+This status is applied to a request that has not begun, or to reset a request
+that you do not care about. For instance, when a resource is first created, its
+read, update, and delete request statuses are all `NULL`, because none of those
+requests have been made.
 
 When requests have been made, there may also come a time when your application
 no longer cares about the result of a request. At that time, you have the option
 to set the XHR status to `NULL` by dispatching the `RESET` action type.
 
-Not all applications will need to `RESET` requests. Many (if not most) of the
-time, you will not need to manually reset the status back to `NULL`. But the
-option is there if you need it.
+Two common use cases for the `NULL` are:
+
+1. aborting a request
+2. dismissing an alert that appears whenever a status is `SUCCEEDED` or `FAILED`
+
+If you do not need to use the `NULL` status, then that is fine. There are many
+situations where you do not need to reset the status of a request.
 
 ### Action Types
 
@@ -612,7 +612,7 @@ list of resources when you do a bulk update on a subset of that list.
 
 Each CRUD action has a start action type, which represents the start of a
 request. This will update the metadata for this particular action to be in
-an `xhrStatuses.PENDING` state.
+an `requestStatuses.PENDING` state.
 
 These are the start action types:
 
@@ -639,8 +639,8 @@ An example start action type is:
 
 #### FAIL action type
 
-This will update the metadata for this particular action to be in an
-`xhrStatuses.FAILED` state.
+This will update the metadata for the affected resources to be in an
+`requestStatuses.FAILED` state.
 
 These are the five FAIL action types:
 
@@ -667,8 +667,8 @@ An example fail action type is:
 
 #### ABORT action type
 
-This will update the metadata for this particular action to be in an
-`xhrStatuses.ABORTED` state.
+This will update the metadata for the affected resources to be in an
+`requestStatuses.NULL` state.
 
 ```js
 `READ_{RESOURCE}_ABORT`
@@ -692,8 +692,8 @@ An example fail abort action type is:
 
 #### SUCCEED action type
 
-This will update the metadata for this particular action to be in an
-`xhrStatuses.SUCCEED` state. It will also update the resources themselves in
+This will update the metadata for the affected resources to be in an
+`requestStatuses.SUCCEED` state. It will also update the resources themselves in
 your store.
 
 For reads and writes, the data that you pass in will replace existing data in
@@ -742,6 +742,8 @@ fails, and you use the metadata in the store to conditionally render an alert
 to the user. If the user dismisses the alert, then you may wish to fire a
 `RESET` action type to reset the state back to `NULL`, which would cause the
 alert to disappear.
+
+Also, if you abort a request, then you may also choose to fire this action type.
 
 An example reset action is:
 
@@ -835,15 +837,15 @@ structure:
   // This is metadata about _specific_ resources. For instance, if a DELETE
   // is in flight for a book with ID 24, then you could find that here.
   // For more, see the Resource Meta guide in this README.
-  resourceMeta: {},
+  meta: {},
   // This is metadata about the entire collection of resources. For instance,
   // on page load, you might fetch all of the resources. The XHR status for
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
-  resourceListMeta: {
-    readXhrStatus: xhrStatuses.NULL,
-    createXhrStatus: xhrStatuses.NULL,
-    createManyXhrStatuses: xhrStatuses.NULL
+  listMeta: {
+    readStatus: requestStatuses.NULL,
+    createStatus: requestStatuses.NULL,
+    createManyStatuses: requestStatuses.NULL
   }
 }
 ```
@@ -856,7 +858,7 @@ mapStateToProps(state, props) {
   // Grab our book
   const book = _.find(state.books.resources, {id: props.bookId});
   // Grab its metadata
-  const bookMeta = state.resourceMeta[props.bookId];
+  const bookMeta = state.meta[props.bookId];
 
   // Pass that into the component
   return {

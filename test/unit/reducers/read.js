@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../../src';
+import simpleResource, {requestStatuses} from '../../../src';
 
 describe('reducers: read', function() {
   it('should handle `READ_HELLO`', () => {
@@ -10,15 +10,15 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
-          readXhrStatus: 'PENDING'
+          readStatus: 'PENDING'
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -32,15 +32,15 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
-          readXhrStatus: 'FAILED'
+          readStatus: 'FAILED'
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -70,15 +70,15 @@ describe('reducers: read', function() {
           sandwiches: 'yum'
         }
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          readXhrStatus: 'SUCCEEDED'
+          readStatus: 'SUCCEEDED'
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -110,15 +110,15 @@ describe('reducers: read', function() {
           hunger: false
         }
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          readXhrStatus: 'SUCCEEDED'
+          readStatus: 'SUCCEEDED'
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -143,15 +143,15 @@ describe('reducers: read', function() {
           sandwiches: 'yum'
         }
       ],
-      resourceMeta: {
+      meta: {
         3: {
-          readXhrStatus: 'SUCCEEDED'
+          readStatus: 'SUCCEEDED'
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -165,15 +165,15 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
-          readXhrStatus: 'ABORTED'
+          readStatus: 'NULL'
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -187,15 +187,15 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
-          readXhrStatus: xhrStatuses.NULL
+          readStatus: requestStatuses.NULL
         }
       },
-      resourceListMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
