@@ -202,7 +202,7 @@ initial state is:
   // on page load, you might fetch all of the resources. The XHR status for
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
-  : {
+  listMeta: {
     readStatus: requestStatuses.NULL,
     createStatus: requestStatuses.NULL,
     createManyStatus: requestStatuses.NULL
