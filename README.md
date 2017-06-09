@@ -134,11 +134,14 @@ supports all of those actions. Sometimes, you won't need to support all CRUD
 actions on a resource. In those situations, you can use this to disable the
 creation of particular action types. The five CRUD actions are:
 
-- `read`
-- `readMany`
 - `create`
+- `read`
 - `update`
 - `delete`
+- `createMany`
+- `readMany`
+- `updateMany`
+- `deleteMany`
 
 Pass `false` as the value for any of these to prevent those action types
 and reducers from being created.
@@ -154,10 +157,13 @@ up to you.
 const cat = createResource('cat', {
   supportedActions: {
     read: false,
-    readMany: true,
     del: false,
     update: false,
-    create: false
+    create: false,
+    readMany: true,
+    delMany: false,
+    updateMany: false,
+    createMany: false,
   }
 });
 ```
@@ -198,7 +204,8 @@ initial state is:
   // For more, see the Resource Meta guide in this README.
   resourceListMeta: {
     readXhrStatus: xhrStatuses.NULL,
-    createXhrStatus: xhrStatuses.NULL
+    createXhrStatus: xhrStatuses.NULL,
+    createManyXhrStatus: xhrStatuses.NULL
   }
 }
 ```
@@ -380,8 +387,11 @@ For instance, these are the action types that represent kicking off a request
 for each of the built-in CRUD operations:
 
 ```js
-// This operates on many resources
+// These operate on many resources
 `READ_MANY_BOOKS`
+`DELETE_MANY_BOOKS`
+`UPDATE_MANY_BOOKS`
+`CREATE_MANY_BOOKS`
 
 // These operate on a single resource
 `READ_BOOK`
@@ -398,11 +408,6 @@ For instance, here's the read one action type for different resource names:
 | cat            | READ_CAT             |
 | catperson      | READ_CATPERSON       |
 | catPerson      | READ_CAT_PERSON      |
-
-For now, redux-simple-resource only supports reads of multiple resources,
-although you can add [`actionReducers`](#actionreducers) to manage multiple
-writes. In the future, redux-simple-resource may come with built-in write-many
-action types and reducers (like `DELETE_BOOKS`).
 
 ### Resource Metadata
 
@@ -482,7 +487,7 @@ delete it, then a piece of the store might look like:
 You are free to add custom metadata for every resource.
 
 > Note: We do not recommend modifying the built-in meta values directly. Let
-redux-simple-resource manage those for you.
+redux-simple-resource's reducers manage those for you.
 
 #### Resource List Metadata
 
@@ -496,7 +501,8 @@ The default list metadata is:
 ```js
 resourceListMeta: {
   readXhrStatus: xhrStatuses.NULL,
-  createXhrStatus: xhrStatuses.NULL
+  createXhrStatus: xhrStatuses.NULL,
+  createManyXhrStatus: xhrStatuses.NULL
 }
 ```
 
@@ -575,25 +581,32 @@ following properties have special meaning in redux-simple-resource:
 | Name | Used for | Description |
 |------|----------|-------------|
 | type | all      | The type of the action |
-| id   | read one, delete, update, create | Uniquely identifies the resource. For more, see [idAttribute](#idattribute) |
-| resource | read one, delete, update, create | The data for the resource |
-| resources | read many | An array of resources being affected by this action |
-| replace | read one, read many, update | Whether or not to replace existing data |
+| id   | read, delete, update, create | Uniquely identifies the resource. For more, see [idAttribute](#idattribute) |
+| ids  | delete many | Uniquely identifies the resource. For more, see [idAttribute](#idattribute) |
+| resource | read, update, create | The data for the resource |
+| resources | read many, update many, create many | An array of resources being affected by this action |
+| replace | read, read many, update, update many | Whether or not to replace existing data |
 
 #### The "replace" property
 
 All `SUCCEED` action types support a `replace` property, which is whether or
 not the updated data should replace existing data in the store. `replace` is
-`true` by default.
+`true` by default, except for bulk updates (this inconsistency will be resolved
+in v2.0. For more, see #106).
 
 For single resources, passing `replace: false` will merge in the new data with
-the existing data for that resource, if it exists. `replace: true` will
+the existing data for that resource, if it exists. `replace: true` will replace
+the old data with the new.
 
 For multiple resources, `replace: false` will leave the existing list, but
 merge in new resources with their existing versions, if they exist. New items
 will be added at the end of the list. `replace: true` will completely remove the
 existing list of resources, and their metadata, and replace it with the new
 list.
+
+Given the above description, it might make sense why update many has `replace`
+set to `false` by default. You normally don't want to throw out the rest of the
+list of resources when you do a bulk update on a subset of that list.
 
 #### "Start" action type
 
@@ -605,10 +618,14 @@ These are the start action types:
 
 ```js
 `READ_{RESOURCE}`
-`READ_MANY_{PLURAL_RESOURCE}`
 `CREATE_{RESOURCE}`
 `UPDATE_{RESOURCE}`
 `DELETE_{RESOURCE}`
+
+`READ_MANY_{PLURAL_RESOURCE}`
+`CREATE_MANY_{PLURAL_RESOURCE}`
+`UPDATE_MANY_{PLURAL_RESOURCE}`
+`DELETE_MANY_{PLURAL_RESOURCE}`
 ```
 
 An example start action type is:
@@ -629,10 +646,14 @@ These are the five FAIL action types:
 
 ```js
 `READ_{RESOURCE}_FAIL`
-`READ_MANY_{PLURAL_RESOURCE}_FAIL`
 `CREATE_{RESOURCE}_FAIL`
 `UPDATE_{RESOURCE}_FAIL`
 `DELETE_{RESOURCE}_FAIL`
+
+`READ_MANY_{PLURAL_RESOURCE}_FAIL`
+`CREATE_MANY_{PLURAL_RESOURCE}_FAIL`
+`UPDATE_MANY_{PLURAL_RESOURCE}_FAIL`
+`DELETE_MANY_{PLURAL_RESOURCE}_FAIL`
 ```
 
 An example fail action type is:
@@ -651,10 +672,14 @@ This will update the metadata for this particular action to be in an
 
 ```js
 `READ_{RESOURCE}_ABORT`
-`READ_MANY_{PLURAL_RESOURCE}_ABORT`
 `CREATE_{RESOURCE}_ABORT`
 `UPDATE_{RESOURCE}_ABORT`
 `DELETE_{RESOURCE}_ABORT`
+
+`READ_MANY_{PLURAL_RESOURCE}_ABORT`
+`CREATE_MANY_{PLURAL_RESOURCE}_ABORT`
+`UPDATE_MANY_{PLURAL_RESOURCE}_ABORT`
+`DELETE_MANY_{PLURAL_RESOURCE}_ABORT`
 ```
 
 An example fail abort action type is:
@@ -671,8 +696,11 @@ This will update the metadata for this particular action to be in an
 `xhrStatuses.SUCCEED` state. It will also update the resources themselves in
 your store.
 
-For reads and updates, the data that you pass in will replace existing data in
+For reads and writes, the data that you pass in will replace existing data in
 the store unless you include `replace: false` in your action.
+
+> Note: Bulk updates are an exception: they have `replace: false` as the
+  default.
 
 Example success actions are:
 
@@ -814,7 +842,8 @@ structure:
   // For more, see the Resource Meta guide in this README.
   resourceListMeta: {
     readXhrStatus: xhrStatuses.NULL,
-    createXhrStatus: xhrStatuses.NULL
+    createXhrStatus: xhrStatuses.NULL,
+    createManyXhrStatuses: xhrStatuses.NULL
   }
 }
 ```
@@ -912,13 +941,4 @@ An example of a system that _does_ provide a formal relationship definition is
 
 #### What if my API supports more than "simple" resources?
 
-If you're using a system like JSON API, where relationships are formally
-defined by the API, then you still can use redux-simple-resource.
-
-Just be aware that redux-simple-resource will treat every response, even ones
-containing compound documents, as a single resource.
-
-You have two options to deal with this:
-
-1. build an abstraction on top of redux-simple-resource to manage relationships
-2. use a different, JSON API-specific Redux framework
+Relationship support is on the way. See #96 for more information.
