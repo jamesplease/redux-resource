@@ -1,5 +1,5 @@
 import {
-  updateManyResourceMetas, xhrStatuses, initialResourceMetaState,
+  updateManyResourceMetas, requestStatuses, initialResourceMetaState,
   upsertManyResources
 } from '../utils';
 
@@ -8,7 +8,7 @@ export function readMany(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: xhrStatuses.PENDING
+      readXhrStatus: requestStatuses.PENDING
     }
   };
 }
@@ -18,7 +18,7 @@ export function readManyFail(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: xhrStatuses.FAILED
+      readXhrStatus: requestStatuses.FAILED
     }
   };
 }
@@ -52,7 +52,7 @@ export function readManySucceed(idAttribute, state, action) {
     }),
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: xhrStatuses.SUCCEEDED
+      readXhrStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -62,7 +62,7 @@ export function readManyAbort(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: xhrStatuses.NULL
+      readXhrStatus: requestStatuses.NULL
     }
   };
 }
@@ -72,7 +72,7 @@ export function readManyReset(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: xhrStatuses.NULL
+      readXhrStatus: requestStatuses.NULL
     }
   };
 }

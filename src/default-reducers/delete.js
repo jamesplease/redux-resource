@@ -1,9 +1,9 @@
-import {updateResourceMeta, xhrStatuses} from '../utils';
+import {updateResourceMeta, requestStatuses} from '../utils';
 
 export function del(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.PENDING},
+    newMeta: {deleteXhrStatus: requestStatuses.PENDING},
     id: action[idAttr],
     replace: false
   });
@@ -17,7 +17,7 @@ export function del(idAttr, state, action) {
 export function delFail(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.FAILED},
+    newMeta: {deleteXhrStatus: requestStatuses.FAILED},
     id: action[idAttr],
     replace: false
   });
@@ -51,7 +51,7 @@ export function delSucceed(idAttr, state, action) {
 export function delAbort(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.NULL},
+    newMeta: {deleteXhrStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });
@@ -65,7 +65,7 @@ export function delAbort(idAttr, state, action) {
 export function delReset(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.NULL},
+    newMeta: {deleteXhrStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });

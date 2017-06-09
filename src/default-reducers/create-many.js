@@ -1,5 +1,5 @@
 import {
-  updateManyResourceMetas, xhrStatuses, initialResourceMetaState,
+  updateManyResourceMetas, requestStatuses, initialResourceMetaState,
   upsertManyResources
 } from '../utils';
 
@@ -8,7 +8,7 @@ export function createMany(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: xhrStatuses.PENDING
+      createManyXhrStatus: requestStatuses.PENDING
     }
   };
 }
@@ -18,7 +18,7 @@ export function createManyFail(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: xhrStatuses.FAILED
+      createManyXhrStatus: requestStatuses.FAILED
     }
   };
 }
@@ -47,7 +47,7 @@ export function createManySucceed(idAttribute, state, action) {
     }),
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: xhrStatuses.SUCCEEDED
+      createManyXhrStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -57,7 +57,7 @@ export function createManyAbort(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: xhrStatuses.NULL
+      createManyXhrStatus: requestStatuses.NULL
     }
   };
 }
@@ -67,7 +67,7 @@ export function createManyReset(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: xhrStatuses.NULL
+      createManyXhrStatus: requestStatuses.NULL
     }
   };
 }

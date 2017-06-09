@@ -1,7 +1,7 @@
 import generateReducer from './generate-reducer';
 import generateActionTypes from './generate-action-types';
 import {
-  generateDefaultInitialState, snakeCase, xhrStatuses, updateResourceMeta,
+  generateDefaultInitialState, snakeCase, requestStatuses, updateResourceMeta,
   updateManyResourceMetas, upsertResource, upsertManyResources
 } from './utils';
 
@@ -63,7 +63,7 @@ function createResource(resourceName, options = {}) {
 }
 
 export {
-  xhrStatuses, updateResourceMeta, updateManyResourceMetas, upsertResource,
+  requestStatuses, updateResourceMeta, updateManyResourceMetas, upsertResource,
   upsertManyResources
 };
 export default createResource;

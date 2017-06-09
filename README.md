@@ -13,7 +13,7 @@ A Redux framework for interacting with remote resources.
 - [Getting Started](#getting-started)
 - [API](#api)
   - [createResource()](#createresource-resourcename-options-)
-  - [xhrStatuses](#xhrstatuses)
+  - [requestStatuses](#xhrstatuses)
   - [updateResourceMeta()](#updateresourcemeta-resourcemeta-newmeta-id-replace-)
   - [updateManyResourceMetas()](#updatemanyresourcemetas-resourcemeta-newmeta-ids-replace-)
   - [upsertResource()](#upsertresource-resources-resource-id-idattribute-replace-)
@@ -203,9 +203,9 @@ initial state is:
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
   : {
-    readXhrStatus: xhrStatuses.NULL,
-    createXhrStatus: xhrStatuses.NULL,
-    createManyXhrStatus: xhrStatuses.NULL
+    readXhrStatus: requestStatuses.NULL,
+    createXhrStatus: requestStatuses.NULL,
+    createManyXhrStatus: requestStatuses.NULL
   }
 }
 ```
@@ -263,13 +263,13 @@ const pet = createResource('pet', {
 })
 ```
 
-### `xhrStatuses`
+### `requestStatuses`
 
 This is a named export from this library. It is an Object that represents
 the different states that an XHR request can be in.
 
 ```js
-// xhrStatuses
+// requestStatuses
 {
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',
@@ -286,7 +286,7 @@ resources. Let's see what this might look like:
 
 ```js
 import React, {Component} from 'react';
-import {xhrStatuses} from 'redux-simple-resource';
+import {requestStatuses} from 'redux-simple-resource';
 
 // Within a component's render, you may use it to conditionally render some JSX.
 class MyComponent extends Component {
@@ -300,7 +300,7 @@ class MyComponent extends Component {
     const {listMeta} = this.props;
 
     // Render loading text if a retrieve request is in flight
-    if (listMeta.readXhrStatus === xhrStatuses.PENDING) {
+    if (listMeta.readXhrStatus === requestStatuses.PENDING) {
       return (<div>Loading data</div>);
     } else {
       return (<div>Not loading data</div>);
@@ -446,13 +446,13 @@ The built-in metadata for each resource is below:
 ```js
 {
   // The status of any existing request to update the resource
-  updateXhrStatus: xhrStatuses.NULL,
+  updateXhrStatus: requestStatuses.NULL,
   // The status of any existing request to fetch the resource
-  readXhrStatus: xhrStatuses.NULL,
+  readXhrStatus: requestStatuses.NULL,
   // The status of an any existing request to delete the resource. Note that
   // this will never be "SUCCEEDED," as a successful delete removes the
   // resource, and its metadata, from the store.
-  deleteXhrStatus: xhrStatuses.NULL
+  deleteXhrStatus: requestStatuses.NULL
 }
 ```
 
@@ -468,15 +468,15 @@ delete it, then a piece of the store might look like:
   ]
   meta: {
     1: {
-      updateXhrStatus: xhrStatuses.NULL,
+      updateXhrStatus: requestStatuses.NULL,
       // The request is in flight!
-      readXhrStatus: xhrStatuses.PENDING,
-      deleteXhrStatus: xhrStatuses.NULL,
+      readXhrStatus: requestStatuses.PENDING,
+      deleteXhrStatus: requestStatuses.NULL,
     },
     6: {
-      updateXhrStatus: xhrStatuses.NULL,
-      readXhrStatus: xhrStatuses.NULL,
-      deleteXhrStatus: xhrStatuses.NULL,
+      updateXhrStatus: requestStatuses.NULL,
+      readXhrStatus: requestStatuses.NULL,
+      deleteXhrStatus: requestStatuses.NULL,
     }
   },
   ...otherThings
@@ -499,9 +499,9 @@ The default list metadata is:
 
 ```js
 listMeta: {
-  readXhrStatus: xhrStatuses.NULL,
-  createXhrStatus: xhrStatuses.NULL,
-  createManyXhrStatus: xhrStatuses.NULL
+  readXhrStatus: requestStatuses.NULL,
+  createXhrStatus: requestStatuses.NULL,
+  createManyXhrStatus: requestStatuses.NULL
 }
 ```
 
@@ -612,7 +612,7 @@ list of resources when you do a bulk update on a subset of that list.
 
 Each CRUD action has a start action type, which represents the start of a
 request. This will update the metadata for this particular action to be in
-an `xhrStatuses.PENDING` state.
+an `requestStatuses.PENDING` state.
 
 These are the start action types:
 
@@ -640,7 +640,7 @@ An example start action type is:
 #### FAIL action type
 
 This will update the metadata for the affected resources to be in an
-`xhrStatuses.FAILED` state.
+`requestStatuses.FAILED` state.
 
 These are the five FAIL action types:
 
@@ -668,7 +668,7 @@ An example fail action type is:
 #### ABORT action type
 
 This will update the metadata for the affected resources to be in an
-`xhrStatuses.NULL` state.
+`requestStatuses.NULL` state.
 
 ```js
 `READ_{RESOURCE}_ABORT`
@@ -693,7 +693,7 @@ An example fail abort action type is:
 #### SUCCEED action type
 
 This will update the metadata for the affected resources to be in an
-`xhrStatuses.SUCCEED` state. It will also update the resources themselves in
+`requestStatuses.SUCCEED` state. It will also update the resources themselves in
 your store.
 
 For reads and writes, the data that you pass in will replace existing data in
@@ -843,9 +843,9 @@ structure:
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
   listMeta: {
-    readXhrStatus: xhrStatuses.NULL,
-    createXhrStatus: xhrStatuses.NULL,
-    createManyXhrStatuses: xhrStatuses.NULL
+    readXhrStatus: requestStatuses.NULL,
+    createXhrStatus: requestStatuses.NULL,
+    createManyXhrStatuses: requestStatuses.NULL
   }
 }
 ```

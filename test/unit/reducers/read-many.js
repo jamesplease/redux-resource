@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../../src';
+import simpleResource, {requestStatuses} from '../../../src';
 
 describe('reducers: readMany', function() {
   it('should handle `READ_MANY_HELLOS`', () => {
@@ -11,9 +11,9 @@ describe('reducers: readMany', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.PENDING
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.PENDING
       }
     });
   });
@@ -28,9 +28,9 @@ describe('reducers: readMany', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.FAILED
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.FAILED
       }
     });
   });
@@ -64,20 +64,20 @@ describe('reducers: readMany', function() {
       ],
       meta: {
         2: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL,
+          updateXhrStatus: requestStatuses.NULL,
+          readXhrStatus: requestStatuses.NULL,
+          deleteXhrStatus: requestStatuses.NULL,
         },
         100: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL
+          updateXhrStatus: requestStatuses.NULL,
+          readXhrStatus: requestStatuses.NULL,
+          deleteXhrStatus: requestStatuses.NULL
         }
       },
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.SUCCEEDED
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.SUCCEEDED
       }
     });
   });
@@ -114,21 +114,21 @@ describe('reducers: readMany', function() {
       ],
       meta: {
         2: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL,
+          updateXhrStatus: requestStatuses.NULL,
+          readXhrStatus: requestStatuses.NULL,
+          deleteXhrStatus: requestStatuses.NULL,
         },
         23: 'sandwiches',
         100: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL
+          updateXhrStatus: requestStatuses.NULL,
+          readXhrStatus: requestStatuses.NULL,
+          deleteXhrStatus: requestStatuses.NULL
         }
       },
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.SUCCEEDED
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.SUCCEEDED
       }
     });
   });
@@ -155,20 +155,20 @@ describe('reducers: readMany', function() {
       ],
       meta: {
         2: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL,
+          updateXhrStatus: requestStatuses.NULL,
+          readXhrStatus: requestStatuses.NULL,
+          deleteXhrStatus: requestStatuses.NULL,
         },
         100: {
-          updateXhrStatus: xhrStatuses.NULL,
-          readXhrStatus: xhrStatuses.NULL,
-          deleteXhrStatus: xhrStatuses.NULL
+          updateXhrStatus: requestStatuses.NULL,
+          readXhrStatus: requestStatuses.NULL,
+          deleteXhrStatus: requestStatuses.NULL
         }
       },
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.SUCCEEDED
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.SUCCEEDED
       }
     });
   });
@@ -183,9 +183,9 @@ describe('reducers: readMany', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.NULL
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.NULL
       }
     });
   });
@@ -196,8 +196,8 @@ describe('reducers: readMany', function() {
     // We set some value on `readXhrStatus` to check that this nulls it
     const listMetaState = {
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
         readXhrStatus: 'sandwiches'
       }
     };
@@ -213,9 +213,9 @@ describe('reducers: readMany', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.NULL
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.NULL
       }
     });
   });

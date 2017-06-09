@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../../src';
+import simpleResource, {requestStatuses} from '../../../src';
 
 describe('reducers: custom', function() {
   it('should handle `CUSTOM_TYPE`', () => {
@@ -25,9 +25,9 @@ describe('reducers: custom', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.NULL
+        createXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        readXhrStatus: requestStatuses.NULL
       },
       pizza: 'delicious'
     });

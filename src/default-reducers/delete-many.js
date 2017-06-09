@@ -1,11 +1,11 @@
-import {updateManyResourceMetas, xhrStatuses} from '../utils';
+import {updateManyResourceMetas, requestStatuses} from '../utils';
 
 export function delMany(idAttribute, state, action) {
   const ids = action.ids;
 
   const meta = updateManyResourceMetas({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.PENDING},
+    newMeta: {deleteXhrStatus: requestStatuses.PENDING},
     replace: false,
     ids
   });
@@ -21,7 +21,7 @@ export function delManyFail(idAttribute, state, action) {
 
   const meta = updateManyResourceMetas({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.FAILED},
+    newMeta: {deleteXhrStatus: requestStatuses.FAILED},
     replace: false,
     ids
   });
@@ -62,7 +62,7 @@ export function delManyAbort(idAttribute, state, action) {
 
   const meta = updateManyResourceMetas({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.NULL},
+    newMeta: {deleteXhrStatus: requestStatuses.NULL},
     replace: false,
     ids
   });
@@ -78,7 +78,7 @@ export function delManyReset(idAttribute, state, action) {
 
   const meta = updateManyResourceMetas({
     meta: state.meta,
-    newMeta: {deleteXhrStatus: xhrStatuses.NULL},
+    newMeta: {deleteXhrStatus: requestStatuses.NULL},
     replace: false,
     ids
   });

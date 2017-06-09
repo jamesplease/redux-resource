@@ -1,4 +1,4 @@
-import simpleResource, {xhrStatuses} from '../../src';
+import simpleResource, {requestStatuses} from '../../src';
 
 describe('simpleResource', function() {
   it('should be a function', () => {
@@ -18,9 +18,9 @@ describe('simpleResource', function() {
       resources: [],
       meta: {},
       listMeta: {
-        readXhrStatus: xhrStatuses.NULL,
-        createManyXhrStatus: xhrStatuses.NULL,
-        createXhrStatus: xhrStatuses.NULL
+        readXhrStatus: requestStatuses.NULL,
+        createManyXhrStatus: requestStatuses.NULL,
+        createXhrStatus: requestStatuses.NULL
       }
     });
   });
@@ -38,9 +38,9 @@ describe('simpleResource', function() {
         resources: [],
         meta: {},
         listMeta: {
-          readXhrStatus: xhrStatuses.NULL,
-          createManyXhrStatus: xhrStatuses.NULL,
-          createXhrStatus: xhrStatuses.NULL
+          readXhrStatus: requestStatuses.NULL,
+          createManyXhrStatus: requestStatuses.NULL,
+          createXhrStatus: requestStatuses.NULL
         },
         hello: 'oink',
         pizza: true
@@ -62,9 +62,9 @@ describe('simpleResource', function() {
         meta: {1: true},
         listMeta: {
           hungry: 'always',
-          readXhrStatus: xhrStatuses.NULL,
-          createManyXhrStatus: xhrStatuses.NULL,
-          createXhrStatus: xhrStatuses.NULL
+          readXhrStatus: requestStatuses.NULL,
+          createManyXhrStatus: requestStatuses.NULL,
+          createXhrStatus: requestStatuses.NULL
         },
         pizza: true
       });
