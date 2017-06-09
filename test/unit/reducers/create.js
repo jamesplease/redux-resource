@@ -9,8 +9,8 @@ describe('reducers: create', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
+      meta: {},
+      listMeta: {
         createXhrStatus: xhrStatuses.PENDING,
         createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL
@@ -26,8 +26,8 @@ describe('reducers: create', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
+      meta: {},
+      listMeta: {
         createXhrStatus: xhrStatuses.FAILED,
         createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL
@@ -43,8 +43,8 @@ describe('reducers: create', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
+      meta: {},
+      listMeta: {
         createXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL
@@ -60,8 +60,8 @@ describe('reducers: create', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
+      meta: {},
+      listMeta: {
         createXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL
@@ -85,14 +85,14 @@ describe('reducers: create', function() {
       resources: [
         {movieId: 10, hungry: true}
       ],
-      resourceMeta: {
+      meta: {
         10: {
           updateXhrStatus: xhrStatuses.NULL,
           readXhrStatus: xhrStatuses.NULL,
           deleteXhrStatus: xhrStatuses.NULL
         }
       },
-      resourceListMeta: {
+      listMeta: {
         createXhrStatus: xhrStatuses.SUCCEEDED,
         createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL

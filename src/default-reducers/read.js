@@ -3,8 +3,8 @@ import {
 } from '../utils';
 
 export function read(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {readXhrStatus: xhrStatuses.PENDING},
     id: action[idAttr],
     replace: false
@@ -12,13 +12,13 @@ export function read(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function readFail(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {readXhrStatus: xhrStatuses.FAILED},
     id: action[idAttr],
     replace: false
@@ -26,13 +26,13 @@ export function readFail(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function readSucceed(idAttribute, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {readXhrStatus: xhrStatuses.SUCCEEDED},
     id: action[idAttribute],
     replace: false
@@ -48,14 +48,14 @@ export function readSucceed(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
     resources
   };
 }
 
 export function readAbort(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {readXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
@@ -63,13 +63,13 @@ export function readAbort(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function readReset(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {readXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
@@ -77,6 +77,6 @@ export function readReset(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }

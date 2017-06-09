@@ -23,7 +23,7 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           deleteXhrStatus: xhrStatuses.PENDING
         },
@@ -31,7 +31,7 @@ describe('reducers: deleteMany', function() {
           deleteXhrStatus: xhrStatuses.PENDING
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -61,7 +61,7 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           deleteXhrStatus: xhrStatuses.FAILED
         },
@@ -69,7 +69,7 @@ describe('reducers: deleteMany', function() {
           deleteXhrStatus: xhrStatuses.FAILED
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -99,7 +99,7 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           deleteXhrStatus: xhrStatuses.NULL
         },
@@ -107,7 +107,7 @@ describe('reducers: deleteMany', function() {
           deleteXhrStatus: xhrStatuses.NULL
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -137,7 +137,7 @@ describe('reducers: deleteMany', function() {
         {id: 3},
         {id: 4},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           deleteXhrStatus: xhrStatuses.NULL
         },
@@ -145,7 +145,7 @@ describe('reducers: deleteMany', function() {
           deleteXhrStatus: xhrStatuses.NULL
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -161,7 +161,7 @@ describe('reducers: deleteMany', function() {
           {id: 3},
           {id: 4},
         ],
-        resourceMeta: {
+        meta: {
           1: {
             name: 'what'
           },
@@ -181,14 +181,14 @@ describe('reducers: deleteMany', function() {
       resources: [
         {id: 1},
       ],
-      resourceMeta: {
+      meta: {
         1: {
           name: 'what'
         },
         3: null,
         4: null
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL

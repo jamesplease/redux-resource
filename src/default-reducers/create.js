@@ -5,8 +5,8 @@ import {
 export function create(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createXhrStatus: xhrStatuses.PENDING
     }
   };
@@ -15,8 +15,8 @@ export function create(idAttr, state) {
 export function createFail(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createXhrStatus: xhrStatuses.FAILED
     }
   };
@@ -30,8 +30,8 @@ export function createSucceed(idAttribute, state, action) {
     id: action[idAttribute],
     idAttribute
   });
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: initialResourceMetaState,
     id: newResourceId,
     replace: false
@@ -40,9 +40,9 @@ export function createSucceed(idAttribute, state, action) {
   return {
     ...state,
     resources,
-    resourceMeta,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    meta,
+    listMeta: {
+      ...state.listMeta,
       createXhrStatus: xhrStatuses.SUCCEEDED
     }
   };
@@ -51,8 +51,8 @@ export function createSucceed(idAttribute, state, action) {
 export function createAbort(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createXhrStatus: xhrStatuses.NULL
     }
   };
@@ -61,8 +61,8 @@ export function createAbort(idAttr, state) {
 export function createReset(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createXhrStatus: xhrStatuses.NULL
     }
   };

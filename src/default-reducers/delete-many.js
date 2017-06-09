@@ -3,8 +3,8 @@ import {updateManyResourceMetas, xhrStatuses} from '../utils';
 export function delMany(idAttribute, state, action) {
   const ids = action.ids;
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.PENDING},
     replace: false,
     ids
@@ -12,15 +12,15 @@ export function delMany(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function delManyFail(idAttribute, state, action) {
   const ids = action.ids;
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.FAILED},
     replace: false,
     ids
@@ -28,7 +28,7 @@ export function delManyFail(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
@@ -41,9 +41,9 @@ export function delManySucceed(idAttribute, state, action) {
   }, {});
 
   // Remove this resource from the resources meta.
-  const resourceMeta = {
+  const meta = {
     // Shallow clone the meta
-    ...state.resourceMeta,
+    ...state.meta,
     ...newMeta
   };
 
@@ -53,15 +53,15 @@ export function delManySucceed(idAttribute, state, action) {
   return {
     ...state,
     resources: newResources,
-    resourceMeta,
+    meta,
   };
 }
 
 export function delManyAbort(idAttribute, state, action) {
   const ids = action.ids;
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.NULL},
     replace: false,
     ids
@@ -69,15 +69,15 @@ export function delManyAbort(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function delManyReset(idAttribute, state, action) {
   const ids = action.ids;
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.NULL},
     replace: false,
     ids
@@ -85,6 +85,6 @@ export function delManyReset(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }

@@ -6,8 +6,8 @@ import {
 export function readMany(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       readXhrStatus: xhrStatuses.PENDING
     }
   };
@@ -16,8 +16,8 @@ export function readMany(idAttr, state) {
 export function readManyFail(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       readXhrStatus: xhrStatuses.FAILED
     }
   };
@@ -45,13 +45,13 @@ export function readManySucceed(idAttribute, state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    resourceMeta: updateManyResourceMetas({
-      resourceMeta: state.resourceMeta,
+    meta: updateManyResourceMetas({
+      meta: state.meta,
       newMeta: initialResourceMetaState,
       ids, replace
     }),
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       readXhrStatus: xhrStatuses.SUCCEEDED
     }
   };
@@ -60,8 +60,8 @@ export function readManySucceed(idAttribute, state, action) {
 export function readManyAbort(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       readXhrStatus: xhrStatuses.NULL
     }
   };
@@ -70,8 +70,8 @@ export function readManyAbort(idAttr, state) {
 export function readManyReset(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       readXhrStatus: xhrStatuses.NULL
     }
   };

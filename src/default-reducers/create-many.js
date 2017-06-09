@@ -6,8 +6,8 @@ import {
 export function createMany(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createManyXhrStatus: xhrStatuses.PENDING
     }
   };
@@ -16,8 +16,8 @@ export function createMany(idAttr, state) {
 export function createManyFail(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createManyXhrStatus: xhrStatuses.FAILED
     }
   };
@@ -39,14 +39,14 @@ export function createManySucceed(idAttribute, state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    resourceMeta: updateManyResourceMetas({
-      resourceMeta: state.resourceMeta,
+    meta: updateManyResourceMetas({
+      meta: state.meta,
       replace: false,
       newMeta: initialResourceMetaState,
       ids
     }),
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createManyXhrStatus: xhrStatuses.SUCCEEDED
     }
   };
@@ -55,8 +55,8 @@ export function createManySucceed(idAttribute, state, action) {
 export function createManyAbort(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createManyXhrStatus: xhrStatuses.NULL
     }
   };
@@ -65,8 +65,8 @@ export function createManyAbort(idAttr, state) {
 export function createManyReset(idAttr, state) {
   return {
     ...state,
-    resourceListMeta: {
-      ...state.resourceListMeta,
+    listMeta: {
+      ...state.listMeta,
       createManyXhrStatus: xhrStatuses.NULL
     }
   };

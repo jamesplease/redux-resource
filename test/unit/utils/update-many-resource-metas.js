@@ -2,7 +2,7 @@ import {updateManyResourceMetas} from '../../../src';
 
 describe('updateManyResourceMetas', function() {
   beforeEach(() => {
-    this.resourceMeta = {
+    this.meta = {
       1: {
         isSelected: false,
         otherData: {
@@ -18,7 +18,7 @@ describe('updateManyResourceMetas', function() {
   describe('replace: true', () => {
     it('should only keep metadata that is passed in', () => {
       const result = updateManyResourceMetas({
-        resourceMeta: this.resourceMeta,
+        meta: this.meta,
         newMeta: {isSelected: true},
         ids: [1, 2, 5],
         replace: true
@@ -30,18 +30,18 @@ describe('updateManyResourceMetas', function() {
         5: {isSelected: true}
       });
 
-      // The original `resourceMeta` is shallow cloned
-      expect(result).to.not.equal(this.resourceMeta);
+      // The original `meta` is shallow cloned
+      expect(result).to.not.equal(this.meta);
       // The existing item is not modified
-      expect(result[1]).to.not.equal(this.resourceMeta[1]);
-      expect(result[2]).to.not.equal(this.resourceMeta[2]);
+      expect(result[1]).to.not.equal(this.meta[1]);
+      expect(result[2]).to.not.equal(this.meta[2]);
     });
   });
 
   describe('replace: false', () => {
     it('should keep other list items and merge in the new results', () => {
       const result = updateManyResourceMetas({
-        resourceMeta: this.resourceMeta,
+        meta: this.meta,
         newMeta: {isSelected: true},
         ids: [1, 2, 5],
         replace: false
@@ -60,13 +60,13 @@ describe('updateManyResourceMetas', function() {
         5: {isSelected: true}
       });
 
-      // The original `resourceMeta` is shallow cloned
-      expect(result).to.not.equal(this.resourceMeta);
+      // The original `meta` is shallow cloned
+      expect(result).to.not.equal(this.meta);
       // The existing item is not modified
-      expect(result[1]).to.not.equal(this.resourceMeta[1]);
-      expect(result[2]).to.not.equal(this.resourceMeta[2]);
+      expect(result[1]).to.not.equal(this.meta[1]);
+      expect(result[2]).to.not.equal(this.meta[2]);
       // Unrelated items pass through unchanged
-      expect(result[3]).to.equal(this.resourceMeta[3]);
+      expect(result[3]).to.equal(this.meta[3]);
     });
   });
 });

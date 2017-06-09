@@ -197,12 +197,12 @@ initial state is:
   // This is metadata about _specific_ resources. For instance, if a DELETE
   // is in flight for a book with ID 24, then you could find that here.
   // For more, see the Resource Meta guide in this README.
-  resourceMeta: {},
+  meta: {},
   // This is metadata about the entire collection of resources. For instance,
   // on page load, you might fetch all of the resources. The XHR status for
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
-  resourceListMeta: {
+  : {
     readXhrStatus: xhrStatuses.NULL,
     createXhrStatus: xhrStatuses.NULL,
     createManyXhrStatus: xhrStatuses.NULL
@@ -297,10 +297,10 @@ class MyComponent extends Component {
   render() {
     // This is a value that is pulled from the store, and automatically kept
     // up-to-date for you. For more, see the Guides section below.
-    const {resourceMeta} = this.props;
+    const {listMeta} = this.props;
 
     // Render loading text if a retrieve request is in flight
-    if (resourceMeta.readXhrStatus === xhrStatuses.PENDING) {
+    if (listMeta.readXhrStatus === xhrStatuses.PENDING) {
       return (<div>Loading data</div>);
     } else {
       return (<div>Not loading data</div>);
@@ -309,26 +309,26 @@ class MyComponent extends Component {
 }
 ```
 
-### `updateResourceMeta({ resourceMeta, newMeta, id, replace })`
+### `updateResourceMeta({ meta, newMeta, id, replace })`
 
-Use this method to update the metadata for a single resource. `resourceMeta`
+Use this method to update the metadata for a single resource. `meta`
 is **all** of the existing meta, `newMeta` is the new meta to assign to
 the resource, and `id` is the ID of the resource that you are updating.
 
-This does not directly modify the `resourceMeta` object; instead, it returns
+This does not directly modify the `meta` object; instead, it returns
 a shallow clone.
 
 | Name | Required | Description |
 |------|-------------|----------|
-|resourceMeta | Yes | The current meta object for **all** resources |
+|meta | Yes | The current meta object for **all** resources |
 |newMeta | Yes | The new metadata |
 |id | Yes | The ID of the resource to update |
 |replace | No | Whether or not to replace any existing meta for this resource. Defaults to `false` |
 
-### `updateManyResourceMetas({ resourceMeta, newMeta, ids, replace })`
+### `updateManyResourceMetas({ meta, newMeta, ids, replace })`
 
 Similar to `updateResourceMeta`, but this enables you to update a list of `ids`
-with the same `newMeta`. `resourceMeta` is **all** of the existing meta.
+with the same `newMeta`. `meta` is **all** of the existing meta.
 
 If `replace: true` is passed, then the existing meta is discarded, and what you
 pass in will be all of the meta in the store.
@@ -340,7 +340,7 @@ This method does not enable you to update multiple IDs with different metadata.
 
 | Name | Required | Description |
 |------|-------------|----------|
-|resourceMeta | Yes | The current meta object for **all** resources. |
+|meta | Yes | The current meta object for **all** resources. |
 |newMeta | Yes | The new metadata |
 |ids | Yes | An array of IDs to update |
 |replace | No | Whether or not to replace the current list, or to merge in the new data. Defaults to `false` |
@@ -439,7 +439,7 @@ And, of course, you can add in your own metadata, too.
 #### Individual Resource Metadata
 
 The built-in metadata for individual resources is stored in each store slice
-as `resourceMeta`. This is an object, where each key is the ID of your object.
+as `meta`. This is an object, where each key is the ID of your object.
 
 The built-in metadata for each resource is below:
 
@@ -466,7 +466,7 @@ delete it, then a piece of the store might look like:
     {id: 1, name: 'sarah'},
     {id: 6, name: 'brian'},
   ]
-  resourceMeta: {
+  meta: {
     1: {
       updateXhrStatus: xhrStatuses.NULL,
       // The request is in flight!
@@ -498,7 +498,7 @@ of create requests is stored in the list metadata in redux-simple-resource.
 The default list metadata is:
 
 ```js
-resourceListMeta: {
+listMeta: {
   readXhrStatus: xhrStatuses.NULL,
   createXhrStatus: xhrStatuses.NULL,
   createManyXhrStatus: xhrStatuses.NULL
@@ -507,7 +507,7 @@ resourceListMeta: {
 
 You can also store your own custom metadata on the list. For instance, if a
 user can select a series of items in a list, you may choose to keep an array
-of selected IDs in the `resourceListMeta`. Or, you might instead add a
+of selected IDs in the `listMeta`. Or, you might instead add a
 `selected: true` boolean to each resource's individual meta. Both solutions
 would work fine.
 
@@ -837,12 +837,12 @@ structure:
   // This is metadata about _specific_ resources. For instance, if a DELETE
   // is in flight for a book with ID 24, then you could find that here.
   // For more, see the Resource Meta guide in this README.
-  resourceMeta: {},
+  meta: {},
   // This is metadata about the entire collection of resources. For instance,
   // on page load, you might fetch all of the resources. The XHR status for
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
-  resourceListMeta: {
+  listMeta: {
     readXhrStatus: xhrStatuses.NULL,
     createXhrStatus: xhrStatuses.NULL,
     createManyXhrStatuses: xhrStatuses.NULL
@@ -858,7 +858,7 @@ mapStateToProps(state, props) {
   // Grab our book
   const book = _.find(state.books.resources, {id: props.bookId});
   // Grab its metadata
-  const bookMeta = state.resourceMeta[props.bookId];
+  const bookMeta = state.meta[props.bookId];
 
   // Pass that into the component
   return {

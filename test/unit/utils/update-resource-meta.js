@@ -2,7 +2,7 @@ import {updateResourceMeta} from '../../../src';
 
 describe('updateResourceMeta', function() {
   beforeEach(() => {
-    this.resourceMeta = {
+    this.meta = {
       1: {
         isSelected: false,
         otherData: {
@@ -17,7 +17,7 @@ describe('updateResourceMeta', function() {
   describe('replace: true', () => {
     it('should replace existing metadata for a resource', () => {
       const result = updateResourceMeta({
-        resourceMeta: this.resourceMeta,
+        meta: this.meta,
         newMeta: {isSelected: true},
         id: 1,
         replace: true
@@ -28,17 +28,17 @@ describe('updateResourceMeta', function() {
         2: {thirsty: true}
       });
 
-      // The original `resourceMeta` is shallow cloned
-      expect(result).to.not.equal(this.resourceMeta);
+      // The original `meta` is shallow cloned
+      expect(result).to.not.equal(this.meta);
       // The existing item is not modified
-      expect(result[1]).to.not.equal(this.resourceMeta[1]);
+      expect(result[1]).to.not.equal(this.meta[1]);
       // Unchanged items in the store are not cloned
-      expect(result[2]).to.equal(this.resourceMeta[2]);
+      expect(result[2]).to.equal(this.meta[2]);
     });
 
     it('should add new metadata for a resource that was not in the store', () => {
       const result = updateResourceMeta({
-        resourceMeta: this.resourceMeta,
+        meta: this.meta,
         newMeta: {isSelected: 'ok'},
         id: 3,
         replace: true
@@ -56,18 +56,18 @@ describe('updateResourceMeta', function() {
         3: {isSelected: 'ok'}
       });
 
-      // The original `resourceMeta` is shallow cloned
-      expect(result).to.not.equal(this.resourceMeta);
+      // The original `meta` is shallow cloned
+      expect(result).to.not.equal(this.meta);
       // Unchanged items in the store are not cloned
-      expect(result[1]).to.equal(this.resourceMeta[1]);
-      expect(result[2]).to.equal(this.resourceMeta[2]);
+      expect(result[1]).to.equal(this.meta[1]);
+      expect(result[2]).to.equal(this.meta[2]);
     });
   });
 
   describe('replace: false', () => {
     it('should merge existing metadata for a resource', () => {
       const result = updateResourceMeta({
-        resourceMeta: this.resourceMeta,
+        meta: this.meta,
         newMeta: {isSelected: false},
         id: 1,
         replace: false
@@ -84,17 +84,17 @@ describe('updateResourceMeta', function() {
         2: {thirsty: true}
       });
 
-      // The original `resourceMeta` is shallow cloned
-      expect(result).to.not.equal(this.resourceMeta);
+      // The original `meta` is shallow cloned
+      expect(result).to.not.equal(this.meta);
       // The existing item is not modified
-      expect(result[1]).to.not.equal(this.resourceMeta[1]);
+      expect(result[1]).to.not.equal(this.meta[1]);
       // Unchanged items in the store are not cloned
-      expect(result[2]).to.equal(this.resourceMeta[2]);
+      expect(result[2]).to.equal(this.meta[2]);
     });
 
     it('should add new metadata for a resource that was not in the store', () => {
       const result = updateResourceMeta({
-        resourceMeta: this.resourceMeta,
+        meta: this.meta,
         newMeta: {isSelected: 'ok'},
         id: 3,
         replace: false
@@ -112,11 +112,11 @@ describe('updateResourceMeta', function() {
         3: {isSelected: 'ok'}
       });
 
-      // The original `resourceMeta` is shallow cloned
-      expect(result).to.not.equal(this.resourceMeta);
+      // The original `meta` is shallow cloned
+      expect(result).to.not.equal(this.meta);
       // Unchanged items in the store are not cloned
-      expect(result[1]).to.equal(this.resourceMeta[1]);
-      expect(result[2]).to.equal(this.resourceMeta[2]);
+      expect(result[1]).to.equal(this.meta[1]);
+      expect(result[2]).to.equal(this.meta[2]);
     });
   });
 });

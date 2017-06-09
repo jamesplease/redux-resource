@@ -10,12 +10,12 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
           readXhrStatus: 'PENDING'
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -32,12 +32,12 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
           readXhrStatus: 'FAILED'
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -70,12 +70,12 @@ describe('reducers: read', function() {
           sandwiches: 'yum'
         }
       ],
-      resourceMeta: {
+      meta: {
         3: {
           readXhrStatus: 'SUCCEEDED'
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -110,12 +110,12 @@ describe('reducers: read', function() {
           hunger: false
         }
       ],
-      resourceMeta: {
+      meta: {
         3: {
           readXhrStatus: 'SUCCEEDED'
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -143,12 +143,12 @@ describe('reducers: read', function() {
           sandwiches: 'yum'
         }
       ],
-      resourceMeta: {
+      meta: {
         3: {
           readXhrStatus: 'SUCCEEDED'
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -165,12 +165,12 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
           readXhrStatus: 'NULL'
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -187,12 +187,12 @@ describe('reducers: read', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {
+      meta: {
         3: {
           readXhrStatus: xhrStatuses.NULL
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL

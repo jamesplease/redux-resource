@@ -23,8 +23,8 @@ describe('reducers: custom', function() {
 
     expect(reduced).to.deep.equal({
       resources: [],
-      resourceMeta: {},
-      resourceListMeta: {
+      meta: {},
+      listMeta: {
         createXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL

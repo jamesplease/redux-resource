@@ -8,11 +8,11 @@ export const xhrStatuses = {
 };
 
 // Updates a single resource's metadata
-export function updateResourceMeta({resourceMeta, newMeta, id, replace}) {
-  const existingMeta = replace ? {} : resourceMeta[id];
+export function updateResourceMeta({meta, newMeta, id, replace}) {
+  const existingMeta = replace ? {} : meta[id];
   return {
-    // Shallow clone the current resourceMeta
-    ...resourceMeta,
+    // Shallow clone the current meta
+    ...meta,
     // Update the key that is the "id" of the resource
     [id]: {
       // Shallow clone the existing metadata for this resource
@@ -25,8 +25,8 @@ export function updateResourceMeta({resourceMeta, newMeta, id, replace}) {
 
 // Similar to `updateResourceMeta`, but it accepts an array of IDs instead of
 // a single ID. Used for bulk updating meta.
-export function updateManyResourceMetas({resourceMeta, newMeta, ids, replace}) {
-  const next = replace ? {} : {...resourceMeta};
+export function updateManyResourceMetas({meta, newMeta, ids, replace}) {
+  const next = replace ? {} : {...meta};
 
   ids.forEach((id) => {
     const current = next[id];
@@ -121,11 +121,11 @@ export function generateDefaultInitialState() {
     resources: [],
     // This is metadata about _specific_ resources. For instance, if a DELETE
     // is in flight for a book with ID 24, then you could find that here.
-    resourceMeta: {},
+    meta: {},
     // This is metadata about the entire collection of resources. For instance,
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
-    resourceListMeta: {
+    listMeta: {
       readXhrStatus: xhrStatuses.NULL,
       createXhrStatus: xhrStatuses.NULL,
       createManyXhrStatus: xhrStatuses.NULL

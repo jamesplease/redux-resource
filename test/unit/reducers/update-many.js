@@ -32,7 +32,7 @@ describe('reducers: updateMany', function() {
         {id: 3, hungry: null},
         {id: 4, hungry: null},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.PENDING
         },
@@ -40,7 +40,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.PENDING
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -79,7 +79,7 @@ describe('reducers: updateMany', function() {
         {id: 3, hungry: null},
         {id: 4, hungry: null},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.FAILED
         },
@@ -87,7 +87,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.FAILED
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -126,7 +126,7 @@ describe('reducers: updateMany', function() {
         {id: 3, hungry: null},
         {id: 4, hungry: null},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.NULL
         },
@@ -134,7 +134,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.NULL
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -173,7 +173,7 @@ describe('reducers: updateMany', function() {
         {id: 3, hungry: null},
         {id: 4, hungry: null},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.NULL
         },
@@ -181,7 +181,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.NULL
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -220,7 +220,7 @@ describe('reducers: updateMany', function() {
         {id: 3, hungry: true},
         {id: 4, hungry: false},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         },
@@ -228,7 +228,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -267,7 +267,7 @@ describe('reducers: updateMany', function() {
         {id: 3, hungry: true},
         {id: 4, hungry: false},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         },
@@ -275,7 +275,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -315,7 +315,7 @@ describe('reducers: updateMany', function() {
         {movieId: 3, hungry: true},
         {movieId: 4, hungry: false},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         },
@@ -323,7 +323,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
@@ -362,7 +362,7 @@ describe('reducers: updateMany', function() {
         {id: 3, hungry: true},
         {id: 4, hungry: false},
       ],
-      resourceMeta: {
+      meta: {
         3: {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         },
@@ -370,7 +370,7 @@ describe('reducers: updateMany', function() {
           updateXhrStatus: xhrStatuses.SUCCEEDED
         }
       },
-      resourceListMeta: {
+      listMeta: {
         readXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL

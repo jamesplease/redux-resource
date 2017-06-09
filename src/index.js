@@ -27,9 +27,9 @@ function createResource(resourceName, options = {}) {
   const initial = {
     ...defaultInitialState,
     ...initialState,
-    resourceListMeta: {
-      ...defaultInitialState.resourceListMeta,
-      ...initialState.resourceListMeta
+    listMeta: {
+      ...defaultInitialState.listMeta,
+      ...initialState.listMeta
     }
   };
   const idAttr = idAttribute || 'id';

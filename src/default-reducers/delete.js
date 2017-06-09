@@ -1,8 +1,8 @@
 import {updateResourceMeta, xhrStatuses} from '../utils';
 
 export function del(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.PENDING},
     id: action[idAttr],
     replace: false
@@ -10,13 +10,13 @@ export function del(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function delFail(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.FAILED},
     id: action[idAttr],
     replace: false
@@ -24,7 +24,7 @@ export function delFail(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
@@ -32,9 +32,9 @@ export function delSucceed(idAttr, state, action) {
   const id = action[idAttr];
 
   // Remove this resource from the resources meta.
-  const resourceMeta = {
+  const meta = {
     // Shallow clone the meta
-    ...state.resourceMeta,
+    ...state.meta,
     [id]: null
   };
 
@@ -43,14 +43,14 @@ export function delSucceed(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
     resources
   };
 }
 
 export function delAbort(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
@@ -58,13 +58,13 @@ export function delAbort(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
 export function delReset(idAttr, state, action) {
-  const resourceMeta = updateResourceMeta({
-    resourceMeta: state.resourceMeta,
+  const meta = updateResourceMeta({
+    meta: state.meta,
     newMeta: {deleteXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
@@ -72,6 +72,6 @@ export function delReset(idAttr, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }

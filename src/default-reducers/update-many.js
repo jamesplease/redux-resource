@@ -6,8 +6,8 @@ export function updateMany(idAttribute, state, action) {
   const resources = action.resources;
   const ids = resources.map(r => r[idAttribute]);
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {updateXhrStatus: xhrStatuses.PENDING},
     replace: false,
     ids
@@ -15,7 +15,7 @@ export function updateMany(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta
+    meta
   };
 }
 
@@ -23,8 +23,8 @@ export function updateManyFail(idAttribute, state, action) {
   const resources = action.resources;
   const ids = resources.map(r => r[idAttribute]);
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {updateXhrStatus: xhrStatuses.FAILED},
     replace: false,
     ids
@@ -32,7 +32,7 @@ export function updateManyFail(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
@@ -40,8 +40,8 @@ export function updateManySucceed(idAttribute, state, action) {
   const resources = action.resources;
   const ids = resources.map(r => r[idAttribute]);
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {updateXhrStatus: xhrStatuses.SUCCEEDED},
     replace: false,
     ids
@@ -58,7 +58,7 @@ export function updateManySucceed(idAttribute, state, action) {
   return {
     ...state,
     resources: newResources,
-    resourceMeta,
+    meta,
   };
 }
 
@@ -66,8 +66,8 @@ export function updateManyAbort(idAttribute, state, action) {
   const resources = action.resources;
   const ids = resources.map(r => r[idAttribute]);
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {updateXhrStatus: xhrStatuses.NULL},
     replace: false,
     ids
@@ -75,7 +75,7 @@ export function updateManyAbort(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
 
@@ -83,8 +83,8 @@ export function updateManyReset(idAttribute, state, action) {
   const resources = action.resources;
   const ids = resources.map(r => r[idAttribute]);
 
-  const resourceMeta = updateManyResourceMetas({
-    resourceMeta: state.resourceMeta,
+  const meta = updateManyResourceMetas({
+    meta: state.meta,
     newMeta: {updateXhrStatus: xhrStatuses.NULL},
     replace: false,
     ids
@@ -92,6 +92,6 @@ export function updateManyReset(idAttribute, state, action) {
 
   return {
     ...state,
-    resourceMeta,
+    meta,
   };
 }
