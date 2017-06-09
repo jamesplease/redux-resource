@@ -12,6 +12,7 @@ describe('reducers: readMany', function() {
       resourceMeta: {},
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.PENDING
       }
     });
@@ -28,6 +29,7 @@ describe('reducers: readMany', function() {
       resourceMeta: {},
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.FAILED
       }
     });
@@ -74,6 +76,7 @@ describe('reducers: readMany', function() {
       },
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.SUCCEEDED
       }
     });
@@ -124,6 +127,7 @@ describe('reducers: readMany', function() {
       },
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.SUCCEEDED
       }
     });
@@ -163,6 +167,7 @@ describe('reducers: readMany', function() {
       },
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.SUCCEEDED
       }
     });
@@ -179,6 +184,7 @@ describe('reducers: readMany', function() {
       resourceMeta: {},
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.ABORTED
       }
     });
@@ -191,6 +197,7 @@ describe('reducers: readMany', function() {
     const resourceListMetaState = {
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: 'sandwiches'
       }
     };
@@ -207,6 +214,7 @@ describe('reducers: readMany', function() {
       resourceMeta: {},
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL
       }
     });

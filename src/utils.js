@@ -128,7 +128,8 @@ export function generateDefaultInitialState() {
     // that request would live here.
     resourceListMeta: {
       readXhrStatus: xhrStatuses.NULL,
-      createXhrStatus: xhrStatuses.NULL
+      createXhrStatus: xhrStatuses.NULL,
+      createManyXhrStatus: xhrStatuses.NULL
     }
   };
 }

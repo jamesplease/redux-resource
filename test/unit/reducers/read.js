@@ -17,6 +17,7 @@ describe('reducers: read', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -38,6 +39,7 @@ describe('reducers: read', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -75,6 +77,7 @@ describe('reducers: read', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -114,6 +117,7 @@ describe('reducers: read', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -146,6 +150,7 @@ describe('reducers: read', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -167,6 +172,7 @@ describe('reducers: read', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -188,6 +194,7 @@ describe('reducers: read', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });

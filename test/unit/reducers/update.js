@@ -30,6 +30,7 @@ describe('reducers: update', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -64,6 +65,7 @@ describe('reducers: update', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -98,6 +100,7 @@ describe('reducers: update', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -132,6 +135,7 @@ describe('reducers: update', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -170,6 +174,7 @@ describe('reducers: update', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -209,6 +214,7 @@ describe('reducers: update', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -248,6 +254,7 @@ describe('reducers: update', function() {
       },
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
