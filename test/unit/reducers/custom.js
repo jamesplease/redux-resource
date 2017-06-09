@@ -26,6 +26,7 @@ describe('reducers: custom', function() {
       resourceMeta: {},
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL
       },
       pizza: 'delicious'

@@ -19,6 +19,7 @@ describe('simpleResource', function() {
       resourceMeta: {},
       resourceListMeta: {
         readXhrStatus: xhrStatuses.NULL,
+        createManyXhrStatus: xhrStatuses.NULL,
         createXhrStatus: xhrStatuses.NULL
       }
     });
@@ -38,6 +39,7 @@ describe('simpleResource', function() {
         resourceMeta: {},
         resourceListMeta: {
           readXhrStatus: xhrStatuses.NULL,
+          createManyXhrStatus: xhrStatuses.NULL,
           createXhrStatus: xhrStatuses.NULL
         },
         hello: 'oink',
@@ -61,6 +63,7 @@ describe('simpleResource', function() {
         resourceListMeta: {
           hungry: 'always',
           readXhrStatus: xhrStatuses.NULL,
+          createManyXhrStatus: xhrStatuses.NULL,
           createXhrStatus: xhrStatuses.NULL
         },
         pizza: true

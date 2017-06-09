@@ -13,7 +13,10 @@ import * as defaultReducers from './default-reducers';
 function getActionReducers({actionReducers, resourceName, pluralForm, supportedActions, idAttr}) {
   const capitalResourceName = resourceName.toUpperCase();
   const capitalPluralName = pluralForm.toUpperCase();
-  const {create, read, readMany, update, del} = supportedActions;
+  const {
+    create, read, update, del,
+    createMany, readMany, updateMany, delMany
+  } = supportedActions;
 
   const createReducers = create ? {
     [`CREATE_${capitalResourceName}`]: defaultReducers.create.bind(null, idAttr),
@@ -29,14 +32,6 @@ function getActionReducers({actionReducers, resourceName, pluralForm, supportedA
     [`READ_${capitalResourceName}_SUCCEED`]: defaultReducers.readSucceed.bind(null, idAttr),
     [`READ_${capitalResourceName}_ABORT`]: defaultReducers.readAbort.bind(null, idAttr),
     [`READ_${capitalResourceName}_RESET`]: defaultReducers.readReset.bind(null, idAttr)
-  } : {};
-
-  const readManyReducers = readMany ? {
-    [`READ_MANY_${capitalPluralName}`]: defaultReducers.readMany.bind(null, idAttr),
-    [`READ_MANY_${capitalPluralName}_FAIL`]: defaultReducers.readManyFail.bind(null, idAttr),
-    [`READ_MANY_${capitalPluralName}_SUCCEED`]: defaultReducers.readManySucceed.bind(null, idAttr),
-    [`READ_MANY_${capitalPluralName}_ABORT`]: defaultReducers.readManyAbort.bind(null, idAttr),
-    [`READ_MANY_${capitalPluralName}_RESET`]: defaultReducers.readManyReset.bind(null, idAttr)
   } : {};
 
   const updateReducers = update ? {
@@ -55,12 +50,47 @@ function getActionReducers({actionReducers, resourceName, pluralForm, supportedA
     [`DELETE_${capitalResourceName}_RESET`]: defaultReducers.delReset.bind(null, idAttr)
   } : {};
 
+  const createManyReducers = createMany ? {
+    [`CREATE_MANY_${capitalPluralName}`]: defaultReducers.createMany.bind(null, idAttr),
+    [`CREATE_MANY_${capitalPluralName}_FAIL`]: defaultReducers.createManyFail.bind(null, idAttr),
+    [`CREATE_MANY_${capitalPluralName}_SUCCEED`]: defaultReducers.createManySucceed.bind(null, idAttr),
+    [`CREATE_MANY_${capitalPluralName}_ABORT`]: defaultReducers.createManyAbort.bind(null, idAttr),
+    [`CREATE_MANY_${capitalPluralName}_RESET`]: defaultReducers.createManyReset.bind(null, idAttr)
+  } : {};
+
+  const readManyReducers = readMany ? {
+    [`READ_MANY_${capitalPluralName}`]: defaultReducers.readMany.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_FAIL`]: defaultReducers.readManyFail.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_SUCCEED`]: defaultReducers.readManySucceed.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_ABORT`]: defaultReducers.readManyAbort.bind(null, idAttr),
+    [`READ_MANY_${capitalPluralName}_RESET`]: defaultReducers.readManyReset.bind(null, idAttr)
+  } : {};
+
+  const updateManyReducers = updateMany ? {
+    [`UPDATE_MANY_${capitalPluralName}`]: defaultReducers.updateMany.bind(null, idAttr),
+    [`UPDATE_MANY_${capitalPluralName}_FAIL`]: defaultReducers.updateManyFail.bind(null, idAttr),
+    [`UPDATE_MANY_${capitalPluralName}_SUCCEED`]: defaultReducers.updateManySucceed.bind(null, idAttr),
+    [`UPDATE_MANY_${capitalPluralName}_ABORT`]: defaultReducers.updateManyAbort.bind(null, idAttr),
+    [`UPDATE_MANY_${capitalPluralName}_RESET`]: defaultReducers.updateManyReset.bind(null, idAttr)
+  } : {};
+
+  const deleteManyReducers = delMany ? {
+    [`DELETE_MANY_${capitalPluralName}`]: defaultReducers.delMany.bind(null, idAttr),
+    [`DELETE_MANY_${capitalPluralName}_FAIL`]: defaultReducers.delManyFail.bind(null, idAttr),
+    [`DELETE_MANY_${capitalPluralName}_SUCCEED`]: defaultReducers.delManySucceed.bind(null, idAttr),
+    [`DELETE_MANY_${capitalPluralName}_ABORT`]: defaultReducers.delManyAbort.bind(null, idAttr),
+    [`DELETE_MANY_${capitalPluralName}_RESET`]: defaultReducers.delManyReset.bind(null, idAttr)
+  } : {};
+
   const allDefaultActionReducers = {
     ...createReducers,
     ...readReducers,
-    ...readManyReducers,
     ...updateReducers,
     ...deleteReducers,
+    ...createManyReducers,
+    ...readManyReducers,
+    ...updateManyReducers,
+    ...deleteManyReducers,
   };
 
   return {
