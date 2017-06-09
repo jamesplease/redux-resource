@@ -18,6 +18,17 @@ describe('actionTypes', function() {
     });
   });
 
+  describe('createMany', () => {
+    it('should have the right actionTypes', () => {
+      const actionTypes = simpleResource('hello').actionTypes;
+      expect(actionTypes.CREATE_MANY_HELLOS).to.equal('CREATE_MANY_HELLOS');
+      expect(actionTypes.CREATE_MANY_HELLOS_SUCCEED).to.equal('CREATE_MANY_HELLOS_SUCCEED');
+      expect(actionTypes.CREATE_MANY_HELLOS_FAIL).to.equal('CREATE_MANY_HELLOS_FAIL');
+      expect(actionTypes.CREATE_MANY_HELLOS_ABORT).to.equal('CREATE_MANY_HELLOS_ABORT');
+      expect(actionTypes.CREATE_MANY_HELLOS_RESET).to.equal('CREATE_MANY_HELLOS_RESET');
+    });
+  });
+
   describe('read', () => {
     it('should have the right actionTypes', () => {
       const actionTypes = simpleResource('hello').actionTypes;
@@ -51,6 +62,17 @@ describe('actionTypes', function() {
     });
   });
 
+  describe('updateMany', () => {
+    it('should have the right actionTypes', () => {
+      const actionTypes = simpleResource('hello').actionTypes;
+      expect(actionTypes.UPDATE_MANY_HELLOS).to.equal('UPDATE_MANY_HELLOS');
+      expect(actionTypes.UPDATE_MANY_HELLOS_SUCCEED).to.equal('UPDATE_MANY_HELLOS_SUCCEED');
+      expect(actionTypes.UPDATE_MANY_HELLOS_FAIL).to.equal('UPDATE_MANY_HELLOS_FAIL');
+      expect(actionTypes.UPDATE_MANY_HELLOS_ABORT).to.equal('UPDATE_MANY_HELLOS_ABORT');
+      expect(actionTypes.UPDATE_MANY_HELLOS_RESET).to.equal('UPDATE_MANY_HELLOS_RESET');
+    });
+  });
+
   describe('delete', () => {
     it('should have the right actionTypes', () => {
       const actionTypes = simpleResource('hello').actionTypes;
@@ -59,6 +81,17 @@ describe('actionTypes', function() {
       expect(actionTypes.DELETE_HELLO_FAIL).to.equal('DELETE_HELLO_FAIL');
       expect(actionTypes.DELETE_HELLO_ABORT).to.equal('DELETE_HELLO_ABORT');
       expect(actionTypes.DELETE_HELLO_RESET).to.equal('DELETE_HELLO_RESET');
+    });
+  });
+
+  describe('deleteMany', () => {
+    it('should have the right actionTypes', () => {
+      const actionTypes = simpleResource('hello').actionTypes;
+      expect(actionTypes.DELETE_MANY_HELLOS).to.equal('DELETE_MANY_HELLOS');
+      expect(actionTypes.DELETE_MANY_HELLOS_SUCCEED).to.equal('DELETE_MANY_HELLOS_SUCCEED');
+      expect(actionTypes.DELETE_MANY_HELLOS_FAIL).to.equal('DELETE_MANY_HELLOS_FAIL');
+      expect(actionTypes.DELETE_MANY_HELLOS_ABORT).to.equal('DELETE_MANY_HELLOS_ABORT');
+      expect(actionTypes.DELETE_MANY_HELLOS_RESET).to.equal('DELETE_MANY_HELLOS_RESET');
     });
   });
 
@@ -83,10 +116,14 @@ describe('actionTypes', function() {
       const actionTypes = simpleResource('hello', {
         supportedActions: {
           create: false,
-          readMany: true,
           read: false,
           update: false,
-          del: false
+          del: false,
+
+          createMany: false,
+          readMany: true,
+          updateMany: false,
+          delMany: false
         }
       }).actionTypes;
       expect(_.size(actionTypes)).to.equal(5);

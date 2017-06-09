@@ -7,10 +7,13 @@ import {
 
 const supportAllActions = {
   create: true,
+  createMany: true,
   read: true,
   readMany: true,
   update: true,
-  del: true
+  updateMany: true,
+  del: true,
+  delMany: true
 };
 
 // Create a resource.
