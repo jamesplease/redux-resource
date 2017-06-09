@@ -8,7 +8,7 @@ export function createMany(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: requestStatuses.PENDING
+      createManyStatus: requestStatuses.PENDING
     }
   };
 }
@@ -18,7 +18,7 @@ export function createManyFail(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: requestStatuses.FAILED
+      createManyStatus: requestStatuses.FAILED
     }
   };
 }
@@ -47,7 +47,7 @@ export function createManySucceed(idAttribute, state, action) {
     }),
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: requestStatuses.SUCCEEDED
+      createManyStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -57,7 +57,7 @@ export function createManyAbort(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: requestStatuses.NULL
+      createManyStatus: requestStatuses.NULL
     }
   };
 }
@@ -67,7 +67,7 @@ export function createManyReset(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyXhrStatus: requestStatuses.NULL
+      createManyStatus: requestStatuses.NULL
     }
   };
 }

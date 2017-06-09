@@ -5,7 +5,7 @@ import {
 export function update(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {updateXhrStatus: requestStatuses.PENDING},
+    newMeta: {updateStatus: requestStatuses.PENDING},
     id: action[idAttr],
     replace: false
   });
@@ -19,7 +19,7 @@ export function update(idAttr, state, action) {
 export function updateFail(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {updateXhrStatus: requestStatuses.FAILED},
+    newMeta: {updateStatus: requestStatuses.FAILED},
     id: action[idAttr],
     replace: false
   });
@@ -33,7 +33,7 @@ export function updateFail(idAttr, state, action) {
 export function updateSucceed(idAttribute, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {updateXhrStatus: requestStatuses.SUCCEEDED},
+    newMeta: {updateStatus: requestStatuses.SUCCEEDED},
     id: action[idAttribute],
     replace: false
   });
@@ -56,7 +56,7 @@ export function updateSucceed(idAttribute, state, action) {
 export function updateAbort(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {updateXhrStatus: requestStatuses.NULL},
+    newMeta: {updateStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });
@@ -70,7 +70,7 @@ export function updateAbort(idAttr, state, action) {
 export function updateReset(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {updateXhrStatus: requestStatuses.NULL},
+    newMeta: {updateStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });

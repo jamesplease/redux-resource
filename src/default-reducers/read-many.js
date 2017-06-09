@@ -8,7 +8,7 @@ export function readMany(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: requestStatuses.PENDING
+      readStatus: requestStatuses.PENDING
     }
   };
 }
@@ -18,7 +18,7 @@ export function readManyFail(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: requestStatuses.FAILED
+      readStatus: requestStatuses.FAILED
     }
   };
 }
@@ -52,7 +52,7 @@ export function readManySucceed(idAttribute, state, action) {
     }),
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: requestStatuses.SUCCEEDED
+      readStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -62,7 +62,7 @@ export function readManyAbort(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: requestStatuses.NULL
+      readStatus: requestStatuses.NULL
     }
   };
 }
@@ -72,7 +72,7 @@ export function readManyReset(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      readXhrStatus: requestStatuses.NULL
+      readStatus: requestStatuses.NULL
     }
   };
 }

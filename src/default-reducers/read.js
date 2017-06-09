@@ -5,7 +5,7 @@ import {
 export function read(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {readXhrStatus: requestStatuses.PENDING},
+    newMeta: {readStatus: requestStatuses.PENDING},
     id: action[idAttr],
     replace: false
   });
@@ -19,7 +19,7 @@ export function read(idAttr, state, action) {
 export function readFail(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {readXhrStatus: requestStatuses.FAILED},
+    newMeta: {readStatus: requestStatuses.FAILED},
     id: action[idAttr],
     replace: false
   });
@@ -33,7 +33,7 @@ export function readFail(idAttr, state, action) {
 export function readSucceed(idAttribute, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {readXhrStatus: requestStatuses.SUCCEEDED},
+    newMeta: {readStatus: requestStatuses.SUCCEEDED},
     id: action[idAttribute],
     replace: false
   });
@@ -56,7 +56,7 @@ export function readSucceed(idAttribute, state, action) {
 export function readAbort(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {readXhrStatus: requestStatuses.NULL},
+    newMeta: {readStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });
@@ -70,7 +70,7 @@ export function readAbort(idAttr, state, action) {
 export function readReset(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
-    newMeta: {readXhrStatus: requestStatuses.NULL},
+    newMeta: {readStatus: requestStatuses.NULL},
     id: action[idAttr],
     replace: false
   });

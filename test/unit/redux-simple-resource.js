@@ -18,9 +18,9 @@ describe('simpleResource', function() {
       resources: [],
       meta: {},
       listMeta: {
-        readXhrStatus: requestStatuses.NULL,
-        createManyXhrStatus: requestStatuses.NULL,
-        createXhrStatus: requestStatuses.NULL
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
       }
     });
   });
@@ -38,9 +38,9 @@ describe('simpleResource', function() {
         resources: [],
         meta: {},
         listMeta: {
-          readXhrStatus: requestStatuses.NULL,
-          createManyXhrStatus: requestStatuses.NULL,
-          createXhrStatus: requestStatuses.NULL
+          readStatus: requestStatuses.NULL,
+          createManyStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
         },
         hello: 'oink',
         pizza: true
@@ -62,9 +62,9 @@ describe('simpleResource', function() {
         meta: {1: true},
         listMeta: {
           hungry: 'always',
-          readXhrStatus: requestStatuses.NULL,
-          createManyXhrStatus: requestStatuses.NULL,
-          createXhrStatus: requestStatuses.NULL
+          readStatus: requestStatuses.NULL,
+          createManyStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
         },
         pizza: true
       });

@@ -7,7 +7,7 @@ export function create(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createXhrStatus: requestStatuses.PENDING
+      createStatus: requestStatuses.PENDING
     }
   };
 }
@@ -17,7 +17,7 @@ export function createFail(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createXhrStatus: requestStatuses.FAILED
+      createStatus: requestStatuses.FAILED
     }
   };
 }
@@ -43,7 +43,7 @@ export function createSucceed(idAttribute, state, action) {
     meta,
     listMeta: {
       ...state.listMeta,
-      createXhrStatus: requestStatuses.SUCCEEDED
+      createStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -53,7 +53,7 @@ export function createAbort(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createXhrStatus: requestStatuses.NULL
+      createStatus: requestStatuses.NULL
     }
   };
 }
@@ -63,7 +63,7 @@ export function createReset(idAttr, state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createXhrStatus: requestStatuses.NULL
+      createStatus: requestStatuses.NULL
     }
   };
 }

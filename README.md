@@ -203,9 +203,9 @@ initial state is:
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
   : {
-    readXhrStatus: requestStatuses.NULL,
-    createXhrStatus: requestStatuses.NULL,
-    createManyXhrStatus: requestStatuses.NULL
+    readStatus: requestStatuses.NULL,
+    createStatus: requestStatuses.NULL,
+    createManyStatus: requestStatuses.NULL
   }
 }
 ```
@@ -300,7 +300,7 @@ class MyComponent extends Component {
     const {listMeta} = this.props;
 
     // Render loading text if a retrieve request is in flight
-    if (listMeta.readXhrStatus === requestStatuses.PENDING) {
+    if (listMeta.readStatus === requestStatuses.PENDING) {
       return (<div>Loading data</div>);
     } else {
       return (<div>Not loading data</div>);
@@ -446,13 +446,13 @@ The built-in metadata for each resource is below:
 ```js
 {
   // The status of any existing request to update the resource
-  updateXhrStatus: requestStatuses.NULL,
+  updateStatus: requestStatuses.NULL,
   // The status of any existing request to fetch the resource
-  readXhrStatus: requestStatuses.NULL,
+  readStatus: requestStatuses.NULL,
   // The status of an any existing request to delete the resource. Note that
   // this will never be "SUCCEEDED," as a successful delete removes the
   // resource, and its metadata, from the store.
-  deleteXhrStatus: requestStatuses.NULL
+  deleteStatus: requestStatuses.NULL
 }
 ```
 
@@ -468,15 +468,15 @@ delete it, then a piece of the store might look like:
   ]
   meta: {
     1: {
-      updateXhrStatus: requestStatuses.NULL,
+      updateStatus: requestStatuses.NULL,
       // The request is in flight!
-      readXhrStatus: requestStatuses.PENDING,
-      deleteXhrStatus: requestStatuses.NULL,
+      readStatus: requestStatuses.PENDING,
+      deleteStatus: requestStatuses.NULL,
     },
     6: {
-      updateXhrStatus: requestStatuses.NULL,
-      readXhrStatus: requestStatuses.NULL,
-      deleteXhrStatus: requestStatuses.NULL,
+      updateStatus: requestStatuses.NULL,
+      readStatus: requestStatuses.NULL,
+      deleteStatus: requestStatuses.NULL,
     }
   },
   ...otherThings
@@ -499,9 +499,9 @@ The default list metadata is:
 
 ```js
 listMeta: {
-  readXhrStatus: requestStatuses.NULL,
-  createXhrStatus: requestStatuses.NULL,
-  createManyXhrStatus: requestStatuses.NULL
+  readStatus: requestStatuses.NULL,
+  createStatus: requestStatuses.NULL,
+  createManyStatus: requestStatuses.NULL
 }
 ```
 
@@ -843,9 +843,9 @@ structure:
   // that request would live here.
   // For more, see the Resource Meta guide in this README.
   listMeta: {
-    readXhrStatus: requestStatuses.NULL,
-    createXhrStatus: requestStatuses.NULL,
-    createManyXhrStatuses: requestStatuses.NULL
+    readStatus: requestStatuses.NULL,
+    createStatus: requestStatuses.NULL,
+    createManyStatuses: requestStatuses.NULL
   }
 }
 ```

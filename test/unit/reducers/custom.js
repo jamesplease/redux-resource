@@ -25,9 +25,9 @@ describe('reducers: custom', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createXhrStatus: requestStatuses.NULL,
-        createManyXhrStatus: requestStatuses.NULL,
-        readXhrStatus: requestStatuses.NULL
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
       },
       pizza: 'delicious'
     });
