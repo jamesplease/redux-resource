@@ -45,7 +45,7 @@ describe('reducers: create', function() {
       resources: [],
       resourceMeta: {},
       resourceListMeta: {
-        createXhrStatus: xhrStatuses.ABORTED,
+        createXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
         readXhrStatus: xhrStatuses.NULL
       }

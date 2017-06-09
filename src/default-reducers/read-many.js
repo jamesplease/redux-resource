@@ -62,7 +62,7 @@ export function readManyAbort(idAttr, state) {
     ...state,
     resourceListMeta: {
       ...state.resourceListMeta,
-      readXhrStatus: xhrStatuses.ABORTED
+      readXhrStatus: xhrStatuses.NULL
     }
   };
 }

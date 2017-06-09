@@ -128,10 +128,10 @@ describe('reducers: updateMany', function() {
       ],
       resourceMeta: {
         3: {
-          updateXhrStatus: xhrStatuses.ABORTED
+          updateXhrStatus: xhrStatuses.NULL
         },
         4: {
-          updateXhrStatus: xhrStatuses.ABORTED
+          updateXhrStatus: xhrStatuses.NULL
         }
       },
       resourceListMeta: {

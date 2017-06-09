@@ -51,7 +51,7 @@ export function delSucceed(idAttr, state, action) {
 export function delAbort(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {deleteXhrStatus: xhrStatuses.ABORTED},
+    newMeta: {deleteXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
   });

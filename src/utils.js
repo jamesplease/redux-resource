@@ -4,7 +4,6 @@ export const xhrStatuses = {
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
-  ABORTED: 'ABORTED',
   NULL: 'NULL'
 };
 

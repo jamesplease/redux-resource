@@ -56,7 +56,7 @@ export function readSucceed(idAttribute, state, action) {
 export function readAbort(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {readXhrStatus: xhrStatuses.ABORTED},
+    newMeta: {readXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
   });

@@ -274,7 +274,6 @@ the different states that an XHR request can be in.
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
-  ABORTED: 'ABORTED',
   NULL: 'NULL'
 }
 ```
@@ -536,23 +535,24 @@ A success response was returned.
 
 An error response was returned.
 
-##### `ABORTED`
-
-The request was aborted by the client; a response will never be received.
-
 ##### `NULL`
 
-This status is applied to a request that has not begun. For instance, when a
-resource is first created, its read, update, and delete request statuses are
-all `NULL`, because none of those requests have been made.
+This status is applied to a request that has not begun, or to reset a request
+that you do not care about. For instance, when a resource is first created, its
+read, update, and delete request statuses are all `NULL`, because none of those
+requests have been made.
 
 When requests have been made, there may also come a time when your application
 no longer cares about the result of a request. At that time, you have the option
 to set the XHR status to `NULL` by dispatching the `RESET` action type.
 
-Not all applications will need to `RESET` requests. Many (if not most) of the
-time, you will not need to manually reset the status back to `NULL`. But the
-option is there if you need it.
+Two common use cases for the `NULL` are:
+
+1. aborting a request
+2. dismissing an alert that appears whenever a status is `SUCCEEDED` or `FAILED`
+
+If you do not need to use the `NULL` status, then that is fine. There are many
+situations where you do not need to reset the status of a request.
 
 ### Action Types
 
@@ -639,7 +639,7 @@ An example start action type is:
 
 #### FAIL action type
 
-This will update the metadata for this particular action to be in an
+This will update the metadata for the affected resources to be in an
 `xhrStatuses.FAILED` state.
 
 These are the five FAIL action types:
@@ -667,8 +667,8 @@ An example fail action type is:
 
 #### ABORT action type
 
-This will update the metadata for this particular action to be in an
-`xhrStatuses.ABORTED` state.
+This will update the metadata for the affected resources to be in an
+`xhrStatuses.NULL` state.
 
 ```js
 `READ_{RESOURCE}_ABORT`
@@ -692,7 +692,7 @@ An example fail abort action type is:
 
 #### SUCCEED action type
 
-This will update the metadata for this particular action to be in an
+This will update the metadata for the affected resources to be in an
 `xhrStatuses.SUCCEED` state. It will also update the resources themselves in
 your store.
 
@@ -742,6 +742,8 @@ fails, and you use the metadata in the store to conditionally render an alert
 to the user. If the user dismisses the alert, then you may wish to fire a
 `RESET` action type to reset the state back to `NULL`, which would cause the
 alert to disappear.
+
+Also, if you abort a request, then you may also choose to fire this action type.
 
 An example reset action is:
 

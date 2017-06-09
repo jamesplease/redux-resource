@@ -53,7 +53,7 @@ export function createAbort(idAttr, state) {
     ...state,
     resourceListMeta: {
       ...state.resourceListMeta,
-      createXhrStatus: xhrStatuses.ABORTED
+      createXhrStatus: xhrStatuses.NULL
     }
   };
 }

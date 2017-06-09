@@ -56,7 +56,7 @@ export function updateSucceed(idAttribute, state, action) {
 export function updateAbort(idAttr, state, action) {
   const resourceMeta = updateResourceMeta({
     resourceMeta: state.resourceMeta,
-    newMeta: {updateXhrStatus: xhrStatuses.ABORTED},
+    newMeta: {updateXhrStatus: xhrStatuses.NULL},
     id: action[idAttr],
     replace: false
   });

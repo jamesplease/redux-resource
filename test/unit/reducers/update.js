@@ -95,7 +95,7 @@ describe('reducers: update', function() {
       ],
       resourceMeta: {
         3: {
-          updateXhrStatus: xhrStatuses.ABORTED
+          updateXhrStatus: xhrStatuses.NULL
         }
       },
       resourceListMeta: {

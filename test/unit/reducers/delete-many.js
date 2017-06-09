@@ -101,10 +101,10 @@ describe('reducers: deleteMany', function() {
       ],
       resourceMeta: {
         3: {
-          deleteXhrStatus: xhrStatuses.ABORTED
+          deleteXhrStatus: xhrStatuses.NULL
         },
         4: {
-          deleteXhrStatus: xhrStatuses.ABORTED
+          deleteXhrStatus: xhrStatuses.NULL
         }
       },
       resourceListMeta: {

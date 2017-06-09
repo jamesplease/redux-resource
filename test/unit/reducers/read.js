@@ -167,7 +167,7 @@ describe('reducers: read', function() {
       resources: [],
       resourceMeta: {
         3: {
-          readXhrStatus: 'ABORTED'
+          readXhrStatus: 'NULL'
         }
       },
       resourceListMeta: {

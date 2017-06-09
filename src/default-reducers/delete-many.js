@@ -62,7 +62,7 @@ export function delManyAbort(idAttribute, state, action) {
 
   const resourceMeta = updateManyResourceMetas({
     resourceMeta: state.resourceMeta,
-    newMeta: {deleteXhrStatus: xhrStatuses.ABORTED},
+    newMeta: {deleteXhrStatus: xhrStatuses.NULL},
     replace: false,
     ids
   });

@@ -185,7 +185,7 @@ describe('reducers: readMany', function() {
       resourceListMeta: {
         createXhrStatus: xhrStatuses.NULL,
         createManyXhrStatus: xhrStatuses.NULL,
-        readXhrStatus: xhrStatuses.ABORTED
+        readXhrStatus: xhrStatuses.NULL
       }
     });
   });
