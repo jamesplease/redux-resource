@@ -6,6 +6,9 @@ import updateResourceMeta from './utils/update-resource-meta';
 import updateManyResourceMetas from './utils/update-many-resource-metas';
 import upsertResource from './utils/upsert-resource';
 import upsertManyResources from './utils/upsert-many-resources';
+import findMeta from './utils/find-meta';
+import getStatus from './utils/get-status';
+import combineStatuses from './utils/combine-statuses';
 
 // Create a resource reducer.
 //
@@ -37,5 +40,8 @@ export {
   updateManyResourceMetas,
   upsertResource,
   upsertManyResources,
-  actionTypes
+  actionTypes,
+  findMeta,
+  getStatus,
+  combineStatuses
 };
