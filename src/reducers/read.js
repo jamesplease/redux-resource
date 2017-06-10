@@ -1,6 +1,6 @@
-import {
-  updateResourceMeta, upsertResource, requestStatuses
-} from '../utils';
+import requestStatuses from '../utils/request-statuses';
+import updateResourceMeta from '../utils/update-resource-meta';
+import upsertResource from '../utils/upsert-resource';
 
 export function read(state, action) {
   const meta = updateResourceMeta({

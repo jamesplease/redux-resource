@@ -1,6 +1,6 @@
-import {
-  updateManyResourceMetas, requestStatuses, upsertManyResources
-} from '../utils';
+import requestStatuses from '../utils/request-statuses';
+import updateManyResourceMetas from '../utils/update-many-resource-metas';
+import upsertManyResources from '../utils/upsert-many-resources';
 
 export function updateMany(state, action) {
   const resources = action.resources;

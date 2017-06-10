@@ -1,5 +1,5 @@
 import actionReducers from './action-reducers';
-import {composeReducers} from './utils';
+import composeReducers from './utils/compose-reducers';
 
 export default function generateReducers(options) {
   const {initialState, resourceName, plugins} = options;

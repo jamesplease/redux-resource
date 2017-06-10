@@ -1,4 +1,5 @@
-import {updateManyResourceMetas, requestStatuses} from '../utils';
+import requestStatuses from '../utils/request-statuses';
+import updateManyResourceMetas from '../utils/update-many-resource-metas';
 
 export function delMany(state, action) {
   const ids = action.ids;

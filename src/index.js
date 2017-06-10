@@ -1,9 +1,11 @@
 import generateReducer from './generate-reducer';
 import actionTypes from './action-types';
-import {
-  generateDefaultInitialState, requestStatuses, updateResourceMeta,
-  updateManyResourceMetas, upsertResource, upsertManyResources
-} from './utils';
+import generateDefaultInitialState from './utils/generate-default-initial-state';
+import requestStatuses from './utils/request-statuses';
+import updateResourceMeta from './utils/update-resource-meta';
+import updateManyResourceMetas from './utils/update-many-resource-metas';
+import upsertResource from './utils/upsert-resource';
+import upsertManyResources from './utils/upsert-many-resources';
 
 // Create a resource reducer.
 //

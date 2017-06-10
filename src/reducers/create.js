@@ -1,6 +1,7 @@
-import {
-  upsertResource, requestStatuses, updateResourceMeta, initialResourceMetaState
-} from '../utils';
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
+import requestStatuses from '../utils/request-statuses';
+import updateResourceMeta from '../utils/update-resource-meta';
+import upsertResource from '../utils/upsert-resource';
 
 export function create(state) {
   return {

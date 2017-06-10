@@ -1,4 +1,5 @@
-import {updateResourceMeta, requestStatuses} from '../utils';
+import requestStatuses from '../utils/request-statuses';
+import updateResourceMeta from '../utils/update-resource-meta';
 
 export function del(state, action) {
   const meta = updateResourceMeta({

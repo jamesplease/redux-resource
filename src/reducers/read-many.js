@@ -1,7 +1,7 @@
-import {
-  updateManyResourceMetas, requestStatuses, initialResourceMetaState,
-  upsertManyResources
-} from '../utils';
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
+import requestStatuses from '../utils/request-statuses';
+import updateManyResourceMetas from '../utils/update-many-resource-metas';
+import upsertManyResources from '../utils/upsert-many-resources';
 
 export function readMany(state) {
   return {
