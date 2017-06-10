@@ -56,19 +56,17 @@ describe('reducers: createMany', function() {
   });
 
   it('should handle `CREATE_MANY_RESOURCES_SUCCEED`', () => {
-    const reducer = resourceReducer('hellos', {
-      idAttribute: 'movieId'
-    });
+    const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
       type: 'CREATE_MANY_RESOURCES_SUCCEED',
       resourceName: 'hellos',
       resources: [
         {
-          movieId: 10,
+          id: 10,
           hungry: true
         },
         {
-          movieId: 12,
+          id: 12,
           hungry: false
         }
       ]
@@ -76,8 +74,8 @@ describe('reducers: createMany', function() {
 
     expect(reduced).to.deep.equal({
       resources: [
-        {movieId: 10, hungry: true},
-        {movieId: 12, hungry: false},
+        {id: 10, hungry: true},
+        {id: 12, hungry: false},
       ],
       meta: {
         10: {

@@ -1,12 +1,12 @@
-import {
-  updateResourceMeta, upsertResource, requestStatuses
-} from '../utils';
+import requestStatuses from '../utils/request-statuses';
+import updateResourceMeta from '../utils/update-resource-meta';
+import upsertResource from '../utils/upsert-resource';
 
-export function read(idAttr, state, action) {
+export function read(state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
     newMeta: {readStatus: requestStatuses.PENDING},
-    id: action[idAttr],
+    id: action.id,
     replace: false
   });
 
@@ -16,11 +16,11 @@ export function read(idAttr, state, action) {
   };
 }
 
-export function readFail(idAttr, state, action) {
+export function readFail(state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
     newMeta: {readStatus: requestStatuses.FAILED},
-    id: action[idAttr],
+    id: action.id,
     replace: false
   });
 
@@ -30,11 +30,11 @@ export function readFail(idAttr, state, action) {
   };
 }
 
-export function readSucceed(idAttribute, state, action) {
+export function readSucceed(state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
     newMeta: {readStatus: requestStatuses.SUCCEEDED},
-    id: action[idAttribute],
+    id: action.id,
     replace: false
   });
 
@@ -42,8 +42,8 @@ export function readSucceed(idAttribute, state, action) {
   const resources = upsertResource({
     resources: state.resources,
     resource: action.resource,
-    id: action[idAttribute],
-    idAttribute, replace
+    id: action.id,
+    replace
   });
 
   return {
@@ -53,11 +53,11 @@ export function readSucceed(idAttribute, state, action) {
   };
 }
 
-export function readReset(idAttr, state, action) {
+export function readReset(state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
     newMeta: {readStatus: requestStatuses.NULL},
-    id: action[idAttr],
+    id: action.id,
     replace: false
   });
 

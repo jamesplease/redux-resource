@@ -1,9 +1,9 @@
-import {
-  updateManyResourceMetas, requestStatuses, initialResourceMetaState,
-  upsertManyResources
-} from '../utils';
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
+import requestStatuses from '../utils/request-statuses';
+import updateManyResourceMetas from '../utils/update-many-resource-metas';
+import upsertManyResources from '../utils/upsert-many-resources';
 
-export function createMany(idAttr, state) {
+export function createMany(state) {
   return {
     ...state,
     listMeta: {
@@ -13,7 +13,7 @@ export function createMany(idAttr, state) {
   };
 }
 
-export function createManyFail(idAttr, state) {
+export function createManyFail(state) {
   return {
     ...state,
     listMeta: {
@@ -23,15 +23,14 @@ export function createManyFail(idAttr, state) {
   };
 }
 
-export function createManySucceed(idAttribute, state, action) {
+export function createManySucceed(state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r[idAttribute]);
+  const ids = resources.map(r => r.id);
 
   const newResources = upsertManyResources({
     resources: state.resources,
     replace: false,
     newResources: resources,
-    idAttribute
   });
 
   return {
@@ -52,7 +51,7 @@ export function createManySucceed(idAttribute, state, action) {
   };
 }
 
-export function createManyReset(idAttr, state) {
+export function createManyReset(state) {
   return {
     ...state,
     listMeta: {

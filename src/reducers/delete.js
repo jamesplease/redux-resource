@@ -1,10 +1,11 @@
-import {updateResourceMeta, requestStatuses} from '../utils';
+import requestStatuses from '../utils/request-statuses';
+import updateResourceMeta from '../utils/update-resource-meta';
 
-export function del(idAttr, state, action) {
+export function del(state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
     newMeta: {deleteStatus: requestStatuses.PENDING},
-    id: action[idAttr],
+    id: action.id,
     replace: false
   });
 
@@ -14,11 +15,11 @@ export function del(idAttr, state, action) {
   };
 }
 
-export function delFail(idAttr, state, action) {
+export function delFail(state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
     newMeta: {deleteStatus: requestStatuses.FAILED},
-    id: action[idAttr],
+    id: action.id,
     replace: false
   });
 
@@ -28,8 +29,8 @@ export function delFail(idAttr, state, action) {
   };
 }
 
-export function delSucceed(idAttr, state, action) {
-  const id = action[idAttr];
+export function delSucceed(state, action) {
+  const id = action.id;
 
   // Remove this resource from the resources meta.
   const meta = {
@@ -39,7 +40,7 @@ export function delSucceed(idAttr, state, action) {
   };
 
   // Shallow clone the existing resource array, removing the deleted resource
-  const resources = state.resources.filter(r => r[idAttr] !== id);
+  const resources = state.resources.filter(r => r.id !== id);
 
   return {
     ...state,
@@ -48,11 +49,11 @@ export function delSucceed(idAttr, state, action) {
   };
 }
 
-export function delReset(idAttr, state, action) {
+export function delReset(state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
     newMeta: {deleteStatus: requestStatuses.NULL},
-    id: action[idAttr],
+    id: action.id,
     replace: false
   });
 
