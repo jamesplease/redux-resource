@@ -48,20 +48,6 @@ export function delSucceed(idAttr, state, action) {
   };
 }
 
-export function delAbort(idAttr, state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.NULL},
-    id: action[idAttr],
-    replace: false
-  });
-
-  return {
-    ...state,
-    meta,
-  };
-}
-
 export function delReset(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,

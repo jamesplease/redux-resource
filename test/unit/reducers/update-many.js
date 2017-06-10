@@ -95,53 +95,6 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_HELLOS_ABORT`', () => {
-    const result = simpleResource('hello', {
-      initialState: {
-        resources: [
-          {id: 1, hungry: null},
-          {id: 3, hungry: null},
-          {id: 4, hungry: null},
-        ]
-      }
-    });
-
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS_ABORT',
-      resources: [
-        {
-          id: 3,
-          hungry: true
-        },
-        {
-          id: 4,
-          hungry: false
-        }
-      ]
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {id: 1, hungry: null},
-        {id: 3, hungry: null},
-        {id: 4, hungry: null},
-      ],
-      meta: {
-        3: {
-          updateStatus: requestStatuses.NULL
-        },
-        4: {
-          updateStatus: requestStatuses.NULL
-        }
-      },
-      listMeta: {
-        readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
-      }
-    });
-  });
-
   it('should handle `UPDATE_MANY_HELLOS_RESET`', () => {
     const result = simpleResource('hello', {
       initialState: {

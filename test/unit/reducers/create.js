@@ -35,23 +35,6 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLOS_ABORT`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_ABORT'
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [],
-      meta: {},
-      listMeta: {
-        createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        readStatus: requestStatuses.NULL
-      }
-    });
-  });
-
   it('should handle `CREATE_HELLOS_RESET`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {

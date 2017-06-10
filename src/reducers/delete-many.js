@@ -57,22 +57,6 @@ export function delManySucceed(idAttribute, state, action) {
   };
 }
 
-export function delManyAbort(idAttribute, state, action) {
-  const ids = action.ids;
-
-  const meta = updateManyResourceMetas({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.NULL},
-    replace: false,
-    ids
-  });
-
-  return {
-    ...state,
-    meta,
-  };
-}
-
 export function delManyReset(idAttribute, state, action) {
   const ids = action.ids;
 

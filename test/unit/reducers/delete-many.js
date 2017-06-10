@@ -77,44 +77,6 @@ describe('reducers: deleteMany', function() {
     });
   });
 
-  it('should handle `DELETE_MANY_HELLOS_ABORT`', () => {
-    const result = simpleResource('hello', {
-      initialState: {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ]
-      }
-    });
-
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_MANY_HELLOS_ABORT',
-      ids: [3, 4]
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
-      ],
-      meta: {
-        3: {
-          deleteStatus: requestStatuses.NULL
-        },
-        4: {
-          deleteStatus: requestStatuses.NULL
-        }
-      },
-      listMeta: {
-        readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
-      }
-    });
-  });
-
   it('should handle `DELETE_MANY_HELLOS_RESET`', () => {
     const result = simpleResource('hello', {
       initialState: {

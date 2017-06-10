@@ -156,28 +156,6 @@ describe('reducers: read', function() {
     });
   });
 
-  it('should handle `READ_HELLO_ABORT`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'READ_HELLO_ABORT',
-      id: 3
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [],
-      meta: {
-        3: {
-          readStatus: 'NULL'
-        }
-      },
-      listMeta: {
-        readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
-      }
-    });
-  });
-
   it('should handle `READ_HELLO_RESET`', () => {
     const result = simpleResource('hello');
     const reduced = result.reducer(result.initialState, {

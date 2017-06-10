@@ -71,41 +71,6 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_HELLO_ABORT`', () => {
-    const result = simpleResource('hello', {
-      initialState: {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ]
-      }
-    });
-
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_HELLO_ABORT',
-      id: 3
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
-      ],
-      meta: {
-        3: {
-          updateStatus: requestStatuses.NULL
-        }
-      },
-      listMeta: {
-        readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
-      }
-    });
-  });
-
   it('should handle `UPDATE_HELLO_RESET`', () => {
     const result = simpleResource('hello', {
       initialState: {

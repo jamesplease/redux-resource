@@ -57,16 +57,6 @@ export function readManySucceed(idAttribute, state, action) {
   };
 }
 
-export function readManyAbort(idAttr, state) {
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      readStatus: requestStatuses.NULL
-    }
-  };
-}
-
 export function readManyReset(idAttr, state) {
   return {
     ...state,

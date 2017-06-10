@@ -5,7 +5,6 @@ const mapConstant = (resourceName, crudAction) => ({
   [`${crudAction}_${resourceName}`]: `${crudAction}_${resourceName}`,
   [`${crudAction}_${resourceName}_SUCCEED`]: `${crudAction}_${resourceName}_SUCCEED`,
   [`${crudAction}_${resourceName}_FAIL`]: `${crudAction}_${resourceName}_FAIL`,
-  [`${crudAction}_${resourceName}_ABORT`]: `${crudAction}_${resourceName}_ABORT`,
   [`${crudAction}_${resourceName}_RESET`]: `${crudAction}_${resourceName}_RESET`,
 });
 
