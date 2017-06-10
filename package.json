@@ -1,6 +1,6 @@
 {
   "name": "redux-simple-resource",
-  "version": "1.0.0",
+  "version": "2.0.0-beta1",
   "description": "A powerful Redux framework for interacting with remote resources.",
   "main": "dist/redux-simple-resource.js",
   "scripts": {
