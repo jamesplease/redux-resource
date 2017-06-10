@@ -3,9 +3,9 @@ import {upsertManyResources} from '../../../src';
 describe('upsertManyResources', function() {
   beforeEach(() => {
     this.resources = [
-      {personId: 1, first_name: 'james', last_name: 'please'},
-      {personId: 5, first_name: 'stephen', last_name: 'rjr'},
-      {personId: 7, first_name: 'shilpa', last_name: 'm'}
+      {id: 1, first_name: 'james', last_name: 'please'},
+      {id: 5, first_name: 'stephen', last_name: 'rjr'},
+      {id: 7, first_name: 'shilpa', last_name: 'm'}
     ];
   });
 
@@ -14,14 +14,13 @@ describe('upsertManyResources', function() {
       const result = upsertManyResources({
         resources: this.resources,
         newResources: [
-          {personId: 1, first_name: 'oink'}
+          {id: 1, first_name: 'oink'}
         ],
-        idAttribute: 'personId',
         replace: true
       });
 
       expect(result).to.deep.equal([
-        {personId: 1, first_name: 'oink'}
+        {id: 1, first_name: 'oink'}
       ]);
 
       // Shallow clones the resources array
@@ -32,14 +31,13 @@ describe('upsertManyResources', function() {
       const result = upsertManyResources({
         resources: this.resources,
         newResources: [
-          {personId: 10, first_name: 'oink'}
+          {id: 10, first_name: 'oink'}
         ],
-        idAttribute: 'personId',
         replace: true
       });
 
       expect(result).to.deep.equal([
-        {personId: 10, first_name: 'oink'},
+        {id: 10, first_name: 'oink'},
       ]);
 
       // Shallow clones the resources array
@@ -52,16 +50,15 @@ describe('upsertManyResources', function() {
       const result = upsertManyResources({
         resources: this.resources,
         newResources: [
-          {personId: 1, first_name: 'oink'}
+          {id: 1, first_name: 'oink'}
         ],
-        idAttribute: 'personId',
         replace: false
       });
 
       expect(result).to.deep.equal([
-        {personId: 1, first_name: 'oink', last_name: 'please'},
-        {personId: 5, first_name: 'stephen', last_name: 'rjr'},
-        {personId: 7, first_name: 'shilpa', last_name: 'm'}
+        {id: 1, first_name: 'oink', last_name: 'please'},
+        {id: 5, first_name: 'stephen', last_name: 'rjr'},
+        {id: 7, first_name: 'shilpa', last_name: 'm'}
       ]);
 
       // Shallow clones the resources array
@@ -78,17 +75,16 @@ describe('upsertManyResources', function() {
     const result = upsertManyResources({
       resources: this.resources,
       newResources: [
-        {personId: 10, first_name: 'oink'}
+        {id: 10, first_name: 'oink'}
       ],
-      idAttribute: 'personId',
       replace: false
     });
 
     expect(result).to.deep.equal([
-      {personId: 1, first_name: 'james', last_name: 'please'},
-      {personId: 5, first_name: 'stephen', last_name: 'rjr'},
-      {personId: 7, first_name: 'shilpa', last_name: 'm'},
-      {personId: 10, first_name: 'oink'},
+      {id: 1, first_name: 'james', last_name: 'please'},
+      {id: 5, first_name: 'stephen', last_name: 'rjr'},
+      {id: 7, first_name: 'shilpa', last_name: 'm'},
+      {id: 10, first_name: 'oink'},
     ]);
 
     // Shallow clones the resources array

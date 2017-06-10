@@ -3,9 +3,9 @@ import {upsertResource} from '../../../src';
 describe('upsertResource', function() {
   beforeEach(() => {
     this.resources = [
-      {personId: 1, first_name: 'james', last_name: 'please'},
-      {personId: 5, first_name: 'stephen', last_name: 'rjr'},
-      {personId: 7, first_name: 'shilpa', last_name: 'm'}
+      {id: 1, first_name: 'james', last_name: 'please'},
+      {id: 5, first_name: 'stephen', last_name: 'rjr'},
+      {id: 7, first_name: 'shilpa', last_name: 'm'}
     ];
   });
 
@@ -15,14 +15,13 @@ describe('upsertResource', function() {
         resources: this.resources,
         resource: {first_name: 'pizza'},
         id: 5,
-        idAttribute: 'personId',
         replace: false
       });
 
       expect(result).to.deep.equal([
-        {personId: 1, first_name: 'james', last_name: 'please'},
-        {personId: 5, first_name: 'pizza', last_name: 'rjr'},
-        {personId: 7, first_name: 'shilpa', last_name: 'm'}
+        {id: 1, first_name: 'james', last_name: 'please'},
+        {id: 5, first_name: 'pizza', last_name: 'rjr'},
+        {id: 7, first_name: 'shilpa', last_name: 'm'}
       ]);
 
       // Shallow clones the resources array
@@ -37,17 +36,16 @@ describe('upsertResource', function() {
     it('should append a brand new resource to the end of the list', () => {
       const result = upsertResource({
         resources: this.resources,
-        resource: {personId: 10, first_name: 'darlin'},
+        resource: {id: 10, first_name: 'darlin'},
         id: 10,
-        idAttribute: 'personId',
         replace: false
       });
 
       expect(result).to.deep.equal([
-        {personId: 1, first_name: 'james', last_name: 'please'},
-        {personId: 5, first_name: 'stephen', last_name: 'rjr'},
-        {personId: 7, first_name: 'shilpa', last_name: 'm'},
-        {personId: 10, first_name: 'darlin'},
+        {id: 1, first_name: 'james', last_name: 'please'},
+        {id: 5, first_name: 'stephen', last_name: 'rjr'},
+        {id: 7, first_name: 'shilpa', last_name: 'm'},
+        {id: 10, first_name: 'darlin'},
       ]);
 
       // Shallow clones the resources array
@@ -63,16 +61,15 @@ describe('upsertResource', function() {
     it('should replace the old data', () => {
       const result = upsertResource({
         resources: this.resources,
-        resource: {personId: 5, first_name: 'pizza'},
+        resource: {id: 5, first_name: 'pizza'},
         id: 5,
-        idAttribute: 'personId',
         replace: true
       });
 
       expect(result).to.deep.equal([
-        {personId: 1, first_name: 'james', last_name: 'please'},
-        {personId: 5, first_name: 'pizza'},
-        {personId: 7, first_name: 'shilpa', last_name: 'm'}
+        {id: 1, first_name: 'james', last_name: 'please'},
+        {id: 5, first_name: 'pizza'},
+        {id: 7, first_name: 'shilpa', last_name: 'm'}
       ]);
 
       // Shallow clones the resources array
@@ -87,17 +84,16 @@ describe('upsertResource', function() {
     it('should append a brand new resource to the end of the list', () => {
       const result = upsertResource({
         resources: this.resources,
-        resource: {personId: 10, first_name: 'darlin'},
+        resource: {id: 10, first_name: 'darlin'},
         id: 10,
-        idAttribute: 'personId',
         replace: true
       });
 
       expect(result).to.deep.equal([
-        {personId: 1, first_name: 'james', last_name: 'please'},
-        {personId: 5, first_name: 'stephen', last_name: 'rjr'},
-        {personId: 7, first_name: 'shilpa', last_name: 'm'},
-        {personId: 10, first_name: 'darlin'},
+        {id: 1, first_name: 'james', last_name: 'please'},
+        {id: 5, first_name: 'stephen', last_name: 'rjr'},
+        {id: 7, first_name: 'shilpa', last_name: 'm'},
+        {id: 10, first_name: 'darlin'},
       ]);
 
       // Shallow clones the resources array

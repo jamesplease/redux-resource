@@ -2,9 +2,9 @@ import {
   updateManyResourceMetas, requestStatuses, upsertManyResources
 } from '../utils';
 
-export function updateMany(idAttribute, state, action) {
+export function updateMany(state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r[idAttribute]);
+  const ids = resources.map(r => r.id);
 
   const meta = updateManyResourceMetas({
     meta: state.meta,
@@ -19,9 +19,9 @@ export function updateMany(idAttribute, state, action) {
   };
 }
 
-export function updateManyFail(idAttribute, state, action) {
+export function updateManyFail(state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r[idAttribute]);
+  const ids = resources.map(r => r.id);
 
   const meta = updateManyResourceMetas({
     meta: state.meta,
@@ -36,9 +36,9 @@ export function updateManyFail(idAttribute, state, action) {
   };
 }
 
-export function updateManySucceed(idAttribute, state, action) {
+export function updateManySucceed(state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r[idAttribute]);
+  const ids = resources.map(r => r.id);
 
   const meta = updateManyResourceMetas({
     meta: state.meta,
@@ -51,7 +51,6 @@ export function updateManySucceed(idAttribute, state, action) {
   const newResources = upsertManyResources({
     resources: state.resources,
     newResources: resources,
-    idAttribute,
     replace
   });
 
@@ -62,9 +61,9 @@ export function updateManySucceed(idAttribute, state, action) {
   };
 }
 
-export function updateManyReset(idAttribute, state, action) {
+export function updateManyReset(state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r[idAttribute]);
+  const ids = resources.map(r => r.id);
 
   const meta = updateManyResourceMetas({
     meta: state.meta,

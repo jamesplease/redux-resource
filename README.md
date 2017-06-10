@@ -17,8 +17,8 @@ A Redux framework for interacting with remote resources.
   - [actionTypes](#actiontypes)
   - [updateResourceMeta()](#updateresourcemeta-resourcemeta-newmeta-id-replace-)
   - [updateManyResourceMetas()](#updatemanyresourcemetas-resourcemeta-newmeta-ids-replace-)
-  - [upsertResource()](#upsertresource-resources-resource-id-idattribute-replace-)
-  - [upsertManyResources()](#upsertmanyresources-resources-newresources-idattribute-replace-)
+  - [upsertResource()](#upsertresource-resources-resource-id-replace-)
+  - [upsertManyResources()](#upsertmanyresources-resources-newresources-replace-)
 - [Guides](#guides)
   - [Resource Metadata](#resource-metadata)
   - [Request Statuses](#request-statuses)
@@ -61,8 +61,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {resourceReducer} from 'redux-simple-resource';
 
 const reducers = combineReducers({
-  // `options` is optional, and is documented in the "API" section of this README
-  books: resourceReducer('books', options),
+  books: resourceReducer('books'),
   ...myOtherReducers
 });
 
@@ -75,7 +74,7 @@ The primary export of this library is a named export, `resourceReducer`. There
 are several other named exports, which are utilities that may help you when
 working with redux-simple-resource.
 
-### `resourceReducer( resourceName, [options] )`
+### `resourceReducer( resourceName [, initialState] )`
 
 This is the default export of this library. We recommend passing a plural
 version of your resource as `resourceName`. For instance, if this resource is
@@ -86,31 +85,8 @@ be input as "catPeople".
 
 This method returns a reducer.
 
-The second parameter, `options`, is an optional object that can be used to
-customize all of the default behavior. All options are optional. Read about the
-different options below:
-
-##### `idAttribute`
-
-The `id` property of a resource is special, as it is used to uniquely identify
-that resource within your list of resources. This allows redux-simple-resource
-to keep your resources up-to-date as you make changes to them.
-
-By default, redux-simple-resource looks for an attribute called "id". If your
-resource has an ID by some other value, you have two choices: you can either
-rename it to be ID, or use this option to update what redux-simple-resource
-will look for.
-
-```js
-const movie = createResource('movie', {
-  idAttribute: 'movieId'
-});
-```
-
-##### `initialState`
-
-Additional initial state to add to the default initial state. The default
-initial state is:
+The second parameter, `initialState`, is an optional object that can be used to
+add additional initial state. The default initial state is:
 
 ```js
 {
@@ -136,12 +112,10 @@ Example usage is below:
 
 ```js
 const food = createResource('food', {
-  initialState: {
-    // Add this property to the default initial state. Custom action reducers
-    // could be used to modify this property. For more, see the `actionReducers`
-    // option.
-    peopleAreHungry: true
-  }
+  // Add this property to the default initial state. Custom action reducers
+  // could be used to modify this property. For more, see the `actionReducers`
+  // option.
+  peopleAreHungry: true
 });
 ```
 
@@ -209,8 +183,7 @@ These four types reflect the four [Request Statuses](#request-statuses), as each
 these actions will update the Request Status in the resource's metadata.
 
 Actions that operate on a single resource **must** include an "id" attribute to
-uniquely identify the resource being acted upon (although the name of the
-attribute can be configured using the [`idAttribute` option](#idattribute)).
+uniquely identify the resource being acted upon.
 
 You can attach as many properties as you want to your action types, but the
 following properties have special meaning in redux-simple-resource:
@@ -219,8 +192,8 @@ following properties have special meaning in redux-simple-resource:
 |------|----------|-------------|
 | type | all      | The type of the action |
 | resourceName | all      | The name of the resource that is being affected by this action |
-| id   | read, delete, update, create | Uniquely identifies the resource. For more, see [idAttribute](#idattribute) |
-| ids  | delete many | Uniquely identifies the resource. For more, see [idAttribute](#idattribute) |
+| id   | read, delete, update, create | Uniquely identifies the resource. |
+| ids  | delete many | Uniquely identifies the resource. |
 | resource | read, update, create | The data for the resource |
 | resources | read many, update many, create many | An array of resources being affected by this action |
 | replace | read, read many, update, update many | Whether or not to replace existing data |
@@ -413,7 +386,7 @@ This method does not enable you to update multiple IDs with different metadata.
 |ids | Yes | An array of IDs to update |
 |replace | No | Whether or not to replace the current list, or to merge in the new data. Defaults to `false` |
 
-### `upsertResource({ resources, resource, id, idAttribute, replace })`
+### `upsertResource({ resources, resource, id, replace })`
 
 Insert or update a resource to the list of resources.
 
@@ -422,10 +395,9 @@ Insert or update a resource to the list of resources.
 |resources | Yes | The current list of resources from the store |
 |resource | Yes | The new resource to add |
 |id | Yes | The id value of the new resource |
-|idAttribute | No | The id key of the new resource. Defaults to `"id"` |
 |replace | No | Whether or not to replace the resource (if it already exists). Defaults to `false` |
 
-### `upsertManyResources({ resources, newResources, idAttribute, replace })`
+### `upsertManyResources({ resources, newResources, replace })`
 
 Insert or update a list of resources to the list of resources.
 
@@ -433,7 +405,6 @@ Insert or update a list of resources to the list of resources.
 |------|-------------|----------|
 |resources | Yes | The current list of resources from the store |
 |newResources | Yes | The new resources to add |
-|idAttribute | No | The id key of the new resources. Defaults to `"id"` |
 |replace | No | Whether or not to replace the existing resource list, or to merge new with old. Defaults to `false` |
 
 ## Guides

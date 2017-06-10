@@ -2,7 +2,7 @@ import {
   upsertResource, requestStatuses, updateResourceMeta, initialResourceMetaState
 } from '../utils';
 
-export function create(idAttr, state) {
+export function create(state) {
   return {
     ...state,
     listMeta: {
@@ -12,7 +12,7 @@ export function create(idAttr, state) {
   };
 }
 
-export function createFail(idAttr, state) {
+export function createFail(state) {
   return {
     ...state,
     listMeta: {
@@ -22,13 +22,12 @@ export function createFail(idAttr, state) {
   };
 }
 
-export function createSucceed(idAttribute, state, action) {
-  const newResourceId = action.resource[idAttribute];
+export function createSucceed(state, action) {
+  const newResourceId = action.resource.id;
   const resources = upsertResource({
     resources: state.resources,
     resource: action.resource,
-    id: action[idAttribute],
-    idAttribute
+    id: action.id,
   });
   const meta = updateResourceMeta({
     meta: state.meta,
@@ -48,7 +47,7 @@ export function createSucceed(idAttribute, state, action) {
   };
 }
 
-export function createReset(idAttr, state) {
+export function createReset(state) {
   return {
     ...state,
     listMeta: {

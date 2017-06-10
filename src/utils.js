@@ -40,11 +40,11 @@ export function updateManyResourceMetas({meta, newMeta, ids, replace}) {
 }
 
 // Insert a new resource or update an existing resource.
-export function upsertResource({resources, resource, id, idAttribute, replace}) {
+export function upsertResource({resources, resource, id, replace}) {
   // Attempt to find the resource by its ID. If the ID doesn't exist, or if
   // no resource by that ID exists, then we append it to the end as a new
   // resource.
-  const resourceIndex = id && resources.findIndex(item => item[idAttribute] === id);
+  const resourceIndex = id && resources.findIndex(item => item.id === id);
   const shallowClone = Array.prototype.slice.call(resources);
   if (!id || resourceIndex === -1) {
     shallowClone.push(resource);
@@ -69,12 +69,12 @@ export function upsertResource({resources, resource, id, idAttribute, replace}) 
 }
 
 // Similar to `upsertResource`, but for many resources.
-export function upsertManyResources({resources, newResources, idAttribute, replace}) {
+export function upsertManyResources({resources, newResources, replace}) {
   const shallowClone = replace ? [] : Array.prototype.slice.call(resources);
 
   newResources.forEach(resource => {
-    const id = resource[idAttribute];
-    const resourceIndex = id && resources.findIndex(item => item[idAttribute] === id);
+    const id = resource.id;
+    const resourceIndex = id && resources.findIndex(item => item.id === id);
 
     if (!id || resourceIndex === -1) {
       return shallowClone.push(resource);

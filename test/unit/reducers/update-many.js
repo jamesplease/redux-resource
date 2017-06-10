@@ -3,13 +3,11 @@ import {resourceReducer, requestStatuses} from '../../../src';
 describe('reducers: updateMany', function() {
   it('should handle `UPDATE_MANY_RESOURCES`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1, hungry: null},
-          {id: 3, hungry: null},
-          {id: 4, hungry: null},
-        ]
-      }
+      resources: [
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -51,13 +49,11 @@ describe('reducers: updateMany', function() {
 
   it('should handle `UPDATE_MANY_RESOURCES_FAIL`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1, hungry: null},
-          {id: 3, hungry: null},
-          {id: 4, hungry: null},
-        ]
-      }
+      resources: [
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -99,13 +95,11 @@ describe('reducers: updateMany', function() {
 
   it('should handle `UPDATE_MANY_RESOURCES_RESET`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1, hungry: null},
-          {id: 3, hungry: null},
-          {id: 4, hungry: null},
-        ]
-      }
+      resources: [
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -147,13 +141,11 @@ describe('reducers: updateMany', function() {
 
   it('should handle `UPDATE_MANY_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1, hungry: null},
-          {id: 3, hungry: null},
-          {id: 4, hungry: null},
-        ]
-      }
+      resources: [
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -195,13 +187,11 @@ describe('reducers: updateMany', function() {
 
   it('should handle `UPDATE_MANY_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1, hungry: null},
-          {id: 3, hungry: null},
-          {id: 4, hungry: null},
-        ]
-      }
+      resources: [
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -241,64 +231,13 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_RESOURCES_SUCCEED` with a custom idAttribute', () => {
-    const reducer = resourceReducer('hellos', {
-      idAttribute: 'movieId',
-      initialState: {
-        resources: [
-          {movieId: 1, hungry: null},
-          {movieId: 3, hungry: null},
-          {movieId: 4, hungry: null},
-        ]
-      }
-    });
-
-    const reduced = reducer(undefined, {
-      type: 'UPDATE_MANY_RESOURCES_SUCCEED',
-      resourceName: 'hellos',
-      resources: [
-        {
-          movieId: 3,
-          hungry: true
-        },
-        {
-          movieId: 4,
-          hungry: false
-        }
-      ]
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {movieId: 1, hungry: null},
-        {movieId: 3, hungry: true},
-        {movieId: 4, hungry: false},
-      ],
-      meta: {
-        3: {
-          updateStatus: requestStatuses.SUCCEEDED
-        },
-        4: {
-          updateStatus: requestStatuses.SUCCEEDED
-        }
-      },
-      listMeta: {
-        readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
-      }
-    });
-  });
-
   it('should handle `UPDATE_MANY_RESOURCES_SUCCEED` with `replace: true`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1, hungry: null},
-          {id: 3, hungry: null},
-          {id: 4, hungry: null},
-        ]
-      }
+      resources: [
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
+      ]
     });
 
     const reduced = reducer(undefined, {

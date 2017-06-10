@@ -8,12 +8,8 @@ import {
 // Create a resource reducer.
 //
 // `resourceName`: the plural name of your resource. For instance, "books".
-// `options`: configure the reducer. Refer to the API documentation for
-//   all of the supported options.
-function resourceReducer(resourceName, options = {}) {
-  const {initialState = {}, idAttribute} = options;
-  const idAttr = idAttribute || 'id';
-
+// `initialState`: additional initial state to include on this resource
+function resourceReducer(resourceName, initialState = {}) {
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,
@@ -26,7 +22,6 @@ function resourceReducer(resourceName, options = {}) {
 
   return generateReducer({
     initialState: initial,
-    idAttr,
     resourceName
   });
 }

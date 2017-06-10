@@ -49,11 +49,9 @@ describe('reducers: read', function() {
 
   it('should handle `READ_RESOURCE_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 3, hunger: false}
-        ]
-      }
+      resources: [
+        {id: 3, hunger: false}
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -88,11 +86,9 @@ describe('reducers: read', function() {
 
   it('should handle `READ_RESOURCE_SUCCEED` with `replace: false`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 3, hunger: false}
-        ]
-      }
+      resources: [
+        {id: 3, hunger: false}
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -112,40 +108,6 @@ describe('reducers: read', function() {
           id: 3,
           sandwiches: 'yum',
           hunger: false
-        }
-      ],
-      meta: {
-        3: {
-          readStatus: 'SUCCEEDED'
-        }
-      },
-      listMeta: {
-        readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
-      }
-    });
-  });
-
-  it('should handle `READ_RESOURCE_SUCCEED` with a custom idAttribute', () => {
-    const reducer = resourceReducer('hellos', {
-      idAttribute: 'whatPls'
-    });
-    const reduced = reducer(undefined, {
-      type: 'READ_RESOURCE_SUCCEED',
-      resourceName: 'hellos',
-      whatPls: 3,
-      resource: {
-        whatPls: 3,
-        sandwiches: 'yum'
-      }
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {
-          whatPls: 3,
-          sandwiches: 'yum'
         }
       ],
       meta: {

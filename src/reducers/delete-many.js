@@ -1,6 +1,6 @@
 import {updateManyResourceMetas, requestStatuses} from '../utils';
 
-export function delMany(idAttribute, state, action) {
+export function delMany(state, action) {
   const ids = action.ids;
 
   const meta = updateManyResourceMetas({
@@ -16,7 +16,7 @@ export function delMany(idAttribute, state, action) {
   };
 }
 
-export function delManyFail(idAttribute, state, action) {
+export function delManyFail(state, action) {
   const ids = action.ids;
 
   const meta = updateManyResourceMetas({
@@ -32,7 +32,7 @@ export function delManyFail(idAttribute, state, action) {
   };
 }
 
-export function delManySucceed(idAttribute, state, action) {
+export function delManySucceed(state, action) {
   const ids = action.ids;
 
   const newMeta = ids.reduce((memo, id) => {
@@ -48,7 +48,7 @@ export function delManySucceed(idAttribute, state, action) {
   };
 
   // Shallow clone the existing resource array, removing the deleted resource
-  const newResources = state.resources.filter(r => !ids.includes(r[idAttribute]));
+  const newResources = state.resources.filter(r => !ids.includes(r.id));
 
   return {
     ...state,
@@ -57,7 +57,7 @@ export function delManySucceed(idAttribute, state, action) {
   };
 }
 
-export function delManyReset(idAttribute, state, action) {
+export function delManyReset(state, action) {
   const ids = action.ids;
 
   const meta = updateManyResourceMetas({

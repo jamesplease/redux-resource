@@ -3,13 +3,11 @@ import {resourceReducer, requestStatuses} from '../../../src';
 describe('reducers: delete', function() {
   it('should handle `DELETE_RESOURCE`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ]
-      }
+      resources: [
+        {id: 1},
+        {id: 3},
+        {id: 4},
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -39,13 +37,11 @@ describe('reducers: delete', function() {
 
   it('should handle `DELETE_RESOURCE_FAIL`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ]
-      }
+      resources: [
+        {id: 1},
+        {id: 3},
+        {id: 4},
+      ]
     });
 
     const reduced = reducer(undefined, {
@@ -75,16 +71,14 @@ describe('reducers: delete', function() {
 
   it('should handle `DELETE_RESOURCE_RESET`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ],
-        meta: {
-          3: {
-            deleteStatus: 'sandwiches'
-          }
+      resources: [
+        {id: 1},
+        {id: 3},
+        {id: 4},
+      ],
+      meta: {
+        3: {
+          deleteStatus: 'sandwiches'
         }
       }
     });
@@ -116,19 +110,17 @@ describe('reducers: delete', function() {
 
   it('should handle `DELETE_RESOURCE_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
-      initialState: {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ],
-        meta: {
-          2: {
-            name: 'what'
-          },
-          3: {
-            deleteStatus: 'sandwiches'
-          }
+      resources: [
+        {id: 1},
+        {id: 3},
+        {id: 4},
+      ],
+      meta: {
+        2: {
+          name: 'what'
+        },
+        3: {
+          deleteStatus: 'sandwiches'
         }
       }
     });
@@ -143,51 +135,6 @@ describe('reducers: delete', function() {
       resources: [
         {id: 1},
         {id: 4},
-      ],
-      meta: {
-        2: {
-          name: 'what'
-        },
-        3: null
-      },
-      listMeta: {
-        readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
-      }
-    });
-  });
-
-  it('should handle `DELETE_RESOURCE_SUCCEED` with a custom idAttribute', () => {
-    const reducer = resourceReducer('hellos', {
-      idAttribute: 'movieId',
-      initialState: {
-        resources: [
-          {movieId: 1},
-          {movieId: 3},
-          {movieId: 4},
-        ],
-        meta: {
-          2: {
-            name: 'what'
-          },
-          3: {
-            deleteStatus: 'sandwiches'
-          }
-        }
-      }
-    });
-
-    const reduced = reducer(undefined, {
-      type: 'DELETE_RESOURCE_SUCCEED',
-      resourceName: 'hellos',
-      movieId: 3
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {movieId: 1},
-        {movieId: 4},
       ],
       meta: {
         2: {

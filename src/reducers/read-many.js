@@ -3,7 +3,7 @@ import {
   upsertManyResources
 } from '../utils';
 
-export function readMany(idAttr, state) {
+export function readMany(state) {
   return {
     ...state,
     listMeta: {
@@ -13,7 +13,7 @@ export function readMany(idAttr, state) {
   };
 }
 
-export function readManyFail(idAttr, state) {
+export function readManyFail(state) {
   return {
     ...state,
     listMeta: {
@@ -23,9 +23,9 @@ export function readManyFail(idAttr, state) {
   };
 }
 
-export function readManySucceed(idAttribute, state, action) {
+export function readManySucceed(state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r[idAttribute]);
+  const ids = resources.map(r => r.id);
   const replace = typeof action.replace !== 'undefined' ? action.replace : true;
 
   let newResources;
@@ -34,7 +34,6 @@ export function readManySucceed(idAttribute, state, action) {
       resources: state.resources,
       replace: false,
       newResources: resources,
-      idAttribute
     });
   } else {
     newResources = resources;
@@ -57,7 +56,7 @@ export function readManySucceed(idAttribute, state, action) {
   };
 }
 
-export function readManyReset(idAttr, state) {
+export function readManyReset(state) {
   return {
     ...state,
     listMeta: {
