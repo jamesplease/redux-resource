@@ -9,7 +9,8 @@ import {
 //
 // `resourceName`: the plural name of your resource. For instance, "books".
 // `initialState`: additional initial state to include on this resource
-function resourceReducer(resourceName, initialState = {}) {
+function resourceReducer(resourceName, initialState = {}, options = {}) {
+  const {plugins = []} = options;
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,
@@ -22,7 +23,8 @@ function resourceReducer(resourceName, initialState = {}) {
 
   return generateReducer({
     initialState: initial,
-    resourceName
+    resourceName,
+    plugins
   });
 }
 
