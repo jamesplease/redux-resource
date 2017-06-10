@@ -74,7 +74,7 @@ The primary export of this library is a named export, `resourceReducer`. There
 are several other named exports, which are utilities that may help you when
 working with redux-simple-resource.
 
-### `resourceReducer( resourceName [, initialState] )`
+### `resourceReducer( resourceName [, initialState] [, options] )`
 
 This is the default export of this library. We recommend passing a plural
 version of your resource as `resourceName`. For instance, if this resource is
@@ -116,6 +116,39 @@ const food = createResource('food', {
   // could be used to modify this property. For more, see the `actionReducers`
   // option.
   peopleAreHungry: true
+});
+```
+
+The optional `options` argument is documented below:
+
+#### `options.plugins`
+
+An array of functions that are called _after_ the built-in reducer behavior. You
+can use
+plugins to do two things:
+
+1. Add support for custom action types
+2. Customize the behavior of the built-in action types
+
+Plugins have the same signature as a reducer: `(state, action)`. Plugins are
+run in order.
+
+Example usage is below:
+
+```js
+const food = createResource('books', {}, {
+  plugins: [
+    (state, action) => {
+      switch action: {
+        case 'CUSTOM_TYPE': {
+          return {
+            ...state,
+            someData: action.someField
+          }
+        }
+      }
+    }
+  ]
 });
 ```
 
