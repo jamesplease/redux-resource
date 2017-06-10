@@ -55,7 +55,7 @@ export default function generateReducers(options) {
 
   return function reducer(state = initialState, action) {
     const actionReducer = actionReducers[action.type];
-    if (!actionReducer) {
+    if (!actionReducer || action.resourceName !== resourceName) {
       return state;
     }
 
