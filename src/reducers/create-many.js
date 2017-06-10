@@ -52,16 +52,6 @@ export function createManySucceed(idAttribute, state, action) {
   };
 }
 
-export function createManyAbort(idAttr, state) {
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      createManyStatus: requestStatuses.NULL
-    }
-  };
-}
-
 export function createManyReset(idAttr, state) {
   return {
     ...state,

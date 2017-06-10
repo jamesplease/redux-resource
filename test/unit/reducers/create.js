@@ -1,10 +1,11 @@
-import simpleResource, {requestStatuses} from '../../../src';
+import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: create', function() {
-  it('should handle `CREATE_HELLO`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO'
+  it('should handle `CREATE_RESOURCE`', () => {
+    const reducer = resourceReducer('hellos');
+    const reduced = reducer(undefined, {
+      type: 'CREATE_RESOURCE',
+      resourceName: 'hellos',
     });
 
     expect(reduced).to.deep.equal({
@@ -18,10 +19,11 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLOS_FAIL`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_FAIL'
+  it('should handle `CREATE_RESOURCES_FAIL`', () => {
+    const reducer = resourceReducer('hellos');
+    const reduced = reducer(undefined, {
+      type: 'CREATE_RESOURCE_FAIL',
+      resourceName: 'hellos',
     });
 
     expect(reduced).to.deep.equal({
@@ -35,10 +37,11 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLOS_ABORT`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_ABORT'
+  it('should handle `CREATE_RESOURCES_RESET`', () => {
+    const reducer = resourceReducer('hellos');
+    const reduced = reducer(undefined, {
+      type: 'CREATE_RESOURCE_RESET',
+      resourceName: 'hellos',
     });
 
     expect(reduced).to.deep.equal({
@@ -52,29 +55,13 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_HELLOS_RESET`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_RESET'
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [],
-      meta: {},
-      listMeta: {
-        createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        readStatus: requestStatuses.NULL
-      }
-    });
-  });
-
-  it('should handle `CREATE_HELLO_SUCCEED`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `CREATE_RESOURCE_SUCCEED`', () => {
+    const reducer = resourceReducer('hellos', {
       idAttribute: 'movieId'
     });
-    const reduced = result.reducer(result.initialState, {
-      type: 'CREATE_HELLO_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'CREATE_RESOURCE_SUCCEED',
+      resourceName: 'hellos',
       resource: {
         movieId: 10,
         hungry: true

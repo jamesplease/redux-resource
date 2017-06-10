@@ -48,16 +48,6 @@ export function createSucceed(idAttribute, state, action) {
   };
 }
 
-export function createAbort(idAttr, state) {
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      createStatus: requestStatuses.NULL
-    }
-  };
-}
-
 export function createReset(idAttr, state) {
   return {
     ...state,

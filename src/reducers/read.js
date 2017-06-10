@@ -53,20 +53,6 @@ export function readSucceed(idAttribute, state, action) {
   };
 }
 
-export function readAbort(idAttr, state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {readStatus: requestStatuses.NULL},
-    id: action[idAttr],
-    replace: false
-  });
-
-  return {
-    ...state,
-    meta,
-  };
-}
-
 export function readReset(idAttr, state, action) {
   const meta = updateResourceMeta({
     meta: state.meta,
