@@ -1,16 +1,16 @@
 import generateReducer from './generate-reducer';
 import actionTypes from './action-types';
 import {
-  generateDefaultInitialState, snakeCase, requestStatuses, updateResourceMeta,
+  generateDefaultInitialState, requestStatuses, updateResourceMeta,
   updateManyResourceMetas, upsertResource, upsertManyResources
 } from './utils';
 
-// Create a resource.
+// Create a resource reducer.
 //
 // `resourceName`: the plural name of your resource. For instance, "books".
-// `options`: configure this resource. Refer to the API documentation for
+// `options`: configure the reducer. Refer to the API documentation for
 //   all of the supported options.
-function createResource(resourceName, options = {}) {
+function resourceReducer(resourceName, options = {}) {
   const {initialState = {}, idAttribute} = options;
   const idAttr = idAttribute || 'id';
 
@@ -24,18 +24,19 @@ function createResource(resourceName, options = {}) {
     }
   };
 
-  return {
+  return generateReducer({
     initialState: initial,
-    reducer: generateReducer({
-      initialState: initial,
-      idAttr,
-      resourceName
-    })
-  };
+    idAttr,
+    resourceName
+  });
 }
 
 export {
-  requestStatuses, updateResourceMeta, updateManyResourceMetas, upsertResource,
-  upsertManyResources, actionTypes
+  resourceReducer,
+  requestStatuses,
+  updateResourceMeta,
+  updateManyResourceMetas,
+  upsertResource,
+  upsertManyResources,
+  actionTypes
 };
-export default createResource;
