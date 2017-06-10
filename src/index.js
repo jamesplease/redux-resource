@@ -7,11 +7,13 @@ import {
 
 // Create a resource.
 //
-// `resourceName`: a singular name for your resource. For instance, "book".
+// `resourceName`: the plural name of your resource. For instance, "books".
 // `options`: configure this resource. Refer to the API documentation for
 //   all of the supported options.
 function createResource(resourceName, options = {}) {
-  const {initialState = {}, idAttribute, actionReducers, pluralForm} = options;
+  const {initialState = {}, idAttribute} = options;
+  const idAttr = idAttribute || 'id';
+
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,
@@ -21,25 +23,14 @@ function createResource(resourceName, options = {}) {
       ...initialState.listMeta
     }
   };
-  const idAttr = idAttribute || 'id';
-  const reducers = actionReducers || [];
-  const pluralName = pluralForm ? pluralForm : `${resourceName}s`;
-  const snakeCasePluralName = snakeCase(pluralName);
-
-  const mappedReducers = reducers.reduce((memo, actionReducer) => {
-    memo[actionReducer.actionType] = actionReducer.reducer;
-    return memo;
-  }, {});
 
   return {
     initialState: initial,
     reducer: generateReducer({
-      pluralForm: snakeCasePluralName,
       initialState: initial,
-      actionReducers: mappedReducers,
-      idAttr, resourceName
-    }),
-    pluralForm: pluralName
+      idAttr,
+      resourceName
+    })
   };
 }
 
