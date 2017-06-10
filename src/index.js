@@ -9,11 +9,11 @@ import getStatus from './utils/get-status';
 
 export {
   resourceReducer,
+  actionTypes,
   requestStatuses,
   updateResourceMeta,
   updateManyResourceMetas,
   upsertResource,
   upsertManyResources,
-  actionTypes,
   getStatus
 };
