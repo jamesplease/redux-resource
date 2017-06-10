@@ -72,4 +72,47 @@ describe('reducer', function() {
       tastiness: 'quite'
     });
   });
+
+  it('should handle multiple plug-ins on a custom type', () => {
+    const reducer = resourceReducer('hellos', {}, {
+      plugins: [
+        (state, action) => {
+          if (action.type === 'SANDWICHES_ARE_GOOD') {
+            return {
+              ...state,
+              tastiness: true
+            };
+          }
+
+          return state;
+        },
+        (state, action) => {
+          if (action.type === 'SANDWICHES_ARE_GOOD') {
+            return {
+              ...state,
+              tastiness: false
+            };
+          }
+
+          return state;
+        }
+      ]
+    });
+
+    const reduced = reducer(undefined, {
+      type: 'SANDWICHES_ARE_GOOD',
+      resourceName: 'hellos',
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [],
+      meta: {},
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
+      },
+      tastiness: false
+    });
+  });
 });
