@@ -1,8 +1,8 @@
-import simpleResource, {requestStatuses} from '../../../src';
+import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: deleteMany', function() {
-  it('should handle `DELETE_MANY_HELLOS`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_MANY_RESOURCES`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -12,8 +12,9 @@ describe('reducers: deleteMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_MANY_HELLOS',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_MANY_RESOURCES',
+      resourceName: 'hellos',
       ids: [3, 4]
     });
 
@@ -39,8 +40,8 @@ describe('reducers: deleteMany', function() {
     });
   });
 
-  it('should handle `DELETE_MANY_HELLOS_FAIL`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_MANY_RESOURCES_FAIL`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -50,8 +51,9 @@ describe('reducers: deleteMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_MANY_HELLOS_FAIL',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_MANY_RESOURCES_FAIL',
+      resourceName: 'hellos',
       ids: [3, 4]
     });
 
@@ -77,8 +79,8 @@ describe('reducers: deleteMany', function() {
     });
   });
 
-  it('should handle `DELETE_MANY_HELLOS_RESET`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_MANY_RESOURCES_RESET`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -88,8 +90,9 @@ describe('reducers: deleteMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_MANY_HELLOS_RESET',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_MANY_RESOURCES_RESET',
+      resourceName: 'hellos',
       ids: [3, 4]
     });
 
@@ -115,8 +118,8 @@ describe('reducers: deleteMany', function() {
     });
   });
 
-  it('should handle `DELETE_MANY_HELLOS_SUCCEED`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_MANY_RESOURCES_SUCCEED`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -134,8 +137,9 @@ describe('reducers: deleteMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_MANY_HELLOS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       ids: [3, 4]
     });
 

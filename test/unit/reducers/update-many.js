@@ -1,8 +1,8 @@
-import simpleResource, {requestStatuses} from '../../../src';
+import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: updateMany', function() {
-  it('should handle `UPDATE_MANY_HELLOS`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `UPDATE_MANY_RESOURCES`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1, hungry: null},
@@ -12,8 +12,9 @@ describe('reducers: updateMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS',
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_MANY_RESOURCES',
+      resourceName: 'hellos',
       resources: [
         {
           id: 3,
@@ -48,8 +49,8 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_HELLOS_FAIL`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `UPDATE_MANY_RESOURCES_FAIL`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1, hungry: null},
@@ -59,8 +60,9 @@ describe('reducers: updateMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS_FAIL',
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_MANY_RESOURCES_FAIL',
+      resourceName: 'hellos',
       resources: [
         {
           id: 3,
@@ -95,8 +97,8 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_HELLOS_RESET`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `UPDATE_MANY_RESOURCES_RESET`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1, hungry: null},
@@ -106,8 +108,9 @@ describe('reducers: updateMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS_RESET',
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_MANY_RESOURCES_RESET',
+      resourceName: 'hellos',
       resources: [
         {
           id: 3,
@@ -142,8 +145,8 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_HELLOS_SUCCEED`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `UPDATE_MANY_RESOURCES_SUCCEED`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1, hungry: null},
@@ -153,8 +156,9 @@ describe('reducers: updateMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       resources: [
         {
           id: 3,
@@ -189,8 +193,8 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_HELLOS_SUCCEED`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `UPDATE_MANY_RESOURCES_SUCCEED`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1, hungry: null},
@@ -200,8 +204,9 @@ describe('reducers: updateMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       resources: [
         {
           id: 3,
@@ -236,8 +241,8 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_HELLOS_SUCCEED` with a custom idAttribute', () => {
-    const result = simpleResource('hello', {
+  it('should handle `UPDATE_MANY_RESOURCES_SUCCEED` with a custom idAttribute', () => {
+    const reducer = resourceReducer('hellos', {
       idAttribute: 'movieId',
       initialState: {
         resources: [
@@ -248,8 +253,9 @@ describe('reducers: updateMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       resources: [
         {
           movieId: 3,
@@ -284,8 +290,8 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_MANY_HELLOS_SUCCEED` with `replace: true`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `UPDATE_MANY_RESOURCES_SUCCEED` with `replace: true`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1, hungry: null},
@@ -295,8 +301,9 @@ describe('reducers: updateMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'UPDATE_MANY_HELLOS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       replace: true,
       resources: [
         {

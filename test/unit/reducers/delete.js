@@ -1,8 +1,8 @@
-import simpleResource, {requestStatuses} from '../../../src';
+import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: delete', function() {
-  it('should handle `DELETE_HELLO`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_RESOURCE`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -12,8 +12,9 @@ describe('reducers: delete', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_RESOURCE',
+      resourceName: 'hellos',
       id: 3
     });
 
@@ -36,8 +37,8 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_FAIL`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_RESOURCE_FAIL`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -47,8 +48,9 @@ describe('reducers: delete', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_FAIL',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_RESOURCE_FAIL',
+      resourceName: 'hellos',
       id: 3
     });
 
@@ -71,8 +73,8 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_RESET`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_RESOURCE_RESET`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -87,8 +89,9 @@ describe('reducers: delete', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_RESET',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_RESOURCE_RESET',
+      resourceName: 'hellos',
       id: 3
     });
 
@@ -111,8 +114,8 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_SUCCEED`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_RESOURCE_SUCCEED`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 1},
@@ -130,8 +133,9 @@ describe('reducers: delete', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_RESOURCE_SUCCEED',
+      resourceName: 'hellos',
       id: 3
     });
 
@@ -154,8 +158,8 @@ describe('reducers: delete', function() {
     });
   });
 
-  it('should handle `DELETE_HELLO_SUCCEED` with a custom idAttribute', () => {
-    const result = simpleResource('hello', {
+  it('should handle `DELETE_RESOURCE_SUCCEED` with a custom idAttribute', () => {
+    const reducer = resourceReducer('hellos', {
       idAttribute: 'movieId',
       initialState: {
         resources: [
@@ -174,8 +178,9 @@ describe('reducers: delete', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'DELETE_HELLO_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'DELETE_RESOURCE_SUCCEED',
+      resourceName: 'hellos',
       movieId: 3
     });
 

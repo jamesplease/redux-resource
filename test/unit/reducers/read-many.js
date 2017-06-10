@@ -1,10 +1,11 @@
-import simpleResource, {requestStatuses} from '../../../src';
+import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: readMany', function() {
-  it('should handle `READ_MANY_HELLOS`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'READ_MANY_HELLOS'
+  it('should handle `READ_MANY_RESOURCES`', () => {
+    const reducer = resourceReducer('hellos');
+    const reduced = reducer(undefined, {
+      type: 'READ_MANY_RESOURCES',
+      resourceName: 'hellos',
     });
 
     expect(reduced).to.deep.equal({
@@ -18,10 +19,11 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `READ_MANY_HELLOS_FAIL`', () => {
-    const result = simpleResource('hello');
-    const reduced = result.reducer(result.initialState, {
-      type: 'READ_MANY_HELLOS_FAIL'
+  it('should handle `READ_MANY_RESOURCES_FAIL`', () => {
+    const reducer = resourceReducer('hellos');
+    const reduced = reducer(undefined, {
+      type: 'READ_MANY_RESOURCES_FAIL',
+      resourceName: 'hellos',
     });
 
     expect(reduced).to.deep.equal({
@@ -35,8 +37,8 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `READ_MANY_HELLOS_SUCCEED`', () => {
-    const result = simpleResource('catPerson', {
+  it('should handle `READ_MANY_RESOURCES_SUCCEED`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 100, sandwiches: 'yummm'},
@@ -49,8 +51,9 @@ describe('reducers: readMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'READ_MANY_CAT_PERSONS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'READ_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       resources: [
         {id: 2, hungry: true, pasta: 'yespls'},
         {id: 100, hungry: false},
@@ -82,8 +85,8 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `READ_MANY_HELLOS_SUCCEED` with `replace: false`', () => {
-    const result = simpleResource('hello', {
+  it('should handle `READ_MANY_RESOURCES_SUCCEED` with `replace: false`', () => {
+    const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
           {id: 100, sandwiches: 'yummm'},
@@ -96,8 +99,9 @@ describe('reducers: readMany', function() {
       }
     });
 
-    const reduced = result.reducer(result.initialState, {
-      type: 'READ_MANY_HELLOS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'READ_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       replace: false,
       resources: [
         {id: 2, hungry: true, pasta: 'yespls'},
@@ -133,12 +137,13 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `READ_MANY_HELLOS_SUCCEED` with a custom idAttribute', () => {
-    const result = simpleResource('hello', {
+  it('should handle `READ_MANY_RESOURCES_SUCCEED` with a custom idAttribute', () => {
+    const reducer = resourceReducer('hellos', {
       idAttribute: 'namePls'
     });
-    const reduced = result.reducer(result.initialState, {
-      type: 'READ_MANY_HELLOS_SUCCEED',
+    const reduced = reducer(undefined, {
+      type: 'READ_MANY_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
       resources: [
         {namePls: 2, hungry: true, pasta: 'yespls'},
         {namePls: 100, hungry: false},
@@ -173,23 +178,20 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `READ_MANY_HELLOS_RESET`', () => {
-    const result = simpleResource('hello');
-
-    // We set some value on `readStatus` to check that this nulls it
-    const listMetaState = {
-      listMeta: {
-        createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        readStatus: 'sandwiches'
+  it('should handle `READ_MANY_RESOURCES_RESET`', () => {
+    const reducer = resourceReducer('hellos', {
+      initialState: {
+        listMeta: {
+          createStatus: requestStatuses.NULL,
+          createManyStatus: requestStatuses.NULL,
+          readStatus: 'sandwiches'
+        }
       }
-    };
+    });
 
-    const reduced = result.reducer({
-      ...result.initialState,
-      ...listMetaState
-    }, {
-      type: 'READ_MANY_HELLOS_RESET'
+    const reduced = reducer(undefined, {
+      type: 'READ_MANY_RESOURCES_RESET',
+      resourceName: 'hellos',
     });
 
     expect(reduced).to.deep.equal({
