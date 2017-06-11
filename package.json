@@ -1,0 +1,16 @@
+{
+  "name": "resourceful-redux",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "local-docs": "gitbook serve",
+    "docs": "gitbook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.0"
+  }
+}
