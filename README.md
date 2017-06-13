@@ -1,5 +1,4 @@
-# Introduction
+# resourceful-redux
 
-* [Motivation](/docs/introduction/motivation.md)
-* [Core Concepts](/docs/introduction/core-concepts.md)
-* [Similar Projects](/docs/introduction/similar-projects.md)
+resourceful-redux is a system for managing data that is persisted to remote
+servers.
