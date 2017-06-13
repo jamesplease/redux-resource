@@ -9,6 +9,12 @@ tracks changes to a single resource's metadata.
   to use a plural name. For instance, "books," rather than "book."
 
 2. [`options`] *(Object)*: Options that can be used to configure the reducer.
+  The options are:
+  - `initialState`: Initial state to merge into the default initial state for
+    the slice of the store.
+  - `plugins`: An array of reducer functions that will be called after the
+    default reducer function. Use this to augment the behavior of the built-in
+    reducer, or to add support for custom action types for this store slice.
 
 #### Returns
 

@@ -1,10 +1,10 @@
 # actionTypes
 
-An Object of Redux [action types](http://redux.js.org/docs/basics/Actions.html)
-that the [resource reducer](resource-reducer.md) responds to. Emit these in
+An object of Redux [action types](http://redux.js.org/docs/basics/Actions.html)
+that the [resource reducer](resource-reducer.md) responds to. Emit these from
 action creators to change the state of your store.
 
-The complete Object is shown below:
+The complete object is shown below:
 
 ```js
 {
@@ -30,11 +30,19 @@ The complete Object is shown below:
 }
 ```
 
+#### Notes
+
+There are four groups of action types, one for each of the four
+[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) actions.
+
+Within each CRUD action, there are four actions that reflect the four request
+statuses. As actions with these types are emitted, your requests will
+cycle through those four states.
+
 #### Example
 
-This example shows an action creator that reads a single book. This example
-requires that you use the [redux-thunk](https://github.com/gaearon/redux-thunk)
-middleware.
+This example shows an action creator that reads a single book using the
+[redux-thunk](https://github.com/gaearon/redux-thunk) middleware.
 
 ```js
 import xhr from 'xhr';
@@ -74,3 +82,14 @@ export default function readBook(bookId) {
   }
 }
 ```
+
+#### Tips
+
+- The `{crudAction}_RESOURCES_NULL` action type is useful anytime that you want
+  to "reset" the status of a request. One use case for this is when a request
+  is aborted. Another use case would be if you have an alert that displays when
+  a request is in a failed state. When the user dismisses the alert, you might
+  trigger this action type to 'reset' the request status.
+
+  You may not always use this action type, and that's alright. But it's here if
+  you do need it.
