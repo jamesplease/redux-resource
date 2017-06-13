@@ -1,4 +1,4 @@
-# `upsertResources({ resources, newResources, replace })`
+# `upsertResources({resources, newResources, [replace]})`
 
 Add new or update existing resources in your state.
 
@@ -18,11 +18,27 @@ Add new or update existing resources in your state.
 #### Example
 
 ```js
-// Coming soon
+import actionTypes from './my-action-types';
+
+export default function reducer(state, action) {
+  switch (action.type) {
+    case (actionTypes.CREATE_RESOURCES_CUSTOM): {
+      const newResources = upsertManyResources({
+        resources: state.resources,
+        newResources: action.resources
+      });
+
+      return {
+        ...state,
+        resources: newResources
+      };
+    }
+  }
+}
 ```
 
 #### Tips
 
-- This is used by reducer returned by `resourceReducer` to update the resources
-  in your store. You typically will only need to use it if you're writing
-  plugins.
+- This is used by reducer returned by [`resourceReducer`](resource-reducer.md)
+  to add and update resources in the store. You will typically only need to use
+  this function if you're authoring a plugin.

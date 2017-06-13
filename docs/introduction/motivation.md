@@ -12,8 +12,8 @@ flight, which have failed, and which have succeeded.
 
 When using Redux, this means writing reducers that manage this state as requests
 are made. For some projects, manually writing the reducers may work well. For
-larger projects, you might run into problems if you continue writing these
-reducers by hand.
+larger projects, you might run into problems if you write these reducers by
+hand.
 
 For one, the data representing these requests may be stored in different ways
 for different parts of the store. This inconsistency in your data will

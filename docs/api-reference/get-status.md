@@ -1,4 +1,4 @@
-# `getStatus(state, crudAction, resources, [isNullPending])`
+# `getStatus(state, crudAction, metaLocations, [isNullPending])`
 
 This method is a utility to simplify the displaying of interface elements based
 on request states.
@@ -13,8 +13,8 @@ one or more resources.
 2. `crudAction` *(string)*: The CRUD action to get the status for. One of
   `"create"`, `"read"`, `"update"`, or `"delete"`.
 
-3. `resources` *(Array)*: An Array of resource locators to get the status of.
-  For more on resource locators, see the Notes below.
+3. `metaLocations` *(Array)*: An Array of "meta locations" to get the status
+  from. For more on meta locations, see the Notes below.
 
 4. [`isNullPending`] *(Boolean)*: Whether or not a request status of `NULL` is
   to be considered as a `pending` request. Defaults to `false`. See Notes on
@@ -23,7 +23,7 @@ one or more resources.
 #### Returns
 
 (*`Object`*): An Object representing the status of this request for these
-  resources. It has the following shape:
+  metaLocations. It has the following shape:
 
   ```js
   {
@@ -40,14 +40,14 @@ one or more resources.
 
 #### Notes
 
-Passing more than one resource locator will aggregate the statuses. The rules of
+Passing more than one meta location will aggregate the statuses. The rules of
 aggregation work as follows:
 
 - If *any* of the requests are failed, then the aggregate is failed.
 - If no requests have failed, but some are pending, then the aggregate is pending.
 - If all requests have succeeded, then the aggregate has succeeded.
 
-A resource locator is a way to specify which metadata you're interested in.
+A meta location is a way to specify which metadata you're interested in.
 Resource locators can either be strings, such as `"books"` or `"people.24"`, but
 also Objects, such as:
 
@@ -70,11 +70,11 @@ const bookReadStatus = getStatus(state, 'read', ['articles.23', 'comments'], tru
 
 #### Tips
 
-- If you're using React, we recommend computing these values in
-  `mapStateToProps` and passing them in as props. That way, you have access
-  to this information in all of the lifecycle methods of your component.
-
 - The fourth argument, `isNullPending`, is useful for requests that are made when
   your components mount. The components will often render before the request
   begins, so the status of these requests will be `NULL`. Passing `isNullPending`
   will consider these `NULL` states as `pending: true`.
+
+- If you're using React, we recommend computing these values in
+  `mapStateToProps` and passing them in as props. That way, you have access
+  to this information in all of the lifecycle methods of your component.

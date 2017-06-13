@@ -41,8 +41,9 @@ cycle through those four states.
 
 #### Example
 
-This example shows an action creator that reads a single book using the
-[redux-thunk](https://github.com/gaearon/redux-thunk) middleware.
+This example shows an action creator that reads a single book. It uses the
+[redux-thunk](https://github.com/gaearon/redux-thunk) middleware and the
+library [xhr](https://github.com/naugtur/xhr) for making requests.
 
 ```js
 import xhr from 'xhr';
@@ -87,9 +88,10 @@ export default function readBook(bookId) {
 
 - The `{crudAction}_RESOURCES_NULL` action type is useful anytime that you want
   to "reset" the status of a request. One use case for this is when a request
-  is aborted. Another use case would be if you have an alert that displays when
-  a request is in a failed state. When the user dismisses the alert, you might
-  trigger this action type to 'reset' the request status.
+  is aborted. Another use case would be for an alert that displays whenever a
+  request is in a failed state. When the user dismisses the alert, you might
+  trigger this action type to 'reset' the request status back to `NULL`, which
+  would then hide the alert.
 
-  You may not always use this action type, and that's alright. But it's here if
+  You may not always use this action type, and that's fine. But it's here if
   you do need it.
