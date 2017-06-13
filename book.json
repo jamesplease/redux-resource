@@ -1,0 +1,14 @@
+{
+  "gitbook": "3.2.2",
+  "title": "resourceful-redux",
+  "plugins": ["edit-link", "prism", "-highlight", "github"],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/jmeas/resourceful-redux/tree/master",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/jmeas/resourceful-redux/"
+    }
+  }
+}
