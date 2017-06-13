@@ -13,6 +13,19 @@ The complete Object is shown below:
 }
 ```
 
+#### Example
+
+```js
+import { requestStatuses } from 'resourceful-redux';
+import store from './store';
+
+const state = store.getState();
+
+if (state.books.listMeta.readRequestStatus === requestStatuses.PENDING) {
+  console.log('A read request for the books resource is pending.');
+}
+```
+
 #### Tips
 
 - Although this object can be used to check the status of a request in your
