@@ -4,6 +4,8 @@
   * [Motivation](/docs/introduction/motivation.md)
   * [Core Concepts](/docs/introduction/core-concepts.md)
   * [Similar Projects](/docs/introduction/similar-projects.md)
+* [FAQ](/docs/faq/README.md)
+  * [General](/docs/faq/general.md)
 * [API Reference](/docs/api-reference/README.md)
   * [resourceReducer](/docs/api-reference/resource-reducer.md)
   * [getStatus](/docs/api-reference/get-status.md)
