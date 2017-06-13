@@ -1,0 +1,14 @@
+<nav>
+  <ul class="navList">
+    {% assign url = page.url|remove:'index.html' %}
+    {% for item in site.data.navigation %}
+      <li class="navList_listItem">
+        <a
+          href="{{ item.url | prepend: site.baseurl }}"
+          class="navList_link {% if url == item.url %}active{% endif %}">
+            {{ item.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

@@ -1,0 +1,11 @@
+engines:
+  eslint:
+    enabled: false
+  duplication:
+    enabled: false
+exclude_paths:
+- "gulpfile.js"
+- "README.md"
+- "package.json"
+- "test/**/*"
+- "dist/**/*"
