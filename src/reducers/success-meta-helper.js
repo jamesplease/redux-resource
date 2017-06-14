@@ -1,4 +1,5 @@
 import requestStatuses from '../utils/request-statuses';
+import setResourceMeta from '../utils/set-resource-meta';
 
 export default function({state, ids = [], setIds = true, crudAction, requestLabel}) {
   const meta = state.meta;
@@ -36,6 +37,13 @@ export default function({state, ids = [], setIds = true, crudAction, requestLabe
         ...meta,
         ...nullMeta
       };
+    } else {
+      newMeta = setResourceMeta({
+        newMeta: {[statusAttribute]: requestStatuses.SUCCEEDED},
+        replace: false,
+        meta,
+        ids
+      });
     }
 
     newListMeta = listMeta;

@@ -35,7 +35,7 @@ export function delNull(state, action) {
 export function delSucceed(state, action) {
   const ids = action.ids;
 
-  const meta = successMetaHelper({
+  const allMeta = successMetaHelper({
     requestLabel: action.requestLabel,
     crudAction: 'delete',
     state,
@@ -48,6 +48,6 @@ export function delSucceed(state, action) {
   return {
     ...state,
     resources: newResources,
-    ...meta,
+    ...allMeta,
   };
 }

@@ -1,6 +1,6 @@
 import updateMetaHelper from './update-meta-helper';
+import successMetaHelper from './success-meta-helper';
 import requestStatuses from '../utils/request-statuses';
-import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
 export function update(state, action) {
@@ -37,10 +37,10 @@ export function updateSucceed(state, action) {
   const resources = action.resources;
   const ids = resources.map(r => r.id);
 
-  const meta = setResourceMeta({
-    meta: state.meta,
-    newMeta: {updateStatus: requestStatuses.SUCCEEDED},
-    replace: false,
+  const allMeta = successMetaHelper({
+    requestLabel: action.requestLabel,
+    crudAction: 'update',
+    state,
     ids
   });
 
@@ -54,6 +54,6 @@ export function updateSucceed(state, action) {
   return {
     ...state,
     resources: newResources,
-    meta,
+    ...allMeta,
   };
 }
