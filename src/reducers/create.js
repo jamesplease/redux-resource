@@ -7,6 +7,7 @@ import upsertResources from '../utils/upsert-resources';
 export function create(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'create',
     setIds: false,
@@ -17,6 +18,7 @@ export function create(state, action) {
 export function createFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'create',
     setIds: false,
@@ -27,6 +29,7 @@ export function createFail(state, action) {
 export function createReset(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.NULL,
     crudAction: 'create',
     setIds: false,

@@ -4,6 +4,7 @@ import requestStatuses from '../utils/request-statuses';
 export function del(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'delete',
     state
@@ -13,6 +14,7 @@ export function del(state, action) {
 export function delFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'delete',
     state
@@ -22,6 +24,7 @@ export function delFail(state, action) {
 export function delReset(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.NULL,
     crudAction: 'delete',
     state

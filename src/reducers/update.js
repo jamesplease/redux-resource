@@ -6,6 +6,7 @@ import upsertResources from '../utils/upsert-resources';
 export function update(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'update',
     state
@@ -15,6 +16,7 @@ export function update(state, action) {
 export function updateFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'update',
     state
@@ -24,6 +26,7 @@ export function updateFail(state, action) {
 export function updateReset(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    requestLabel: action.requestLabel,
     requestStatus: requestStatuses.NULL,
     crudAction: 'update',
     state
