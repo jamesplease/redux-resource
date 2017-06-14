@@ -1,42 +1,19 @@
+import updateMetaHelper from './update-meta-helper';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
 import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
-function updateMeta(state, action, requestStatus) {
-  const ids = action.ids || [];
-
-  if (!ids.length) {
-    return {
-      ...state,
-      listMeta: {
-        ...state.listMeta,
-        readStatus: requestStatus
-      }
-    };
-  }
-
-  return {
-    ...state,
-    meta: setResourceMeta({
-      meta: state.meta,
-      newMeta: {readStatus: requestStatus},
-      replace: false,
-      ids
-    })
-  };
-}
-
 export function read(state, action) {
-  return updateMeta(state, action, requestStatuses.PENDING);
+  return updateMetaHelper(state, action, requestStatuses.PENDING, 'read');
 }
 
 export function readFail(state, action) {
-  return updateMeta(state, action, requestStatuses.FAILED);
+  return updateMetaHelper(state, action, requestStatuses.FAILED, 'read');
 }
 
 export function readReset(state, action) {
-  return updateMeta(state, action, requestStatuses.NULL);
+  return updateMetaHelper(state, action, requestStatuses.NULL, 'read');
 }
 
 export function readSucceed(state, action) {

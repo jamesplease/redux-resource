@@ -1,41 +1,18 @@
+import updateMetaHelper from './update-meta-helper';
 import requestStatuses from '../utils/request-statuses';
 import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
-function updateMeta(state, action, requestStatus) {
-  const ids = action.ids || [];
-
-  if (!ids.length) {
-    return {
-      ...state,
-      listMeta: {
-        ...state.listMeta,
-        updateStatus: requestStatus
-      }
-    };
-  }
-
-  return {
-    ...state,
-    meta: setResourceMeta({
-      meta: state.meta,
-      newMeta: {updateStatus: requestStatus},
-      replace: false,
-      ids
-    })
-  };
-}
-
 export function update(state, action) {
-  return updateMeta(state, action, requestStatuses.PENDING);
+  return updateMetaHelper(state, action, requestStatuses.PENDING, 'update');
 }
 
 export function updateFail(state, action) {
-  return updateMeta(state, action, requestStatuses.FAILED);
+  return updateMetaHelper(state, action, requestStatuses.FAILED, 'update');
 }
 
 export function updateReset(state, action) {
-  return updateMeta(state, action, requestStatuses.NULL);
+  return updateMetaHelper(state, action, requestStatuses.NULL, 'update');
 }
 
 export function updateSucceed(state, action) {

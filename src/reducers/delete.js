@@ -1,40 +1,16 @@
+import updateMetaHelper from './update-meta-helper';
 import requestStatuses from '../utils/request-statuses';
-import setResourceMeta from '../utils/set-resource-meta';
-
-function updateMeta(state, action, requestStatus) {
-  const ids = action.ids || [];
-
-  if (!ids.length) {
-    return {
-      ...state,
-      listMeta: {
-        ...state.listMeta,
-        deleteStatus: requestStatus
-      }
-    };
-  }
-
-  return {
-    ...state,
-    meta: setResourceMeta({
-      meta: state.meta,
-      newMeta: {deleteStatus: requestStatus},
-      replace: false,
-      ids
-    })
-  };
-}
 
 export function del(state, action) {
-  return updateMeta(state, action, requestStatuses.PENDING);
+  return updateMetaHelper(state, action, requestStatuses.PENDING, 'delete');
 }
 
 export function delFail(state, action) {
-  return updateMeta(state, action, requestStatuses.FAILED);
+  return updateMetaHelper(state, action, requestStatuses.FAILED, 'delete');
 }
 
 export function delReset(state, action) {
-  return updateMeta(state, action, requestStatuses.NULL);
+  return updateMetaHelper(state, action, requestStatuses.NULL, 'delete');
 }
 
 export function delSucceed(state, action) {
