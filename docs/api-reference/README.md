@@ -5,7 +5,7 @@
 * [resourceReducer](/docs/api-reference/resource-reducer.md)
 * [getStatus](/docs/api-reference/get-status.md)
 * [upsertResources](/docs/api-reference/upsert-resources.md)
-* [setMeta](/docs/api-reference/set-meta.md)
+* [setResourceMeta](/docs/api-reference/set-resource-meta.md)
 * [actionTypes](/docs/api-reference/action-types.md)
 * [requestStatuses](/docs/api-reference/request-statuses.md)
 

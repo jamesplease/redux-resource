@@ -1,4 +1,4 @@
-# `setMeta({ids, meta, newMeta, [replace]})`
+# `setResourceMeta({ids, meta, newMeta, [replace]})`
 
 Update one or more individual resources with the same metadata.
 
@@ -21,12 +21,13 @@ Update one or more individual resources with the same metadata.
 #### Example
 
 ```js
+import { setResourceMeta } from 'resourceful-redux';
 import actionTypes from './my-action-types';
 
 export default function reducer(state, action) {
   switch (action.type) {
     case (actionTypes.SELECT_MANY_RESOURCES): {
-      const meta = setMeta({
+      const meta = setResourceMeta({
         ids: action.ids,
         meta: state.meta,
         newMeta: {

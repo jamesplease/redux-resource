@@ -1,7 +1,7 @@
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
-import updateManyResourceMetas from '../utils/update-many-resource-metas';
-import upsertManyResources from '../utils/upsert-many-resources';
+import setResourceMeta from '../utils/set-resource-meta';
+import upsertResources from '../utils/upsert-resources';
 
 export function read(state) {
   return {
@@ -30,7 +30,7 @@ export function readSucceed(state, action) {
 
   let newResources;
   if (!replace) {
-    newResources = upsertManyResources({
+    newResources = upsertResources({
       resources: state.resources,
       replace: false,
       newResources: resources,
@@ -44,7 +44,7 @@ export function readSucceed(state, action) {
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    meta: updateManyResourceMetas({
+    meta: setResourceMeta({
       meta: state.meta,
       newMeta: initialResourceMetaState,
       ids, replace

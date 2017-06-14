@@ -1,5 +1,5 @@
-// Similar to `upsertResource`, but for many resources.
-export default function upsertManyResources({resources, newResources, replace}) {
+// Add or update resources
+export default function upsertResources({resources, newResources, replace}) {
   const shallowClone = replace ? [] : Array.prototype.slice.call(resources);
 
   newResources.forEach(resource => {

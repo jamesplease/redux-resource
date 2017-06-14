@@ -18,12 +18,13 @@ Add new or update existing resources in your state.
 #### Example
 
 ```js
+import { upsertResources } from 'resourceful-redux';
 import actionTypes from './my-action-types';
 
 export default function reducer(state, action) {
   switch (action.type) {
     case (actionTypes.CREATE_RESOURCES_CUSTOM): {
-      const newResources = upsertManyResources({
+      const newResources = upsertResources({
         resources: state.resources,
         newResources: action.resources
       });

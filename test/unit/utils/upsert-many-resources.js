@@ -1,6 +1,6 @@
-import {upsertManyResources} from '../../../src';
+import {upsertResources} from '../../../src';
 
-describe('upsertManyResources', function() {
+describe('upsertResources', function() {
   beforeEach(() => {
     this.resources = [
       {id: 1, first_name: 'james', last_name: 'please'},
@@ -11,7 +11,7 @@ describe('upsertManyResources', function() {
 
   describe('replace: true', () => {
     it('should replace "unmatched" resources in the store, and the data for "matched" resources', () => {
-      const result = upsertManyResources({
+      const result = upsertResources({
         resources: this.resources,
         newResources: [
           {id: 1, first_name: 'oink'}
@@ -28,7 +28,7 @@ describe('upsertManyResources', function() {
     });
 
     it('should add a brand new resource', () => {
-      const result = upsertManyResources({
+      const result = upsertResources({
         resources: this.resources,
         newResources: [
           {id: 10, first_name: 'oink'}
@@ -47,7 +47,7 @@ describe('upsertManyResources', function() {
 
   describe('replace: false', () => {
     it('should keep "unmatched" resources in the store, and merge the data for "matched" resources', () => {
-      const result = upsertManyResources({
+      const result = upsertResources({
         resources: this.resources,
         newResources: [
           {id: 1, first_name: 'oink'}
@@ -72,7 +72,7 @@ describe('upsertManyResources', function() {
   });
 
   it('should add a brand new resource', () => {
-    const result = upsertManyResources({
+    const result = upsertResources({
       resources: this.resources,
       newResources: [
         {id: 10, first_name: 'oink'}

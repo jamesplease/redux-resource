@@ -1,15 +1,15 @@
 import resourceReducer from './resource-reducer';
 import actionTypes from './action-types';
 import requestStatuses from './utils/request-statuses';
-import updateManyResourceMetas from './utils/update-many-resource-metas';
-import upsertManyResources from './utils/upsert-many-resources';
+import setResourceMeta from './utils/set-resource-meta';
+import upsertResources from './utils/upsert-resources';
 import getStatus from './utils/get-status';
 
 export {
   resourceReducer,
   actionTypes,
   requestStatuses,
-  updateManyResourceMetas,
-  upsertManyResources,
+  setResourceMeta,
+  upsertResources,
   getStatus
 };

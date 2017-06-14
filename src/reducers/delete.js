@@ -1,10 +1,10 @@
 import requestStatuses from '../utils/request-statuses';
-import updateManyResourceMetas from '../utils/update-many-resource-metas';
+import setResourceMeta from '../utils/set-resource-meta';
 
 export function del(state, action) {
   const ids = action.ids;
 
-  const meta = updateManyResourceMetas({
+  const meta = setResourceMeta({
     meta: state.meta,
     newMeta: {deleteStatus: requestStatuses.PENDING},
     replace: false,
@@ -20,7 +20,7 @@ export function del(state, action) {
 export function delFail(state, action) {
   const ids = action.ids;
 
-  const meta = updateManyResourceMetas({
+  const meta = setResourceMeta({
     meta: state.meta,
     newMeta: {deleteStatus: requestStatuses.FAILED},
     replace: false,
@@ -61,7 +61,7 @@ export function delSucceed(state, action) {
 export function delReset(state, action) {
   const ids = action.ids;
 
-  const meta = updateManyResourceMetas({
+  const meta = setResourceMeta({
     meta: state.meta,
     newMeta: {deleteStatus: requestStatuses.NULL},
     replace: false,

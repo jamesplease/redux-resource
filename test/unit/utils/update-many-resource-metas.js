@@ -1,6 +1,6 @@
-import {updateManyResourceMetas} from '../../../src';
+import {setResourceMeta} from '../../../src';
 
-describe('updateManyResourceMetas', function() {
+describe('setResourceMeta', function() {
   beforeEach(() => {
     this.meta = {
       1: {
@@ -17,7 +17,7 @@ describe('updateManyResourceMetas', function() {
 
   describe('replace: true', () => {
     it('should only keep metadata that is passed in', () => {
-      const result = updateManyResourceMetas({
+      const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
         ids: [1, 2, 5],
@@ -40,7 +40,7 @@ describe('updateManyResourceMetas', function() {
 
   describe('replace: false', () => {
     it('should keep other list items and merge in the new results', () => {
-      const result = updateManyResourceMetas({
+      const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
         ids: [1, 2, 5],
