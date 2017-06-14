@@ -32,6 +32,7 @@ describe('reducers: deleteMany', function() {
           deleteStatus: requestStatuses.PENDING
         }
       },
+      labelMeta: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -72,6 +73,7 @@ describe('reducers: deleteMany', function() {
           deleteStatus: requestStatuses.FAILED
         }
       },
+      labelMeta: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -112,6 +114,7 @@ describe('reducers: deleteMany', function() {
           deleteStatus: requestStatuses.NULL
         }
       },
+      labelMeta: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -157,6 +160,7 @@ describe('reducers: deleteMany', function() {
         3: null,
         4: null
       },
+      labelMeta: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,

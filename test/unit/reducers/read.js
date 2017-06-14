@@ -12,6 +12,7 @@ describe('reducers: readMany', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -36,6 +37,7 @@ describe('reducers: readMany', function() {
           readStatus: requestStatuses.PENDING
         }
       },
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -55,6 +57,7 @@ describe('reducers: readMany', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -79,6 +82,7 @@ describe('reducers: readMany', function() {
           readStatus: requestStatuses.FAILED
         }
       },
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -128,6 +132,7 @@ describe('reducers: readMany', function() {
           deleteStatus: requestStatuses.NULL
         }
       },
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -199,6 +204,7 @@ describe('reducers: readMany', function() {
           deleteStatus: requestStatuses.NULL
         }
       },
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -252,6 +258,7 @@ describe('reducers: readMany', function() {
           deleteStatus: requestStatuses.NULL
         }
       },
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -279,6 +286,7 @@ describe('reducers: readMany', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -312,6 +320,7 @@ describe('reducers: readMany', function() {
           readStatus: requestStatuses.NULL
         }
       },
+      labelMeta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
