@@ -1,11 +1,12 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: readMany', function() {
-  it('should handle `READ_RESOURCES`', () => {
+  it('should handle `READ_RESOURCES` without IDs', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
       type: 'READ_RESOURCES',
       resourceName: 'hellos',
+      ids: []
     });
 
     expect(reduced).to.deep.equal({
@@ -15,6 +16,29 @@ describe('reducers: readMany', function() {
         createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,
         readStatus: requestStatuses.PENDING
+      }
+    });
+  });
+
+  it('should handle `READ_RESOURCES` with IDs', () => {
+    const reducer = resourceReducer('hellos');
+    const reduced = reducer(undefined, {
+      type: 'READ_RESOURCES',
+      resourceName: 'hellos',
+      ids: [2]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [],
+      meta: {
+        2: {
+          readStatus: requestStatuses.PENDING
+        }
+      },
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
       }
     });
   });
@@ -33,6 +57,29 @@ describe('reducers: readMany', function() {
         createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,
         readStatus: requestStatuses.FAILED
+      }
+    });
+  });
+
+  it('should handle `READ_RESOURCES_FAILED` with IDs', () => {
+    const reducer = resourceReducer('hellos');
+    const reduced = reducer(undefined, {
+      type: 'READ_RESOURCES_FAIL',
+      resourceName: 'hellos',
+      ids: [2]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [],
+      meta: {
+        2: {
+          readStatus: requestStatuses.FAILED
+        }
+      },
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
       }
     });
   });
@@ -156,6 +203,38 @@ describe('reducers: readMany', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
+      }
+    });
+  });
+
+  it('should handle `READ_RESOURCES_RESET` with IDs', () => {
+    const reducer = resourceReducer('hellos', {
+      initialState: {
+        meta: {
+          2: {
+            readStatus: requestStatuses.FAILED
+          }
+        }
+      }
+    });
+
+    const reduced = reducer(undefined, {
+      type: 'READ_RESOURCES_RESET',
+      resourceName: 'hellos',
+      ids: [2]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [],
+      meta: {
+        2: {
+          readStatus: requestStatuses.NULL
+        }
+      },
       listMeta: {
         createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,

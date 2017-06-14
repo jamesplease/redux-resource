@@ -1,10 +1,8 @@
 # `getStatus(state, crudAction, metaLocations, [isNullPending])`
 
-This method is a utility to simplify the displaying of interface elements based
-on request states.
-
-It returns an Object that represents the status of CRUD action requests against
-one or more resources.
+Returns an object with boolean values representing the request status of a
+particular CRUD action. It can also be used to aggregate multiple request
+statuses together.
 
 #### Arguments
 

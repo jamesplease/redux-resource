@@ -3,29 +3,47 @@ import requestStatuses from '../utils/request-statuses';
 import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
-export function read(state) {
+function updateMeta(state, action, requestStatus) {
+  const ids = action.ids || [];
+
+  if (!ids.length) {
+    return {
+      ...state,
+      listMeta: {
+        ...state.listMeta,
+        readStatus: requestStatus
+      }
+    };
+  }
+
   return {
     ...state,
-    listMeta: {
-      ...state.listMeta,
-      readStatus: requestStatuses.PENDING
-    }
+    meta: setResourceMeta({
+      meta: state.meta,
+      newMeta: {readStatus: requestStatus},
+      replace: false,
+      ids
+    })
   };
 }
 
-export function readFail(state) {
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      readStatus: requestStatuses.FAILED
-    }
-  };
+export function read(state, action) {
+  return updateMeta(state, action, requestStatuses.PENDING);
+}
+
+export function readFail(state, action) {
+  return updateMeta(state, action, requestStatuses.FAILED);
+}
+
+export function readReset(state, action) {
+  return updateMeta(state, action, requestStatuses.NULL);
 }
 
 export function readSucceed(state, action) {
   const resources = action.resources;
-  const ids = resources.map(r => r.id);
+  const ids = action.ids || [];
+
+  const responseIds = resources.map(r => r.id);
   const replace = typeof action.replace !== 'undefined' ? action.replace : true;
 
   let newResources;
@@ -39,29 +57,41 @@ export function readSucceed(state, action) {
     newResources = resources;
   }
 
+  let listMeta;
+  if (!ids.length) {
+    listMeta = {
+      ...state.listMeta,
+      readStatus: requestStatuses.SUCCEEDED
+    };
+  } else {
+    listMeta = {
+      ...state.listMeta
+    };
+  }
+
+  let meta;
+  if (!ids.length) {
+    meta = setResourceMeta({
+      meta: state.meta,
+      newMeta: initialResourceMetaState,
+      ids: responseIds,
+      replace
+    });
+  } else {
+    meta = setResourceMeta({
+      meta: state.meta,
+      newMeta: initialResourceMetaState,
+      ids: responseIds,
+      replace: false
+    });
+  }
+
   return {
     ...state,
     resources: newResources,
     // We have new resources, so we need to update their meta state with the
     // initial meta state.
-    meta: setResourceMeta({
-      meta: state.meta,
-      newMeta: initialResourceMetaState,
-      ids, replace
-    }),
-    listMeta: {
-      ...state.listMeta,
-      readStatus: requestStatuses.SUCCEEDED
-    }
-  };
-}
-
-export function readReset(state) {
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      readStatus: requestStatuses.NULL
-    }
+    meta,
+    listMeta
   };
 }
