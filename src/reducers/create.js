@@ -1,14 +1,14 @@
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
-import updateResourceMeta from '../utils/update-resource-meta';
-import upsertResource from '../utils/upsert-resource';
+import updateManyResourceMetas from '../utils/update-many-resource-metas';
+import upsertManyResources from '../utils/upsert-many-resources';
 
 export function create(state) {
   return {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createStatus: requestStatuses.PENDING
+      createManyStatus: requestStatuses.PENDING
     }
   };
 }
@@ -18,32 +18,35 @@ export function createFail(state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createStatus: requestStatuses.FAILED
+      createManyStatus: requestStatuses.FAILED
     }
   };
 }
 
 export function createSucceed(state, action) {
-  const newResourceId = action.resource.id;
-  const resources = upsertResource({
+  const resources = action.resources;
+  const ids = resources.map(r => r.id);
+
+  const newResources = upsertManyResources({
     resources: state.resources,
-    resource: action.resource,
-    id: action.id,
-  });
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: initialResourceMetaState,
-    id: newResourceId,
-    replace: false
+    replace: false,
+    newResources: resources,
   });
 
   return {
     ...state,
-    resources,
-    meta,
+    resources: newResources,
+    // We have new resources, so we need to update their meta state with the
+    // initial meta state.
+    meta: updateManyResourceMetas({
+      meta: state.meta,
+      replace: false,
+      newMeta: initialResourceMetaState,
+      ids
+    }),
     listMeta: {
       ...state.listMeta,
-      createStatus: requestStatuses.SUCCEEDED
+      createManyStatus: requestStatuses.SUCCEEDED
     }
   };
 }
@@ -53,7 +56,7 @@ export function createReset(state) {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createStatus: requestStatuses.NULL
+      createManyStatus: requestStatuses.NULL
     }
   };
 }

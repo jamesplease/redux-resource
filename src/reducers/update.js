@@ -1,27 +1,33 @@
 import requestStatuses from '../utils/request-statuses';
-import updateResourceMeta from '../utils/update-resource-meta';
-import upsertResource from '../utils/upsert-resource';
+import updateManyResourceMetas from '../utils/update-many-resource-metas';
+import upsertManyResources from '../utils/upsert-many-resources';
 
 export function update(state, action) {
-  const meta = updateResourceMeta({
+  const resources = action.resources;
+  const ids = resources.map(r => r.id);
+
+  const meta = updateManyResourceMetas({
     meta: state.meta,
     newMeta: {updateStatus: requestStatuses.PENDING},
-    id: action.id,
-    replace: false
+    replace: false,
+    ids
   });
 
   return {
     ...state,
-    meta,
+    meta
   };
 }
 
 export function updateFail(state, action) {
-  const meta = updateResourceMeta({
+  const resources = action.resources;
+  const ids = resources.map(r => r.id);
+
+  const meta = updateManyResourceMetas({
     meta: state.meta,
     newMeta: {updateStatus: requestStatuses.FAILED},
-    id: action.id,
-    replace: false
+    replace: false,
+    ids
   });
 
   return {
@@ -31,34 +37,39 @@ export function updateFail(state, action) {
 }
 
 export function updateSucceed(state, action) {
-  const meta = updateResourceMeta({
+  const resources = action.resources;
+  const ids = resources.map(r => r.id);
+
+  const meta = updateManyResourceMetas({
     meta: state.meta,
     newMeta: {updateStatus: requestStatuses.SUCCEEDED},
-    id: action.id,
-    replace: false
+    replace: false,
+    ids
   });
 
-  const replace = typeof action.replace !== 'undefined' ? action.replace : true;
-  const resources = upsertResource({
+  const replace = typeof action.replace !== 'undefined' ? action.replace : false;
+  const newResources = upsertManyResources({
     resources: state.resources,
-    resource: action.resource,
-    id: action.id,
+    newResources: resources,
     replace
   });
 
   return {
     ...state,
+    resources: newResources,
     meta,
-    resources
   };
 }
 
 export function updateReset(state, action) {
-  const meta = updateResourceMeta({
+  const resources = action.resources;
+  const ids = resources.map(r => r.id);
+
+  const meta = updateManyResourceMetas({
     meta: state.meta,
     newMeta: {updateStatus: requestStatuses.NULL},
-    id: action.id,
-    replace: false
+    replace: false,
+    ids
   });
 
   return {

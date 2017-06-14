@@ -1,147 +1,159 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
-describe('reducers: read', function() {
-  it('should handle `READ_RESOURCE`', () => {
+describe('reducers: readMany', function() {
+  it('should handle `READ_RESOURCES`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
-      type: 'READ_RESOURCE',
+      type: 'READ_RESOURCES',
       resourceName: 'hellos',
-      id: 3
     });
 
     expect(reduced).to.deep.equal({
       resources: [],
-      meta: {
-        3: {
-          readStatus: 'PENDING'
-        }
-      },
+      meta: {},
       listMeta: {
-        readStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
+        readStatus: requestStatuses.PENDING
       }
     });
   });
 
-  it('should handle `READ_RESOURCE_FAIL`', () => {
+  it('should handle `READ_RESOURCES_FAIL`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
-      type: 'READ_RESOURCE_FAIL',
+      type: 'READ_RESOURCES_FAIL',
       resourceName: 'hellos',
-      id: 3
     });
 
     expect(reduced).to.deep.equal({
       resources: [],
-      meta: {
-        3: {
-          readStatus: 'FAILED'
-        }
-      },
+      meta: {},
       listMeta: {
-        readStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
+        readStatus: requestStatuses.FAILED
       }
     });
   });
 
-  it('should handle `READ_RESOURCE_SUCCEED`', () => {
+  it('should handle `READ_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
       resources: [
-        {id: 3, hunger: false}
-      ]
-    });
-
-    const reduced = reducer(undefined, {
-      type: 'READ_RESOURCE_SUCCEED',
-      resourceName: 'hellos',
-      id: 3,
-      resource: {
-        id: 3,
-        sandwiches: 'yum'
-      }
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {
-          id: 3,
-          sandwiches: 'yum'
-        }
+        {id: 100, sandwiches: 'yummm'},
+        {id: 23},
+        {id: 55},
       ],
       meta: {
-        3: {
-          readStatus: 'SUCCEEDED'
+        23: 'sandwiches'
+      }
+    });
+
+    const reduced = reducer(undefined, {
+      type: 'READ_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
+      resources: [
+        {id: 2, hungry: true, pasta: 'yespls'},
+        {id: 100, hungry: false},
+      ]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [
+        {id: 2, hungry: true, pasta: 'yespls'},
+        {id: 100, hungry: false},
+      ],
+      meta: {
+        2: {
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
+        },
+        100: {
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL
         }
       },
       listMeta: {
-        readStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
+        readStatus: requestStatuses.SUCCEEDED
       }
     });
   });
 
-  it('should handle `READ_RESOURCE_SUCCEED` with `replace: false`', () => {
+  it('should handle `READ_RESOURCES_SUCCEED` with `replace: false`', () => {
     const reducer = resourceReducer('hellos', {
       resources: [
-        {id: 3, hunger: false}
-      ]
+        {id: 100, sandwiches: 'yummm'},
+        {id: 23},
+        {id: 55},
+      ],
+      meta: {
+        23: 'sandwiches'
+      }
     });
 
     const reduced = reducer(undefined, {
-      type: 'READ_RESOURCE_SUCCEED',
+      type: 'READ_RESOURCES_SUCCEED',
       resourceName: 'hellos',
-      id: 3,
       replace: false,
-      resource: {
-        id: 3,
-        sandwiches: 'yum'
-      }
+      resources: [
+        {id: 2, hungry: true, pasta: 'yespls'},
+        {id: 100, hungry: false},
+      ]
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {
-          id: 3,
-          sandwiches: 'yum',
-          hunger: false
-        }
+        {id: 100, hungry: false, sandwiches: 'yummm'},
+        {id: 23},
+        {id: 55},
+        {id: 2, hungry: true, pasta: 'yespls'},
       ],
       meta: {
-        3: {
-          readStatus: 'SUCCEEDED'
+        2: {
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
+        },
+        23: 'sandwiches',
+        100: {
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL
         }
       },
       listMeta: {
-        readStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
+        readStatus: requestStatuses.SUCCEEDED
       }
     });
   });
 
-  it('should handle `READ_RESOURCE_RESET`', () => {
-    const reducer = resourceReducer('hellos');
+  it('should handle `READ_RESOURCES_RESET`', () => {
+    const reducer = resourceReducer('hellos', {
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: 'sandwiches'
+      }
+    });
+
     const reduced = reducer(undefined, {
-      type: 'READ_RESOURCE_RESET',
+      type: 'READ_RESOURCES_RESET',
       resourceName: 'hellos',
-      id: 3
     });
 
     expect(reduced).to.deep.equal({
       resources: [],
-      meta: {
-        3: {
-          readStatus: requestStatuses.NULL
-        }
-      },
+      meta: {},
       listMeta: {
-        readStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
         createManyStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.NULL
+        readStatus: requestStatuses.NULL
       }
     });
   });

@@ -1,10 +1,10 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
-describe('reducers: create', function() {
-  it('should handle `CREATE_RESOURCE`', () => {
+describe('reducers: createMany', function() {
+  it('should handle `CREATE_RESOURCES`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
-      type: 'CREATE_RESOURCE',
+      type: 'CREATE_RESOURCES',
       resourceName: 'hellos',
     });
 
@@ -12,8 +12,8 @@ describe('reducers: create', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createStatus: requestStatuses.PENDING,
-        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.PENDING,
         readStatus: requestStatuses.NULL
       }
     });
@@ -22,7 +22,7 @@ describe('reducers: create', function() {
   it('should handle `CREATE_RESOURCES_FAIL`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
-      type: 'CREATE_RESOURCE_FAIL',
+      type: 'CREATE_RESOURCES_FAIL',
       resourceName: 'hellos',
     });
 
@@ -30,8 +30,8 @@ describe('reducers: create', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createStatus: requestStatuses.FAILED,
-        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.FAILED,
         readStatus: requestStatuses.NULL
       }
     });
@@ -40,7 +40,7 @@ describe('reducers: create', function() {
   it('should handle `CREATE_RESOURCES_RESET`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
-      type: 'CREATE_RESOURCE_RESET',
+      type: 'CREATE_RESOURCES_RESET',
       resourceName: 'hellos',
     });
 
@@ -55,31 +55,43 @@ describe('reducers: create', function() {
     });
   });
 
-  it('should handle `CREATE_RESOURCE_SUCCEED`', () => {
+  it('should handle `CREATE_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
-      type: 'CREATE_RESOURCE_SUCCEED',
+      type: 'CREATE_RESOURCES_SUCCEED',
       resourceName: 'hellos',
-      resource: {
-        id: 10,
-        hungry: true
-      }
+      resources: [
+        {
+          id: 10,
+          hungry: true
+        },
+        {
+          id: 12,
+          hungry: false
+        }
+      ]
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {id: 10, hungry: true}
+        {id: 10, hungry: true},
+        {id: 12, hungry: false},
       ],
       meta: {
         10: {
           updateStatus: requestStatuses.NULL,
           readStatus: requestStatuses.NULL,
           deleteStatus: requestStatuses.NULL
+        },
+        12: {
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL
         }
       },
       listMeta: {
-        createStatus: requestStatuses.SUCCEEDED,
-        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.SUCCEEDED,
         readStatus: requestStatuses.NULL
       }
     });

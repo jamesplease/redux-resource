@@ -1,29 +1,41 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
-describe('reducers: update', function() {
-  it('should handle `UPDATE_RESOURCE`', () => {
+describe('reducers: updateMany', function() {
+  it('should handle `UPDATE_RESOURCES`', () => {
     const reducer = resourceReducer('hellos', {
       resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ]
     });
 
     const reduced = reducer(undefined, {
-      type: 'UPDATE_RESOURCE',
+      type: 'UPDATE_RESOURCES',
       resourceName: 'hellos',
-      id: 3
+      resources: [
+        {
+          id: 3,
+          hungry: true
+        },
+        {
+          id: 4,
+          hungry: false
+        }
+      ]
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ],
       meta: {
         3: {
+          updateStatus: requestStatuses.PENDING
+        },
+        4: {
           updateStatus: requestStatuses.PENDING
         }
       },
@@ -35,29 +47,41 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_RESOURCE_FAIL`', () => {
+  it('should handle `UPDATE_RESOURCES_FAIL`', () => {
     const reducer = resourceReducer('hellos', {
       resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ]
     });
 
     const reduced = reducer(undefined, {
-      type: 'UPDATE_RESOURCE_FAIL',
+      type: 'UPDATE_RESOURCES_FAIL',
       resourceName: 'hellos',
-      id: 3
+      resources: [
+        {
+          id: 3,
+          hungry: true
+        },
+        {
+          id: 4,
+          hungry: false
+        }
+      ]
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ],
       meta: {
         3: {
+          updateStatus: requestStatuses.FAILED
+        },
+        4: {
           updateStatus: requestStatuses.FAILED
         }
       },
@@ -69,29 +93,41 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_RESOURCE_RESET`', () => {
+  it('should handle `UPDATE_RESOURCES_RESET`', () => {
     const reducer = resourceReducer('hellos', {
       resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ]
     });
 
     const reduced = reducer(undefined, {
-      type: 'UPDATE_RESOURCE_RESET',
+      type: 'UPDATE_RESOURCES_RESET',
       resourceName: 'hellos',
-      id: 3
+      resources: [
+        {
+          id: 3,
+          hungry: true
+        },
+        {
+          id: 4,
+          hungry: false
+        }
+      ]
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ],
       meta: {
         3: {
+          updateStatus: requestStatuses.NULL
+        },
+        4: {
           updateStatus: requestStatuses.NULL
         }
       },
@@ -103,33 +139,41 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_RESOURCE_SUCCEED`', () => {
+  it('should handle `UPDATE_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
       resources: [
-        {id: 1},
-        {id: 3, last_name: 'please'},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ]
     });
 
     const reduced = reducer(undefined, {
-      type: 'UPDATE_RESOURCE_SUCCEED',
+      type: 'UPDATE_RESOURCES_SUCCEED',
       resourceName: 'hellos',
-      id: 3,
-      resource: {
-        id: 3,
-        name: 'please'
-      }
+      resources: [
+        {
+          id: 3,
+          hungry: true
+        },
+        {
+          id: 4,
+          hungry: false
+        }
+      ]
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {id: 1},
-        {id: 3, name: 'please'},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: true},
+        {id: 4, hungry: false},
       ],
       meta: {
         3: {
+          updateStatus: requestStatuses.SUCCEEDED
+        },
+        4: {
           updateStatus: requestStatuses.SUCCEEDED
         }
       },
@@ -141,34 +185,87 @@ describe('reducers: update', function() {
     });
   });
 
-  it('should handle `UPDATE_RESOURCE_SUCCEED` with `replace: false`', () => {
+  it('should handle `UPDATE_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
       resources: [
-        {id: 1},
-        {id: 3, last_name: 'please'},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
       ]
     });
 
     const reduced = reducer(undefined, {
-      type: 'UPDATE_RESOURCE_SUCCEED',
+      type: 'UPDATE_RESOURCES_SUCCEED',
       resourceName: 'hellos',
-      id: 3,
-      replace: false,
-      resource: {
-        id: 3,
-        name: 'please'
-      }
+      resources: [
+        {
+          id: 3,
+          hungry: true
+        },
+        {
+          id: 4,
+          hungry: false
+        }
+      ]
     });
 
     expect(reduced).to.deep.equal({
       resources: [
-        {id: 1},
-        {id: 3, name: 'please', last_name: 'please'},
-        {id: 4},
+        {id: 1, hungry: null},
+        {id: 3, hungry: true},
+        {id: 4, hungry: false},
       ],
       meta: {
         3: {
+          updateStatus: requestStatuses.SUCCEEDED
+        },
+        4: {
+          updateStatus: requestStatuses.SUCCEEDED
+        }
+      },
+      listMeta: {
+        readStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL
+      }
+    });
+  });
+
+  it('should handle `UPDATE_RESOURCES_SUCCEED` with `replace: true`', () => {
+    const reducer = resourceReducer('hellos', {
+      resources: [
+        {id: 1, hungry: null},
+        {id: 3, hungry: null},
+        {id: 4, hungry: null},
+      ]
+    });
+
+    const reduced = reducer(undefined, {
+      type: 'UPDATE_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
+      replace: true,
+      resources: [
+        {
+          id: 3,
+          hungry: true
+        },
+        {
+          id: 4,
+          hungry: false
+        }
+      ]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [
+        {id: 3, hungry: true},
+        {id: 4, hungry: false},
+      ],
+      meta: {
+        3: {
+          updateStatus: requestStatuses.SUCCEEDED
+        },
+        4: {
           updateStatus: requestStatuses.SUCCEEDED
         }
       },

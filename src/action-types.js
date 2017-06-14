@@ -8,22 +8,14 @@ const mapConstant = (resourceName, crudAction) => ({
   [`${crudAction}_${resourceName}_RESET`]: `${crudAction}_${resourceName}_RESET`,
 });
 
-const createTypes = mapConstant('RESOURCE', 'CREATE');
-const readTypes = mapConstant('RESOURCE', 'READ');
-const updateTypes = mapConstant('RESOURCE', 'UPDATE');
-const deleteTypes = mapConstant('RESOURCE', 'DELETE');
-const createManyTypes = mapConstant('RESOURCES', 'CREATE_MANY');
-const readManyTypes = mapConstant('RESOURCES', 'READ_MANY');
-const updateManyTypes = mapConstant('RESOURCES', 'UPDATE_MANY');
-const deleteManyTypes = mapConstant('RESOURCES', 'DELETE_MANY');
+const createTypes = mapConstant('RESOURCES', 'CREATE');
+const readTypes = mapConstant('RESOURCES', 'READ');
+const updateTypes = mapConstant('RESOURCES', 'UPDATE');
+const deleteTypes = mapConstant('RESOURCES', 'DELETE');
 
 export default {
   ...createTypes,
   ...readTypes,
   ...updateTypes,
-  ...deleteTypes,
-  ...createManyTypes,
-  ...readManyTypes,
-  ...updateManyTypes,
-  ...deleteManyTypes,
+  ...deleteTypes
 };
