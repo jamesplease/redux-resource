@@ -4,15 +4,15 @@ import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
 export function update(state, action) {
-  return updateMetaHelper(state, action, requestStatuses.PENDING, 'update');
+  return updateMetaHelper(state, action.ids, requestStatuses.PENDING, 'update');
 }
 
 export function updateFail(state, action) {
-  return updateMetaHelper(state, action, requestStatuses.FAILED, 'update');
+  return updateMetaHelper(state, action.ids, requestStatuses.FAILED, 'update');
 }
 
 export function updateReset(state, action) {
-  return updateMetaHelper(state, action, requestStatuses.NULL, 'update');
+  return updateMetaHelper(state, action.ids, requestStatuses.NULL, 'update');
 }
 
 export function updateSucceed(state, action) {

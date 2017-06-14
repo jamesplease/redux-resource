@@ -1,8 +1,7 @@
 import setResourceMeta from '../utils/set-resource-meta';
 
-export default function(state, action, requestStatus, crudAction, setIds = true) {
+export default function(state, ids = [], requestStatus, crudAction, setIds = true) {
   const statusAttribute = `${crudAction}Status`;
-  const ids = action.ids || [];
 
   if (!setIds || !ids.length) {
     return {
