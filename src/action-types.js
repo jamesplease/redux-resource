@@ -1,17 +1,17 @@
 // This function generates the five statuses from a single CRUD action.
 // For instance, you'd probably pass "CREATE", "READ", "UPDATE", or "DELETE"
 // as `crudAction`.
-const mapConstant = (resourceName, crudAction) => ({
-  [`${crudAction}_${resourceName}`]: `${crudAction}_${resourceName}`,
-  [`${crudAction}_${resourceName}_SUCCEED`]: `${crudAction}_${resourceName}_SUCCEED`,
-  [`${crudAction}_${resourceName}_FAIL`]: `${crudAction}_${resourceName}_FAIL`,
-  [`${crudAction}_${resourceName}_NULL`]: `${crudAction}_${resourceName}_NULL`,
+const mapConstant = (crudAction) => ({
+  [`${crudAction}_RESOURCES`]: `${crudAction}_RESOURCES`,
+  [`${crudAction}_RESOURCES_SUCCEED`]: `${crudAction}_RESOURCES_SUCCEED`,
+  [`${crudAction}_RESOURCES_FAIL`]: `${crudAction}_RESOURCES_FAIL`,
+  [`${crudAction}_RESOURCES_NULL`]: `${crudAction}_RESOURCES_NULL`,
 });
 
-const createTypes = mapConstant('RESOURCES', 'CREATE');
-const readTypes = mapConstant('RESOURCES', 'READ');
-const updateTypes = mapConstant('RESOURCES', 'UPDATE');
-const deleteTypes = mapConstant('RESOURCES', 'DELETE');
+const createTypes = mapConstant('CREATE');
+const readTypes = mapConstant('READ');
+const updateTypes = mapConstant('UPDATE');
+const deleteTypes = mapConstant('DELETE');
 
 export default {
   ...createTypes,
