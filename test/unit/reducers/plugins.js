@@ -2,7 +2,7 @@
 //
 // describe('reducer', function() {
 //   it('should handle a plug-in on a built-in type', () => {
-//     const reducer = resourceReducer('hellos', {}, {
+//     const reducer = resourceReducer('hellos', {
 //       plugins: [
 //         (state, action) => {
 //           if (action.type === actionTypes.READ_RESOURCES) {
@@ -40,7 +40,7 @@
 //   });
 //
 //   it('should handle a plug-in on a custom type', () => {
-//     const reducer = resourceReducer('hellos', {}, {
+//     const reducer = resourceReducer('hellos', {
 //       plugins: [
 //         (state, action) => {
 //           if (action.type === 'SANDWICHES_ARE_GOOD') {
@@ -74,7 +74,7 @@
 //   });
 //
 //   it('should handle multiple plug-ins on a custom type', () => {
-//     const reducer = resourceReducer('hellos', {}, {
+//     const reducer = resourceReducer('hellos', {
 //       plugins: [
 //         (state, action) => {
 //           if (action.type === 'SANDWICHES_ARE_GOOD') {

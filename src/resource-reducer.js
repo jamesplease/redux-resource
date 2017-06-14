@@ -4,9 +4,10 @@ import generateReducer from './generate-reducer';
 // Create a resource reducer.
 //
 // `resourceName`: the plural name of your resource. For instance, "books".
-// `initialState`: additional initial state to include on this resource
-export default function resourceReducer(resourceName, initialState = {}, options = {}) {
-  const {plugins = []} = options;
+// `options`: pass options to change the behavior of the reducer. See the docs
+//   for more information on the available options.
+export default function resourceReducer(resourceName, options = {}) {
+  const {plugins = [], initialState = {}} = options;
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,

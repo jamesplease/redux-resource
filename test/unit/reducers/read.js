@@ -39,13 +39,15 @@ describe('reducers: readMany', function() {
 
   it('should handle `READ_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
-      resources: [
-        {id: 100, sandwiches: 'yummm'},
-        {id: 23},
-        {id: 55},
-      ],
-      meta: {
-        23: 'sandwiches'
+      initialState: {
+        resources: [
+          {id: 100, sandwiches: 'yummm'},
+          {id: 23},
+          {id: 55},
+        ],
+        meta: {
+          23: 'sandwiches'
+        }
       }
     });
 
@@ -85,13 +87,15 @@ describe('reducers: readMany', function() {
 
   it('should handle `READ_RESOURCES_SUCCEED` with `replace: false`', () => {
     const reducer = resourceReducer('hellos', {
-      resources: [
-        {id: 100, sandwiches: 'yummm'},
-        {id: 23},
-        {id: 55},
-      ],
-      meta: {
-        23: 'sandwiches'
+      initialState: {
+        resources: [
+          {id: 100, sandwiches: 'yummm'},
+          {id: 23},
+          {id: 55},
+        ],
+        meta: {
+          23: 'sandwiches'
+        }
       }
     });
 
@@ -135,10 +139,12 @@ describe('reducers: readMany', function() {
 
   it('should handle `READ_RESOURCES_RESET`', () => {
     const reducer = resourceReducer('hellos', {
-      listMeta: {
-        createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
-        readStatus: 'sandwiches'
+      initialState: {
+        listMeta: {
+          createStatus: requestStatuses.NULL,
+          createManyStatus: requestStatuses.NULL,
+          readStatus: 'sandwiches'
+        }
       }
     });
 

@@ -3,11 +3,13 @@ import {resourceReducer, requestStatuses} from '../../../src';
 describe('reducers: deleteMany', function() {
   it('should handle `DELETE_RESOURCES`', () => {
     const reducer = resourceReducer('hellos', {
-      resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
-      ]
+      initialState: {
+        resources: [
+          {id: 1},
+          {id: 3},
+          {id: 4},
+        ]
+      }
     });
 
     const reduced = reducer(undefined, {
@@ -40,11 +42,13 @@ describe('reducers: deleteMany', function() {
 
   it('should handle `DELETE_RESOURCES_FAIL`', () => {
     const reducer = resourceReducer('hellos', {
-      resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
-      ]
+      initialState: {
+        resources: [
+          {id: 1},
+          {id: 3},
+          {id: 4},
+        ]
+      }
     });
 
     const reduced = reducer(undefined, {
@@ -77,11 +81,13 @@ describe('reducers: deleteMany', function() {
 
   it('should handle `DELETE_RESOURCES_RESET`', () => {
     const reducer = resourceReducer('hellos', {
-      resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
-      ]
+      initialState: {
+        resources: [
+          {id: 1},
+          {id: 3},
+          {id: 4},
+        ]
+      }
     });
 
     const reduced = reducer(undefined, {
@@ -114,17 +120,19 @@ describe('reducers: deleteMany', function() {
 
   it('should handle `DELETE_RESOURCES_SUCCEED`', () => {
     const reducer = resourceReducer('hellos', {
-      resources: [
-        {id: 1},
-        {id: 3},
-        {id: 4},
-      ],
-      meta: {
-        1: {
-          name: 'what'
-        },
-        3: {
-          deleteStatus: 'sandwiches'
+      initialState: {
+        resources: [
+          {id: 1},
+          {id: 3},
+          {id: 4},
+        ],
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          }
         }
       }
     });
