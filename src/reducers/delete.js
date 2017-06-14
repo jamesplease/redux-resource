@@ -1,36 +1,40 @@
 import requestStatuses from '../utils/request-statuses';
 import setResourceMeta from '../utils/set-resource-meta';
 
-export function del(state, action) {
-  const ids = action.ids;
+function updateMeta(state, action, requestStatus) {
+  const ids = action.ids || [];
 
-  const meta = setResourceMeta({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.PENDING},
-    replace: false,
-    ids
-  });
+  if (!ids.length) {
+    return {
+      ...state,
+      listMeta: {
+        ...state.listMeta,
+        deleteStatus: requestStatus
+      }
+    };
+  }
 
   return {
     ...state,
-    meta,
+    meta: setResourceMeta({
+      meta: state.meta,
+      newMeta: {deleteStatus: requestStatus},
+      replace: false,
+      ids
+    })
   };
 }
 
+export function del(state, action) {
+  return updateMeta(state, action, requestStatuses.PENDING);
+}
+
 export function delFail(state, action) {
-  const ids = action.ids;
+  return updateMeta(state, action, requestStatuses.FAILED);
+}
 
-  const meta = setResourceMeta({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.FAILED},
-    replace: false,
-    ids
-  });
-
-  return {
-    ...state,
-    meta,
-  };
+export function delReset(state, action) {
+  return updateMeta(state, action, requestStatuses.NULL);
 }
 
 export function delSucceed(state, action) {
@@ -54,22 +58,6 @@ export function delSucceed(state, action) {
   return {
     ...state,
     resources: newResources,
-    meta,
-  };
-}
-
-export function delReset(state, action) {
-  const ids = action.ids;
-
-  const meta = setResourceMeta({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.NULL},
-    replace: false,
-    ids
-  });
-
-  return {
-    ...state,
     meta,
   };
 }

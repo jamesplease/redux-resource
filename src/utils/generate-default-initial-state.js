@@ -11,8 +11,10 @@ export default function generateDefaultInitialState() {
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.
     listMeta: {
-      readStatus: requestStatuses.NULL,
       createStatus: requestStatuses.NULL,
+      readStatus: requestStatuses.NULL,
+      updateStatus: requestStatuses.NULL,
+      deleteStatus: requestStatuses.NULL,
       createManyStatus: requestStatuses.NULL
     }
   };
