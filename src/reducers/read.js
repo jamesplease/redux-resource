@@ -44,14 +44,15 @@ export function readSucceed(state, action) {
   const ids = action.ids || [];
 
   const responseIds = resources.map(r => r.id);
-  const replace = typeof action.replace !== 'undefined' ? action.replace : true;
+  const defaultReplace = !ids.length;
+  const replace = typeof action.replace !== 'undefined' ? action.replace : defaultReplace;
 
   let newResources;
   if (!replace) {
     newResources = upsertResources({
       resources: state.resources,
-      replace: false,
       newResources: resources,
+      replace: false,
     });
   } else {
     newResources = resources;
@@ -80,7 +81,7 @@ export function readSucceed(state, action) {
   } else {
     meta = setResourceMeta({
       meta: state.meta,
-      newMeta: initialResourceMetaState,
+      newMeta: {readStatus: requestStatuses.SUCCEEDED},
       ids: responseIds,
       replace: false
     });

@@ -132,6 +132,76 @@ describe('reducers: readMany', function() {
     });
   });
 
+  it('should handle `READ_RESOURCES_SUCCEED` with ids', () => {
+    const reducer = resourceReducer('hellos', {
+      initialState: {
+        resources: [
+          {id: 23, hungry: 'yes'},
+          {id: 100, sandwiches: 'yummm'},
+          {id: 55, pasta: true},
+        ],
+        meta: {
+          23: {
+            readStatus: requestStatuses.PENDING,
+            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.FAILED
+          },
+          55: {
+            readStatus: requestStatuses.PENDING,
+            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL
+          },
+          100: {
+            readStatus: requestStatuses.PENDING,
+            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL
+          }
+        }
+      }
+    });
+
+    const reduced = reducer(undefined, {
+      type: 'READ_RESOURCES_SUCCEED',
+      resourceName: 'hellos',
+      ids: [100, 23, 55],
+      resources: [
+        {id: 55, hungry: true, pasta: 'yespls'},
+        {id: 23, hungry: true, pasta: 'yespls'},
+        {id: 100, hungry: false},
+      ]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: [
+        {id: 23, hungry: true, pasta: 'yespls'},
+        {id: 100, hungry: false, sandwiches: 'yummm'},
+        {id: 55, hungry: true, pasta: 'yespls'},
+      ],
+      meta: {
+        23: {
+          updateStatus: requestStatuses.FAILED,
+          readStatus: requestStatuses.SUCCEEDED,
+          deleteStatus: requestStatuses.NULL,
+        },
+        55: {
+          readStatus: requestStatuses.SUCCEEDED,
+          deleteStatus: requestStatuses.NULL,
+          updateStatus: requestStatuses.NULL
+        },
+        100: {
+          updateStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.SUCCEEDED,
+          deleteStatus: requestStatuses.NULL
+        }
+      },
+      listMeta: {
+        createStatus: requestStatuses.NULL,
+        createManyStatus: requestStatuses.NULL,
+        readStatus: requestStatuses.NULL
+      }
+    });
+  });
+
   it('should handle `READ_RESOURCES_SUCCEED` with `replace: false`', () => {
     const reducer = resourceReducer('hellos', {
       initialState: {
