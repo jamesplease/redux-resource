@@ -43,6 +43,7 @@ describe('reducers: update', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -94,6 +95,7 @@ describe('reducers: update', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -145,6 +147,7 @@ describe('reducers: update', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -196,6 +199,7 @@ describe('reducers: update', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -247,6 +251,7 @@ describe('reducers: update', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -298,6 +303,7 @@ describe('reducers: update', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,

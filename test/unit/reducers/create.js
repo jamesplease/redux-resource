@@ -12,6 +12,7 @@ describe('reducers: create', function() {
       resources: [],
       meta: {},
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -32,6 +33,7 @@ describe('reducers: create', function() {
       resources: [],
       meta: {},
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -52,6 +54,7 @@ describe('reducers: create', function() {
       resources: [],
       meta: {},
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -96,6 +99,7 @@ describe('reducers: create', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,

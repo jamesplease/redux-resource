@@ -9,6 +9,7 @@ export default function generateDefaultInitialState() {
     meta: {},
     // Metadata for request labels
     labelStatus: {},
+    labelResources: {},
     // This is metadata about the entire collection of resources. For instance,
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.

@@ -13,6 +13,7 @@ describe('reducers: read', function() {
       resources: [],
       meta: {},
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -38,6 +39,7 @@ describe('reducers: read', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -58,6 +60,7 @@ describe('reducers: read', function() {
       resources: [],
       meta: {},
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -83,6 +86,7 @@ describe('reducers: read', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -133,6 +137,7 @@ describe('reducers: read', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -205,6 +210,7 @@ describe('reducers: read', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -259,6 +265,7 @@ describe('reducers: read', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -287,6 +294,7 @@ describe('reducers: read', function() {
       resources: [],
       meta: {},
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -321,6 +329,7 @@ describe('reducers: read', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,

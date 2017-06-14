@@ -33,6 +33,7 @@ describe('reducers: delete', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -74,6 +75,7 @@ describe('reducers: delete', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -115,6 +117,7 @@ describe('reducers: delete', function() {
         }
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -161,6 +164,7 @@ describe('reducers: delete', function() {
         4: null
       },
       labelStatus: {},
+      labelResources: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
