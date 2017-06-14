@@ -7,7 +7,6 @@ describe('getStatus', function() {
         listMeta: {
           readStatus: requestStatuses.PENDING,
           createStatus: requestStatuses.NULL,
-          createManyStatus: requestStatuses.NULL,
         },
         meta: {}
       },
@@ -15,7 +14,6 @@ describe('getStatus', function() {
         listMeta: {
           readStatus: requestStatuses.FAILED,
           createStatus: requestStatuses.NULL,
-          createManyStatus: requestStatuses.NULL,
         },
         meta: {
           100: {

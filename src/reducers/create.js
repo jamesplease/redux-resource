@@ -5,15 +5,15 @@ import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
 export function create(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.PENDING, 'createMany', false);
+  return updateMetaHelper(state, action.ids, requestStatuses.PENDING, 'create', false);
 }
 
 export function createFail(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.FAILED, 'createMany', false);
+  return updateMetaHelper(state, action.ids, requestStatuses.FAILED, 'create', false);
 }
 
 export function createReset(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.NULL, 'createMany', false);
+  return updateMetaHelper(state, action.ids, requestStatuses.NULL, 'create', false);
 }
 
 export function createSucceed(state, action) {
@@ -39,7 +39,7 @@ export function createSucceed(state, action) {
     }),
     listMeta: {
       ...state.listMeta,
-      createManyStatus: requestStatuses.SUCCEEDED
+      createStatus: requestStatuses.SUCCEEDED
     }
   };
 }

@@ -12,10 +12,9 @@ describe('reducers: createMany', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.PENDING,
+        createStatus: requestStatuses.PENDING,
         readStatus: requestStatuses.NULL
       }
     });
@@ -32,10 +31,9 @@ describe('reducers: createMany', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.FAILED,
+        createStatus: requestStatuses.FAILED,
         readStatus: requestStatuses.NULL
       }
     });
@@ -52,10 +50,9 @@ describe('reducers: createMany', function() {
       resources: [],
       meta: {},
       listMeta: {
-        createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
+        createStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL
       }
     });
@@ -96,10 +93,9 @@ describe('reducers: createMany', function() {
         }
       },
       listMeta: {
-        createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.SUCCEEDED,
+        createStatus: requestStatuses.SUCCEEDED,
         readStatus: requestStatuses.NULL
       }
     });

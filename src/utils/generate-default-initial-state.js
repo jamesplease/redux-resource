@@ -14,8 +14,7 @@ export default function generateDefaultInitialState() {
       createStatus: requestStatuses.NULL,
       readStatus: requestStatuses.NULL,
       updateStatus: requestStatuses.NULL,
-      deleteStatus: requestStatuses.NULL,
-      createManyStatus: requestStatuses.NULL
+      deleteStatus: requestStatuses.NULL
     }
   };
 }

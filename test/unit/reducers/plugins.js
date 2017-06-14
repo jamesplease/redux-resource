@@ -32,7 +32,6 @@
 //       },
 //       listMeta: {
 //         readStatus: requestStatuses.NULL,
-//         createManyStatus: requestStatuses.NULL,
 //         createStatus: requestStatuses.NULL
 //       },
 //       pizza: 'yum'
@@ -66,7 +65,6 @@
 //       meta: {},
 //       listMeta: {
 //         readStatus: requestStatuses.NULL,
-//         createManyStatus: requestStatuses.NULL,
 //         createStatus: requestStatuses.NULL
 //       },
 //       tastiness: 'quite'
@@ -109,7 +107,6 @@
 //       meta: {},
 //       listMeta: {
 //         readStatus: requestStatuses.NULL,
-//         createManyStatus: requestStatuses.NULL,
 //         createStatus: requestStatuses.NULL
 //       },
 //       tastiness: false

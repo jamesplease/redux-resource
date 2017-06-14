@@ -36,7 +36,6 @@ describe('reducers: deleteMany', function() {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         createStatus: requestStatuses.NULL
       }
     });
@@ -77,7 +76,6 @@ describe('reducers: deleteMany', function() {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         createStatus: requestStatuses.NULL
       }
     });
@@ -118,7 +116,6 @@ describe('reducers: deleteMany', function() {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         createStatus: requestStatuses.NULL
       }
     });
@@ -164,7 +161,6 @@ describe('reducers: deleteMany', function() {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         createStatus: requestStatuses.NULL
       }
     });

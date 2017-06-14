@@ -16,7 +16,6 @@ describe('reducers: readMany', function() {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         readStatus: requestStatuses.PENDING
       }
     });
@@ -41,7 +40,6 @@ describe('reducers: readMany', function() {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL
       }
     });
@@ -61,7 +59,6 @@ describe('reducers: readMany', function() {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         readStatus: requestStatuses.FAILED
       }
     });
@@ -86,7 +83,6 @@ describe('reducers: readMany', function() {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL
       }
     });
@@ -136,7 +132,6 @@ describe('reducers: readMany', function() {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         readStatus: requestStatuses.SUCCEEDED
       }
     });
@@ -206,7 +201,6 @@ describe('reducers: readMany', function() {
       },
       listMeta: {
         createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL
@@ -260,7 +254,6 @@ describe('reducers: readMany', function() {
       },
       listMeta: {
         createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.SUCCEEDED
@@ -273,7 +266,6 @@ describe('reducers: readMany', function() {
       initialState: {
         listMeta: {
           createStatus: requestStatuses.NULL,
-          createManyStatus: requestStatuses.NULL,
           readStatus: 'sandwiches'
         }
       }
@@ -289,7 +281,6 @@ describe('reducers: readMany', function() {
       meta: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL
@@ -323,7 +314,6 @@ describe('reducers: readMany', function() {
       },
       listMeta: {
         createStatus: requestStatuses.NULL,
-        createManyStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
         readStatus: requestStatuses.NULL
