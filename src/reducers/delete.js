@@ -47,7 +47,7 @@ export function delSucceed(state, action) {
 
   return {
     ...state,
-    resources: newResources,
     ...allMeta,
+    resources: newResources
   };
 }

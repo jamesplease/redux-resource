@@ -53,7 +53,7 @@ export function updateSucceed(state, action) {
 
   return {
     ...state,
-    resources: newResources,
     ...allMeta,
+    resources: newResources
   };
 }
