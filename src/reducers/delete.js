@@ -1,4 +1,5 @@
 import updateMetaHelper from './update-meta-helper';
+import successMetaHelper from './success-meta-helper';
 import requestStatuses from '../utils/request-statuses';
 
 export function del(state, action) {
@@ -34,17 +35,12 @@ export function delNull(state, action) {
 export function delSucceed(state, action) {
   const ids = action.ids;
 
-  const newMeta = ids.reduce((memo, id) => {
-    memo[id] = null;
-    return memo;
-  }, {});
-
-  // Remove this resource from the resources meta.
-  const meta = {
-    // Shallow clone the meta
-    ...state.meta,
-    ...newMeta
-  };
+  const meta = successMetaHelper({
+    requestLabel: action.requestLabel,
+    crudAction: 'delete',
+    state,
+    ids
+  });
 
   // Shallow clone the existing resource array, removing the deleted resource
   const newResources = state.resources.filter(r => !ids.includes(r.id));
@@ -52,6 +48,6 @@ export function delSucceed(state, action) {
   return {
     ...state,
     resources: newResources,
-    meta,
+    ...meta,
   };
 }
