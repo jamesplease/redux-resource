@@ -14,6 +14,7 @@ describe('reducers: updateMany', function() {
 
     const reduced = reducer(undefined, {
       type: 'UPDATE_RESOURCES',
+      ids: [3, 4],
       resourceName: 'hellos',
       resources: [
         {
@@ -64,6 +65,7 @@ describe('reducers: updateMany', function() {
 
     const reduced = reducer(undefined, {
       type: 'UPDATE_RESOURCES_FAIL',
+      ids: [3, 4],
       resourceName: 'hellos',
       resources: [
         {
@@ -115,6 +117,7 @@ describe('reducers: updateMany', function() {
     const reduced = reducer(undefined, {
       type: 'UPDATE_RESOURCES_RESET',
       resourceName: 'hellos',
+      ids: [3, 4],
       resources: [
         {
           id: 3,
@@ -164,6 +167,7 @@ describe('reducers: updateMany', function() {
 
     const reduced = reducer(undefined, {
       type: 'UPDATE_RESOURCES_SUCCEED',
+      ids: [3, 4],
       resourceName: 'hellos',
       resources: [
         {
@@ -215,6 +219,7 @@ describe('reducers: updateMany', function() {
     const reduced = reducer(undefined, {
       type: 'UPDATE_RESOURCES_SUCCEED',
       resourceName: 'hellos',
+      ids: [3, 4],
       resources: [
         {
           id: 3,
@@ -266,6 +271,7 @@ describe('reducers: updateMany', function() {
       type: 'UPDATE_RESOURCES_SUCCEED',
       resourceName: 'hellos',
       replace: true,
+      ids: [3, 4],
       resources: [
         {
           id: 3,

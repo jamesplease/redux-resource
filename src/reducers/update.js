@@ -2,38 +2,40 @@ import requestStatuses from '../utils/request-statuses';
 import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
-export function update(state, action) {
-  const resources = action.resources;
-  const ids = resources.map(r => r.id);
+function updateMeta(state, action, requestStatus) {
+  const ids = action.ids || [];
 
-  const meta = setResourceMeta({
-    meta: state.meta,
-    newMeta: {updateStatus: requestStatuses.PENDING},
-    replace: false,
-    ids
-  });
+  if (!ids.length) {
+    return {
+      ...state,
+      listMeta: {
+        ...state.listMeta,
+        updateStatus: requestStatus
+      }
+    };
+  }
 
   return {
     ...state,
-    meta
+    meta: setResourceMeta({
+      meta: state.meta,
+      newMeta: {updateStatus: requestStatus},
+      replace: false,
+      ids
+    })
   };
 }
 
+export function update(state, action) {
+  return updateMeta(state, action, requestStatuses.PENDING);
+}
+
 export function updateFail(state, action) {
-  const resources = action.resources;
-  const ids = resources.map(r => r.id);
+  return updateMeta(state, action, requestStatuses.FAILED);
+}
 
-  const meta = setResourceMeta({
-    meta: state.meta,
-    newMeta: {updateStatus: requestStatuses.FAILED},
-    replace: false,
-    ids
-  });
-
-  return {
-    ...state,
-    meta,
-  };
+export function updateReset(state, action) {
+  return updateMeta(state, action, requestStatuses.NULL);
 }
 
 export function updateSucceed(state, action) {
@@ -57,23 +59,6 @@ export function updateSucceed(state, action) {
   return {
     ...state,
     resources: newResources,
-    meta,
-  };
-}
-
-export function updateReset(state, action) {
-  const resources = action.resources;
-  const ids = resources.map(r => r.id);
-
-  const meta = setResourceMeta({
-    meta: state.meta,
-    newMeta: {updateStatus: requestStatuses.NULL},
-    replace: false,
-    ids
-  });
-
-  return {
-    ...state,
     meta,
   };
 }

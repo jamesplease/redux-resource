@@ -3,24 +3,26 @@ import requestStatuses from '../utils/request-statuses';
 import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
-export function create(state) {
+function updateMeta(state, action, requestStatus) {
   return {
     ...state,
     listMeta: {
       ...state.listMeta,
-      createManyStatus: requestStatuses.PENDING
+      createManyStatus: requestStatus
     }
   };
 }
 
-export function createFail(state) {
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      createManyStatus: requestStatuses.FAILED
-    }
-  };
+export function create(state, action) {
+  return updateMeta(state, action, requestStatuses.PENDING);
+}
+
+export function createFail(state, action) {
+  return updateMeta(state, action, requestStatuses.FAILED);
+}
+
+export function createReset(state, action) {
+  return updateMeta(state, action, requestStatuses.NULL);
 }
 
 export function createSucceed(state, action) {
@@ -47,16 +49,6 @@ export function createSucceed(state, action) {
     listMeta: {
       ...state.listMeta,
       createManyStatus: requestStatuses.SUCCEEDED
-    }
-  };
-}
-
-export function createReset(state) {
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      createManyStatus: requestStatuses.NULL
     }
   };
 }
