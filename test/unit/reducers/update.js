@@ -1,6 +1,6 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
-describe('reducers: updateMany', function() {
+describe('reducers: update', function() {
   it('should handle `UPDATE_RESOURCES`', () => {
     const reducer = resourceReducer('hellos', {
       initialState: {

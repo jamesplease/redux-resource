@@ -1,6 +1,6 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
-describe('reducers: createMany', function() {
+describe('reducers: create', function() {
   it('should handle `CREATE_RESOURCES`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {

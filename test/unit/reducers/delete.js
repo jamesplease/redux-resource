@@ -1,6 +1,6 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
-describe('reducers: deleteMany', function() {
+describe('reducers: delete', function() {
   it('should handle `DELETE_RESOURCES`', () => {
     const reducer = resourceReducer('hellos', {
       initialState: {

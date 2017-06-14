@@ -1,6 +1,6 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
-describe('reducers: readMany', function() {
+describe('reducers: read', function() {
   it('should handle `READ_RESOURCES` without IDs', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
