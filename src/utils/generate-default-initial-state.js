@@ -8,7 +8,7 @@ export default function generateDefaultInitialState() {
     // is in flight for a book with ID 24, then you could find that here.
     meta: {},
     // Metadata for request labels
-    labelMeta: {},
+    labelStatus: {},
     // This is metadata about the entire collection of resources. For instance,
     // on page load, you might fetch all of the resources. The XHR status for
     // that request would live here.

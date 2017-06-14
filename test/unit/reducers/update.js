@@ -42,7 +42,7 @@ describe('reducers: updateMany', function() {
           updateStatus: requestStatuses.PENDING
         }
       },
-      labelMeta: {},
+      labelStatus: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -93,7 +93,7 @@ describe('reducers: updateMany', function() {
           updateStatus: requestStatuses.FAILED
         }
       },
-      labelMeta: {},
+      labelStatus: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -144,7 +144,7 @@ describe('reducers: updateMany', function() {
           updateStatus: requestStatuses.NULL
         }
       },
-      labelMeta: {},
+      labelStatus: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -195,7 +195,7 @@ describe('reducers: updateMany', function() {
           updateStatus: requestStatuses.SUCCEEDED
         }
       },
-      labelMeta: {},
+      labelStatus: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -246,7 +246,7 @@ describe('reducers: updateMany', function() {
           updateStatus: requestStatuses.SUCCEEDED
         }
       },
-      labelMeta: {},
+      labelStatus: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -297,7 +297,7 @@ describe('reducers: updateMany', function() {
           updateStatus: requestStatuses.SUCCEEDED
         }
       },
-      labelMeta: {},
+      labelStatus: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,

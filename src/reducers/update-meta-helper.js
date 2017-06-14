@@ -7,8 +7,8 @@ export default function({state, ids = [], requestStatus, crudAction, setIds = tr
   if (requestLabel) {
     return {
       ...state,
-      labelMeta: {
-        ...state.labelMeta,
+      labelStatus: {
+        ...state.labelStatus,
         [requestLabel]: requestStatus
       }
     };
