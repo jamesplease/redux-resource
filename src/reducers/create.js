@@ -5,15 +5,33 @@ import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
 export function create(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.PENDING, 'create', false);
+  return updateMetaHelper({
+    ids: action.ids,
+    requestStatus: requestStatuses.PENDING,
+    crudAction: 'create',
+    setIds: false,
+    state
+  });
 }
 
 export function createFail(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.FAILED, 'create', false);
+  return updateMetaHelper({
+    ids: action.ids,
+    requestStatus: requestStatuses.FAILED,
+    crudAction: 'create',
+    setIds: false,
+    state
+  });
 }
 
 export function createReset(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.NULL, 'create', false);
+  return updateMetaHelper({
+    ids: action.ids,
+    requestStatus: requestStatuses.NULL,
+    crudAction: 'create',
+    setIds: false,
+    state
+  });
 }
 
 export function createSucceed(state, action) {

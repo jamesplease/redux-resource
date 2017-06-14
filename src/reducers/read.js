@@ -5,15 +5,30 @@ import setResourceMeta from '../utils/set-resource-meta';
 import upsertResources from '../utils/upsert-resources';
 
 export function read(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.PENDING, 'read');
+  return updateMetaHelper({
+    ids: action.ids,
+    requestStatus: requestStatuses.PENDING,
+    crudAction: 'read',
+    state
+  });
 }
 
 export function readFail(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.FAILED, 'read');
+  return updateMetaHelper({
+    ids: action.ids,
+    requestStatus: requestStatuses.FAILED,
+    crudAction: 'read',
+    state
+  });
 }
 
 export function readReset(state, action) {
-  return updateMetaHelper(state, action.ids, requestStatuses.NULL, 'read');
+  return updateMetaHelper({
+    ids: action.ids,
+    requestStatus: requestStatuses.NULL,
+    crudAction: 'read',
+    state
+  });
 }
 
 export function readSucceed(state, action) {
