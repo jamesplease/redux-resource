@@ -5,7 +5,7 @@ const mapConstant = (resourceName, crudAction) => ({
   [`${crudAction}_${resourceName}`]: `${crudAction}_${resourceName}`,
   [`${crudAction}_${resourceName}_SUCCEED`]: `${crudAction}_${resourceName}_SUCCEED`,
   [`${crudAction}_${resourceName}_FAIL`]: `${crudAction}_${resourceName}_FAIL`,
-  [`${crudAction}_${resourceName}_RESET`]: `${crudAction}_${resourceName}_RESET`,
+  [`${crudAction}_${resourceName}_NULL`]: `${crudAction}_${resourceName}_NULL`,
 });
 
 const createTypes = mapConstant('RESOURCES', 'CREATE');

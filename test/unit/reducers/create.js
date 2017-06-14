@@ -41,10 +41,10 @@ describe('reducers: createMany', function() {
     });
   });
 
-  it('should handle `CREATE_RESOURCES_RESET`', () => {
+  it('should handle `CREATE_RESOURCES_NULL`', () => {
     const reducer = resourceReducer('hellos');
     const reduced = reducer(undefined, {
-      type: 'CREATE_RESOURCES_RESET',
+      type: 'CREATE_RESOURCES_NULL',
       resourceName: 'hellos',
     });
 

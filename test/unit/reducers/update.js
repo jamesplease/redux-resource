@@ -103,7 +103,7 @@ describe('reducers: updateMany', function() {
     });
   });
 
-  it('should handle `UPDATE_RESOURCES_RESET`', () => {
+  it('should handle `UPDATE_RESOURCES_NULL`', () => {
     const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
@@ -115,7 +115,7 @@ describe('reducers: updateMany', function() {
     });
 
     const reduced = reducer(undefined, {
-      type: 'UPDATE_RESOURCES_RESET',
+      type: 'UPDATE_RESOURCES_NULL',
       resourceName: 'hellos',
       ids: [3, 4],
       resources: [

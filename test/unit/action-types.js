@@ -10,7 +10,7 @@ describe('actionTypes', function() {
       expect(actionTypes.CREATE_RESOURCES).to.equal('CREATE_RESOURCES');
       expect(actionTypes.CREATE_RESOURCES_SUCCEED).to.equal('CREATE_RESOURCES_SUCCEED');
       expect(actionTypes.CREATE_RESOURCES_FAIL).to.equal('CREATE_RESOURCES_FAIL');
-      expect(actionTypes.CREATE_RESOURCES_RESET).to.equal('CREATE_RESOURCES_RESET');
+      expect(actionTypes.CREATE_RESOURCES_NULL).to.equal('CREATE_RESOURCES_NULL');
     });
   });
 
@@ -19,7 +19,7 @@ describe('actionTypes', function() {
       expect(actionTypes.READ_RESOURCES).to.equal('READ_RESOURCES');
       expect(actionTypes.READ_RESOURCES_SUCCEED).to.equal('READ_RESOURCES_SUCCEED');
       expect(actionTypes.READ_RESOURCES_FAIL).to.equal('READ_RESOURCES_FAIL');
-      expect(actionTypes.READ_RESOURCES_RESET).to.equal('READ_RESOURCES_RESET');
+      expect(actionTypes.READ_RESOURCES_NULL).to.equal('READ_RESOURCES_NULL');
     });
   });
 
@@ -28,7 +28,7 @@ describe('actionTypes', function() {
       expect(actionTypes.UPDATE_RESOURCES).to.equal('UPDATE_RESOURCES');
       expect(actionTypes.UPDATE_RESOURCES_SUCCEED).to.equal('UPDATE_RESOURCES_SUCCEED');
       expect(actionTypes.UPDATE_RESOURCES_FAIL).to.equal('UPDATE_RESOURCES_FAIL');
-      expect(actionTypes.UPDATE_RESOURCES_RESET).to.equal('UPDATE_RESOURCES_RESET');
+      expect(actionTypes.UPDATE_RESOURCES_NULL).to.equal('UPDATE_RESOURCES_NULL');
     });
   });
 
@@ -37,7 +37,7 @@ describe('actionTypes', function() {
       expect(actionTypes.DELETE_RESOURCES).to.equal('DELETE_RESOURCES');
       expect(actionTypes.DELETE_RESOURCES_SUCCEED).to.equal('DELETE_RESOURCES_SUCCEED');
       expect(actionTypes.DELETE_RESOURCES_FAIL).to.equal('DELETE_RESOURCES_FAIL');
-      expect(actionTypes.DELETE_RESOURCES_RESET).to.equal('DELETE_RESOURCES_RESET');
+      expect(actionTypes.DELETE_RESOURCES_NULL).to.equal('DELETE_RESOURCES_NULL');
     });
   });
 });

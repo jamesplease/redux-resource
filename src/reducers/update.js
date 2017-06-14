@@ -23,7 +23,7 @@ export function updateFail(state, action) {
   });
 }
 
-export function updateReset(state, action) {
+export function updateNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,

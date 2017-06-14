@@ -83,7 +83,7 @@ describe('reducers: deleteMany', function() {
     });
   });
 
-  it('should handle `DELETE_RESOURCES_RESET`', () => {
+  it('should handle `DELETE_RESOURCES_NULL`', () => {
     const reducer = resourceReducer('hellos', {
       initialState: {
         resources: [
@@ -95,7 +95,7 @@ describe('reducers: deleteMany', function() {
     });
 
     const reduced = reducer(undefined, {
-      type: 'DELETE_RESOURCES_RESET',
+      type: 'DELETE_RESOURCES_NULL',
       resourceName: 'hellos',
       ids: [3, 4]
     });

@@ -21,7 +21,7 @@ export function delFail(state, action) {
   });
 }
 
-export function delReset(state, action) {
+export function delNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,

@@ -24,7 +24,7 @@ export function readFail(state, action) {
   });
 }
 
-export function readReset(state, action) {
+export function readNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,

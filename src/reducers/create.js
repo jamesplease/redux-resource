@@ -26,7 +26,7 @@ export function createFail(state, action) {
   });
 }
 
-export function createReset(state, action) {
+export function createNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,

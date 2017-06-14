@@ -268,7 +268,7 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `READ_RESOURCES_RESET`', () => {
+  it('should handle `READ_RESOURCES_NULL`', () => {
     const reducer = resourceReducer('hellos', {
       initialState: {
         listMeta: {
@@ -279,7 +279,7 @@ describe('reducers: readMany', function() {
     });
 
     const reduced = reducer(undefined, {
-      type: 'READ_RESOURCES_RESET',
+      type: 'READ_RESOURCES_NULL',
       resourceName: 'hellos',
     });
 
@@ -296,7 +296,7 @@ describe('reducers: readMany', function() {
     });
   });
 
-  it('should handle `READ_RESOURCES_RESET` with IDs', () => {
+  it('should handle `READ_RESOURCES_NULL` with IDs', () => {
     const reducer = resourceReducer('hellos', {
       initialState: {
         meta: {
@@ -308,7 +308,7 @@ describe('reducers: readMany', function() {
     });
 
     const reduced = reducer(undefined, {
-      type: 'READ_RESOURCES_RESET',
+      type: 'READ_RESOURCES_NULL',
       resourceName: 'hellos',
       ids: [2]
     });
