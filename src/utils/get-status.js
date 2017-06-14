@@ -2,12 +2,12 @@ import findMeta from './find-meta';
 import initialResourceMetaState from './initial-resource-meta-state';
 import requestStatuses from './request-statuses';
 
-function getSingleStatus(state, action, metaLocation, isNullPending) {
+function getSingleStatus(state, crudAction, metaLocation, isNullPending) {
   let meta = findMeta(state, metaLocation);
   if (!Object.keys(meta).length) {
     meta = initialResourceMetaState;
   }
-  const status = meta[`${action}Status`];
+  const status = meta[`${crudAction}Status`];
 
   const isPending = status === requestStatuses.PENDING;
   const nullPending = Boolean(isNullPending) && status === requestStatuses.NULL;
@@ -36,12 +36,12 @@ function getSingleStatus(state, action, metaLocation, isNullPending) {
 //
 // Note that at most _one_ of those properties will be true. It is
 // possible for them to all be false.
-export default function getStatus(state, action, metaLocations, isNullPending) {
+export default function getStatus(state, crudAction, metaLocations, isNullPending) {
   if (!(metaLocations instanceof Array)) {
-    return getSingleStatus(state, action, metaLocations, isNullPending);
+    return getSingleStatus(state, crudAction, metaLocations, isNullPending);
   }
 
-  const statusValues = metaLocations.map(loc => getSingleStatus(state, action, loc, isNullPending));
+  const statusValues = metaLocations.map(loc => getSingleStatus(state, crudAction, loc, isNullPending));
 
   let pending = false;
   let failed = false;

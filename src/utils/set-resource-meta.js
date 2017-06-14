@@ -1,6 +1,6 @@
 // Similar to `updateResourceMeta`, but it accepts an array of IDs instead of
 // a single ID. Used for bulk updating meta.
-export default function setResourceMeta({meta, newMeta, ids, replace}) {
+export default function setResourceMeta({ids, newMeta, meta, replace}) {
   const next = replace ? {} : {...meta};
 
   ids.forEach((id) => {

@@ -1,8 +1,8 @@
 // These are statuses for in-flight requests. If a request has no status
-// associated with it, then it would have a status of `NULL`.
+// associated with it, then it will have the `NULL` status.
 export default {
+  NULL: 'NULL',
   PENDING: 'PENDING',
-  SUCCEEDED: 'SUCCEEDED',
   FAILED: 'FAILED',
-  NULL: 'NULL'
+  SUCCEEDED: 'SUCCEEDED'
 };

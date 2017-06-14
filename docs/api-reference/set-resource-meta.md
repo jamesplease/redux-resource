@@ -6,10 +6,10 @@ Update one or more individual resources with the same metadata.
 
 1. `ids` *(Array)*: An array of the resource IDs to update with the new meta.
 
-1. `meta` *(Object)*: The current resource meta object from this resource's
-  store slice.
-
 1. `newMeta` *(Object)*: The meta to set on each of the resources.
+
+1. `meta` *(Object)*: The current resource meta object from this resource's
+  store slice. Optional when `replace` is `true`, required otherwise.
 
 1. `replace` *(Boolean)*: Whether or not to completely replace the old meta with
   the new. Defaults to `false`.
