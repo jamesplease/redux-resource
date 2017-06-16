@@ -6,9 +6,9 @@ export function create(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'create',
-    setIds: false,
     state
   });
 }
@@ -17,9 +17,9 @@ export function createFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'create',
-    setIds: false,
     state
   });
 }
@@ -28,9 +28,9 @@ export function createNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,
     crudAction: 'create',
-    setIds: false,
     state
   });
 }

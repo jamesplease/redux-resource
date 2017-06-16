@@ -7,6 +7,7 @@ export function update(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'update',
     state
@@ -17,6 +18,7 @@ export function updateFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'update',
     state
@@ -27,6 +29,7 @@ export function updateNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,
     crudAction: 'update',
     state

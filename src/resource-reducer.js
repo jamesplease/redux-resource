@@ -11,11 +11,7 @@ export default function resourceReducer(resourceName, options = {}) {
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,
-    ...initialState,
-    listMeta: {
-      ...defaultInitialState.listMeta,
-      ...initialState.listMeta
-    }
+    ...initialState
   };
 
   return generateReducer({

@@ -5,6 +5,7 @@ export function del(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'delete',
     state
@@ -15,6 +16,7 @@ export function delFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'delete',
     state
@@ -25,6 +27,7 @@ export function delNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
     requestLabel: action.requestLabel,
+    mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,
     crudAction: 'delete',
     state
@@ -32,8 +35,25 @@ export function delNull(state, action) {
 }
 
 export function delSucceed(state, action) {
-  const ids = action.ids;
   const requestLabel = action.requestLabel;
+  const resources = action.resources;
+  const ids = action.ids;
+
+  // Find the list of IDs affected by this action
+  let idList;
+  if (resources) {
+    idList = resources.map(r => r.id);
+  } else if (ids) {
+    idList = ids;
+  }
+
+  const hasIds = idList && idList.length;
+
+  // If we have no label nor IDs, then there is nothing to update
+  if (!hasIds && !requestLabel) {
+    return;
+  }
+
   let newMeta, newLabels;
   const meta = state.meta;
   const labels = state.labels;
@@ -42,7 +62,12 @@ export function delSucceed(state, action) {
     const existingLabel = state.labels[requestLabel] || {};
     const existingLabelIds = existingLabel.ids || [];
 
-    let newLabelIds = existingLabelIds.filter(r => !ids.includes(r));
+    let newLabelIds;
+    if (hasIds) {
+      newLabelIds = existingLabelIds.filter(r => !idList.includes(r));
+    } else {
+      newLabelIds = existingLabelIds;
+    }
 
     newLabels = {
       ...labels,
@@ -52,23 +77,12 @@ export function delSucceed(state, action) {
         status: requestStatuses.SUCCEEDED
       }
     };
-
-    let nullMeta = {};
-    if (ids) {
-      nullMeta = ids.reduce((memo, id) => {
-        memo[id] = null;
-        return memo;
-      }, {});
-    }
-
-    newMeta = {
-      ...meta,
-      ...nullMeta
-    };
+  } else {
+    newLabels = labels;
   }
 
-  else {
-    const nullMeta = ids.reduce((memo, id) => {
+  if (hasIds) {
+    const nullMeta = idList.reduce((memo, id) => {
       memo[id] = null;
       return memo;
     }, {});
@@ -77,22 +91,22 @@ export function delSucceed(state, action) {
       ...meta,
       ...nullMeta
     };
-
-    newLabels = labels;
+  } else {
+    newMeta = meta;
   }
 
   // Shallow clone the existing resource array, removing the deleted resource
-  let resources;
-  if (ids) {
-    resources = state.resources.filter(r => !ids.includes(r.id));
+  let newResources;
+  if (hasIds) {
+    newResources = state.resources.filter(r => !idList.includes(r.id));
   } else {
-    resources = [...state.resources];
+    newResources = [...state.resources];
   }
 
   return {
     ...state,
     meta: newMeta,
     labels: newLabels,
-    resources
+    resources: newResources
   };
 }
