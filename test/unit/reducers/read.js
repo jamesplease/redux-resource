@@ -262,7 +262,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEED',
         resourceName: 'hellos',
-        requestLabel: 'pasta',
+        label: 'pasta',
         resources: [
           {id: 4, name: 'sandwiches'},
           5
@@ -344,7 +344,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEED',
         resourceName: 'hellos',
-        requestLabel: 'pasta',
+        label: 'pasta',
         resources: [
           {id: 4, name: 'sandwiches'},
           5
@@ -427,7 +427,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEED',
         resourceName: 'hellos',
-        requestLabel: 'pasta',
+        label: 'pasta',
       });
 
       expect(reduced).to.deep.equal({

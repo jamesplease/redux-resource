@@ -114,7 +114,7 @@ describe('reducers: delete', function() {
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEED',
         resourceName: 'hellos',
-        requestLabel: 'italiano',
+        label: 'italiano',
         resources: [
           3,
           {id: 4}
@@ -188,7 +188,7 @@ describe('reducers: delete', function() {
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEED',
         resourceName: 'hellos',
-        requestLabel: 'italiano',
+        label: 'italiano',
       });
 
       expect(reduced).to.deep.equal({

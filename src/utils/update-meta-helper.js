@@ -13,7 +13,7 @@ import setResourceMeta from '../utils/set-resource-meta';
 // can change the state.
 export default function(options) {
   const {
-    state, resources, requestStatus, crudAction, requestLabel,
+    state, resources, requestStatus, crudAction, label,
     mergeMeta = true
   } = options;
 
@@ -33,16 +33,16 @@ export default function(options) {
   const statusAttribute = `${crudAction}Status`;
   let newLabels, newMeta;
 
-  if (!requestLabel && !idList.length) {
+  if (!label && !idList.length) {
     return state;
   }
 
-  if (requestLabel) {
-    const existingLabel = state.labels[requestLabel] || {};
+  if (label) {
+    const existingLabel = state.labels[label] || {};
 
     newLabels = {
       ...state.labels,
-      [requestLabel]: {
+      [label]: {
         ...existingLabel,
         status: requestStatus
       }

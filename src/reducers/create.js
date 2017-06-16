@@ -7,7 +7,7 @@ import upsertResources from '../utils/upsert-resources';
 export function create(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'create',
@@ -18,7 +18,7 @@ export function create(state, action) {
 export function createFail(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'create',
@@ -29,7 +29,7 @@ export function createFail(state, action) {
 export function createNull(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,
     crudAction: 'create',
@@ -39,7 +39,7 @@ export function createNull(state, action) {
 
 export function createSucceed(state, action) {
   const resources = action.resources;
-  const label = action.requestLabel;
+  const label = action.label;
   const hasResources = resources && resources.length;
 
   // Without resources or labels, there is nothing to update

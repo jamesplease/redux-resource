@@ -177,7 +177,7 @@ describe('updateMetaHelper:', function() {
     const result = updateMetaHelper({
       state,
       crudAction: 'pasta',
-      requestLabel: 'italiano',
+      label: 'italiano',
       requestStatus: requestStatuses.FAILED
     });
 
@@ -231,7 +231,7 @@ describe('updateMetaHelper:', function() {
       state,
       resources: [1, 5, 6],
       crudAction: 'pasta',
-      requestLabel: 'italiano',
+      label: 'italiano',
       requestStatus: requestStatuses.FAILED
     });
 
@@ -291,7 +291,7 @@ describe('updateMetaHelper:', function() {
       state,
       resources: [1, 5, 6],
       crudAction: 'pasta',
-      requestLabel: 'italiano',
+      label: 'italiano',
       mergeMeta: false,
       requestStatus: requestStatuses.FAILED
     });

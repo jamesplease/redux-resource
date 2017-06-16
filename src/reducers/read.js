@@ -7,7 +7,7 @@ import upsertResources from '../utils/upsert-resources';
 export function read(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'read',
@@ -18,7 +18,7 @@ export function read(state, action) {
 export function readFail(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'read',
@@ -29,7 +29,7 @@ export function readFail(state, action) {
 export function readNull(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,
     crudAction: 'read',
@@ -39,7 +39,7 @@ export function readNull(state, action) {
 
 export function readSucceed(state, action) {
   const resources = action.resources;
-  const label = action.requestLabel;
+  const label = action.label;
   const hasResources = resources && resources.length;
 
   // Without resources or labels, there is nothing to update

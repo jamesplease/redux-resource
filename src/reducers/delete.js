@@ -5,7 +5,7 @@ import requestStatuses from '../utils/request-statuses';
 export function del(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
     crudAction: 'delete',
@@ -16,7 +16,7 @@ export function del(state, action) {
 export function delFail(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
     crudAction: 'delete',
@@ -27,7 +27,7 @@ export function delFail(state, action) {
 export function delNull(state, action) {
   return updateMetaHelper({
     resources: action.resources,
-    requestLabel: action.requestLabel,
+    label: action.label,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,
     crudAction: 'delete',
@@ -36,7 +36,7 @@ export function delNull(state, action) {
 }
 
 export function delSucceed(state, action) {
-  const requestLabel = action.requestLabel;
+  const label = action.label;
   const resources = action.resources;
 
   // Find the list of IDs affected by this action
@@ -54,7 +54,7 @@ export function delSucceed(state, action) {
   const hasIds = idList && idList.length;
 
   // If we have no label nor IDs, then there is nothing to update
-  if (!hasIds && !requestLabel) {
+  if (!hasIds && !label) {
     return;
   }
 
@@ -62,8 +62,8 @@ export function delSucceed(state, action) {
   let newLabels = {};
   const meta = state.meta;
   const labels = state.labels;
-  for (let label in labels) {
-    const existingLabel = state.labels[label] || {};
+  for (let requestLabel in labels) {
+    const existingLabel = state.labels[requestLabel] || {};
     const existingLabelIds = existingLabel.ids || [];
     const newLabel = {
       ...existingLabel
@@ -75,35 +75,12 @@ export function delSucceed(state, action) {
       newLabel.ids = existingLabelIds;
     }
 
-    if (requestLabel && label === requestLabel) {
+    if (label && label === requestLabel) {
       newLabel.status = requestStatuses.SUCCEEDED;
     }
 
-    newLabels[label] = newLabel;
+    newLabels[requestLabel] = newLabel;
   }
-
-  // if (requestLabel) {
-  //   const existingLabel = state.labels[requestLabel] || {};
-  //   const existingLabelIds = existingLabel.ids || [];
-  //
-  //   let newLabelIds;
-  //   if (hasIds) {
-  //     newLabelIds = existingLabelIds.filter(r => !idList.includes(r));
-  //   } else {
-  //     newLabelIds = existingLabelIds;
-  //   }
-  //
-  //   newLabels = {
-  //     ...labels,
-  //     [requestLabel]: {
-  //       ...existingLabel,
-  //       ids: newLabelIds,
-  //       status: requestStatuses.SUCCEEDED
-  //     }
-  //   };
-  // } else {
-  //   newLabels = labels;
-  // }
 
   if (hasIds) {
     const nullMeta = idList.reduce((memo, id) => {
