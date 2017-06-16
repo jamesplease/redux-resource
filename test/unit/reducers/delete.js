@@ -30,7 +30,7 @@ describe('reducers: delete', function() {
       expect(reduced).to.deep.equal(initialState);
     });
 
-    it('returns the right state without a label, with IDs', () => {
+    it.only('returns the right state without a label, with IDs', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: [
@@ -53,7 +53,7 @@ describe('reducers: delete', function() {
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEED',
         resourceName: 'hellos',
-        ids: [3, 4]
+        resources: [3, {id: 4}]
       });
 
       expect(reduced).to.deep.equal({
@@ -105,7 +105,7 @@ describe('reducers: delete', function() {
         resourceName: 'hellos',
         requestLabel: 'italiano',
         resources: [
-          {id: 3},
+          3,
           {id: 4}
         ]
       });

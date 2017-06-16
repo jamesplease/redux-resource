@@ -37,14 +37,17 @@ export function delNull(state, action) {
 export function delSucceed(state, action) {
   const requestLabel = action.requestLabel;
   const resources = action.resources;
-  const ids = action.ids;
 
   // Find the list of IDs affected by this action
   let idList;
   if (resources) {
-    idList = resources.map(r => r.id);
-  } else if (ids) {
-    idList = ids;
+    idList = resources.map(r => {
+      if (typeof r === 'object') {
+        return r.id;
+      } else {
+        return r;
+      }
+    });
   }
 
   const hasIds = idList && idList.length;
