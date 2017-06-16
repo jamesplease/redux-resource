@@ -1,7 +1,8 @@
 import updateMetaHelper from '../utils/update-meta-helper';
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
-import upsertResources from '../utils/upsert-resources';
 import setResourceMeta from '../utils/set-resource-meta';
+import upsertResources from '../utils/upsert-resources';
 
 export function update(state, action) {
   return updateMetaHelper({
@@ -38,47 +39,63 @@ export function updateNull(state, action) {
 
 export function updateSucceed(state, action) {
   const resources = action.resources;
-  const mergeResources = typeof action.mergeResources !== 'undefined' ? action.mergeResources : true;
-  const mergeMeta = typeof action.mergeMeta !== 'undefined' ? action.mergeMeta : true;
-  const ids = action.ids;
-  const hasIds = ids && ids.length;
-  const requestLabel = action.requestLabel;
-  let newMeta, newListMeta, newLabels;
-  const meta = state.meta;
-  const listMeta = state.listMeta;
-  const labels = state.labels;
+  const label = action.requestLabel;
+  const hasResources = resources && resources.length;
 
-  if (requestLabel) {
-    // Stuff
-  } else if (!hasIds) {
-    // Stuff
+  // Without resources or labels, there is nothing to update
+  if (!hasResources && !label) {
+    return state;
   }
 
-  else {
-    newMeta = setResourceMeta({
-      ids,
-      meta,
-      mergeMeta,
-      newMeta: {
-        updateStatus: requestStatuses.SUCCEEDED,
-      },
-    });
-
-    newListMeta = listMeta;
-    newLabels = labels;
-  }
-
-  const newResources = upsertResources(
-    state.resources,
+  const newResources = upsertResources(state.resources, resources, action.mergeResources);
+  const newMeta = setResourceMeta({
     resources,
-    mergeResources
-  );
+    meta: state.meta,
+    newMeta: {
+      ...initialResourceMetaState,
+      updateStatus: requestStatuses.SUCCEEDED
+    },
+    mergeMeta: action.mergeMeta
+  });
+
+  let newLabels;
+  if (label) {
+    const currentLabel = state.labels[label] || {};
+    const newLabel = {
+      ...currentLabel,
+      status: requestStatuses.SUCCEEDED
+    };
+
+    if (hasResources) {
+      let newLabelIds;
+      if (currentLabel.ids) {
+        newLabelIds = Array.prototype.slice.call(currentLabel.ids);
+      } else {
+        newLabelIds = [];
+      }
+
+      resources.forEach(resource => {
+        const id = typeof resource === 'object' ? resource.id : resource;
+        if (!newLabelIds.includes(id)) {
+          newLabelIds.push(id);
+        }
+      });
+
+      newLabel.ids = newLabelIds;
+    }
+
+    newLabels = {
+      ...state.labels,
+      [label]: newLabel
+    };
+  } else {
+    newLabels = state.labels;
+  }
 
   return {
     ...state,
+    resources: newResources,
     meta: newMeta,
-    labels: newLabels,
-    listMeta: newListMeta,
-    resources: newResources
+    labels: newLabels
   };
 }
