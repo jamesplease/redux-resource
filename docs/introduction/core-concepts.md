@@ -24,8 +24,8 @@ selected books would be metadata about those books.
 
 One of the features of resourceful-redux is that it provides a way to keep
 metadata organized. The system isn't too complicated: the metadata of a resource
-is stored separately from the resource's attributes. Also, there is a location
-to store metadata about the list of resources itself, too.
+is stored separately from the resource's attributes. You can also store metadata
+on a per-request basis.
 
 ### Requests
 
