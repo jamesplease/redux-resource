@@ -33,14 +33,12 @@ export function delNull(state, action) {
 
 export function delSucceed(state, action) {
   const ids = action.ids;
+  const hasIds = ids && ids.length;
   const requestLabel = action.requestLabel;
   let newMeta, newListMeta, newLabels;
-
   const meta = state.meta;
   const listMeta = state.listMeta;
   const labels = state.labels;
-
-  const hasIds = ids && ids.length;
 
   if (requestLabel) {
     newListMeta = listMeta;

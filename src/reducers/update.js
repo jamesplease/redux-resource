@@ -1,7 +1,7 @@
 import updateMetaHelper from './update-meta-helper';
-// import successMetaHelper from './success-meta-helper';
 import requestStatuses from '../utils/request-statuses';
 import upsertResources from '../utils/upsert-resources';
+import setResourceMeta from '../utils/set-resource-meta';
 
 export function update(state, action) {
   return updateMetaHelper({
@@ -35,25 +35,47 @@ export function updateNull(state, action) {
 
 export function updateSucceed(state, action) {
   const resources = action.resources;
-  const mergeResources = action.mergeResources;
-  // const ids = resources.map(r => r.id);
+  const mergeResources = typeof action.mergeResources !== 'undefined' ? action.mergeResources : true;
+  const mergeMeta = typeof action.mergeMeta !== 'undefined' ? action.mergeMeta : true;
+  const ids = action.ids;
+  const hasIds = ids && ids.length;
+  const requestLabel = action.requestLabel;
+  let newMeta, newListMeta, newLabels;
+  const meta = state.meta;
+  const listMeta = state.listMeta;
+  const labels = state.labels;
 
-  // const allMeta = successMetaHelper({
-  //   requestLabel: action.requestLabel,
-  //   crudAction: 'update',
-  //   state,
-  //   ids
-  // });
+  if (requestLabel) {
+    // Stuff
+  } else if (!hasIds) {
+    // Stuff
+  }
 
-  const newResources = upsertResources({
-    resources: state.resources,
-    newResources: resources,
-    mergeResources: typeof mergeResources !== 'undefined' ? mergeResources : true
-  });
+  else {
+    newMeta = setResourceMeta({
+      ids,
+      meta,
+      mergeMeta,
+      newMeta: {
+        updateStatus: requestStatuses.SUCCEEDED,
+      },
+    });
+
+    newListMeta = listMeta;
+    newLabels = labels;
+  }
+
+  const newResources = upsertResources(
+    state.resources,
+    resources,
+    mergeResources
+  );
 
   return {
     ...state,
-    // ...allMeta,
+    meta: newMeta,
+    labels: newLabels,
+    listMeta: newListMeta,
     resources: newResources
   };
 }

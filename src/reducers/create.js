@@ -1,5 +1,4 @@
 import updateMetaHelper from './update-meta-helper';
-// import successMetaHelper from './success-meta-helper';
 import requestStatuses from '../utils/request-statuses';
 import upsertResources from '../utils/upsert-resources';
 
@@ -39,19 +38,11 @@ export function createNull(state, action) {
 export function createSucceed(state, action) {
   const resources = action.resources;
   const mergeResources = action.mergeResources;
-  // const ids = resources.map(r => r.id);
 
   const newResources = upsertResources(state.resources, resources, mergeResources);
-  // const allMeta = successMetaHelper({
-  //   requestLabel: action.requestLabel,
-  //   crudAction: 'create',
-  //   state,
-  //   ids
-  // });
 
   return {
     ...state,
-    // ...allMeta,
     resources: newResources
   };
 }
