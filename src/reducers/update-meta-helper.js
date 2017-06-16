@@ -31,7 +31,7 @@ export default function({state, ids = [], requestStatus, crudAction, setIds = tr
     meta: setResourceMeta({
       meta: state.meta,
       newMeta: {[statusAttribute]: requestStatus},
-      replace: false,
+      mergeMeta: true,
       ids
     })
   };

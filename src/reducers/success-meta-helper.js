@@ -40,7 +40,7 @@ export default function({state, ids = [], setIds = true, crudAction, requestLabe
     } else {
       newMeta = setResourceMeta({
         newMeta: {[statusAttribute]: requestStatuses.SUCCEEDED},
-        replace: false,
+        mergeMeta: true,
         meta,
         ids
       });

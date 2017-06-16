@@ -15,13 +15,13 @@ describe('setResourceMeta', function() {
     };
   });
 
-  describe('replace: true', () => {
+  describe('mergeMeta: false', () => {
     it('should only keep metadata that is passed in', () => {
       const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
         ids: [1, 2, 5],
-        replace: true
+        mergeMeta: false
       });
 
       expect(result).to.deep.equal({
@@ -38,13 +38,13 @@ describe('setResourceMeta', function() {
     });
   });
 
-  describe('replace: false', () => {
+  describe('mergeMeta: true', () => {
     it('should keep other list items and merge in the new results', () => {
       const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
         ids: [1, 2, 5],
-        replace: false
+        mergeMeta: true
       });
 
       expect(result).to.deep.equal({
