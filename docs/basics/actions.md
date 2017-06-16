@@ -94,6 +94,11 @@ updated to reflect any new data. And for successful deletes, any resources
 passed in will be _removed_ from the state's resources array, as well as from
 the `ids` array of all labels.
 
+It doesn't always make sense to supply an array of `resources`. For instance,
+if the user is searching for books by entering a title, you couldn't know which
+books will be returned until after the request has completed. How do you track
+the information about requests like these? The answer is with labels.
+
 ### `label`
 
 Supplying a `label` will track the status of this request under the `labels`
