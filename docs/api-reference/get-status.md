@@ -1,4 +1,4 @@
-# `getStatus(state, crudAction, metaLocations, [isNullPending])`
+# `getStatus(state, metaLocations, [isNullPending])`
 
 Returns an object with boolean values representing the request status of a
 particular CRUD action. It can also be used to aggregate multiple request

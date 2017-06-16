@@ -1,4 +1,4 @@
-# `setResourceMeta({ids, meta, newMeta, [replace]})`
+# `setResourceMeta({ids, meta, newMeta, [initialResourceMeta], [replace]})`
 
 Update one or more individual resources with the same metadata.
 
@@ -11,11 +11,11 @@ Update one or more individual resources with the same metadata.
 1. `meta` *(Object)*: The current resource meta object from this resource's
   store slice. Optional when `replace` is `true`, required otherwise.
 
-1. `replace` *(Boolean)*: Whether or not to completely replace the old meta with
-  the new. Defaults to `false`.
-
 1. `initialResourceMeta` *(Object)*: Additional metadata to add to any resource
   that previously did not have meta.
+
+1. `replace` *(Boolean)*: Whether or not to completely replace the old meta with
+  the new. Defaults to `false`.
 
 #### Returns
 
