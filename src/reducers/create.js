@@ -1,4 +1,4 @@
-import updateMetaHelper from './update-meta-helper';
+import updateMetaHelper from '../utils/update-meta-helper';
 import requestStatuses from '../utils/request-statuses';
 import upsertResources from '../utils/upsert-resources';
 

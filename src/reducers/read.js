@@ -1,4 +1,4 @@
-import updateMetaHelper from './update-meta-helper';
+import updateMetaHelper from '../utils/update-meta-helper';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
 import setResourceMeta from '../utils/set-resource-meta';
