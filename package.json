@@ -15,7 +15,7 @@
     "docs:prepare": "gitbook install",
     "docs:clean": "rimraf _book",
     "docs:build": "npm run docs:prepare && gitbook build",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:jmeas/resourceful-redux gh-pages --force"
+    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:jmeas/resourceful-redux gh-pages --force"
   },
   "repository": {
     "type": "git",
@@ -47,7 +47,9 @@
   "bugs": {
     "url": "https://github.com/jmeas/resourceful-redux/issues"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/jmeas/resourceful-redux",
   "devDependencies": {
     "babel-core": "6.14.0",
@@ -85,5 +87,8 @@
   "babelBoilerplateOptions": {
     "entryFileName": "index.js",
     "mainVarName": "createResource"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }

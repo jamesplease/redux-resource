@@ -20,6 +20,10 @@ changes your store's state when actions with the built-in
   - `plugins`: An array of reducer functions that will be called after the
     default reducer function. Use this to augment the behavior of the built-in
     reducer, or to add support for custom action types for this store slice.
+    Plugins are called with `(state, action, options)`, where `options` are
+    the same options that you passed to `resourceReducer`.
+  - `initialResourceMeta`: Additional metadata to include on any new resource's
+    metadata after a read or create operation.
 
 #### Returns
 

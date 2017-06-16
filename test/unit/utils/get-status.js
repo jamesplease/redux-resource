@@ -4,19 +4,15 @@ describe('getStatus', function() {
   beforeEach(() => {
     this.state = {
       books: {
-        listMeta: {
-          readStatus: requestStatuses.PENDING,
-          createStatus: requestStatuses.NULL,
-          createManyStatus: requestStatuses.NULL,
-        },
-        meta: {}
+        meta: {},
+        labels: {
+          dashboardSearch: {
+            ids: [10, 22],
+            status: requestStatuses.SUCCEEDED
+          }
+        }
       },
       sandwiches: {
-        listMeta: {
-          readStatus: requestStatuses.FAILED,
-          createStatus: requestStatuses.NULL,
-          createManyStatus: requestStatuses.NULL,
-        },
         meta: {
           100: {
             readStatus: requestStatuses.NULL,
@@ -39,139 +35,123 @@ describe('getStatus', function() {
   });
 
   describe('singular', () => {
-    describe('paths', () => {
-      it('should return the listMeta', () => {
-        expect(getStatus(this.state, 'read', 'books')).to.deep.equal({
-          pending: true,
-          failed: false,
-          succeeded: false
-        });
-      });
-
-      it('should return a meta that exists', () => {
-        expect(getStatus(this.state, 'read', 'sandwiches.102')).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: true
-        });
-      });
-
-      it('should return a meta that exists and is null', () => {
-        expect(getStatus(this.state, 'update', 'sandwiches.100')).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: false
-        });
-      });
-
-      it('should return a meta that exists and is null with `isNullPending` set to true', () => {
-        expect(getStatus(this.state, 'update', 'sandwiches.100', true)).to.deep.equal({
-          pending: true,
-          failed: false,
-          succeeded: false
-        });
-      });
-
-      it('should return a meta that does exist', () => {
-        expect(getStatus(this.state, 'update', 'books.10')).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: false
-        });
-      });
-
-      it('should return a meta that does not exist with `isNullPending` set to true', () => {
-        expect(getStatus(this.state, 'update', 'books.10', true)).to.deep.equal({
-          pending: true,
-          failed: false,
-          succeeded: false
-        });
+    it('should return a meta that exists', () => {
+      expect(getStatus(this.state, 'sandwiches.meta.102.readStatus')).to.deep.equal({
+        pending: false,
+        failed: false,
+        succeeded: true
       });
     });
 
-    describe('objects', () => {
-      it('should return the listMeta', () => {
-        expect(getStatus(this.state, 'read', {resourceName: 'books'})).to.deep.equal({
-          pending: true,
-          failed: false,
-          succeeded: false
-        });
+    it('should return a label meta that exists', () => {
+      expect(getStatus(this.state, 'books.labels.dashboardSearch.status')).to.deep.equal({
+        pending: false,
+        failed: false,
+        succeeded: true
       });
+    });
 
-      it('should return a meta that exists', () => {
-        expect(getStatus(this.state, 'read', {resourceName: 'sandwiches', id: 102})).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: true
-        });
+    it('should return a meta that exists and is null', () => {
+      expect(getStatus(this.state, 'sandwiches.meta.100.readStatus')).to.deep.equal({
+        pending: false,
+        failed: false,
+        succeeded: false
       });
+    });
 
-      it('should return a meta that exists and is null', () => {
-        expect(getStatus(this.state, 'update', {resourceName: 'sandwiches', id: 100})).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: false
-        });
+    it('should return a meta that exists and is null with `isNullPending` set to true', () => {
+      expect(getStatus(this.state, 'sandwiches.meta.100.read', true)).to.deep.equal({
+        pending: true,
+        failed: false,
+        succeeded: false
       });
+    });
 
-      it('should return a meta that does exist', () => {
-        expect(getStatus(this.state, 'update', {resourceName: 'books', id: 2})).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: false
-        });
+    it('should return a meta that does exist', () => {
+      expect(getStatus(this.state, 'books.meta.10.update')).to.deep.equal({
+        pending: false,
+        failed: false,
+        succeeded: false
+      });
+    });
+
+    it('should return a meta that does not exist with `isNullPending` set to true', () => {
+      expect(getStatus(this.state, 'books.10.update', true)).to.deep.equal({
+        pending: true,
+        failed: false,
+        succeeded: false
       });
     });
   });
 
   describe('plural', () => {
-    describe('paths', () => {
-      it('should return the combined status for two resources', () => {
-        expect(getStatus(this.state, 'read', ['books', 'sandwiches'])).to.deep.equal({
-          pending: false,
-          failed: true,
-          succeeded: false
-        });
-      });
+    it('should return the combined status for two resources', () => {
+      const result = getStatus(
+        this.state,
+        ['sandwiches.meta.100.readStatus', 'sandwiches.meta.102.updateStatus']
+      );
 
-      it('should return combined resource read statuses where nothing is true', () => {
-        expect(getStatus(this.state, 'read', ['sandwiches.100', 'sandwiches.102'])).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: false
-        });
+      expect(result).to.deep.equal({
+        pending: false,
+        failed: true,
+        succeeded: false
       });
+    });
 
-      it('should return combined resource read statuses with `isNullPending`', () => {
-        expect(getStatus(this.state, 'read', ['sandwiches.100', 'sandwiches.102'], true)).to.deep.equal({
-          pending: true,
-          failed: false,
-          succeeded: false
-        });
+    it('should return combined resource statuses where everything is NULL', () => {
+      const result = getStatus(
+        this.state,
+        ['sandwiches.meta.100.readStatus', 'sandwiches.meta.102.readStatus']
+      );
+
+      expect(result).to.deep.equal({
+        pending: false,
+        failed: false,
+        succeeded: false
       });
+    });
 
-      it('should return combined resource read statuses where everything has succeeded', () => {
-        expect(getStatus(this.state, 'read', ['sandwiches.102', 'sandwiches.103'])).to.deep.equal({
-          pending: false,
-          failed: false,
-          succeeded: true
-        });
+    it('should return combined resource read statuses with `isNullPending`', () => {
+      const result = getStatus(
+        this.state,
+        ['sandwiches.meta.100.readStatus', 'sandwiches.meta.102.readStatus'],
+        true
+      );
+
+      expect(result).to.deep.equal({
+        pending: true,
+        failed: false,
+        succeeded: false
       });
+    });
 
-      it('should return combined statuses for lists and resources where they are pending', () => {
-        expect(getStatus(this.state, 'read', [{resourceName: 'books'}, 'sandwiches.100'], true)).to.deep.equal({
-          pending: true,
-          failed: false,
-          succeeded: false
-        });
+    it('should return combined statuses where everything has succeeded', () => {
+      const result = getStatus(
+        this.state,
+        ['sandwiches.meta.102.readStatus', 'books.labels.dashboardSearch.status']
+      );
+
+      expect(result).to.deep.equal({
+        pending: false,
+        failed: false,
+        succeeded: true
       });
+    });
 
-      it('should fail when one is failed', () => {
-        expect(getStatus(this.state, 'read', ['books', 'sandwiches', 'sandwiches.100'], true)).to.deep.equal({
-          pending: false,
-          failed: true,
-          succeeded: false
-        });
+    it('should fail when one is failed', () => {
+      const result = getStatus(
+        this.state,
+        [
+          'sandwiches.meta.102.readStatus',
+          'books.labels.dashboardSearch.status',
+          'sandwiches.meta.102.updateStatus'
+        ]
+      );
+
+      expect(result).to.deep.equal({
+        pending: false,
+        failed: true,
+        succeeded: false
       });
     });
   });

@@ -36,7 +36,7 @@ ready to ship.
 **Breaking**
 
 - `updateResourcesMeta` has been renamed to `updateResourceMeta`
-- `updateManyResourcesMeta` has been renamed to `updateManyResourceMetas`
+- `updateManyResourcesMeta` has been renamed to `setResourceMeta`
 - `READ_ONE_X` action types have been renamed to `READ_X` for better consistency
   with the other action types that operate on a single resource.
 - `supportedActions.readOne` has been renamed to `supportedActions.read` for

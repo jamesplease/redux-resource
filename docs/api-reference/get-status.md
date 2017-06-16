@@ -1,17 +1,12 @@
 # `getStatus(state, crudAction, metaLocations, [isNullPending])`
 
-This method is a utility to simplify the displaying of interface elements based
-on request states.
-
-It returns an Object that represents the status of CRUD action requests against
-one or more resources.
+Returns an object with boolean values representing the request status of a
+particular CRUD action. It can also be used to aggregate multiple request
+statuses together.
 
 #### Arguments
 
 1. `state` *(Object)*: The current state of the Redux store.
-
-2. `crudAction` *(string)*: The CRUD action to get the status for. One of
-  `"create"`, `"read"`, `"update"`, or `"delete"`.
 
 3. `metaLocations` *(Array)*: An Array of "meta locations" to get the status
   from. For more on meta locations, see the Notes below.
@@ -47,16 +42,8 @@ aggregation work as follows:
 - If no requests have failed, but some are pending, then the aggregate is pending.
 - If all requests have succeeded, then the aggregate has succeeded.
 
-A meta location is a way to specify which metadata you're interested in.
-Resource locators can either be strings, such as `"books"` or `"people.24"`, but
-also Objects, such as:
-
-```js
-{
-  resourceName: 'people',
-  id: 24
-}
-```
+A meta location is a string that specifies a location in your store. For
+instance `"books.meta.24.readStatus"` or `"books.labels.dashboardSearch.status"`.
 
 #### Example
 
@@ -65,16 +52,23 @@ import { getStatus } from 'resourceful-redux';
 import store from './store';
 
 const state = store.getState();
-const bookReadStatus = getStatus(state, 'read', ['articles.23', 'comments'], true);
+const bookReadStatus = getStatus(
+  state,
+  [
+    'articles.meta.23.readStatus',
+    'comments.labels.detailsRead.status'
+  ],
+  true
+);
 ```
 
 #### Tips
 
-- The fourth argument, `isNullPending`, is useful for requests that are made when
+- The third argument, `isNullPending`, is useful for requests that are made when
   your components mount. The components will often render before the request
   begins, so the status of these requests will be `NULL`. Passing `isNullPending`
   will consider these `NULL` states as `pending: true`.
 
-- If you're using React, we recommend computing these values in
+- If you're using React, we recommend computing your `getStatus` values in
   `mapStateToProps` and passing them in as props. That way, you have access
   to this information in all of the lifecycle methods of your component.

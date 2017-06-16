@@ -1,64 +1,117 @@
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
+import updateMetaHelper from '../utils/update-meta-helper';
 import requestStatuses from '../utils/request-statuses';
-import updateResourceMeta from '../utils/update-resource-meta';
 
 export function del(state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.PENDING},
-    id: action.id,
-    replace: false
+  return updateMetaHelper({
+    resources: action.resources,
+    label: action.label,
+    mergeMeta: action.mergeMeta,
+    requestStatus: requestStatuses.PENDING,
+    crudAction: 'delete',
+    state
   });
-
-  return {
-    ...state,
-    meta,
-  };
 }
 
 export function delFail(state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.FAILED},
-    id: action.id,
-    replace: false
+  return updateMetaHelper({
+    resources: action.resources,
+    label: action.label,
+    mergeMeta: action.mergeMeta,
+    requestStatus: requestStatuses.FAILED,
+    crudAction: 'delete',
+    state
   });
-
-  return {
-    ...state,
-    meta,
-  };
 }
 
-export function delSucceed(state, action) {
-  const id = action.id;
+export function delNull(state, action) {
+  return updateMetaHelper({
+    resources: action.resources,
+    label: action.label,
+    mergeMeta: action.mergeMeta,
+    requestStatus: requestStatuses.NULL,
+    crudAction: 'delete',
+    state
+  });
+}
 
-  // Remove this resource from the resources meta.
-  const meta = {
-    // Shallow clone the meta
-    ...state.meta,
-    [id]: null
-  };
+export function delSucceed(state, action, {initialResourceMeta}) {
+  const label = action.label;
+  const resources = action.resources;
+
+  // Find the list of IDs affected by this action
+  let idList;
+  if (resources) {
+    idList = resources.map(r => {
+      if (typeof r === 'object') {
+        return r.id;
+      } else {
+        return r;
+      }
+    });
+  }
+
+  const hasIds = idList && idList.length;
+
+  // If we have no label nor IDs, then there is nothing to update
+  if (!hasIds && !label) {
+    return;
+  }
+
+  let newMeta;
+  let newLabels = {};
+  const meta = state.meta;
+  const labels = state.labels;
+  for (let requestLabel in labels) {
+    const existingLabel = state.labels[requestLabel] || {};
+    const existingLabelIds = existingLabel.ids || [];
+    const newLabel = {
+      ...existingLabel
+    };
+
+    if (hasIds && existingLabel.ids) {
+      newLabel.ids = existingLabelIds.filter(r => !idList.includes(r));
+    } else if (existingLabel.ids) {
+      newLabel.ids = existingLabelIds;
+    }
+
+    if (label && label === requestLabel) {
+      newLabel.status = requestStatuses.SUCCEEDED;
+    }
+
+    newLabels[requestLabel] = newLabel;
+  }
+
+  if (hasIds) {
+    const nullMeta = idList.reduce((memo, id) => {
+      memo[id] = {
+        ...initialResourceMetaState,
+        ...initialResourceMeta,
+        deleteStatus: requestStatuses.SUCCEEDED
+      };
+      return memo;
+    }, {});
+
+    newMeta = {
+      ...meta,
+      ...nullMeta
+    };
+  } else {
+    newMeta = meta;
+  }
 
   // Shallow clone the existing resource array, removing the deleted resource
-  const resources = state.resources.filter(r => r.id !== id);
+  let newResources;
+  if (hasIds) {
+    newResources = state.resources.filter(r => !idList.includes(r.id));
+  } else {
+    newResources = [...state.resources];
+  }
 
   return {
     ...state,
-    meta,
-    resources
-  };
-}
-
-export function delReset(state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {deleteStatus: requestStatuses.NULL},
-    id: action.id,
-    replace: false
-  });
-
-  return {
-    ...state,
-    meta,
+    meta: newMeta,
+    labels: newLabels,
+    resources: newResources
   };
 }

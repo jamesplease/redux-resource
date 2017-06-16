@@ -1,6 +1,6 @@
-import {updateManyResourceMetas} from '../../../src';
+import {setResourceMeta} from '../../../src';
 
-describe('updateManyResourceMetas', function() {
+describe('setResourceMeta', function() {
   beforeEach(() => {
     this.meta = {
       1: {
@@ -15,18 +15,19 @@ describe('updateManyResourceMetas', function() {
     };
   });
 
-  describe('replace: true', () => {
+  describe('mergeMeta: false', () => {
     it('should only keep metadata that is passed in', () => {
-      const result = updateManyResourceMetas({
+      const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
-        ids: [1, 2, 5],
-        replace: true
+        resources: [1, 2, 5],
+        mergeMeta: false
       });
 
       expect(result).to.deep.equal({
         1: {isSelected: true},
         2: {isSelected: true},
+        3: {what: false},
         5: {isSelected: true}
       });
 
@@ -38,13 +39,13 @@ describe('updateManyResourceMetas', function() {
     });
   });
 
-  describe('replace: false', () => {
+  describe('mergeMeta: true', () => {
     it('should keep other list items and merge in the new results', () => {
-      const result = updateManyResourceMetas({
+      const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
-        ids: [1, 2, 5],
-        replace: false
+        resources: [1, 2, 5],
+        mergeMeta: true
       });
 
       expect(result).to.deep.equal({

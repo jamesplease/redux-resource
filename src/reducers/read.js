@@ -1,68 +1,102 @@
+import updateMetaHelper from '../utils/update-meta-helper';
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
-import updateResourceMeta from '../utils/update-resource-meta';
-import upsertResource from '../utils/upsert-resource';
+import setResourceMeta from '../utils/set-resource-meta';
+import upsertResources from '../utils/upsert-resources';
 
 export function read(state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {readStatus: requestStatuses.PENDING},
-    id: action.id,
-    replace: false
+  return updateMetaHelper({
+    resources: action.resources,
+    label: action.label,
+    mergeMeta: action.mergeMeta,
+    requestStatus: requestStatuses.PENDING,
+    crudAction: 'read',
+    state
   });
-
-  return {
-    ...state,
-    meta,
-  };
 }
 
 export function readFail(state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {readStatus: requestStatuses.FAILED},
-    id: action.id,
-    replace: false
+  return updateMetaHelper({
+    resources: action.resources,
+    label: action.label,
+    mergeMeta: action.mergeMeta,
+    requestStatus: requestStatuses.FAILED,
+    crudAction: 'read',
+    state
   });
-
-  return {
-    ...state,
-    meta,
-  };
 }
 
-export function readSucceed(state, action) {
-  const meta = updateResourceMeta({
-    meta: state.meta,
-    newMeta: {readStatus: requestStatuses.SUCCEEDED},
-    id: action.id,
-    replace: false
+export function readNull(state, action) {
+  return updateMetaHelper({
+    resources: action.resources,
+    label: action.label,
+    mergeMeta: action.mergeMeta,
+    requestStatus: requestStatuses.NULL,
+    crudAction: 'read',
+    state
   });
-
-  const replace = typeof action.replace !== 'undefined' ? action.replace : true;
-  const resources = upsertResource({
-    resources: state.resources,
-    resource: action.resource,
-    id: action.id,
-    replace
-  });
-
-  return {
-    ...state,
-    meta,
-    resources
-  };
 }
 
-export function readReset(state, action) {
-  const meta = updateResourceMeta({
+export function readSucceed(state, action, {initialResourceMeta}) {
+  const resources = action.resources;
+  const label = action.label;
+  const hasResources = resources && resources.length;
+
+  // Without resources or labels, there is nothing to update
+  if (!hasResources && !label) {
+    return state;
+  }
+
+  const newResources = upsertResources(state.resources, resources, action.mergeResources);
+  const newMeta = setResourceMeta({
+    resources,
     meta: state.meta,
-    newMeta: {readStatus: requestStatuses.NULL},
-    id: action.id,
-    replace: false
+    newMeta: {
+      ...initialResourceMetaState,
+      readStatus: requestStatuses.SUCCEEDED
+    },
+    mergeMeta: action.mergeMeta,
+    initialResourceMeta
   });
+
+  let newLabels;
+  if (label) {
+    const currentLabel = state.labels[label] || {};
+    const newLabel = {
+      ...currentLabel,
+      status: requestStatuses.SUCCEEDED
+    };
+
+    if (hasResources) {
+      let newLabelIds;
+      if (currentLabel.ids) {
+        newLabelIds = Array.prototype.slice.call(currentLabel.ids);
+      } else {
+        newLabelIds = [];
+      }
+
+      resources.forEach(resource => {
+        const id = typeof resource === 'object' ? resource.id : resource;
+        if (!newLabelIds.includes(id)) {
+          newLabelIds.push(id);
+        }
+      });
+
+      newLabel.ids = newLabelIds;
+    }
+
+    newLabels = {
+      ...state.labels,
+      [label]: newLabel
+    };
+  } else {
+    newLabels = state.labels;
+  }
 
   return {
     ...state,
-    meta,
+    resources: newResources,
+    meta: newMeta,
+    labels: newLabels
   };
 }
