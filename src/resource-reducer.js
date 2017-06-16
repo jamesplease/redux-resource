@@ -1,5 +1,6 @@
+import actionReducers from './action-reducers';
 import generateDefaultInitialState from './utils/generate-default-initial-state';
-import generateReducer from './generate-reducer';
+import composeReducers from './utils/compose-reducers';
 
 // Create a resource reducer.
 //
@@ -14,9 +15,17 @@ export default function resourceReducer(resourceName, options = {}) {
     ...initialState
   };
 
-  return generateReducer({
-    initialState: initial,
-    resourceName,
-    plugins
-  });
+  return function reducer(state = initial, action) {
+    const actionReducer = actionReducers[action.type];
+    if (action.resourceName !== resourceName) {
+      return state;
+    }
+
+    // Compute the state from the built-in reducers
+    const defaultResult = actionReducer ? actionReducer(state, action, options) : state;
+    // Compute the state from any additional reducer plugins
+    const customResult = composeReducers(plugins)(defaultResult, action, options);
+
+    return customResult ? customResult : state;
+  };
 }
