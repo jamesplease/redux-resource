@@ -65,8 +65,18 @@ describe('reducers: delete', function() {
           1: {
             name: 'what'
           },
-          3: null,
-          4: null
+          3: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          },
+          4: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          }
         }
       });
     });
@@ -128,8 +138,18 @@ describe('reducers: delete', function() {
           1: {
             name: 'what'
           },
-          3: null,
-          4: null
+          3: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          },
+          4: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          }
         }
       });
     });

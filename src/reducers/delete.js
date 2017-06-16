@@ -1,3 +1,4 @@
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import updateMetaHelper from '../utils/update-meta-helper';
 import requestStatuses from '../utils/request-statuses';
 
@@ -86,7 +87,10 @@ export function delSucceed(state, action) {
 
   if (hasIds) {
     const nullMeta = idList.reduce((memo, id) => {
-      memo[id] = null;
+      memo[id] = {
+        ...initialResourceMetaState,
+        deleteStatus: requestStatuses.SUCCEEDED
+      };
       return memo;
     }, {});
 
