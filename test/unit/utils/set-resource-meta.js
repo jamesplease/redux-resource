@@ -27,6 +27,7 @@ describe('setResourceMeta', function() {
       expect(result).to.deep.equal({
         1: {isSelected: true},
         2: {isSelected: true},
+        3: {what: false},
         5: {isSelected: true}
       });
 
