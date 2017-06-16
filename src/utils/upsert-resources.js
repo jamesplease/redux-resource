@@ -3,7 +3,7 @@ export default function upsertResources(resources, newResources, mergeResources)
   if (!(newResources instanceof Array)) {
     return resources;
   }
-
+  const mergeResourcesOption = typeof mergeResources !== 'undefined' ? mergeResources : true;
   const shallowClone = Array.prototype.slice.call(resources);
   newResources.forEach(resource => {
     const resourceIsObject = typeof resource === 'object';
@@ -16,13 +16,12 @@ export default function upsertResources(resources, newResources, mergeResources)
     }
 
     let resourceToInsert;
-    if (mergeResources) {
+    if (mergeResourcesOption) {
       const currentResource = shallowClone[resourceIndex];
-      let newResource;
       if (resourceIsObject) {
         resourceToInsert = {
           ...currentResource,
-          ...newResource
+          ...resourceObj
         };
       } else {
         resourceToInsert = {...currentResource};

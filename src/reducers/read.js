@@ -82,11 +82,12 @@ export function readSucceed(state, action) {
       });
 
       newLabel.ids = newLabelIds;
-      newLabels = {
-        ...state.labels,
-        [label]: newLabel
-      };
     }
+
+    newLabels = {
+      ...state.labels,
+      [label]: newLabel
+    };
   } else {
     newLabels = state.labels;
   }
