@@ -35,6 +35,7 @@ export function updateNull(state, action) {
 
 export function updateSucceed(state, action) {
   const resources = action.resources;
+  const mergeResources = action.mergeResources;
   const ids = resources.map(r => r.id);
 
   const allMeta = successMetaHelper({
@@ -44,11 +45,10 @@ export function updateSucceed(state, action) {
     ids
   });
 
-  const replace = typeof action.replace !== 'undefined' ? action.replace : false;
   const newResources = upsertResources({
     resources: state.resources,
     newResources: resources,
-    replace
+    mergeResources: typeof mergeResources !== 'undefined' ? mergeResources : true
   });
 
   return {

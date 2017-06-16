@@ -12,8 +12,7 @@ describe('reducers: read', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -38,8 +37,7 @@ describe('reducers: read', function() {
           readStatus: requestStatuses.PENDING
         }
       },
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -59,8 +57,7 @@ describe('reducers: read', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -85,8 +82,7 @@ describe('reducers: read', function() {
           readStatus: requestStatuses.FAILED
         }
       },
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -114,8 +110,7 @@ describe('reducers: read', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -149,8 +144,7 @@ describe('reducers: read', function() {
           readStatus: requestStatuses.NULL
         }
       },
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         createStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,

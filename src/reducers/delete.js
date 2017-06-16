@@ -34,20 +34,30 @@ export function delNull(state, action) {
 
 export function delSucceed(state, action) {
   const ids = action.ids;
+  const requestLabel = action.requestLabel;
 
   const allMeta = successMetaHelper({
-    requestLabel: action.requestLabel,
     crudAction: 'delete',
+    requestLabel,
     state,
     ids
   });
 
   // Shallow clone the existing resource array, removing the deleted resource
-  const newResources = state.resources.filter(r => !ids.includes(r.id));
+  const resources = state.resources.filter(r => !ids.includes(r.id));
+
+  let labels = state.labels;
+  if (requestLabel) {
+    const newLabel = state.labels[requestLabel] || {};
+    const existingIds = newLabel ? newLabel.ids : [];
+    newLabel.id = existingIds.filter(r => !ids.includes(r.id));
+    labels[requestLabel] = newLabel;
+  }
 
   return {
     ...state,
     ...allMeta,
-    resources: newResources
+    labels,
+    resources
   };
 }

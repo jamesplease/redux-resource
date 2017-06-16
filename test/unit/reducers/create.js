@@ -11,8 +11,7 @@ describe('reducers: create', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -32,8 +31,7 @@ describe('reducers: create', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,
@@ -53,8 +51,7 @@ describe('reducers: create', function() {
     expect(reduced).to.deep.equal({
       resources: [],
       meta: {},
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         updateStatus: requestStatuses.NULL,
         deleteStatus: requestStatuses.NULL,

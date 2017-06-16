@@ -42,8 +42,7 @@ describe('reducers: update', function() {
           updateStatus: requestStatuses.PENDING
         }
       },
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -94,8 +93,7 @@ describe('reducers: update', function() {
           updateStatus: requestStatuses.FAILED
         }
       },
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
@@ -146,8 +144,7 @@ describe('reducers: update', function() {
           updateStatus: requestStatuses.NULL
         }
       },
-      labelStatus: {},
-      labelResources: {},
+      labels: {},
       listMeta: {
         readStatus: requestStatuses.NULL,
         updateStatus: requestStatuses.NULL,
