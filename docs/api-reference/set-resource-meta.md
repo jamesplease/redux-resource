@@ -14,6 +14,9 @@ Update one or more individual resources with the same metadata.
 1. `replace` *(Boolean)*: Whether or not to completely replace the old meta with
   the new. Defaults to `false`.
 
+1. `initialResourceMeta` *(Object)*: Additional metadata to add to any resource
+  that previously did not have meta.
+
 #### Returns
 
 (*`Object`*): The new resource meta object.
@@ -47,20 +50,5 @@ export default function reducer(state, action) {
 
 #### Tips
 
-- This is used by reducer returned by `resourceReducer` to update the resource
-  meta in your store. You will typically only need to use this method if you're
-  writing a custom plugins.
-
-- Updating the metadata for a list of resources doesn't require a utility, since
-  it is a plain object located at `{resourceName}.listMeta`. For instance,
-  setting a property on the list meta in a reducer might look something like:
-
-  ```js
-  return {
-    ...state,
-    listMeta: {
-      ...state.listMeta,
-      someProperty: true
-    }
-  };
-  ```
+- This is used by the reducer returned by `resourceReducer` to update the
+  resource meta in your store. You will typically only need to use this method if you're writing a custom plugin.
