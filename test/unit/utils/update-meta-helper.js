@@ -33,7 +33,66 @@ describe('updateMetaHelper:', function() {
     expect(result).to.equal(state);
   });
 
-  it('passing IDs and no label', () => {
+  it('passing resources array and no label', () => {
+    const state = {
+      meta: {
+        1: {
+          pastaStatus: requestStatuses.PENDING,
+          hangry: true
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING
+        }
+      },
+      labels: {
+        italiano: {
+          sandwiches: true,
+          status: requestStatuses.PENDING
+        },
+        meep: {
+          hungry: true
+        }
+      }
+    };
+
+    const result = updateMetaHelper({
+      state,
+      resources: [{id: 1}, {id: 5}, {id: 6}],
+      crudAction: 'pasta',
+      requestStatus: requestStatuses.FAILED
+    });
+
+    expect(result).to.deep.equal({
+      meta: {
+        1: {
+          pastaStatus: requestStatuses.FAILED,
+          hangry: true
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING
+        },
+        5: {
+          pastaStatus: requestStatuses.FAILED
+        },
+        6: {
+          pastaStatus: requestStatuses.FAILED
+        }
+      },
+      labels: {
+        italiano: {
+          sandwiches: true,
+          status: requestStatuses.PENDING
+        },
+        meep: {
+          hungry: true
+        }
+      }
+    });
+  });
+
+  it('passing resources and no label', () => {
     const state = {
       meta: {
         1: {

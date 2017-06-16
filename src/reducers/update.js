@@ -6,6 +6,7 @@ import setResourceMeta from '../utils/set-resource-meta';
 export function update(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
@@ -17,6 +18,7 @@ export function update(state, action) {
 export function updateFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
@@ -28,6 +30,7 @@ export function updateFail(state, action) {
 export function updateNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,

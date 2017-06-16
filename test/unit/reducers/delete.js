@@ -104,7 +104,10 @@ describe('reducers: delete', function() {
         type: 'DELETE_RESOURCES_SUCCEED',
         resourceName: 'hellos',
         requestLabel: 'italiano',
-        ids: [3, 4]
+        resources: [
+          {id: 3},
+          {id: 4}
+        ]
       });
 
       expect(reduced).to.deep.equal({

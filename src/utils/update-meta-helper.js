@@ -11,11 +11,26 @@ import setResourceMeta from '../utils/set-resource-meta';
 // Label IDs don't change, and neither does the resource. Consequently, this
 // helper completely defines all of the ways in which the non-success reducers
 // can change the state.
-export default function({state, ids = [], requestStatus, crudAction, requestLabel, mergeMeta = true}) {
+export default function(options) {
+  const {
+    state, ids, resources, requestStatus, crudAction, requestLabel,
+    mergeMeta = true
+  } = options;
+
+  // Find the list of IDs affected by this action
+  let idList;
+  if (resources) {
+    idList = resources.map(r => r.id);
+  } else if (ids) {
+    idList = ids;
+  } else {
+    idList = [];
+  }
+
   const statusAttribute = `${crudAction}Status`;
   let newLabels, newMeta;
 
-  if (!requestLabel && !ids.length) {
+  if (!requestLabel && !idList.length) {
     return state;
   }
 
@@ -33,12 +48,12 @@ export default function({state, ids = [], requestStatus, crudAction, requestLabe
     newLabels = {...state.labels};
   }
 
-  if (ids.length) {
+  if (idList.length) {
     newMeta = setResourceMeta({
       meta: state.meta,
       newMeta: {[statusAttribute]: requestStatus},
+      ids: idList,
       mergeMeta,
-      ids
     });
   } else {
     newMeta = state.meta;

@@ -7,6 +7,7 @@ import upsertResources from '../utils/upsert-resources';
 export function read(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
@@ -18,6 +19,7 @@ export function read(state, action) {
 export function readFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
@@ -29,6 +31,7 @@ export function readFail(state, action) {
 export function readNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,

@@ -5,6 +5,7 @@ import upsertResources from '../utils/upsert-resources';
 export function create(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.PENDING,
@@ -16,6 +17,7 @@ export function create(state, action) {
 export function createFail(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.FAILED,
@@ -27,6 +29,7 @@ export function createFail(state, action) {
 export function createNull(state, action) {
   return updateMetaHelper({
     ids: action.ids,
+    resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
     requestStatus: requestStatuses.NULL,
