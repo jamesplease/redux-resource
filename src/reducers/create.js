@@ -37,7 +37,7 @@ export function createNull(state, action) {
   });
 }
 
-export function createSucceed(state, action) {
+export function createSucceed(state, action, {initialResourceMeta}) {
   const resources = action.resources;
   const label = action.label;
   const hasResources = resources && resources.length;
@@ -56,7 +56,8 @@ export function createSucceed(state, action) {
       readStatus: requestStatuses.SUCCEEDED,
       createStatus: requestStatuses.SUCCEEDED,
     },
-    mergeMeta: action.mergeMeta
+    mergeMeta: action.mergeMeta,
+    initialResourceMeta
   });
 
   let newLabels;

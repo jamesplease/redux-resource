@@ -35,7 +35,7 @@ export function delNull(state, action) {
   });
 }
 
-export function delSucceed(state, action) {
+export function delSucceed(state, action, {initialResourceMeta}) {
   const label = action.label;
   const resources = action.resources;
 
@@ -86,6 +86,7 @@ export function delSucceed(state, action) {
     const nullMeta = idList.reduce((memo, id) => {
       memo[id] = {
         ...initialResourceMetaState,
+        ...initialResourceMeta,
         deleteStatus: requestStatuses.SUCCEEDED
       };
       return memo;

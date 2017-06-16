@@ -1,5 +1,9 @@
 // Update the meta for `resources`
-export default function setResourceMeta({resources, newMeta, meta, mergeMeta}) {
+export default function setResourceMeta(options) {
+  const {
+    resources, newMeta, meta, mergeMeta,
+    initialResourceMeta = {}
+  } = options;
   let mergeMetaOption = typeof mergeMeta !== 'undefined' ? mergeMeta : true;
   const next = {...meta};
 
@@ -9,9 +13,11 @@ export default function setResourceMeta({resources, newMeta, meta, mergeMeta}) {
 
   resources.forEach((resource) => {
     const id = typeof resource === 'object' ? resource.id : resource;
-    const current = mergeMetaOption ? next[id] : {};
+    const currentMeta = next[id] || initialResourceMeta;
+    const baseMeta = mergeMetaOption ? currentMeta : initialResourceMeta;
+
     next[id] = {
-      ...current,
+      ...baseMeta,
       ...newMeta
     };
   });

@@ -37,7 +37,7 @@ export function updateNull(state, action) {
   });
 }
 
-export function updateSucceed(state, action) {
+export function updateSucceed(state, action, {initialResourceMeta}) {
   const resources = action.resources;
   const label = action.label;
   const hasResources = resources && resources.length;
@@ -55,7 +55,8 @@ export function updateSucceed(state, action) {
       ...initialResourceMetaState,
       updateStatus: requestStatuses.SUCCEEDED
     },
-    mergeMeta: action.mergeMeta
+    mergeMeta: action.mergeMeta,
+    initialResourceMeta
   });
 
   let newLabels;

@@ -47,6 +47,9 @@ describe('reducers: delete', function() {
               deleteStatus: 'sandwiches'
             }
           }
+        },
+        initialResourceMeta: {
+          selected: false
         }
       });
 
@@ -66,12 +69,14 @@ describe('reducers: delete', function() {
             name: 'what'
           },
           3: {
+            selected: false,
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.NULL,
             updateStatus: requestStatuses.NULL,
             deleteStatus: requestStatuses.SUCCEEDED
           },
           4: {
+            selected: false,
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.NULL,
             updateStatus: requestStatuses.NULL,

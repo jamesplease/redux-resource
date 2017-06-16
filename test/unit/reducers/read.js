@@ -54,6 +54,9 @@ describe('reducers: read:', function() {
               selected: true
             }
           }
+        },
+        initialResourceMeta: {
+          selected: false
         }
       });
 
@@ -89,6 +92,7 @@ describe('reducers: read:', function() {
             deleteStatus: requestStatuses.NULL,
           },
           5: {
+            selected: false,
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
