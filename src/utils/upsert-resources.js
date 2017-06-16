@@ -1,7 +1,10 @@
 // Add or update resources
 export default function upsertResources(resources, newResources, mergeResources) {
-  const shallowClone = Array.prototype.slice.call(resources);
+  if (!(newResources instanceof Array)) {
+    return resources;
+  }
 
+  const shallowClone = Array.prototype.slice.call(resources);
   newResources.forEach(resource => {
     const resourceIsObject = typeof resource === 'object';
     const id = resourceIsObject ? resource.id : resource;

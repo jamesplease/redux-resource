@@ -9,6 +9,14 @@ describe('upsertResources', function() {
     ];
   });
 
+  it('should accept an empty array of newResources', () => {
+    const nullResult = upsertResources(this.resources, null);
+    expect(nullResult).to.equal(this.resources);
+
+    const notDefinedResult = upsertResources(this.resources);
+    expect(notDefinedResult).to.equal(this.resources);
+  });
+
   describe('merge: false', () => {
     it('should replace "unmatched" resources in the store, and the data for "matched" resources', () => {
       const result = upsertResources(
