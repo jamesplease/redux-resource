@@ -39,58 +39,62 @@ export function readNull(state, action) {
 
 export function readSucceed(state, action) {
   const resources = action.resources;
-  const ids = action.ids || [];
+  const label = action.requestLabel;
+  const hasResources = resources && resources.length;
 
-  const responseIds = resources.map(r => r.id);
-  const defaultReplace = !ids.length;
-  const replace = typeof action.replace !== 'undefined' ? action.replace : defaultReplace;
-
-  let newResources;
-  if (!replace) {
-    newResources = upsertResources({
-      resources: state.resources,
-      newResources: resources,
-      replace: false,
-    });
-  } else {
-    newResources = resources;
+  // Without resources or labels, there is nothing to update
+  if (!hasResources && !label) {
+    return state;
   }
 
-  let listMeta;
-  if (!ids.length) {
-    listMeta = {
-      ...state.listMeta,
+  const newResources = upsertResources(state.resources, resources, action.mergeResources);
+  const newMeta = setResourceMeta({
+    resources,
+    meta: state.meta,
+    newMeta: {
+      ...initialResourceMetaState,
       readStatus: requestStatuses.SUCCEEDED
-    };
-  } else {
-    listMeta = {
-      ...state.listMeta
-    };
-  }
+    },
+    mergeMeta: action.mergeMeta
+  });
 
-  let meta;
-  if (!ids.length) {
-    meta = setResourceMeta({
-      meta: state.meta,
-      newMeta: initialResourceMetaState,
-      ids: responseIds,
-      replace
-    });
+  let newLabels;
+  if (label) {
+    const currentLabel = state.labels[label] || {};
+    const newLabel = {
+      ...currentLabel,
+      status: requestStatuses.SUCCEEDED
+    };
+
+    if (hasResources) {
+      let newLabelIds;
+      if (currentLabel.ids) {
+        newLabelIds = Array.prototype.slice.call(currentLabel.ids);
+      } else {
+        newLabelIds = [];
+      }
+
+      resources.forEach(resource => {
+        const id = typeof resource === 'object' ? resource.id : resource;
+        if (!newLabelIds.includes(id)) {
+          newLabelIds.push(id);
+        }
+      });
+
+      newLabel.ids = newLabelIds;
+      newLabels = {
+        ...state.labels,
+        [label]: newLabel
+      };
+    }
   } else {
-    meta = setResourceMeta({
-      meta: state.meta,
-      newMeta: {readStatus: requestStatuses.SUCCEEDED},
-      ids: responseIds,
-      replace: false
-    });
+    newLabels = state.labels;
   }
 
   return {
     ...state,
     resources: newResources,
-    // We have new resources, so we need to update their meta state with the
-    // initial meta state.
-    meta,
-    listMeta
+    meta: newMeta,
+    labels: newLabels
   };
 }

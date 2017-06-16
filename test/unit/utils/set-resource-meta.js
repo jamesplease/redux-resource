@@ -20,7 +20,7 @@ describe('setResourceMeta', function() {
       const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
-        ids: [1, 2, 5],
+        resources: [1, 2, 5],
         mergeMeta: false
       });
 
@@ -44,7 +44,7 @@ describe('setResourceMeta', function() {
       const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
-        ids: [1, 2, 5],
+        resources: [1, 2, 5],
         mergeMeta: true
       });
 

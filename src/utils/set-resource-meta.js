@@ -1,9 +1,13 @@
-// Similar to `updateResourceMeta`, but it accepts an array of IDs instead of
-// a single ID. Used for bulk updating meta.
-export default function setResourceMeta({ids, newMeta, meta, mergeMeta}) {
+// Update the meta for `resources`
+export default function setResourceMeta({resources, newMeta, meta, mergeMeta}) {
   const next = {...meta};
 
-  ids.forEach((id) => {
+  if (!(resources && resources.length)) {
+    return next;
+  }
+
+  resources.forEach((resource) => {
+    const id = typeof resource === 'object' ? resource.id : resource;
     const current = mergeMeta ? next[id] : {};
     next[id] = {
       ...current,

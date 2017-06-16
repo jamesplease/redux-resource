@@ -55,7 +55,7 @@ export default function(options) {
     newMeta = setResourceMeta({
       meta: state.meta,
       newMeta: {[statusAttribute]: requestStatus},
-      ids: idList,
+      resources: idList,
       mergeMeta,
     });
   } else {
