@@ -33,7 +33,7 @@ describe('updateMetaHelper:', function() {
     expect(result).to.equal(state);
   });
 
-  it('passing resources array and no label', () => {
+  it('passing mixed resources array and no label', () => {
     const state = {
       meta: {
         1: {
@@ -58,7 +58,7 @@ describe('updateMetaHelper:', function() {
 
     const result = updateMetaHelper({
       state,
-      resources: [{id: 1}, {id: 5}, {id: 6}],
+      resources: [{id: 1}, {id: 5}, 6],
       crudAction: 'pasta',
       requestStatus: requestStatuses.FAILED
     });
@@ -117,7 +117,7 @@ describe('updateMetaHelper:', function() {
 
     const result = updateMetaHelper({
       state,
-      ids: [1, 5, 6],
+      resources: [1, 5, 6],
       crudAction: 'pasta',
       requestStatus: requestStatuses.FAILED
     });
@@ -229,7 +229,7 @@ describe('updateMetaHelper:', function() {
 
     const result = updateMetaHelper({
       state,
-      ids: [1, 5, 6],
+      resources: [1, 5, 6],
       crudAction: 'pasta',
       requestLabel: 'italiano',
       requestStatus: requestStatuses.FAILED
@@ -289,7 +289,7 @@ describe('updateMetaHelper:', function() {
 
     const result = updateMetaHelper({
       state,
-      ids: [1, 5, 6],
+      resources: [1, 5, 6],
       crudAction: 'pasta',
       requestLabel: 'italiano',
       mergeMeta: false,

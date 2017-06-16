@@ -3,7 +3,6 @@ import requestStatuses from '../utils/request-statuses';
 
 export function del(state, action) {
   return updateMetaHelper({
-    ids: action.ids,
     resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
@@ -15,7 +14,6 @@ export function del(state, action) {
 
 export function delFail(state, action) {
   return updateMetaHelper({
-    ids: action.ids,
     resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
@@ -27,7 +25,6 @@ export function delFail(state, action) {
 
 export function delNull(state, action) {
   return updateMetaHelper({
-    ids: action.ids,
     resources: action.resources,
     requestLabel: action.requestLabel,
     mergeMeta: action.mergeMeta,
