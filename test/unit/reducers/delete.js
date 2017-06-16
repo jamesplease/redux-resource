@@ -125,7 +125,7 @@ describe('reducers: delete', function() {
   });
 
   describe('DELETE_RESOURCES_SUCCESS', () => {
-    it('returns the right state without a label', () => {
+    it('returns the right state without a label, with IDs', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: [
@@ -172,7 +172,56 @@ describe('reducers: delete', function() {
       });
     });
 
-    it('returns the right state with a label', () => {
+    it('returns the right state without a label, without IDs', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: [
+            {id: 1},
+            {id: 3},
+            {id: 4},
+          ],
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEED',
+        resourceName: 'hellos',
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: [
+          {id: 1},
+          {id: 3},
+          {id: 4},
+        ],
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          }
+        },
+        listMeta: {
+          updateStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.SUCCEEDED,
+          readStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
+        }
+      });
+    });
+
+    it('returns the right state with a label and IDs', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: [
@@ -220,6 +269,66 @@ describe('reducers: delete', function() {
           },
           3: null,
           4: null
+        },
+        listMeta: {
+          updateStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
+        }
+      });
+    });
+
+    it('returns the right state with a label and without IDs', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: [
+            {id: 1},
+            {id: 3},
+            {id: 4},
+          ],
+          labels: {
+            deletingStuff: {
+              ids: [],
+              status: 'PENDING'
+            }
+          },
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEED',
+        resourceName: 'hellos',
+        requestLabel: 'deletingStuff',
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: [
+          {id: 1},
+          {id: 3},
+          {id: 4},
+        ],
+        labels: {
+          deletingStuff: {
+            status: 'SUCCEEDED',
+            ids: []
+          }
+        },
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          }
         },
         listMeta: {
           updateStatus: requestStatuses.NULL,
