@@ -63,49 +63,4 @@ describe('reducers: create', function() {
       }
     });
   });
-
-  it('should handle `CREATE_RESOURCES_SUCCEED`', () => {
-    const reducer = resourceReducer('hellos');
-    const reduced = reducer(undefined, {
-      type: 'CREATE_RESOURCES_SUCCEED',
-      resourceName: 'hellos',
-      resources: [
-        {
-          id: 10,
-          hungry: true
-        },
-        {
-          id: 12,
-          hungry: false
-        }
-      ]
-    });
-
-    expect(reduced).to.deep.equal({
-      resources: [
-        {id: 10, hungry: true},
-        {id: 12, hungry: false},
-      ],
-      meta: {
-        10: {
-          updateStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL
-        },
-        12: {
-          updateStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL
-        }
-      },
-      labelStatus: {},
-      labelResources: {},
-      listMeta: {
-        updateStatus: requestStatuses.NULL,
-        deleteStatus: requestStatuses.NULL,
-        createStatus: requestStatuses.SUCCEEDED,
-        readStatus: requestStatuses.NULL
-      }
-    });
-  });
 });

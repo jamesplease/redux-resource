@@ -9,18 +9,18 @@ describe('upsertResources', function() {
     ];
   });
 
-  describe('replace: true', () => {
+  describe('merge: false', () => {
     it('should replace "unmatched" resources in the store, and the data for "matched" resources', () => {
-      const result = upsertResources({
-        resources: this.resources,
-        newResources: [
-          {id: 1, first_name: 'oink'}
-        ],
-        replace: true
-      });
+      const result = upsertResources(
+        this.resources,
+        [{id: 1, first_name: 'oink'}],
+        false
+      );
 
       expect(result).to.deep.equal([
-        {id: 1, first_name: 'oink'}
+        {id: 1, first_name: 'oink'},
+        {id: 5, first_name: 'stephen', last_name: 'rjr'},
+        {id: 7, first_name: 'shilpa', last_name: 'm'}
       ]);
 
       // Shallow clones the resources array
@@ -28,15 +28,16 @@ describe('upsertResources', function() {
     });
 
     it('should add a brand new resource', () => {
-      const result = upsertResources({
-        resources: this.resources,
-        newResources: [
-          {id: 10, first_name: 'oink'}
-        ],
-        replace: true
-      });
+      const result = upsertResources(
+        this.resources,
+        [{id: 10, first_name: 'oink'}],
+        false
+      );
 
       expect(result).to.deep.equal([
+        {id: 1, first_name: 'james', last_name: 'please'},
+        {id: 5, first_name: 'stephen', last_name: 'rjr'},
+        {id: 7, first_name: 'shilpa', last_name: 'm'},
         {id: 10, first_name: 'oink'},
       ]);
 
@@ -45,18 +46,16 @@ describe('upsertResources', function() {
     });
   });
 
-  describe('replace: false', () => {
+  describe('merge: true', () => {
     it('should keep "unmatched" resources in the store, and merge the data for "matched" resources', () => {
-      const result = upsertResources({
-        resources: this.resources,
-        newResources: [
-          {id: 1, first_name: 'oink'}
-        ],
-        replace: false
-      });
+      const result = upsertResources(
+        this.resources,
+        [{id: 1, first_name: 'oink'}],
+        false
+      );
 
       expect(result).to.deep.equal([
-        {id: 1, first_name: 'oink', last_name: 'please'},
+        {id: 1, first_name: 'oink'},
         {id: 5, first_name: 'stephen', last_name: 'rjr'},
         {id: 7, first_name: 'shilpa', last_name: 'm'}
       ]);
@@ -72,13 +71,11 @@ describe('upsertResources', function() {
   });
 
   it('should add a brand new resource', () => {
-    const result = upsertResources({
-      resources: this.resources,
-      newResources: [
-        {id: 10, first_name: 'oink'}
-      ],
-      replace: false
-    });
+    const result = upsertResources(
+      this.resources,
+      [{id: 10, first_name: 'oink'}],
+      true
+    );
 
     expect(result).to.deep.equal([
       {id: 1, first_name: 'james', last_name: 'please'},

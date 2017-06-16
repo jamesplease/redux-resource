@@ -1,6 +1,6 @@
 // Add or update resources
-export default function upsertResources({resources, newResources, replace}) {
-  const shallowClone = replace ? [] : Array.prototype.slice.call(resources);
+export default function upsertResources(resources, newResources, mergeResources) {
+  const shallowClone = Array.prototype.slice.call(resources);
 
   newResources.forEach(resource => {
     const id = resource.id;
@@ -11,7 +11,7 @@ export default function upsertResources({resources, newResources, replace}) {
     }
 
     let resourceToInsert;
-    if (!replace) {
+    if (mergeResources) {
       const currentResource = shallowClone[resourceIndex];
       resourceToInsert = {
         ...currentResource,
