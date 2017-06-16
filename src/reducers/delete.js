@@ -58,32 +58,52 @@ export function delSucceed(state, action) {
     return;
   }
 
-  let newMeta, newLabels;
+  let newMeta;
+  let newLabels = {};
   const meta = state.meta;
   const labels = state.labels;
-
-  if (requestLabel) {
-    const existingLabel = state.labels[requestLabel] || {};
+  for (let label in labels) {
+    const existingLabel = state.labels[label] || {};
     const existingLabelIds = existingLabel.ids || [];
+    const newLabel = {
+      ...existingLabel
+    };
 
-    let newLabelIds;
-    if (hasIds) {
-      newLabelIds = existingLabelIds.filter(r => !idList.includes(r));
-    } else {
-      newLabelIds = existingLabelIds;
+    if (hasIds && existingLabel.ids) {
+      newLabel.ids = existingLabelIds.filter(r => !idList.includes(r));
+    } else if (existingLabel.ids) {
+      newLabel.ids = existingLabelIds;
     }
 
-    newLabels = {
-      ...labels,
-      [requestLabel]: {
-        ...existingLabel,
-        ids: newLabelIds,
-        status: requestStatuses.SUCCEEDED
-      }
-    };
-  } else {
-    newLabels = labels;
+    if (requestLabel && label === requestLabel) {
+      newLabel.status = requestStatuses.SUCCEEDED;
+    }
+
+    newLabels[label] = newLabel;
   }
+
+  // if (requestLabel) {
+  //   const existingLabel = state.labels[requestLabel] || {};
+  //   const existingLabelIds = existingLabel.ids || [];
+  //
+  //   let newLabelIds;
+  //   if (hasIds) {
+  //     newLabelIds = existingLabelIds.filter(r => !idList.includes(r));
+  //   } else {
+  //     newLabelIds = existingLabelIds;
+  //   }
+  //
+  //   newLabels = {
+  //     ...labels,
+  //     [requestLabel]: {
+  //       ...existingLabel,
+  //       ids: newLabelIds,
+  //       status: requestStatuses.SUCCEEDED
+  //     }
+  //   };
+  // } else {
+  //   newLabels = labels;
+  // }
 
   if (hasIds) {
     const nullMeta = idList.reduce((memo, id) => {

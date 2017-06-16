@@ -91,7 +91,8 @@ describe('reducers: delete', function() {
           ],
           labels: {
             oink: {
-              hungry: true
+              hungry: true,
+              ids: [10, 3]
             },
             italiano: {
               status: requestStatuses.PENDING,
@@ -131,6 +132,7 @@ describe('reducers: delete', function() {
             hangry: false
           },
           oink: {
+            ids: [10],
             hungry: true
           }
         },
