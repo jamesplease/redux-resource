@@ -33,16 +33,12 @@ export function delNull(state, action) {
 
 export function delSucceed(state, action) {
   const ids = action.ids;
-  const hasIds = ids && ids.length;
   const requestLabel = action.requestLabel;
-  let newMeta, newListMeta, newLabels;
+  let newMeta, newLabels;
   const meta = state.meta;
-  const listMeta = state.listMeta;
   const labels = state.labels;
 
   if (requestLabel) {
-    newListMeta = listMeta;
-
     const existingLabel = state.labels[requestLabel] || {};
     const existingLabelIds = existingLabel.ids || [];
 
@@ -71,15 +67,6 @@ export function delSucceed(state, action) {
     };
   }
 
-  else if (!hasIds) {
-    newMeta = meta;
-    newListMeta = {
-      ...listMeta,
-      deleteStatus: requestStatuses.SUCCEEDED
-    };
-    newLabels = labels;
-  }
-
   else {
     const nullMeta = ids.reduce((memo, id) => {
       memo[id] = null;
@@ -91,7 +78,6 @@ export function delSucceed(state, action) {
       ...nullMeta
     };
 
-    newListMeta = listMeta;
     newLabels = labels;
   }
 
@@ -107,7 +93,6 @@ export function delSucceed(state, action) {
     ...state,
     meta: newMeta,
     labels: newLabels,
-    listMeta: newListMeta,
     resources
   };
 }

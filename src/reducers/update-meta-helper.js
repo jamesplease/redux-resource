@@ -1,9 +1,9 @@
 import setResourceMeta from '../utils/set-resource-meta';
 
-export default function({state, ids = [], requestStatus, crudAction, setIds = true, requestLabel}) {
+export default function({state, ids = [], requestStatus, crudAction, requestLabel}) {
   const statusAttribute = `${crudAction}Status`;
+  let newLabels, newMeta;
 
-  // Request labels take priority over everything else.
   if (requestLabel) {
     const existingLabel = state.labels[requestLabel] || {};
 
@@ -17,27 +17,24 @@ export default function({state, ids = [], requestStatus, crudAction, setIds = tr
         }
       }
     };
+  } else {
+    newLabels = {...state.labels};
   }
 
-  // Then, we look for IDs. `setIds` will opt the reducer out of this behavior
-  if (!setIds || !ids.length) {
-    return {
-      ...state,
-      listMeta: {
-        ...state.listMeta,
-        [statusAttribute]: requestStatus
-      }
-    };
-  }
-
-  // Finally, if there's neither a label nor an ID,
-  return {
-    ...state,
-    meta: setResourceMeta({
+  if (ids.length) {
+    newMeta = setResourceMeta({
       meta: state.meta,
       newMeta: {[statusAttribute]: requestStatus},
       mergeMeta: true,
       ids
-    })
+    });
+  } else {
+    newMeta = {...state.meta};
+  }
+
+  return {
+    ...state,
+    labels: newLabels,
+    meta: newMeta
   };
 }
