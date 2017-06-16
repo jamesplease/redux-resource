@@ -46,18 +46,19 @@ export function delSucceed(state, action) {
   // Shallow clone the existing resource array, removing the deleted resource
   const resources = state.resources.filter(r => !ids.includes(r.id));
 
-  let labels = state.labels;
-  if (requestLabel) {
-    const newLabel = state.labels[requestLabel] || {};
-    const existingIds = newLabel ? newLabel.ids : [];
-    newLabel.id = existingIds.filter(r => !ids.includes(r.id));
-    labels[requestLabel] = newLabel;
-  }
+  // let labels = state.labels;
+  // if (requestLabel) {
+  //   const newLabel = state.labels[requestLabel] || {};
+  //   const existingIds = newLabel ? newLabel.ids : [];
+  //   newLabel.id = existingIds.filter(r => !ids.includes(r.id));
+  //   labels[requestLabel] = newLabel;
+  // }
 
   return {
     ...state,
     ...allMeta,
-    labels,
+    // meta: newMeta,
+    // labels,
     resources
   };
 }

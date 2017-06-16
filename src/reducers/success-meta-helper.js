@@ -9,16 +9,41 @@ export default function({state, ids = [], setIds = true, crudAction, requestLabe
   const statusAttribute = `${crudAction}Status`;
 
   if (requestLabel) {
-    newMeta = meta;
     newListMeta = listMeta;
+
     const existingLabel = state.labels[requestLabel] || {};
+    const existingLabelIds = existingLabel.ids || [];
+
+    let newLabelIds;
+    if (crudAction === 'delete') {
+      newLabelIds = existingLabelIds.filter(r => !ids.includes(r));
+    } else {
+      newLabelIds = existingLabelIds;
+    }
+
     newLabels = {
       ...labels,
       [requestLabel]: {
         ...existingLabel,
+        ids: newLabelIds,
         status: requestStatuses.SUCCEEDED
       }
     };
+
+    // If we're deleting, then we still need to delete the meta.
+    if (crudAction === 'delete') {
+      const nullMeta = ids.reduce((memo, id) => {
+        memo[id] = null;
+        return memo;
+      }, {});
+
+      newMeta = {
+        ...meta,
+        ...nullMeta
+      };
+    } else {
+      newMeta = meta;
+    }
   }
 
   else if (!setIds || !ids.length) {

@@ -125,7 +125,7 @@ describe('reducers: delete', function() {
   });
 
   describe('DELETE_RESOURCES_SUCCESS', () => {
-    it('without a label', () => {
+    it('returns the right state without a label', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: [
@@ -171,62 +171,63 @@ describe('reducers: delete', function() {
         }
       });
     });
-  });
 
-    // describe('with a label', () => {
-    //   const reducer = resourceReducer('hellos', {
-    //     initialState: {
-    //       resources: [
-    //         {id: 1},
-    //         {id: 3},
-    //         {id: 4},
-    //       ],
-    //       labels: {
-    //         deletingStuff: {
-    //           ids: [3, 4],
-    //           status: 'PENDING'
-    //         }
-    //       },
-    //       meta: {
-    //         1: {
-    //           name: 'what'
-    //         },
-    //         3: {
-    //           deleteStatus: 'sandwiches'
-    //         }
-    //       }
-    //     }
-    //   });
-    //
-    //   const reduced = reducer(undefined, {
-    //     type: 'DELETE_RESOURCES_SUCCEED',
-    //     resourceName: 'hellos',
-    //     requestLabel: 'deletingStuff',
-    //     ids: [3, 4]
-    //   });
-    //
-    //   expect(reduced).to.deep.equal({
-    //     resources: [
-    //       {id: 1},
-    //     ],
-    //     labels: {
-    //       status: 'SUCCEEDED',
-    //       ids: []
-    //     },
-    //     meta: {
-    //       1: {
-    //         name: 'what'
-    //       },
-    //       3: null,
-    //       4: null
-    //     },
-    //     listMeta: {
-    //       updateStatus: requestStatuses.NULL,
-    //       deleteStatus: requestStatuses.NULL,
-    //       readStatus: requestStatuses.NULL,
-    //       createStatus: requestStatuses.NULL
-    //     }
-    //   });
-    // });
-  // });
+    it('returns the right state with a label', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: [
+            {id: 1},
+            {id: 3},
+            {id: 4},
+          ],
+          labels: {
+            deletingStuff: {
+              ids: [3, 4],
+              status: 'PENDING'
+            }
+          },
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEED',
+        resourceName: 'hellos',
+        requestLabel: 'deletingStuff',
+        ids: [3, 4]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: [
+          {id: 1},
+        ],
+        labels: {
+          deletingStuff: {
+            status: 'SUCCEEDED',
+            ids: []
+          }
+        },
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: null,
+          4: null
+        },
+        listMeta: {
+          updateStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
+        }
+      });
+    });
+  });
 });
