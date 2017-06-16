@@ -4,16 +4,20 @@ import setResourceMeta from '../utils/set-resource-meta';
 export default function({state, ids = [], setIds = true, crudAction, requestLabel}) {
   const meta = state.meta;
   const listMeta = state.listMeta;
-  const labelStatus = state.labelStatus;
-  let newMeta, newListMeta, newLabelStatus;
+  const labels = state.labels;
+  let newMeta, newListMeta, newLabels;
   const statusAttribute = `${crudAction}Status`;
 
   if (requestLabel) {
     newMeta = meta;
     newListMeta = listMeta;
-    newLabelStatus = {
-      ...labelStatus,
-      [requestLabel]: requestStatuses.SUCCEEDED
+    const existingLabel = state.labels[requestLabel] || {};
+    newLabels = {
+      ...labels,
+      [requestLabel]: {
+        ...existingLabel,
+        status: requestStatuses.SUCCEEDED
+      }
     };
   }
 
@@ -23,7 +27,7 @@ export default function({state, ids = [], setIds = true, crudAction, requestLabe
       ...listMeta,
       [statusAttribute]: requestStatuses.SUCCEEDED
     };
-    newLabelStatus = labelStatus;
+    newLabels = labels;
   }
 
   else {
@@ -47,12 +51,12 @@ export default function({state, ids = [], setIds = true, crudAction, requestLabe
     }
 
     newListMeta = listMeta;
-    newLabelStatus = labelStatus;
+    newLabels = labels;
   }
 
   return {
     meta: newMeta,
     listMeta: newListMeta,
-    labelStatus: newLabelStatus
+    labels: newLabels
   };
 }

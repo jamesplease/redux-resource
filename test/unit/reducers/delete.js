@@ -125,52 +125,52 @@ describe('reducers: delete', function() {
   });
 
   describe('DELETE_RESOURCES_SUCCESS', () => {
-    // describe('without a label', () => {
-    //   const reducer = resourceReducer('hellos', {
-    //     initialState: {
-    //       resources: [
-    //         {id: 1},
-    //         {id: 3},
-    //         {id: 4},
-    //       ],
-    //       labels: {},
-    //       meta: {
-    //         1: {
-    //           name: 'what'
-    //         },
-    //         3: {
-    //           deleteStatus: 'sandwiches'
-    //         }
-    //       }
-    //     }
-    //   });
-    //
-    //   const reduced = reducer(undefined, {
-    //     type: 'DELETE_RESOURCES_SUCCEED',
-    //     resourceName: 'hellos',
-    //     ids: [3, 4]
-    //   });
-    //
-    //   expect(reduced).to.deep.equal({
-    //     resources: [
-    //       {id: 1},
-    //     ],
-    //     labels: {},
-    //     meta: {
-    //       1: {
-    //         name: 'what'
-    //       },
-    //       3: null,
-    //       4: null
-    //     },
-    //     listMeta: {
-    //       updateStatus: requestStatuses.NULL,
-    //       deleteStatus: requestStatuses.NULL,
-    //       readStatus: requestStatuses.NULL,
-    //       createStatus: requestStatuses.NULL
-    //     }
-    //   });
-    // });
+    it('without a label', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: [
+            {id: 1},
+            {id: 3},
+            {id: 4},
+          ],
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEED',
+        resourceName: 'hellos',
+        ids: [3, 4]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: [
+          {id: 1},
+        ],
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: null,
+          4: null
+        },
+        listMeta: {
+          updateStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
+          readStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.NULL
+        }
+      });
+    });
   });
 
     // describe('with a label', () => {

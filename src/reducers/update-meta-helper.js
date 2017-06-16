@@ -5,11 +5,16 @@ export default function({state, ids = [], requestStatus, crudAction, setIds = tr
 
   // Request labels take priority over everything else.
   if (requestLabel) {
+    const existingLabel = state.labels[requestLabel] || {};
+
     return {
       ...state,
-      labelStatus: {
-        ...state.labelStatus,
-        [requestLabel]: requestStatus
+      labels: {
+        ...state.labels,
+        [requestLabel]: {
+          ...existingLabel,
+          status: requestStatus
+        }
       }
     };
   }
