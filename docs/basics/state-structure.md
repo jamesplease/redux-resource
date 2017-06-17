@@ -1,17 +1,23 @@
 # State Structure
 
-Before we cover manipulating resource data, let's first cover **where** data
-will be located in your store.
+Before we start manipulating resource data, let's first cover how the data
+is represented in your store.
 
 ### State Slices
 
-Typical usage of resourceful-redux will involve using `combineReducers` to
-separate each resource into its own "slice" of your state. Each slice will store
-information about each resource separate from the others.
+Typical usage of resourceful-redux involves using
+[`combineReducers`](http://redux.js.org/docs/api/combineReducers.html) to
+separate each resource into its own "slice" within your overall state tree. Each
+of these slices will store information about one resource, separate from your
+other resources.
 
-In the rest of this guide, the word "state" will refer to each slice of your
-state if you're using `combineReducers`. If you're not, then the word "state"
-will refer to the entire state of the store.
+In the rest of this guide, we will be talking about the structure of the "state".
+If you're using `combineReducers`, then we will be talking about one individual
+slice. And if you're not, then the word "state" will refer to the entire state
+of the store.
+
+This is a convenience so that we don't have to distinguish between "state tree"
+and "state slice," which is the terminology used in the Redux documentation.
 
 ### Resources
 
@@ -65,7 +71,8 @@ you may also store additional, application-specific metadata here, such as
 whether or not a resource is "selected" in your UI, or not.
 
 resourceful-redux comes with built-in metadata for each resource, representing
-the status of any CRUD request related to that resource:
+the status of any CRUD request related to that resource. This built-in metadata
+looks like the following:
 
 ```js
 {
@@ -76,14 +83,18 @@ the status of any CRUD request related to that resource:
 }
 ```
 
+These four keys represent the four CRUD actions. The values of the keys are
+one of the four request statuses – null, pending, succeeded, or failed,
+representing the status of any requests for that resource.
+
 When you create your resource reducers, you have the option to specify
-additional default meta as well.
+additional default metadata for each resource.
 
-Let's look at an example. Consider an interface where a user can select
-resources from a list, and the user has selected two resources, with IDs `2` and
-`23`.
-
-A section of this store might look like something like:
+Let's look at an example. Consider an application where a user can "select"
+resources from a list, and then take action on their selection (such as updating
+or deleting the selected items). If the user has selected two resources, with
+IDs `2` and `23`, then a section of their state might look like something like
+the following:
 
 ```js
 {
@@ -117,7 +128,7 @@ A section of this store might look like something like:
 ```
 
 If the user then clicks a "Delete" button to initiate the deletion of these
-resources, your state might then look like this:
+resources, the state would then look like this:
 
 ```js
 {
@@ -155,8 +166,8 @@ to that resource's `meta` object to keep track of it.
 
 Keep in mind that you don't _need_ to store any additional metadata here. For
 instance, in the above example, if you'd rather have a `selectedIds` property
-directly on your state instead, then you can do that, too. Just know that you
-have the option to store your own metadata for each resource.
+directly on your state instead, then you can do that, too. Just know that the
+option is there to store your own, additional metadata in the `meta` object.
 
 ### Labels
 
@@ -183,7 +194,7 @@ the shopping cart, and which are the ones that were just released?
 
 The answer is to use a label. We will get to the specifics of how you use labels
 to resolve situations like these shortly, but for now, let's look at what the
-store might look like in this situation:
+store might look like in this example:
 
 ```js
 {

@@ -13,19 +13,21 @@ Resources typically have attributes, such as a "name" or "releaseYear."
 
 In resourceful-redux, each resource will be kept in its own
 [slice](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) of
-your store. Within that slice, the resources are kept in a single list.
+your store. Within that slice, all of the resources of a single type are kept in
+a single list.
 
 ### Resource Metadata
 
 Resources also have "metadata" about them, which can be thought of as any
 information about a resource that is useful for your interface. For instance, if
 your interface displays a list of books that the user can select, then the
-selected books would be metadata about those books.
+information about which books are selected would be metadata about the books
+resource.
 
-One of the features of resourceful-redux is that it provides a way to keep
-metadata organized. The system isn't too complicated: the metadata of a resource
-is stored separately from the resource's attributes. You can also store metadata
-on a per-request basis.
+One of the features of resourceful-redux is that it provides a system for
+keeping metadata organized. The system isn't too complicated: the metadata of a
+resource is stored separately from the resource's attributes. And you can also
+store metadata on a per-request basis.
 
 ### Requests
 

@@ -1,5 +1,5 @@
 * [State Structure](/docs/basics/state-structure.md)
-* [Actions](/docs/basics/actions.md)
+* [CRUD Actions](/docs/basics/crud-actions.md)
 * [Using Labels](/docs/basics/using-labels.md)
 * [Reading Resources](/docs/basics/reading-resources.md)
 * [Updating Resources](/docs/basics/updating-resources.md)

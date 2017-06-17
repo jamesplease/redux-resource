@@ -1,7 +1,7 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: read:', function() {
-  describe('READ_RESOURCES_SUCCESS:', () => {
+  describe('READ_RESOURCES_SUCCEED:', () => {
     it('returns the right state without a label, without IDs', () => {
       const initialState = {
         resources: [

@@ -1,8 +1,8 @@
 # Similar Projects
 
 This isn't the only library that aims to reduce boilerplate when it comes to
-managing reosurces. Below is a brief comparison between this library and a
-select number of others.
+managing resources. Below is a brief comparison between this library and a
+handful of others.
 
 Keep in mind that this comparison page is not intended to be complete.
 We encourage you to look into other options to determine which is the
@@ -20,7 +20,8 @@ redux-rest-resource will only track that at least one resource is being saved.
 
 #### [redux-resources](https://github.com/travisbloom/redux-resources)
 
-A short list of things that redux-resources does differently is:
+A short list of things that redux-resources does differently from this library
+is:
 
 1. resources are split up in the store based on the requests that you make.
   resourceful-redux stores all resources of the same type into a single list,
@@ -30,9 +31,9 @@ A short list of things that redux-resources does differently is:
 1. it keeps a cache of errors returned from the server out of the box
 
 The features of redux-resources that are not included in resourceful-redux
-would be straightforward to add in via plugins. However, getting the level
-of detail that resourceful-redux provides for requests appears like it would be
-difficult to achieve using redux-resources.
+would be straightforward to add in via [plugins](../advanced/plugins.md).
+However, getting the level of detail that resourceful-redux provides for
+requests appears like it would be difficult to achieve using redux-resources.
 
 #### [redux-json-api](https://github.com/dixieio/redux-json-api)
 

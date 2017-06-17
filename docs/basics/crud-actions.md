@@ -1,8 +1,32 @@
-# Actions
+# CRUD Actions
 
 resourceful-redux exports Action Types to help you create, read, update,
-and delete resources. Although these action types represent four different
-operations, there are many similarities between them.
+and delete resources. Although these operations are quite different, there are
+many similarities between the Actions for these operations in resourceful-redux.
+
+### Action Series
+
+CRUD operations are often asynchronous. In resourceful-redux, asynchronous
+operations are represented as a 'series' of Redux Actions. There is always a
+start Action, which updates the state with information about the request
+starting. Sometime later, there is an end Action, which will cause the state
+to be updated with information about the resolution of the operation.
+
+For instance, the series of action types for a successful read request is the
+following:
+
+`READ_RESOURCES -> READ_RESOURCES_SUCCEED`
+
+The first action type puts the request in a "pending" state. The second
+request moves it to a "success" state.
+
+Optionally, there is a third action to "null" the status of the request, which
+will set its value to be what it was before the operation ever began. Nulling
+a status isn't always necessary, but it can be useful to use when requests are
+aborted, or if you don't need to track the status of some past request any
+longer.
+
+### Action Attributes
 
 All actions have a single required value, `resourceName`, which is the name
 of the resource that is being affected. The simplest action, then, looks
@@ -21,7 +45,7 @@ This action type isn't very useful, however. Without more information about this
 request, resourceful-redux doesn't know how to change your state. Consequently,
 this action is a no-op.
 
-To observe changes in the state, you need to supply one of two additional
+To cause changes in the state, you need to supply one of two additional
 options: a `resources` array, and/or a `label`.
 
 We'll first look at `resources`, then `labels`.
@@ -74,7 +98,7 @@ action representing success:
 import { actionTypes } from 'resourceful-redux';
 
 {
-  type: actionTypes.READ_RESOURCES_SUCCESS,
+  type: actionTypes.READ_RESOURCES_SUCCEED,
   resourceName: 'books',
   resources: [{
     id: 23,
@@ -96,8 +120,9 @@ the `ids` array of all labels.
 
 It doesn't always make sense to supply an array of `resources`. For instance,
 if the user is searching for books by entering a title, you couldn't know which
-books will be returned until after the request has completed. How do you track
-the information about requests like these? The answer is with labels.
+books will be returned until after the request has completed.
+
+To keep track of the resources for requests like these, you need to use labels.
 
 ### `label`
 
@@ -130,8 +155,10 @@ The following action attributes are all optional.
 - `mergeResources` *(Boolean)*: When an action results in resources being
   updated in the store, this determines if the new data is merged with the old,
   or if it replaces the old data. Defaults to `true`.
+
 - `mergeMeta` *(Boolean)*: This is like `mergeResources`, but for metadata.
   Defaults to `true`.
+
 - `mergeLabelIds` *(Boolean)*: When a label is supplied, this lets you control
   whether or not the new list of IDs replaces or gets merged into the existing
   list of IDs for that label. When `true`, it will protect against duplicate

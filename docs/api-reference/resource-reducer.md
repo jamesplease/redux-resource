@@ -33,7 +33,7 @@ function for this resource.
 #### Example
 
 ```js
-import { createStore, combineReducers } from 'resourceful-redux';
+import { createStore, combineReducers } from 'redux';
 import { resourceReducer } from 'resourceful-redux';
 
 let store = createStore(

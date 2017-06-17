@@ -17,14 +17,20 @@ export default function resourceReducer(resourceName, options = {}) {
 
   return function reducer(state = initial, action) {
     const actionReducer = actionReducers[action.type];
-    if (action.resourceName !== resourceName) {
-      return state;
-    }
+
+    // We only call the built-in reducers if the action type matches one,
+    // and if the resource name in the action matches the name of the resource
+    // in this state slice.
+    const callActionReducer = actionReducer && action.resourceName === resourceName;
 
     // Compute the state from the built-in reducers
-    const defaultResult = actionReducer ? actionReducer(state, action, options) : state;
+    const defaultResult = callActionReducer ? actionReducer(state, action, options) : state;
+
     // Compute the state from any additional reducer plugins
-    const customResult = composeReducers(plugins)(defaultResult, action, options);
+    const customResult = composeReducers(plugins)(defaultResult, action, {
+      ...options,
+      resourceName
+    });
 
     return customResult ? customResult : state;
   };
