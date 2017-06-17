@@ -1,6 +1,6 @@
 # actionTypes
 
-An object of Redux [action types](http://redux.js.org/docs/guides/Actions.html)
+An object of Redux [action types](http://redux.js.org/docs/basics/Actions.html)
 that the [resource reducer](resource-reducer.md) responds to. Emit these from
 action creators to change the state of your store.
 

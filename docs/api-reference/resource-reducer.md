@@ -1,6 +1,6 @@
 # `resourceReducer(resourceName, [options])`
 
-Creates a Redux [reducer](http://redux.js.org/docs/guides/Reducers.html) that
+Creates a Redux [reducer](http://redux.js.org/docs/basics/Reducers.html) that
 changes your store's state when actions with the built-in
 [action types](action-types.md) are dispatched.
 
@@ -29,7 +29,7 @@ changes your store's state when actions with the built-in
 
 #### Returns
 
-([*`Reducer`*](http://redux.js.org/docs/guides/Reducers.html)): A reducing
+([*`Reducer`*](http://redux.js.org/docs/basics/Reducers.html)): A reducing
 function for this resource.
 
 #### Example
