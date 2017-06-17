@@ -1,8 +1,7 @@
 # requestStatuses
 
-An object that represents the four states that a request can be in.
-
-The complete Object is shown below:
+An object that represents the four statuses that a request can have. The
+complete object is shown below:
 
 ```js
 {
@@ -21,8 +20,8 @@ import store from './store';
 
 const state = store.getState();
 
-if (state.books.listMeta.readRequestStatus === requestStatuses.PENDING) {
-  console.log('A read request for the books resource is pending.');
+if (state.books.meta['23'] === requestStatuses.PENDING) {
+  console.log('A book with id "23" is in progress.');
 }
 ```
 

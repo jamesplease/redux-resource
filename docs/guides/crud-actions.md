@@ -1,13 +1,15 @@
 # CRUD Actions
 
-resourceful-redux exports Action Types to help you create, read, update,
-and delete resources. Although these operations are quite different, there are
-many similarities between the Actions for these operations in resourceful-redux.
+resourceful-redux exports Action types to help you create, read, update,
+and delete resources. Although these operations are different from one another,
+there are many similarities between the Actions for these operations in
+resourceful-redux. Once you learn how to do one in resourceful-redux, the others
+should feel natural.
 
-### Action Series
+### Action Sequences
 
-CRUD operations are often asynchronous. In resourceful-redux, asynchronous
-operations are represented as a 'series' of Redux Actions. There is always a
+CRUD operations are usually asynchronous. In resourceful-redux, asynchronous
+operations are represented as a 'sequence' of Redux Actions. There is always a
 start Action, which updates the state with information about the request
 starting. Sometime later, there is an end Action, which will cause the state
 to be updated with information about the resolution of the operation.
@@ -25,6 +27,10 @@ will set its value to be what it was before the operation ever began. Nulling
 a status isn't always necessary, but it can be useful to use when requests are
 aborted, or if you don't need to track the status of some past request any
 longer.
+
+Because these Actions are asynchronous, using a library like
+[redux-thunk](https://github.com/gaearon/redux-thunk) for your action creators
+is recommended.
 
 ### Action Attributes
 
@@ -165,3 +171,26 @@ The following CRUD Action attributes are all optional.
   list of IDs for that label. When `true`, it will protect against duplicate
   IDs being added. Defaults to `true`. This only applies for successful read,
   write, and update Actions that have a `label` specified.
+
+### Action Creators
+
+resourceful-redux does not come with built-in action creators, although we
+intend to add some soon. For now, you can see examples of action creators in the
+following guides:
+
+- [Reading Resources](./reading-resources)
+- [Updating Resources](./updating-resources)
+- [Creating Resources](./creating-resources)
+- [Deleting Resources](./deleting-resources)
+
+### Using the Action Types
+
+One of this library's exports are these CRUD action types. You can use them in
+your application by importing them like so:
+
+```js
+import { actionTypes } from 'resourceful-redux';
+```
+
+For a complete list of all of the action types, refer to the
+[Action Types API Reference](../api-reference/action-types).

@@ -1,11 +1,9 @@
 # Resources
 
-resourceful-redux is all about managing resources. So what, exactly, is a
-resource?
-
-A resource is a plain JavaScript object that represents a single entity in
-your application. For instance, it could represent a book, or a person, or
-something more abstract, like a 'workflow' or 'responsibility.'
+resourceful-redux is all about managing resources. A resource is a plain
+JavaScript object that represents a single entity in your application. For
+instance, it could represent a book, or a person, or something more abstract,
+like a 'workflow' or 'responsibility.'
 
 The only requirement of a resource is that it **must** have an `id`
 attribute. The following are some examples of valid resources:

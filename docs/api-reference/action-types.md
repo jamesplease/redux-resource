@@ -34,10 +34,7 @@ The complete object is shown below:
 
 There are four groups of action types, one for each of the four
 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) actions.
-
-Within each CRUD action, there are four actions that reflect the four request
-statuses. As actions with these types are emitted, your requests will
-cycle through those four states.
+Within each CRUD action, the four actions reflect the four request statuses.
 
 #### Example
 
@@ -54,7 +51,7 @@ export default function readBook(bookId) {
     dispatch({
       type: actionTypes.READ_RESOURCES,
       resourceName: 'books'
-      ids: [bookId]
+      resources: [bookId]
     });
 
     const req = xhr.get(`/books/${bookId}`, (err, res) => {
@@ -62,13 +59,13 @@ export default function readBook(bookId) {
         dispatch({
           type: actionTypes.READ_RESOURCES_NULL,
           resourceName: 'books',
-          ids: [bookId]
+          resources: [bookId]
         });
       } else if (err || res.statusCode >= 400) {
         dispatch({
           type: actionTypes.READ_RESOURCES_FAIL,
           resourceName: 'books',
-          ids: [bookId]
+          resources: [bookId]
         });
       } else {
         dispatch({

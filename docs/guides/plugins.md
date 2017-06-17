@@ -19,7 +19,7 @@ A plugin must always return the new state.
 Because a plugin is intended to be generic, you will often wrap your plugins
 in a function that you call with the resource that the plugin is for. This
 lets you scope the plugin to a specific resource. Otherwise, any time that you
-fire a particular Action Type, all of the resources in your state tree would
+fire a particular Action type, _all_ of the resources in your state tree would
 be affected!
 
 ### Custom Action Types
@@ -33,7 +33,7 @@ import myActionTypes from './my-action-types';
 
 export default function(resourceName) {
   return function(state, action, options) {
-    // Ignore actions of this type that were dispatched for any other resource
+    // Ignore actions that were dispatched for another resource type
     if (action.resourceName !== resourceName) {
       return state;
     }
@@ -127,8 +127,8 @@ good thing, but be mindful of keeping each plugin limited to a single
 responsibility.
 
 For example, in the above example of a plugin for selecting resources, it
-supports two Action Types – one for selection, and one for deselection. This
+supports two Action types – one for selection, and one for deselection. This
 plugin encapsulates that one responsibility, and it isn't responsible for any
-other Action Types.
+other Action types.
 
 We recommend having a plugin for each distinct responsibility.

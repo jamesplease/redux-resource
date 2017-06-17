@@ -1,7 +1,7 @@
 # State Structure
 
 Before we start manipulating resource data, let's first cover how the data
-is represented in your store.
+is represented in your state tree.
 
 ### State Slices
 
@@ -13,11 +13,8 @@ separate from your other types of resources.
 
 In the rest of this guide, we will be talking about the structure of the "state".
 If you're using `combineReducers`, then we will be talking about one individual
-slice. And if you're not, then the word "state" will refer to the entire state
-of the store.
-
-This is a convenience so that we don't have to distinguish between "state tree"
-and "state slice," which is the terminology used in the Redux documentation.
+state slice. And if you're not, then the word "state" will refer to the entire state
+tree.
 
 ### Resources
 
@@ -64,8 +61,8 @@ objects that are distinguished from one another by a unique identifier.
 
 ### Resource Metadata
 
-Metadata about each of the resources in your state slice's `resources` array
-is stored under the `meta` object of the state slice. This includes information
+Metadata about each of the resources in your state's `resources` array
+is stored under the `meta` object of the state. This includes information
 about requests, such as whether the resource is being updated, or deleted, and
 you may also store additional, application-specific metadata here, such as
 whether or not a resource is "selected" in your UI, or not.
@@ -166,8 +163,8 @@ to that resource's `meta` object to keep track of it.
 
 Keep in mind that you don't _need_ to store any additional metadata here. For
 instance, in the above example, if you'd rather have a `selectedIds` property
-directly on your state instead, then you can do that, too. Just know that the
-option is there to store your own, additional metadata in the `meta` object.
+directly on your state instead, then you could do that instead. Just know that
+the option is there to store your own, additional metadata in the `meta` object.
 
 ### Labels
 
@@ -217,5 +214,5 @@ store might look like in this example:
 }
 ```
 
-Now that you know how data is stored, you're ready to start building actions
-to modify this data.
+Now that you know how data is stored, you're ready to start building
+[Actions](http://redux.js.org/docs/basics/Actions.html) to modify this data.
