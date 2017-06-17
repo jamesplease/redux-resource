@@ -1,8 +1,8 @@
 # `resourceReducer(resourceName, [options])`
 
 Creates a Redux [reducer](http://redux.js.org/docs/basics/Reducers.html) that
-changes your store's state when actions with the built-in
-[action types](action-types.md) are dispatched.
+changes your store's state when actions with one of the CRUD
+[Action Types](action-types.md) are dispatched.
 
 #### Arguments
 
@@ -15,15 +15,16 @@ changes your store's state when actions with the built-in
 2. [`options`] *(Object)*: Options that can be used to configure the reducer.
   The options are:
   - `initialState`: Initial state to shallowly merge into the default initial
-    state for the slice of the store. If you include a value for `listMeta`, it
-    will be shallow merged into the initial `listMeta`.
+    state for the slice of the store.
 
   - `plugins`: An array of reducer functions that will be called after the
     default reducer function. Use this to augment the behavior of the built-in
     reducer, or to add support for custom action types for this store slice.
-    Plugins are called with `(state, action, options)`, where `options` are
-    the same options that you passed to `resourceReducer`.
-    
+    Plugins are functions that are called with the arguments
+    `(state, action, options)`, where `options` are the same options that you
+    passed to `resourceReducer`. For more, refer to the
+    [Plugins](/docs/guides/plugins.md) documentation.
+
   - `initialResourceMeta`: Additional metadata to include on any new resource's
     metadata after a read or create operation.
 

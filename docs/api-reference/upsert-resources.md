@@ -1,4 +1,4 @@
-# `upsertResources({resources, newResources, [mergeResources]})`
+# `upsertResources(resources, newResources, [mergeResources])`
 
 Add new or update existing resources in your state.
 
@@ -8,7 +8,7 @@ Add new or update existing resources in your state.
 
 2. `newResources` *(Array)*: The list of resources to add or update.
 
-3. `mergeResources` *(Boolean)*: Whether or not to merge individual resources
+3. [`mergeResources`] *(Boolean)*: Whether or not to merge individual resources
   with the existing resource in the store, or to replace it with the new data.
   Defaults to `true`.
 

@@ -28,10 +28,10 @@ statuses together.
   }
   ```
 
-  At most one of these values will be `true`. When `isNullPending` is `true`,
+  At most, one of these values will be `true`. When `isNullPending` is `true`,
   then you can be certain that one of these will _always_ be true. When
-  `isNullPending` is `false`, all three values will be `false` when the
-  all request statuses are `NULL`.
+  `isNullPending` is `false`, all three values will be `false` when all of the
+  request statuses are `NULL`.
 
 #### Notes
 
@@ -70,5 +70,6 @@ const bookReadStatus = getStatus(
   will consider these `NULL` states as `pending: true`.
 
 - If you're using React, we recommend computing your `getStatus` values in
-  `mapStateToProps` and passing them in as props. That way, you have access
-  to this information in all of the lifecycle methods of your component.
+  `mapStateToProps`, and then passing them in as props into your component. That
+  way, you have access to this information in all of the lifecycle methods of
+  your component.
