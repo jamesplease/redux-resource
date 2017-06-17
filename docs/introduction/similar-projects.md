@@ -31,7 +31,7 @@ is:
 1. it keeps a cache of errors returned from the server out of the box
 
 The features of redux-resources that are not included in resourceful-redux
-would be straightforward to add in via [plugins](../advanced/plugins.md).
+would be straightforward to add in via [plugins](../guides/plugins.md).
 However, getting the level of detail that resourceful-redux provides for
 requests appears like it would be difficult to achieve using redux-resources.
 

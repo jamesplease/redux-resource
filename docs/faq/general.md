@@ -42,7 +42,7 @@ write a transform that maps that key to be `id` instead.
 
 #### Does this work with a backend that adheres to a well-defined format, such as JSON API?
 
-Yes, it does. You may want to write a [plugin](../advanced/plugins.md) to handle
+Yes, it does. You may want to write a [plugin](../guides/plugins.md) to handle
 some advanced features provided by specifications such as JSON API, such as rich
 relationship support.
 

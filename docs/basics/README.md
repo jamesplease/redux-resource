@@ -1,7 +1,0 @@
-* [State Structure](/docs/basics/state-structure.md)
-* [CRUD Actions](/docs/basics/crud-actions.md)
-* [Using Labels](/docs/basics/using-labels.md)
-* [Reading Resources](/docs/basics/reading-resources.md)
-* [Updating Resources](/docs/basics/updating-resources.md)
-* [Creating Resources](/docs/basics/creating-resources.md)
-* [Deleting Resources](/docs/basics/deleting-resources.md)

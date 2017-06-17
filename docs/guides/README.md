@@ -1,0 +1,7 @@
+* [State Structure](/docs/guides/state-structure.md)
+* [CRUD Actions](/docs/guides/crud-actions.md)
+* [Using Labels](/docs/guides/using-labels.md)
+* [Reading Resources](/docs/guides/reading-resources.md)
+* [Updating Resources](/docs/guides/updating-resources.md)
+* [Creating Resources](/docs/guides/creating-resources.md)
+* [Deleting Resources](/docs/guides/deleting-resources.md)

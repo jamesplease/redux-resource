@@ -1,15 +1,17 @@
 # Core Concepts
 
-Understanding these core concepts should help you learn and use
-resourceful-redux.
+Understanding these core concepts will help you learn and use resourceful-redux.
 
 ### Resources
 
-A resource is an abstract object that you interact with in your application. For
+A resource is an entity that you interact with in your application. For
 instance, if your web application manages a public library, then you might have
 two resources: "books" and "members."
 
 Resources typically have attributes, such as a "name" or "releaseYear."
+
+Resources don't necessarily need to represent tangible objects. They can be more
+abstract things, too, such as "workflows" or "permissions."
 
 In resourceful-redux, each resource will be kept in its own
 [slice](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) of
@@ -25,9 +27,9 @@ information about which books are selected would be metadata about the books
 resource.
 
 One of the features of resourceful-redux is that it provides a system for
-keeping metadata organized. The system isn't too complicated: the metadata of a
-resource is stored separately from the resource's attributes. And you can also
-store metadata on a per-request basis.
+keeping metadata organized. The system is this: the metadata of a resource is
+stored separately from the resource's attributes. And you can also store
+metadata on a per-request basis.
 
 ### Requests
 
@@ -40,10 +42,11 @@ can create them, retrieve them, update them, or delete them. These four
 operations are collectively known as
 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete).
 
-Because requests occur over a network, they do not complete instantly.
-They might take awhile to complete, and sometimes they might fail.
-In resourceful-redux, this information is represented as one of four state.
-All requests are always in one of these four states:
+Because requests occur over a network, they do not happen instantly.
+They might take awhile to complete, and they don't always succeed.
+In resourceful-redux, this information is represented as one of four "statuses."
+In resourceful-redux, all requests will always have one of these statuses
+associated with them:
 
 - `NULL`: the request hasn't begun yet
 - `PENDING`: the request has started, but has not yet finished

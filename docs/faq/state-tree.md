@@ -7,7 +7,7 @@ the request statuses directly (use the built-in Action Types to do this), but
 feel free to store anything else in there that you want.
 
 The best way to add support for custom metadata is by writing
-[plugins]('../advanced/plugins.md') to add support custom Action Types in a
+[plugins]('../guides/plugins.md') to add support custom Action Types in a
 resource's reducer.
 
 #### Can I store additional properties on each state slice?

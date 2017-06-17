@@ -10,5 +10,8 @@
     "github": {
       "url": "https://github.com/jmeas/resourceful-redux/"
     }
+  },
+  "structure": {
+    "readme": "INDEX.md"
   }
 }
