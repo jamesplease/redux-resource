@@ -6,6 +6,7 @@
   * [Core Concepts](/docs/introduction/core-concepts.md)
   * [Similar Projects](/docs/introduction/similar-projects.md)
 * [Guides](/docs/guides/README.md)
+  * [Resources](/docs/guides/resources.md)
   * [State Structure](/docs/guides/state-structure.md)
   * [CRUD Actions](/docs/guides/crud-actions.md)
   * [Using Labels](/docs/guides/using-labels.md)

@@ -148,18 +148,20 @@ This will allow you to keep track of which books are associated with this
 specific search. Labels are a powerful feature, and are covered more thoroughly
 in the next guide.
 
-### Other action properties
+### Other CRUD Action properties
 
-The following action attributes are all optional.
+The following CRUD Action attributes are all optional.
 
 - `mergeResources` *(Boolean)*: When an action results in resources being
   updated in the store, this determines if the new data is merged with the old,
-  or if it replaces the old data. Defaults to `true`.
+  or if it replaces the old data. Defaults to `true`. This only applies to
+  successful read, write, and update Actions.
 
 - `mergeMeta` *(Boolean)*: This is like `mergeResources`, but for metadata.
-  Defaults to `true`.
+  Defaults to `true`. This applies to all CRUD Actions.
 
 - `mergeLabelIds` *(Boolean)*: When a label is supplied, this lets you control
   whether or not the new list of IDs replaces or gets merged into the existing
   list of IDs for that label. When `true`, it will protect against duplicate
-  IDs being added. Defaults to `true`.
+  IDs being added. Defaults to `true`. This only applies for successful read,
+  write, and update Actions that have a `label` specified.

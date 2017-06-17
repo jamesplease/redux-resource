@@ -1,4 +1,4 @@
-# `setResourceMeta({resources, meta, newMeta, [initialResourceMeta], [mergeMeta]})`
+# `setResourceMeta(options)`
 
 Update one or more individual resources with the same metadata.
 

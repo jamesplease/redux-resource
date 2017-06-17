@@ -7,9 +7,9 @@ is represented in your store.
 
 Typical usage of resourceful-redux involves using
 [`combineReducers`](http://redux.js.org/docs/api/combineReducers.html) to
-separate each resource into its own "slice" within your overall state tree. Each
-of these slices will store information about one resource, separate from your
-other resources.
+separate each type of resource into its own "slice" within your overall state
+tree. Each of these slices will store information about one type of resource,
+separate from your other types of resources.
 
 In the rest of this guide, we will be talking about the structure of the "state".
 If you're using `combineReducers`, then we will be talking about one individual
