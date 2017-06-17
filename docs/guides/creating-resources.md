@@ -1,4 +1,82 @@
 # Creating Resources
 
 resourceful-redux provides four [action types](./faq/action-types.md) for
-creating resources.
+creating resources. They are as follows:
+
+```js
+"CREATE_RESOURCES"
+"CREATE_RESOURCES_FAIL"
+"CREATE_RESOURCES_SUCCEED"
+"CREATE_RESOURCES_NULL"
+```
+
+Each request will always begin with an action with type `CREATE_RESOURCES`.
+Then, one of the other three action types will be used to represent the
+resolution of that request. Use the requests in the following way:
+
+- `CREATE_RESOURCES_FAIL`: Use this if the request fails for any reason. This
+  could be network errors, or any
+  [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+  greater than 400.
+- `CREATE_RESOURCES_NULL`: Use this is the request is aborted.
+- `CREATE_RESOURCES_SUCCEED`: Use this when the request was successful.
+
+### Using Labels
+
+For many create requests, you don't have the ID of the resource being created
+until after the operation succeeds. Therefore, to track the status of the
+request, you will need a label.
+
+Many interfaces only allow one creation request at a time (although that
+request may be for a bulk creation). In these situations, you can just use a
+single label, such as `"create"`, for all of your creation requests.
+
+### Example Action Creator
+
+This example shows an action creator to create a single book. It uses the
+[redux-thunk](https://github.com/gaearon/redux-thunk) middleware and the
+library [xhr](https://github.com/naugtur/xhr) for making requests.
+
+```js
+import { actionTypes } from 'resourceful-redux';
+import xhr from 'xhr';
+
+export default function createBook(bookDetails) {
+  return function(dispatch) {
+    dispatch({
+      type: actionTypes.CREATE_RESOURCES,
+      resourceName: 'books',
+      label: 'create'
+    });
+
+    const req = xhr.post(
+      `/books`,
+      { json: bookDetails },
+      (err, res, body) => {
+        if (req.aborted) {
+          dispatch({
+            type: actionTypes.CREATE_RESOURCES_NULL,
+            resourceName: 'books',
+            label: 'create'
+          });
+        } else if (err || res.statusCode >= 400) {
+          dispatch({
+            type: actionTypes.CREATE_RESOURCES_FAIL,
+            resourceName: 'books',
+            label: 'create'
+          });
+        } else {
+          dispatch({
+            type: actionTypes.CREATE_RESOURCES_SUCCEED,
+            resourceName: 'books',
+            label: 'create',
+            resources: [body]
+          });
+        }
+      }
+    );
+
+    return req;
+  }
+}
+```
