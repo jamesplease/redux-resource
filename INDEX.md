@@ -15,8 +15,8 @@ npm install --save resourceful-redux
 Read the [Introduction](/docs/introduction/README.md) section for understanding
 why this library exists, or to learn about other solutions.
 
-The [Basics](/docs/introduction/README.md) guides explain how to use
-resourceful-redux to the fullest.
+The [Guides](/docs/introduction/README.md) explain how to use the features
+of resourceful-redux.
 
 Answers to frequently asked questions can be found in the
 [FAQ section](/docs/faq/README.md).

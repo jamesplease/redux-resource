@@ -28,6 +28,24 @@ Because you usually know the ID of the resources that you're deleting, you
 typically don't need to use labels for delete operations. The metadata for the
 delete request can just be stored on the resource metadata directly.
 
+### Successful Deletes
+
+When a delete operation is successful, any resources included in the
+`DELETE_RESOURCES_SUCCEEDED` action will be removed from the `resources` array
+of your state tree. They will also be removed from the ID array of any label.
+
+The meta for each of the resources will be reset to the default metadata,
+except for `deleteStatus`, which will be set to `"SUCCEEDED"`.
+
+> Note: Keep in mind that this means that a resource's metadata will never
+  completely go away with the built-in reducers. If we handled this cleanup for
+  you, then you would never get the successful status for delete requests!
+
+> For most applications, this won't be a problem, and you can just leave the
+  metadata in your state tree. If your application involves deleting many, many
+  resources, you may want to write a [plugin](/docs/guides/plugins.md) to clear
+  out old, unused metadata.
+
 ### Example Action Creator
 
 This example shows an action creator to delete a single book. It uses the

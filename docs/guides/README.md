@@ -6,3 +6,4 @@
 * [Updating Resources](/docs/guides/updating-resources.md)
 * [Creating Resources](/docs/guides/creating-resources.md)
 * [Deleting Resources](/docs/guides/deleting-resources.md)
+* [Plugins](/docs/guides/plugins.md)
