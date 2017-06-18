@@ -68,21 +68,27 @@ export function readSucceed(state, action, {initialResourceMeta}) {
     };
 
     if (hasResources) {
-      let newLabelIds;
-      if (currentLabel.ids) {
-        newLabelIds = Array.prototype.slice.call(currentLabel.ids);
-      } else {
-        newLabelIds = [];
-      }
-
-      resources.forEach(resource => {
-        const id = typeof resource === 'object' ? resource.id : resource;
-        if (!newLabelIds.includes(id)) {
-          newLabelIds.push(id);
+      if (action.mergeLabelIds === false) {
+        let newLabelIds;
+        if (currentLabel.ids) {
+          newLabelIds = Array.prototype.slice.call(currentLabel.ids);
+        } else {
+          newLabelIds = [];
         }
-      });
 
-      newLabel.ids = newLabelIds;
+        resources.forEach(resource => {
+          const id = typeof resource === 'object' ? resource.id : resource;
+          if (!newLabelIds.includes(id)) {
+            newLabelIds.push(id);
+          }
+        });
+
+        newLabel.ids = newLabelIds;
+      } else {
+        newLabel.ids = resources.map(resource => {
+          return typeof resource === 'object' ? resource.id : resource;
+        });
+      }
     }
 
     newLabels = {
