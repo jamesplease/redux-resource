@@ -18,14 +18,10 @@ export default function upsertResources(resources, newResources, mergeResources)
     let resourceToInsert;
     if (mergeResourcesOption) {
       const currentResource = shallowClone[resourceIndex];
-      if (resourceIsObject) {
-        resourceToInsert = {
-          ...currentResource,
-          ...resourceObj
-        };
-      } else {
-        resourceToInsert = {...currentResource};
-      }
+      resourceToInsert = {
+        ...currentResource,
+        ...resourceObj
+      };
     } else {
       resourceToInsert = resourceObj;
     }

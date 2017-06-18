@@ -18,16 +18,19 @@ describe('upsertResources', function() {
   });
 
   describe('merge: false', () => {
-    it('should replace "unmatched" resources in the store, and the data for "matched" resources', () => {
+    it('should replace the data for "matched" resources', () => {
       const result = upsertResources(
         this.resources,
-        [{id: 1, first_name: 'oink'}],
+        [
+          {id: 1, first_name: 'oink'},
+          5
+        ],
         false
       );
 
       expect(result).to.deep.equal([
         {id: 1, first_name: 'oink'},
-        {id: 5, first_name: 'stephen', last_name: 'rjr'},
+        {id: 5},
         {id: 7, first_name: 'shilpa', last_name: 'm'}
       ]);
 
