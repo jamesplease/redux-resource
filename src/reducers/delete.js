@@ -1,41 +1,12 @@
+import reducerGenerator from './reducer-generator';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
-import updateMetaHelper from '../utils/update-meta-helper';
 import requestStatuses from '../utils/request-statuses';
 
-export function del(state, action) {
-  return updateMetaHelper({
-    resources: action.resources,
-    label: action.label,
-    mergeMeta: action.mergeMeta,
-    requestStatus: requestStatuses.PENDING,
-    crudAction: 'delete',
-    state
-  });
-}
+const del = reducerGenerator('del', requestStatuses.PENDING);
+const delFail = reducerGenerator('del', requestStatuses.FAILED);
+const delNull = reducerGenerator('del', requestStatuses.NULL);
 
-export function delFail(state, action) {
-  return updateMetaHelper({
-    resources: action.resources,
-    label: action.label,
-    mergeMeta: action.mergeMeta,
-    requestStatus: requestStatuses.FAILED,
-    crudAction: 'delete',
-    state
-  });
-}
-
-export function delNull(state, action) {
-  return updateMetaHelper({
-    resources: action.resources,
-    label: action.label,
-    mergeMeta: action.mergeMeta,
-    requestStatus: requestStatuses.NULL,
-    crudAction: 'delete',
-    state
-  });
-}
-
-export function delSucceed(state, action, {initialResourceMeta}) {
+function delSucceed(state, action, {initialResourceMeta}) {
   const label = action.label;
   const resources = action.resources;
 
@@ -115,3 +86,5 @@ export function delSucceed(state, action, {initialResourceMeta}) {
     resources: newResources
   };
 }
+
+export {del, delFail, delNull, delSucceed};

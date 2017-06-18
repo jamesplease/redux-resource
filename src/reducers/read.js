@@ -1,44 +1,17 @@
-import updateMetaHelper from '../utils/update-meta-helper';
+import reducerGenerator from './reducer-generator';
 import cruReducerHelper from '../utils/cru-reducer-helper';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
 
-export function read(state, action) {
-  return updateMetaHelper({
-    resources: action.resources,
-    label: action.label,
-    mergeMeta: action.mergeMeta,
-    requestStatus: requestStatuses.PENDING,
-    crudAction: 'read',
-    state
-  });
-}
+const read = reducerGenerator('read', requestStatuses.PENDING);
+const readFail = reducerGenerator('read', requestStatuses.FAILED);
+const readNull = reducerGenerator('read', requestStatuses.NULL);
 
-export function readFail(state, action) {
-  return updateMetaHelper({
-    resources: action.resources,
-    label: action.label,
-    mergeMeta: action.mergeMeta,
-    requestStatus: requestStatuses.FAILED,
-    crudAction: 'read',
-    state
-  });
-}
-
-export function readNull(state, action) {
-  return updateMetaHelper({
-    resources: action.resources,
-    label: action.label,
-    mergeMeta: action.mergeMeta,
-    requestStatus: requestStatuses.NULL,
-    crudAction: 'read',
-    state
-  });
-}
-
-export function readSucceed(state, action, options) {
+function readSucceed(state, action, options) {
   return cruReducerHelper(state, action, options, {
     ...initialResourceMetaState,
     readStatus: requestStatuses.SUCCEEDED
   });
 }
+
+export {read, readFail, readNull, readSucceed};
