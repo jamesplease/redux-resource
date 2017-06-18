@@ -27,18 +27,20 @@ export class BookDetails extends Component {
     const { book, readStatus } = this.props;
 
     return (
-      {readStatus.pending && 'Loading...'}
-      {readStatus.failed && 'There was an error.'}
-      {readStatus.succeeded && (
-        <div>
-          <span>
-            {book.title} ({book.id})
-          </span>
-          <span>
-            {book.releaseYear}, {book.author}
-          </span>
-        </div>
-      )}
+      <div>
+        {readStatus.pending && 'Loading...'}
+        {readStatus.failed && 'There was an error.'}
+        {readStatus.succeeded && (
+          <div>
+            <span>
+              {book.title} ({book.id})
+            </span>
+            <span>
+              {book.releaseYear}, {book.author}
+            </span>
+          </div>
+        )}
+      </div>
     );
   }
 }
