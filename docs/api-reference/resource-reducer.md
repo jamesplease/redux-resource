@@ -2,7 +2,7 @@
 
 Creates a Redux [reducer](http://redux.js.org/docs/basics/Reducers.html) that
 changes your store's state when actions with one of the CRUD
-[Action Types](action-types.md) are dispatched.
+[Action types](action-types.md) are dispatched.
 
 #### Arguments
 

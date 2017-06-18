@@ -53,5 +53,7 @@ export default function reducer(state, action) {
 
 #### Tips
 
-- This is used by the reducer returned by `resourceReducer` to update the
-  resource meta in your store. You will typically only need to use this method if you're writing a custom plugin.
+- This is used by the reducer returned by
+  [`resourceReducer`](./resource-reducer.md) to update the resource meta in your
+  state tree. You will typically only need to use this method if you're writing
+  a [plugin]('/docs/guides/plugins.md').

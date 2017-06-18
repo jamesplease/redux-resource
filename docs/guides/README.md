@@ -1,7 +1,7 @@
 * [Resources](/docs/guides/resources.md)
 * [State Structure](/docs/guides/state-structure.md)
 * [CRUD Actions](/docs/guides/crud-actions.md)
-* [Using Labels](/docs/guides/using-labels.md)
+* [Labels](/docs/guides/labels.md)
 * [Reading Resources](/docs/guides/reading-resources.md)
 * [Updating Resources](/docs/guides/updating-resources.md)
 * [Creating Resources](/docs/guides/creating-resources.md)
