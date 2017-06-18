@@ -84,6 +84,27 @@ const searchLabelIds = state.books.labels.search.ids;
 const searchResults = state.books.resources.filter(book => searchLabelIds.includes(book.id));
 ```
 
+### Replacing Label IDs
+
+By default, subsequent successful requests with the same label will _merge_
+the old label IDs with the new. You can outright replace the old list with the
+new by passing `mergeLabelIds: false` in your action. For instance:
+
+```js
+import { actionTypes } fom 'resourceful-redux';
+import store from './store';
+
+store.dispatch({
+  type: actionTypes.READ_RESOURCES_SUCCEEDED,
+  resourceName: 'books',
+  label: 'search',
+  mergeLabelIds: false,
+  // `newResources` are the list of books that were returned by the server
+  // for this query.
+  resources: newResources
+});
+```
+
 ### Performance
 
 Filtering the resources array with an array of list IDs can sometimes cause
