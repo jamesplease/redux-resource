@@ -44,9 +44,8 @@ operations are collectively known as
 
 Because requests occur over a network, they do not happen instantly.
 They might take awhile to complete, and they don't always succeed.
-In resourceful-redux, this information is represented as one of four "statuses."
-In resourceful-redux, all requests will always have one of these statuses
-associated with them:
+In resourceful-redux, this information is represented as one of four "statuses,"
+and all requests will always have one of the four statuses. The statuses are:
 
 - `NULL`: the request hasn't begun yet
 - `PENDING`: the request has started, but has not yet finished

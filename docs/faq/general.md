@@ -50,5 +50,4 @@ relationship support.
 
 Yes. The only requirement is that the data returned can be reasonably mapped to
 the concept of a "resource." A resource, from this library's perspective, is
-an independent entity that can be distinguished from another resource through a
-unique identifier.
+a JavaScript object with an `id` attribute.

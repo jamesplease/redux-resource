@@ -3,8 +3,7 @@
 resourceful-redux exports Action types to help you create, read, update,
 and delete resources. Although these operations are different from one another,
 there are many similarities between the Actions for these operations in
-resourceful-redux. Once you learn how to do one in resourceful-redux, the others
-should feel natural.
+resourceful-redux.
 
 ### Action Sequences
 
@@ -40,11 +39,12 @@ something like this:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
+import store from './store';
 
-{
+store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books'
-}
+});
 ```
 
 This action type isn't very useful, however. Without more information about this
@@ -82,28 +82,30 @@ part is that the objects have some `id`. This associates the action with some
 resources.
 
 You may be wondering when you might use the object form versus the shorthand
-form. Well, if you're reading a single book, for instance, you may initiate the
-request with just an ID, since that is all of the information that you have at
-that time. That action may look like the following:
+form. Well, if you're reading a single resource, like a book, you may initiate
+the request with just the ID, since that is all of the information that you have
+at that time. That action may look like the following:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
+import store from './store';
 
-{
+store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
   resources: [23]
-}
+});
 ```
 
-When the request succeeds, you might now have additional information about this
+When the request succeeds, you now have additional information about this
 book to add to your store. So you would include the full definition in the
 action representing success:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
+import store from './store';
 
-{
+store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
   resourceName: 'books',
   resources: [{
@@ -112,7 +114,7 @@ import { actionTypes } from 'resourceful-redux';
     author: 'Jane M. Goodfellow',
     title: 'A History of Canada'
   }]
-}
+});
 ```
 
 Whenever a `resources` array is supplied, resourceful-redux will update the
@@ -124,9 +126,9 @@ updated to reflect any new data. And for successful deletes, any resources
 passed in will be _removed_ from the state's resources array, as well as from
 the `ids` array of all labels.
 
-It doesn't always make sense to supply an array of `resources`. For instance,
-if the user is searching for books by entering a title, you couldn't know which
-books will be returned until after the request has completed.
+It isn't always possible to provide an array of `resources` in your action. For
+instance, if the user is searching for books by entering a title, you couldn't
+know which books will be returned until after the request has completed.
 
 To keep track of the resources for requests like these, you need to use labels.
 
@@ -137,22 +139,23 @@ property of your store. Also, if you pass `resources`, then the IDs of those
 resources will be associated with the label, too.
 
 For instance, if you let users search for a books resource in a modal, you might
-use the following action:
+dispatch the following action:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
+import store from './store';
 
-{
+store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
   label: 'modalSearch',
   query: 'Lord of the Flies'
-}
+});
 ```
 
 This will allow you to keep track of which books are associated with this
 specific search. Labels are a powerful feature, and are covered more thoroughly
-in the next guide.
+in the [Labels guide](/docs/guides/labels.md).
 
 ### Other CRUD Action properties
 

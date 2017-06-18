@@ -24,8 +24,8 @@ following way:
 
 ### Using Labels
 
-When reading a single resource, you usually use an ID to read that resource.
-Therefore, labels aren't needed for single reads, as you can track the request
+When reading a single resource, you usually use an ID to read it. Therefore,
+labels aren't usually needed for single reads, as you can track the request
 on the resource's metadata directly.
 
 For bulk reads, you sometimes use some sort of filter or query to retrieve a
@@ -97,7 +97,7 @@ export default function readBook(bookId) {
 This example shows an action creator to read multiple books. It uses the
 [redux-thunk](https://github.com/gaearon/redux-thunk) middleware and the
 library [xhr](https://github.com/naugtur/xhr) for making requests. To create
-a querystring, it uses the
+a query string, it uses the
 [querystring module](https://github.com/Gozala/querystring).
 
 ```js
@@ -105,7 +105,6 @@ import { actionTypes } from 'resourceful-redux';
 import xhr from 'xhr';
 import qs from 'querystring';
 
-// In this example, we pass in a query string. You
 export default function readBooks(query) {
   return function(dispatch) {
     dispatch({

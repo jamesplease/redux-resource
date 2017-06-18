@@ -64,7 +64,9 @@ export default function createBook(bookDetails) {
 
     const req = xhr.post(
       '/books',
-      { json: bookDetails },
+      {
+        json: bookDetails
+      },
       (err, res, body) => {
         if (req.aborted) {
           dispatch({

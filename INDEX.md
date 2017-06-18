@@ -1,6 +1,7 @@
 # resourceful-redux
 
-resourceful-redux is a system for managing data that is persisted to remote servers.
+resourceful-redux is a system for managing 'resources' – data that is persisted
+to remote servers.
 
 ### Installation
 
@@ -12,10 +13,10 @@ npm install --save resourceful-redux
 
 ### Getting Started
 
-Read the [Introduction](/docs/introduction/README.md) section for understanding
-why this library exists, or to learn about other solutions.
+Read the [Introduction](/docs/introduction/README.md) to learn why this library
+exists, or to read about alternative solutions.
 
-The [Guides](/docs/introduction/README.md) explain how to use the features
+The [Guides](/docs/guides/README.md) explain how to use the features
 of resourceful-redux.
 
 Answers to frequently asked questions can be found in the

@@ -25,7 +25,7 @@ is:
 
 1. resources are split up in the store based on the requests that you make.
   resourceful-redux stores all resources of the same type into a single list,
-  and provides labels to divide up the resources.
+  and provides labels to organize your resources by requests.
 1. it does not provide metadata on a per-resource level
 1. it provides timestamps for the operations that you perform out of the box
 1. it keeps a cache of errors returned from the server out of the box

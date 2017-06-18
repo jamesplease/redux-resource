@@ -8,8 +8,8 @@ is represented in your state tree.
 Typical usage of resourceful-redux involves using
 [`combineReducers`](http://redux.js.org/docs/api/combineReducers.html) to
 separate each type of resource into its own "slice" within your overall state
-tree. Each of these slices will store information about one type of resource,
-separate from your other types of resources.
+tree. Each of these slices will store information about a single type of
+resource, separate from your other types of resources.
 
 In the rest of this guide, we will be talking about the structure of the "state".
 If you're using `combineReducers`, then we will be talking about one individual
@@ -56,15 +56,15 @@ then your state will end up looking like this:
 ```
 
 Keep in mind that resourceful-redux doesn't care the specific format that your
-server sends the data back in. The important part is that you have unique
-objects that are distinguished from one another by a unique identifier.
+server sends the data back in. You just need to make sure that the resources
+you pass into resourceful-redux have an `id` attribute.
 
 ### Resource Metadata
 
 Metadata about each of the resources in your state's `resources` array
 is stored under the `meta` object of the state. This includes information
 about requests, such as whether the resource is being updated, or deleted, and
-you may also store additional, application-specific metadata here, such as
+you can store additional, application-specific metadata here, such as
 whether or not a resource is "selected" in your UI, or not.
 
 resourceful-redux comes with built-in metadata for each resource, representing
@@ -81,11 +81,8 @@ looks like the following:
 ```
 
 These four keys represent the four CRUD actions. The values of the keys are
-one of the four request statuses – null, pending, succeeded, or failed,
-representing the status of any requests for that resource.
-
-When you create your resource reducers, you have the option to specify
-additional default metadata for each resource.
+one of the four request statuses – `"NULL"`, `"PENDING"`, `"SUCCEEDED"`, or
+`"FAILED"`, representing the status of any requests involving that resource.
 
 Let's look at an example. Consider an application where a user can "select"
 resources from a list, and then take action on their selection (such as updating
@@ -163,8 +160,8 @@ to that resource's `meta` object to keep track of it.
 
 Keep in mind that you don't _need_ to store any additional metadata here. For
 instance, in the above example, if you'd rather have a `selectedIds` property
-directly on your state instead, then you could do that instead. Just know that
-the option is there to store your own, additional metadata in the `meta` object.
+directly on your state instead, then you could do that. Just know that
+the option is there to store your own, additional metadata on the `meta` object.
 
 ### Labels
 

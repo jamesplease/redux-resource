@@ -3,7 +3,7 @@
 Labels are a way to keep your requests organized. In resourceful-redux, all
 resources of the same type are kept in a single Array. This solves the problem
 of having multiple copies of a resource in two different places: each resource
-can be found in exactly one place in the store.
+can be found in exactly one place in the state tree.
 
 This can cause a problem of keeping track of requests. For instance, if a user
 runs two searches for books, how can you keep track of which books were returned
@@ -11,7 +11,7 @@ from which search?
 
 You use labels to do that.
 
-Using a label is straightforward: simply add the `label` property to all of the
+Using a label is straightforward: add the `label` property to all of the
 requests in that [sequence of actions](./crud-actions.md).
 
 ```js
@@ -44,7 +44,7 @@ const searchStatus = getStatus(state, 'books.labels.search.status');
 //
 ```
 
-When the request succeeds, you will dispatch the following action:
+When the request succeeds, you dispatch the following action:
 
 ```js
 import { actionTypes } fom 'resourceful-redux';
@@ -60,8 +60,7 @@ store.dispatch({
 });
 ```
 
-Now, if you were to run `getStatus` for this label, you would get the following
-object:
+Now when you call `getStatus` for this label, you get the following object:
 
 ```js
 {
@@ -111,13 +110,13 @@ Filtering the resources array with an array of list IDs can sometimes cause
 performance issues if your application deals with large numbers of resources. If
 you run into these performance problems, we have had luck with these solutions:
 
-- Make sure that the find is done as few times as possible. For instance,
+- Make sure that the filter is done as few times as possible. For instance,
   if the component is connected, perform the filter in `mapStateToProps`, then
   pass it in as props. Then it is computed at most once per render.
 
 - Use [`reselect`](https://github.com/reactjs/reselect) to cache the result
-  of the filter. This will only compute the result whenever the resource list or
-  label ID list changes.
+  of the filter. This will only recompute the result whenever the resource list
+  or label ID list changes.
 
 - If this still isn't performant enough for you, then you can just make a
   separate slice for a subset of your resources, rather than using a label. Then

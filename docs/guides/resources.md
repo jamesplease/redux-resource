@@ -45,8 +45,8 @@ into resourceful-redux-compatible resources. We understand that this isn't
 ideal, but we believe the benefits of resourceful-redux outweigh this
 inconvenience.
 
-Here are some examples of common data that a backend may send over, and how you
-might change it into resourceful-redux compatible resources.
+Here are some examples of common data formats that a backend may send over, and
+how you can change them into resourceful-redux compatible resources.
 
 ```js
 // Backend returns:

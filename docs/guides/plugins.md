@@ -90,9 +90,9 @@ let store = createStore(
 ### Changing Built-In Action Type behavior
 
 Plugins are run **after** the built-in reducer code runs, so you can write
-plugins that affect the way the store behaves for certain action types.
-In the following plugin, we set a property on the store anytime a successful
-read occurs:
+plugins that affect the way the reducer transforms the state for built-in action
+types. In the following plugin, we set a property on the store anytime a
+successful read occurs:
 
 ```js
 export default function(resourceName) {
@@ -114,10 +114,6 @@ export default function(resourceName) {
   };
 }
 ```
-
-A more useful example of this is if your API supports "compound documents",
-where multiple types of resources can be returned at one time. You could
-write plugins to support those endpoints.
 
 ### Best Practices
 

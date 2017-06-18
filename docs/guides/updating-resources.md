@@ -63,14 +63,16 @@ export default function updateBook(bookDetails) {
       type: actionTypes.UPDATE_RESOURCES_PENDING,
       resourceName: 'books',
       // You can pass either the whole `bookDetails`, or just the ID. Both work.
-      // Just be sure to pass the whole object on success, so that the new
+      // Just be sure to pass the whole object on success, so that the updated
       // attributes are persisted to your state tree!
       resources: [bookDetails.id]
     });
 
     const req = xhr.patch(
       `/books/${bookDetails.id}`,
-      { json: bookDetails },
+      {
+        json: bookDetails
+      },
       (err, res, body) => {
         if (req.aborted) {
           dispatch({
