@@ -1,8 +1,21 @@
-import getValueFromPath from 'lodash/get';
 import requestStatuses from './request-statuses';
 
 function getSingleStatus(state, metaLocation, isNullPending) {
-  const status = getValueFromPath(state, metaLocation, requestStatuses.NULL);
+  const splitPath = metaLocation.split('.');
+
+  let status;
+  let currentVal = state;
+  for (let i = 0; i < splitPath.length; i++) {
+    const pathValue = currentVal[splitPath[i]];
+    if (typeof pathValue === 'undefined') {
+      status = requestStatuses.NULL;
+      break;
+    } else if (i === splitPath.length - 1) {
+      status = pathValue;
+    }
+
+    currentVal = pathValue;
+  }
 
   const isPending = status === requestStatuses.PENDING;
   const nullPending = Boolean(isNullPending) && status === requestStatuses.NULL;

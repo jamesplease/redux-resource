@@ -87,8 +87,5 @@
   "babelBoilerplateOptions": {
     "entryFileName": "index.js",
     "mainVarName": "createResource"
-  },
-  "dependencies": {
-    "lodash": "^4.17.4"
   }
 }
