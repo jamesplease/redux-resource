@@ -7,20 +7,20 @@ time, and they may sometimes fail.
 
 It's a developer's job to provide feedback to users about network
 requests. When using Redux, this means writing reducers that change the state
-based on the status of these requests. You can run into problems when you write
-these reducers by hand in projects with many resources.
+based on the status of these requests. If your application has many resources,
+you can run into problems when you write these reducers by hand.
 
 For one, simply figuring out what information needs to be tracked can be
-difficult to figure out. It's not a simple problem to solve.
+difficult to figure out. Request tracking is a tough problem.
 
-Even if you do figure it out for some requests, it may be solved differently
-for different resources in your state tree. This inconsistency will propagate to
-your view layer. Code bases that are not consistent are more difficult to
-maintain.
+When you do figure out something that works, it may be implemented slightly
+differently for different resources in your state tree. This inconsistency will
+propagate to your view layer. Code bases that are not consistent are more
+difficult to maintain.
 
 Additionally, tracking all of this data for every request requires writing a lot
 of reducer code. You may omit writing some of that code to save on time. This
-contributes to consistency, and also gives you, as the developer, less
+contributes to inconsistency, and also gives you, as the developer, less
 data to use to provide feedback to your users.
 
 resourceful-redux is intended to solve these problems. It provides a system of
