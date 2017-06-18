@@ -1,5 +1,3 @@
-// import {resourceReducer, requestStatuses} from '../../../src';
-
 describe('reducers: create', function() {
-  // Intentionally blank
+  // Intentionally blank. See reducers: read tests
 });
