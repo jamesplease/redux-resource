@@ -28,6 +28,18 @@ For most applications, labels won't be necessary for updates. This is because
 you typically know the IDs of the resources that you're updating, so you can
 just track the requests on the resource's metadata directly.
 
+### Successful Updates
+
+When an action of type `UPDATE_RESOURCES_SUCCEEDED` is dispatched, the
+reducer will update any of the resources in your state tree with the ones
+included in the action's `resources`.
+
+The metadata for each of those resources will also be changed to have
+`readStatus: 'SUCCEEDED'`.
+
+If a `label` is passed, then the IDs for the label will be updated to include
+the new IDs.
+
 ### Example Action Creator
 
 This example shows an action creator to update a single book. It uses the

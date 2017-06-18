@@ -32,6 +32,18 @@ For bulk reads, you sometimes use some sort of filter or query to retrieve a
 list of resources. In these situations, it's often a good idea to use a label
 to keep track of the request.
 
+### Successful Reads
+
+When an action of type `READ_RESOURCES_SUCCEEDED` is dispatched, the
+reducer will update any of the resources in your state tree with the ones
+included in the action's `resources`.
+
+The metadata for each of those resources will also be changed to have
+`readStatus: 'SUCCEEDED'`.
+
+If a `label` is passed, then the IDs for the label will be updated to include
+the new IDs.
+
 ### Example Action Creator: Reading One Resource
 
 This example shows an action creator to read a single book. It uses the

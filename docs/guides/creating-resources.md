@@ -32,6 +32,18 @@ Many interfaces only allow one creation request at a time (although that
 request may be for a bulk creation). In these situations, you can just use a
 single label, such as `"create"`, for all of your creation requests.
 
+### Successful Creates
+
+When an action of type `CREATE_RESOURCES_SUCCEEDED` is dispatched, the
+reducer will update any of the resources in your state tree with the ones
+included in the action's `resources`.
+
+The metadata for each of those resources will also be changed to have
+`createStatus: 'SUCCEEDED'`.
+
+If a `label` is passed, then the IDs for the label will be updated to include
+the new IDs.
+
 ### Example Action Creator
 
 This example shows an action creator to create a single book. It uses the

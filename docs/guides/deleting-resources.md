@@ -30,9 +30,9 @@ delete request can just be stored on the resource metadata directly.
 
 ### Successful Deletes
 
-When a delete operation is successful, any resources included in the
-`DELETE_RESOURCES_SUCCEEDED` action will be removed from the `resources` array
-of your state tree. They will also be removed from the ID array of any label.
+When an action of type `DELETE_RESOURCES_SUCCEEDED` is dispatched, any resources
+included in the action will be removed from the `resources` array of your state
+tree. They will also be removed from the ID array of any label.
 
 The meta for each of the resources will be reset to the default metadata,
 except for `deleteStatus`, which will be set to `"SUCCEEDED"`.
