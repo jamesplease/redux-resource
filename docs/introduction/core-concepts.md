@@ -1,6 +1,6 @@
 # Core Concepts
 
-Understanding these core concepts will help you learn and use resourceful-redux.
+Understanding these core concepts will help you learn and use Resourceful Redux.
 
 ### Resources
 
@@ -13,7 +13,7 @@ Resources typically have attributes, such as a "name" or "releaseYear."
 Resources don't necessarily need to represent tangible objects. They can be more
 abstract things, too, such as "workflows" or "permissions."
 
-In resourceful-redux, each resource will be kept in its own
+In Resourceful Redux, each resource will be kept in its own
 [slice](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) of
 your store. Within that slice, all of the resources of a single type are kept in
 a single list.
@@ -26,7 +26,7 @@ your interface displays a list of books that the user can select, then the
 information about which books are selected would be metadata about the books
 resource.
 
-One of the features of resourceful-redux is that it provides a system for
+One of the features of Resourceful Redux is that it provides a system for
 keeping metadata organized. The system is this: the metadata of a resource is
 stored separately from the resource's attributes. And you can also store
 metadata on a per-request basis.
@@ -44,7 +44,7 @@ operations are collectively known as
 
 Because requests occur over a network, they do not happen instantly.
 They might take awhile to complete, and they don't always succeed.
-In resourceful-redux, this information is represented as one of four "statuses,"
+In Resourceful Redux, this information is represented as one of four "statuses,"
 and all requests will always have one of the four statuses. The statuses are:
 
 - `NULL`: the request hasn't begun yet
@@ -55,6 +55,6 @@ and all requests will always have one of the four statuses. The statuses are:
 ### Metadata About Requests
 
 In applications, requests are often made that read or write information about
-resources. resourceful-redux provides reducers that track these request statuses
+resources. Resourceful Redux provides reducers that track these request statuses
 as metadata about each resource for you. This reduces the boilerplate code that
 you need to write, freeing you up to build a great application.

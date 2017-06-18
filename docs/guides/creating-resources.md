@@ -1,6 +1,6 @@
 # Creating Resources
 
-resourceful-redux provides four [action types](./faq/action-types.md) for
+Resourceful Redux provides four [action types](./faq/action-types.md) for
 creating resources. They are as follows:
 
 ```js

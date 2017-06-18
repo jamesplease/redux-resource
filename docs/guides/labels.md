@@ -1,6 +1,6 @@
 # Labels
 
-Labels are a way to keep your requests organized. In resourceful-redux, all
+Labels are a way to keep your requests organized. In Resourceful Redux, all
 resources of the same type are kept in a single Array. This solves the problem
 of having multiple copies of a resource in two different places: each resource
 can be found in exactly one place in the state tree.

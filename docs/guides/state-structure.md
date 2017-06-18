@@ -5,7 +5,7 @@ is represented in your state tree.
 
 ### State Slices
 
-Typical usage of resourceful-redux involves using
+Typical usage of Resourceful Redux involves using
 [`combineReducers`](http://redux.js.org/docs/api/combineReducers.html) to
 separate each type of resource into its own "slice" within your overall state
 tree. Each of these slices will store information about a single type of
@@ -55,9 +55,9 @@ then your state will end up looking like this:
 }
 ```
 
-Keep in mind that resourceful-redux doesn't care the specific format that your
+Keep in mind that Resourceful Redux doesn't care the specific format that your
 server sends the data back in. You just need to make sure that the resources
-you pass into resourceful-redux have an `id` attribute.
+you pass into Resourceful Redux have an `id` attribute.
 
 ### Resource Metadata
 
@@ -67,7 +67,7 @@ about requests, such as whether the resource is being updated, or deleted, and
 you can store additional, application-specific metadata here, such as
 whether or not a resource is "selected" in your UI, or not.
 
-resourceful-redux comes with built-in metadata for each resource, representing
+Resourceful Redux comes with built-in metadata for each resource, representing
 the status of any CRUD request related to that resource. This built-in metadata
 looks like the following:
 
@@ -166,10 +166,10 @@ the option is there to store your own, additional metadata on the `meta` object.
 ### Labels
 
 The last piece of the state is called labels. Labels are a feature of
-resourceful-redux to help you keep your requests and resources more organized.
+Resourceful Redux to help you keep your requests and resources more organized.
 
 Any time that you perform a request, you can assign it a label.
-resourceful-redux keeps track of two pieces of information about labeled
+Resourceful Redux keeps track of two pieces of information about labeled
 requests:
 
 1. which resources were associated with the request
@@ -182,7 +182,7 @@ latest books that just came out this week.
 That same page that might also have a sidebar that shows the books that are
 in a user's shopping cart.
 
-In resourceful-redux, all of these books will be stored together in the
+In Resourceful Redux, all of these books will be stored together in the
 `resources` array. How can you, as a developer, know which books are the ones in
 the shopping cart, and which are the ones that were just released?
 

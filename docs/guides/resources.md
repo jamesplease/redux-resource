@@ -1,6 +1,6 @@
 # Resources
 
-resourceful-redux is all about managing resources. A resource is a plain
+Resourceful Redux is all about managing resources. A resource is a plain
 JavaScript object that represents a single entity in your application. For
 instance, it could represent a book, or a person, or something more abstract,
 like a 'workflow' or 'responsibility.'
@@ -41,12 +41,12 @@ attribute. The following are some examples of valid resources:
 
 Not all backend services return data that have an ID attribute. For such
 services, a transformation function will need to be written to change that data
-into resourceful-redux-compatible resources. We understand that this isn't
-ideal, but we believe the benefits of resourceful-redux outweigh this
+into Resourceful Redux-compatible resources. We understand that this isn't
+ideal, but we believe the benefits of Resourceful Redux outweigh this
 inconvenience.
 
 Here are some examples of common data formats that a backend may send over, and
-how you can change them into resourceful-redux compatible resources.
+how you can change them into Resourceful Redux compatible resources.
 
 ```js
 // Backend returns:

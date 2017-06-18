@@ -1,3 +1,0 @@
-# Request Statuses
-
-Coming soon.

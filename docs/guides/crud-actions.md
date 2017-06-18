@@ -1,13 +1,13 @@
 # CRUD Actions
 
-resourceful-redux exports Action types to help you create, read, update,
+Resourceful Redux exports Action types to help you create, read, update,
 and delete resources. Although these operations are different from one another,
 there are many similarities between the Actions for these operations in
-resourceful-redux.
+Resourceful Redux.
 
 ### Action Sequences
 
-CRUD operations are usually asynchronous. In resourceful-redux, asynchronous
+CRUD operations are usually asynchronous. In Resourceful Redux, asynchronous
 operations are represented as a 'sequence' of Redux Actions. There is always a
 start Action, which updates the state with information about the request
 starting. Sometime later, there is an end Action, which will cause the state
@@ -48,7 +48,7 @@ store.dispatch({
 ```
 
 This action type isn't very useful, however. Without more information about this
-request, resourceful-redux doesn't know how to change your state. Consequently,
+request, Resourceful Redux doesn't know how to change your state. Consequently,
 this action is a no-op.
 
 To cause changes in the state, you need to supply one of two additional
@@ -117,7 +117,7 @@ store.dispatch({
 });
 ```
 
-Whenever a `resources` array is supplied, resourceful-redux will update the
+Whenever a `resources` array is supplied, Resourceful Redux will update the
 `meta` for each resource in that array.
 
 The "success" action types also have special behavior with the `resources`
@@ -177,7 +177,7 @@ The following CRUD Action attributes are all optional.
 
 ### Action Creators
 
-resourceful-redux does not come with built-in action creators, although we
+Resourceful Redux does not come with built-in action creators, although we
 intend to add some soon. For now, you can see examples of action creators in the
 following guides:
 

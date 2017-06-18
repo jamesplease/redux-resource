@@ -1,7 +1,6 @@
-# resourceful-redux
+# Resourceful Redux
 
-resourceful-redux is a system for managing 'resources' – data that is persisted
-to remote servers.
+A system for managing 'resources' – data that is persisted to remote servers.
 
 ### Installation
 

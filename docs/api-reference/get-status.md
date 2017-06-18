@@ -12,7 +12,7 @@ statuses together.
   from. For more on meta locations, see the Notes below.
 
 4. [`isNullPending`] *(Boolean)*: Whether or not a request status of `NULL` is
-  to be considered as a `pending` request. Defaults to `false`. See Notes on
+  to be considered as a `pending` request. Defaults to `false`. See Tips on
   when to use this.
 
 #### Returns

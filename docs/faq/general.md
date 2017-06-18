@@ -1,15 +1,15 @@
 # General FAQ
 
-#### When should I use resourceful-redux?
+#### When should I use Resourceful Redux?
 
 If you feel that you're writing too much boilerplate when using Redux by itself,
-then it might be worth giving a library like resourceful-redux a try. There are
+then it might be worth giving a library like Resourceful Redux a try. There are
 [similar projects](/docs/introduction/similar-projects.md) that also aim to
 reduce Redux boilerplate, which you should also consider.
 
 #### Are there Action Creators?
 
-Not yet. We thought that the primary value add of resourceful-redux comes from
+Not yet. We thought that the primary value add of Resourceful Redux comes from
 its reducers, so we shipped those first.
 
 #### Does this only work with React?
@@ -22,7 +22,7 @@ similar API to Redux.
 This library uses shallow cloning for state tree updates. This has worked well
 for us, even on medium-to-large sized applications.
 
-resourceful-redux does not work well with libraries like
+Resourceful Redux does not work well with libraries like
 [Immutable.js](https://facebook.github.io/immutable-js/), although we're open
 to adding support for Immutable if it doesn't bloat the library too much. If
 this is something you're interested in,
