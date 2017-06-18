@@ -1,15 +1,21 @@
 # Labels
 
-Labels are a way to keep your requests organized. In Resourceful Redux, all
-resources of the same type are kept in a single Array. This solves the problem
-of having multiple copies of a resource in two different places: each resource
-can be found in exactly one place in the state tree.
+Labels are a tool you can use to keep track of certain requests. Before we
+get into using labels, let's first cover the motivation for why they exist
+in the first place.
 
-This can cause a problem of keeping track of requests. For instance, if a user
-runs two searches for books, how can you keep track of which books were returned
-from which search?
+In the earlier guide on [State Structure](/docs/guides/state-structure.md), we
+covered that all resources of the same type are kept in a single Array. This
+solves the problem of having multiple copies of a resource in two different
+places: each individual resource can be found in exactly one place in the state
+tree.
 
-You use labels to do that.
+This introduces another problem, though. How do you keep track of "groups" of
+the same resource? For instance, if a web application shows a list of recently
+released books, as well as a user's shopping cart of books, how can they be
+distinguished from one another?
+
+Labels can be used to solve this problem, and other similar problems.
 
 Using a label is straightforward: add the `label` property to all of the
 requests in that [sequence of actions](./crud-actions.md).
@@ -25,8 +31,35 @@ store.dispatch({
 });
 ```
 
+### When to Use labels
+
+Sticking to a rule of thumb can help make deciding _when_ to use a label
+straightforward, too. The rule of thumb is:
+
+**Use a label whenever you do not have an ID or list of IDs at the moment
+that you dispatch a "pending" action.**
+
+For example, if you attempt to read a book with ID of 23, then you _will_ have
+an ID when you dispatch the "read pending" action (the ID is 23). So a
+label may not be necessary in this situation.
+
+On the other hand, if you were to make a request to your backend for the list
+of books that were just released this past week, then you wouldn't have any IDs
+at the time that you dispatch the "read pending" action. So you do use a label
+in this situation.
+
+Note that there may also be times when you want to use a label in addition to
+using an ID, but those are exceptional cases that many applications do not
+require. But the option is there if you need it.
+
+If you're just starting out with Resourceful Redux, we recommend sticking with
+the rule of thumb.
+
+### An Example
+
 When a label is used, the status of the associated request is stored in your
-state, and you can access it with `getStatus`:
+state, and you can access it with
+[`getStatus`](/docs/api-reference/get-status.md):
 
 ```js
 import { getStatus } from 'resourceful-redux';

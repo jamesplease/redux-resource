@@ -10,3 +10,6 @@ cases we use labels for are:
 
 If using the label isn't providing value for a specific operation, then you
 probably don't need to use one.
+
+A rule of thumb for using labels, as well as much more information about labels,
+can be found in [the Labels guide](/docs/guides/labels.md#when-to-use-labels).

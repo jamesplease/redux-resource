@@ -177,14 +177,17 @@ The following CRUD Action attributes are all optional.
 
 ### Action Creators
 
-Resourceful Redux does not come with built-in action creators, although we
-intend to add some soon. For now, you can see examples of action creators in the
-following guides:
+Resourceful Redux does not come with built-in action creators. However, you can
+see examples of action creators in the following guides:
 
 - [Reading Resources](./reading-resources)
 - [Updating Resources](./updating-resources)
 - [Creating Resources](./creating-resources)
 - [Deleting Resources](./deleting-resources)
+
+> For a justification as to _why_ we don't include action creators with
+  Resourceful Redux, refer to
+  [this question in the General FAQ](/docs/faq/general.md#are-there-action-creators).
 
 ### Using the Action Types
 
@@ -196,4 +199,4 @@ import { actionTypes } from 'resourceful-redux';
 ```
 
 For a complete list of all of the action types, refer to the
-[Action Types API Reference](../api-reference/action-types).
+[Action Types API Reference](../api-reference/action-types.md).

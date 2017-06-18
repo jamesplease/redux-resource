@@ -16,6 +16,22 @@ If you're using `combineReducers`, then we will be talking about one individual
 state slice. And if you're not, then the word "state" will refer to the entire state
 tree.
 
+### Initial State
+
+The initial state has the following shape:
+
+```js
+{
+  resources: [],
+  meta: {},
+  labels: {}
+}
+```
+
+As you dispatch Action types, Resourceful Redux will make changes to these
+values in a predictable way. We will cover what goes inside each of these pieces
+in this guide.
+
 ### Resources
 
 All of your resource data will be available in the state's `resources`
@@ -51,7 +67,9 @@ then your state will end up looking like this:
       id: 100,
       firstName: 'Jane'
     }
-  ]
+  ],
+  meta: { ... },
+  labels: { ... }
 }
 ```
 
@@ -62,10 +80,15 @@ you pass into Resourceful Redux have an `id` attribute.
 ### Resource Metadata
 
 Metadata about each of the resources in your state's `resources` array
-is stored under the `meta` object of the state. This includes information
-about requests, such as whether the resource is being updated, or deleted, and
-you can store additional, application-specific metadata here, such as
-whether or not a resource is "selected" in your UI, or not.
+is stored under the `meta` object of the state. Metadata is stored per-resource,
+on a key that is equal to the ID of the resource.
+
+For instance, if you have a book with an ID of 23, then you can find its
+meta at `state.meta[23]`.
+
+Metadata includes information about requests, such as whether the resource is
+being updated, or deleted, and you can store additional, application-specific
+metadata here, such as whether or not a resource is "selected" in your UI.
 
 Resourceful Redux comes with built-in metadata for each resource, representing
 the status of any CRUD request related to that resource. This built-in metadata
@@ -117,7 +140,8 @@ the following:
       updateStatus: 'NULL',
       deleteStatus: 'NULL'
     }
-  }
+  },
+  labels: { ... }
 }
 ```
 
@@ -151,7 +175,8 @@ resources, the state would then look like this:
       updateStatus: 'NULL',
       deleteStatus: 'NULL'
     }
-  }
+  },
+  labels: { ... }
 }
 ```
 

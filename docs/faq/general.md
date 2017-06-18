@@ -5,12 +5,28 @@
 If you feel that you're writing too much boilerplate when using Redux by itself,
 then it might be worth giving a library like Resourceful Redux a try. There are
 [similar projects](/docs/introduction/similar-projects.md) that also aim to
-reduce Redux boilerplate, which you should also consider.
+reduce Redux boilerplate, which are also worth your consideration.
 
 #### Are there Action Creators?
 
-Not yet. We thought that the primary value add of Resourceful Redux comes from
-its reducers, so we shipped those first.
+Not in the core library, and we don't plan to include them. Developers have
+different preferences when it comes to making requests. Some developers prefer
+working with Promises, while others like callbacks. Opinions aside, different
+backends have different requirements, so there's no one-size-fits-all Action
+creator for making requests.
+
+Using the Action types that this library exports, it should be straightforward
+to build Action creators that work for your use case.
+
+The action creators that we use will soon be made available in a separate
+library, so you will be able to use them if you wish. For a preview of what they
+look like, refer to the four guides on CRUDing resources, which each have
+example Action creators that look very similar to the ones that we write:
+
+- [Reading resources](/docs/guides/reading-resources.md)
+- [Updating resources](/docs/guides/reading-resources.md)
+- [Creating resources](/docs/guides/reading-resources.md)
+- [Deleting resources](/docs/guides/reading-resources.md)
 
 #### Does this only work with React?
 
@@ -40,6 +56,8 @@ For instance, if you're working with a books resource, then it might instead
 have an id attribute called `bookId`. In these situations, you will need to
 write a transform that maps that key to be `id` instead.
 
+For more, refer to [the Resources guide](/docs/guides/resources.md).
+
 #### Does this work with a backend that adheres to a well-defined format, such as JSON API?
 
 Yes, it does. You may want to write a [plugin](../guides/plugins.md) to handle
@@ -51,3 +69,5 @@ relationship support.
 Yes. The only requirement is that the data returned can be reasonably mapped to
 the concept of a "resource." A resource, from this library's perspective, is
 a JavaScript object with an `id` attribute.
+
+For more on this, refer to [the Resources guide](/docs/guides/resources.md).

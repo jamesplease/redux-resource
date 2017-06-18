@@ -1,18 +1,19 @@
 # Request Statuses
 
-We now know that when Actions with particular types are dispatched,
-Resourceful Redux will set some state for us in the store. In this guide, we
-will cover how you can use this state in your view layer.
+We now know that when the CRUD action types are dispatched, Resourceful Redux
+will set some metadata about those requests for us in the store. In this guide,
+we will cover how you can use this state in your view layer.
 
-In these examples, we will be writing React components using react-redux. Keep
-in mind that this library is agnostic to the view layer, and will work with
-any other view system.
+In these examples, we will be writing React components using react-redux. Do
+keep in mind that nothing in Resourceful requires React: if you're using Redux
+with any other view layer, then this library will work just as well.
 
 ### `getStatus`
 
 One of the exports of this library is
 [`getStatus`](/docs/api-reference/get-status.md). This function facilitates
-using Resourceful Redux data to build your interfaces.
+using Resourceful Redux data to build your interfaces, and for this reason it
+will likely be the function of Resourceful Redux that you use the most.
 
 Let's look at an example. Let's say we have a page that displays details about
 a book. We might write the following component:
