@@ -2,6 +2,7 @@
 * [State Structure](/docs/guides/state-structure.md)
 * [CRUD Actions](/docs/guides/crud-actions.md)
 * [Labels](/docs/guides/labels.md)
+* [Request Statuses](/docs/guides/request-statuses.md)
 * [Reading Resources](/docs/guides/reading-resources.md)
 * [Updating Resources](/docs/guides/updating-resources.md)
 * [Creating Resources](/docs/guides/creating-resources.md)
