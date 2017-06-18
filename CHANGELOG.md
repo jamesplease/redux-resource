@@ -1,4 +1,4 @@
-## [0.0.2](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.2) (6/xx/17)
+## [0.0.2](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.2) (6/18/17)
 
 - First release
 
