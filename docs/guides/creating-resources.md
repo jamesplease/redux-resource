@@ -4,22 +4,23 @@ resourceful-redux provides four [action types](./faq/action-types.md) for
 creating resources. They are as follows:
 
 ```js
-"CREATE_RESOURCES"
-"CREATE_RESOURCES_FAIL"
-"CREATE_RESOURCES_SUCCEED"
+"CREATE_RESOURCES_PENDING"
+"CREATE_RESOURCES_FAILED"
+"CREATE_RESOURCES_SUCCEEDED"
 "CREATE_RESOURCES_NULL"
 ```
 
-Each request will always begin with an action with type `CREATE_RESOURCES`.
-Then, one of the other three action types will be used to represent the
-resolution of that request. Use the requests in the following way:
+Each request will always begin with an action with type
+`CREATE_RESOURCES_PENDING`. Then, one of the other three action types will be
+used to represent the resolution of that request. Use the requests in the
+following way:
 
-- `CREATE_RESOURCES_FAIL`: Use this if the request fails for any reason. This
+- `CREATE_RESOURCES_FAILED`: Use this if the request fails for any reason. This
   could be network errors, or any
   [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
   greater than 400.
 - `CREATE_RESOURCES_NULL`: Use this is the request is aborted.
-- `CREATE_RESOURCES_SUCCEED`: Use this when the request was successful.
+- `CREATE_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
 ### Using Labels
 
@@ -44,13 +45,13 @@ import xhr from 'xhr';
 export default function createBook(bookDetails) {
   return function(dispatch) {
     dispatch({
-      type: actionTypes.CREATE_RESOURCES,
+      type: actionTypes.CREATE_RESOURCES_PENDING,
       resourceName: 'books',
       label: 'create'
     });
 
     const req = xhr.post(
-      `/books`,
+      '/books',
       { json: bookDetails },
       (err, res, body) => {
         if (req.aborted) {
@@ -61,13 +62,13 @@ export default function createBook(bookDetails) {
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
-            type: actionTypes.CREATE_RESOURCES_FAIL,
+            type: actionTypes.CREATE_RESOURCES_FAILED,
             resourceName: 'books',
             label: 'create'
           });
         } else {
           dispatch({
-            type: actionTypes.CREATE_RESOURCES_SUCCEED,
+            type: actionTypes.CREATE_RESOURCES_SUCCEEDED,
             resourceName: 'books',
             label: 'create',
             resources: [body]

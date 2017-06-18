@@ -2,9 +2,9 @@
 // For instance, you'd probably pass "CREATE", "READ", "UPDATE", or "DELETE"
 // as `crudAction`.
 const mapConstant = (crudAction) => ({
-  [`${crudAction}_RESOURCES`]: `${crudAction}_RESOURCES`,
-  [`${crudAction}_RESOURCES_SUCCEED`]: `${crudAction}_RESOURCES_SUCCEED`,
-  [`${crudAction}_RESOURCES_FAIL`]: `${crudAction}_RESOURCES_FAIL`,
+  [`${crudAction}_RESOURCES_PENDING`]: `${crudAction}_RESOURCES_PENDING`,
+  [`${crudAction}_RESOURCES_SUCCEEDED`]: `${crudAction}_RESOURCES_SUCCEEDED`,
+  [`${crudAction}_RESOURCES_FAILED`]: `${crudAction}_RESOURCES_FAILED`,
   [`${crudAction}_RESOURCES_NULL`]: `${crudAction}_RESOURCES_NULL`,
 });
 

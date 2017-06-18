@@ -1,7 +1,7 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: delete', function() {
-  describe('DELETE_RESOURCES_SUCCESS', () => {
+  describe('DELETE_RESOURCES_SUCCEEDED', () => {
     it('returns the right state without a label, without IDs', () => {
       const initialState = {
         resources: [
@@ -23,7 +23,7 @@ describe('reducers: delete', function() {
       const reducer = resourceReducer('hellos', {initialState});
 
       const reduced = reducer(undefined, {
-        type: 'DELETE_RESOURCES_SUCCEED',
+        type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos'
       });
 
@@ -54,7 +54,7 @@ describe('reducers: delete', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'DELETE_RESOURCES_SUCCEED',
+        type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         resources: [3, {id: 4}]
       });
@@ -117,7 +117,7 @@ describe('reducers: delete', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'DELETE_RESOURCES_SUCCEED',
+        type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         label: 'italiano',
         resources: [
@@ -191,7 +191,7 @@ describe('reducers: delete', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'DELETE_RESOURCES_SUCCEED',
+        type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         label: 'italiano',
       });

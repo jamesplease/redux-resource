@@ -1,7 +1,7 @@
 // import {resourceReducer, requestStatuses} from '../../../src';
 //
 // describe('reducers: update', function() {
-//   describe('UPDATE_RESOURCES_SUCCEED:', () => {
+//   describe('UPDATE_RESOURCES_SUCCEEDED:', () => {
 //     it('IDs, no label, default options', () => {
 //       const reducer = resourceReducer('hellos', {
 //         initialState: {
@@ -15,7 +15,7 @@
 //       });
 //
 //       const reduced = reducer(undefined, {
-//         type: 'UPDATE_RESOURCES_SUCCEED',
+//         type: 'UPDATE_RESOURCES_SUCCEEDED',
 //         ids: [3, 4],
 //         resourceName: 'hellos',
 //         resources: [
@@ -67,7 +67,7 @@
 //       });
 //
 //       const reduced = reducer(undefined, {
-//         type: 'UPDATE_RESOURCES_SUCCEED',
+//         type: 'UPDATE_RESOURCES_SUCCEEDED',
 //         ids: [3, 4],
 //         resourceName: 'hellos',
 //         mergeResources: false,
@@ -129,7 +129,7 @@
 //       });
 //
 //       const reduced = reducer(undefined, {
-//         type: 'UPDATE_RESOURCES_SUCCEED',
+//         type: 'UPDATE_RESOURCES_SUCCEEDED',
 //         ids: [3, 4],
 //         resourceName: 'hellos',
 //         mergeMeta: false,

@@ -7,36 +7,36 @@ describe('actionTypes', function() {
 
   describe('create', () => {
     it('should have the right actionTypes', () => {
-      expect(actionTypes.CREATE_RESOURCES).to.equal('CREATE_RESOURCES');
-      expect(actionTypes.CREATE_RESOURCES_SUCCEED).to.equal('CREATE_RESOURCES_SUCCEED');
-      expect(actionTypes.CREATE_RESOURCES_FAIL).to.equal('CREATE_RESOURCES_FAIL');
+      expect(actionTypes.CREATE_RESOURCES_PENDING).to.equal('CREATE_RESOURCES_PENDING');
+      expect(actionTypes.CREATE_RESOURCES_SUCCEEDED).to.equal('CREATE_RESOURCES_SUCCEEDED');
+      expect(actionTypes.CREATE_RESOURCES_FAILED).to.equal('CREATE_RESOURCES_FAILED');
       expect(actionTypes.CREATE_RESOURCES_NULL).to.equal('CREATE_RESOURCES_NULL');
     });
   });
 
   describe('read', () => {
     it('should have the right actionTypes', () => {
-      expect(actionTypes.READ_RESOURCES).to.equal('READ_RESOURCES');
-      expect(actionTypes.READ_RESOURCES_SUCCEED).to.equal('READ_RESOURCES_SUCCEED');
-      expect(actionTypes.READ_RESOURCES_FAIL).to.equal('READ_RESOURCES_FAIL');
+      expect(actionTypes.READ_RESOURCES_PENDING).to.equal('READ_RESOURCES_PENDING');
+      expect(actionTypes.READ_RESOURCES_SUCCEEDED).to.equal('READ_RESOURCES_SUCCEEDED');
+      expect(actionTypes.READ_RESOURCES_FAILED).to.equal('READ_RESOURCES_FAILED');
       expect(actionTypes.READ_RESOURCES_NULL).to.equal('READ_RESOURCES_NULL');
     });
   });
 
   describe('update', () => {
     it('should have the right actionTypes', () => {
-      expect(actionTypes.UPDATE_RESOURCES).to.equal('UPDATE_RESOURCES');
-      expect(actionTypes.UPDATE_RESOURCES_SUCCEED).to.equal('UPDATE_RESOURCES_SUCCEED');
-      expect(actionTypes.UPDATE_RESOURCES_FAIL).to.equal('UPDATE_RESOURCES_FAIL');
+      expect(actionTypes.UPDATE_RESOURCES_PENDING).to.equal('UPDATE_RESOURCES_PENDING');
+      expect(actionTypes.UPDATE_RESOURCES_SUCCEEDED).to.equal('UPDATE_RESOURCES_SUCCEEDED');
+      expect(actionTypes.UPDATE_RESOURCES_FAILED).to.equal('UPDATE_RESOURCES_FAILED');
       expect(actionTypes.UPDATE_RESOURCES_NULL).to.equal('UPDATE_RESOURCES_NULL');
     });
   });
 
   describe('delete', () => {
     it('should have the right actionTypes', () => {
-      expect(actionTypes.DELETE_RESOURCES).to.equal('DELETE_RESOURCES');
-      expect(actionTypes.DELETE_RESOURCES_SUCCEED).to.equal('DELETE_RESOURCES_SUCCEED');
-      expect(actionTypes.DELETE_RESOURCES_FAIL).to.equal('DELETE_RESOURCES_FAIL');
+      expect(actionTypes.DELETE_RESOURCES_PENDING).to.equal('DELETE_RESOURCES_PENDING');
+      expect(actionTypes.DELETE_RESOURCES_SUCCEEDED).to.equal('DELETE_RESOURCES_SUCCEEDED');
+      expect(actionTypes.DELETE_RESOURCES_FAILED).to.equal('DELETE_RESOURCES_FAILED');
       expect(actionTypes.DELETE_RESOURCES_NULL).to.equal('DELETE_RESOURCES_NULL');
     });
   });

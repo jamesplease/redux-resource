@@ -103,7 +103,7 @@ export default function(resourceName) {
       return state;
     }
 
-    if (action.type === 'READ_RESOURCES_SUCCEED') {
+    if (action.type === 'READ_RESOURCES_SUCCEEDED') {
       return {
         ...state,
         readSucceeded: true

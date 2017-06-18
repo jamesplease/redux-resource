@@ -1,7 +1,7 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: read:', function() {
-  describe('READ_RESOURCES_SUCCEED:', () => {
+  describe('READ_RESOURCES_SUCCEEDED:', () => {
     it('returns the right state without a label, without IDs', () => {
       const initialState = {
         resources: [
@@ -27,7 +27,7 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {initialState});
 
       const reduced = reducer(undefined, {
-        type: 'READ_RESOURCES_SUCCEED',
+        type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos'
       });
 
@@ -61,7 +61,7 @@ describe('reducers: read:', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'READ_RESOURCES_SUCCEED',
+        type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         resources: [
           {id: 4, name: 'sandwiches'},
@@ -126,7 +126,7 @@ describe('reducers: read:', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'READ_RESOURCES_SUCCEED',
+        type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         mergeResources: false,
         resources: [
@@ -191,7 +191,7 @@ describe('reducers: read:', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'READ_RESOURCES_SUCCEED',
+        type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         mergeMeta: false,
         resources: [
@@ -264,7 +264,7 @@ describe('reducers: read:', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'READ_RESOURCES_SUCCEED',
+        type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         label: 'pasta',
         resources: [
@@ -346,7 +346,7 @@ describe('reducers: read:', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'READ_RESOURCES_SUCCEED',
+        type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         label: 'pasta',
         resources: [
@@ -429,7 +429,7 @@ describe('reducers: read:', function() {
       });
 
       const reduced = reducer(undefined, {
-        type: 'READ_RESOURCES_SUCCEED',
+        type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         label: 'pasta',
       });

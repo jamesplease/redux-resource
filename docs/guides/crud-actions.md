@@ -17,7 +17,7 @@ to be updated with information about the resolution of the operation.
 For instance, the series of action types for a successful read request is the
 following:
 
-`READ_RESOURCES -> READ_RESOURCES_SUCCEED`
+`READ_RESOURCES_PENDING -> READ_RESOURCES_SUCCEEDED`
 
 The first action type puts the request in a "pending" state. The second
 request moves it to a "success" state.
@@ -42,7 +42,7 @@ something like this:
 import { actionTypes } from 'resourceful-redux';
 
 {
-  type: actionTypes.READ_RESOURCES,
+  type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books'
 }
 ```
@@ -90,7 +90,7 @@ that time. That action may look like the following:
 import { actionTypes } from 'resourceful-redux';
 
 {
-  type: actionTypes.READ_RESOURCES,
+  type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
   resources: [23]
 }
@@ -104,7 +104,7 @@ action representing success:
 import { actionTypes } from 'resourceful-redux';
 
 {
-  type: actionTypes.READ_RESOURCES_SUCCEED,
+  type: actionTypes.READ_RESOURCES_SUCCEEDED,
   resourceName: 'books',
   resources: [{
     id: 23,
@@ -143,7 +143,7 @@ use the following action:
 import { actionTypes } from 'resourceful-redux';
 
 {
-  type: actionTypes.READ_RESOURCES,
+  type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
   label: 'modalSearch',
   query: 'Lord of the Flies'
