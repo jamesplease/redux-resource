@@ -1,7 +1,7 @@
-import updateMetaHelper from '../../../src/utils/update-meta-helper';
+import reducerGenerator from '../../../src/utils/reducer-generator';
 import {requestStatuses} from '../../../src';
 
-describe('updateMetaHelper:', function() {
+describe('reducerGenerator:', function() {
   it('passing no IDs and no label', () => {
     const state = {
       meta: {
@@ -24,11 +24,8 @@ describe('updateMetaHelper:', function() {
       }
     };
 
-    const result = updateMetaHelper({
-      state,
-      crudAction: 'pasta',
-      requestStatus: requestStatuses.FAILED
-    });
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {});
 
     expect(result).to.equal(state);
   });
@@ -56,11 +53,9 @@ describe('updateMetaHelper:', function() {
       }
     };
 
-    const result = updateMetaHelper({
-      state,
-      resources: [{id: 1}, {id: 5}, 6],
-      crudAction: 'pasta',
-      requestStatus: requestStatuses.FAILED
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
+      resources: [{id: 1}, {id: 5}, 6]
     });
 
     expect(result).to.deep.equal({
@@ -115,11 +110,9 @@ describe('updateMetaHelper:', function() {
       }
     };
 
-    const result = updateMetaHelper({
-      state,
-      resources: [1, 5, 6],
-      crudAction: 'pasta',
-      requestStatus: requestStatuses.FAILED
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
+      resources: [1, 5, 6]
     });
 
     expect(result).to.deep.equal({
@@ -174,11 +167,9 @@ describe('updateMetaHelper:', function() {
       }
     };
 
-    const result = updateMetaHelper({
-      state,
-      crudAction: 'pasta',
-      label: 'italiano',
-      requestStatus: requestStatuses.FAILED
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
+      label: 'italiano'
     });
 
     expect(result).to.deep.equal({
@@ -227,12 +218,10 @@ describe('updateMetaHelper:', function() {
       }
     };
 
-    const result = updateMetaHelper({
-      state,
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
       resources: [1, 5, 6],
-      crudAction: 'pasta',
-      label: 'italiano',
-      requestStatus: requestStatuses.FAILED
+      label: 'italiano'
     });
 
     expect(result).to.deep.equal({
@@ -287,13 +276,11 @@ describe('updateMetaHelper:', function() {
       }
     };
 
-    const result = updateMetaHelper({
-      state,
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
       resources: [1, 5, 6],
-      crudAction: 'pasta',
       label: 'italiano',
-      mergeMeta: false,
-      requestStatus: requestStatuses.FAILED
+      mergeMeta: false
     });
 
     expect(result).to.deep.equal({

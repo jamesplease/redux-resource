@@ -1,4 +1,4 @@
-import reducerGenerator from './reducer-generator';
+import reducerGenerator from '../utils/reducer-generator';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
 
