@@ -68,7 +68,7 @@ export function readSucceed(state, action, {initialResourceMeta}) {
     };
 
     if (hasResources) {
-      if (action.mergeLabelIds === false) {
+      if (action.mergeLabelIds !== false) {
         let newLabelIds;
         if (currentLabel.ids) {
           newLabelIds = Array.prototype.slice.call(currentLabel.ids);
