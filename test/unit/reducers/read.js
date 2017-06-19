@@ -480,6 +480,76 @@ describe('reducers: read:', function() {
       });
     });
 
+    it('replaces label IDs with resource array and label, with mergeLabelIds: false', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: [
+            {id: 1},
+            {id: 3},
+            {id: 4, lastName: 'camomile'},
+          ],
+          labels: {
+            sandwiches: {
+              ids: [1, 3],
+              status: requestStatuses.FAILED
+            },
+            pasta: {
+              ids: [100, 200],
+              status: requestStatuses.PENDING
+            }
+          },
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            },
+            4: {
+              selected: true
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        label: 'pasta',
+        mergeLabelIds: false,
+        resources: []
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: [
+          {id: 1},
+          {id: 3},
+          {id: 4, lastName: 'camomile'},
+        ],
+        labels: {
+          sandwiches: {
+            ids: [1, 3],
+            status: requestStatuses.FAILED
+          },
+          pasta: {
+            ids: [],
+            status: requestStatuses.SUCCEEDED
+          }
+        },
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: true
+          }
+        }
+      });
+    });
+
     it('returns state without a resource array, with a label', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {

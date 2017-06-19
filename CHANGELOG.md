@@ -1,3 +1,8 @@
+## [0.0.3](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.3) (6/19/17)
+
+- Passing an empty resources array in an action creator with `mergeLabelIds: false`
+  will now clear the label's IDs array.
+
 ## [0.0.2](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.2) (6/18/17)
 
 - First release

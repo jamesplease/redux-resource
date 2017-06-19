@@ -7,6 +7,7 @@ import requestStatuses from './request-statuses';
 export default function(state, action, {initialResourceMeta}, updatedMeta) {
   const resources = action.resources;
   const label = action.label;
+  const resourcesIsUndefined = typeof resources === 'undefined';
   const hasResources = resources && resources.length;
 
   // Without resources or labels, there is nothing to update
@@ -31,28 +32,30 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
       status: requestStatuses.SUCCEEDED
     };
 
-    if (hasResources) {
-      if (action.mergeLabelIds !== false) {
-        let newLabelIds;
-        if (currentLabel.ids) {
-          newLabelIds = Array.prototype.slice.call(currentLabel.ids);
-        } else {
-          newLabelIds = [];
-        }
-
-        resources.forEach(resource => {
-          const id = typeof resource === 'object' ? resource.id : resource;
-          if (!newLabelIds.includes(id)) {
-            newLabelIds.push(id);
-          }
-        });
-
-        newLabel.ids = newLabelIds;
-      } else {
+    if (action.mergeLabelIds === false) {
+      if (hasResources) {
         newLabel.ids = resources.map(resource => {
           return typeof resource === 'object' ? resource.id : resource;
         });
+      } else if (!resourcesIsUndefined) {
+        newLabel.ids = [];
       }
+    } else if (hasResources) {
+      let newLabelIds;
+      if (currentLabel.ids) {
+        newLabelIds = Array.prototype.slice.call(currentLabel.ids);
+      } else {
+        newLabelIds = [];
+      }
+
+      resources.forEach(resource => {
+        const id = typeof resource === 'object' ? resource.id : resource;
+        if (!newLabelIds.includes(id)) {
+          newLabelIds.push(id);
+        }
+      });
+
+      newLabel.ids = newLabelIds;
     }
 
     newLabels = {
