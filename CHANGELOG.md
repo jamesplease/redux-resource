@@ -1,3 +1,10 @@
+## [0.0.3](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.4) (6/19/17)
+
+**New Features**
+
+- A "null" property is now included in the object returned from `getStatus`,
+  which can be used to check if the request status is `"NULL"`.
+
 ## [0.0.3](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.3) (6/19/17)
 
 - Passing an empty resources array in an action creator with `mergeLabelIds: false`
