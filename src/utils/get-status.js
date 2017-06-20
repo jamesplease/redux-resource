@@ -1,7 +1,7 @@
 import requestStatuses from './request-statuses';
 
-function getSingleStatus(state, metaLocation, isNullPending) {
-  const splitPath = metaLocation.split('.');
+function getSingleStatus(state, statusLocation, isNullPending) {
+  const splitPath = statusLocation.split('.');
 
   let status;
   let currentVal = state;
@@ -27,11 +27,11 @@ function getSingleStatus(state, metaLocation, isNullPending) {
   };
 }
 
-// Returns the status of a particular CRUD action based on `metaLocation`.
+// Returns the status of a particular CRUD action based on `statusLocation`.
 //
 // `state`: A piece of the Redux store containing the relevant resources
 // `action`: The CRUD action in question
-// `metaLocation`: A location of the meta resource (see `find-meta.js` for more)
+// `statusLocation`: A location of the meta resource (see `find-meta.js` for more)
 // `isNullPending`: Whether or not to count a status of `NULL` as pending.
 //
 // Returns an Object with the following properties:
@@ -44,12 +44,12 @@ function getSingleStatus(state, metaLocation, isNullPending) {
 //
 // Note that at most _one_ of those properties will be true. It is
 // possible for them to all be false.
-export default function getStatus(state, metaLocations, isNullPending) {
-  if (!(metaLocations instanceof Array)) {
-    return getSingleStatus(state, metaLocations, isNullPending);
+export default function getStatus(state, statusLocations, isNullPending) {
+  if (!(statusLocations instanceof Array)) {
+    return getSingleStatus(state, statusLocations, isNullPending);
   }
 
-  const statusValues = metaLocations.map(loc => getSingleStatus(state, loc, isNullPending));
+  const statusValues = statusLocations.map(loc => getSingleStatus(state, loc, isNullPending));
 
   let pending = false;
   let failed = false;
