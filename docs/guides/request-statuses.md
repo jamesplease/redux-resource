@@ -103,13 +103,13 @@ The rules of aggregation work as follows:
 
 At most, only one of these values will ever be `true`.
 
-If `isNullPending` (the third argument, see below) is `false`, then all three
+If `treatNullAsPending` (the third argument, see below) is `false`, then all three
 values will be `false` if all of the request statuses in the state tree are
 `"NULL"`.
 
-### `isNullPending`
+### `treatNullAsPending`
 
-The third argument to `getStatus` is a Boolean called `isNullPending`. It
+The third argument to `getStatus` is a Boolean called `treatNullAsPending`. It
 determines whether a request status of `"NULL"` will count as `pending` or not.
 
 Consider an interface that loads a particular book when the page loads. Right
@@ -119,7 +119,15 @@ will have a value of `"NULL"`.
 
 If you don't pass `true`, then there will be a "flash of no content" unless
 you explicitly check for the `"NULL"` status yourself. To avoid this, pass
-`isNullPending` as true, and `getStatus` will instead consider that to be a
+`treatNullAsPending` as true, and `getStatus` will instead consider that to be a
 pending state.
 
-The default value of `isNullPending` is `false`.
+The default value of `treatNullAsPending` is `false`.
+
+##### The Rule of Thumb
+
+There is a rule of thumb for using `treatNullAsPending`:
+
+- For requests that happen when the page loads, pass `treatNullAsPending` as `true`
+- For requests that happen as a response to a user's action (such as clicking a
+  button), pass `treatNullAsPending` as `false`

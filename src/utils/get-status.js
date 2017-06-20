@@ -1,6 +1,6 @@
 import requestStatuses from './request-statuses';
 
-function getSingleStatus(state, statusLocation, isNullPending) {
+function getSingleStatus(state, statusLocation, treatNullAsPending) {
   const splitPath = statusLocation.split('.');
 
   let status;
@@ -18,10 +18,12 @@ function getSingleStatus(state, statusLocation, isNullPending) {
   }
 
   const isPending = status === requestStatuses.PENDING;
-  const nullPending = Boolean(isNullPending) && status === requestStatuses.NULL;
+  const isNull = status === requestStatuses.NULL;
+  const treatNullAsPendingBool = Boolean(treatNullAsPending);
 
   return {
-    pending: isPending || nullPending,
+    null: isNull && !treatNullAsPendingBool,
+    pending: isPending || treatNullAsPendingBool,
     failed: status === requestStatuses.FAILED,
     succeeded: status === requestStatuses.SUCCEEDED,
   };
@@ -32,11 +34,12 @@ function getSingleStatus(state, statusLocation, isNullPending) {
 // `state`: A piece of the Redux store containing the relevant resources
 // `action`: The CRUD action in question
 // `statusLocation`: A location of the meta resource (see `find-meta.js` for more)
-// `isNullPending`: Whether or not to count a status of `NULL` as pending.
+// `treatNullAsPending`: Whether or not to count a status of `NULL` as pending.
 //
 // Returns an Object with the following properties:
 //
 // {
+//   null: false,
 //   failed: false,
 //   pending: false,
 //   succeeded: true,
@@ -44,13 +47,14 @@ function getSingleStatus(state, statusLocation, isNullPending) {
 //
 // Note that at most _one_ of those properties will be true. It is
 // possible for them to all be false.
-export default function getStatus(state, statusLocations, isNullPending) {
+export default function getStatus(state, statusLocations, treatNullAsPending) {
   if (!(statusLocations instanceof Array)) {
-    return getSingleStatus(state, statusLocations, isNullPending);
+    return getSingleStatus(state, statusLocations, treatNullAsPending);
   }
 
-  const statusValues = statusLocations.map(loc => getSingleStatus(state, loc, isNullPending));
+  const statusValues = statusLocations.map(loc => getSingleStatus(state, loc, treatNullAsPending));
 
+  let nullValue = true;
   let pending = false;
   let failed = false;
   let succeeded = false;
@@ -60,6 +64,7 @@ export default function getStatus(state, statusLocations, isNullPending) {
   for (let i = 0; i < statusValues.length; i++) {
     const status = statusValues[i];
     if (status.failed) {
+      nullValue = false;
       failed = true;
       break;
     } else if (status.pending) {
@@ -70,10 +75,12 @@ export default function getStatus(state, statusLocations, isNullPending) {
   }
 
   if (!failed && pendingCount > 0) {
+    nullValue = false;
     pending = true;
   } else if (successCount === statusValues.length) {
+    nullValue = false;
     succeeded = true;
   }
 
-  return {pending, failed, succeeded};
+  return {null: nullValue, pending, failed, succeeded};
 }
