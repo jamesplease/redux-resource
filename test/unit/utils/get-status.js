@@ -63,7 +63,7 @@ describe('getStatus', function() {
     });
 
     it('should return a meta that exists and is null with `treatNullAsPending` set to true', () => {
-      expect(getStatus(this.state, 'sandwiches.meta.100.read', true)).to.deep.equal({
+      expect(getStatus(this.state, 'sandwiches.meta.100.readStatus', true)).to.deep.equal({
         null: false,
         pending: true,
         failed: false,
@@ -71,8 +71,17 @@ describe('getStatus', function() {
       });
     });
 
-    it('should return a meta that does exist', () => {
-      expect(getStatus(this.state, 'books.meta.10.update')).to.deep.equal({
+    it('should return a meta that exists and is succeeded with `treatNullAsPending` set to true', () => {
+      expect(getStatus(this.state, 'sandwiches.meta.102.readStatus', true)).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: false,
+        succeeded: true
+      });
+    });
+
+    it('should return a meta that does not exist', () => {
+      expect(getStatus(this.state, 'books.meta.10.updateStatus')).to.deep.equal({
         null: true,
         pending: false,
         failed: false,
@@ -81,7 +90,7 @@ describe('getStatus', function() {
     });
 
     it('should return a meta that does not exist with `treatNullAsPending` set to true', () => {
-      expect(getStatus(this.state, 'books.10.update', true)).to.deep.equal({
+      expect(getStatus(this.state, 'books.meta.10.updateStatus', true)).to.deep.equal({
         null: false,
         pending: true,
         failed: false,

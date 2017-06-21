@@ -1,4 +1,11 @@
-## [0.0.3](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.4) (6/19/17)
+## [0.0.5](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.5) (6/20/17)
+
+**Bug Fixes**
+
+- Fixed a bug where `pending` was set to `true` anytime `treatNullAsPending`
+  was `true` when calling `getStatus`.
+
+## [0.0.4](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.4) (6/19/17)
 
 **New Features**
 

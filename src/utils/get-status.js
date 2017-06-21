@@ -23,7 +23,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
 
   return {
     null: isNull && !treatNullAsPendingBool,
-    pending: isPending || treatNullAsPendingBool,
+    pending: isPending || (isNull && treatNullAsPendingBool),
     failed: status === requestStatuses.FAILED,
     succeeded: status === requestStatuses.SUCCEEDED,
   };
