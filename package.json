@@ -1,6 +1,6 @@
 {
   "name": "resourceful-redux",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A powerful Redux framework for interacting with remote resources.",
   "main": "dist/resourceful-redux.js",
   "scripts": {

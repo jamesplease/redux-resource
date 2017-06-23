@@ -104,16 +104,16 @@ Now when you call `getStatus` for this label, you get the following object:
 ```
 
 Additionally, the resources associated with the label are available under its
-`ids` attribute. To find the books that were returned from this search, you
-could use:
+`ids` attribute. You can use this array to filter the resources list by the
+label, or you can use the `getResources` helper method.
 
 ```js
+import { getResources } from 'resourceful-redux';
 import store from './store';
 
 const state = store.getState();
 
-const searchLabelIds = state.books.labels.search.ids;
-const searchResults = state.books.resources.filter(book => searchLabelIds.includes(book.id));
+const searchedBooks = getResources(state, 'books', 'search');
 ```
 
 ### Replacing Label IDs

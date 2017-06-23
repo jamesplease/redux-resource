@@ -23,6 +23,7 @@
 * [API Reference](/docs/api-reference/README.md)
   * [resourceReducer](/docs/api-reference/resource-reducer.md)
   * [getStatus](/docs/api-reference/get-status.md)
+  * [getResources](/docs/api-reference/get-resources.md)
   * [upsertResources](/docs/api-reference/upsert-resources.md)
   * [setResourceMeta](/docs/api-reference/set-resource-meta.md)
   * [actionTypes](/docs/api-reference/action-types.md)

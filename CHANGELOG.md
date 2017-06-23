@@ -1,3 +1,9 @@
+## [0.0.6](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.6) (6/22/17)
+
+**New Features**
+
+- Adds `getResources` method
+
 ## [0.0.5](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.5) (6/20/17)
 
 **Bug Fixes**
