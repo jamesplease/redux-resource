@@ -4,6 +4,7 @@ import requestStatuses from './utils/request-statuses';
 import setResourceMeta from './utils/set-resource-meta';
 import upsertResources from './utils/upsert-resources';
 import getStatus from './utils/get-status';
+import getResources from './utils/get-resources';
 
 export {
   resourceReducer,
@@ -11,5 +12,6 @@ export {
   requestStatuses,
   setResourceMeta,
   upsertResources,
-  getStatus
+  getStatus,
+  getResources
 };
