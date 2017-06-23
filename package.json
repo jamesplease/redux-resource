@@ -6,11 +6,10 @@
   "scripts": {
     "test": "gulp",
     "lint": "gulp lint",
-    "test-browser": "gulp test-browser",
     "watch": "gulp watch",
-    "build": "gulp build",
+    "build": "gulp clean && gulp build && NODE_ENV=production gulp build",
     "coverage": "gulp coverage",
-    "prepublish": "gulp build",
+    "prepublish": "npm run build",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:prepare": "gitbook install",
     "docs:clean": "rimraf _book",
@@ -81,11 +80,7 @@
     "pleaserc": "^2.3.1",
     "sinon": "1.17.5",
     "sinon-chai": "2.8.0",
-    "webpack": "1.13.2",
-    "webpack-stream": "3.2.0"
-  },
-  "babelBoilerplateOptions": {
-    "entryFileName": "index.js",
-    "mainVarName": "createResource"
+    "webpack": "2.6.1",
+    "webpack-stream": "^3.2.0"
   }
 }

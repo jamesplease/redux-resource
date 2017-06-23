@@ -1,4 +1,4 @@
-import {resourceReducer, requestStatuses} from '../../../src';
+import {resourceReducer, requestStatuses} from '../../../src/resourceful-redux';
 
 describe('reducers: read:', function() {
   describe('READ_RESOURCES_SUCCEEDED:', () => {

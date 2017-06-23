@@ -1,0 +1,16 @@
+{
+  "name": "resourceful-action-creators",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "querystringify": "^1.0.0",
+    "resourceful-redux": "0.0.6",
+    "xhr": "^2.4.0"
+  }
+}

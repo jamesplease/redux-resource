@@ -1,4 +1,4 @@
-import {actionTypes} from '../../src';
+import {actionTypes} from '../../src/resourceful-redux';
 
 describe('actionTypes', function() {
   it('should be an object', () => {

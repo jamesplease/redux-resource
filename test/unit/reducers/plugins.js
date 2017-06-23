@@ -1,4 +1,4 @@
-import {resourceReducer, actionTypes} from '../../../src';
+import {resourceReducer, actionTypes} from '../../../src/resourceful-redux';
 
 describe('reducer', function() {
   it('should handle a plug-in on a built-in type', () => {

@@ -1,4 +1,4 @@
-import {resourceReducer, requestStatuses} from '../../../src';
+import {resourceReducer, requestStatuses} from '../../../src/resourceful-redux';
 
 describe('reducers: delete', function() {
   describe('DELETE_RESOURCES_SUCCEEDED', () => {
