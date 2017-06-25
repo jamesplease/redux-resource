@@ -15,16 +15,33 @@ npm install --save resourceful-redux
 Resourceful Redux is around 13kb minified, which is typically much smaller than
 the boilerplate code that it replaces.
 
-### Getting Started
+### Table of Contents
 
-Read the [Introduction](/docs/introduction/README.md) to learn why this library
-exists, or to read about alternative solutions.
+* **[Introduction](/docs/introduction/README.md)**
 
-The [Guides](/docs/guides/README.md) explain how to use the features
-of resourceful-redux.
+  The introduction explains why this library exists, and also explores
+  alternative solutions.
 
-Answers to frequently asked questions can be found in the
-[FAQ section](/docs/faq/README.md).
+* **[Guides](/docs/guides/README.md)**
 
-Refer to the [API Reference](/docs/api-reference/README.md) to explore the APIs
-of resourceful-redux's exported objects and functions.
+  The guides explain the concepts in this library. There are code samples in the
+  guides to help out with your understanding.
+
+* **[Recipes](/docs/recipes/README.md)**
+
+  Recipes are recommended patterns and best practices that you can use in your
+  application. They assume that you understand all of the material in the
+  [Guides](/docs/guides/README.md).
+
+* **[Extensions](/docs/extensions/README.md)**
+
+  Extensions are officially maintained bits of code that make working with
+  Resourceful Redux even better.
+
+* **[FAQ](/docs/faq/README.md)**
+
+  Answers to frequently asked questions.
+
+* **[API Reference](/docs/api-reference/README.md)**
+
+  Describes the API of all of the exports of Resourceful Redux.
