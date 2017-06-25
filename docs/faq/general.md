@@ -7,25 +7,6 @@ then it might be worth giving a library like Resourceful Redux a try. There are
 [similar projects](/docs/introduction/similar-projects.md) that also aim to
 reduce Redux boilerplate, which are also worth your consideration.
 
-#### Are there Action Creators?
-
-Not in the core library, but there is an
-[Action Creators extension](/docs/extensions/action-creators.md).
-
-Developers have different preferences when it comes to making requests, so we
-made this library easy to use with any request library that you choose. We've
-had great success with the Action Creator extension, but should you choose to
-write your own, we have guides to help you.
-
-Refer to the [CRUD Actions](/docs/guides/crud-actions.md) guide to learn more
-about how to build your own action creator, or the four CRUD guides for examples
-of action creators:
-
-- [Reading resources](/docs/guides/reading-resources.md)
-- [Updating resources](/docs/guides/reading-resources.md)
-- [Creating resources](/docs/guides/reading-resources.md)
-- [Deleting resources](/docs/guides/reading-resources.md)
-
 #### Does this only work with React?
 
 No. The only requirement is that you are using Redux, or a library that has a
