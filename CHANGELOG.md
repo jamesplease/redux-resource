@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.7) (6/24/17)
+
+**New Features**
+
+- Two "extensions" have been added to the `npm` package: Prop Types and
+  Action Creators.
+
 ## [0.0.6](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.6) (6/22/17)
 
 **New Features**
