@@ -42,9 +42,6 @@ Resourceful Redux: it stores a single number that counts the number of
 concurrent requests of the same type that are in flight, whereas
 Resourceful Redux tracks all requests separately.
 
-It does provide action creators out of the box for you, while
-Resourceful Redux does not provide action creators at the moment.
-
 In addition, redux-json-api requires that your backend adhere to
 [JSON API](http://jsonapi.org/). Although Resourceful Redux does not provide a
 complete integration with JSON API out of the box, the plugin system would

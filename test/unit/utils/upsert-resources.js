@@ -1,4 +1,4 @@
-import {upsertResources} from '../../../src';
+import {upsertResources} from '../../../src/resourceful-redux';
 
 describe('upsertResources', function() {
   beforeEach(() => {

@@ -9,19 +9,17 @@ reduce Redux boilerplate, which are also worth your consideration.
 
 #### Are there Action Creators?
 
-Not in the core library, and we don't plan to include them. Developers have
-different preferences when it comes to making requests. Some developers prefer
-working with Promises, while others like callbacks. Opinions aside, different
-backends have different requirements, so there's no one-size-fits-all Action
-creator for making requests.
+Not in the core library, but there is an
+[Action Creators extension](/docs/extensions/action-creators.md).
 
-Using the Action types that this library exports, it should be straightforward
-to build Action creators that work for your use case.
+Developers have different preferences when it comes to making requests, so we
+made this library easy to use with any request library that you choose. We've
+had great success with the Action Creator extension, but should you choose to
+write your own, we have guides to help you.
 
-The action creators that we use will soon be made available in a separate
-library, so you will be able to use them if you wish. For a preview of what they
-look like, refer to the four guides on CRUDing resources, which each have
-example Action creators that look very similar to the ones that we write:
+Refer to the [CRUD Actions](/docs/guides/crud-actions.md) guide to learn more
+about how to build your own action creator, or the four CRUD guides for examples
+of action creators:
 
 - [Reading resources](/docs/guides/reading-resources.md)
 - [Updating resources](/docs/guides/reading-resources.md)

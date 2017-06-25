@@ -1,5 +1,5 @@
-import reducerGenerator from '../../../src/utils/reducer-generator';
-import {requestStatuses} from '../../../src';
+import reducerGenerator from '../../../src/resourceful-redux/utils/reducer-generator';
+import {requestStatuses} from '../../../src/resourceful-redux';
 
 describe('reducerGenerator:', function() {
   it('passing no IDs and no label', () => {

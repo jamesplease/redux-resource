@@ -46,6 +46,12 @@ except for `deleteStatus`, which will be set to `"SUCCEEDED"`.
   resources, you may want to write a [plugin](/docs/guides/plugins.md) to clear
   out old, unused metadata.
 
+### Action Creators
+
+The [Action Creators extension](/docs/extensions/action-creators.md) provides
+out-of-the-box action creators that you can use to delete resources. If you'd
+like to build your own, then that's fine, too. The example below may help.
+
 ### Example Action Creator
 
 This example shows an action creator to delete a single book. It uses the
