@@ -1,6 +1,6 @@
 # Core Concepts
 
-Understanding these core concepts will help you learn and use Resourceful Redux.
+Resourceful Redux is intended to be a simple solution to a complicated problem.
 
 ### Resources
 
@@ -20,41 +20,45 @@ a single list.
 
 ### Resource Metadata
 
-Resources also have "metadata" about them, which can be thought of as any
-information about a resource that is useful for your interface. For instance, if
-your interface displays a list of books that the user can select, then the
-information about which books are selected would be metadata about the books
-resource.
+Resources also have "metadata" about them, which can be thought of as the
+additional  information about a resource that is useful for your interface. For
+instance, if your interface displays a list of books that the user can select,
+then the information about which books are selected would be metadata about the
+books resource.
 
-One of the features of Resourceful Redux is that it provides a system for
-keeping metadata organized. The system is this: the metadata of a resource is
-stored separately from the resource's attributes. And you can also store
-metadata on a per-request basis.
+If a user is taking an action against a resource, then that is also metadata.
+For instance, if a book is being deleted, then that status will be stored as
+metadata for that particular book. A rule of thumb about metadata is that that
+it's any data about a resource that isn't persisted to a remote server.
+
+In Resourceful Redux, each resource has its own metadata, and that metadata
+is stored separately from the resource's attributes.
+
+### CRUD Operations
+
+There are four interactions you can have with a resource: you can create them,
+retrieve them, update them, or delete them. These four operations are
+collectively known as
+[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete).
 
 ### Requests
 
 For many applications, resources are stored in an external system, and
-interactions with the resources occur over a network. These interactions are
+CRUD operations with the resources occur over a network. These interactions are
 called "requests." Typically, they are HTTP requests.
-
-There are four operations you can perform against a resource using requests: you
-can create them, retrieve them, update them, or delete them. These four
-operations are collectively known as
-[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete).
 
 Because requests occur over a network, they do not happen instantly.
 They might take awhile to complete, and they don't always succeed.
-In Resourceful Redux, this information is represented as one of four "statuses,"
-and all requests will always have one of the four statuses. The statuses are:
+In Resourceful Redux, this information is represented as one of four "statuses":
 
 - `NULL`: the request hasn't begun yet
 - `PENDING`: the request has started, but has not yet finished
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
 
-### Metadata About Requests
+In Resourceful Redux, every resource in your application always has one of these
+statuses associated for each CRUD operation. Resourceful Redux keeps this
+metadata up-to-date for each resource as users use your app.
 
-In applications, requests are often made that read or write information about
-resources. Resourceful Redux provides reducers that track these request statuses
-as metadata about each resource for you. This reduces the boilerplate code that
-you need to write, freeing you up to build a great application.
+This reduces the boilerplate code that you need to write, giving you more time
+to build your application.
