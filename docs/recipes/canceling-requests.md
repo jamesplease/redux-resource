@@ -114,13 +114,6 @@ myRequest.open('GET', 'books');
 myRequest.abort();
 ```
 
-We can see that canceling a request is straightforward when you have an
-XMLHttpRequest object. A problem is that many developers believe that
-_creating_ an XMLHttpRequest object is tedious using the native constructor.
-
-To solve this problem, there are wrapping libraries that make it easier to
-create XMLHttpRequest objects.
-
 #### xhr
 
 The [xhr](https://github.com/naugtur/xhr) library simplifies the creation of
@@ -144,10 +137,6 @@ The [Action Creators extension](/docs/extensions/action-creators) for Resourcefu
 Redux uses `xhr` for requests. The action creators in that extension return a
 native XHR object, so you can use the `abort` method to cancel those requests.
 
-Some developers dislike callbacks, because they can lead to
-[callback hell](http://callbackhell.com/). These developers may choose to use
-Promises instead.
-
 #### fetch
 
 The native [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
@@ -166,9 +155,6 @@ called "Cancel Tokens," which is based off of
 To see how to cancel axios requests, refer to
 [the axios documentation](https://github.com/mzabriskie/axios#cancellation).
 
-Because using a Cancel Token requires more code than calling a single method,
-such as `abort`, some developers dislike Cancel Tokens.
-
 #### Bluebird
 
 [Bluebird](http://bluebirdjs.com/) is Promise implementation that supports
@@ -176,12 +162,6 @@ cancellation using an `onCancel` method.
 
 Refer to [the Bluebird documentation](http://bluebirdjs.com/docs/api/cancellation.html)
 for specifics on the `onCancel` method.
-
-Bluebird is substantially larger than any of the options listed above. The
-"core" build Bluebird v3.5.0 weighs in at 50kb minified, while the full library
-is 80kb. Although Bluebird is one of, if not _the_ most, sophisticated tool for
-working with Promises, some developers consider it to be too large to use in the
-browser.
 
 #### RxJS Observables
 
@@ -192,14 +172,6 @@ method can be used to cancel RxJS requests.
 If you happen to be using redux-observable, refer to that library's documentation
 for
 [a recipe for request cancellation](https://redux-observable.js.org/docs/recipes/Cancellation.html).
-
-Some developers may not choose to use Observables because they are less familiar
-than some of the other options here. They may also have a steeper learning
-curve, which is justified as they are a fundamentally more powerful abstraction.
-
-Another concern some developers may have is that RxJS can contribute more to
-your app's bundle size than some of these other options. Keep in mind, though,
-that this depends on _how much_ of RxJS that you decide to use in your application.
 
 ### Alternatives
 
