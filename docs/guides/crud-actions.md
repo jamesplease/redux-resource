@@ -1,35 +1,22 @@
 # CRUD Actions
 
 Resourceful Redux exports Action types to help you create, read, update,
-and delete resources. Although these operations are different from one another,
-there are many similarities between the Actions for these operations in
-Resourceful Redux.
+and delete resources.
 
-### Action Sequences
+### "Start" and "end" Actions
 
 CRUD operations are usually asynchronous. In Resourceful Redux, asynchronous
-operations are represented as a 'sequence' of Redux Actions. There is always a
-start Action, which updates the state with information about the request
-starting. Sometime later, there is an end Action, which will cause the state
-to be updated with information about the resolution of the operation.
+operations are represented as a sequence of two Redux Actions: first a start
+action, which updates the state with a pending request, then an end action,
+which updates the state with the outcome of that request.
 
-For instance, the series of action types for a successful read request is the
+For instance, the sequence of action types for a successful read request is the
 following:
 
-`READ_RESOURCES_PENDING -> READ_RESOURCES_SUCCEEDED`
+`READ_RESOURCES_PENDING` ⇨ `READ_RESOURCES_SUCCEEDED`
 
-The first action type puts the request in a "pending" state. The second
-request moves it to a "success" state.
-
-Optionally, there is a third action to "null" the status of the request, which
-will set its value to be what it was before the operation ever began. Nulling
-a status isn't always necessary, but it can be useful to use when requests are
-aborted, or if you don't need to track the status of some past request any
-longer.
-
-Because these Actions are asynchronous, using a library like
-[redux-thunk](https://github.com/gaearon/redux-thunk) for your action creators
-is recommended.
+The [redux-thunk](https://github.com/gaearon/redux-thunk) middleware is
+recommended for making action creators for these CRUD operations.
 
 ### Action Attributes
 
@@ -48,13 +35,11 @@ store.dispatch({
 ```
 
 This action type isn't very useful, however. Without more information about this
-request, Resourceful Redux doesn't know how to change your state. Consequently,
-this action is a no-op.
+request, Resourceful Redux doesn't know where to put this information in your
+state tree. Consequently, this action is a no-op.
 
-To cause changes in the state, you need to supply one of two additional
-options: a `resources` array, and/or a `label`.
-
-We'll first look at `resources`, then `labels`.
+To reflect a request status in the state tree, you need to supply at least one
+of these two values in your action: a `resources` array, or a `label`.
 
 ### `resources`
 

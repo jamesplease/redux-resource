@@ -37,6 +37,11 @@ in this guide.
 All of your resource data will be available in the state's `resources`
 property. This is an array of resources of a single type.
 
+Resourceful Redux enforces a
+[normalized](https://en.wikipedia.org/wiki/Database_normalization) structure to
+your data: each individual resource can be found in exactly one place in the
+state tree.
+
 For instance, if your server returns the following JSON response body:
 
 ```js

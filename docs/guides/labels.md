@@ -1,24 +1,32 @@
 # Labels
 
-Labels are a tool you can use to keep track of certain requests. Before we
-get into using labels, let's first cover the motivation for why they exist
-in the first place.
+Labels are a way to keep track of the status and resources of individual
+requests.
+
+### Why use labels
 
 In the earlier guide on [State Structure](/docs/guides/state-structure.md), we
-covered that all resources of the same type are kept in a single Array. This
-solves the problem of having multiple copies of a resource in two different
-places: each individual resource can be found in exactly one place in the state
-tree.
+covered that all resources of the same type are kept in a single Array. This is
+a good thing, but it introduces a problem: how do you keep track of "groups" of
+the same resource? Consider a web application shows a list of recently released
+books, as well as a user's shopping cart of books. We know that in the state
+tree, all of these books will be stored in one array, but we will want to show
+them as two different lists in the interface. How can we do that?
 
-This introduces another problem, though. How do you keep track of "groups" of
-the same resource? For instance, if a web application shows a list of recently
-released books, as well as a user's shopping cart of books, how can they be
-distinguished from one another?
+The solution relies on the fact that these "groupings" of resources are nearly
+always determined by different network requests. For instance, you might make one
+request to get the recently released books, then a second request for the
+shopping cart. By keeping track of which resources were returned for each
+request, you can keep track of the different books.
 
-Labels can be used to solve this problem, and other similar problems.
+And that's exactly what labels are: they're a name that you give to individual
+requests. Resourceful Redux keeps track of the resources returned by each
+labelled request.
 
-Using a label is straightforward: add the `label` property to all of the
-requests in that [sequence of actions](./crud-actions.md).
+### Using a label
+
+Using a label is straightforward: add the `label` property to the
+[Action types of a CRUD operation](./crud-actions.md).
 
 ```js
 import { actionTypes } fom 'resourceful-redux';
@@ -33,11 +41,10 @@ store.dispatch({
 
 ### When to Use labels
 
-Sticking to a rule of thumb can help make deciding _when_ to use a label
-straightforward, too. The rule of thumb is:
+A rule of thumb for using labels is:
 
-**Use a label whenever you do not have an ID or list of IDs at the moment
-that you dispatch a "pending" action.**
+**Use a label anytime that you do not have an ID, or a list of IDs, when you
+dispatch a "pending" action.**
 
 For example, if you attempt to read a book with ID of 23, then you _will_ have
 an ID when you dispatch the "read pending" action (the ID is 23). So a
@@ -45,15 +52,13 @@ label may not be necessary in this situation.
 
 On the other hand, if you were to make a request to your backend for the list
 of books that were just released this past week, then you wouldn't have any IDs
-at the time that you dispatch the "read pending" action. So you do use a label
-in this situation.
+at the time that you dispatch the "read pending" action. So you _should_ use a
+label in this situation.
 
-Note that there may also be times when you want to use a label in addition to
-using an ID, but those are exceptional cases that many applications do not
-require. But the option is there if you need it.
-
-If you're just starting out with Resourceful Redux, we recommend sticking with
-the rule of thumb.
+You're free to use a label in addition to passing IDs, too. Many applications
+won't need to do this, but the option is there if you need it. If you're just
+starting out with Resourceful Redux, we recommend sticking with the rule of
+thumb.
 
 ### An Example
 
@@ -70,6 +75,7 @@ const searchStatus = getStatus(state, 'books.labels.search.status');
 // => Returns the following object:
 //
 // {
+//   null: false,
 //   pending: true,
 //   failed: false,
 //   succeeded: false
@@ -136,40 +142,3 @@ store.dispatch({
   resources: newResources
 });
 ```
-
-### Performance
-
-Filtering the resources array with an array of list IDs can sometimes cause
-performance issues if your application deals with large numbers of resources. If
-you run into these performance problems, we have had luck with these solutions:
-
-- Make sure that the filter is done as few times as possible. For instance,
-  if the component is connected, perform the filter in `mapStateToProps`, then
-  pass it in as props. Then it is computed at most once per render.
-
-- Use [`reselect`](https://github.com/reactjs/reselect) to cache the result
-  of the filter. This will only recompute the result whenever the resource list
-  or label ID list changes.
-
-- If this still isn't performant enough for you, then you can just make a
-  separate slice for a subset of your resources, rather than using a label. Then
-  you don't need to filter at all. For instance, you might have:
-
-  ```js
-  import { createStore, combineReducers } from 'redux';
-  import { resourceReducer } from 'resourceful-redux';
-
-  let store = createStore(
-    combineReducers({
-      books: resourceReducer('books'),
-      booksSearch: resourceReducer('booksSearch'),
-      booksInput: resourceReducer('booksInput')
-    })
-  );
-  ```
-
-  The benefit of this approach is that you never need to do a `filter` against
-  the resources list. The downside is that you need to manage duplicate
-  resources in your state, as well as moving resources between the different
-  lists as users interact with your application. For these reasons, we recommend
-  only using this solution as a last resort.
