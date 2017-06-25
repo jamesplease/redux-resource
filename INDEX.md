@@ -13,7 +13,7 @@ npm install --save resourceful-redux
 ### Size
 
 Resourceful Redux is around 13kb minified, which is typically much smaller than
-the boilerplate reducer code that it replaces.
+the boilerplate code that it replaces.
 
 ### Getting Started
 
