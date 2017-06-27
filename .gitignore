@@ -34,3 +34,5 @@ tmp
 dist
 _site
 _book
+/prop-types
+/action-creators
