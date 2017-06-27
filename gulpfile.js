@@ -95,7 +95,7 @@ function buildResourceful() {
 function buildPropTypes() {
   return buildFile({
     src: 'src/prop-types/index.js',
-    dest: 'dist/prop-types',
+    dest: 'prop-types',
     destFilename: 'index',
     library: 'resourcefulPropTypes',
     externals: {
@@ -107,7 +107,7 @@ function buildPropTypes() {
 function buildActionCreators() {
   return buildFile({
     src: 'src/action-creators/index.js',
-    dest: 'dist/action-creators',
+    dest: 'action-creators',
     destFilename: 'index',
     library: 'resourcefulActionCreators',
     externals: {
