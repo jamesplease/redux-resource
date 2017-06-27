@@ -1,3 +1,11 @@
+## [0.0.8](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.8) (6/27/17)
+
+**Bug fix**
+
+- Fixes a bug that would cause errors to be thrown when using the action
+  creators extension
+- Fixes the location of the extensions in the npm module
+
 ## [0.0.7](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.7) (6/24/17)
 
 **New Features**
