@@ -1,7 +1,7 @@
 import { actionTypes } from 'resourceful-redux';
 import xhr from './xhr';
 
-function performXhr(options) {
+function performXhr(dispatch, options) {
   const {
     xhrOptions,
     crudAction,
@@ -71,7 +71,7 @@ function crudAction(options) {
       opts = options || {};
     }
 
-    performXhr(options);
+    performXhr(dispatch, options);
   };
 }
 
@@ -95,7 +95,7 @@ function createResources(options = {}) {
       }
     };
 
-    performXhr(newOptions);
+    performXhr(dispatch, newOptions);
   };
 }
 
@@ -119,7 +119,7 @@ function readResources(options = {}) {
       }
     };
 
-    performXhr(newOptions);
+    performXhr(dispatch, newOptions);
   };
 }
 
@@ -143,7 +143,7 @@ function updateResources(options = {}) {
       }
     };
 
-    performXhr(newOptions);
+    performXhr(dispatch, newOptions);
   };
 }
 
@@ -167,7 +167,7 @@ function deleteResources(options = {}) {
       }
     };
 
-    performXhr(newOptions);
+    performXhr(dispatch, newOptions);
   };
 }
 
