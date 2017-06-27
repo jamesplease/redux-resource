@@ -1,6 +1,6 @@
 ## [0.0.8](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.8) (6/27/17)
 
-**Bug fix**
+**Bug Fixes**
 
 - Fixes a bug that would cause errors to be thrown when using the action
   creators extension
