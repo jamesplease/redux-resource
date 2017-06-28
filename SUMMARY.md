@@ -5,6 +5,7 @@
   * [Motivation](/docs/introduction/motivation.md)
   * [Core Concepts](/docs/introduction/core-concepts.md)
   * [Similar Projects](/docs/introduction/similar-projects.md)
+  * [Examples](/docs/introduction/examples.md)
 * [Guides](/docs/guides/README.md)
   * [Resources](/docs/guides/resources.md)
   * [State Structure](/docs/guides/state-structure.md)
