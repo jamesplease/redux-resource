@@ -26,10 +26,8 @@ instance, if your interface displays a list of books that the user can select,
 then the information about which books are selected would be metadata about the
 books resource.
 
-If a user is taking an action against a resource, then that is also metadata.
-For instance, if a book is being deleted, then that status will be stored as
-metadata for that particular book. A rule of thumb about metadata is that that
-it's any data about a resource that isn't persisted to a remote server.
+A rule of thumb is that metadata is any data about a resource that isn't
+persisted to a remote server.
 
 In Resourceful Redux, each resource has its own metadata, and that metadata
 is stored separately from the resource's attributes.

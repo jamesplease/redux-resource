@@ -8,8 +8,9 @@ time, and they may sometimes fail.
 These network requests are often made as a result of a user's action within the
 application. It's a developer's responsibility to provide feedback to the user
 about these requests. When using Redux, this means writing reducers that change
-the state based on the status of these requests. If your application has many
-resources, you can run into problems when you write these reducers by hand.
+your store's state tree based on the status of these requests. If your
+application has many resources, you can run into problems when you write these
+reducers by hand.
 
 For one, simply figuring out what information needs to be tracked can be
 difficult to figure out. Request tracking is a complicated problem.
