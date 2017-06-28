@@ -89,7 +89,7 @@ const state = store.getState();
 
 const aggregatedStatus = getStatus(state, [
   'books.meta.23.readStatus',
-  'books.label.bookComments.status'
+  'books.labels.bookComments.status'
 ], true);
 ```
 
