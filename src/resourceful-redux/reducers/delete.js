@@ -72,11 +72,11 @@ function delSucceed(state, action, {initialResourceMeta}) {
   }
 
   // Shallow clone the existing resource array, removing the deleted resource
-  let newResources;
+  let newResources = Object.assign({}, state.resources);
   if (hasIds) {
-    newResources = state.resources.filter(r => !idList.includes(r.id));
-  } else {
-    newResources = [...state.resources];
+    idList.forEach(id => {
+      newResources[id] = null;
+    });
   }
 
   return {

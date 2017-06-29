@@ -4,14 +4,7 @@ import PropTypes from 'prop-types';
 // "slice" because most folks use `resourceReducer` alongside `combineReducers`,
 // although it works just as well if you're not.
 const slicePropType = PropTypes.shape({
-  resources: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ])
-    })
-  ).isRequired,
+  resources: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   labels: PropTypes.object.isRequired
 }).isRequired;

@@ -4,11 +4,11 @@ describe('reducers: read:', function() {
   describe('READ_RESOURCES_SUCCEEDED:', () => {
     it('returns the right state without a label, without IDs', () => {
       const initialState = {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4},
+        },
         labels: {
           pasta: {
             hungry: true
@@ -37,11 +37,11 @@ describe('reducers: read:', function() {
     it('returns state with resource array, no label, default options', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {},
           meta: {
             1: {
@@ -70,12 +70,12 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          {id: 5}
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
         labels: {},
         meta: {
           1: {
@@ -105,11 +105,11 @@ describe('reducers: read:', function() {
     it('returns state with resource array, no label, mergeResources: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {},
           meta: {
             1: {
@@ -136,12 +136,12 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, name: 'sandwiches'},
-          {id: 5}
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches'},
+          5: {id: 5}
+        },
         labels: {},
         meta: {
           1: {
@@ -170,11 +170,11 @@ describe('reducers: read:', function() {
     it('returns state with resource array, no label, mergeMeta: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {},
           meta: {
             1: {
@@ -201,12 +201,12 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          {id: 5}
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
         labels: {},
         meta: {
           1: {
@@ -234,11 +234,11 @@ describe('reducers: read:', function() {
     it('returns state with resource array and label, ensuring no label ID dupes', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -274,12 +274,12 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          {id: 5}
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -317,11 +317,11 @@ describe('reducers: read:', function() {
     it('returns state with resource array and label, ensuring empty label IDs works', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -356,12 +356,12 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          {id: 5}
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -399,11 +399,11 @@ describe('reducers: read:', function() {
     it('returns state with resource array and label, with mergeLabelIds: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -440,12 +440,12 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          {id: 5}
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -483,11 +483,11 @@ describe('reducers: read:', function() {
     it('replaces label IDs with resource array and label, with mergeLabelIds: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -521,11 +521,11 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, lastName: 'camomile'},
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, lastName: 'camomile'},
+        },
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -553,11 +553,11 @@ describe('reducers: read:', function() {
     it('returns state without a resource array, with a label', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4, lastName: 'camomile'},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -589,11 +589,11 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4, lastName: 'camomile'},
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, lastName: 'camomile'},
+        },
         labels: {
           sandwiches: {
             ids: [1, 3],

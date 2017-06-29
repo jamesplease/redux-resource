@@ -6,10 +6,6 @@ export default function(state, resourceName, idsOrLabel) {
   }
 
   const resources = resourceSlice.resources;
-  if (!resources.length) {
-    return [];
-  }
-
   let idsList;
 
   // This conditional handles the situation where `idsOrLabel` is an ID
@@ -33,5 +29,5 @@ export default function(state, resourceName, idsOrLabel) {
     return [];
   }
 
-  return resources.filter(resource => idsList.includes(resource.id));
+  return idsList.map(id => resources[id]).filter(Boolean);
 }
