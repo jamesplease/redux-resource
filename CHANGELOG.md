@@ -1,3 +1,12 @@
+## [0.0.9](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.9) (6/29/17)
+
+**Breaking Changes**:
+
+- The `resources` Array is now an Object. This will only be breaking if you're
+  accessing or modifying the `resources` Array directly. If you're using
+  `getResources` for accessing resources, and `upsertResources` for updating
+  resources, then this change will not be breaking.
+
 ## [0.0.8](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.8) (6/27/17)
 
 **Bug Fixes**
