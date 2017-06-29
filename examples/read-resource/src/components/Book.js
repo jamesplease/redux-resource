@@ -7,7 +7,7 @@ class Book extends Component {
   render() {
     const { state, readBook, bookId } = this.props;
     const readStatus = getStatus(state, 'meta.24.readStatus');
-    const book = state.resources.find(resource => resource.id === bookId);
+    const book = state.resources[bookId];
 
     return (
       <div>
