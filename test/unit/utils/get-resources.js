@@ -4,12 +4,12 @@ describe('getStatus', function() {
   beforeEach(() => {
     this.state = {
       books: {
-        resources: [
-          {id: 1, name: 'sandwiches'},
-          {id: 10, name: 'pizza'},
-          {id: 102, name: 'fried'},
-          {id: 116, name: 'pickles'},
-        ],
+        resources: {
+          1: {id: 1, name: 'sandwiches'},
+          10: {id: 10, name: 'pizza'},
+          102: {id: 102, name: 'fried'},
+          116: {id: 116, name: 'pickles'},
+        },
         meta: {},
         labels: {
           dashboardSearch: {
@@ -24,7 +24,7 @@ describe('getStatus', function() {
         }
       },
       movies: {
-        resources: [],
+        resources: {},
         meta: {},
         labels: {}
       }
@@ -37,7 +37,7 @@ describe('getStatus', function() {
     });
   });
 
-  describe('when the resources array is empty', () => {
+  describe('when the resources object is empty', () => {
     it('should return an empty array', () => {
       expect(getResources(this.state, 'movies', [1])).to.deep.equal([]);
     });

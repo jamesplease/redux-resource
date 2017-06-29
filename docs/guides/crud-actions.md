@@ -106,10 +106,10 @@ Whenever a `resources` array is supplied, Resourceful Redux will update the
 `meta` for each resource in that array.
 
 The "success" action types also have special behavior with the `resources`
-array. For creates, reads, and updates, your state's resources array will be
-updated to reflect any new data. And for successful deletes, any resources
-passed in will be _removed_ from the state's resources array, as well as from
-the `ids` array of all labels.
+array. For creates, reads, and updates, your state's resources object will be
+updated to reflect any new data. For successful deletes, the state for that
+resource will be changed to be `null`, and the resource will be removed from the
+`ids` array of all labels.
 
 It isn't always possible to provide an array of `resources` in your action. For
 instance, if the user is searching for books by entering a title, you couldn't

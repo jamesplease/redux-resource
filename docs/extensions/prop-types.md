@@ -36,7 +36,7 @@ This checks that the object has a shape like:
 
 ```js
 {
-  resources: [],
+  resources: {},
   meta: {},
   labels: {}
 }

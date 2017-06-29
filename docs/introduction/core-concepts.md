@@ -8,7 +8,9 @@ A resource is an entity that you interact with in your application. For
 instance, if your web application manages a public library, then you might have
 two resources: "books" and "members."
 
-Resources typically have attributes, such as a "name" or "releaseYear."
+Resources typically have attributes, such as a "name" or "releaseYear." They
+also have a unique ID, which differentiates two resource instances from
+one another.
 
 Resources don't necessarily need to represent tangible objects. They can be more
 abstract things, too, such as "workflows" or "permissions."
@@ -16,21 +18,49 @@ abstract things, too, such as "workflows" or "permissions."
 In Resourceful Redux, each resource will be kept in its own
 [slice](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) of
 your store. Within that slice, all of the resources of a single type are kept in
-a single list.
+an object, where the key of the object is the resource's ID. This looks like the
+following:
+
+```js
+{
+  resources: {
+    24: {
+      // Attributes of book 24
+    },
+    100: {
+      // Attributes of book 100
+    }
+  }
+}
+```
 
 ### Resource Metadata
 
-Resources also have "metadata" about them, which can be thought of as the
-additional  information about a resource that is useful for your interface. For
-instance, if your interface displays a list of books that the user can select,
-then the information about which books are selected would be metadata about the
-books resource.
+In addition to an ID and attributes, resources have "metadata" about them, which
+is additional information about a resource that is useful for your interface.
+For instance, if your interface displays a list of books that the user can
+select by clicking checkboxes, then the information about which books are
+selected would be metadata about the books resource.
 
-A rule of thumb is that metadata is any data about a resource that isn't
+A rule of thumb is that metadata is any data about a resource that is **not**
 persisted to a remote server.
 
-In Resourceful Redux, each resource has its own metadata, and that metadata
-is stored separately from the resource's attributes.
+In Resourceful Redux, all metadata is stored on an object. This meta object,
+like the resources object, has resource IDs as its keys, and has values that are
+metadata. An example is:
+
+```js
+{
+  meta: {
+    24: {
+      // Metadata for book 24
+    },
+    100: {
+      // Metadata for book 100
+    }
+  }
+}
+```
 
 ### CRUD Operations
 
@@ -39,7 +69,7 @@ retrieve them, update them, or delete them. These four operations are
 collectively known as
 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete).
 
-### Requests
+### CRUD Operation Requests
 
 For many applications, resources are stored in an external system, and
 CRUD operations with the resources occur over a network. These interactions are
@@ -54,9 +84,26 @@ In Resourceful Redux, this information is represented as one of four "statuses":
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
 
-In Resourceful Redux, every resource in your application always has one of these
-statuses associated for each CRUD operation. Resourceful Redux keeps this
-metadata up-to-date for each resource as users use your app.
+In Resourceful Redux, each resource has a request status associated with each
+of the four CRUD operations that can be performed against it. This information
+is the default metadata about each resource that Resourceful Redux provides
+for you. It looks like this:
+
+```js
+{
+  meta: {
+    24: {
+      createStatus: 'NULL',
+      readStatus: 'NULL',
+      updateStatus: 'NULL',
+      deleteStatus: 'NULL'
+    }
+  }
+}
+```
+
+Resourceful Redux keeps this metadata up-to-date for each resource as users use
+your app.
 
 This reduces the boilerplate code that you need to write, giving you more time
 to build your application.

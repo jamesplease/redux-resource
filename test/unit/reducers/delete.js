@@ -4,11 +4,11 @@ describe('reducers: delete', function() {
   describe('DELETE_RESOURCES_SUCCEEDED', () => {
     it('returns the right state without a label, without IDs', () => {
       const initialState = {
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4},
+        },
         labels: {},
         meta: {
           1: {
@@ -33,11 +33,11 @@ describe('reducers: delete', function() {
     it('returns the right state without a label, with IDs', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
           labels: {},
           meta: {
             1: {
@@ -60,9 +60,11 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-        ],
+        resources: {
+          1: {id: 1},
+          3: null,
+          4: null
+        },
         labels: {},
         meta: {
           1: {
@@ -89,11 +91,11 @@ describe('reducers: delete', function() {
     it('returns the right state with a label, with IDs', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
           labels: {
             oink: {
               hungry: true,
@@ -127,9 +129,11 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-        ],
+        resources: {
+          1: {id: 1},
+          3: null,
+          4: null
+        },
         labels: {
           italiano: {
             status: requestStatuses.SUCCEEDED,
@@ -164,11 +168,11 @@ describe('reducers: delete', function() {
     it('returns the right state with a label, without IDs', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
-          resources: [
-            {id: 1},
-            {id: 3},
-            {id: 4},
-          ],
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
           labels: {
             oink: {
               hungry: true
@@ -197,11 +201,11 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
-        resources: [
-          {id: 1},
-          {id: 3},
-          {id: 4},
-        ],
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4},
+        },
         labels: {
           italiano: {
             status: requestStatuses.SUCCEEDED,

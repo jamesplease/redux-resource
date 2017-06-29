@@ -4,7 +4,7 @@ Add new or update existing resources in your state tree.
 
 #### Arguments
 
-1. `resources` *(Array)*: The current list of resources.
+1. `resources` *(Object)*: The current resources object from your state tree.
 
 2. `newResources` *(Array)*: The list of resources to add or update.
 
@@ -14,7 +14,7 @@ Add new or update existing resources in your state tree.
 
 #### Returns
 
-(*`Array`*): The array of new resources.
+(*`Object`*): The updated resources object.
 
 #### Example
 

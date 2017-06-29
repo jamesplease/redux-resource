@@ -24,9 +24,9 @@ describe('reducer', function() {
     });
 
     expect(reduced).to.deep.equal({
-      resources: [
-        {id: 3}
-      ],
+      resources: {
+        3: {id: 3}
+      },
       meta: {
         3: {
           createStatus: 'NULL',
@@ -63,7 +63,7 @@ describe('reducer', function() {
     });
 
     expect(reduced).to.deep.equal({
-      resources: [],
+      resources: {},
       meta: {},
       labels: {},
       tastiness: 'quite'
@@ -102,7 +102,7 @@ describe('reducer', function() {
     });
 
     expect(reduced).to.deep.equal({
-      resources: [],
+      resources: {},
       meta: {},
       labels: {},
       tastiness: true
