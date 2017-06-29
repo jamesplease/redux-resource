@@ -22,7 +22,7 @@ The initial state has the following shape:
 
 ```js
 {
-  resources: [],
+  resources: {},
   meta: {},
   labels: {}
 }

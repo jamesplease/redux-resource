@@ -37,7 +37,7 @@ describe('getStatus', function() {
     });
   });
 
-  describe('when the resources array is empty', () => {
+  describe('when the resources object is empty', () => {
     it('should return an empty array', () => {
       expect(getResources(this.state, 'movies', [1])).to.deep.equal([]);
     });

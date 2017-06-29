@@ -28,8 +28,8 @@ the boilerplate code that it replaces.
 
 * **[Guides](/docs/guides/README.md)**
 
-  The guides explain the concepts in this library. There are code samples in the
-  guides to help out with your understanding.
+  The guides explain the concepts in this library. The guides also contain a
+  number of examples.
 
 * **[Recipes](/docs/recipes/README.md)**
 

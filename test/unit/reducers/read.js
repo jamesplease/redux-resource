@@ -34,7 +34,7 @@ describe('reducers: read:', function() {
       expect(reduced).to.deep.equal(initialState);
     });
 
-    it('returns state with resource array, no label, default options', () => {
+    it('returns state with resource object, no label, default options', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -102,7 +102,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource array, no label, mergeResources: false', () => {
+    it('returns state with resource object, no label, mergeResources: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -167,7 +167,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource array, no label, mergeMeta: false', () => {
+    it('returns state with resource object, no label, mergeMeta: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -231,7 +231,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource array and label, ensuring no label ID dupes', () => {
+    it('returns state with resource object and label, ensuring no label ID dupes', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -314,7 +314,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource array and label, ensuring empty label IDs works', () => {
+    it('returns state with resource object and label, ensuring empty label IDs works', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -396,7 +396,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource array and label, with mergeLabelIds: false', () => {
+    it('returns state with resource object and label, with mergeLabelIds: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
