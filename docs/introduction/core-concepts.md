@@ -8,9 +8,9 @@ A resource is an entity that you interact with in your application. For
 instance, if your web application manages a public library, then you might have
 two resources: "books" and "members."
 
-Resources typically have attributes, such as a "name" or "releaseYear." They
-also have a unique ID, which differentiates two resource instances from
-one another.
+Each instance of a resource has a unique ID, which differentiates it from other
+resources of the same time. They typically also have attributes, such as "name"
+or "releaseYear."
 
 Resources don't necessarily need to represent tangible objects. They can be more
 abstract things, too, such as "workflows" or "permissions."
@@ -84,10 +84,10 @@ In Resourceful Redux, this information is represented as one of four "statuses":
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
 
-In Resourceful Redux, each resource has a request status associated with each
-of the four CRUD operations that can be performed against it. This information
-is the default metadata about each resource that Resourceful Redux provides
-for you. It looks like this:
+In Resourceful Redux, each individual resource has a request status for each of
+the four CRUD operations associated with it. This information is the default
+meta that you get for each resource. If you had one resource with an ID of 24,
+then your metadata will start off looking like this:
 
 ```js
 {

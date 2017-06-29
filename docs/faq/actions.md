@@ -34,4 +34,4 @@ use cases for labels are:
 
 A handy rule of thumb for when to use labels, as well as much more information
 about labels, can be found in
-[the Labels guide](/docs/guides/labels.md#when-to-use-labels).
+[the Labels guide](/docs/guides/request-labels.md#when-to-use-labels).

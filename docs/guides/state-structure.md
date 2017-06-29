@@ -1,6 +1,6 @@
 # State Structure
 
-Before we start manipulating resource data, let's first cover how the data
+Before we get into manipulating resource data, let's first cover how the data
 is represented in your state tree.
 
 ### State Slices
@@ -11,14 +11,13 @@ separate each type of resource into its own "slice" within your overall state
 tree. Each of these slices will store information about a single type of
 resource, separate from your other types of resources.
 
-In the rest of this guide, we will be talking about the structure of the "state".
-If you're using `combineReducers`, then we will be talking about one individual
-state slice. And if you're not, then the word "state" will refer to the entire state
-tree.
+In the rest of this guide, we will be talking about the structure of a single
+state slice. If you're not using `combineReducers`, then the slice will instead
+be your entire state tree.
 
 ### Initial State
 
-The initial state has the following shape:
+The initial state slice has the following shape:
 
 ```js
 {
@@ -34,7 +33,7 @@ in this guide.
 
 ### Resources
 
-All of your resource data will be available in the state's `resources`
+All of your resource data will be available in the state slice's `resources`
 property. This is an object of resources of a single type.
 
 Resourceful Redux enforces a
@@ -59,7 +58,7 @@ For instance, if your server returns the following JSON response body:
 }
 ```
 
-then your state will end up looking like this:
+then your state slice will end up looking like this:
 
 ```js
 {
@@ -92,8 +91,8 @@ you pass into Resourceful Redux have an `id` attribute.
 
 ### Resource Metadata
 
-Metadata about each of the resources in your state's `resources` array
-is stored under the `meta` object of the state. The `meta` object is similar to
+Metadata about each of the resources in your state slice's `resources` array
+is stored under the `meta` object of the slice. The `meta` object is similar to
 the `resources` object, in that the keys are individual resource IDs.
 
 Metadata includes information about requests, such as whether the resource is
@@ -115,13 +114,29 @@ looks like the following:
 
 These four keys represent the four CRUD actions. The values of the keys are
 one of the four request statuses – `"NULL"`, `"PENDING"`, `"SUCCEEDED"`, or
-`"FAILED"`, representing the status of any requests involving that resource.
+`"FAILED"`, representing the status of any requests to CRUD that resource.
 
-Let's look at an example. Consider an application where a user can "select"
-resources from a list, and then take action on their selection (such as updating
-or deleting the selected items). If the user has selected two resources, with
-IDs `2` and `23`, then a section of their state might look like something like
-the following:
+You're encouraged to store additional, application-specific metadata for your
+resources, too. For instance, a common feature of applications is to allow a
+user to "select" resources, before performing some action on the selection.
+One thing you could do is store a `selected` boolean on the metadata, so
+that it would look like:
+
+```js
+{
+  createStatus: 'NULL',
+  readStatus: 'NULL',
+  updateStatus: 'NULL',
+  deleteStatus: 'NULL',
+  selected: false
+}
+```
+
+Let's look at an example to see how this metadata changes as the user interacts
+with your application. Consider an application where a user can select resources
+from a list, and then take action on their selection (such as updating or
+deleting the selected items). If the user has selected two resources, with
+IDs `2` and `23`, then their state slice will look like the following:
 
 ```js
 {
@@ -156,7 +171,7 @@ the following:
 ```
 
 If the user then clicks a "Delete" button to initiate the deletion of these
-resources, the state would then look like this:
+resources, the slice would then look like this:
 
 ```js
 {
@@ -196,34 +211,22 @@ to that resource's `meta` object to keep track of it.
 Keep in mind that you don't _need_ to store any additional metadata here. For
 instance, in the above example, if you'd rather have a `selectedIds` property
 directly on your state instead, then you could do that. Just know that
-the option is there to store your own, additional metadata on the `meta` object.
+the option is there to store your own, additional metadata per-resource within
+`meta`.
 
 ### Labels
 
-The last piece of the state is called labels. Labels are a feature of
-Resourceful Redux to help you keep your requests and resources more organized.
+The last piece of the slice is called labels. Any time that you initiate a
+CRUD operation request, you can assign it a label. A label is just a string,
+such as `"createBook"`. Resourceful Redux associates the following data about
+the request with your label:
 
-Any time that you perform a request, you can assign it a label.
-Resourceful Redux keeps track of two pieces of information about labeled
-requests:
-
-1. which resources were associated with the request
+1. which resources were returned by the request
 2. the status (pending, failed, and so on) of the request
 
-To understand how labels can be useful, consider an application that manages
-books. There might be a page in your application that lets users view the
-latest books that just came out this week.
-
-That same page that might also have a sidebar that shows the books that are
-in a user's shopping cart.
-
-In Resourceful Redux, all of these books will be stored together in the
-`resources` array. How can you, as a developer, know which books are the ones in
-the shopping cart, and which are the ones that were just released?
-
-The answer is to use a label. We will get to the specifics of how you use labels
-to resolve situations like these shortly, but for now, let's look at what the
-store might look like in this example:
+You might be wondering what labels are for. The Labels guide later on in
+this documentation is dedicated to answering that question in detail. For now,
+let's just look at what the structure of the `labels` is:
 
 ```js
 {
@@ -234,6 +237,10 @@ store might look like in this example:
     // The resource meta is in here.
   }
   labels: {
+    createBook: {
+      ids: [],
+      status: 'PENDING'
+    },
     shoppingCart: {
       ids: [1, 20, 53],
       status: 'SUCCEEDED'
@@ -247,4 +254,4 @@ store might look like in this example:
 ```
 
 Now that you know how data is stored, you're ready to start building
-[Actions](http://redux.js.org/docs/basics/Actions.html) to modify this data.
+Redux Actions to modify this data.
