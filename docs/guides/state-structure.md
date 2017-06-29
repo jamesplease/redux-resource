@@ -35,7 +35,7 @@ in this guide.
 ### Resources
 
 All of your resource data will be available in the state's `resources`
-property. This is an array of resources of a single type.
+property. This is an object of resources of a single type.
 
 Resourceful Redux enforces a
 [normalized](https://en.wikipedia.org/wiki/Database_normalization) structure to
@@ -63,36 +63,41 @@ then your state will end up looking like this:
 
 ```js
 {
-  resources: [
-    {
+  resources: {
+    23: {
       id: 23,
       firstName: 'Sally'
     },
-    {
+    100: {
       id: 100,
       firstName: 'Jane'
     }
-  ],
-  meta: { ... },
-  labels: { ... }
+  },
+  meta: {
+    // Resource metadata here
+  },
+  labels: {
+    // Request labels here
+  }
 }
 ```
 
-Keep in mind that Resourceful Redux doesn't care the specific format that your
-server sends the data back in. You just need to make sure that the resources
+The `resources` object allows you to quickly look up resources given their ID.
+You may be wondering how ordering from the server is preserved. You use request
+labels to do this, which is a concept we will cover shortly.
+
+Keep in mind that Resourceful Redux doesn't care about the specific format that
+your server sends the data back in. You just need to make sure that the resources
 you pass into Resourceful Redux have an `id` attribute.
 
 ### Resource Metadata
 
 Metadata about each of the resources in your state's `resources` array
-is stored under the `meta` object of the state. Metadata is stored per-resource,
-on a key that is equal to the ID of the resource.
-
-For instance, if you have a book with an ID of 23, then you can find its
-meta at `state.meta[23]`.
+is stored under the `meta` object of the state. The `meta` object is similar to
+the `resources` object, in that the keys are individual resource IDs.
 
 Metadata includes information about requests, such as whether the resource is
-being updated, or deleted, and you can store additional, application-specific
+being updated, or deleted. You can store additional, application-specific
 metadata here, such as whether or not a resource is "selected" in your UI.
 
 Resourceful Redux comes with built-in metadata for each resource, representing
@@ -155,9 +160,9 @@ resources, the state would then look like this:
 
 ```js
 {
-  resources: [
+  resources: {
     // The resources themselves are in here.
-  ],
+  },
   meta: {
     2: {
       selected: true,
@@ -222,9 +227,9 @@ store might look like in this example:
 
 ```js
 {
-  resources: [
+  resources: {
     // The resources themselves are in here.
-  ],
+  },
   meta: {
     // The resource meta is in here.
   }
