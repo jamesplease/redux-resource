@@ -5,15 +5,20 @@ and delete resources.
 
 ### "Start" and "end" Actions
 
-CRUD operations are usually asynchronous. In Resourceful Redux, asynchronous
-operations are represented as a sequence of two Redux Actions: first a start
-action, which updates the state with a pending request, then an end action,
-which updates the state with the outcome of that request.
+CRUD operations are usually asynchronous. In Resourceful Redux, these
+asynchronous CRUD operations are represented as a sequence of two Redux Actions.
+First, there is a "start" action, which updates your store to reflect that the
+CRUD operation is in a "pending" state. This is later followed by an end action,
+which updates the status to reflect the outcome of the request.
 
 For instance, the sequence of action types for a successful read request is the
 following:
 
 `READ_RESOURCES_PENDING` ⇨ `READ_RESOURCES_SUCCEEDED`
+
+This notion of a start and end action will continue to be referenced throughout
+these guides. In particular, remember that the start action sets the request
+status to `'PENDING'`, and that it is dispatched right before the request begins.
 
 The [redux-thunk](https://github.com/gaearon/redux-thunk) middleware is
 recommended for making action creators for these CRUD operations.
@@ -67,9 +72,20 @@ part is that the objects have some `id`. This associates the action with some
 resources.
 
 You may be wondering when you might use the object form versus the shorthand
-form. Well, if you're reading a single resource, like a book, you may initiate
-the request with just the ID, since that is all of the information that you have
-at that time. That action may look like the following:
+form. There are two guidelines to remember, one for the start action, and one
+for the end action.
+
+**For the start action, provide IDs, if you have them.**
+
+**For the end action, provide the full resource definitions, if you have them.
+If you don't, but you do have IDs, then provide those.**
+
+Let's look at an example.
+
+If you're reading a single resource, such as a book, then you might access that
+book from your backend service with its ID. In this situation, you will have an
+ID at the time that you dispatch the start action, so we include that ID in
+the action's `resources` array:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
@@ -82,9 +98,9 @@ store.dispatch({
 });
 ```
 
-When the request succeeds, you now have additional information about this
-book to add to your store. So you would include the full definition in the
-action representing success:
+When the request succeeds, you now have more detailed information about this
+book to add to your store. So you would include the full book definition in the
+success action's `resources`:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
@@ -120,11 +136,11 @@ To keep track of the resources for requests like these, you need to use labels.
 ### `label`
 
 Supplying a `label` will track the status of this request under the `labels`
-property of your store. Also, if you pass `resources`, then the IDs of those
-resources will be associated with the label, too.
+property of your store. You may also supply `resources` in your action to
+associate those specific resources with the label, too.
 
-For instance, if you let users search for a books resource in a modal, you might
-dispatch the following action:
+For instance, if your interface allows users to search for a books resource, you
+might dispatch the following action:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
@@ -133,14 +149,18 @@ import store from './store';
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
-  label: 'modalSearch',
+  label: 'booksSearch',
   query: 'Lord of the Flies'
 });
 ```
 
-This will allow you to keep track of which books are associated with this
-specific search. Labels are a powerful feature, and are covered more thoroughly
-in the [Labels guide](/docs/guides/labels.md).
+Later, when you dispatch the success action, the resources returned will be
+associated with this label. This will allow you to keep track of which books were
+returned by this specific search.
+
+Labels are one of the more difficult features of Resourceful Redux to wrap your
+head around, so there is [an entire guide](/docs/guides/request-labels.md) dedicated
+to explaining how to use them, and when to use them.
 
 ### Other CRUD Action properties
 
@@ -148,11 +168,12 @@ The following CRUD Action attributes are all optional.
 
 - `mergeResources` *(Boolean)*: When an action results in resources being
   updated in the store, this determines if the new data is merged with the old,
-  or if it replaces the old data. Defaults to `true`. This only applies to
-  successful read, write, and update Actions.
+  or if it replaces the old data. Defaults to `true`. This only has an effect
+  on successful read, write, and update Actions.
 
 - `mergeMeta` *(Boolean)*: This is like `mergeResources`, but for metadata.
-  Defaults to `true`. This applies to all CRUD Actions.
+  Defaults to `true`. This property works with actions with any of the CRUD
+  action types.
 
 - `mergeLabelIds` *(Boolean)*: When a label is supplied, this lets you control
   whether or not the new list of IDs replaces or gets merged into the existing
