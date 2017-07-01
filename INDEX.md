@@ -1,6 +1,7 @@
 # Resourceful Redux
 
-A system for managing 'resources' – data that is persisted to remote servers.
+A simple but powerful system for managing 'resources': data that is persisted to
+remote servers.
 
 [![Gitter](https://badges.gitter.im/jmeas/resourceful-redux.svg)](https://gitter.im/jmeas/resourceful-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Travis build status](http://img.shields.io/travis/jmeas/resourceful-redux.svg?style=flat)](https://travis-ci.org/jmeas/resourceful-redux)

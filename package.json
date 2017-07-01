@@ -1,7 +1,7 @@
 {
   "name": "resourceful-redux",
   "version": "0.0.9",
-  "description": "A powerful Redux framework for interacting with remote resources.",
+  "description": "Resource management for Redux.",
   "main": "dist/resourceful-redux.js",
   "scripts": {
     "test": "gulp",
@@ -23,8 +23,10 @@
   "keywords": [
     "redux",
     "api",
+    "json api",
     "boilerplate",
     "resource",
+    "resources",
     "restful",
     "rest",
     "react",
@@ -32,12 +34,15 @@
     "framework",
     "crud",
     "http",
+    "database",
     "xhr",
     "state",
     "data",
     "store",
     "reducer",
+    "reducers",
     "action",
+    "action creators",
     "type",
     "creator"
   ],
