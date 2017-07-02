@@ -54,7 +54,7 @@ export default function readBook(bookId) {
       resources: [bookId]
     });
 
-    const req = xhr.get(`/books/${bookId}`, (err, res) => {
+    const req = xhr.get(`/books/${bookId}`, {json: true}, (err, res) => {
       if (req.aborted) {
         dispatch({
           type: actionTypes.READ_RESOURCES_NULL,
