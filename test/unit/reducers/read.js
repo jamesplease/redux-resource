@@ -86,17 +86,17 @@ describe('reducers: read:', function() {
           },
           4: {
             selected: true,
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           },
           5: {
             selected: false,
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           }
         }
       });
@@ -152,16 +152,16 @@ describe('reducers: read:', function() {
           },
           4: {
             selected: true,
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           },
           5: {
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           }
         }
       });
@@ -216,16 +216,16 @@ describe('reducers: read:', function() {
             deleteStatus: 'sandwiches'
           },
           4: {
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           },
           5: {
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           }
         }
       });
@@ -299,16 +299,16 @@ describe('reducers: read:', function() {
           },
           4: {
             selected: true,
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           },
           5: {
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           }
         }
       });
@@ -381,16 +381,16 @@ describe('reducers: read:', function() {
           },
           4: {
             selected: true,
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           },
           5: {
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           }
         }
       });
@@ -465,16 +465,16 @@ describe('reducers: read:', function() {
           },
           4: {
             selected: true,
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           },
           5: {
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.NIL,
             readStatus: requestStatuses.SUCCEEDED,
-            updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
+            deleteStatus: requestStatuses.NIL,
           }
         }
       });

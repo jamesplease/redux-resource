@@ -4,7 +4,7 @@ import requestStatuses from '../utils/request-statuses';
 
 const del = reducerGenerator('del', requestStatuses.PENDING);
 const delFail = reducerGenerator('del', requestStatuses.FAILED);
-const delNull = reducerGenerator('del', requestStatuses.NULL);
+const delNil = reducerGenerator('del', requestStatuses.NIL);
 
 function delSucceed(state, action, {initialResourceMeta}) {
   const label = action.label;
@@ -54,7 +54,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
   }
 
   if (hasIds) {
-    const nullMeta = idList.reduce((memo, id) => {
+    const nilMeta = idList.reduce((memo, id) => {
       memo[id] = {
         ...initialResourceMetaState,
         ...initialResourceMeta,
@@ -65,13 +65,13 @@ function delSucceed(state, action, {initialResourceMeta}) {
 
     newMeta = {
       ...meta,
-      ...nullMeta
+      ...nilMeta
     };
   } else {
     newMeta = meta;
   }
 
-  // Shallow clone the existing resource object, nulling any deleted resources
+  // Shallow clone the existing resource object, null'ing any deleted resources
   let newResources = Object.assign({}, state.resources);
   if (hasIds) {
     idList.forEach(id => {
@@ -87,4 +87,4 @@ function delSucceed(state, action, {initialResourceMeta}) {
   };
 }
 
-export {del, delFail, delNull, delSucceed};
+export {del, delFail, delNil, delSucceed};

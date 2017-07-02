@@ -29,10 +29,10 @@ describe('reducer', function() {
       },
       meta: {
         3: {
-          createStatus: 'NULL',
+          createStatus: 'NIL',
           readStatus: 'SUCCEEDED',
-          updateStatus: 'NULL',
-          deleteStatus: 'NULL'
+          updateStatus: 'NIL',
+          deleteStatus: 'NIL'
         }
       },
       labels: {},
