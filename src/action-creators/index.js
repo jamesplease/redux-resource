@@ -33,7 +33,7 @@ function performXhr(dispatch, options) {
   const req = xhr(xhrOptions, (err, res, body) => {
     if (req.aborted) {
       dispatch({
-        type: actionTypes[`${crudType}_RESOURCES_NULL`],
+        type: actionTypes[`${crudType}_RESOURCES_NIL`],
         ...actionAttributes
       });
     } else if (err || res.statusCode >= 400) {

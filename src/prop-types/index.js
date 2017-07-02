@@ -29,7 +29,7 @@ const resourcesPropType = PropTypes.arrayOf(
 
 // The return value from `getStatus`
 const statusPropType = PropTypes.shape({
-  null: PropTypes.bool.isRequired,
+  nil: PropTypes.bool.isRequired,
   pending: PropTypes.bool.isRequired,
   failed: PropTypes.bool.isRequired,
   succeeded: PropTypes.bool.isRequired

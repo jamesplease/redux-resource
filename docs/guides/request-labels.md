@@ -148,7 +148,7 @@ const searchStatus = getStatus(state, 'books.labels.search.status');
 // => Returns the following object:
 //
 // {
-//   null: false,
+//   nil: false,
 //   pending: true,
 //   failed: false,
 //   succeeded: false
