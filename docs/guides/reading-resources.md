@@ -70,6 +70,7 @@ export default function readBook(bookId) {
 
     const req = xhr.get(
       `/books/${bookId}`,
+      {json: true},
       (err, res, body) => {
         if (req.aborted) {
           dispatch({
@@ -123,6 +124,7 @@ export default function readBooks(query) {
 
     const req = xhr.get(
       `/books?${queryString}`,
+      {json: true},
       (err, res, body) => {
         if (req.aborted) {
           dispatch({
