@@ -15,9 +15,9 @@ describe('getStatus', function() {
       sandwiches: {
         meta: {
           100: {
-            readStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NIL,
             deleteStatus: requestStatuses.PENDING,
-            updateStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NIL,
           },
           102: {
             readStatus: requestStatuses.SUCCEEDED,
@@ -37,7 +37,7 @@ describe('getStatus', function() {
   describe('singular', () => {
     it('should return a meta that exists', () => {
       expect(getStatus(this.state, 'sandwiches.meta.102.readStatus')).to.deep.equal({
-        null: false,
+        nil: false,
         pending: false,
         failed: false,
         succeeded: true
@@ -46,25 +46,25 @@ describe('getStatus', function() {
 
     it('should return a label meta that exists', () => {
       expect(getStatus(this.state, 'books.labels.dashboardSearch.status')).to.deep.equal({
-        null: false,
+        nil: false,
         pending: false,
         failed: false,
         succeeded: true
       });
     });
 
-    it('should return a meta that exists and is null', () => {
+    it('should return a meta that exists and is nil', () => {
       expect(getStatus(this.state, 'sandwiches.meta.100.readStatus')).to.deep.equal({
-        null: true,
+        nil: true,
         pending: false,
         failed: false,
         succeeded: false
       });
     });
 
-    it('should return a meta that exists and is null with `treatNullAsPending` set to true', () => {
+    it('should return a meta that exists and is nil with `treatNullAsPending` set to true', () => {
       expect(getStatus(this.state, 'sandwiches.meta.100.readStatus', true)).to.deep.equal({
-        null: false,
+        nil: false,
         pending: true,
         failed: false,
         succeeded: false
@@ -73,7 +73,7 @@ describe('getStatus', function() {
 
     it('should return a meta that exists and is succeeded with `treatNullAsPending` set to true', () => {
       expect(getStatus(this.state, 'sandwiches.meta.102.readStatus', true)).to.deep.equal({
-        null: false,
+        nil: false,
         pending: false,
         failed: false,
         succeeded: true
@@ -82,7 +82,7 @@ describe('getStatus', function() {
 
     it('should return a meta that does not exist', () => {
       expect(getStatus(this.state, 'books.meta.10.updateStatus')).to.deep.equal({
-        null: true,
+        nil: true,
         pending: false,
         failed: false,
         succeeded: false
@@ -91,7 +91,7 @@ describe('getStatus', function() {
 
     it('should return a meta that does not exist with `treatNullAsPending` set to true', () => {
       expect(getStatus(this.state, 'books.meta.10.updateStatus', true)).to.deep.equal({
-        null: false,
+        nil: false,
         pending: true,
         failed: false,
         succeeded: false
@@ -107,21 +107,21 @@ describe('getStatus', function() {
       );
 
       expect(result).to.deep.equal({
-        null: false,
+        nil: false,
         pending: false,
         failed: true,
         succeeded: false
       });
     });
 
-    it('should return combined resource statuses where everything is NULL', () => {
+    it('should return combined resource statuses where everything is NIL', () => {
       const result = getStatus(
         this.state,
         ['sandwiches.meta.100.readStatus', 'sandwiches.meta.102.readStatus']
       );
 
       expect(result).to.deep.equal({
-        null: true,
+        nil: true,
         pending: false,
         failed: false,
         succeeded: false
@@ -136,7 +136,7 @@ describe('getStatus', function() {
       );
 
       expect(result).to.deep.equal({
-        null: false,
+        nil: false,
         pending: true,
         failed: false,
         succeeded: false
@@ -150,7 +150,7 @@ describe('getStatus', function() {
       );
 
       expect(result).to.deep.equal({
-        null: false,
+        nil: false,
         pending: false,
         failed: false,
         succeeded: true
@@ -168,7 +168,7 @@ describe('getStatus', function() {
       );
 
       expect(result).to.deep.equal({
-        null: false,
+        nil: false,
         pending: false,
         failed: true,
         succeeded: false

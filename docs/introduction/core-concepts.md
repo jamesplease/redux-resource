@@ -79,7 +79,7 @@ Because requests occur over a network, they do not happen instantly.
 They might take awhile to complete, and they don't always succeed.
 In Resourceful Redux, this information is represented as one of four "statuses":
 
-- `NULL`: the request hasn't begun yet
+- `NIL`: the request hasn't begun yet
 - `PENDING`: the request has started, but has not yet finished
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
@@ -93,10 +93,10 @@ then your metadata will start off looking like this:
 {
   meta: {
     24: {
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+      createStatus: 'NIL',
+      readStatus: 'NIL',
+      updateStatus: 'NIL',
+      deleteStatus: 'NIL'
     }
   }
 }
