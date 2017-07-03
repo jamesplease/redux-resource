@@ -89,5 +89,8 @@
     "sinon-chai": "2.8.0",
     "webpack": "2.6.1",
     "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "gitbook-plugin-ga": "^2.0.0"
   }
 }
