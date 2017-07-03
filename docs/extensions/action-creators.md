@@ -162,10 +162,18 @@ const xhrOptions = {
   json: true
 };
 
+// This is a singular endpoint, so it returns just one resource. But all of the
+// Action Creators extensions are bulk CRUD operations, so we place the result
+// into an Array
+function transformData(body) {
+  return [body];
+}
+
 store.dispatch(readResources({
   resourceName: 'books',
   resources: [1],
-  xhrOptions
+  xhrOptions,
+  transformData
 }));
 ```
 
