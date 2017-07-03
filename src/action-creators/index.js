@@ -26,22 +26,22 @@ function performXhr(dispatch, options) {
   const crudType = crudAction.toUpperCase();
 
   dispatch({
+    ...options,
     type: actionTypes[`${crudType}_RESOURCES_PENDING`],
-    ...options
   });
 
   const req = xhr(xhrOptions, (err, res, body) => {
     if (req.aborted) {
       dispatch({
-        type: actionTypes[`${crudType}_RESOURCES_NULL`],
-        ...actionAttributes
+        ...options,
+        type: actionTypes[`${crudType}_RESOURCES_NULL`]
       });
     } else if (err || res.statusCode >= 400) {
       dispatch({
+        ...options,
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
         res,
         err,
-        ...options
       });
     } else {
       let resources;
@@ -52,9 +52,9 @@ function performXhr(dispatch, options) {
       }
 
       dispatch({
+        ...options,
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
-        resources,
-        ...options
+        resources
       });
     }
   });
