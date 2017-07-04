@@ -3,23 +3,44 @@ import xhr from './xhr';
 
 function performXhr(dispatch, options) {
   const {
-    xhrOptions,
+    xhrOptions = {},
     crudAction,
     transformData,
     resourceName
   } = options;
 
-  // Some helpful errors in dev
+  // Catch common configuration problems in dev
   if (process.env.NODE_ENV !== 'production') {
     const { resourceName } = options;
     const lowercaseCrud = crudAction.toLowerCase();
     const isValidCrudType =
       lowercaseCrud === 'update' || lowercaseCrud === 'delete' ||
       lowercaseCrud === 'read' || lowercaseCrud === 'create';
+    const { url, uri } = xhrOptions;
+
     if (!resourceName) {
-      console.log('No resource name was supplied to a Resourceful Redux action creator.');
-    } else if (!isValidCrudType) {
-      console.log(`An invalid CRUD type was passed to a Resourceful Redux action creator. It must be one of: "create", "read", "update", "delete"`);
+      throw new Error(
+        `A resourceName was not passed to a Resourceful Redux Action ` +
+        `creator. A resourceName must be passed so that Resourceful Redux ` +
+        `knows which resource slice to update. Refer to the CRUD Actions ` +
+        `guide for more: https://resourceful-redux.js.org/docs/guides/crud-actions.html`
+      )
+    }
+
+    if (!isValidCrudType) {
+      throw new Error(
+        `An invalid "crudAction" was passed to a Resourceful Redux action creator. ` +
+        `It must be one of: "create", "read", "update", "delete"`
+      );
+    }
+
+    if (!url && !uri) {
+      throw new Error(
+        `No URL was passed to a Resourceful Redux action creator. You must ` +
+        `pass either "xhrOptions.url" or "xhrOptions.uri". For more, refer to ` +
+        `the Action Creators Extension documentation: ` +
+        `https://resourceful-redux.js.org/docs/extensions/action-creators.html`
+      );
     }
   }
 
