@@ -1,20 +1,49 @@
 {
-  "name": "resourceful",
-  "private": true,
-  "scripts": {
-    "test": "gulp",
-    "lint": "gulp lint",
-    "watch": "gulp watch",
-    "build": "gulp clean && gulp build && NODE_ENV=production gulp build",
-    "coverage": "gulp coverage",
-    "prepublish": "npm run build",
-    "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:prepare": "gitbook install",
-    "docs:clean": "rimraf _book",
-    "docs:build": "npm run docs:prepare && gitbook build",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:jmeas/resourceful-redux gh-pages --force"
+  "name": "resourceful-redux",
+  "version": "0.0.9",
+  "description": "Resource management for Redux.",
+  "main": "dist/resourceful-redux.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmeas/resourceful-redux.git"
   },
+  "keywords": [
+    "redux",
+    "api",
+    "json api",
+    "boilerplate",
+    "resource",
+    "resources",
+    "restful",
+    "rest",
+    "react",
+    "flux",
+    "framework",
+    "crud",
+    "http",
+    "database",
+    "xhr",
+    "state",
+    "data",
+    "store",
+    "reducer",
+    "reducers",
+    "action",
+    "action creators",
+    "type",
+    "creator"
+  ],
+  "author": "James Smith <jellyes2@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmeas/resourceful-redux/issues"
+  },
+  "files": [
+    "dist",
+    "prop-types",
+    "action-creators"
+  ],
+  "homepage": "https://github.com/jmeas/resourceful-redux",
   "devDependencies": {
     "babel-core": "6.14.0",
     "babel-loader": "6.2.5",
@@ -26,7 +55,6 @@
     "chai": "3.5.0",
     "del": "2.2.2",
     "gitbook-cli": "^2.3.0",
-    "gitbook-plugin-ga": "^2.0.0",
     "glob": "7.0.6",
     "gulp": "3.9.1",
     "gulp-eslint": "3.0.1",
