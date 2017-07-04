@@ -59,7 +59,11 @@ A generic action creator for performing CRUD operations.
     "read", "update", or "delete". This determines which
     [CRUD Action types](/docs/api-reference/action-types.md) are dispatched.
 
-  * `xhrOptions`: *(Object)* Options to pass to the `xhr` library (see below).
+  * `xhrOptions`: *(Object)* Options to pass to the `xhr` library. You must pass
+    a a `url` (or `uri`) option. You will typically also want to pass
+    `json: true`, which will serialize your request body into JSON, as well as
+    parse the response body as JSON. For more, see the examples below and
+    [the xhr documentation](https://github.com/naugtur/xhr).
 
   * [`transformData`]: *(Function)* An optional function to transform the data
     received by the server. It receives one argument, `body`, which is the
@@ -287,3 +291,31 @@ xhr.get('/books/24')
     (err) => console.log('there was an error', err)
   );
 ```
+
+### Tips
+
+- A good pattern for using this extension is to make your own action creators
+  that "wrap" these action creators. That way, your view layer doesn't need to
+  concern itself with all of the configuration necessary to use these action
+  creators. For instances, your application's read many action creator may look
+  like the following:
+
+  ```js
+  import { readResources } from 'resourceful-redux/action-creators';
+
+  function readManyBooks(pageNumber) {
+    const xhrOptions = {
+      method: 'GET',
+      json: true,
+      url: '/books',
+      qs: { pageNumber }
+    };
+
+    return readResources({
+      resourceName: 'books',
+      label: 'homePageBooks',
+      mergeLabelIds: false,
+      xhrOptions
+    });
+  }
+  ```

@@ -10,6 +10,17 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
   const resourcesIsUndefined = typeof resources === 'undefined';
   const hasResources = resources && resources.length;
 
+  if (process.env.NODE_ENV !== 'production') {
+    if (!hasResources) {
+      console.warn(
+        `A 'resources' Array was not supplied to a Resourceful Redux "success" ` +
+        `action with type "${action.type}". Without a 'resources' Array, ` +
+        `Resourceful Redux will not be able to track which resources have been ` +
+        `affected by this CRUD operation. You should check your Action Creators.`
+      );
+    }
+  }
+
   // Without resources or labels, there is nothing to update
   if (!hasResources && !label) {
     return state;
