@@ -1,0 +1,21 @@
+{
+  "name": "resourceful-action-creators",
+  "version": "0.0.9",
+  "description": "Action creators for Resourceful Redux",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmeas/resourceful-redux.git"
+  },
+  "author": "James Smith <jamesplease2@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmeas/resourceful-redux/issues"
+  },
+  "homepage": "https://resourceful-redux.js.org",
+  "dependencies": {
+    "querystringify": "^1.0.0",
+    "resourceful-redux": "0.0.9",
+    "xhr": "^2.4.0"
+  }
+}

@@ -3,8 +3,9 @@ const loadPlugins = require('gulp-load-plugins');
 const del = require('del');
 const isparta = require('isparta');
 const webpack = require('webpack');
+const runSequence = require('run-sequence');
 const webpackStream = require('webpack-stream');
-const mochaGlobals = require('./test/setup/.globals');
+const mochaGlobals = require('./packages/resourceful-redux/test/setup/.globals');
 
 const Instrumenter = isparta.Instrumenter;
 
@@ -12,7 +13,11 @@ const Instrumenter = isparta.Instrumenter;
 const $ = loadPlugins();
 
 function cleanDist(done) {
-  del(['dist']).then(() => done());
+  del([
+    'packages/*/dist',
+    'packages/resourceful-redux/action-creators',
+    'packages/resourceful-redux/prop-types',
+  ]).then(() => done());
 }
 
 function cleanTmp(done) {
@@ -28,11 +33,11 @@ function lint(files) {
 }
 
 function lintSrc() {
-  return lint('src/*/[^node_modules]/**/*.js');
+  return lint('packages/*/[^node_modules]/**/*.js');
 }
 
 function lintTest() {
-  return lint('test/**/*.js');
+  return lint('./packages/*/test/**/*.js');
 }
 
 function lintGulpfile() {
@@ -85,8 +90,8 @@ function buildFile({src, dest, destFilename, library, externals}) {
 
 function buildResourceful() {
   return buildFile({
-    src: 'src/resourceful-redux/index.js',
-    dest: 'dist',
+    src: 'packages/resourceful-redux/src/index.js',
+    dest: 'packages/resourceful-redux/dist',
     destFilename: 'resourceful-redux',
     library: 'resourcefulRedux'
   });
@@ -94,8 +99,8 @@ function buildResourceful() {
 
 function buildPropTypes() {
   return buildFile({
-    src: 'src/prop-types/index.js',
-    dest: 'prop-types',
+    src: 'packages/prop-types/src/index.js',
+    dest: 'packages/prop-types/dist',
     destFilename: 'index',
     library: 'resourcefulPropTypes',
     externals: {
@@ -106,8 +111,8 @@ function buildPropTypes() {
 
 function buildActionCreators() {
   return buildFile({
-    src: 'src/action-creators/index.js',
-    dest: 'action-creators',
+    src: 'packages/action-creators/src/index.js',
+    dest: 'packages/action-creators/dist',
     destFilename: 'index',
     library: 'resourcefulActionCreators',
     externals: {
@@ -119,7 +124,10 @@ function buildActionCreators() {
 }
 
 function _mocha() {
-  return gulp.src(['test/setup/node.js', 'test/unit/**/*.js'], {read: false})
+  return gulp.src([
+    'packages/resourceful-redux/test/setup/node.js',
+    'packages/resourceful-redux/test/unit/**/*.js'
+  ], {read: false})
     .pipe($.mocha({
       reporter: 'dot',
       globals: Object.keys(mochaGlobals.globals),
@@ -138,7 +146,7 @@ function test() {
 
 function coverage(done) {
   _registerBabel();
-  gulp.src(['src/**/*.js'])
+  gulp.src(['packages/*/src/**/*.js'])
     .pipe($.istanbul({
       instrumenter: Instrumenter,
       includeUntested: true
@@ -151,7 +159,12 @@ function coverage(done) {
     });
 }
 
-const watchFiles = ['src/**/*', 'test/**/*', 'package.json', '**/.eslintrc'];
+function moveBuiltFiles(packageName) {
+  return gulp.src(`packages/${packageName}/dist/*`)
+    .pipe(gulp.dest(`packages/resourceful-redux/${packageName}`));
+}
+
+const watchFiles = ['packages/**/*', 'packages/*/test/**/*', 'package.json', '**/.eslintrc'];
 
 // Run the headless unit tests as you make changes.
 function watch() {
@@ -180,7 +193,17 @@ gulp.task('lint', ['lint-src', 'lint-test', 'lint-gulpfile']);
 gulp.task('buildResourceful', buildResourceful);
 gulp.task('buildPropTypes', buildPropTypes);
 gulp.task('buildActionCreators', buildActionCreators);
-gulp.task('build', ['lint', 'buildResourceful', 'buildPropTypes', 'buildActionCreators']);
+gulp.task('copyActionCreators', () => moveBuiltFiles('action-creators'));
+gulp.task('copyPropTypes', () => moveBuiltFiles('prop-types'));
+
+gulp.task('build', callback => {
+  console.log('about to run sequence');
+  runSequence(
+    'lint',
+    ['buildResourceful', 'buildPropTypes', 'buildActionCreators'],
+    ['copyActionCreators', 'copyPropTypes'],
+  callback);
+});
 
 // Lint and run our tests
 gulp.task('test', ['lint'], test);

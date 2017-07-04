@@ -1,0 +1,19 @@
+{
+  "name": "resourceful-prop-types",
+  "version": "0.0.9",
+  "description": "prop-types for Resourceful Redux",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmeas/resourceful-redux.git"
+  },
+  "author": "James Smith <jamesplease2@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmeas/resourceful-redux/issues"
+  },
+  "homepage": "https://resourceful-redux.js.org",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
+}

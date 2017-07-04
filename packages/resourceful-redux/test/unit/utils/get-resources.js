@@ -1,4 +1,4 @@
-import {getResources, requestStatuses} from '../../../src/resourceful-redux';
+import {getResources, requestStatuses} from '../../../src';
 
 describe('getStatus', function() {
   beforeEach(() => {

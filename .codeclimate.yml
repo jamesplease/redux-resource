@@ -7,5 +7,5 @@ exclude_paths:
 - "gulpfile.js"
 - "README.md"
 - "package.json"
-- "test/**/*"
-- "dist/**/*"
+- "packages/*/test/**/*"
+- "packages/*/dist/**/*"

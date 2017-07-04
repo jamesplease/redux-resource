@@ -1,4 +1,4 @@
-import {requestStatuses} from '../../../src/resourceful-redux';
+import {requestStatuses} from '../../../src';
 
 describe('requestStatuses', function() {
   it('should be an object', () => {
