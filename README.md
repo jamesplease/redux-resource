@@ -25,7 +25,7 @@ the boilerplate code that it replaces.
 View the documentation at
 **[resourceful-redux.js.org ⇗](https://resourceful-redux.js.org/)**.
 
-## Repository Structure
+### Repository Structure
 
 This repository is a [Lerna](https://github.com/lerna/lerna) project. That means
 it's a single repository that allows us to control the publishing of a number
