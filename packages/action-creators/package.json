@@ -15,7 +15,7 @@
   "homepage": "https://resourceful-redux.js.org",
   "dependencies": {
     "querystringify": "^1.0.0",
-    "resourceful-redux": "0.0.6",
+    "resourceful-redux": "0.0.9",
     "xhr": "^2.4.0"
   }
 }
