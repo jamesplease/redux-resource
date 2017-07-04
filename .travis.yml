@@ -3,6 +3,7 @@ node_js:
   - "6"
   - "7"
 sudo: false
+install: "npm i && npm run bootstrap"
 script: "gulp coverage"
 notifications:
   email: false

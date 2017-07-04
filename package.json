@@ -1,5 +1,5 @@
 {
-  "name": "resourceful",
+  "name": "resourceful-redux-project",
   "private": true,
   "scripts": {
     "test": "gulp",
@@ -8,6 +8,7 @@
     "build": "gulp clean && gulp build && NODE_ENV=production gulp build",
     "coverage": "gulp coverage",
     "prepublish": "npm run build",
+    "bootstrap": "lerna bootstrap",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:prepare": "gitbook install",
     "docs:clean": "rimraf _book",
