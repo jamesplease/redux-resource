@@ -1,4 +1,4 @@
-import {setResourceMeta} from '../../../packages/resourceful-redux';
+import {setResourceMeta} from '../../../src';
 
 describe('setResourceMeta', function() {
   beforeEach(() => {

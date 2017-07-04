@@ -34,5 +34,5 @@ tmp
 dist
 _site
 _book
-/prop-types
-/action-creators
+/packages/resourceful-redux/prop-types
+/packages/resourceful-redux/action-creators

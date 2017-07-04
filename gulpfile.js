@@ -4,7 +4,7 @@ const del = require('del');
 const isparta = require('isparta');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
-const mochaGlobals = require('./test/setup/.globals');
+const mochaGlobals = require('./packages/resourceful-redux/test/setup/.globals');
 
 const Instrumenter = isparta.Instrumenter;
 
@@ -32,7 +32,7 @@ function lintSrc() {
 }
 
 function lintTest() {
-  return lint('test/**/*.js');
+  return lint('./packages/*/test/**/*.js');
 }
 
 function lintGulpfile() {
@@ -85,8 +85,8 @@ function buildFile({src, dest, destFilename, library, externals}) {
 
 function buildResourceful() {
   return buildFile({
-    src: 'packages/resourceful-redux/index.js',
-    dest: 'dist',
+    src: 'packages/resourceful-redux/src/index.js',
+    dest: 'packages/resourceful-redux/dist',
     destFilename: 'resourceful-redux',
     library: 'resourcefulRedux'
   });
@@ -94,7 +94,7 @@ function buildResourceful() {
 
 function buildPropTypes() {
   return buildFile({
-    src: 'packages/prop-types/index.js',
+    src: 'packages/prop-types/src/index.js',
     dest: 'prop-types',
     destFilename: 'index',
     library: 'resourcefulPropTypes',
@@ -106,7 +106,7 @@ function buildPropTypes() {
 
 function buildActionCreators() {
   return buildFile({
-    src: 'packages/action-creators/index.js',
+    src: 'packages/action-creators/src/index.js',
     dest: 'action-creators',
     destFilename: 'index',
     library: 'resourcefulActionCreators',
@@ -119,7 +119,10 @@ function buildActionCreators() {
 }
 
 function _mocha() {
-  return gulp.src(['test/setup/node.js', 'test/unit/**/*.js'], {read: false})
+  return gulp.src([
+    'packages/resourceful-redux/test/setup/node.js',
+    'packages/resourceful-redux/test/unit/**/*.js'
+  ], {read: false})
     .pipe($.mocha({
       reporter: 'dot',
       globals: Object.keys(mochaGlobals.globals),
@@ -151,7 +154,7 @@ function coverage(done) {
     });
 }
 
-const watchFiles = ['packages/**/*', 'test/**/*', 'package.json', '**/.eslintrc'];
+const watchFiles = ['packages/**/*', 'packages/*/test/**/*', 'package.json', '**/.eslintrc'];
 
 // Run the headless unit tests as you make changes.
 function watch() {
