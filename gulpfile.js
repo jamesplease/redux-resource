@@ -28,7 +28,7 @@ function lint(files) {
 }
 
 function lintSrc() {
-  return lint('src/*/[^node_modules]/**/*.js');
+  return lint('packages/*/[^node_modules]/**/*.js');
 }
 
 function lintTest() {
@@ -85,7 +85,7 @@ function buildFile({src, dest, destFilename, library, externals}) {
 
 function buildResourceful() {
   return buildFile({
-    src: 'src/resourceful-redux/index.js',
+    src: 'packages/resourceful-redux/index.js',
     dest: 'dist',
     destFilename: 'resourceful-redux',
     library: 'resourcefulRedux'
@@ -94,7 +94,7 @@ function buildResourceful() {
 
 function buildPropTypes() {
   return buildFile({
-    src: 'src/prop-types/index.js',
+    src: 'packages/prop-types/index.js',
     dest: 'prop-types',
     destFilename: 'index',
     library: 'resourcefulPropTypes',
@@ -106,7 +106,7 @@ function buildPropTypes() {
 
 function buildActionCreators() {
   return buildFile({
-    src: 'src/action-creators/index.js',
+    src: 'packages/action-creators/index.js',
     dest: 'action-creators',
     destFilename: 'index',
     library: 'resourcefulActionCreators',
@@ -138,7 +138,7 @@ function test() {
 
 function coverage(done) {
   _registerBabel();
-  gulp.src(['src/**/*.js'])
+  gulp.src(['packages/**/*.js'])
     .pipe($.istanbul({
       instrumenter: Instrumenter,
       includeUntested: true
@@ -151,7 +151,7 @@ function coverage(done) {
     });
 }
 
-const watchFiles = ['src/**/*', 'test/**/*', 'package.json', '**/.eslintrc'];
+const watchFiles = ['packages/**/*', 'test/**/*', 'package.json', '**/.eslintrc'];
 
 // Run the headless unit tests as you make changes.
 function watch() {

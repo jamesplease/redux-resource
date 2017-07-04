@@ -1,4 +1,4 @@
-import {resourceReducer} from '../../../src/resourceful-redux';
+import {resourceReducer} from '../../../packages/resourceful-redux';
 
 describe('reducer', function() {
   it('should be a function', () => {
