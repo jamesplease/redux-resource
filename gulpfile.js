@@ -13,7 +13,11 @@ const Instrumenter = isparta.Instrumenter;
 const $ = loadPlugins();
 
 function cleanDist(done) {
-  del(['dist']).then(() => done());
+  del([
+    'packages/*/dist',
+    'packages/resourceful-redux/action-creators',
+    'packages/resourceful-redux/prop-types',
+  ]).then(() => done());
 }
 
 function cleanTmp(done) {
