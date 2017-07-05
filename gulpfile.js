@@ -13,11 +13,7 @@ const Instrumenter = isparta.Instrumenter;
 const $ = loadPlugins();
 
 function cleanDist(done) {
-  del([
-    'packages/*/dist',
-    'packages/resourceful-redux/action-creators',
-    'packages/resourceful-redux/prop-types',
-  ]).then(() => done());
+  del(['packages/*/dist']).then(() => done());
 }
 
 function cleanTmp(done) {
@@ -99,8 +95,8 @@ function buildResourceful() {
 
 function buildPropTypes() {
   return buildFile({
-    src: 'packages/prop-types/src/index.js',
-    dest: 'packages/prop-types/dist',
+    src: 'packages/resourceful-prop-types/src/index.js',
+    dest: 'packages/resourceful-prop-types/dist',
     destFilename: 'index',
     library: 'resourcefulPropTypes',
     externals: {
@@ -111,8 +107,8 @@ function buildPropTypes() {
 
 function buildActionCreators() {
   return buildFile({
-    src: 'packages/action-creators/src/index.js',
-    dest: 'packages/action-creators/dist',
+    src: 'packages/resourceful-action-creators/src/index.js',
+    dest: 'packages/resourceful-action-creators/dist',
     destFilename: 'index',
     library: 'resourcefulActionCreators',
     externals: {

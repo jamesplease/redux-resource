@@ -4,18 +4,15 @@ A collection of [prop-types](https://github.com/facebook/prop-types) objects.
 
 ### Installation
 
-Install `resourceful-redux` as usual:
+Install `resourceful-prop-types` with npm:
 
-`npm install resourceful-redux --save`
+`npm install resourceful-prop-types --save`
 
 Then, import the prop types that you need:
 
 ```js
-import { resourcesPropType } from 'resourceful-redux/prop-types';
+import { resourcesPropType } from 'resourceful-prop-types';
 ```
-
-> This module is currently not available as a standalone module on npm, although
-  it will be soon.
 
 ### Usage
 
@@ -43,7 +40,7 @@ This checks that the object has a shape like:
 ```
 
 ```js
-import { slicePropType } from 'resourceful-redux/prop-types';
+import { slicePropType } from 'resourceful-prop-types';
 
 MyComponent.propTypes = {
   books: slicePropType
@@ -67,7 +64,7 @@ of IDs.
 > Tip: This prop type requires that your IDs be either strings or numbers.
 
 ```js
-import { resourceIdsPropType } from 'resourceful-redux/prop-types';
+import { resourceIdsPropType } from 'resourceful-prop-types';
 
 MyComponent.propTypes = {
   selectedBookIds: resourceIdsPropType
@@ -87,7 +84,7 @@ Validates an array of resources. Resources are JavaScript objects that have an
 [the Resources guide](/docs/guides/resources.md).
 
 ```js
-import { resourcesPropType } from 'resourceful-redux/prop-types';
+import { resourcesPropType } from 'resourceful-prop-types';
 
 MyComponent.propTypes = {
   books: resourcesPropType
@@ -106,7 +103,7 @@ Validates the object returned by [`getStatus`](/docs/api-reference/get-status.md
 
 ```js
 import { getStatus } from 'resourceful-redux';
-import { statusPropType } from 'resourceful-redux/prop-types';
+import { statusPropType } from 'resourceful-prop-types';
 
 MyComponent.propTypes = {
   booksReadStatus: statusPropType
