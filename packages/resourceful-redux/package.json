@@ -39,9 +39,7 @@
     "url": "https://github.com/jmeas/resourceful-redux/issues"
   },
   "files": [
-    "dist",
-    "prop-types",
-    "action-creators"
+    "dist"
   ],
   "homepage": "https://resourceful-redux.js.org",
   "devDependencies": {

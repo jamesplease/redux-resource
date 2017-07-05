@@ -159,11 +159,6 @@ function coverage(done) {
     });
 }
 
-function moveBuiltFiles(packageName) {
-  return gulp.src(`packages/${packageName}/dist/*`)
-    .pipe(gulp.dest(`packages/resourceful-redux/${packageName}`));
-}
-
 const watchFiles = ['packages/**/*', 'packages/*/test/**/*', 'package.json', '**/.eslintrc'];
 
 // Run the headless unit tests as you make changes.
@@ -193,15 +188,10 @@ gulp.task('lint', ['lint-src', 'lint-test', 'lint-gulpfile']);
 gulp.task('buildResourceful', buildResourceful);
 gulp.task('buildPropTypes', buildPropTypes);
 gulp.task('buildActionCreators', buildActionCreators);
-gulp.task('copyActionCreators', () => moveBuiltFiles('action-creators'));
-gulp.task('copyPropTypes', () => moveBuiltFiles('prop-types'));
-
 gulp.task('build', callback => {
-  console.log('about to run sequence');
   runSequence(
     'lint',
     ['buildResourceful', 'buildPropTypes', 'buildActionCreators'],
-    ['copyActionCreators', 'copyPropTypes'],
   callback);
 });
 
