@@ -1,7 +1,7 @@
 {
-  "name": "resourceful-action-creators",
-  "version": "0.0.9",
-  "description": "Action creators for Resourceful Redux",
+  "name": "resourceful-prop-types",
+  "version": "0.0.10",
+  "description": "prop-types for Resourceful Redux",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
@@ -14,8 +14,6 @@
   },
   "homepage": "https://resourceful-redux.js.org",
   "dependencies": {
-    "querystringify": "^1.0.0",
-    "resourceful-redux": "0.0.9",
-    "xhr": "^2.4.0"
+    "prop-types": "^15.5.10"
   }
 }

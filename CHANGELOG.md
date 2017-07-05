@@ -1,3 +1,20 @@
+## [0.0.10](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.10) (7/4/17)
+
+**Breaking Changes**:
+
+- Extensions are no longer included with the `resourceful-redux` npm package.
+  They may be reintroduced, but there were too many bugs with the
+  implementation being used. You can now install each extension from npm
+  directly.
+
+- New warning messages and Errors will be thrown when common mistakes are made
+  when using the API.
+
+**Bug Fixes**:
+
+- The action creators extension will now dispatch the correct actions for
+  successful actions.
+
 ## [0.0.9](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.9) (6/29/17)
 
 **Breaking Changes**:

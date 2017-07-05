@@ -17,14 +17,14 @@ the four guides for each CRUD operation:
 
 ### Installation
 
-Install `resourceful-redux` as usual:
+Install `resourceful-action-types` from npm:
 
-`npm install resourceful-redux --save`
+`npm install resourceful-action-types --save`
 
 Then, import the pieces of this extension that you need:
 
 ```js
-import { readResources } from 'resourceful-redux/action-creators';
+import { readResources } from 'resourceful-action-creators';
 ```
 
 > This module is currently not available as a standalone module on npm, although
@@ -82,7 +82,7 @@ calling `myXhr.abort()`.
 #### Example
 
 ```js
-import { crudAction } from 'resourceful-redux/action-creators';
+import { crudAction } from 'resourceful-action-creators';
 import store from './store';
 
 const xhrOptions = {
@@ -120,7 +120,7 @@ options by default:
 #### Example
 
 ```js
-import { createResources } from 'resourceful-redux/action-creators';
+import { createResources } from 'resourceful-action-creators';
 import store from './store';
 
 const newBook = {
@@ -158,7 +158,7 @@ options by default:
 #### Example
 
 ```js
-import { readResources } from 'resourceful-redux/action-creators';
+import { readResources } from 'resourceful-action-creators';
 import store from './store';
 
 const xhrOptions = {
@@ -198,7 +198,7 @@ options by default:
 #### Example
 
 ```js
-import { updateResources } from 'resourceful-redux/action-creators';
+import { updateResources } from 'resourceful-action-creators';
 import store from './store';
 
 const updatedBook = {
@@ -236,7 +236,7 @@ options by default:
 #### Example
 
 ```js
-import { deleteResources } from 'resourceful-redux/action-creators';
+import { deleteResources } from 'resourceful-action-creators';
 import store from './store';
 
 const xhrOptions = {
@@ -267,7 +267,7 @@ On top of that, it adds two features:
 #### Example
 
 ```js
-import { xhr } from 'resourceful-redux/action-creators';
+import { xhr } from 'resourceful-action-creators';
 
 const booksSearch = xhr.get('/books', {
   // Pass a `qs` option, and it will be stringified and appended to the URL
@@ -301,7 +301,7 @@ xhr.get('/books/24')
   like the following:
 
   ```js
-  import { readResources } from 'resourceful-redux/action-creators';
+  import { readResources } from 'resourceful-action-creators';
 
   function readManyBooks(pageNumber) {
     const xhrOptions = {
