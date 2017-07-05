@@ -21,6 +21,7 @@
 * [Recipes](/docs/recipes/README.md)
   * [Canceling Requests](/docs/recipes/canceling-requests.md)
   * [Unauthorized Responses](/docs/recipes/unauthorized-responses.md)
+  * [Request Feedback](/docs/recipes/request-feedback.md)
 * [Extensions](/docs/extensions/README.md)
   * [Prop Types](/docs/extensions/prop-types.md)
   * [Action Creators](/docs/extensions/action-creators.md)
