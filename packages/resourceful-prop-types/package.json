@@ -1,6 +1,6 @@
 {
   "name": "resourceful-prop-types",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "prop-types for Resourceful Redux",
   "main": "dist/index.js",
   "repository": {
