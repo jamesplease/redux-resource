@@ -8,4 +8,5 @@
 * [Updating Resources](/docs/guides/updating-resources.md)
 * [Creating Resources](/docs/guides/creating-resources.md)
 * [Deleting Resources](/docs/guides/deleting-resources.md)
+* [Usage With React](/docs/guides/usage-with-react.md)
 * [Plugins](/docs/guides/plugins.md)
