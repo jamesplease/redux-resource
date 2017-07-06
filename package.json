@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "test": "npm run lint && cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors packages/resourceful-redux/test/setup/node.js packages/resourceful-redux/test/unit/**",
-    "lint": "eslint packages/*/[^node_modules]/**/*.js gulpfile.js",
+    "lint": "eslint packages/*/[^node_modules]/**/*.js",
     "clean": "rimraf packages/*/dist tmp",
-    "build": "npm run clean && gulp build && NODE_ENV=production gulp build",
+    "build": "npm run clean && lerna run build && NODE_ENV=production lerna run build",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "bootstrap": "lerna bootstrap",
     "docs:watch": "npm run docs:prepare && gitbook serve",
@@ -33,19 +33,13 @@
     "eslint": "^4.1.1",
     "gitbook-cli": "^2.3.0",
     "gitbook-plugin-ga": "^2.0.0",
-    "glob": "7.0.6",
-    "gulp": "3.9.1",
     "in-publish": "^2.0.0",
-    "json-loader": "0.5.4",
     "lerna": "^2.0.0-rc.5",
-    "lodash": "^4.17.4",
     "mocha": "^3.0.2",
     "nyc": "^11.0.3",
     "pleaserc": "^2.3.1",
     "run-sequence": "^2.0.0",
     "sinon": "1.17.5",
-    "sinon-chai": "2.8.0",
-    "webpack": "2.6.1",
-    "webpack-stream": "^3.2.0"
+    "sinon-chai": "2.8.0"
   }
 }
