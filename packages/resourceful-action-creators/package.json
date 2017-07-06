@@ -2,7 +2,11 @@
   "name": "resourceful-action-creators",
   "version": "0.0.11",
   "description": "Action creators for Resourceful Redux",
-  "main": "dist/index.js",
+  "main": "dist/resourceful-action-creators.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
+    "build": "webpack"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jmeas/resourceful-redux.git"
@@ -17,5 +21,16 @@
     "querystringify": "^1.0.0",
     "resourceful-redux": "^0.0.11",
     "xhr": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.14.0",
+    "babel-loader": "6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "6.13.0",
+    "babel-preset-latest": "6.14.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "eslint": "^4.1.1",
+    "pleaserc": "^2.4.0",
+    "webpack": "2.6.1"
   }
 }

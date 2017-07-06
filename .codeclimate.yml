@@ -6,6 +6,7 @@ engines:
 exclude_paths:
 - "gulpfile.js"
 - "README.md"
+- "examples/**"
 - "package.json"
 - "packages/*/test/**/*"
 - "packages/*/dist/**/*"
