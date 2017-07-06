@@ -15,10 +15,6 @@
     "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:jmeas/resourceful-redux gh-pages --force"
   },
   "license": "MIT",
-  "nyc": {
-    "sourceMap": false,
-    "instrument": false
-  },
   "devDependencies": {
     "cross-env": "^5.0.1",
     "gitbook-cli": "^2.3.0",

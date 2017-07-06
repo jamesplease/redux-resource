@@ -32,5 +32,9 @@
     "eslint": "^4.1.1",
     "pleaserc": "^2.4.0",
     "webpack": "2.6.1"
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
   }
 }

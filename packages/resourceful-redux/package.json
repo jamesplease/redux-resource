@@ -4,7 +4,7 @@
   "description": "Resource management for Redux.",
   "main": "dist/resourceful-redux.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors test/setup/node.js test/unit/**",
+    "test": "cross-env BABEL_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors test/setup/node.js test/unit/**",
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
     "build": "webpack"
   },
@@ -65,5 +65,9 @@
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
     "webpack": "2.6.1"
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
   }
 }
