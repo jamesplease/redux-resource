@@ -4,7 +4,6 @@
   "scripts": {
     "test": "npm run lint && cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors packages/resourceful-redux/test/setup/node.js packages/resourceful-redux/test/unit/**",
     "lint": "gulp lint",
-    "watch": "gulp watch",
     "build": "gulp clean && gulp build && NODE_ENV=production gulp build",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "bootstrap": "lerna bootstrap",
