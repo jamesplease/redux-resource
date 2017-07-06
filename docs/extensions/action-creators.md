@@ -27,9 +27,6 @@ Then, import the pieces of this extension that you need:
 import { readResources } from 'resourceful-action-creators';
 ```
 
-> This module is currently not available as a standalone module on npm, although
-  it will be soon.
-
 ### Usage
 
 This library exports five action creators, one for each of the CRUD operations,
