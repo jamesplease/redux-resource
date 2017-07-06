@@ -1,17 +1,8 @@
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
-const del = require('del');
 const webpack = require('webpack');
 const runSequence = require('run-sequence');
 const webpackStream = require('webpack-stream');
-
-function cleanDist(done) {
-  del(['packages/*/dist']).then(() => done());
-}
-
-function cleanTmp(done) {
-  del(['tmp']).then(() => done());
-}
 
 // Lint a set of files
 function lint(files) {
@@ -111,12 +102,6 @@ function buildActionCreators() {
     }
   });
 }
-
-// Remove the built files
-gulp.task('clean', cleanDist);
-
-// Remove our temporary files
-gulp.task('clean-tmp', cleanTmp);
 
 // Lint our source code
 gulp.task('lint-src', lintSrc);

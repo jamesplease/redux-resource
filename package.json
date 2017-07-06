@@ -4,7 +4,8 @@
   "scripts": {
     "test": "npm run lint && cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors packages/resourceful-redux/test/setup/node.js packages/resourceful-redux/test/unit/**",
     "lint": "gulp lint",
-    "build": "gulp clean && gulp build && NODE_ENV=production gulp build",
+    "clean": "rimraf packages/*/dist tmp",
+    "build": "npm run clean && gulp build && NODE_ENV=production gulp build",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "bootstrap": "lerna bootstrap",
     "docs:watch": "npm run docs:prepare && gitbook serve",
@@ -29,7 +30,6 @@
     "babel-register": "6.14.0",
     "chai": "3.5.0",
     "cross-env": "^5.0.1",
-    "del": "2.2.2",
     "gitbook-cli": "^2.3.0",
     "gitbook-plugin-ga": "^2.0.0",
     "glob": "7.0.6",
