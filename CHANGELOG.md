@@ -1,3 +1,15 @@
+## [0.0.11](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.10) (7/4/17)
+
+**Breaking Changes:**
+
+- The action creators extension will no longer throw errors. Instead, it will
+  log warnings to the console.
+
+**Bug Fixes**
+
+- Warnings will only be logged when a resources array is missing from an action
+  completely, but not when it is present but empty.
+
 ## [0.0.10](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.10) (7/4/17)
 
 **Breaking Changes**:

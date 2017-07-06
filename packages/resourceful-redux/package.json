@@ -1,6 +1,6 @@
 {
   "name": "resourceful-redux",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Resource management for Redux.",
   "main": "dist/resourceful-redux.js",
   "repository": {

@@ -11,7 +11,7 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
   const hasResources = resources && resources.length;
 
   if (process.env.NODE_ENV !== 'production') {
-    if (!hasResources) {
+    if (!resources) {
       console.warn(
         `A 'resources' Array was not supplied to a Resourceful Redux "success" ` +
         `action with type "${action.type}". Without a 'resources' Array, ` +
