@@ -1,13 +1,10 @@
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
 const del = require('del');
-const isparta = require('isparta');
 const webpack = require('webpack');
 const runSequence = require('run-sequence');
 const webpackStream = require('webpack-stream');
 const mochaGlobals = require('./packages/resourceful-redux/test/setup/.globals');
-
-const Instrumenter = isparta.Instrumenter;
 
 // Load all of our Gulp plugins
 const $ = loadPlugins();
@@ -119,49 +116,6 @@ function buildActionCreators() {
   });
 }
 
-function _mocha() {
-  return gulp.src([
-    'packages/resourceful-redux/test/setup/node.js',
-    'packages/resourceful-redux/test/unit/**/*.js'
-  ], {read: false})
-    .pipe($.mocha({
-      reporter: 'dot',
-      globals: Object.keys(mochaGlobals.globals),
-      ignoreLeaks: false
-    }));
-}
-
-function _registerBabel() {
-  require('babel-register');
-}
-
-function test() {
-  _registerBabel();
-  return _mocha();
-}
-
-function coverage(done) {
-  _registerBabel();
-  gulp.src(['packages/*/src/**/*.js'])
-    .pipe($.istanbul({
-      instrumenter: Instrumenter,
-      includeUntested: true
-    }))
-    .pipe($.istanbul.hookRequire())
-    .on('finish', () => {
-      return test()
-        .pipe($.istanbul.writeReports())
-        .on('end', done);
-    });
-}
-
-const watchFiles = ['packages/**/*', 'packages/*/test/**/*', 'package.json', '**/.eslintrc'];
-
-// Run the headless unit tests as you make changes.
-function watch() {
-  gulp.watch(watchFiles, ['test']);
-}
-
 // Remove the built files
 gulp.task('clean', cleanDist);
 
@@ -190,15 +144,3 @@ gulp.task('build', callback => {
     ['buildResourceful', 'buildPropTypes', 'buildActionCreators'],
   callback);
 });
-
-// Lint and run our tests
-gulp.task('test', ['lint'], test);
-
-// Set up coverage and run tests
-gulp.task('coverage', ['lint'], coverage);
-
-// Run the headless unit tests as you make changes.
-gulp.task('watch', watch);
-
-// An alias of test
-gulp.task('default', ['test']);
