@@ -19,7 +19,7 @@ function performXhr(dispatch, options) {
     const { url, uri } = xhrOptions;
 
     if (!resourceName) {
-      throw new Error(
+      console.warn(
         `A resourceName was not passed to a Resourceful Redux Action ` +
         `creator. A resourceName must be passed so that Resourceful Redux ` +
         `knows which resource slice to update. Refer to the CRUD Actions ` +
@@ -28,14 +28,14 @@ function performXhr(dispatch, options) {
     }
 
     if (!isValidCrudType) {
-      throw new Error(
+      console.warn(
         `An invalid "crudAction" was passed to a Resourceful Redux action creator. ` +
         `It must be one of: "create", "read", "update", "delete"`
       );
     }
 
     if (!url && !uri) {
-      throw new Error(
+      console.warn(
         `No URL was passed to a Resourceful Redux action creator. You must ` +
         `pass either "xhrOptions.url" or "xhrOptions.uri". For more, refer to ` +
         `the Action Creators Extension documentation: ` +

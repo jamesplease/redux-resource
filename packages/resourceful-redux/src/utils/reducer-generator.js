@@ -35,12 +35,14 @@ export default function(crudAction, requestStatus) {
 
     if (!label && !idList.length) {
       if (process.env.NODE_ENV !== 'production') {
-        console.warn(
-          `A resourceful-redux action was dispatched without a "label" or ` +
-          `a "resources" array. Without one of these values, Resourceful Redux ` +
-          `cannot track your CRUD operation. You should check your Action Creators. ` +
-          `Read more about CRUD Actions at: https://resourceful-redux.js.org/docs/guides/crud-actions.html`
-        );
+        if (!idList) {
+          console.warn(
+            `A resourceful-redux action was dispatched without a "label" or ` +
+            `a "resources" array. Without one of these values, Resourceful Redux ` +
+            `cannot track your CRUD operation. You should check your Action Creators. ` +
+            `Read more about CRUD Actions at: https://resourceful-redux.js.org/docs/guides/crud-actions.html`
+          );
+        }
       }
 
       return state;
