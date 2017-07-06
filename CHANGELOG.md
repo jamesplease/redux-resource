@@ -1,4 +1,4 @@
-## [0.0.11](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.10) (7/4/17)
+## [0.0.11](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.11) (7/5/17)
 
 **Breaking Changes:**
 
