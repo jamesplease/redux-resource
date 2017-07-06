@@ -1,13 +1,9 @@
 const gulp = require('gulp');
-const loadPlugins = require('gulp-load-plugins');
+const eslint = require('gulp-eslint');
 const del = require('del');
 const webpack = require('webpack');
 const runSequence = require('run-sequence');
 const webpackStream = require('webpack-stream');
-const mochaGlobals = require('./packages/resourceful-redux/test/setup/.globals');
-
-// Load all of our Gulp plugins
-const $ = loadPlugins();
 
 function cleanDist(done) {
   del(['packages/*/dist']).then(() => done());
@@ -20,9 +16,9 @@ function cleanTmp(done) {
 // Lint a set of files
 function lint(files) {
   return gulp.src(files)
-    .pipe($.eslint())
-    .pipe($.eslint.format())
-    .pipe($.eslint.failAfterError());
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 }
 
 function lintSrc() {
