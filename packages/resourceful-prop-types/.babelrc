@@ -1,8 +1,5 @@
 {
-  "presets": ["latest", "stage-3"],
-  "plugins": [
-    "add-module-exports"
-  ],
+  "presets": ["env", "stage-3"],
   "env": {
     "test": {
       "plugins": ["istanbul"]
