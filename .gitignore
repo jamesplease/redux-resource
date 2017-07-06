@@ -34,3 +34,4 @@ tmp
 dist
 _site
 _book
+.nyc_output

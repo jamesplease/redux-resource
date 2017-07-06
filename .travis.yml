@@ -4,7 +4,6 @@ node_js:
   - "7"
 sudo: false
 install: "npm i && npm run bootstrap"
-script: "gulp coverage"
 notifications:
   email: false
 after_success:

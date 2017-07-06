@@ -2,5 +2,10 @@
   "presets": ["latest", "stage-3"],
   "plugins": [
     "add-module-exports"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
 }
