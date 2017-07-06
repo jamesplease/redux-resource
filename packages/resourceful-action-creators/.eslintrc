@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "./node_modules/pleaserc/.eslintrc"
+  ],
+  "globals": {
+    "Promise": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {},
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

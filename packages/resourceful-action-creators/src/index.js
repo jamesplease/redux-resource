@@ -1,4 +1,4 @@
-import { actionTypes } from 'resourceful-redux';
+import {actionTypes} from 'resourceful-redux';
 import xhr from './xhr';
 
 function performXhr(dispatch, options) {
@@ -11,12 +11,11 @@ function performXhr(dispatch, options) {
 
   // Catch common configuration problems in dev
   if (process.env.NODE_ENV !== 'production') {
-    const { resourceName } = options;
     const lowercaseCrud = crudAction.toLowerCase();
     const isValidCrudType =
       lowercaseCrud === 'update' || lowercaseCrud === 'delete' ||
       lowercaseCrud === 'read' || lowercaseCrud === 'create';
-    const { url, uri } = xhrOptions;
+    const {url, uri} = xhrOptions;
 
     if (!resourceName) {
       console.warn(
@@ -24,7 +23,7 @@ function performXhr(dispatch, options) {
         `creator. A resourceName must be passed so that Resourceful Redux ` +
         `knows which resource slice to update. Refer to the CRUD Actions ` +
         `guide for more: https://resourceful-redux.js.org/docs/guides/crud-actions.html`
-      )
+      );
     }
 
     if (!isValidCrudType) {
@@ -92,7 +91,7 @@ function crudAction(options) {
       opts = options || {};
     }
 
-    performXhr(dispatch, options);
+    performXhr(dispatch, opts);
   };
 }
 

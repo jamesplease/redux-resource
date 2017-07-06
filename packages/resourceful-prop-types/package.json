@@ -4,6 +4,7 @@
   "description": "prop-types for Resourceful Redux",
   "main": "dist/resourceful-prop-types.js",
   "scripts": {
+    "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
     "build": "webpack"
   },
   "repository": {
@@ -26,6 +27,8 @@
     "babel-polyfill": "6.13.0",
     "babel-preset-latest": "6.14.0",
     "babel-preset-stage-3": "^6.17.0",
+    "eslint": "^4.1.1",
+    "pleaserc": "^2.4.0",
     "webpack": "2.6.1"
   }
 }
