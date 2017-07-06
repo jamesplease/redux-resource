@@ -1,28 +1,7 @@
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
 const webpack = require('webpack');
 const runSequence = require('run-sequence');
 const webpackStream = require('webpack-stream');
-
-// Lint a set of files
-function lint(files) {
-  return gulp.src(files)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-}
-
-function lintSrc() {
-  return lint('packages/*/[^node_modules]/**/*.js');
-}
-
-function lintTest() {
-  return lint('./packages/*/test/**/*.js');
-}
-
-function lintGulpfile() {
-  return lint('gulpfile.js');
-}
 
 function buildFile({src, dest, destFilename, library, externals}) {
   const inProduction = process.env.NODE_ENV === 'production';
@@ -103,18 +82,6 @@ function buildActionCreators() {
   });
 }
 
-// Lint our source code
-gulp.task('lint-src', lintSrc);
-
-// Lint our test code
-gulp.task('lint-test', lintTest);
-
-// Lint this file
-gulp.task('lint-gulpfile', lintGulpfile);
-
-// Lint everything
-gulp.task('lint', ['lint-src', 'lint-test', 'lint-gulpfile']);
-
 // Build the libs
 gulp.task('buildResourceful', buildResourceful);
 gulp.task('buildPropTypes', buildPropTypes);
@@ -123,5 +90,6 @@ gulp.task('build', callback => {
   runSequence(
     'lint',
     ['buildResourceful', 'buildPropTypes', 'buildActionCreators'],
-  callback);
+    callback
+  );
 });
