@@ -5,8 +5,10 @@
   "main": "dist/resourceful-redux.js",
   "scripts": {
     "test": "cross-env BABEL_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors test/setup/node.js test/unit/**",
+    "clean": "rimraf dist tmp",
+    "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
-    "build": "webpack"
+    "build": "npm run clean && webpack && cross-env NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
@@ -57,9 +59,11 @@
     "chai": "^3.5.0",
     "cross-env": "^5.0.1",
     "eslint": "^4.1.1",
+    "in-publish": "^2.0.0",
     "mocha": "^3.4.2",
     "nyc": "^11.0.3",
     "pleaserc": "^2.4.0",
+    "rimraf": "^2.6.1",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
     "webpack": "2.6.1"
