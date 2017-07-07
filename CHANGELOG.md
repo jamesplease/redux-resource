@@ -1,3 +1,13 @@
+## [0.0.14](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.14) (7/6/17)
+
+**Bug Fixes**
+
+- The Action Creators extension will now return the `resources` array that you
+  pass as options when a successful response is received from the backend
+  without a response body.
+
+- The name of the delete metadata has now been normalized as `deleteStatus`.
+
 ## [0.0.13](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.13) (7/6/17)
 
 - No changes.
@@ -8,7 +18,7 @@
 
 ## [0.0.11](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.11) (7/5/17)
 
-**Breaking Changes:**
+**Breaking Changes**
 
 - The action creators extension will no longer throw errors. Instead, it will
   log warnings to the console.
@@ -20,7 +30,7 @@
 
 ## [0.0.10](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.10) (7/4/17)
 
-**Breaking Changes**:
+**Breaking Changes**
 
 - Extensions are no longer included with the `resourceful-redux` npm package.
   They may be reintroduced, but there were too many bugs with the
@@ -30,14 +40,14 @@
 - New warning messages and Errors will be thrown when common mistakes are made
   when using the API.
 
-**Bug Fixes**:
+**Bug Fixes**
 
 - The action creators extension will now dispatch the correct actions for
   successful actions.
 
 ## [0.0.9](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.9) (6/29/17)
 
-**Breaking Changes**:
+**Breaking Changes**
 
 - The `resources` Array is now an Object. This will only be breaking if you're
   accessing or modifying the `resources` Array directly. If you're using
