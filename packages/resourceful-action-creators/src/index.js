@@ -65,10 +65,15 @@ function performXhr(dispatch, options) {
       });
     } else {
       let resources;
-      if (transformData) {
-        resources = transformData(body, options);
+
+      if (body) {
+        if (transformData) {
+          resources = transformData(body, options);
+        } else {
+          resources = body;
+        }
       } else {
-        resources = body;
+        resources = options.resources;
       }
 
       dispatch({
