@@ -17,7 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "gitbook-cli": "^2.3.0",
-    "lerna": "^2.0.0-rc.5",
+    "lerna": "^2.0.0",
     "rimraf": "^2.6.1"
   }
 }
