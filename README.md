@@ -35,3 +35,9 @@ of packages:
 | `resourceful-redux` | [![npm version](https://img.shields.io/npm/v/resourceful-redux.svg)](https://www.npmjs.com/package/resourceful-redux) | The main library |
 | `resourceful-action-creators` | [![npm version](https://img.shields.io/npm/v/resourceful-action-creators.svg)](https://www.npmjs.com/package/resourceful-action-creators) | The Action Creators extension |
 | `resourceful-prop-types` | [![npm version](https://img.shields.io/npm/v/resourceful-prop-types.svg)](https://www.npmjs.com/package/resourceful-prop-types) | The Prop Types extension |
+
+### Contributing
+
+Thanks for your interest in helping out! Check out the
+[Contributing Guide](./CONTRIBUTING.md), which covers everything you'll need to
+get up and running.
