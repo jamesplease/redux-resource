@@ -4,9 +4,9 @@
   "scripts": {
     "test": "npm run lint && lerna run test",
     "lint": "lerna run lint",
-    "clean": "rimraf packages/*/dist tmp",
-    "build": "npm run clean && lerna run build && cross-env NODE_ENV=production lerna run build",
-    "prepublish": "in-publish && npm run build || not-in-publish",
+    "build": "lerna run build",
+    "clean": "lerna clean",
+    "publish": "lerna publish",
     "bootstrap": "lerna bootstrap",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:prepare": "gitbook install",
@@ -16,10 +16,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "cross-env": "^5.0.1",
     "gitbook-cli": "^2.3.0",
-    "gitbook-plugin-ga": "^2.0.0",
-    "in-publish": "^2.0.0",
-    "lerna": "^2.0.0-rc.5"
+    "lerna": "^2.0.0-rc.5",
+    "rimraf": "^2.6.1"
   }
 }

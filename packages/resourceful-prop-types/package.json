@@ -4,8 +4,10 @@
   "description": "prop-types for Resourceful Redux",
   "main": "dist/resourceful-prop-types.js",
   "scripts": {
+    "clean": "rimraf dist tmp",
+    "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
-    "build": "webpack"
+    "build": "npm run clean && webpack && cross-env NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
@@ -56,8 +58,11 @@
     "babel-loader": "7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.17.0",
+    "cross-env": "^5.0.1",
     "eslint": "^4.1.1",
+    "in-publish": "^2.0.0",
     "pleaserc": "^2.4.0",
+    "rimraf": "^2.6.1",
     "webpack": "2.6.1"
   },
   "nyc": {
