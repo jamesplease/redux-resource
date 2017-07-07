@@ -2,9 +2,9 @@ import reducerGenerator from '../utils/reducer-generator';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
 
-const del = reducerGenerator('del', requestStatuses.PENDING);
-const delFail = reducerGenerator('del', requestStatuses.FAILED);
-const delNull = reducerGenerator('del', requestStatuses.NULL);
+const del = reducerGenerator('delete', requestStatuses.PENDING);
+const delFail = reducerGenerator('delete', requestStatuses.FAILED);
+const delNull = reducerGenerator('delete', requestStatuses.NULL);
 
 function delSucceed(state, action, {initialResourceMeta}) {
   const label = action.label;
