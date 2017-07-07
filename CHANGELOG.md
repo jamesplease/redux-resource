@@ -1,4 +1,4 @@
-## [0.0.14](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.14) (7/6/17)
+## [v0.0.14](https://github.com/jmeas/resourceful-redux/releases/tag/v0.0.14) (7/6/17)
 
 **Bug Fixes**
 
@@ -8,15 +8,15 @@
 
 - The name of the delete metadata has now been normalized as `deleteStatus`.
 
-## [0.0.13](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.13) (7/6/17)
+## [v0.0.13](https://github.com/jmeas/resourceful-redux/releases/tag/v0.0.13) (7/6/17)
 
 - No changes.
 
-## [0.0.12](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.12) (7/6/17)
+## [v0.0.12](https://github.com/jmeas/resourceful-redux/releases/tag/v0.0.12) (7/6/17)
 
 - No changes. There was an issue with the deploy of 0.0.11 that's been fixed.
 
-## [0.0.11](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.11) (7/5/17)
+## [v0.0.11](https://github.com/jmeas/resourceful-redux/releases/tag/v0.0.11) (7/5/17)
 
 **Breaking Changes**
 
@@ -28,7 +28,7 @@
 - Warnings will only be logged when a resources array is missing from an action
   completely, but not when it is present but empty.
 
-## [0.0.10](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.10) (7/4/17)
+## [v0.0.10](https://github.com/jmeas/resourceful-redux/releases/tag/v0.0.10) (7/4/17)
 
 **Breaking Changes**
 
