@@ -31,6 +31,8 @@ This repository is a [Lerna](https://github.com/lerna/lerna) project. That means
 it's a single repository that allows us to control the publishing of a number
 of packages:
 
-- `resourceful-redux`: The main library
-- `resourceful-action-creators`: The Action Creators extension
-- `resourceful-prop-types`: The Prop Types extension
+| Package | Version | Description |
+| ---- | ---- | ---- |
+| `resourceful-redux` | [![npm version](https://img.shields.io/npm/v/resourceful-redux.svg)](https://www.npmjs.com/package/resourceful-redux) | The main library |
+| `resourceful-action-creators` | [![npm version](https://img.shields.io/npm/v/resourceful-action-creators.svg)](https://www.npmjs.com/package/resourceful-action-creators) | The Action Creators extension |
+| `resourceful-prop-types` | [![npm version](https://img.shields.io/npm/v/resourceful-prop-types.svg)](https://www.npmjs.com/package/resourceful-prop-types) | The Prop Types extension |
