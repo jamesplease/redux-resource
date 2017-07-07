@@ -1,3 +1,7 @@
+## [0.0.13](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.13) (7/6/17)
+
+- No changes.
+
 ## [0.0.12](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.12) (7/6/17)
 
 - No changes. There was an issue with the deploy of 0.0.11 that's been fixed.
