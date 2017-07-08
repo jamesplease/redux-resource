@@ -121,7 +121,7 @@ describe('propTypes', function() {
     it('should not console.error when a valid slice is passed', () => {
       const props = {
         status: {
-          'null': true,
+          null: true,
           pending: false,
           failed: false,
           succeeded: false

@@ -80,9 +80,7 @@ export default function request(uri, options, cb) {
       opts = Object.assign({uri}, options);
       cb = callback;
     } else if (typeof uri === 'string' && typeof options !== 'object') {
-      opts = {
-        uri: uri
-      };
+      opts = {uri};
       cb = options;
     }
     opts.method = method.toUpperCase();
