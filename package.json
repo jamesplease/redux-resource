@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "test": "npm run lint && lerna run test",
-    "lint": "lerna run lint",
+    "lint": "eslint \"packages/*/{src,test}/**/*.js\" \"./packages/*/webpack.config.js\"",
     "build": "lerna run build",
     "clean": "lerna clean",
     "publish": "lerna publish",
@@ -16,8 +16,10 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^4.1.1",
     "gitbook-cli": "^2.3.0",
     "lerna": "^2.0.0",
+    "pleaserc": "^2.4.0",
     "rimraf": "^2.6.1"
   }
 }
