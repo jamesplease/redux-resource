@@ -35,6 +35,10 @@ export default function request(uri, options, cb) {
   const urlString = params.uri ? params.uri : params.url;
   params.uri = buildUrl(urlString, params);
 
+  if (params.url) {
+    delete params.url;
+  }
+
   let callback;
   if (typeof options === 'function') {
     callback = options;
@@ -60,10 +64,28 @@ export default function request(uri, options, cb) {
 
 // Also grabbed from xhr's source. This adds the convenience APIs;
 // `xhr.get()`, for instance.
+// Supported signatures:
+//
+// xhr[method](url, callback)
+// xhr[method](url, options, callback)
+// xhr[method](options, callback)
+//
 (['get', 'put', 'post', 'patch', 'head', 'delete']).forEach((method) => {
-  request[method === 'delete' ? 'del' : method] = function(uri, options = {}, callback) {
-    const opts = typeof uri === 'string' ? options : uri;
+  request[method === 'delete' ? 'del' : method] = function(uri, options, callback) {
+    let opts, cb;
+    if (typeof uri === 'object') {
+      opts = uri;
+      cb = options;
+    } else if (typeof options === 'object') {
+      opts = Object.assign({uri}, options);
+      cb = callback;
+    } else if (typeof uri === 'string' && typeof options !== 'object') {
+      opts = {
+        uri: uri
+      };
+      cb = options;
+    }
     opts.method = method.toUpperCase();
-    return request(uri, opts, callback);
+    return request(opts, cb);
   };
 });
