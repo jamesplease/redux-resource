@@ -84,10 +84,12 @@ In Resourceful Redux, this information is represented as one of four "statuses":
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
 
-In Resourceful Redux, each individual resource has a request status for each of
-the four CRUD operations associated with it. This information is the default
-meta that you get for each resource. If you had one resource with an ID of 24,
-then your metadata will start off looking like this:
+When you use Resourceful Redux, the status of **every** CRUD operation that you
+make in your application is stored in your application's state tree.
+
+For requests that target specific resources by their ID, the request status will
+be associated with those resources. So if you had one resource with an ID of 24,
+then your metadata for that resource will start off looking like this:
 
 ```js
 {
@@ -102,8 +104,12 @@ then your metadata will start off looking like this:
 }
 ```
 
-Resourceful Redux keeps this metadata up-to-date for each resource as users use
-your app.
+For requests that don't target a resource (or resources) by ID, you can assign
+the request a "label," which is just a string, to keep track of its status.
 
-This reduces the boilerplate code that you need to write, giving you more time
-to build your application.
+Because this information is stored at such a granular level, you're not limited
+by the user experiences that you can build. Instead of
+
+By storing this information at such a granular level, Resourceful Redux provides
+a solid foundation to build truly great user experiences. And you don't even
+need to write any boilerplate.
