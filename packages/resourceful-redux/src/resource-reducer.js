@@ -15,6 +15,21 @@ export default function resourceReducer(resourceName, options = {}) {
     ...initialState
   };
 
+  const computedPlugins = plugins.map(plugin => {
+    const result = plugin(resourceName, options);
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof result !== 'function') {
+        console.warn(
+          `A plugin was initialized that did not return a function. Plugins ` +
+          `should return a function with the same signature as a reducer. ` +
+          `For more, refer to the documentation on plugins: ` +
+          `https://resourceful-redux.js.org/docs/guides/plugins.html`
+        );
+      }
+    }
+    return result;
+  });
+
   return function reducer(state = initial, action) {
     const actionReducer = actionReducers[action.type];
 
@@ -27,10 +42,7 @@ export default function resourceReducer(resourceName, options = {}) {
     const defaultResult = callActionReducer ? actionReducer(state, action, options) : state;
 
     // Compute the state from any additional reducer plugins
-    const customResult = composeReducers(plugins)(defaultResult, action, {
-      ...options,
-      resourceName
-    });
+    const customResult = composeReducers(computedPlugins)(defaultResult, action);
 
     return customResult ? customResult : state;
   };

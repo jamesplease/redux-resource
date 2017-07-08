@@ -7,7 +7,7 @@ const slicePropType = PropTypes.shape({
   resources: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   labels: PropTypes.object.isRequired
-}).isRequired;
+});
 
 // An array of Resource IDs
 const resourceIdsPropType = PropTypes.arrayOf(
@@ -25,7 +25,7 @@ const resourcesPropType = PropTypes.arrayOf(
       PropTypes.number,
     ])
   })
-).isRequired;
+);
 
 // The return value from `getStatus`
 const statusPropType = PropTypes.shape({
@@ -33,7 +33,7 @@ const statusPropType = PropTypes.shape({
   pending: PropTypes.bool.isRequired,
   failed: PropTypes.bool.isRequired,
   succeeded: PropTypes.bool.isRequired
-}).isRequired;
+});
 
 export {
   slicePropType,

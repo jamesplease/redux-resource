@@ -4,7 +4,7 @@ describe('reducer', function() {
   it('should handle a plug-in on a built-in type', () => {
     const reducer = resourceReducer('hellos', {
       plugins: [
-        (state, action) => {
+        () => (state, action) => {
           if (action.type === actionTypes.READ_RESOURCES_SUCCEEDED) {
             return {
               ...state,
@@ -43,7 +43,7 @@ describe('reducer', function() {
   it('should handle a plug-in on a custom type', () => {
     const reducer = resourceReducer('hellos', {
       plugins: [
-        (state, action) => {
+        () => (state, action) => {
           if (action.type === 'SANDWICHES_ARE_GOOD') {
             return {
               ...state,
@@ -73,7 +73,7 @@ describe('reducer', function() {
   it('should handle multiple plug-ins on a custom type, from right to left', () => {
     const reducer = resourceReducer('hellos', {
       plugins: [
-        (state, action) => {
+        () => (state, action) => {
           if (action.type === 'SANDWICHES_ARE_GOOD') {
             return {
               ...state,
@@ -83,7 +83,7 @@ describe('reducer', function() {
 
           return state;
         },
-        (state, action) => {
+        () => (state, action) => {
           if (action.type === 'SANDWICHES_ARE_GOOD') {
             return {
               ...state,
