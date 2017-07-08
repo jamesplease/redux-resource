@@ -3,6 +3,9 @@ engines:
     enabled: false
   duplication:
     enabled: false
+ratings:
+   paths:
+   - "packages/*/src/**/*.js"
 exclude_paths:
 - "gulpfile.js"
 - "README.md"
