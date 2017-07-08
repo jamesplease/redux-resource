@@ -3,6 +3,8 @@ import {requestStatuses} from '../../../src';
 
 describe('reducerGenerator:', function() {
   it('passing no IDs and no label', () => {
+    stub(console, 'warn');
+
     const state = {
       meta: {
         1: {
@@ -28,6 +30,7 @@ describe('reducerGenerator:', function() {
     const result = reducer(state, {});
 
     expect(result).to.equal(state);
+    expect(console.warn.callCount).to.equal(1);
   });
 
   it('passing mixed resources array and no label', () => {

@@ -3,6 +3,7 @@ import {resourceReducer, requestStatuses} from '../../../src';
 describe('reducers: delete', function() {
   describe('DELETE_RESOURCES_SUCCEEDED', () => {
     it('returns the right state without a label, without IDs', () => {
+      stub(console, 'warn');
       const initialState = {
         resources: {
           1: {id: 1},
@@ -28,6 +29,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal(initialState);
+      expect(console.warn.callCount).to.equal(1);
     });
 
     it('returns the right state without a label, with IDs', () => {
@@ -166,6 +168,7 @@ describe('reducers: delete', function() {
     });
 
     it('returns the right state with a label, without IDs', () => {
+      stub(console, 'warn');
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -225,6 +228,8 @@ describe('reducers: delete', function() {
           }
         }
       });
+      
+      expect(console.warn.callCount).to.equal(1);
     });
   });
 });

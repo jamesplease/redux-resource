@@ -3,6 +3,7 @@ import {resourceReducer, requestStatuses} from '../../../src';
 describe('reducers: read:', function() {
   describe('READ_RESOURCES_SUCCEEDED:', () => {
     it('returns the right state without a label, without IDs', () => {
+      stub(console, 'warn');
       const initialState = {
         resources: {
           1: {id: 1},
@@ -32,6 +33,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal(initialState);
+      expect(console.warn.callCount).to.equal(1);
     });
 
     it('returns state with resource object, no label, default options', () => {
@@ -551,6 +553,7 @@ describe('reducers: read:', function() {
     });
 
     it('returns state without a resource array, with a label', () => {
+      stub(console, 'warn');
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -616,6 +619,8 @@ describe('reducers: read:', function() {
           }
         }
       });
+
+      expect(console.warn.callCount).to.equal(1);
     });
   });
 });
