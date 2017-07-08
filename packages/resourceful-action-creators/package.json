@@ -53,17 +53,14 @@
   "devDependencies": {
     "babel-core": "6.23.0",
     "babel-loader": "7.1.1",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-plugin-rewire": "^1.1.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.17.0",
+    "babel-register": "^6.24.1",
     "cross-env": "^5.0.1",
-    "eslint": "^4.1.1",
     "in-publish": "^2.0.0",
-    "pleaserc": "^2.4.0",
     "rimraf": "^2.6.1",
     "webpack": "2.6.1"
-  },
-  "nyc": {
-    "sourceMap": false,
-    "instrument": false
   }
 }

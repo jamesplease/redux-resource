@@ -3,7 +3,14 @@ node_js:
   - "6"
   - "7"
 sudo: false
-install: "npm i && npm run bootstrap"
+install:
+  # Install the deps in the root project
+  - npm i
+  # Install the nested deps, but the linked repositories won't work at this
+  # stage, because the deps aren't build
+  - npm run bootstrap
+  # Build the deps
+  - npm run build
 notifications:
   email: false
 after_success:
