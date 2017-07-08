@@ -3,7 +3,7 @@ import * as types from '../../src';
 
 describe('Resourceful Prop Types', function() {
   beforeEach(() => {
-    spy(console, 'error');
+    stub(console, 'error');
   });
 
   it('should be an object', () => {

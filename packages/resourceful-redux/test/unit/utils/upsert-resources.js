@@ -9,6 +9,17 @@ describe('upsertResources', function() {
     };
   });
 
+  it('should warn when a resource without an ID is passed', () => {
+    stub(console, 'warn');
+
+    const nullResult = upsertResources(this.resources, [
+      {id: 23},
+      {name: 'sandwich'}
+    ]);
+
+    expect(console.warn.callCount).to.equal(1);
+  });
+
   it('should accept an empty array of newResources', () => {
     const nullResult = upsertResources(this.resources, null);
     expect(nullResult).to.equal(this.resources);
