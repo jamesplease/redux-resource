@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import * as types from '../../src';
 
-describe('propTypes', function() {
+describe('Resourceful Prop Types', function() {
   beforeEach(() => {
     spy(console, 'error');
   });

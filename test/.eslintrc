@@ -1,6 +1,6 @@
 {
   "extends": [
-    "../../../node_modules/pleaserc/.eslintrc-test",
+    "../node_modules/pleaserc/.eslintrc-test",
     "./setup/.globals.json"
   ],
   "parserOptions": {

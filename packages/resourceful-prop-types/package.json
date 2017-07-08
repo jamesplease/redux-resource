@@ -4,7 +4,6 @@
   "description": "prop-types for Resourceful Redux",
   "main": "dist/resourceful-prop-types.js",
   "scripts": {
-    "test": "cross-env BABEL_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors test/setup/node.js test/unit/**",
     "clean": "rimraf dist tmp",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
@@ -61,18 +60,10 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.17.0",
     "babel-register": "^6.24.1",
-    "chai": "^4.0.2",
     "cross-env": "^5.0.1",
     "in-publish": "^2.0.0",
     "mocha": "^3.4.2",
-    "nyc": "^11.0.3",
     "rimraf": "^2.6.1",
-    "sinon": "^2.3.6",
-    "sinon-chai": "^2.11.0",
     "webpack": "2.6.1"
-  },
-  "nyc": {
-    "sourceMap": false,
-    "instrument": false
   }
 }

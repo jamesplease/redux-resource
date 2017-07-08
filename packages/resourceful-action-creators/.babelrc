@@ -2,7 +2,10 @@
   "presets": ["env", "stage-3"],
   "env": {
     "test": {
-      "plugins": ["istanbul", "rewire"]
+      "plugins": [
+        "istanbul",
+        "rewire"
+      ]
     }
   }
 }
