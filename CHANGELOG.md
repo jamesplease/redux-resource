@@ -1,3 +1,19 @@
+## [v0.1.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.1.0) (7/8/17)
+
+**Breaking Changes**
+
+- The plugin argument signature has changed. Refer to the documentation for
+  more.
+- The Resourceful Prop Types no longer include `isRequired` by default. It is
+  now opt in.
+
+**Bug Fixes**
+
+- In Resourceful Action Creators, the shortcut methods for the wrapped `xhr`
+  (such as `xhr.get`) now accept all of the same signatures as the `xhr` lib.
+- Fixed a `console.warn` in Resourceful Redux that wasn't warning when it should
+  have been warning.
+
 ## [v0.0.14](https://github.com/jmeas/resourceful-redux/releases/tag/v0.0.14) (7/6/17)
 
 **Bug Fixes**
