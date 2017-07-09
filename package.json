@@ -6,7 +6,7 @@
     "lint": "eslint \"packages/*/{src,test}/**/*.js\" \"./packages/*/webpack.config.js\"",
     "build": "lerna run build",
     "clean": "lerna clean",
-    "publish": "lerna publish",
+    "publish": "lerna publish --force-publish=*",
     "bootstrap": "lerna bootstrap",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:prepare": "gitbook install",
