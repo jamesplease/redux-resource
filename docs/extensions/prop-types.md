@@ -1,4 +1,6 @@
-# Prop Types
+# Resourceful Prop Types
+
+[![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-prop-types/dist/resourceful-prop-types.min.js?compression=gzip)](https://unpkg.com/resourceful-prop-types/dist/resourceful-prop-types.min.js)
 
 A collection of [prop-types](https://github.com/facebook/prop-types) objects.
 

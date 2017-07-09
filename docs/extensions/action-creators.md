@@ -1,4 +1,6 @@
-# Action Creators
+# Resourceful Action Creators
+
+[![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js?compression=gzip)](https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js)
 
 This extension includes action creators for the Resourceful Redux Actions. It
 also comes with a tiny library for making HTTP requests.
