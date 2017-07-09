@@ -35,7 +35,7 @@ it.
 :ok_hand: Once you're done, go ahead and open a Pull Request!
 
 p.s. don't sweat it if you can't get the tests to pass, or if you can't finish
-the changes you'd like to make. Open up the Pull Request and we'll make sure it
+the changes you'd like to make. Open up a Pull Request and we'll make sure it
 gets figured out!
 
 ### Contributing to the Website
