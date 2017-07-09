@@ -7,9 +7,16 @@ const update = reducerGenerator('update', requestStatuses.PENDING);
 const updateFail = reducerGenerator('update', requestStatuses.FAILED);
 const updateNull = reducerGenerator('update', requestStatuses.NULL);
 
-function updateSucceed(state, action, options) {
-  return cruReducerHelper(state, action, options, {
-    ...initialResourceMetaState,
+function updateSucceed(state, action, options = {}) {
+  const customInitialMeta = options.initialResourceMeta || {};
+  const optionsToSend = {
+    initialResourceMeta: {
+      ...initialResourceMetaState,
+      ...customInitialMeta
+    }
+  };
+
+  return cruReducerHelper(state, action, optionsToSend, {
     updateStatus: requestStatuses.SUCCEEDED
   });
 }

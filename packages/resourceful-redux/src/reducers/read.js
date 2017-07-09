@@ -7,9 +7,16 @@ const read = reducerGenerator('read', requestStatuses.PENDING);
 const readFail = reducerGenerator('read', requestStatuses.FAILED);
 const readNull = reducerGenerator('read', requestStatuses.NULL);
 
-function readSucceed(state, action, options) {
-  return cruReducerHelper(state, action, options, {
-    ...initialResourceMetaState,
+function readSucceed(state, action, options = {}) {
+  const customInitialMeta = options.initialResourceMeta || {};
+  const optionsToSend = {
+    initialResourceMeta: {
+      ...initialResourceMetaState,
+      ...customInitialMeta
+    }
+  };
+
+  return cruReducerHelper(state, action, optionsToSend, {
     readStatus: requestStatuses.SUCCEEDED
   });
 }
