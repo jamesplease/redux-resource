@@ -53,6 +53,7 @@ describe('reducers: read:', function() {
               deleteStatus: 'sandwiches'
             },
             4: {
+              createStatus: requestStatuses.SUCCEEDED,
               selected: true
             }
           }
@@ -88,7 +89,7 @@ describe('reducers: read:', function() {
           },
           4: {
             selected: true,
-            createStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.SUCCEEDED,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
             deleteStatus: requestStatuses.NULL,

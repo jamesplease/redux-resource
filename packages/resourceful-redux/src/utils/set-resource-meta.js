@@ -13,8 +13,19 @@ export default function setResourceMeta(options) {
 
   resources.forEach((resource) => {
     const id = typeof resource === 'object' ? resource.id : resource;
-    const currentMeta = next[id] || initialResourceMeta;
-    const baseMeta = mergeMetaOption ? currentMeta : initialResourceMeta;
+    const currentMeta = next[id];
+
+    let startMeta;
+    if (currentMeta) {
+      startMeta = {
+        ...initialResourceMeta,
+        ...currentMeta
+      };
+    } else {
+      startMeta = initialResourceMeta;
+    }
+
+    const baseMeta = mergeMetaOption ? startMeta : initialResourceMeta;
 
     next[id] = {
       ...baseMeta,

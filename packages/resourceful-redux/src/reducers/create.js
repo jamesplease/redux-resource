@@ -8,8 +8,15 @@ const createFail = reducerGenerator('create', requestStatuses.FAILED);
 const createNull = reducerGenerator('create', requestStatuses.NULL);
 
 function createSucceed(state, action, options) {
-  return cruReducerHelper(state, action, options, {
-    ...initialResourceMetaState,
+  const customInitialMeta = options.initialResourceMeta || {};
+  const optionsToSend = {
+    initialResourceMeta: {
+      ...initialResourceMetaState,
+      ...customInitialMeta
+    }
+  };
+
+  return cruReducerHelper(state, action, optionsToSend, {
     readStatus: requestStatuses.SUCCEEDED,
     createStatus: requestStatuses.SUCCEEDED,
   });

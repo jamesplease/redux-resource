@@ -1,3 +1,10 @@
+## [v0.1.1](https://github.com/jmeas/resourceful-redux/releases/tag/v0.1.1) (7/9/17)
+
+**Bug Fixes**
+
+- Successful CRUD operations no longer squash the status of other CRUD
+  operations within resource metadata (gh-100)
+
 ## [v0.1.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.1.0) (7/8/17)
 
 **Breaking Changes**
