@@ -25,12 +25,8 @@ Redux. Each package can be found in its own directory within the `packages`
 directory.
 
 Find the library you're interested in updating, and make changes as you see fit.
-
 As you work, and/or when you're done, run `npm test` to lint your changes, and
 to run the unit tests.
-
-If you can't get the tests to pass, or you can't finish the feature, don't sweat
-it.
 
 :ok_hand: Once you're done, go ahead and open a Pull Request!
 
