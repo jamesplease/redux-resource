@@ -1,6 +1,6 @@
 # Resourceful Redux
 
-A simple but powerful system for managing 'resources': data that is persisted to
+A tiny but powerful system for managing 'resources': data that is persisted to
 remote servers.
 
 [![Gitter](https://badges.gitter.im/jmeas/resourceful-redux.svg)](https://gitter.im/jmeas/resourceful-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
@@ -8,6 +8,7 @@ remote servers.
 [![npm version](https://img.shields.io/npm/v/resourceful-redux.svg)](https://www.npmjs.com/package/resourceful-redux)
 [![Test Coverage](https://codeclimate.com/github/jmeas/resourceful-redux/badges/coverage.svg)](https://codeclimate.com/github/jmeas/resourceful-redux)
 [![Code Climate GPA](https://codeclimate.com/github/jmeas/resourceful-redux/badges/gpa.svg)](https://codeclimate.com/github/jmeas/resourceful-redux)
+[![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js?compression=gzip)](https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js)
 
 ### Installation
 
@@ -19,7 +20,7 @@ npm install --save resourceful-redux
 
 ### Size
 
-Resourceful Redux is around 13kb minified, which is typically much smaller than
+Resourceful Redux is around 3kb gzipped, which is typically _much_ smaller than
 the boilerplate code that it replaces.
 
 ### Table of Contents
