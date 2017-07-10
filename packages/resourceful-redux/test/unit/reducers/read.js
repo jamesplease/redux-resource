@@ -68,7 +68,79 @@ describe('reducers: read:', function() {
   });
 
   describe('READ_RESOURCES_SUCCEEDED:', () => {
-    it('returns the right state without a label, without IDs', () => {
+    it('warns when no resourceName is passed', () => {
+      stub(console, 'warn');
+      const initialState = {
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4},
+        },
+        labels: {
+          pasta: {
+            hungry: true
+          }
+        },
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          }
+        }
+      };
+
+      const reducer = resourceReducer('hellos', {initialState});
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resources: [1, 2]
+      });
+
+      expect(reduced).to.deep.equal(initialState);
+      expect(console.warn.callCount).to.equal(1);
+    });
+
+    it('warns when a resource _object_ is passed (not an array)', () => {
+      stub(console, 'warn');
+      const initialState = {
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4},
+        },
+        labels: {
+          pasta: {
+            hungry: true
+          }
+        },
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          }
+        }
+      };
+
+      const reducer = resourceReducer('hellos', {initialState});
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        resources: {
+          id: 20,
+          firstName: 'sandwiches'
+        }
+      });
+
+      expect(reduced).to.deep.equal(initialState);
+      expect(console.warn.callCount).to.equal(1);
+    });
+
+    it('warns and returns the right state without a label, without IDs', () => {
       stub(console, 'warn');
       const initialState = {
         resources: {
@@ -102,7 +174,7 @@ describe('reducers: read:', function() {
       expect(console.warn.callCount).to.equal(1);
     });
 
-    it('returns state with resource object, no label, default options', () => {
+    it('returns state with resource array, no label, default options', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -171,7 +243,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource object, no label, mergeResources: false', () => {
+    it('returns state with resource array, no label, mergeResources: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {

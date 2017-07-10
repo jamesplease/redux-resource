@@ -33,6 +33,18 @@ export default function resourceReducer(resourceName, options = {}) {
   return function reducer(state = initial, action) {
     const actionReducer = actionReducers[action.type];
 
+    if (process.env.NODE_ENV !== 'production') {
+      if (actionReducer && !action.resourceName) {
+        console.warn(
+          `A resourceName was not included in an action with type ` +
+          `"${action.type}". Without a resourceName, Resourceful Redux will ` +
+          `not be able to update a slice of your store. For more, refer to ` +
+          `the guide on CRUD Actions: ` +
+          `https://resourceful-redux.js.org/docs/guides/crud-actions.html`
+        );
+      }
+    }
+
     // We only call the built-in reducers if the action type matches one,
     // and if the resource name in the action matches the name of the resource
     // in this state slice.
