@@ -1,3 +1,10 @@
+## [v0.2.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.2.0) (7/9/17)
+
+**Changes**
+
+- Resourceful Redux will now log warnings in more situations where you might be
+  making mistakes to help you out.
+
 ## [v0.1.2](https://github.com/jmeas/resourceful-redux/releases/tag/v0.1.2) (7/9/17)
 
 **Bug Fixes**
