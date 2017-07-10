@@ -1,3 +1,10 @@
+## [v0.1.2](https://github.com/jmeas/resourceful-redux/releases/tag/v0.1.2) (7/9/17)
+
+**Bug Fixes**
+
+- Non-success CRUD actions will now ensure that the resource's metadata includes
+  the initial metadata (gh-103)
+
 ## [v0.1.1](https://github.com/jmeas/resourceful-redux/releases/tag/v0.1.1) (7/9/17)
 
 **Bug Fixes**
