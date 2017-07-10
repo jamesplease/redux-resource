@@ -17,6 +17,20 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
     currentVal = pathValue;
   }
 
+  if (process.env.NODE_ENV !== 'production') {
+    const isStatus = status === requestStatuses.NULL ||
+      status === requestStatuses.PENDING ||
+      status === requestStatuses.FAILED ||
+      status === requestStatuses.SUCCEEDED;
+    if (!isStatus) {
+      console.warn(
+        `You called "getStatus" with path "${statusLocation}", which resolved ` +
+        `to a value that is not a valid resource status. You may want to ` +
+        `check that this path is correct.`
+      );
+    }
+  }
+
   const isPending = status === requestStatuses.PENDING;
   const isNull = status === requestStatuses.NULL;
   const treatNullAsPendingBool = Boolean(treatNullAsPending);
