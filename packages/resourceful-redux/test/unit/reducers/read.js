@@ -1,6 +1,72 @@
 import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: read:', function() {
+  describe('READ_RESOURCES_PENDING:', () => {
+    const reducer = resourceReducer('hellos', {
+      initialState: {
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, lastName: 'camomile'},
+        },
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            createStatus: requestStatuses.SUCCEEDED,
+            selected: true
+          }
+        }
+      },
+      initialResourceMeta: {
+        selected: false,
+        createStatus: requestStatuses.PENDING
+      }
+    });
+
+    const reduced = reducer(undefined, {
+      type: 'READ_RESOURCES_PENDING',
+      resourceName: 'hellos',
+      resources: [4, 5]
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: {
+        1: {id: 1},
+        3: {id: 3},
+        4: {id: 4, lastName: 'camomile'}
+      },
+      labels: {},
+      meta: {
+        1: {
+          name: 'what'
+        },
+        3: {
+          deleteStatus: 'sandwiches'
+        },
+        4: {
+          selected: true,
+          createStatus: requestStatuses.SUCCEEDED,
+          readStatus: requestStatuses.PENDING,
+          updateStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
+        },
+        5: {
+          selected: false,
+          createStatus: requestStatuses.PENDING,
+          readStatus: requestStatuses.PENDING,
+          updateStatus: requestStatuses.NULL,
+          deleteStatus: requestStatuses.NULL,
+        }
+      }
+    });
+  });
+
   describe('READ_RESOURCES_SUCCEEDED:', () => {
     it('returns the right state without a label, without IDs', () => {
       stub(console, 'warn');

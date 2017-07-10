@@ -1,4 +1,5 @@
 import setResourceMeta from '../utils/set-resource-meta';
+import initialResourceMetaState from './initial-resource-meta-state';
 
 // This helper is used to simplify non-success reducers. Because non-success
 // reducers don't modify the data – ever – it simplifies the scope of what can
@@ -12,7 +13,7 @@ import setResourceMeta from '../utils/set-resource-meta';
 // helper completely defines all of the ways in which the non-success reducers
 // can change the state.
 export default function(crudAction, requestStatus) {
-  return function(state, action) {
+  return function(state, action, {initialResourceMeta} = {}) {
     const resources = action.resources;
     const label = action.label;
     const mergeMeta = action.mergeMeta;
@@ -66,6 +67,10 @@ export default function(crudAction, requestStatus) {
         newMeta: {[statusAttribute]: requestStatus},
         resources: idList,
         mergeMeta,
+        initialResourceMeta: {
+          ...initialResourceMetaState,
+          ...initialResourceMeta
+        }
       });
     } else {
       newMeta = state.meta;
