@@ -1,4 +1,5 @@
 import requestStatuses from './request-statuses';
+import warning from './warning';
 
 function getSingleStatus(state, statusLocation, treatNullAsPending) {
   const splitPath = statusLocation.split('.');
@@ -23,7 +24,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
       status === requestStatuses.FAILED ||
       status === requestStatuses.SUCCEEDED;
     if (!isStatus) {
-      console.error(
+      warning(
         `You called "getStatus" with path "${statusLocation}", which resolved ` +
         `to a value that is not a valid resource status. You may want to ` +
         `check that this path is correct.`

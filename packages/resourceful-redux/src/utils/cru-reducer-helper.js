@@ -1,6 +1,7 @@
 import setResourceMeta from './set-resource-meta';
 import upsertResources from './upsert-resources';
 import requestStatuses from './request-statuses';
+import warning from './warning';
 
 // This reducer helper handles the "CRU" in "CRUD".
 
@@ -12,7 +13,7 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
 
   if (process.env.NODE_ENV !== 'production') {
     if (!resources) {
-      console.error(
+      warning(
         `A 'resources' array was not included in a Resourceful Redux ` +
         `"success" action with type "${action.type}. Without a 'resources' ` +
         `Array, Resourceful Redux will not be able to track which resources ` +
@@ -20,7 +21,7 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
         `Creators to make sure that they always include a 'resources' array.`
       );
     } else if (!Array.isArray(resources)) {
-      console.error(
+      warning(
         `A non-array 'resources' value was passed to a Resourceful Redux ` +
         `"success" action with type "${action.type}". 'resources' must be an ` +
         `array. If your backend returned a single object, be sure to wrap it ` +

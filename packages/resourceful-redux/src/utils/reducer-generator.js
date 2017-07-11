@@ -1,5 +1,6 @@
 import setResourceMeta from '../utils/set-resource-meta';
 import initialResourceMetaState from './initial-resource-meta-state';
+import warning from './warning';
 
 // This helper is used to simplify non-success reducers. Because non-success
 // reducers don't modify the data – ever – it simplifies the scope of what can
@@ -36,7 +37,7 @@ export default function(crudAction, requestStatus) {
 
     if (!label && !idList.length) {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(
+        warning(
           `A Resourceful Redux action of type ${action.type} was dispatched ` +
           `without a "label" or a "resources" array. Without one of these ` +
           `values, Resourceful Redux cannot track your CRUD operation. You ` +

@@ -5,6 +5,7 @@ import setResourceMeta from './utils/set-resource-meta';
 import upsertResources from './utils/upsert-resources';
 import getStatus from './utils/get-status';
 import getResources from './utils/get-resources';
+import warning from './utils/warning';
 
 /*
 * This is a dummy function to check if the function name has been altered by minification.
@@ -17,7 +18,7 @@ if (
   typeof isCrushed.name === 'string' &&
   isCrushed.name !== 'isCrushed'
 ) {
-  console.error(
+  warning(
     'You are currently using minified code outside of NODE_ENV === \'production\'. ' +
     'This means that you are running a slower development build of Resourceful Redux. ' +
     'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' +

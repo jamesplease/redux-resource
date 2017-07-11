@@ -1,6 +1,7 @@
 import reducerGenerator from '../utils/reducer-generator';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import requestStatuses from '../utils/request-statuses';
+import warning from '../utils/warning';
 
 const del = reducerGenerator('delete', requestStatuses.PENDING);
 const delFail = reducerGenerator('delete', requestStatuses.FAILED);
@@ -12,7 +13,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
 
   if (process.env.NODE_ENV !== 'production') {
     if (!resources) {
-      console.error(
+      warning(
         `A 'resources' array was not included in a Resourceful Redux ` +
         `"success" action with type "${action.type}. Without a 'resources' ` +
         `Array, Resourceful Redux will not be able to track which resources ` +
@@ -20,7 +21,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
         `Creators to make sure that they always include a 'resources' array.`
       );
     } else if (!Array.isArray(resources)) {
-      console.error(
+      warning(
         `A non-array 'resources' value was passed to a Resourceful Redux ` +
         `"success" action with type "${action.type}". 'resources' must be an ` +
         `array. If your backend returned a single object, be sure to wrap it ` +
@@ -37,7 +38,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
       if (typeof r === 'object') {
         if (process.env.NODE_ENV !== 'production') {
           if (!r.id || (typeof r.id !== 'string' && typeof r.id !== 'number')) {
-            console.error(
+            warning(
               `A resoure without an ID was passed to an action with type ` +
               `${action.type}. Every resource must have an ID that is either ` +
               `a number of a string. You should check your action creators to ` +
@@ -49,7 +50,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
       } else {
         if (process.env.NODE_ENV !== 'production') {
           if (typeof r !== 'string' && typeof r !== 'number') {
-            console.error(
+            warning(
               `A resoure without an ID was passed to an action with type ` +
               `${action.type}. Every resource must have an ID that is either ` +
               `a number of a string. You should check your action creators to ` +
