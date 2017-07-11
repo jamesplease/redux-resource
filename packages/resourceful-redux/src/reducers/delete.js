@@ -10,30 +10,59 @@ function delSucceed(state, action, {initialResourceMeta}) {
   const label = action.label;
   const resources = action.resources;
 
+  if (process.env.NODE_ENV !== 'production') {
+    if (!resources) {
+      console.warn(
+        `A 'resources' array was not included in a Resourceful Redux ` +
+        `"success" action with type "${action.type}. Without a 'resources' ` +
+        `Array, Resourceful Redux will not be able to track which resources ` +
+        `were affected by this CRUD operation. You should check your Action ` +
+        `Creators to make sure that they always include a 'resources' array.`
+      );
+    } else if (!Array.isArray(resources)) {
+      console.warn(
+        `A non-array 'resources' value was passed to a Resourceful Redux ` +
+        `"success" action with type "${action.type}". 'resources' must be an ` +
+        `array. If your backend returned a single object, be sure to wrap it ` +
+        `inside of an array. If you're using the Resourceful Action Creators ` +
+        `library, you can do this using the "transformData" option.`
+      );
+    }
+  }
+
   // Find the list of IDs affected by this action
   let idList;
-  if (resources) {
+  if (resources && resources.map) {
     idList = resources.map(r => {
       if (typeof r === 'object') {
+        if (process.env.NODE_ENV !== 'production') {
+          if (!r.id || (typeof r.id !== 'string' && typeof r.id !== 'number')) {
+            console.warn(
+              `A resoure without an ID was passed to an action with type ` +
+              `${action.type}. Every resource must have an ID that is either ` +
+              `a number of a string. You should check your action creators to ` +
+              `make sure that an ID is always included in your resources.`
+            );
+          }
+        }
         return r.id;
       } else {
+        if (process.env.NODE_ENV !== 'production') {
+          if (typeof r !== 'string' && typeof r !== 'number') {
+            console.warn(
+              `A resoure without an ID was passed to an action with type ` +
+              `${action.type}. Every resource must have an ID that is either ` +
+              `a number of a string. You should check your action creators to ` +
+              `make sure that an ID is always included in your resources.`
+            );
+          }
+        }
         return r;
       }
     });
   }
 
   const hasIds = idList && idList.length;
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (!idList) {
-      console.warn(
-        `A 'resources' Array was not supplied to a Resourceful Redux "success" ` +
-        `action with type "${action.type}". Without a 'resources' Array, ` +
-        `Resourceful Redux will not be able to track which resources have been ` +
-        `affected by this CRUD operation. You should check your Action Creators.`
-      );
-    }
-  }
 
   // If we have no label nor IDs, then there is nothing to update
   if (!hasIds && !label) {

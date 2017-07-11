@@ -32,7 +32,107 @@ describe('reducers: delete', function() {
       expect(console.warn.callCount).to.equal(1);
     });
 
+    it('logs a warning when a resource does not have an ID (obj form)', () => {
+      stub(console, 'warn');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        },
+        initialResourceMeta: {
+          selected: false
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        resources: [3, {name: 'sandwiches'}]
+      });
+
+      expect(console.warn.callCount).to.equal(1);
+    });
+
+    it('logs a warning when a resource does not have an ID (id shorthand)', () => {
+      stub(console, 'warn');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        },
+        initialResourceMeta: {
+          selected: false
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        resources: [true, {id: 3}]
+      });
+
+      expect(console.warn.callCount).to.equal(1);
+    });
+
+    it('logs a warning when `resources` is not an array', () => {
+      stub(console, 'warn');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        },
+        initialResourceMeta: {
+          selected: false
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        resources: {id: 4}
+      });
+
+      expect(console.warn.callCount).to.equal(1);
+    });
+
     it('returns the right state without a label, with IDs', () => {
+      stub(console, 'warn');
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -88,9 +188,11 @@ describe('reducers: delete', function() {
           }
         }
       });
+      expect(console.warn.callCount).to.equal(0);
     });
 
     it('returns the right state with a label, with IDs', () => {
+      stub(console, 'warn');
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -165,6 +267,7 @@ describe('reducers: delete', function() {
           }
         }
       });
+      expect(console.warn.callCount).to.equal(0);
     });
 
     it('returns the right state with a label, without IDs', () => {
@@ -228,7 +331,7 @@ describe('reducers: delete', function() {
           }
         }
       });
-      
+
       expect(console.warn.callCount).to.equal(1);
     });
   });
