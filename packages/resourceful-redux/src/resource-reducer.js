@@ -1,6 +1,7 @@
 import actionReducers from './action-reducers';
 import generateDefaultInitialState from './utils/generate-default-initial-state';
 import composeReducers from './utils/compose-reducers';
+import warning from './utils/warning';
 
 // Create a resource reducer.
 //
@@ -19,7 +20,7 @@ export default function resourceReducer(resourceName, options = {}) {
     const result = plugin(resourceName, options);
     if (process.env.NODE_ENV !== 'production') {
       if (typeof result !== 'function') {
-        console.warn(
+        warning(
           `A plugin was initialized that did not return a function. Plugins ` +
           `should return a function with the same signature as a reducer. ` +
           `For more, refer to the documentation on plugins: ` +
@@ -35,7 +36,7 @@ export default function resourceReducer(resourceName, options = {}) {
 
     if (process.env.NODE_ENV !== 'production') {
       if (actionReducer && !action.resourceName) {
-        console.warn(
+        warning(
           `A resourceName was not included in an action with type ` +
           `"${action.type}". Without a resourceName, Resourceful Redux will ` +
           `not be able to update a slice of your store. For more, refer to ` +

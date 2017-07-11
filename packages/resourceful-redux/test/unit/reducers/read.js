@@ -69,7 +69,7 @@ describe('reducers: read:', function() {
 
   describe('READ_RESOURCES_SUCCEEDED:', () => {
     it('warns when no resourceName is passed', () => {
-      stub(console, 'warn');
+      stub(console, 'error');
       const initialState = {
         resources: {
           1: {id: 1},
@@ -99,11 +99,11 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal(initialState);
-      expect(console.warn.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(1);
     });
 
     it('warns when a resource _object_ is passed (not an array)', () => {
-      stub(console, 'warn');
+      stub(console, 'error');
       const initialState = {
         resources: {
           1: {id: 1},
@@ -137,11 +137,11 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal(initialState);
-      expect(console.warn.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(1);
     });
 
     it('warns and returns the right state without a label, without IDs', () => {
-      stub(console, 'warn');
+      stub(console, 'error');
       const initialState = {
         resources: {
           1: {id: 1},
@@ -171,7 +171,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal(initialState);
-      expect(console.warn.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(1);
     });
 
     it('returns state with resource array, no label, default options', () => {
@@ -692,7 +692,7 @@ describe('reducers: read:', function() {
     });
 
     it('returns state without a resource array, with a label', () => {
-      stub(console, 'warn');
+      stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -759,7 +759,7 @@ describe('reducers: read:', function() {
         }
       });
 
-      expect(console.warn.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(1);
     });
   });
 });
