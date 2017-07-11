@@ -12,7 +12,7 @@ export default function upsertResources(resources, newResources, mergeResources)
     // If a resource doesn't have an ID, then it cannot be tracked
     if (!id) {
       if (process.env.NODE_ENV !== 'production') {
-        console.warn(
+        console.error(
           `You attempted to update or add a resource without an ID attribute. ` +
           `Resourceful Redux requires that all resources have an ID. You should ` +
           `double-check your Action Creators to make sure that all entries in ` +

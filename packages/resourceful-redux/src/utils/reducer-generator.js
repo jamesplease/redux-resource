@@ -36,7 +36,7 @@ export default function(crudAction, requestStatus) {
 
     if (!label && !idList.length) {
       if (process.env.NODE_ENV !== 'production') {
-        console.warn(
+        console.error(
           `A Resourceful Redux action of type ${action.type} was dispatched ` +
           `without a "label" or a "resources" array. Without one of these ` +
           `values, Resourceful Redux cannot track your CRUD operation. You ` +

@@ -6,7 +6,7 @@ describe('reducers: update', function() {
 
   describe('UPDATE_RESOURCES_SUCCEEDED:', () => {
     it('returns the right state without a label, without IDs', () => {
-      stub(console, 'warn');
+      stub(console, 'error');
       const initialState = {
         resources: {
           1: {id: 1},
@@ -36,7 +36,7 @@ describe('reducers: update', function() {
       });
 
       expect(reduced).to.deep.equal(initialState);
-      expect(console.warn.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(1);
     });
   });
 });

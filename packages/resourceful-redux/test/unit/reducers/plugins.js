@@ -2,7 +2,7 @@ import {resourceReducer, actionTypes} from '../../../src';
 
 describe('reducer', function() {
   it('should warn when a bad plugin is initialized', () => {
-    stub(console, 'warn');
+    stub(console, 'error');
 
     const reducer = resourceReducer('hellos', {
       plugins: [
@@ -10,7 +10,7 @@ describe('reducer', function() {
       ]
     });
 
-    expect(console.warn.callCount).to.equal(1);
+    expect(console.error.callCount).to.equal(1);
   });
 
   it('should handle a plug-in on a built-in type', () => {

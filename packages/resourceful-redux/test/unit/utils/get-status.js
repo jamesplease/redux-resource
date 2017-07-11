@@ -2,7 +2,7 @@ import {getStatus, requestStatuses} from '../../../src';
 
 describe('getStatus', function() {
   beforeEach(() => {
-    stub(console, 'warn');
+    stub(console, 'error');
 
     this.state = {
       books: {
@@ -47,7 +47,7 @@ describe('getStatus', function() {
         succeeded: false
       });
 
-      expect(console.warn.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(1);
     });
 
     it('should warn when a path does not resolve to a request status; label', () => {
@@ -60,7 +60,7 @@ describe('getStatus', function() {
         succeeded: false
       });
 
-      expect(console.warn.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(1);
     });
   });
 
@@ -72,7 +72,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: true
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return a label meta that exists', () => {
@@ -82,7 +82,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: true
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return a meta that exists and is null', () => {
@@ -92,7 +92,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return a meta that exists and is null with `treatNullAsPending` set to true', () => {
@@ -102,7 +102,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return a meta that exists and is succeeded with `treatNullAsPending` set to true', () => {
@@ -112,7 +112,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: true
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return a meta that does not exist', () => {
@@ -122,7 +122,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return a meta that does not exist with `treatNullAsPending` set to true', () => {
@@ -132,7 +132,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
   });
 
@@ -149,7 +149,7 @@ describe('getStatus', function() {
         failed: true,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return combined resource statuses where everything is NULL', () => {
@@ -164,7 +164,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return combined resource read statuses with `treatNullAsPending`', () => {
@@ -180,7 +180,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should return combined statuses where everything has succeeded', () => {
@@ -195,7 +195,7 @@ describe('getStatus', function() {
         failed: false,
         succeeded: true
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
 
     it('should fail when one is failed', () => {
@@ -214,7 +214,7 @@ describe('getStatus', function() {
         failed: true,
         succeeded: false
       });
-      expect(console.warn.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(0);
     });
   });
 });

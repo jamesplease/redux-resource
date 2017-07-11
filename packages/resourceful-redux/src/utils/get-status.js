@@ -23,7 +23,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
       status === requestStatuses.FAILED ||
       status === requestStatuses.SUCCEEDED;
     if (!isStatus) {
-      console.warn(
+      console.error(
         `You called "getStatus" with path "${statusLocation}", which resolved ` +
         `to a value that is not a valid resource status. You may want to ` +
         `check that this path is correct.`
