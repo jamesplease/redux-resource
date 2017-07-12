@@ -20,7 +20,7 @@ npm install --save resourceful-redux
 
 ### Size
 
-Resourceful Redux is around 3kb gzipped, which is typically _much_ smaller than
+Resourceful Redux is around 2kb gzipped, which is typically _much_ smaller than
 the boilerplate code that it replaces.
 
 ### Documentation
