@@ -8,8 +8,12 @@ const delFail = reducerGenerator('delete', requestStatuses.FAILED);
 const delNull = reducerGenerator('delete', requestStatuses.NULL);
 
 function delSucceed(state, action, {initialResourceMeta}) {
-  const label = action.label;
   const resources = action.resources;
+
+  let label;
+  if (action.label && typeof action.label === 'string') {
+    label = action.label;
+  }
 
   if (process.env.NODE_ENV !== 'production') {
     if (!resources) {

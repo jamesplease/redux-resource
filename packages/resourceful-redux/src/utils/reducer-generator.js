@@ -16,8 +16,12 @@ import warning from './warning';
 export default function(crudAction, requestStatus) {
   return function(state, action, {initialResourceMeta} = {}) {
     const resources = action.resources;
-    const label = action.label;
     const mergeMeta = action.mergeMeta;
+
+    let label;
+    if (action.label && typeof action.label === 'string') {
+      label = action.label;
+    }
 
     let idList;
     if (resources) {
