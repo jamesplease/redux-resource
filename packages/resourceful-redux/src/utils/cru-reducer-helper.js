@@ -7,9 +7,13 @@ import warning from './warning';
 
 export default function(state, action, {initialResourceMeta}, updatedMeta) {
   const resources = action.resources;
-  const label = action.label;
   const resourcesIsUndefined = typeof resources === 'undefined';
   const hasResources = resources && resources.length;
+
+  let label;
+  if (action.label && typeof action.label === 'string') {
+    label = action.label;
+  }
 
   if (process.env.NODE_ENV !== 'production') {
     if (!resources) {

@@ -38,11 +38,31 @@ describe('setResourceMeta', function() {
       expect(result[2]).to.not.equal(this.meta[2]);
     });
 
-    it('should ignore badly formed resources', () => {
+    it('should ignore badly formed resources, object form (gh-118)', () => {
       const result = setResourceMeta({
         meta: this.meta,
         newMeta: {isSelected: true},
         resources: [1, {name: 'pasta'}],
+        mergeMeta: false
+      });
+
+      expect(result).to.deep.equal({
+        1: {isSelected: true},
+        2: {thirsty: true},
+        3: {what: false}
+      });
+
+      // The original `meta` is shallow cloned
+      expect(result).to.not.equal(this.meta);
+      // The existing item is not modified
+      expect(result[1]).to.not.equal(this.meta[1]);
+    });
+
+    it('should ignore badly formed resources, non-object form (gh-118)', () => {
+      const result = setResourceMeta({
+        meta: this.meta,
+        newMeta: {isSelected: true},
+        resources: [1, {id: {}}],
         mergeMeta: false
       });
 

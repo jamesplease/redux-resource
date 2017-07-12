@@ -44,6 +44,13 @@ export default function resourceReducer(resourceName, options = {}) {
           `https://resourceful-redux.js.org/docs/guides/crud-actions.html`
         );
       }
+
+      if (action.label && typeof action.label !== 'string') {
+        warning(
+          `An invalid label was included in an action with type ` +
+          `"${action.type}". Labels must be strings.`
+        );
+      }
     }
 
     // We only call the built-in reducers if the action type matches one,
