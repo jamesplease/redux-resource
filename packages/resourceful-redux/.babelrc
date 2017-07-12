@@ -4,8 +4,7 @@
       "presets": [
         ["env", {"modules": false}],
         "stage-3"
-      ],
-      "plugins": ["external-helpers"],
+      ]
     },
     "test": {
       "presets": [
