@@ -9,9 +9,11 @@ function performXhr(dispatch, options) {
     resourceName
   } = options;
 
+  const crudActionOption = crudAction ? crudAction : '';
+
   // Catch common configuration problems in dev
   if (process.env.NODE_ENV !== 'production') {
-    const lowercaseCrud = crudAction.toLowerCase();
+    const lowercaseCrud = crudActionOption.toLowerCase();
     const isValidCrudType =
       lowercaseCrud === 'update' || lowercaseCrud === 'delete' ||
       lowercaseCrud === 'read' || lowercaseCrud === 'create';
@@ -43,7 +45,7 @@ function performXhr(dispatch, options) {
     }
   }
 
-  const crudType = crudAction.toUpperCase();
+  const crudType = crudActionOption.toUpperCase();
 
   dispatch({
     ...options,
@@ -65,10 +67,15 @@ function performXhr(dispatch, options) {
       });
     } else {
       let resources;
-      if (transformData) {
-        resources = transformData(body, options);
+
+      if (body) {
+        if (transformData) {
+          resources = transformData(body, options);
+        } else {
+          resources = body;
+        }
       } else {
-        resources = body;
+        resources = options.resources;
       }
 
       dispatch({

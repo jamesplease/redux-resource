@@ -46,3 +46,10 @@ let store = createStore(
   })
 );
 ```
+
+#### Tips
+
+- Any options you pass to the `resourceReducer` will also be passed to the
+  plugins. You can use this fact to add your own custom `options` to
+  configure the behavior of your plugins. To learn more about plugins, refer
+  to [the Plugins guide](/docs/guides/plugins.md).

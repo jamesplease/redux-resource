@@ -1,4 +1,5 @@
 import requestStatuses from './request-statuses';
+import warning from './warning';
 
 function getSingleStatus(state, statusLocation, treatNullAsPending) {
   const splitPath = statusLocation.split('.');
@@ -15,6 +16,20 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
     }
 
     currentVal = pathValue;
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    const isStatus = status === requestStatuses.NULL ||
+      status === requestStatuses.PENDING ||
+      status === requestStatuses.FAILED ||
+      status === requestStatuses.SUCCEEDED;
+    if (!isStatus) {
+      warning(
+        `You called "getStatus" with path "${statusLocation}", which resolved ` +
+        `to a value that is not a valid resource status. You may want to ` +
+        `check that this path is correct.`
+      );
+    }
   }
 
   const isPending = status === requestStatuses.PENDING;

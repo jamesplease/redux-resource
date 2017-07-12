@@ -1,4 +1,6 @@
 import setResourceMeta from '../utils/set-resource-meta';
+import initialResourceMetaState from './initial-resource-meta-state';
+import warning from './warning';
 
 // This helper is used to simplify non-success reducers. Because non-success
 // reducers don't modify the data – ever – it simplifies the scope of what can
@@ -12,10 +14,14 @@ import setResourceMeta from '../utils/set-resource-meta';
 // helper completely defines all of the ways in which the non-success reducers
 // can change the state.
 export default function(crudAction, requestStatus) {
-  return function(state, action) {
+  return function(state, action, {initialResourceMeta} = {}) {
     const resources = action.resources;
-    const label = action.label;
     const mergeMeta = action.mergeMeta;
+
+    let label;
+    if (action.label && typeof action.label === 'string') {
+      label = action.label;
+    }
 
     let idList;
     if (resources) {
@@ -35,14 +41,13 @@ export default function(crudAction, requestStatus) {
 
     if (!label && !idList.length) {
       if (process.env.NODE_ENV !== 'production') {
-        if (!idList) {
-          console.warn(
-            `A resourceful-redux action was dispatched without a "label" or ` +
-            `a "resources" array. Without one of these values, Resourceful Redux ` +
-            `cannot track your CRUD operation. You should check your Action Creators. ` +
-            `Read more about CRUD Actions at: https://resourceful-redux.js.org/docs/guides/crud-actions.html`
-          );
-        }
+        warning(
+          `A Resourceful Redux action of type ${action.type} was dispatched ` +
+          `without a "label" or a "resources" array. Without one of these ` +
+          `values, Resourceful Redux cannot track your CRUD operation. You ` +
+          `should check your Action Creators. Read more about CRUD Actions ` +
+          `at: https://resourceful-redux.js.org/docs/guides/crud-actions.html`
+        );
       }
 
       return state;
@@ -68,6 +73,10 @@ export default function(crudAction, requestStatus) {
         newMeta: {[statusAttribute]: requestStatus},
         resources: idList,
         mergeMeta,
+        initialResourceMeta: {
+          ...initialResourceMetaState,
+          ...initialResourceMeta
+        }
       });
     } else {
       newMeta = state.meta;

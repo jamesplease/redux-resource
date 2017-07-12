@@ -1,11 +1,16 @@
 {
   "name": "resourceful-action-creators",
-  "version": "0.0.11",
+  "version": "0.3.0",
   "description": "Action creators for Resourceful Redux",
   "main": "dist/resourceful-action-creators.js",
   "scripts": {
+    "clean": "rimraf dist tmp",
+    "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
-    "build": "webpack"
+    "build": "npm run clean && cross-env npm run build:umd && npm run build:umd:min && npm run build:es",
+    "build:es": "cross-env BABEL_ENV=build babel src --out-dir es",
+    "build:umd": "cross-env NODE_ENV=development BABEL_ENV=build rollup -c -i src/index.js -o dist/resourceful-action-creators.js",
+    "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=build rollup -c -i src/index.js -o dist/resourceful-action-creators.min.js"
   },
   "repository": {
     "type": "git",
@@ -45,20 +50,28 @@
   "homepage": "https://resourceful-redux.js.org",
   "dependencies": {
     "querystringify": "^1.0.0",
-    "resourceful-redux": "^0.0.11",
+    "resourceful-redux": "^0.3.0",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "6.23.0",
     "babel-loader": "7.1.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-plugin-rewire": "^1.1.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.17.0",
-    "eslint": "^4.1.1",
-    "pleaserc": "^2.4.0",
-    "webpack": "2.6.1"
-  },
-  "nyc": {
-    "sourceMap": false,
-    "instrument": false
+    "babel-register": "^6.24.1",
+    "cross-env": "^5.0.1",
+    "in-publish": "^2.0.0",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.45.1",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^2.0.1",
+    "webpack": "^3.1.0"
   }
 }

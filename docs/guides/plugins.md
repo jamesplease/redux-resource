@@ -3,24 +3,65 @@
 Plugins are a feature that let you customize the behavior of the resource
 reducer. Use plugins to:
 
-- Add support for custom action types
-- Add or change the way the reducer responds to the built-in action types
+- Add support for additional, custom action types
+- Change the way the reducer transforms the state in response to the built-in
+  action types
+
+### Using a Plugin
+
+You define plugins per-resource when you call
+[`resourceReducer`](/docs/api-reference/resource-reducer.md). The second
+argument to that function is an `options` options, and within it you can pass
+`plugins` as an array:
+
+```js
+import resourceReducer from 'resourceful-redux';
+import somePlugin from './some-plugin';
+import anotherPlugin from './another-plugin';
+
+export default resourceReducer('books', {
+  plugins: [somePlugin, anotherPlugin]
+});
+```
 
 ### Writing a Plugin
 
-Writing a plugin is very similar to writing a reducer. Plugins are functions
-that have the following signature: `(state, action, options)`, where `state` is
-the current state, `action` is the action that was dispatched, and `options` are
-the `options` that were passed into
-[`resourceReducer`](../api-reference/resource-reducer.md).
+A plugin is a function that with the following signature:
 
-A plugin must always return the new state.
+```js
+(resourceName, options) => reducerFunction
+```
 
-Because a plugin is intended to be generic, you will often wrap your plugins
-in a function that you call with the resource that the plugin is for. This
-lets you scope the plugin to a specific resource. Otherwise, any time that you
-fire a particular Action type, _all_ of the resources in your state tree would
-be affected!
+Where `resourceName` and `options` are the same values that you passed to
+[`resourceReducer`](/docs/api-reference/resource-reducer.md).
+
+The return value, `reducerFunction`, is also a function. This returned function
+has the same signature as a Redux reducer:
+
+```js
+(previousState, action) => newState
+```
+
+where `state` is the value of the state after running it through the built-in
+reducer and `action` is the action that was dispatched.
+
+The simplest plugin then (which doesn't do anything), would look like this:
+
+```js
+function myPlugin(resourceName, options) {
+  return function(state, action) {
+    return state;
+  }
+}
+```
+
+If you prefer using arrow functions, you might choose to write this like so:
+
+```js
+const myPlugin = (resourceName, option) => (state, action) => state;
+```
+
+This plugin isn't very exciting, so let's look at more realistic examples.
 
 ### Custom Action Types
 
@@ -31,8 +72,8 @@ for this plugin looks like this:
 import { setResourceMeta } from 'resourceful-redux';
 import myActionTypes from './my-action-types';
 
-export default function(resourceName) {
-  return function(state, action, options) {
+export default function(resourceName, options) {
+  return function(state, action) {
     // Ignore actions that were dispatched for another resource type
     if (action.resourceName !== resourceName) {
       return state;
@@ -79,9 +120,7 @@ import selectResources from './plugins/select-resources';
 let store = createStore(
   combineReducers({
     books: resourceReducer('books', {
-      plugins: [
-        selectResources('books')
-      ]
+      plugins: [selectResources]
     }),
   })
 );
@@ -95,8 +134,8 @@ types. In the following plugin, we set a property on the store anytime a
 successful read occurs:
 
 ```js
-export default function(resourceName) {
-  return function(state, action, options) {
+export default function(resourceName, options) {
+  return function(state, action) {
     // Only take action if the resource name of the Action matches the
     // resource this plugin is registered for
     if (action.resourceName !== resourceName) {
@@ -115,6 +154,70 @@ export default function(resourceName) {
 }
 ```
 
+### Customizable Plugins
+
+You can write a plugin that can be customized by taking advantage of the fact
+that the `resourceReducer`'s options are passed into plugins. For instance, if
+you had a plugin like the following:
+
+```js
+export default function customizablePlugin(resourceName, options) {
+  return function(state, action) {
+    if (options.useSpecialBehavior) {
+      // Perform a computation
+    } else {
+      // Do some other computation here
+    }
+  };
+}
+```
+
+then you could trigger the special behavior by passing
+`useSpecialBehavior: true` as an option to `resourceReducer`:
+
+```js
+import resourceReducer from 'resourceful-redux';
+import customizablePlugin from './customizable-plugin';
+
+export default resourceReducer('books', {
+  plugins: [customizablePlugin],
+  useSpecialBehavior: true
+});
+```
+
+If this API isn't to your liking, then you can also just wrap the plugin itself
+in a function, like so:
+
+```js
+export default function(pluginOptions) {
+  return function customizablePlugin(resourceName, options) {
+    return function(state, action) {
+      if (pluginOptions.useSpecialBehavior) {
+        // Perform a computation
+      } else {
+        // Do some other computation here
+      }
+    };
+  };
+}
+```
+
+which would be used in the following way:
+
+```js
+import resourceReducer from 'resourceful-redux';
+import customizablePlugin from './customizable-plugin';
+
+export default resourceReducer('books', {
+  plugins: [
+    customizablePlugin({ useSpecialBehavior: true})
+  ]
+});
+```
+
+You may dislike this approach due to the tripley-nested functions. That's fine,
+because either way works. Use the version that makes the most sense to you.
+
 ### Best Practices
 
 Because plugins are so similar to reducers, you can use a `switch` statement
@@ -127,4 +230,4 @@ supports two Action types – one for selection, and one for deselection. This
 plugin encapsulates that one responsibility, and it isn't responsible for any
 other Action types.
 
-We recommend having a plugin for each distinct responsibility.
+We recommend having a plugin for each distinct _responsibility_.

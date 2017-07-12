@@ -13,8 +13,29 @@ export default function setResourceMeta(options) {
 
   resources.forEach((resource) => {
     const id = typeof resource === 'object' ? resource.id : resource;
-    const currentMeta = next[id] || initialResourceMeta;
-    const baseMeta = mergeMetaOption ? currentMeta : initialResourceMeta;
+
+    // If we have no ID for this resource, or if its not a number or string,
+    // then we bail. This currently isn't logging so that we don't double-blast
+    // the user with meta **and** attribute update problems. If the ID check
+    // is moved into the success reducers directly, then we may be able to
+    // remove these typeof checks for efficiency.
+    if (!id || (typeof id !== 'string' && typeof id !== 'number')) {
+      return;
+    }
+
+    const currentMeta = next[id];
+
+    let startMeta;
+    if (currentMeta) {
+      startMeta = {
+        ...initialResourceMeta,
+        ...currentMeta
+      };
+    } else {
+      startMeta = initialResourceMeta;
+    }
+
+    const baseMeta = mergeMetaOption ? startMeta : initialResourceMeta;
 
     next[id] = {
       ...baseMeta,
