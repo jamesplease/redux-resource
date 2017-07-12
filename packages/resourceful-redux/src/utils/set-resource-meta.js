@@ -13,6 +13,14 @@ export default function setResourceMeta(options) {
 
   resources.forEach((resource) => {
     const id = typeof resource === 'object' ? resource.id : resource;
+
+    // If we have no ID for this resource, then we bail. This currently isn't
+    // logging so that we don't double-blast the user with meta **and**
+    // attribute update problems.
+    if (!id) {
+      return;
+    }
+
     const currentMeta = next[id];
 
     let startMeta;
