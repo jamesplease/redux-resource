@@ -43,7 +43,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
         if (process.env.NODE_ENV !== 'production') {
           if (!r.id || (typeof r.id !== 'string' && typeof r.id !== 'number')) {
             warning(
-              `A resoure without an ID was passed to an action with type ` +
+              `A resource without an ID was passed to an action with type ` +
               `${action.type}. Every resource must have an ID that is either ` +
               `a number of a string. You should check your action creators to ` +
               `make sure that an ID is always included in your resources.`
@@ -55,7 +55,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
         if (process.env.NODE_ENV !== 'production') {
           if (typeof r !== 'string' && typeof r !== 'number') {
             warning(
-              `A resoure without an ID was passed to an action with type ` +
+              `A resource without an ID was passed to an action with type ` +
               `${action.type}. Every resource must have an ID that is either ` +
               `a number of a string. You should check your action creators to ` +
               `make sure that an ID is always included in your resources.`
