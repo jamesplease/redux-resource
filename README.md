@@ -118,8 +118,9 @@ of packages:
 | Package | Version | Size | Description |
 | ---- | ---- | ---- | ---- |
 | `resourceful-redux` | [![npm version](https://img.shields.io/npm/v/resourceful-redux.svg)](https://www.npmjs.com/package/resourceful-redux) | [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js?compression=gzip)](https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js) | The main library |
-| `resourceful-action-creators` | [![npm version](https://img.shields.io/npm/v/resourceful-action-creators.svg)](https://www.npmjs.com/package/resourceful-action-creators) | [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js?compression=gzip)](https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js) | The Action Creators extension |
-| `resourceful-prop-types` | [![npm version](https://img.shields.io/npm/v/resourceful-prop-types.svg)](https://www.npmjs.com/package/resourceful-prop-types) | [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-prop-types/dist/resourceful-prop-types.min.js?compression=gzip)](https://unpkg.com/resourceful-prop-types/dist/resourceful-prop-types.min.js) | The Prop Types extension |
+| `resourceful-action-creators` | [![npm version](https://img.shields.io/npm/v/resourceful-action-creators.svg)](https://www.npmjs.com/package/resourceful-action-creators) | [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js?compression=gzip)](https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js) | Resourceful
+Action Creators |
+| `resourceful-prop-types` | [![npm version](https://img.shields.io/npm/v/resourceful-prop-types.svg)](https://www.npmjs.com/package/resourceful-prop-types) | [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-prop-types/dist/resourceful-prop-types.min.js?compression=gzip)](https://unpkg.com/resourceful-prop-types/dist/resourceful-prop-types.min.js) | Resourceful Prop Types |
 
 ### Contributing
 
