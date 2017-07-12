@@ -1,7 +1,7 @@
-# Action Creators
+# Resourceful Action Creators
 
-This extension includes action creators for the Resourceful Redux Actions. It
-also comes with a tiny library for making HTTP requests.
+Resourceful Redux provides a collection of action creators for Resourceful Redux 
+Actions. It also comes with a tiny library for making HTTP requests.
 
 To use the action creators, you must configure your store with the
 [redux-thunk](https://github.com/gaearon/redux-thunk) middleware.
@@ -21,7 +21,7 @@ Install `resourceful-action-types` from npm:
 
 `npm install resourceful-action-types --save`
 
-Then, import the pieces of this extension that you need:
+Then, import the pieces of this collection that you need:
 
 ```js
 import { readResources } from 'resourceful-action-creators';
@@ -29,9 +29,9 @@ import { readResources } from 'resourceful-action-creators';
 
 ### Usage
 
-This library exports five action creators, one for each of the CRUD operations,
-and one generic one. It also exports the library that is used for making HTTP
-requests.
+This collection exports five action creators, one for each of the CRUD 
+operations, and one generic one. It also exports the library that is used for 
+making HTTP requests.
 
 ### `crudAction( options )`
 
@@ -164,7 +164,7 @@ const xhrOptions = {
 };
 
 // This is a singular endpoint, so it returns just one resource. But all of the
-// Action Creators extensions are bulk CRUD operations, so we place the result
+// Action Creators are bulk CRUD operations, so we place the result
 // into an Array
 function transformData(body) {
   return [body];
@@ -291,7 +291,7 @@ xhr.get('/books/24')
 
 ### Tips
 
-- A good pattern for using this extension is to make your own action creators
+- A good pattern for using this collection is to make your own action creators
   that "wrap" these action creators. That way, your view layer doesn't need to
   concern itself with all of the configuration necessary to use these action
   creators. For instances, your application's read many action creator may look

@@ -2,7 +2,7 @@
 
 **Breaking Changes:**
 
-- The action creators extension will no longer throw errors. Instead, it will
+- Resourceful Action Creators will no longer throw errors. Instead, it will
   log warnings to the console.
 
 **Bug Fixes**
@@ -14,17 +14,17 @@
 
 **Breaking Changes**:
 
-- Extensions are no longer included with the `resourceful-redux` npm package.
-  They may be reintroduced, but there were too many bugs with the
-  implementation being used. You can now install each extension from npm
-  directly.
+- Resourceful Action Creators and Resourceful Prop Types are no longer included 
+  with the `resourceful-redux` npm package. They may be reintroduced, but there 
+  were too many bugs with the implementation being used. You can now install 
+  each collection of extras from npm directly.
 
 - New warning messages and Errors will be thrown when common mistakes are made
   when using the API.
 
 **Bug Fixes**:
 
-- The action creators extension will now dispatch the correct actions for
+- Resourceful Action Creators will now dispatch the correct actions for
   successful actions.
 
 ## [0.0.9](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.9) (6/29/17)
@@ -40,16 +40,17 @@
 
 **Bug Fixes**
 
-- Fixes a bug that would cause errors to be thrown when using the action
-  creators extension
-- Fixes the location of the extensions in the npm module
+- Fixes a bug that would cause errors to be thrown when using Resourceful 
+  Action Creators
+- Fixes the location of the Resourceful Action Creators and Resourceful Prop 
+  Types in the npm module
 
 ## [0.0.7](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.7) (6/24/17)
 
 **New Features**
 
-- Two "extensions" have been added to the `npm` package: Prop Types and
-  Action Creators.
+- Two extras have been added to the `npm` package: Resourceful Prop Types and
+  Resourceful Action Creators.
 
 ## [0.0.6](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.6) (6/22/17)
 

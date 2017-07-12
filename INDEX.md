@@ -38,10 +38,10 @@ the boilerplate code that it replaces.
   application. They assume that you understand all of the material in the
   [Guides](/docs/guides/README.md).
 
-* **[Extensions](/docs/extensions/README.md)**
+* **[Ecosystem Extras](/docs/extras/README.md)**
 
-  Extensions are officially maintained bits of code that make working with
-  Resourceful Redux even better.
+  Resourceful Redux provides officially maintained bits of code that make 
+  working with the library even better.
 
 * **[FAQ](/docs/faq/README.md)**
 

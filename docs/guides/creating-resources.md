@@ -44,11 +44,12 @@ The metadata for each of those resources will also be changed to have
 If a `label` is passed, then the IDs for the label will be updated to include
 the new IDs.
 
-### Action Creators
+### Resourceful Action Creators
 
-The [Action Creators extension](/docs/extensions/action-creators.md) provides
-out-of-the-box action creators that you can use to create resources. If you'd
-like to build your own, then that's fine, too. The example below may help.
+[Resourceful Action Creators](/docs/extras/resourceful-action-creators.md) 
+provides a collection of out-of-the-box action creators that you can use to 
+create resources. If you'd like to build your own, then that's fine, too. The 
+example below may help.
 
 ### Example Action Creator
 

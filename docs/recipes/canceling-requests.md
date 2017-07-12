@@ -42,8 +42,8 @@ then that can lead to the wrong search results being shown.
 Canceling a previous request resolves this problem, as it means that only one
 search request will ever be in flight at a time, and it will be the user's most
 recent search. If you're using an action creator that returns a native
-XMLHttpRequest object, such as the action creators in the Action Creators
-extension, then your code may look like this:
+XMLHttpRequest object, such as the action creators in Resourceful Action 
+Creators, then your code may look like this:
 
 ```js
 class Typeahead extends Component {
@@ -133,8 +133,8 @@ const request = xhr.get('/books/23', (err, res) => {
 request.abort();
 ```
 
-The [Action Creators extension](/docs/extensions/action-creators) for Resourceful
-Redux uses `xhr` for requests. The action creators in that extension return a
+[Resourceful Action Creators](/docs/extras/resourceful-action-creators.md) for 
+Resourceful Redux uses `xhr` for requests. These action creators return a
 native XHR object, so you can use the `abort` method to cancel those requests.
 
 #### fetch

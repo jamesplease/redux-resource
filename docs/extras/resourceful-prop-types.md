@@ -1,4 +1,4 @@
-# Prop Types
+# Resourceful Prop Types
 
 A collection of [prop-types](https://github.com/facebook/prop-types) objects.
 

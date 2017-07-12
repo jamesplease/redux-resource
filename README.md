@@ -32,5 +32,5 @@ it's a single repository that allows us to control the publishing of a number
 of packages:
 
 - `resourceful-redux`: The main library
-- `resourceful-action-creators`: The Action Creators extension
-- `resourceful-prop-types`: The Prop Types extension
+- `resourceful-action-creators`: Resourceful Action Creators
+- `resourceful-prop-types`: Resourceful Prop Types
