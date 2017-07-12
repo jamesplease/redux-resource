@@ -1,3 +1,21 @@
+## [v0.3.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.3.0) (7/11/17)
+
+**Changes**
+
+- Smaller build file-size
+- There is now an ES modules export
+- New warnings will be emitted in dev mode to catch errors when using the API
+
+**Breaking Changes**
+
+- Developer warnings will now use `console.error`, rather than `console.warn`
+
+**Bug Fixes**
+
+- Resources without an ID will no longer set metadata on the key `undefined`
+  within `slice.meta`
+- Non-string labels will be ignored
+
 ## [v0.2.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.2.0) (7/9/17)
 
 **Changes**
