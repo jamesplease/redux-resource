@@ -26,11 +26,11 @@ code, although this same system works for other representations, too.
 Whenever an unauthorized response from the backend is returned in your CRUD
 action creators, include the status code in the action that you dispatch.
 
-If you're using the [Action Creators extension](/docs/extensions/action-creators.md),
+If you're using [Resourceful Action Creators](/docs/extras/resourceful-action-creators.md),
 then the entire `res` object will be attached to the action. You can access the
 status code at `action.res.statusCode`.
 
-If you're not using the Action Creators extension, then your code may look
+If you're not using Resourceful Action Creators, then your code may look
 something like:
 
 ```js

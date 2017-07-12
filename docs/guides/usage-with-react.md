@@ -37,9 +37,9 @@ number of times that the values are computed.
 
 ### Type Checking with Prop Types
 
-The Prop Types Extension exports a number of helpful prop types for common props
-that you'll pass into your application. Read the [Prop Types Extension documentation](/docs/extensions/prop-types.md) for
-more.
+Resourceful Prop Types exports a number of helpful prop types for common props
+that you'll pass into your application. Read the [Resourceful Prop Types 
+documentation](/docs/extras/resourceful-prop-types.md) for more.
 
 ### Using Statuses
 

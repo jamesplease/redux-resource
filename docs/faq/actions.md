@@ -3,11 +3,11 @@
 #### Are there Action Creators?
 
 Not in the core library, but there is an
-[Action Creators extension](/docs/extensions/action-creators.md).
+[Action Creators library](/docs/extensions/action-creators.md).
 
 Developers have different preferences when it comes to making requests, so we
 made this library easy to use with any request library that you choose. We've
-had great success with the Action Creator extension, but should you choose to
+had great success with the Action Creator library, but should you choose to
 write your own, we have guides to help you.
 
 Refer to the [CRUD Actions](/docs/guides/crud-actions.md) guide to learn more
