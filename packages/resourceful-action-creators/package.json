@@ -1,6 +1,6 @@
 {
   "name": "resourceful-action-creators",
-  "version": "0.3.0-beta1",
+  "version": "0.3.0-beta2",
   "description": "Action creators for Resourceful Redux",
   "main": "dist/resourceful-action-creators.js",
   "scripts": {
@@ -50,7 +50,7 @@
   "homepage": "https://resourceful-redux.js.org",
   "dependencies": {
     "querystringify": "^1.0.0",
-    "resourceful-redux": "^0.3.0-beta1",
+    "resourceful-redux": "^0.3.0-beta2",
     "xhr": "^2.4.0"
   },
   "devDependencies": {

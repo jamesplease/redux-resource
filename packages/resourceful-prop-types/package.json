@@ -1,6 +1,6 @@
 {
   "name": "resourceful-prop-types",
-  "version": "0.3.0-beta1",
+  "version": "0.3.0-beta2",
   "description": "prop-types for Resourceful Redux",
   "main": "dist/resourceful-prop-types.js",
   "scripts": {
