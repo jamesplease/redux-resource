@@ -16,6 +16,16 @@ export default function resourceReducer(resourceName, options = {}) {
     ...initialState
   };
 
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof resourceName !== 'string') {
+      warning(
+        `The value of "resourceName" that you passed to resourceReducer was ` +
+        `not a string. The resource name must be a string. You should check ` +
+        `your reducer configuration.`
+      );
+    }
+  }
+
   const computedPlugins = plugins.map(plugin => {
     const result = plugin(resourceName, options);
     if (process.env.NODE_ENV !== 'production') {
