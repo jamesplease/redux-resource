@@ -71,7 +71,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
 
   // If we have no label nor IDs, then there is nothing to update
   if (!hasIds && !label) {
-    return;
+    return state;
   }
 
   let newMeta;
