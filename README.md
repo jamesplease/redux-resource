@@ -57,9 +57,8 @@ occur over a network, and therefore take time to complete.
 import { actionTypes } from 'resourceful-redux';
 import store from './store';
 
-// This action represents beginning the request to read a book with ID of 24.
-// You'd typically dispatch one of these just before opening an XHR to retrieve
-// this resource
+// This action represents beginning the request to read a book with ID of 24. This
+// may could represent the start of an HTTP request, for instance.
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
@@ -70,9 +69,7 @@ store.dispatch({
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
   resourceName: 'books',
-  // The `resources` list here is usually the response from our API call,
-  // like the one you would've opened above. In some cases, this could
-  // even simply be `resources: response.body`!
+  // The `resources` list here is usually the response from an API call
   resources: [{
     id: 24,
     title: 'My Name is Red',
@@ -113,8 +110,8 @@ This is just a small sample of what it's like working with Resourceful Redux.
 
 For a real-life webapp example that uses many more CRUD operations, check out
 the **[zero-boilerplate-redux webapp ⇗](https://github.com/jmeas/zero-boilerplate-redux)**.
-This is a simple overview of how you could use Resourceful Redux with a powerful
-view later, like [React.js](https://facebook.github.io/react/).
+This example project uses [React](https://facebook.github.io/react/), although
+Resourceful Redux works well with any view layer.
 
 ### Repository Structure
 
