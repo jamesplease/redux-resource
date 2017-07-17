@@ -1,4 +1,4 @@
-# `getStatus(state, statusLocations, [treatNullAsPending])`
+# `getStatus(state, statusLocation, [treatNullAsPending])`
 
 Returns an object with boolean values representing the request status of a
 particular CRUD action. It can also be used to aggregate multiple request
@@ -6,10 +6,14 @@ statuses together.
 
 #### Arguments
 
-1. `state` *(Object)*: The current state of the Redux store.
+1. `state` *(Object)*: Typically, the current state of the Redux store, but
+  more generally it can be any object that has a request status somewhere deeply
+  nested within it.
 
-3. `statusLocations` *(Array)*: An Array of paths that point to request statuses
-  within `state`. For more on status locations, see the Notes below.
+3. `statusLocation` *(String|Array)*: A single path that points to a request
+  status within `state`. If you pass an array of status locations, then they
+  will be aggregated. For more on status locations and status aggregation, see
+  the Notes below.
 
 4. [`treatNullAsPending`] *(Boolean)*: Whether or not a request status of `NULL` is
   to be considered as a `pending` request. Defaults to `false`. See Tips on
@@ -17,8 +21,8 @@ statuses together.
 
 #### Returns
 
-(*`Object`*): An Object representing the status of this request for these
-  statusLocations. It has the following shape:
+(*`Object`*): An Object representing the status of this request for the
+  statusLocation. It has the following shape:
 
   ```js
   {
@@ -49,7 +53,19 @@ your state tree. For instance `"books.meta.24.readStatus"` or
 
 > Keep in mind that `treatNullAsPending` also works when aggregating.
 
-#### Example
+#### Examples
+
+In this example, we pass a single status location:
+
+```js
+import { getStatus } from 'resourceful-redux';
+import store from './store';
+
+const state = store.getState();
+const bookDeleteStatus = getStatus(state, 'books.meta.23.deleteStatus');
+```
+
+In this example, we pass two locations:
 
 ```js
 import { getStatus } from 'resourceful-redux';
@@ -77,3 +93,9 @@ const bookReadStatus = getStatus(
   `mapStateToProps`, and then passing them in as props into your component. That
   way, you have access to this information in all of the lifecycle methods of
   your component.
+
+- The first argument, `state`, doesn't always need to be the state of your
+  Redux store. For instance, if you're using this method within your component's
+  lifecycle methods, such as `componentWillReceiveProps`, you may instead pass
+  it an object that is a subset of the state. This can be useful when you're
+  comparing a previous status against an upcoming status.
