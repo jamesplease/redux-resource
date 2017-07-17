@@ -30,9 +30,3 @@ const searchedBooks = getResources(state, 'books', 'search');
 // Retrieve resources by an array of IDs
 const bookSelection = getResources(state, 'books', [1, 12, 23]);
 ```
-
-#### Tips
-
-- This method can be slow for large numbers of resources. If you run into
-  performance issues, consider using
-  [Reselect](https://github.com/reactjs/reselect) to cache the results.
