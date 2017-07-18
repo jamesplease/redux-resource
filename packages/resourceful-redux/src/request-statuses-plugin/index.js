@@ -1,8 +1,17 @@
 import actionReducersMap from './action-reducers-map';
+import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import warning from '../utils/warning';
 
 // Todo: cache the initial state here so that it's not computed per success
-export default function requestStatusesPlugin(resourceName, options) {
+export default function requestStatusesPlugin(resourceName, options = {}) {
+  const customInitialMeta = options.initialResourceMeta || {};
+  const optionsToSend = {
+    initialResourceMeta: {
+      ...initialResourceMetaState,
+      ...customInitialMeta
+    }
+  };
+
   return function(state, action) {
     const reducer = actionReducersMap[action.type];
 
@@ -23,6 +32,6 @@ export default function requestStatusesPlugin(resourceName, options) {
     }
 
     const callActionReducer = reducer && action.resourceName === resourceName;
-    return callActionReducer ? reducer(state, action, options) : state;
+    return callActionReducer ? reducer(state, action, optionsToSend) : state;
   };
 }
