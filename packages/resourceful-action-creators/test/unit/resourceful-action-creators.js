@@ -114,6 +114,7 @@ describe('Resourceful Action Creators', function() {
               resourceName: 'hello',
               crudAction: 'read',
               statusCode: 0,
+              res: undefined,
               resources: [21, 42],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -186,6 +187,10 @@ describe('Resourceful Action Creators', function() {
               resourceName: 'hello',
               crudAction: 'read',
               statusCode: 200,
+              res: {
+                statusCode: 200,
+                body
+              },
               resources: [
                 {id: 21},
                 {id: 42}
@@ -266,6 +271,10 @@ describe('Resourceful Action Creators', function() {
               resourceName: 'hello',
               crudAction: 'read',
               statusCode: 201,
+              res: {
+                statusCode: 201,
+                body
+              },
               resources: [
                 {id: 21},
                 {id: 42}
@@ -337,6 +346,9 @@ describe('Resourceful Action Creators', function() {
               crudAction: 'delete',
               statusCode: 204,
               resources: [1, 14],
+              res: {
+                statusCode: 204
+              },
               xhrOptions: {
                 url: 'https://www.google.com',
                 method: 'DELETE'

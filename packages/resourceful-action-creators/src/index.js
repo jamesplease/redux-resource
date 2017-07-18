@@ -61,7 +61,8 @@ function performXhr(dispatch, options) {
       dispatch({
         ...options,
         type: actionTypes[`${crudType}_RESOURCES_NULL`],
-        statusCode: 0
+        statusCode,
+        res
       });
     } else if (err || statusCode >= 400 || statusCode === 0) {
       dispatch({
@@ -88,7 +89,8 @@ function performXhr(dispatch, options) {
         ...options,
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
         statusCode,
-        resources
+        resources,
+        res
       });
     }
   });
