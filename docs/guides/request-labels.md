@@ -215,3 +215,20 @@ store.dispatch({
   resources: newResources
 });
 ```
+
+### Avoid Dynamic Labels
+
+**Avoid using dynamic labels**. Common dynamic labels that developers use are:
+
+1. serializing a search to create unique labels for each search
+2. serializing a new resource's attributes to create a unique label for each
+  created resource
+2. putting a resource ID in a label for some reason or another
+
+Don't do this. Dynamic labels are more error-prone, harder to work with, and
+nearly always unnecessary.
+
+Instead, stick to "static" strings for labels such as `"create"`, or
+`"searchBooks"`. Most applications don't need to distinguish requests any
+further because they typically only allow one of these "types" of requests
+to be active at a single time. Keep it simple!
