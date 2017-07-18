@@ -1,11 +1,41 @@
 # Plugins
 
-Plugins are a feature that let you customize the behavior of the resource
-reducer. Use plugins to:
+Plugins are a way to add or change the behavior of a
+[`resourceReducer`](/docs/api-reference/resource-reducer.md).
 
-- Add support for additional, custom action types
-- Change the way the reducer transforms the state in response to the built-in
-  action types
+There are two main use cases for plugins:
+
+1. adding additional functionality to the reducer, such as custom action types
+
+2. extending the behavior of the reducer for the built-in action types
+
+#### Adding Additional Functionality
+
+You will often want to use more action types than the built-in action types.
+For instance, if your interface allows users to "select" resources with
+checkboxes, then you want may to add support for some selection action types.
+
+Plugins allow you to add support for custom action types to support features
+like this.
+
+#### Extending Built-in Action Types
+
+The notion of a "request" in Resourceful Redux is intentionally generic. It's
+not tied to any specific protocol, such as HTTP. What this means is that when
+a request fails, the _only_ information that you have is that the request
+failed, and not that it failed with, say, a 404 status code. That's because 404
+status codes are a feature of HTTP requests. Consequently, if you're using HTTP
+requests, then you'll likely want to use a plugin to give you more information
+about the requests that you make.
+
+Similarly, if you're using GRPC, or some other system, then you'll want a plugin
+to give you more information about those types of requests and responses.
+
+Furthermore, if you're using a system like JSON API, then you can use plugins to
+add support for features such as relationships or response metadata.
+
+Officially maintained plugins for common protocols is in the works, but in the
+meantime, we've done our best to make it straightforward to write your own.
 
 ### Using a Plugin
 
@@ -128,10 +158,12 @@ let store = createStore(
 
 ### Changing Built-In Action Type behavior
 
-Plugins are run **after** the built-in reducer code runs, so you can write
-plugins that affect the way the reducer transforms the state for built-in action
-types. In the following plugin, we set a property on the store anytime a
-successful read occurs:
+Interestingly, the built-in behavior of Resourceful is itself just a plugin.
+
+Additional plugins are run **after** this built-in plugin runs, so you can write
+plugins that make further adjustments to the state after the built-in plugin. In
+the following plugin, we set a property on the store anytime a successful read
+occurs:
 
 ```js
 export default function(resourceName, options) {
@@ -156,9 +188,9 @@ export default function(resourceName, options) {
 
 ### Customizable Plugins
 
-You can write a plugin that can be customized by taking advantage of the fact
-that the `resourceReducer`'s options are passed into plugins. For instance, if
-you had a plugin like the following:
+You can write plugins that can be customized per-slice by taking advantage of
+the fact that the `resourceReducer`'s options are passed into plugins. For
+instance, if you had a plugin like the following:
 
 ```js
 export default function customizablePlugin(resourceName, options) {
