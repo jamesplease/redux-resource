@@ -73,5 +73,8 @@
     "rollup-plugin-replace": "^1.1.1",
     "rollup-plugin-uglify": "^2.0.1",
     "webpack": "^3.1.0"
+  },
+  "peerDependencies": {
+    "redux": "3.x"
   }
 }
