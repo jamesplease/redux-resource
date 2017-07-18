@@ -1,14 +1,22 @@
 # Resourceful Redux
 
-A tiny but powerful system for managing 'resources': data that is persisted to
-remote servers.
-
 [![Gitter](https://badges.gitter.im/jmeas/resourceful-redux.svg)](https://gitter.im/jmeas/resourceful-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Travis build status](http://img.shields.io/travis/jmeas/resourceful-redux.svg?style=flat)](https://travis-ci.org/jmeas/resourceful-redux)
 [![npm version](https://img.shields.io/npm/v/resourceful-redux.svg)](https://www.npmjs.com/package/resourceful-redux)
 [![Test Coverage](https://codeclimate.com/github/jmeas/resourceful-redux/badges/coverage.svg)](https://codeclimate.com/github/jmeas/resourceful-redux)
 [![Code Climate GPA](https://codeclimate.com/github/jmeas/resourceful-redux/badges/gpa.svg)](https://codeclimate.com/github/jmeas/resourceful-redux)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js?compression=gzip)](https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js)
+
+A tiny but powerful system for managing 'resources': data that is persisted to
+remote servers.
+
+✓ Removes nearly all "boilerplate" code for remotely-stored data  
+✓ Tracks the status (pending, failed, success, etc.) of _every_ request  
+✓ Encourages [normalized state](http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html)  
+✓ Works well with APIs that adhere to standardized formats, such as JSON API  
+✓ Works well with APIs that don't adhere to standardized formats, too  
+✓ Integrates well with lots of technologies: HTTP, GRPC, streams, redux-observable, redux-saga, and more    
+✓ Microscopic file size (2kb gzipped!)
 
 ### Installation
 
@@ -17,11 +25,6 @@ To install the latest stable version:
 ```
 npm install --save resourceful-redux
 ```
-
-### Size
-
-Resourceful Redux is around 2kb gzipped, which is typically _much_ smaller than
-the boilerplate code that it replaces.
 
 ### Table of Contents
 
