@@ -50,18 +50,24 @@ function performXhr(dispatch, options) {
   dispatch({
     ...options,
     type: actionTypes[`${crudType}_RESOURCES_PENDING`],
+    // This may seem strange, but any unresolved request has a status code of 0
+    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status
+    statusCode: 0
   });
 
   const req = xhr(xhrOptions, (err, res, body) => {
+    const statusCode = res ? res.statusCode : 0;
     if (req.aborted) {
       dispatch({
         ...options,
-        type: actionTypes[`${crudType}_RESOURCES_NULL`]
+        type: actionTypes[`${crudType}_RESOURCES_NULL`],
+        statusCode: 0
       });
-    } else if (err || res.statusCode >= 400) {
+    } else if (err || statusCode >= 400 || statusCode === 0) {
       dispatch({
         ...options,
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
+        statusCode,
         res,
         err,
       });
@@ -81,6 +87,7 @@ function performXhr(dispatch, options) {
       dispatch({
         ...options,
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
+        statusCode,
         resources
       });
     }

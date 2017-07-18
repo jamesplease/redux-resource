@@ -101,6 +101,7 @@ describe('Resourceful Action Creators', function() {
               type: 'READ_RESOURCES_PENDING',
               resourceName: 'hello',
               crudAction: 'read',
+              statusCode: 0,
               resources: [21, 42],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -112,6 +113,7 @@ describe('Resourceful Action Creators', function() {
               type: 'READ_RESOURCES_NULL',
               resourceName: 'hello',
               crudAction: 'read',
+              statusCode: 0,
               resources: [21, 42],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -171,6 +173,7 @@ describe('Resourceful Action Creators', function() {
               type: 'READ_RESOURCES_PENDING',
               resourceName: 'hello',
               crudAction: 'read',
+              statusCode: 0,
               resources: [21, 42],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -182,6 +185,7 @@ describe('Resourceful Action Creators', function() {
               type: 'READ_RESOURCES_SUCCEEDED',
               resourceName: 'hello',
               crudAction: 'read',
+              statusCode: 200,
               resources: [
                 {id: 21},
                 {id: 42}
@@ -232,7 +236,7 @@ describe('Resourceful Action Creators', function() {
             cb(
               null,
               {
-                statusCode: 200,
+                statusCode: 201,
                 body
               },
               body
@@ -248,6 +252,7 @@ describe('Resourceful Action Creators', function() {
               type: 'READ_RESOURCES_PENDING',
               resourceName: 'hello',
               crudAction: 'read',
+              statusCode: 0,
               resources: [21, 42],
               transformData,
               xhrOptions: {
@@ -260,6 +265,7 @@ describe('Resourceful Action Creators', function() {
               type: 'READ_RESOURCES_SUCCEEDED',
               resourceName: 'hello',
               crudAction: 'read',
+              statusCode: 201,
               resources: [
                 {id: 21},
                 {id: 42}
@@ -317,6 +323,7 @@ describe('Resourceful Action Creators', function() {
               type: 'DELETE_RESOURCES_PENDING',
               resourceName: 'hello',
               crudAction: 'delete',
+              statusCode: 0,
               resources: [1, 14],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -328,6 +335,7 @@ describe('Resourceful Action Creators', function() {
               type: 'DELETE_RESOURCES_SUCCEEDED',
               resourceName: 'hello',
               crudAction: 'delete',
+              statusCode: 204,
               resources: [1, 14],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -359,7 +367,7 @@ describe('Resourceful Action Creators', function() {
       });
     });
 
-    describe('when the request errors', () => {
+    describe('when the request errors, without a status code', () => {
       it('should dispatch the correct actions', (done) => {
         const err = new Error('oops');
         this.xhrStub = stub().callsFake((options, cb) => {
@@ -376,6 +384,7 @@ describe('Resourceful Action Creators', function() {
               type: 'DELETE_RESOURCES_PENDING',
               resourceName: 'hello',
               crudAction: 'delete',
+              statusCode: 0,
               resources: [1, 14],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -387,6 +396,7 @@ describe('Resourceful Action Creators', function() {
               type: 'DELETE_RESOURCES_FAILED',
               resourceName: 'hello',
               crudAction: 'delete',
+              statusCode: 0,
               resources: [1, 14],
               err,
               res: undefined,
