@@ -7,11 +7,13 @@ import getStatus from './utils/get-status';
 import getResources from './utils/get-resources';
 import warning from './utils/warning';
 
+/* eslint-disable no-empty-function */
 /*
 * This is a dummy function to check if the function name has been altered by minification.
 * If the function has been minified and NODE_ENV !== 'production', warn the user.
 */
 function isCrushed() {}
+/* eslint-disable no-empty-function */
 
 if (
   process.env.NODE_ENV !== 'production' &&

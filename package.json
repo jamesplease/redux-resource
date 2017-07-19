@@ -2,7 +2,8 @@
   "name": "resourceful-redux-project",
   "private": true,
   "scripts": {
-    "test": "cross-env BABEL_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors test/setup/node.js packages/*/test/unit/**",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "cross-env BABEL_ENV=test nyc --reporter=lcov --reporter=text mocha --compilers js:babel-register --colors test/setup/node.js packages/*/test/unit/**",
     "lint": "eslint \"packages/*/{src,test}/**/*.js\" \"./packages/*/webpack.config.js\"",
     "build": "lerna run build",
     "clean": "lerna clean",

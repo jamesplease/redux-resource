@@ -56,7 +56,7 @@ describe('reducers: delete', function() {
         }
       });
 
-      const reduced = reducer(undefined, {
+      reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         resources: [3, {name: 'sandwiches'}]
@@ -89,7 +89,7 @@ describe('reducers: delete', function() {
         }
       });
 
-      const reduced = reducer(undefined, {
+      reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         resources: [true, {id: 3}]
@@ -122,7 +122,7 @@ describe('reducers: delete', function() {
         }
       });
 
-      const reduced = reducer(undefined, {
+      reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         resources: {id: 4}

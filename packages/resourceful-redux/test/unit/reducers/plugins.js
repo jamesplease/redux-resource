@@ -4,9 +4,11 @@ describe('reducer', function() {
   it('should warn when a bad plugin is initialized', () => {
     stub(console, 'error');
 
-    const reducer = resourceReducer('hellos', {
+    resourceReducer('hellos', {
       plugins: [
-        () => {}
+        () => {
+          // Intentionally blank
+        }
       ]
     });
 

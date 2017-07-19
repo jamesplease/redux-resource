@@ -22,13 +22,13 @@ describe('reducer', function() {
 
   it('should warn when no resourceName is passed', () => {
     stub(console, 'error');
-    const reducer = resourceReducer();
+    resourceReducer();
     expect(console.error.callCount).to.equal(1);
   });
 
   it('should warn when a non-string resourceName is passed', () => {
     stub(console, 'error');
-    const reducer = resourceReducer({});
+    resourceReducer({});
     expect(console.error.callCount).to.equal(1);
   });
 });
