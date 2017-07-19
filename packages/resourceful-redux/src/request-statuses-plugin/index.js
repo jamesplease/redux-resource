@@ -2,7 +2,6 @@ import actionReducersMap from './action-reducers-map';
 import initialResourceMetaState from '../utils/initial-resource-meta-state';
 import warning from '../utils/warning';
 
-// Todo: cache the initial state here so that it's not computed per success
 export default function requestStatusesPlugin(resourceName, options = {}) {
   const customInitialMeta = options.initialResourceMeta || {};
   const optionsToSend = {

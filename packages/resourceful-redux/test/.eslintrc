@@ -1,0 +1,14 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "stub": true,
+    "expect": true
+  },
+  "rules": {
+    "prefer-arrow-callback": "off",
+    "max-nested-callbacks": "off",
+    "max-len": ["error", 200]
+  }
+}

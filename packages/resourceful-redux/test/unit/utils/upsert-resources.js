@@ -12,7 +12,7 @@ describe('upsertResources', function() {
   it('should warn when a resource without an ID is passed', () => {
     stub(console, 'error');
 
-    const nullResult = upsertResources(this.resources, [
+    upsertResources(this.resources, [
       {id: 23},
       {name: 'sandwich'}
     ]);
