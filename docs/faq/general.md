@@ -50,3 +50,11 @@ the concept of a "resource." A resource, from this library's perspective, is
 a JavaScript object with an `id` attribute.
 
 For more on this, refer to [the Resources guide](/docs/guides/resources.md).
+
+#### Does Resourceful Redux handle forms, or client-side changes to data?
+
+This library complements, but does not replace, solutions for managing forms
+and other ways to manipulate resource data on the client. Resourceful Redux
+works will with any system for managing forms, such as local Component state,
+[react-redux-form](https://github.com/davidkpiano/react-redux-form),
+or [redux-form](https://github.com/erikras/redux-form).
