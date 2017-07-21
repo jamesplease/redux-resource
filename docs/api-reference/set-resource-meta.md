@@ -53,7 +53,7 @@ export default function reducer(state, action) {
 
 #### Tips
 
-- This is used by the reducer returned by
+- This is used internally within the reducer returned by
   [`resourceReducer`](./resource-reducer.md) to update the resource meta in your
   state tree. You will typically only need to use this method if you're writing
   a [plugin]('/docs/guides/plugins.md').
