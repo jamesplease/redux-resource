@@ -6,7 +6,7 @@ import uglify from 'rollup-plugin-uglify';
 var env = process.env.NODE_ENV;
 var config = {
   format: 'umd',
-  moduleName: 'ResourcefulRedux',
+  moduleName: 'ResourcefulPropTypes',
   external: 'prop-types',
   globals: {
     'prop-types': 'PropTypes'

@@ -7,7 +7,7 @@ import commonjs from 'rollup-plugin-commonjs';
 var env = process.env.NODE_ENV;
 var config = {
   format: 'umd',
-  moduleName: 'ResourcefulRedux',
+  moduleName: 'ResourcefulActionCreators',
   external: ['resourceful-redux', 'xhr'],
   globals: {
     'resourceful-redux': 'ResourcefulRedux',
