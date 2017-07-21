@@ -107,7 +107,7 @@ function crudAction(options) {
       opts = options || {};
     }
 
-    performXhr(dispatch, opts);
+    return performXhr(dispatch, opts);
   };
 }
 
@@ -131,7 +131,7 @@ function createResources(options = {}) {
       }
     };
 
-    performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions);
   };
 }
 
@@ -155,7 +155,7 @@ function readResources(options = {}) {
       }
     };
 
-    performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions);
   };
 }
 
@@ -179,7 +179,7 @@ function updateResources(options = {}) {
       }
     };
 
-    performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions);
   };
 }
 
@@ -203,7 +203,7 @@ function deleteResources(options = {}) {
       }
     };
 
-    performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions);
   };
 }
 

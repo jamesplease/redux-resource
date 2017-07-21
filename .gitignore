@@ -36,3 +36,4 @@ es
 _site
 _book
 .nyc_output
+package-lock.json
