@@ -1,3 +1,23 @@
+## [v0.4.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.4.0) (7/21/17)
+
+**Changes**
+
+- More warnings in development mode should help catch mistakes
+
+**Breaking Changes**
+
+- Redux@3.x is now a peerDependency of Resourceful Redux, Resourceful Action
+  Creators, and Resourceful Prop Types
+- `resourceful-action-creators`: All end actions now always pass the `res`
+  object
+- `resourceful-action-creators`: The actions now pass a `statusCode` property,
+  which represents the current status code of the request.
+
+**Bug Fixes**
+
+- `resourceful-action-creators`: The `xhr` object will now be returned when
+  using the shorthand action creators (such as `readResources`).
+
 ## [v0.3.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.3.0) (7/11/17)
 
 **Changes**
@@ -87,9 +107,9 @@
 
 **Breaking Changes**
 
-- Resourceful Action Creators and Resourceful Prop Types are no longer included 
-  with the `resourceful-redux` npm package. They may be reintroduced, but there 
-  were too many bugs with the implementation being used. You can now install 
+- Resourceful Action Creators and Resourceful Prop Types are no longer included
+  with the `resourceful-redux` npm package. They may be reintroduced, but there
+  were too many bugs with the implementation being used. You can now install
   each collection of extras from npm directly.
 
 - New warning messages and Errors will be thrown when common mistakes are made
@@ -113,9 +133,9 @@
 
 **Bug Fixes**
 
-- Fixes a bug that would cause errors to be thrown when using Resourceful 
+- Fixes a bug that would cause errors to be thrown when using Resourceful
   Action Creators
-- Fixes the location of the Resourceful Action Creators and Resourceful Prop 
+- Fixes the location of the Resourceful Action Creators and Resourceful Prop
   Types in the npm module
 
 ## [0.0.7](https://github.com/jmeas/resourceful-redux/releases/tag/0.0.7) (6/24/17)
