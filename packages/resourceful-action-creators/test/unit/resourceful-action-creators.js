@@ -447,7 +447,7 @@ describe('Resourceful Action Creators', function() {
   // We test that they pass predictable arguments to `performXhr`.
   describe('wrappers', () => {
     beforeEach(() => {
-      this.performXhrStub = stub();
+      this.performXhrStub = stub().returns({aborted: false});
       __RewireAPI__.__Rewire__('performXhr', this.performXhrStub);
     });
 
@@ -457,7 +457,7 @@ describe('Resourceful Action Creators', function() {
 
     describe('crudAction', () => {
       it('should pass the right arguments to `performXhr`', () => {
-        crudAction({
+        const xhr = crudAction({
           crudAction: 'read',
           resourceName: 'books',
           xhrOptions: {
@@ -474,10 +474,14 @@ describe('Resourceful Action Creators', function() {
             method: 'GET',
           }
         });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
+        });
       });
 
       it('should pass the right arguments to `performXhr` when options is a fn', () => {
-        crudAction((state) => {
+        const xhr = crudAction((state) => {
           return {
             crudAction: 'read',
             name: state.name,
@@ -498,12 +502,16 @@ describe('Resourceful Action Creators', function() {
             method: 'GET',
           }
         });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
+        });
       });
     });
 
     describe('createResources', () => {
       it('should pass the right arguments to `performXhr`', () => {
-        createResources({
+        const xhr = createResources({
           resourceName: 'books',
           xhrOptions: {
             url: 'http://www.google.com'
@@ -518,10 +526,14 @@ describe('Resourceful Action Creators', function() {
             method: 'POST',
           }
         });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
+        });
       });
 
       it('should pass the right arguments to `performXhr` when options is a fn', () => {
-        createResources((state) => {
+        const xhr = createResources((state) => {
           return {
             name: state.name,
             resourceName: 'books',
@@ -539,13 +551,17 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'POST',
           }
+        });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
       });
     });
 
     describe('readResources', () => {
       it('should pass the right arguments to `performXhr`', () => {
-        readResources({
+        const xhr = readResources({
           resourceName: 'books',
           xhrOptions: {
             url: 'http://www.google.com'
@@ -560,10 +576,14 @@ describe('Resourceful Action Creators', function() {
             method: 'GET',
           }
         });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
+        });
       });
 
       it('should pass the right arguments to `performXhr` when options is a fn', () => {
-        readResources((state) => {
+        const xhr = readResources((state) => {
           return {
             name: state.name,
             resourceName: 'books',
@@ -581,13 +601,17 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'GET',
           }
+        });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
       });
     });
 
     describe('updateResources', () => {
       it('should pass the right arguments to `performXhr`', () => {
-        updateResources({
+        const xhr = updateResources({
           resourceName: 'books',
           xhrOptions: {
             url: 'http://www.google.com'
@@ -602,10 +626,14 @@ describe('Resourceful Action Creators', function() {
             method: 'PATCH',
           }
         });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
+        });
       });
 
       it('should pass the right arguments to `performXhr` when options is a fn', () => {
-        updateResources((state) => {
+        const xhr = updateResources((state) => {
           return {
             name: state.name,
             resourceName: 'books',
@@ -623,13 +651,17 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'PATCH',
           }
+        });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
       });
     });
 
     describe('deleteResources', () => {
       it('should pass the right arguments to `performXhr`', () => {
-        deleteResources({
+        const xhr = deleteResources({
           resourceName: 'books',
           xhrOptions: {
             url: 'http://www.google.com'
@@ -644,10 +676,14 @@ describe('Resourceful Action Creators', function() {
             method: 'DELETE',
           }
         });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
+        });
       });
 
       it('should pass the right arguments to `performXhr` when options is a fn', () => {
-        deleteResources((state) => {
+        const xhr = deleteResources((state) => {
           return {
             name: state.name,
             resourceName: 'books',
@@ -665,6 +701,10 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'DELETE',
           }
+        });
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
       });
     });
