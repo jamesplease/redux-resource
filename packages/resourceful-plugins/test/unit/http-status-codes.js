@@ -37,7 +37,7 @@ describe('httpStatusCodes', function() {
 
     const action = {
       type: actionTypes.READ_RESOURCES_PENDING,
-      resourceName: 'sandwiches',
+      resourceName: 'books',
       resources: [24],
       statusCode: 0
     };
@@ -125,7 +125,9 @@ describe('httpStatusCodes', function() {
     const action = {
       type: actionTypes.READ_RESOURCES_FAILED,
       resourceName: 'books',
-      resources: [24],
+      resources: [{
+        id: 24
+      }],
       label: 'search',
       statusCode: 404
     };
