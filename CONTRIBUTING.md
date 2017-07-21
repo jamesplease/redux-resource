@@ -25,7 +25,7 @@ npm install && npm run bootstrap
 
 This repository contains the main Resourceful Redux library (`resourceful-redux`
 on npm), as well as extras 
-(["Ecosystem Extras"](https://resourceful-redux.js.org/)) that can be useful when
+(["Ecosystem Extras"](https://resourceful-redux.js.org/docs/extras/)) that can be useful when
 using Resourceful Redux. Each package has its own directory within the
 `packages` directory of this repository.
 
