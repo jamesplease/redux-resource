@@ -41,6 +41,7 @@ export default function reducer(state, action) {
 
 #### Tips
 
-- This is used by reducer returned by [`resourceReducer`](resource-reducer.md)
-  to add and update resources in the store. You will typically only need to use
-  this function if you're authoring a [plugin](/docs/guides/plugins.md).
+- This is used internally within the reducer returned by
+  [`resourceReducer`](resource-reducer.md) to add and update resources in the
+  store. You will typically only need to use this function if you're authoring a
+  [plugin](/docs/guides/plugins.md).

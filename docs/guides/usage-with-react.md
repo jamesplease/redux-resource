@@ -1,6 +1,6 @@
 # Usage With React
 
-Just like Redux itself, you don't _need_ to use React with Resourceful Redux,
+Like Redux itself, you don't _need_ to use React with Resourceful Redux,
 but the two do work well together. We recommend using the
 [react-redux](https://github.com/reactjs/react-redux) library to handle
 [using Redux with React](http://redux.js.org/docs/basics/UsageWithReact.html).
@@ -30,15 +30,16 @@ function mapStateToProps(state) {
 }
 ```
 
-These methods are generally performant enough when used in this way, but if
-you're seeing performance issues due to these calls, we recommend using
+These methods are generally performant enough when used in this way. If
+you do see performance issues due to these calls, we recommend using
 [reselect](https://github.com/reactjs/reselect), which will further reduce the
-number of times that the values are computed.
+number of times that the values are computed. You probably don't won't need to
+do this, though – only do it if you're sure that you need to.
 
 ### Type Checking with Prop Types
 
 Resourceful Prop Types exports a number of helpful prop types for common props
-that you'll pass into your application. Read the [Resourceful Prop Types 
+that you'll pass into your React Components. Read the [Resourceful Prop Types
 documentation](/docs/extras/resourceful-prop-types.md) for more.
 
 ### Using Statuses
@@ -105,8 +106,7 @@ class BooksList extends Component {
       return;
     }
 
-    const books = nextProps.books;
-    const nextSearchStatus = getStatus({ books }, 'books', 'searchResults');
+    const nextSearchStatus = getStatus(nextProps, 'books.labels.searchResults.status');
 
     if (nextSearchStatus.succeeded) {
       console.log('The search request just succeeded.');

@@ -30,3 +30,9 @@ const searchedBooks = getResources(state, 'books', 'search');
 // Retrieve resources by an array of IDs
 const bookSelection = getResources(state, 'books', [1, 12, 23]);
 ```
+
+### Tips
+
+- You don't _always_ need to use this method to access resources. Just need one
+  resource? If the resource is on the `books` slice, you can directly access it
+  via `store.getState().books.resources[bookId]`.

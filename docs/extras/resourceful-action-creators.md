@@ -2,7 +2,7 @@
 
 [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js?compression=gzip)](https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js)
 
-Resourceful Redux provides a collection of action creators for Resourceful Redux 
+Resourceful Redux provides a collection of action creators for Resourceful Redux
 Actions. It also comes with a tiny library for making HTTP requests.
 
 To use the action creators, you must configure your store with the
@@ -17,13 +17,23 @@ the four guides for each CRUD operation:
 - [Creating resources](/docs/guides/reading-resources.md)
 - [Deleting resources](/docs/guides/reading-resources.md)
 
+These action creators work well for endpoints that operate on a single resource
+type. If your backend includes endpoints that involve more than one resource
+type (such as including a primary resource _and_ its related resources in a
+single GET request), then you will likely need to write custom action creators
+to handle those specific endpoints.
+
+A pattern that works well is to use these action creators for endpoints that
+target a single resource type, and then write custom action creators for more
+complex endpoints.
+
 ### Installation
 
 Install `resourceful-action-types` from npm:
 
 `npm install resourceful-action-types --save`
 
-Then, import the pieces of this collection that you need:
+Then, import the pieces of the package that you need:
 
 ```js
 import { readResources } from 'resourceful-action-creators';
@@ -31,8 +41,8 @@ import { readResources } from 'resourceful-action-creators';
 
 ### Usage
 
-This collection exports five action creators, one for each of the CRUD 
-operations, and one generic one. It also exports the library that is used for 
+This collection exports five action creators, one for each of the CRUD
+operations, and one generic one. It also exports the library that is used for
 making HTTP requests.
 
 ### `crudAction( options )`
