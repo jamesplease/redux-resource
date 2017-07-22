@@ -1,3 +1,10 @@
+## [v0.5.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.5.0) (7/21/17)
+
+**New Features**
+
+- `resourceful-plugins`: A new library has been added, `resourceful-plugins`.
+  This is a collection of of common plugins that you can use for your CRUD apps.
+
 ## [v0.4.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.4.0) (7/21/17)
 
 **Changes**
