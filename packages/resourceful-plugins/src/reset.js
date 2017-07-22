@@ -44,4 +44,7 @@ function reset(resourceName, options = {}) {
   };
 }
 
-export {actionTypes, resetResource, reset};
+reset.actionTypes = actionTypes;
+reset.resetResource = resetResource;
+
+export default reset;

@@ -1,4 +1,6 @@
-import {actionTypes, selection} from '../../src/selection';
+import {selection} from '../../src';
+
+const {actionTypes} = selection;
 
 describe('selection', function() {
   beforeEach(() => {
