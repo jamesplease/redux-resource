@@ -1,6 +1,6 @@
 import {selection} from '../../src';
 
-const {actionTypes} = selection;
+const {selectResources, deselectResources, clearSelectedResources} = selection;
 
 describe('selection', function() {
   beforeEach(() => {
@@ -14,11 +14,7 @@ describe('selection', function() {
       selectedIds: [24]
     };
 
-    const action = {
-      type: actionTypes.SELECT_RESOURCES,
-      resourceName: 'sandwiches',
-      resources: [24]
-    };
+    const action = selectResources('sandwiches', [24]);
 
     const result = reducer(state, action);
     expect(result).to.equal(state);
@@ -49,11 +45,7 @@ describe('selection', function() {
       selectedIds: [24]
     };
 
-    const action = {
-      type: actionTypes.SELECT_RESOURCES,
-      resourceName: 'books',
-      resources: [1, 24, 100, 210]
-    };
+    const action = selectResources('books', [1, 24, 100, 210]);
 
     const result = reducer(state, action);
     expect(result).to.deep.equal({
@@ -70,11 +62,9 @@ describe('selection', function() {
       selectedIds: [24, 100, 1000]
     };
 
-    const action = {
-      type: actionTypes.DESELECT_RESOURCES,
-      resourceName: 'books',
-      resources: [100]
-    };
+    const action = deselectResources('books', [{
+      id: 100
+    }]);
 
     const result = reducer(state, action);
     expect(result).to.deep.equal({
@@ -91,10 +81,7 @@ describe('selection', function() {
       selectedIds: [24, 100, 1000]
     };
 
-    const action = {
-      type: actionTypes.CLEAR_SELECTED_RESOURCES,
-      resourceName: 'books'
-    };
+    const action = clearSelectedResources('books');
 
     const result = reducer(state, action);
     expect(result).to.deep.equal({

@@ -8,6 +8,29 @@ const initialState = {
   selectedIds: []
 };
 
+function selectResources(resourceName, resources) {
+  return {
+    type: actionTypes.SELECT_RESOURCES,
+    resourceName,
+    resources
+  };
+}
+
+function deselectResources(resourceName, resources) {
+  return {
+    type: actionTypes.DESELECT_RESOURCES,
+    resourceName,
+    resources
+  };
+}
+
+function clearSelectedResources(resourceName) {
+  return {
+    type: actionTypes.CLEAR_SELECTED_RESOURCES,
+    resourceName
+  };
+}
+
 function selection(resourceName) {
   return function(state, action) {
     // Ignore actions that were dispatched for another resource type
@@ -52,6 +75,9 @@ function selection(resourceName) {
 }
 
 selection.actionTypes = actionTypes;
+selection.selectResources = selectResources;
+selection.deselectResources = deselectResources;
+selection.clearSelectedResources = clearSelectedResources;
 selection.initialState = initialState;
 
 export default selection;
