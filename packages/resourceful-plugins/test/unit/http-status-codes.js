@@ -1,5 +1,5 @@
 import {actionTypes} from 'resourceful-redux';
-import httpStatusCodes from '../../src/http-status-codes';
+import {httpStatusCodes} from '../../src';
 
 describe('httpStatusCodes', function() {
   beforeEach(() => {

@@ -51,4 +51,7 @@ function selection(resourceName) {
   };
 }
 
-export {actionTypes, initialState, selection};
+selection.actionTypes = actionTypes;
+selection.initialState = initialState;
+
+export default selection;

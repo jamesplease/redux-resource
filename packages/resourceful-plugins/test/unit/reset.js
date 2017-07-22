@@ -1,4 +1,6 @@
-import {resetResource, reset} from '../../src/reset';
+import {reset} from '../../src';
+
+const {resetResource} = reset;
 
 describe('reset', function() {
   beforeEach(() => {
