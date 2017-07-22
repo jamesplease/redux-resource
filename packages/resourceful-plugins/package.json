@@ -1,6 +1,6 @@
 {
   "name": "resourceful-plugins",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Official plugins for Resourceful Redux",
   "main": "dist/resourceful-plugins.js",
   "scripts": {
@@ -65,7 +65,7 @@
     "cross-env": "^5.0.1",
     "in-publish": "^2.0.0",
     "mocha": "^3.4.2",
-    "resourceful-redux": "^0.4.0",
+    "resourceful-redux": "^0.5.0",
     "rimraf": "^2.6.1",
     "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",
@@ -76,6 +76,6 @@
   },
   "peerDependencies": {
     "redux": "3.x",
-    "resourceful-redux": "^0.4.0"
+    "resourceful-redux": "^0.5.0"
   }
 }
