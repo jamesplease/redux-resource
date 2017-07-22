@@ -2,19 +2,28 @@ import {actionTypes, setResourceMeta} from 'resourceful-redux';
 
 // End actions can be failed, succeeded, or null. Null should be dispatched
 // when the request is aborted (with a status code of 0).
-const endActions = [
+const createEndActions = [
   actionTypes.CREATE_RESOURCES_FAILED,
-  actionTypes.READ_RESOURCES_FAILED,
-  actionTypes.UPDATE_RESOURCES_FAILED,
-  actionTypes.DELETE_RESOURCES_FAILED,
   actionTypes.CREATE_RESOURCES_SUCCEEDED,
-  actionTypes.READ_RESOURCES_SUCCEEDED,
-  actionTypes.UPDATE_RESOURCES_SUCCEEDED,
-  actionTypes.DELETE_RESOURCES_SUCCEEDED,
   actionTypes.CREATE_RESOURCES_NULL,
+];
+
+const readEndActions = [
+  actionTypes.READ_RESOURCES_FAILED,
+  actionTypes.READ_RESOURCES_SUCCEEDED,
   actionTypes.READ_RESOURCES_NULL,
+];
+
+const updateEndActions = [
+  actionTypes.UPDATE_RESOURCES_FAILED,
+  actionTypes.UPDATE_RESOURCES_SUCCEEDED,
   actionTypes.UPDATE_RESOURCES_NULL,
-  actionTypes.DELETE_RESOURCES_NULL
+];
+
+const deleteEndActions = [
+  actionTypes.DELETE_RESOURCES_FAILED,
+  actionTypes.DELETE_RESOURCES_SUCCEEDED,
+  actionTypes.DELETE_RESOURCES_NULL,
 ];
 
 // This sets a new meta property on resource and label metadata: `statusCode`.
@@ -25,7 +34,12 @@ export default function httpStatusCodes(resourceName) {
       return state;
     }
 
-    if (endActions.indexOf(action.type) === -1) {
+    const isCreateEndAction = createEndActions.indexOf(action.type) !== -1;
+    const isReadEndAction = readEndActions.indexOf(action.type) !== -1;
+    const isUpdateEndAction = updateEndActions.indexOf(action.type) !== -1;
+    const isDeleteEndAction = deleteEndActions.indexOf(action.type) !== -1;
+
+    if (!isCreateEndAction && !isReadEndAction && !isUpdateEndAction && !isDeleteEndAction) {
       return state;
     }
 
@@ -68,9 +82,22 @@ export default function httpStatusCodes(resourceName) {
     }
 
     if (idList.length) {
+      let metaPrefix;
+      if (isCreateEndAction) {
+        metaPrefix = 'create';
+      } else if (isReadEndAction) {
+        metaPrefix = 'read';
+      } else if (isUpdateEndAction) {
+        metaPrefix = 'update';
+      } else if (isDeleteEndAction) {
+        metaPrefix = 'delete';
+      }
+
       newMeta = setResourceMeta({
         meta: state.meta,
-        newMeta: {statusCode},
+        newMeta: {
+          [`${metaPrefix}StatusCode`]: statusCode
+        },
         resources: idList,
         mergeMeta: true
       });
