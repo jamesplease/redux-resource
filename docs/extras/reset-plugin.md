@@ -26,6 +26,30 @@ import store from './store';
 store.dispatch(reset.resetResource('books'));
 ```
 
+Resetting a slice will leave you with the following state:
+
+```js
+{
+  resources: {},
+  meta: {},
+  labels: {},
+}
+```
+
+Resetting a label will turn just that label into this:
+
+```js
+{
+  ids: [],
+  status: 'NULL'
+}
+```
+
+The additional initial that you pass to `resourceReducer` will also be
+included when you reset your state.
+
+---
+
 ### `resetResource(resourceName, [label])`
 
 Resets the slice for `resourceName`. If `label` is passed, then _just_ that

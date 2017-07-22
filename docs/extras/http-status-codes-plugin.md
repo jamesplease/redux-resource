@@ -1,10 +1,18 @@
 # HTTP Status Codes Plugin
 
-Add this plugin to keep track of HTTP Status Codes for each request
+Add this plugin to keep track of status codes of your HTTP Requests. This is
+useful because status codes give you more detail information about your
+in-flight requests.
+
+One common use case is to be able to handle the different reasons for a failed
+request: was the resource not found (404), or did the user not have permissions
+(403)? This plugin makes it straightforward to track this information, and then
+use it in your view layer.
 
 ### Usage
 
-First, you need to register this plugin for any slice that needs it.
+First, you need to register this plugin when you call
+[`resourceReducer`](/docs/api-reference/resource-reducer.md).
 
 ```js
 import { resourceReducer } from 'resourceful-redux';
@@ -15,8 +23,13 @@ const reducer = resourceReducer('books', {
 });
 ```
 
-This plugin responds to the built-in action types for CRUD. Anytime that you
-pass a `statusCode` in your action, then it will be stored on your state.
+This plugin doesn't come with any custom action types. Instead, it changes the
+way the state is tranformed with the built-in CRUD
+[action types](/docs/api-reference/action-types.md). Any time that you pass a
+`statusCode` in an action with one of those types, then the code will be stored
+in your state tree.
+
+Passing the status code looks like the following:
 
 ```js
 import { actionTypes } from 'resourceful-redux';
@@ -32,8 +45,30 @@ store.dispatch({
 
 If you're using the
 [Resourceful Action Creators](/docs/extras/resourceful-action-creators.md)
-library, then you don't need to do anything differently: the request's status
-codes are included in the actions dispatched from that library.
+library, then you don't need to do anything differently: request status
+codes are already included in the actions dispatched from that library.
+
+Within your resource metadata, the status code will be available at one of four
+keys, depending on the CRUD operation being performed:
+
+- `createStatusCode`
+- `readStatusCode`
+- `updateStatusCode`
+- `deleteStatusCode`
+
+On a label, the code is just available under `statusCode`.
+
+```js
+import store from './store';
+
+const state = store.getState();
+
+// Access the status codes of some resource meta
+const bookStatusCode = state.books.meta[24].readStatusCode;
+
+// Access the status code from a label
+const searchStatusCode = state.books.labels.search.statusCode;
+```
 
 ### Tips
 
