@@ -48,3 +48,30 @@ Run `npm run docs:watch` to start up the local version of the site at
 of the website will automatically update and refresh your browser.
 
 Once you're done, commit your changes and open a Pull Request. Also, thanks!
+
+### Adding Yourself as a Contributor
+
+If you make a contribution to this project, you should go ahead and add yourself
+to the list of contributors on the
+[README](https://github.com/jmeas/resourceful-redux#contributors) and the
+[website](https://resourceful-redux.js.org/#contributors).
+
+To add yourself, run this command from the terminal:
+
+```
+npm run contributors:add -- {GITHUB_USERNAME} {CONTRIBUTIONS}
+```
+
+Where `{GITHUB_USERNAME}` is your GitHub account name, and `{CONTRIBUTIONS}` is a
+comma-separated list of values from
+[this guide here](https://github.com/jfmengels/all-contributors-cli#addupdate-contributors).
+
+For instance, if you've contributing docs and code and your username is `sallycodes`,
+you might do:
+
+```
+npm run contributors:add -- sallycodes doc,code
+```
+
+This command will update the necessary files and make a commit for you. From there, you can
+open a Pull Request and I'll get it merged in. Oh, and hey – thanks again!
