@@ -1,0 +1,98 @@
+{
+  "projectName": "resourceful-redux",
+  "projectOwner": "jmeas",
+  "files": [
+    "README.md",
+    "INDEX.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "jmeas",
+      "name": "James, please",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2322305?v=4",
+      "profile": "http://www.jmeas.com",
+      "contributions": [
+        "code",
+        "plugin",
+        "doc",
+        "ideas"
+      ]
+    },
+    {
+      "login": "sprjr",
+      "name": "Stephen Rivas JR",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/682566?v=4",
+      "profile": "http://www.stephenrivasjr.com",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas"
+      ]
+    },
+    {
+      "login": "ianmstew",
+      "name": "Ian Stewart",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4119765?v=4",
+      "profile": "https://github.com/ianmstew",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "tbranyen",
+      "name": "Tim Branyen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/181635?v=4",
+      "profile": "http://tbranyen.com/",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "jasonLaster",
+      "name": "Jason Laster",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/254562?v=4",
+      "profile": "https://github.com/jasonLaster",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "marlonpp",
+      "name": "marlonpp",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1104846?v=4",
+      "profile": "https://github.com/marlonpp",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "JPorry",
+      "name": "Javier Porrero",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4296756?v=4",
+      "profile": "https://github.com/JPorry",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "smaifullerton-wk",
+      "name": "Smai Fullerton",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/25591356?v=4",
+      "profile": "https://github.com/smaifullerton-wk",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "vinodkl",
+      "name": "vinodkl",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/276971?v=4",
+      "profile": "https://github.com/vinodkl",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ]
+}

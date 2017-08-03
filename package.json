@@ -9,6 +9,8 @@
     "clean": "lerna clean",
     "publish": "npm run build && lerna publish --force-publish=*",
     "bootstrap": "lerna bootstrap",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
     "docs:watch": "npm run docs:prepare && gitbook serve",
     "docs:prepare": "gitbook install",
     "docs:clean": "rimraf _book",
@@ -17,6 +19,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "all-contributors-cli": "git://github.com/jmeas/all-contributors-cli.git#fa79a12e426d9a4e7df96d76e649c516187fb6c9",
     "babel-core": "^6.25.0",
     "babel-plugin-istanbul": "^4.1.4",
     "babel-plugin-rewire": "^1.1.0",
