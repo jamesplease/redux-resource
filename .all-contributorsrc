@@ -93,6 +93,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "ericvaladas",
+      "name": "Eric Valadas",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/828125?v=4",
+      "profile": "https://github.com/ericvaladas",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
