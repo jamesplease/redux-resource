@@ -1,3 +1,7 @@
+## [v1.0.0](https://github.com/jmeas/resourceful-redux/releases/tag/v1.0.0) (8/3/17)
+
+- No changes. This release marks the stability of the API.
+
 ## [v0.5.0](https://github.com/jmeas/resourceful-redux/releases/tag/v0.5.0) (7/21/17)
 
 **New Features**
