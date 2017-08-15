@@ -1,7 +1,7 @@
 import {actionTypes} from 'resourceful-redux';
 import xhr from './xhr';
 
-function performXhr(dispatch, options) {
+function performXhr(dispatch, options, callback) {
   const {
     xhrOptions = {},
     crudAction,
@@ -93,12 +93,16 @@ function performXhr(dispatch, options) {
         res
       });
     }
+
+    if (typeof callback === 'function') {
+      callback(err, res, body);
+    }
   });
 
   return req;
 }
 
-function crudAction(options) {
+function crudAction(options, callback) {
   return (dispatch, getState) => {
     let opts;
     if (typeof options === 'function') {
@@ -107,11 +111,11 @@ function crudAction(options) {
       opts = options || {};
     }
 
-    return performXhr(dispatch, opts);
+    return performXhr(dispatch, opts, callback);
   };
 }
 
-function createResources(options = {}) {
+function createResources(options = {}, callback) {
   return (dispatch, getState) => {
     let opts;
     if (typeof options === 'function') {
@@ -131,11 +135,11 @@ function createResources(options = {}) {
       }
     };
 
-    return performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions, callback);
   };
 }
 
-function readResources(options = {}) {
+function readResources(options = {}, callback) {
   return (dispatch, getState) => {
     let opts;
     if (typeof options === 'function') {
@@ -155,11 +159,11 @@ function readResources(options = {}) {
       }
     };
 
-    return performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions, callback);
   };
 }
 
-function updateResources(options = {}) {
+function updateResources(options = {}, callback) {
   return (dispatch, getState) => {
     let opts;
     if (typeof options === 'function') {
@@ -179,11 +183,11 @@ function updateResources(options = {}) {
       }
     };
 
-    return performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions, callback);
   };
 }
 
-function deleteResources(options = {}) {
+function deleteResources(options = {}, callback) {
   return (dispatch, getState) => {
     let opts;
     if (typeof options === 'function') {
@@ -203,7 +207,7 @@ function deleteResources(options = {}) {
       }
     };
 
-    return performXhr(dispatch, newOptions);
+    return performXhr(dispatch, newOptions, callback);
   };
 }
 

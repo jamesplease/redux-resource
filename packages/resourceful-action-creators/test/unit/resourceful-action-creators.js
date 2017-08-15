@@ -144,6 +144,32 @@ describe('Resourceful Action Creators', function() {
 
         expect(this.xhrStub.callCount).to.equal(1);
       });
+
+      it('should invoke the `callback` after the xhr is complete with the right arguments', (done) => {
+        const callbackStub = stub();
+        const body = [{id: 1}, {id: 2}];
+        this.xhrStub = stub().callsFake((options, cb) => {
+          setTimeout(() => {
+            // The action creator callback receives `(err, res, body)` from xhr
+            cb(null, {body}, body);
+
+            expect(callbackStub.callCount).to.equal(1);
+            expect(callbackStub).to.be.calledWithExactly(null, {body}, body);
+            expect(callbackStub).to.be.calledAfter(this.dispatch);
+
+            done();
+          });
+
+          return {
+            aborted: true
+          };
+        });
+
+        __RewireAPI__.__Rewire__('xhr', this.xhrStub);
+
+        this.performXhr(this.dispatch, {}, callbackStub);
+        expect(this.xhrStub.callCount).to.equal(1);
+      });
     });
 
     describe('success, with a body', () => {
@@ -473,7 +499,7 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'GET',
           }
-        });
+        }, undefined);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -501,7 +527,18 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'GET',
           }
+        }, undefined);
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
+      });
+
+      it('should pass a `callback` to `performXhr` when provided', () => {
+        const postXhr = () => 'pizza';
+        const xhr = crudAction({}, postXhr)(this.dispatch, this.getState);
+
+        expect(this.performXhrStub).to.have.been.calledWithExactly(this.dispatch, {}, postXhr);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -525,7 +562,7 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'POST',
           }
-        });
+        }, undefined);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -551,7 +588,18 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'POST',
           }
+        }, undefined);
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
+      });
+
+      it('should pass a `callback` to `performXhr` when provided', () => {
+        const postXhr = () => 'pizza';
+        const xhr = crudAction({}, postXhr)(this.dispatch, this.getState);
+
+        expect(this.performXhrStub).to.have.been.calledWithExactly(this.dispatch, {}, postXhr);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -575,7 +623,7 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'GET',
           }
-        });
+        }, undefined);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -601,7 +649,18 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'GET',
           }
+        }, undefined);
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
+      });
+
+      it('should pass a `callback` to `performXhr` when provided', () => {
+        const postXhr = () => 'pizza';
+        const xhr = crudAction({}, postXhr)(this.dispatch, this.getState);
+
+        expect(this.performXhrStub).to.have.been.calledWithExactly(this.dispatch, {}, postXhr);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -625,7 +684,7 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'PATCH',
           }
-        });
+        }, undefined);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -651,7 +710,18 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'PATCH',
           }
+        }, undefined);
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
+      });
+
+      it('should pass a `callback` to `performXhr` when provided', () => {
+        const postXhr = () => 'pizza';
+        const xhr = crudAction({}, postXhr)(this.dispatch, this.getState);
+
+        expect(this.performXhrStub).to.have.been.calledWithExactly(this.dispatch, {}, postXhr);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -675,7 +745,7 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'DELETE',
           }
-        });
+        }, undefined);
 
         expect(xhr).to.deep.equal({
           aborted: false
@@ -701,7 +771,18 @@ describe('Resourceful Action Creators', function() {
             url: 'http://www.google.com',
             method: 'DELETE',
           }
+        }, undefined);
+
+        expect(xhr).to.deep.equal({
+          aborted: false
         });
+      });
+
+      it('should pass a `callback` to `performXhr` when provided', () => {
+        const postXhr = () => 'pizza';
+        const xhr = crudAction({}, postXhr)(this.dispatch, this.getState);
+
+        expect(this.performXhrStub).to.have.been.calledWithExactly(this.dispatch, {}, postXhr);
 
         expect(xhr).to.deep.equal({
           aborted: false

@@ -1,3 +1,9 @@
+## Unreleased (n/a)
+
+- `resourceful-action-creators`: All action creators now accept a second, optional
+  argument `callback(err, res, body)` that is invoked after the XHR is complete and
+  `dispatch()` events trigged.
+
 ## [v1.0.1](https://github.com/jmeas/resourceful-redux/releases/tag/v1.0.1) (8/18/17)
 
 **Bug fixes**
