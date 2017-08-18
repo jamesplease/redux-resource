@@ -7,7 +7,7 @@
     "lint": "eslint \"packages/*/{src,test}/**/*.js\" \"./packages/*/webpack.config.js\"",
     "build": "lerna run build",
     "clean": "lerna clean",
-    "publish": "npm run build && lerna publish --force-publish=*",
+    "publish": "npm run build && lerna publish",
     "bootstrap": "lerna bootstrap",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
