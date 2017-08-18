@@ -26,9 +26,3 @@ import { resourceReducer } from 'resourceful-redux';
 ```js
 var resourceReducer = require('resourceful-redux').resourceReducer;
 ```
-
-#### ES5 (UMD build)
-
-```js
-var resourceReducer = resourcefulRedux.resourceReducer;
-```
