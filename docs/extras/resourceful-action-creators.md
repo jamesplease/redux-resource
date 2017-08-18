@@ -13,9 +13,9 @@ found in the [CRUD Actions](/docs/guides/crud-actions.md) guide, as well as
 the four guides for each CRUD operation:
 
 - [Reading resources](/docs/guides/reading-resources.md)
-- [Updating resources](/docs/guides/reading-resources.md)
-- [Creating resources](/docs/guides/reading-resources.md)
-- [Deleting resources](/docs/guides/reading-resources.md)
+- [Updating resources](/docs/guides/updating-resources.md)
+- [Creating resources](/docs/guides/creating-resources.md)
+- [Deleting resources](/docs/guides/deleting-resources.md)
 
 These action creators work well for endpoints that operate on a single resource
 type. If your backend includes endpoints that involve more than one resource
@@ -45,7 +45,7 @@ This collection exports five action creators, one for each of the CRUD
 operations, and one generic one. It also exports the library that is used for
 making HTTP requests.
 
-### `crudAction( options )`
+### `crudAction( options, [callback] )`
 
 A generic action creator for performing CRUD operations.
 
@@ -81,6 +81,12 @@ A generic action creator for performing CRUD operations.
     Resourceful Redux-compatible format. For more, see the guide on
     [Resources](/docs/guides/resources.md).
 
+2. `callback` *(Function, optional)*: This is called _after_ the "end" action is
+  dispatched for this CRUD action. It receives 3 arguments `(err, res, body)`,
+  which are the same arguments passed to the
+  [xhr](https://www.npmjs.com/package/xhr#var-req--xhroptions-callback)
+  callback.
+
 #### Returns
 
 (*`XMLHttpRequest`*): An instance of a
@@ -112,7 +118,7 @@ store.dispatch(crudAction({
 }));
 ```
 
-### `createResources( options )`
+### `createResources( options, [callback] )`
 
 A convenience wrapper for the `crudAction` action creator that passes these
 options by default:
@@ -150,7 +156,7 @@ store.dispatch(createResources({
 }));
 ```
 
-### `readResources( options )`
+### `readResources( options, [callback] )`
 
 A convenience wrapper for the `crudAction` action creator that passes these
 options by default:
@@ -190,7 +196,7 @@ store.dispatch(readResources({
 }));
 ```
 
-### `updateResources( options )`
+### `updateResources( options, [callback] )`
 
 A convenience wrapper for the `crudAction` action creator that passes these
 options by default:
@@ -228,7 +234,7 @@ store.dispatch(updateResources({
 }));
 ```
 
-### `deleteResources( options )`
+### `deleteResources( options, [callback] )`
 
 A convenience wrapper for the `crudAction` action creator that passes these
 options by default:
