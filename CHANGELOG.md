@@ -1,12 +1,15 @@
-## Unreleased (n/a)
+## (8/18/17)
 
-- `resourceful-action-creators`: All action creators now accept a second, optional
-  argument `callback(err, res, body)` that is invoked after the XHR is complete and
-  `dispatch()` events trigged.
+##### `resourceful-action-creators@1.1.0`
+
+**New Features**
+
+- All action creators now accept a second, optional argument `callback(err, res, body)`
+  that is invoked after the XHR is complete and `dispatch()` events trigged.
 
 ## [v1.0.1](https://github.com/jmeas/resourceful-redux/releases/tag/v1.0.1) (8/18/17)
 
-**Bug fixes**
+**Bug Fixes**
 
 - Fixes an issue where apps bundled with Webpack 1 or CommonJS were always in development
   mode.
