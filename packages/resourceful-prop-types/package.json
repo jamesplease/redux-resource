@@ -59,7 +59,6 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "6.23.0",
-    "babel-loader": "7.1.1",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-env": "^1.6.0",
@@ -72,7 +71,6 @@
     "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-replace": "^1.1.1",
     "rollup-plugin-uglify": "^2.0.1",
     "webpack": "^3.1.0"
   },
