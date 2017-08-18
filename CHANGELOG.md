@@ -1,3 +1,10 @@
+## [v1.0.1](https://github.com/jmeas/resourceful-redux/releases/tag/v1.0.1) (8/18/17)
+
+**Bug fixes**
+
+- Fixes an issue where apps bundled with Webpack 1 or CommonJS were always in development
+  mode.
+
 ## [v1.0.0](https://github.com/jmeas/resourceful-redux/releases/tag/v1.0.0) (8/3/17)
 
 - No changes. This release marks the stability of the API.
