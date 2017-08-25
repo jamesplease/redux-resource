@@ -10,6 +10,7 @@ describe('reducers: delete', function() {
           3: {id: 3},
           4: {id: 4},
         },
+        lists: {},
         labels: {},
         meta: {
           1: {
@@ -41,6 +42,7 @@ describe('reducers: delete', function() {
             3: {id: 3},
             4: {id: 4},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -65,6 +67,41 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
+    it('logs a warning when a list is included in the action', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
+          lists: {},
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        },
+        initialResourceMeta: {
+          selected: false
+        }
+      });
+
+      reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        list: 'stuff',
+        resources: [3]
+      });
+
+      expect(console.error.callCount).to.equal(1);
+    });
+
     it('logs a warning when a resource does not have an ID (id shorthand)', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
@@ -74,6 +111,7 @@ describe('reducers: delete', function() {
             3: {id: 3},
             4: {id: 4},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -107,6 +145,7 @@ describe('reducers: delete', function() {
             3: {id: 3},
             4: {id: 4},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -140,6 +179,7 @@ describe('reducers: delete', function() {
             3: {id: 3},
             4: {id: 4},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -167,6 +207,7 @@ describe('reducers: delete', function() {
           3: null,
           4: null
         },
+        lists: {},
         labels: {},
         meta: {
           1: {
@@ -200,6 +241,7 @@ describe('reducers: delete', function() {
             3: {id: 3},
             4: {id: 4},
           },
+          lists: {},
           labels: {
             oink: {
               hungry: true,
@@ -238,6 +280,7 @@ describe('reducers: delete', function() {
           3: null,
           4: null
         },
+        lists: {},
         labels: {
           italiano: {
             status: requestStatuses.PENDING,
@@ -279,6 +322,7 @@ describe('reducers: delete', function() {
             3: {id: 3},
             4: {id: 4},
           },
+          lists: {},
           labels: {
             oink: {
               hungry: true,
@@ -317,6 +361,7 @@ describe('reducers: delete', function() {
           3: null,
           4: null
         },
+        lists: {},
         labels: {
           italiano: {
             status: requestStatuses.SUCCEEDED,
@@ -349,6 +394,72 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
+    it('returns the right state when there are lists, when IDs are passed', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4},
+          },
+          lists: {
+            oink: [10, 3],
+            italiano: [1, 3, 4],
+          },
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        resources: [
+          3,
+          {id: 4}
+        ]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: {
+          1: {id: 1},
+          3: null,
+          4: null
+        },
+        lists: {
+          oink: [10],
+          italiano: [1],
+        },
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          },
+          4: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          }
+        }
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
     it('returns the right state with a label, without IDs', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
@@ -357,6 +468,10 @@ describe('reducers: delete', function() {
             1: {id: 1},
             3: {id: 3},
             4: {id: 4},
+          },
+          lists: {
+            stuff: [1, 10, 100],
+            ok: [2, 50]
           },
           labels: {
             oink: {
@@ -390,6 +505,10 @@ describe('reducers: delete', function() {
           1: {id: 1},
           3: {id: 3},
           4: {id: 4},
+        },
+        lists: {
+          stuff: [1, 10, 100],
+          ok: [2, 50]
         },
         labels: {
           italiano: {

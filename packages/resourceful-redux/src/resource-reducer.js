@@ -51,6 +51,13 @@ export default function resourceReducer(resourceName, options = {}) {
           `"${action.type}". Labels must be strings.`
         );
       }
+
+      if (action.list && typeof action.list !== 'string') {
+        warning(
+          `An invalid list was included in an action with type ` +
+          `"${action.type}". Lists must be strings.`
+        );
+      }
     }
 
     return composeReducers(computedPlugins)(state, action);

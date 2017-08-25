@@ -49,6 +49,7 @@ describe('reducer', function() {
           deleteStatus: 'NULL'
         }
       },
+      lists: {},
       labels: {},
       pizza: 'yum'
     });
@@ -79,6 +80,7 @@ describe('reducer', function() {
     expect(reduced).to.deep.equal({
       resources: {},
       meta: {},
+      lists: {},
       labels: {},
       tastiness: 'quite'
     });
@@ -118,6 +120,7 @@ describe('reducer', function() {
     expect(reduced).to.deep.equal({
       resources: {},
       meta: {},
+      lists: {},
       labels: {},
       tastiness: true
     });

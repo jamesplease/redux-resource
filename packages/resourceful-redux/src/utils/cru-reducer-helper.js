@@ -15,6 +15,11 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
     label = action.label;
   }
 
+  let list;
+  if (action.list && typeof action.list === 'string') {
+    list = action.list;
+  }
+
   if (process.env.NODE_ENV !== 'production') {
     if (!resources) {
       warning(
@@ -36,7 +41,7 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
   }
 
   // Without resources or labels, there is nothing to update
-  if (!hasResources && !label) {
+  if (!hasResources && !label && !list) {
     return state;
   }
 
@@ -91,10 +96,43 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
     newLabels = state.labels;
   }
 
+  let newLists;
+  if (list) {
+    const currentList = state.lists[list] || [];
+    let newList;
+
+    if (action.mergeListIds === false) {
+      if (hasResources) {
+        newList = resources.map(resource => {
+          return typeof resource === 'object' ? resource.id : resource;
+        });
+      } else if (!resourcesIsUndefined) {
+        newList = [];
+      }
+    } else if (hasResources) {
+      newList = Array.prototype.slice.call(currentList);
+
+      resources.forEach(resource => {
+        const id = typeof resource === 'object' ? resource.id : resource;
+        if (!newList.includes(id)) {
+          newList.push(id);
+        }
+      });
+    }
+
+    newLists = {
+      ...state.lists,
+      [list]: newList || currentList
+    };
+  } else {
+    newLists = state.lists;
+  }
+
   return {
     ...state,
     resources: newResources,
     meta: newMeta,
-    labels: newLabels
+    labels: newLabels,
+    lists: newLists
   };
 }

@@ -33,6 +33,13 @@ function delSucceed(state, action, {initialResourceMeta}) {
         `library, you can do this using the "transformData" option.`
       );
     }
+
+    if (action.list) {
+      warning(
+        `You included a "list" in a delete action. You don't need to do this, ` +
+        `because successful deletes remove the deleted resources from all lists.`
+      );
+    }
   }
 
   // Find the list of IDs affected by this action
@@ -69,17 +76,19 @@ function delSucceed(state, action, {initialResourceMeta}) {
 
   const hasIds = idList && idList.length;
 
-  // If we have no label nor IDs, then there is nothing to update
+  // If we have no, IDs, list, nor request label, then there is nothing to update
   if (!hasIds && !label) {
     return state;
   }
 
   let newMeta;
   let newLabels = {};
+  let newLists = {};
   const meta = state.meta;
   const labels = state.labels;
+  const lists = state.lists;
   for (let requestLabel in labels) {
-    const existingLabel = state.labels[requestLabel] || {};
+    const existingLabel = labels[requestLabel] || {};
     const existingLabelIds = existingLabel.ids || [];
     const newLabel = {
       ...existingLabel
@@ -96,6 +105,19 @@ function delSucceed(state, action, {initialResourceMeta}) {
     }
 
     newLabels[requestLabel] = newLabel;
+  }
+
+  for (let resourceList in lists) {
+    const existingList = lists[resourceList];
+
+    let newList;
+    if (hasIds && existingList) {
+      newList = existingList.filter(r => !idList.includes(r));
+    } else if (existingList) {
+      newList = existingList;
+    }
+
+    newLists[resourceList] = newList;
   }
 
   if (hasIds) {
@@ -127,6 +149,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
   return {
     ...state,
     meta: newMeta,
+    lists: newLists,
     labels: newLabels,
     resources: newResources
   };
