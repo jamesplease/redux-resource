@@ -136,8 +136,7 @@ To keep track of the resources for requests like these, you need to use labels.
 ### `label`
 
 Supplying a `label` will track the status of this request under the `labels`
-property of your store. You may also supply `resources` in your action to
-associate those specific resources with the label, too.
+property of your store.
 
 For instance, if your interface allows users to search for a books resource, you
 might dispatch the following action:
@@ -154,13 +153,28 @@ store.dispatch({
 });
 ```
 
-Later, when you dispatch the success action, the resources returned will be
-associated with this label. This will allow you to keep track of which books were
-returned by this specific search.
+Resources are primarily used to keep
+[track of the request status](/docs/guides/tracking-requests.md). For more, refer
+to [the guide on labels](/docs/guides/request-labels.md).
 
-Labels are one of the more difficult features of Resourceful Redux to wrap your
-head around, so there is [an entire guide](/docs/guides/request-labels.md) dedicated
-to explaining how to use them, and when to use them.
+### `list`
+
+For create and read CRUD operations, you can supply a `list` to add the resources
+returned from the operation with one of the lists in your slice.
+
+```js
+import { actionTypes } from 'resourceful-redux';
+import store from './store';
+
+store.dispatch({
+  type: actionTypes.READ_RESOURCES_PENDING,
+  resourceName: 'books',
+  list: 'mostPopular',
+  query: 'Lord of the Flies'
+});
+```
+
+To learn more about lists, refer to [the lists guide]().
 
 ### Other CRUD Action properties
 
@@ -174,6 +188,16 @@ The following CRUD Action attributes are all optional.
 - `mergeMeta` *(Boolean)*: This is like `mergeResources`, but for metadata.
   Defaults to `true`. This property works with actions with any of the CRUD
   action types.
+
+- `mergeListIds` *(Boolean)*: When a list is supplied, this lets you control
+  whether or not the new list of IDs replaces or gets merged into the existing
+  list of IDs for that list. When `true`, it will protect against duplicate
+  IDs being added. Defaults to `true`. This only applies for successful read
+  and write Actions that have a `list` specified.
+
+#### Deprecated CRUD Action properties
+
+These properties are slated to be removed in v2.0.0 of Resourceful Redux.
 
 - `mergeLabelIds` *(Boolean)*: When a label is supplied, this lets you control
   whether or not the new list of IDs replaces or gets merged into the existing

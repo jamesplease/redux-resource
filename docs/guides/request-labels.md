@@ -1,15 +1,16 @@
 # Request Labels
 
 A label is a name that you give to an individual CRUD operation request.
-Labeling a request is a simple idea, but it's a powerful feature that has
-several uses in Resourceful Redux.
+Resourceful Redux associates the status of the request with the label
+that you supply, which gives you a straightforward way to access that
+request's status at a later time.
 
-### What is a Label
+Labels are most often used when you're unable to track the status of a
+request on an individual resource's metadata.
 
-A label is a word that you associate with a request. For instance, if you're
-creating a book, you might use the label `"create"`. In your store slice,
-each label is found under the `labels` key. In the example of create, a
-slice might look like:
+For instance, if you're creating a book, you might use the label `"create"`.
+In your store slice, each label is found under the `labels` key. In the
+example of create, a slice might look like:
 
 ```js
 {
@@ -27,79 +28,13 @@ of 24 was created.
 
 ### Why label a request
 
-There are three common reasons to label a request in Resourceful Redux:
-
-1. They can be used to track a request, even when you don't have resource ID(s)
-  when you dispatch the start action
-
-2. They can be used to keep track of server-side ordering of your requests
-
-3. They can be used to keep track of subsets of a resource
-
-Let's go into more detail about when you may need to do one of these things.
-
-#### Tracking CRUD Operation Requests
-
-Tracking a request means being able to look up its current status. Is it in
-flight, has it failed, or did it succeed?
-
-Labeling your equest can be used to track requests. For more, refer to the
+Labeling your request can be used to track requests. For more, refer to the
 [Tracking Requests](/docs/guides/tracking-requests.md) guide.
-
-#### Server-side Ordering
-
-In your state slice, your resources aren't stored in any order: they're just
-keys on the `resources` object. Frequently, applications will need to preserve
-the order that the server returns a list of resources in. For instance, if you
-make a request for a list of books based on popularity.
-
-Labels keep an array of IDs of resources that are associated with the request,
-so they can be used to preserve this sort order.
-
-When the request to retrieve the most popular books succeeds, your state slice
-may look like something like:
-
-```js
-{
-  resources: {
-    // Resources and their attributes are in here
-  },
-  meta: {
-    // Metadata about resources is stored in here
-  },
-  labels: {
-    create: {
-      popularBooks: 'SUCCEEDED',
-      ids: [1002, 24, 100, 234]
-    }
-  }
-}
-```
-
-#### Ordered Subsets of Resources
-
-In the earlier guide on [State Structure](/docs/guides/state-structure.md), we
-covered that all resources of the same type are kept in a single object. This is
-a good thing, but it introduces a problem: how do you keep track of "groups" of
-the same resource? Consider a web application shows a list of recently released
-books, as well as a user's shopping cart of books. We know that in the state
-tree, all of these books will be stored in one object, but we will want to show
-them as two different lists in the interface. How can we do that?
-
-The solution relies on the fact that these "groupings" of resources are nearly
-always determined by different network requests. For instance, you might make one
-request to get the recently released books, then a second request for the
-shopping cart. By keeping track of which resources were returned for each
-request, you can keep track of the different books.
-
-And that's exactly what labels are: they're a name that you give to individual
-requests. Resourceful Redux keeps track of the resources returned by each
-labelled request.
 
 ### Using a label
 
 Using a label is straightforward: add the `label` property to the
-[Action types of a CRUD operation](./crud-actions.md).
+[Actions for a CRUD operation](./crud-actions.md).
 
 ```js
 import { actionTypes } fom 'resourceful-redux';
@@ -111,6 +46,10 @@ store.dispatch({
   label: 'search'
 });
 ```
+
+You should use the same label for the lifetime of the request. For instance,
+if you use a particular label for the "pending" action, then you will want
+to use that same label for the "success" action, too.
 
 ### When to Use labels
 
@@ -182,20 +121,11 @@ Now when you call `getStatus` for this label, you get the following object:
 }
 ```
 
-Additionally, the resources associated with the label are available under its
-`ids` attribute. You can use this array to filter the resources list by the
-label, or you can use the `getResources` helper method.
-
-```js
-import { getResources } from 'resourceful-redux';
-import store from './store';
-
-const state = store.getState();
-
-const searchedBooks = getResources(state, 'books', 'search');
-```
-
 ### Replacing Label IDs
+
+> Note: Controlling the merge behavior of labels is deprecated, and will be
+  removed in v2.0.0 of Resourceful Redux. Please use
+  [`lists`](/docs/guides/lists.md) instead.
 
 By default, subsequent successful requests with the same label will _merge_
 the old label IDs with the new. You can outright replace the old list with the
@@ -225,8 +155,8 @@ store.dispatch({
   created resource
 2. putting a resource ID in a label for some reason or another
 
-Don't do this. Dynamic labels are more error-prone, harder to work with, and
-nearly always unnecessary.
+Dynamic labels are more error-prone, harder to reason about, and often unnecessary,
+so you should strongly consider if you need them before using them.
 
 Instead, stick to "static" strings for labels such as `"create"`, or
 `"searchBooks"`. Most applications don't need to distinguish requests any

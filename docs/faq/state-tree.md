@@ -14,8 +14,8 @@ resource's reducer.
 
 Yes, you can. The only requirement is that you don't change the structure of the
 state that you start out with: make sure that `resources` remains an Array,
-and that `meta` and `labels` remain Objects. If you stick with that, then you
-shouldn't run into any issues.
+and that `meta`, `lists`, and `labels` remain Objects. If you stick with that, then
+you shouldn't run into any issues.
 
 As a convention, we recommend only storing data relevant to the resource in the
 slice. Use another slice for other information.
