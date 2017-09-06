@@ -45,8 +45,5 @@
       "packages/*/{dist,test}/**/*.js",
       "packages/node_modules/**/*"
     ]
-  },
-  "dependencies": {
-    "gitbook-plugin-prism": "^2.3.0"
   }
 }
