@@ -23,11 +23,6 @@ export default function(crudAction, requestStatus) {
       label = action.label;
     }
 
-    let list;
-    if (action.list && typeof action.list === 'string') {
-      list = action.list;
-    }
-
     let idList;
     if (resources) {
       idList = resources.map(r => {
@@ -44,7 +39,7 @@ export default function(crudAction, requestStatus) {
     const statusAttribute = `${crudAction}Status`;
     let newLabels, newMeta, newLists;
 
-    if (!label && !idList.length && !list) {
+    if (!label && !idList.length) {
       if (process.env.NODE_ENV !== 'production') {
         warning(
           `A Resourceful Redux action of type ${action.type} was dispatched ` +
