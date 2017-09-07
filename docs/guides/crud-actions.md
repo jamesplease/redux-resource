@@ -184,7 +184,8 @@ The following CRUD Action attributes are all optional.
 ### Action Creators
 
 The core Resourceful Redux library does not include action creators, but there
-is [a collection of Resourceful Action Creators](/docs/extras/resourceful-action-creators.md).
+is [a library, Resourceful XHR](/docs/extras/resourceful-xhr.md), that includes
+action creators.
 
 You're also free to build your own action creators. For examples, refer to the
 four CRUD guides:

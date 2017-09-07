@@ -24,7 +24,7 @@
   * [Unauthorized Responses](/docs/recipes/unauthorized-responses.md)
   * [Request Feedback](/docs/recipes/request-feedback.md)
 * [Ecosystem Extras](/docs/extras/README.md)
-  * [Resourceful Action Creators](/docs/extras/resourceful-action-creators.md)
+  * [Resourceful XHR](/docs/extras/resourceful-xhr.md)
   * [Resourceful Prop Types](/docs/extras/resourceful-prop-types.md)
   * [Resourceful Plugins](/docs/extras/resourceful-plugins.md)
     * [HTTP Status Codes](/docs/extras/http-status-codes-plugin.md)

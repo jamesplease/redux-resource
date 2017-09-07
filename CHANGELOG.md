@@ -1,3 +1,9 @@
+## (9/7/17)
+
+##### `resourceful-xhr@1.1.0`
+
+The `resourceful-action-creators` library has been renamed to `resourceful-xhr`.
+
 ## (8/18/17)
 
 ##### `resourceful-action-creators@1.1.0`

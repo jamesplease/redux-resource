@@ -29,7 +29,7 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
         `A non-array 'resources' value was passed to a Resourceful Redux ` +
         `"success" action with type "${action.type}". 'resources' must be an ` +
         `array. If your backend returned a single object, be sure to wrap it ` +
-        `inside of an array. If you're using the Resourceful Action Creators ` +
+        `inside of an array. If you're using the Resourceful XHR ` +
         `library, you can do this using the "transformData" option.`
       );
     }

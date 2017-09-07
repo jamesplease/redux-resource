@@ -44,7 +44,7 @@ store.dispatch({
 ```
 
 If you're using the
-[Resourceful Action Creators](/docs/extras/resourceful-action-creators.md)
+[Resourceful XHR](/docs/extras/resourceful-xhr.md)
 library, then you don't need to do anything differently: request status
 codes are already included in the actions dispatched from that library.
 
@@ -73,7 +73,7 @@ const searchStatusCode = state.books.labels.search.statusCode;
 ### Tips
 
 - The status code of an unsent and in-flight XHR requests is `0`, and the
-  Resourceful Action Creators respects this. What this means is that any new
+  Resourceful XHR respects this. What this means is that any new
   requests will _immediately_ update any existing status code to be `0`.
 
   If you're using the status code to display UI elements, you may need to cache

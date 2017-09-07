@@ -46,9 +46,9 @@ except for `deleteStatus`, which will be set to `"SUCCEEDED"`.
   resources, you may want to write a [plugin](/docs/guides/plugins.md) to clear
   out old, unused metadata.
 
-### Resourceful Action Creators
+### Resourceful XHR
 
-[Resourceful Action Creators](/docs/extras/resourceful-action-creators.md) 
+[Resourceful XHR](/docs/extras/resourceful-xhr.md) 
 provides a collection of out-of-the-box action creators that you can use to 
 delete resources. If you'd like to build your own, then that's fine, too. 
 The example below may help.
