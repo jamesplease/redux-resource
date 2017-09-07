@@ -1,6 +1,6 @@
-# Resourceful Action Creators
+# Resourceful XHR
 
-[![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js?compression=gzip)](https://unpkg.com/resourceful-action-creators/dist/resourceful-action-creators.min.js)
+[![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-xhr/dist/resourceful-xhr.min.js?compression=gzip)](https://unpkg.com/resourceful-xhr/dist/resourceful-xhr.min.js)
 
 Resourceful Redux provides a collection of action creators for Resourceful Redux
 Actions. It also comes with a tiny library for making HTTP requests.
@@ -36,7 +36,7 @@ Install `resourceful-action-types` from npm:
 Then, import the pieces of the package that you need:
 
 ```js
-import { readResources } from 'resourceful-action-creators';
+import { readResources } from 'resourceful-xhr';
 ```
 
 ### Usage
@@ -97,7 +97,7 @@ calling `myXhr.abort()`.
 #### Example
 
 ```js
-import { crudAction } from 'resourceful-action-creators';
+import { crudAction } from 'resourceful-xhr';
 import store from './store';
 
 const xhrOptions = {
@@ -135,7 +135,7 @@ options by default:
 #### Example
 
 ```js
-import { createResources } from 'resourceful-action-creators';
+import { createResources } from 'resourceful-xhr';
 import store from './store';
 
 const newBook = {
@@ -173,7 +173,7 @@ options by default:
 #### Example
 
 ```js
-import { readResources } from 'resourceful-action-creators';
+import { readResources } from 'resourceful-xhr';
 import store from './store';
 
 const xhrOptions = {
@@ -213,7 +213,7 @@ options by default:
 #### Example
 
 ```js
-import { updateResources } from 'resourceful-action-creators';
+import { updateResources } from 'resourceful-xhr';
 import store from './store';
 
 const updatedBook = {
@@ -251,7 +251,7 @@ options by default:
 #### Example
 
 ```js
-import { deleteResources } from 'resourceful-action-creators';
+import { deleteResources } from 'resourceful-xhr';
 import store from './store';
 
 const xhrOptions = {
@@ -282,7 +282,7 @@ On top of that, it adds two features:
 #### Example
 
 ```js
-import { xhr } from 'resourceful-action-creators';
+import { xhr } from 'resourceful-xhr';
 
 const booksSearch = xhr.get('/books', {
   // Pass a `qs` option, and it will be stringified and appended to the URL
@@ -316,7 +316,7 @@ xhr.get('/books/24')
   like the following:
 
   ```js
-  import { readResources } from 'resourceful-action-creators';
+  import { readResources } from 'resourceful-xhr';
 
   function readManyBooks(pageNumber) {
     const xhrOptions = {

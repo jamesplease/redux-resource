@@ -133,9 +133,10 @@ const request = xhr.get('/books/23', (err, res) => {
 request.abort();
 ```
 
-[Resourceful Action Creators](/docs/extras/resourceful-action-creators.md) for 
-Resourceful Redux uses `xhr` for requests. These action creators return a
-native XHR object, so you can use the `abort` method to cancel those requests.
+[Resourceful XHR](/docs/extras/resourceful-xhr.md) for 
+Resourceful Redux uses [`xhr`](https://github.com/naugtur/xhr) for requests.
+These action creators return a native XHR object, so you can use the `abort`
+method to cancel those requests.
 
 #### fetch
 

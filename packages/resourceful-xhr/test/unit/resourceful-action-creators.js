@@ -3,7 +3,7 @@ import {
   __RewireAPI__
 } from '../../src';
 
-describe('Resourceful Action Creators', function() {
+describe('Resourceful XHR', function() {
   beforeEach(() => {
     this.state = {
       name: 'pizza',
