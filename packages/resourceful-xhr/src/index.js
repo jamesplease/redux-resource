@@ -102,8 +102,10 @@ function performXhr(dispatch, options, callback) {
   return req;
 }
 
-function crudAction(options, callback) {
-  return (dispatch, getState) => {
+function crudAction(options = {}, callback) {
+  const {dispatch, getState} = options;
+
+  function legacyThunk(dispatch, getState) {
     let opts;
     if (typeof options === 'function') {
       opts = options(getState()) || {};
@@ -112,11 +114,19 @@ function crudAction(options, callback) {
     }
 
     return performXhr(dispatch, opts, callback);
-  };
+  }
+
+  if (dispatch && getState) {
+    legacyThunk(dispatch, getState);
+  } else {
+    return legacyThunk;
+  }
 }
 
 function createResources(options = {}, callback) {
-  return (dispatch, getState) => {
+  const {dispatch, getState} = options;
+
+  function legacyThunk(dispatch, getState) {
     let opts;
     if (typeof options === 'function') {
       opts = options(getState()) || {};
@@ -136,11 +146,19 @@ function createResources(options = {}, callback) {
     };
 
     return performXhr(dispatch, newOptions, callback);
-  };
+  }
+
+  if (dispatch && getState) {
+    legacyThunk(dispatch, getState);
+  } else {
+    return legacyThunk;
+  }
 }
 
 function readResources(options = {}, callback) {
-  return (dispatch, getState) => {
+  const {dispatch, getState} = options;
+
+  function legacyThunk(dispatch, getState) {
     let opts;
     if (typeof options === 'function') {
       opts = options(getState()) || {};
@@ -160,11 +178,19 @@ function readResources(options = {}, callback) {
     };
 
     return performXhr(dispatch, newOptions, callback);
-  };
+  }
+
+  if (dispatch && getState) {
+    legacyThunk(dispatch, getState);
+  } else {
+    return legacyThunk;
+  }
 }
 
 function updateResources(options = {}, callback) {
-  return (dispatch, getState) => {
+  const {dispatch, getState} = options;
+
+  function legacyThunk(dispatch, getState) {
     let opts;
     if (typeof options === 'function') {
       opts = options(getState()) || {};
@@ -184,11 +210,19 @@ function updateResources(options = {}, callback) {
     };
 
     return performXhr(dispatch, newOptions, callback);
-  };
+  }
+
+  if (dispatch && getState) {
+    legacyThunk(dispatch, getState);
+  } else {
+    return legacyThunk;
+  }
 }
 
 function deleteResources(options = {}, callback) {
-  return (dispatch, getState) => {
+  const {dispatch, getState} = options;
+
+  function legacyThunk(dispatch, getState) {
     let opts;
     if (typeof options === 'function') {
       opts = options(getState()) || {};
@@ -208,7 +242,13 @@ function deleteResources(options = {}, callback) {
     };
 
     return performXhr(dispatch, newOptions, callback);
-  };
+  }
+
+  if (dispatch && getState) {
+    legacyThunk(dispatch, getState);
+  } else {
+    return legacyThunk;
+  }
 }
 
 export {
