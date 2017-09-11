@@ -116,8 +116,8 @@ function crudAction(options = {}, callback) {
     return performXhr(dispatch, opts, callback);
   }
 
-  if (dispatch && getState) {
-    legacyThunk(dispatch, getState);
+  if (dispatch) {
+    return legacyThunk(dispatch, getState);
   } else {
     return legacyThunk;
   }
@@ -148,8 +148,8 @@ function createResources(options = {}, callback) {
     return performXhr(dispatch, newOptions, callback);
   }
 
-  if (dispatch && getState) {
-    legacyThunk(dispatch, getState);
+  if (dispatch) {
+    return legacyThunk(dispatch, getState);
   } else {
     return legacyThunk;
   }
@@ -180,8 +180,8 @@ function readResources(options = {}, callback) {
     return performXhr(dispatch, newOptions, callback);
   }
 
-  if (dispatch && getState) {
-    legacyThunk(dispatch, getState);
+  if (dispatch) {
+    return legacyThunk(dispatch, getState);
   } else {
     return legacyThunk;
   }
@@ -212,8 +212,8 @@ function updateResources(options = {}, callback) {
     return performXhr(dispatch, newOptions, callback);
   }
 
-  if (dispatch && getState) {
-    legacyThunk(dispatch, getState);
+  if (dispatch) {
+    return legacyThunk(dispatch, getState);
   } else {
     return legacyThunk;
   }
@@ -244,8 +244,8 @@ function deleteResources(options = {}, callback) {
     return performXhr(dispatch, newOptions, callback);
   }
 
-  if (dispatch && getState) {
-    legacyThunk(dispatch, getState);
+  if (dispatch) {
+    return legacyThunk(dispatch, getState);
   } else {
     return legacyThunk;
   }
