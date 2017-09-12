@@ -1,6 +1,6 @@
 {
   "name": "resourceful-xhr",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Action creators for Resourceful Redux using the xhr library",
   "main": "dist/resourceful-xhr.js",
   "scripts": {
