@@ -1,4 +1,4 @@
-## (9/12/17)
+## 9/12/17
 
 ##### `resourceful-xhr@1.2.0`
 
@@ -8,13 +8,13 @@
   better chaining of requests. For more, refer to issue #190. The old API is
   still supported, but it will be removed in resourceful-xhr@2.0.0.
 
-## (9/7/17)
+## 9/7/17
 
 ##### `resourceful-xhr@1.1.0`
 
 The `resourceful-action-creators` library has been renamed to `resourceful-xhr`.
 
-## (8/18/17)
+## 8/18/17
 
 ##### `resourceful-action-creators@1.1.0`
 
