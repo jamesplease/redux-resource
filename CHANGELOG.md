@@ -8,6 +8,13 @@
   better chaining of requests. For more, refer to issue #190. The old API is
   still supported, but it will be removed in resourceful-xhr@2.0.0.
 
+##### `resourceful-xhr@2.0.0`
+
+**Breaking Changes**
+
+- The old API of `resourceful-xhr@1.x` has been removed. Only the API introduced
+  in `resourceful-xhr@1.2.0` is now available.
+
 ## 9/7/17
 
 ##### `resourceful-xhr@1.1.0`

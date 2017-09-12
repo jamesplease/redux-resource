@@ -103,152 +103,67 @@ function performXhr(dispatch, options, callback) {
 }
 
 function crudAction(options = {}, callback) {
-  const {dispatch, getState} = options;
-
-  function legacyThunk(dispatch, getState) {
-    let opts;
-    if (typeof options === 'function') {
-      opts = options(getState()) || {};
-    } else {
-      opts = options || {};
-    }
-
-    return performXhr(dispatch, opts, callback);
-  }
-
-  if (dispatch) {
-    return legacyThunk(dispatch, getState);
-  } else {
-    return legacyThunk;
-  }
+  return performXhr(options.dispatch, options, callback);
 }
 
 function createResources(options = {}, callback) {
-  const {dispatch, getState} = options;
+  const xhrOpts = options.xhrOptions || {};
 
-  function legacyThunk(dispatch, getState) {
-    let opts;
-    if (typeof options === 'function') {
-      opts = options(getState()) || {};
-    } else {
-      opts = options || {};
+  const newOptions = {
+    crudAction: 'create',
+    ...options,
+    xhrOptions: {
+      method: 'POST',
+      ...xhrOpts
     }
+  };
 
-    const xhrOpts = opts.xhrOptions || {};
-
-    const newOptions = {
-      crudAction: 'create',
-      ...opts,
-      xhrOptions: {
-        method: 'POST',
-        ...xhrOpts
-      }
-    };
-
-    return performXhr(dispatch, newOptions, callback);
-  }
-
-  if (dispatch) {
-    return legacyThunk(dispatch, getState);
-  } else {
-    return legacyThunk;
-  }
+  return performXhr(options.dispatch, newOptions, callback);
 }
 
 function readResources(options = {}, callback) {
-  const {dispatch, getState} = options;
+  const xhrOpts = options.xhrOptions || {};
 
-  function legacyThunk(dispatch, getState) {
-    let opts;
-    if (typeof options === 'function') {
-      opts = options(getState()) || {};
-    } else {
-      opts = options || {};
+  const newOptions = {
+    crudAction: 'read',
+    ...options,
+    xhrOptions: {
+      method: 'GET',
+      ...xhrOpts
     }
+  };
 
-    const xhrOpts = opts.xhrOptions || {};
-
-    const newOptions = {
-      crudAction: 'read',
-      ...opts,
-      xhrOptions: {
-        method: 'GET',
-        ...xhrOpts
-      }
-    };
-
-    return performXhr(dispatch, newOptions, callback);
-  }
-
-  if (dispatch) {
-    return legacyThunk(dispatch, getState);
-  } else {
-    return legacyThunk;
-  }
+  return performXhr(options.dispatch, newOptions, callback);
 }
 
 function updateResources(options = {}, callback) {
-  const {dispatch, getState} = options;
+  const xhrOpts = options.xhrOptions || {};
 
-  function legacyThunk(dispatch, getState) {
-    let opts;
-    if (typeof options === 'function') {
-      opts = options(getState()) || {};
-    } else {
-      opts = options || {};
+  const newOptions = {
+    crudAction: 'update',
+    ...options,
+    xhrOptions: {
+      method: 'PATCH',
+      ...xhrOpts
     }
+  };
 
-    const xhrOpts = opts.xhrOptions || {};
-
-    const newOptions = {
-      crudAction: 'update',
-      ...opts,
-      xhrOptions: {
-        method: 'PATCH',
-        ...xhrOpts
-      }
-    };
-
-    return performXhr(dispatch, newOptions, callback);
-  }
-
-  if (dispatch) {
-    return legacyThunk(dispatch, getState);
-  } else {
-    return legacyThunk;
-  }
+  return performXhr(options.dispatch, newOptions, callback);
 }
 
 function deleteResources(options = {}, callback) {
-  const {dispatch, getState} = options;
+  const xhrOpts = options.xhrOptions || {};
 
-  function legacyThunk(dispatch, getState) {
-    let opts;
-    if (typeof options === 'function') {
-      opts = options(getState()) || {};
-    } else {
-      opts = options || {};
+  const newOptions = {
+    crudAction: 'delete',
+    ...options,
+    xhrOptions: {
+      method: 'DELETE',
+      ...xhrOpts
     }
+  };
 
-    const xhrOpts = opts.xhrOptions || {};
-
-    const newOptions = {
-      crudAction: 'delete',
-      ...opts,
-      xhrOptions: {
-        method: 'DELETE',
-        ...xhrOpts
-      }
-    };
-
-    return performXhr(dispatch, newOptions, callback);
-  }
-
-  if (dispatch) {
-    return legacyThunk(dispatch, getState);
-  } else {
-    return legacyThunk;
-  }
+  return performXhr(options.dispatch, newOptions, callback);
 }
 
 export {
