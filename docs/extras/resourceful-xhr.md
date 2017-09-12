@@ -3,10 +3,8 @@
 [![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-xhr/dist/resourceful-xhr.min.js?compression=gzip)](https://unpkg.com/resourceful-xhr/dist/resourceful-xhr.min.js)
 
 Resourceful Redux provides a collection of action creators for Resourceful Redux
-Actions. It also comes with a tiny library for making HTTP requests.
-
-To use the action creators, you must configure your store with the
-[redux-thunk](https://github.com/gaearon/redux-thunk) middleware.
+Actions. These action creators use a thin wrapper around the
+[xhr](https://github.com/naugtur/xhr) library for making HTTP requests.
 
 More information about understanding how to use these action creators can be
 found in the [CRUD Actions](/docs/guides/crud-actions.md) guide, as well as
@@ -29,9 +27,9 @@ complex endpoints.
 
 ### Installation
 
-Install `resourceful-action-types` from npm:
+Install `resourceful-xhr` from npm:
 
-`npm install resourceful-action-types --save`
+`npm install resourceful-xhr --save`
 
 Then, import the pieces of the package that you need:
 
@@ -63,6 +61,10 @@ A generic action creator for performing CRUD operations.
 
   There are several additional options that can be used to configure the
   actions:
+
+  * `dispatch`: *(Function)* The `dispatch` function of a Redux store. If you're using
+    [`redux-thunk`]((https://github.com/gaearon/redux-thunk)), this will be the first
+    argument of the thunk.
 
   * `crudAction`: *(String)* The CRUD operation being performed. One of "create",
     "read", "update", or "delete". This determines which
@@ -109,13 +111,14 @@ const xhrOptions = {
   }
 };
 
-store.dispatch(crudAction({
+crudAction({
+  dispatch: store.dispatch,
   crudAction: 'read',
   resourceName: 'books',
   label: 'homePageBooks',
   mergeLabelIds: false,
   xhrOptions
-}));
+});
 ```
 
 ### `createResources( options, [callback] )`
@@ -148,12 +151,13 @@ const xhrOptions = {
   json: newBook
 };
 
-store.dispatch(createResources({
+createResources({
+  dispatch: store.dispatch,
   resourceName: 'books',
   label: 'createBooks',
   mergeLabelIds: false,
   xhrOptions
-}));
+});
 ```
 
 ### `readResources( options, [callback] )`
@@ -188,12 +192,13 @@ function transformData(body) {
   return [body];
 }
 
-store.dispatch(readResources({
+readResources({
+  dispatch: store.dispatch,
   resourceName: 'books',
   resources: [1],
   xhrOptions,
   transformData
-}));
+});
 ```
 
 ### `updateResources( options, [callback] )`
@@ -227,11 +232,12 @@ const xhrOptions = {
   json: updatedBook
 };
 
-store.dispatch(updateResources({
+updateResources({
+  dispatch: store.dispatch,
   resourceName: 'books',
   resources: [10],
   xhrOptions
-}));
+});
 ```
 
 ### `deleteResources( options, [callback] )`
@@ -259,11 +265,12 @@ const xhrOptions = {
   json: true
 };
 
-store.dispatch(deleteResources({
+deleteResources({
+  dispatch: store.dispatch,
   resourceName: 'books',
   resources: [22],
   xhrOptions
-}));
+});
 ```
 
 ### `xhr( options )`
@@ -310,27 +317,31 @@ xhr.get('/books/24')
 ### Tips
 
 - A good pattern for using this collection is to make your own action creators
-  that "wrap" these action creators. That way, your view layer doesn't need to
-  concern itself with all of the configuration necessary to use these action
-  creators. For instances, your application's read many action creator may look
-  like the following:
+  that "wrap" these action creators using
+  [redux-thunk](https://github.com/gaearon/redux-thunk). That way, your view layer
+  doesn't need to concern itself with all of the configuration necessary to use
+  these action creators. For instances, your application's read many action creator
+  may look like the following:
 
   ```js
   import { readResources } from 'resourceful-xhr';
 
   function readManyBooks(pageNumber) {
-    const xhrOptions = {
-      method: 'GET',
-      json: true,
-      url: '/books',
-      qs: { pageNumber }
-    };
+    return (dispatch) => {
+      const xhrOptions = {
+        method: 'GET',
+        json: true,
+        url: '/books',
+        qs: { pageNumber }
+      };
 
-    return readResources({
-      resourceName: 'books',
-      label: 'homePageBooks',
-      mergeLabelIds: false,
-      xhrOptions
-    });
+      return readResources({
+        resourceName: 'books',
+        label: 'homePageBooks',
+        mergeLabelIds: false,
+        xhrOptions,
+        dispatch
+      });
+    };
   }
   ```
