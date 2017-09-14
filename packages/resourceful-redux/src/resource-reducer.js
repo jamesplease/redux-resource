@@ -45,10 +45,10 @@ export default function resourceReducer(resourceName, options = {}) {
 
   return function reducer(state = initial, action) {
     if (process.env.NODE_ENV !== 'production') {
-      if (action.label && typeof action.label !== 'string') {
+      if (action.request && typeof action.request !== 'string') {
         warning(
-          `An invalid label was included in an action with type ` +
-          `"${action.type}". Labels must be strings.`
+          `An invalid request name was included in an action with type ` +
+          `"${action.type}". Request names must be strings.`
         );
       }
 
