@@ -1,3 +1,17 @@
+## 9/14/17
+
+##### `resourceful-redux@1.1.0-beta`
+
+**New Features**
+
+- The `resourceful-redux` library now supports lists, which separates two use
+  cases both previously managed by `labels`. Lists are designed to track ordered
+  collections of resources, like results from a search or a 'most popular books'.
+  Labels are now able to focus solely on named requests that aren't necessarily
+  tied to specific resources (e.g. to track the creation of new resources that
+  may not have IDs yet). For more info, refer to #187 or read further in
+  our [docs](https://resourceful-redux.js.org/).
+
 ## 9/12/17
 
 ##### `resourceful-xhr@1.2.0`
