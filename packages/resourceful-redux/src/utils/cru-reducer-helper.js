@@ -10,9 +10,9 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
   const resourcesIsUndefined = typeof resources === 'undefined';
   const hasResources = resources && resources.length;
 
-  let label;
-  if (action.label && typeof action.label === 'string') {
-    label = action.label;
+  let request;
+  if (action.request && typeof action.request === 'string') {
+    request = action.request;
   }
 
   let list;
@@ -40,8 +40,8 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
     }
   }
 
-  // Without resources or labels, there is nothing to update
-  if (!hasResources && !label && !list) {
+  // Without resources, a list, or a request name, there is nothing to update
+  if (!hasResources && !request && !list) {
     return state;
   }
 
@@ -54,46 +54,28 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
     initialResourceMeta
   });
 
-  let newLabels;
-  if (label) {
-    const currentLabel = state.labels[label] || {};
-    const newLabel = {
-      ...currentLabel,
+  let newRequests;
+  if (request) {
+    const existingRequest = state.requests[request] || {};
+    const newRequest = {
+      ...existingRequest,
       status: requestStatuses.SUCCEEDED
     };
 
-    if (action.mergeLabelIds === false) {
-      if (hasResources) {
-        newLabel.ids = resources.map(resource => {
-          return typeof resource === 'object' ? resource.id : resource;
-        });
-      } else if (!resourcesIsUndefined) {
-        newLabel.ids = [];
-      }
-    } else if (hasResources) {
-      let newLabelIds;
-      if (currentLabel.ids) {
-        newLabelIds = Array.prototype.slice.call(currentLabel.ids);
-      } else {
-        newLabelIds = [];
-      }
-
-      resources.forEach(resource => {
-        const id = typeof resource === 'object' ? resource.id : resource;
-        if (!newLabelIds.includes(id)) {
-          newLabelIds.push(id);
-        }
+    let newRequestIds;
+    if (hasResources) {
+      newRequestIds = resources.map(resource => {
+        return typeof resource === 'object' ? resource.id : resource;
       });
-
-      newLabel.ids = newLabelIds;
     }
+    newRequest.ids = newRequestIds || [];
 
-    newLabels = {
-      ...state.labels,
-      [label]: newLabel
+    newRequests = {
+      ...state.requests,
+      [request]: newRequest
     };
   } else {
-    newLabels = state.labels;
+    newRequests = state.requests;
   }
 
   let newLists;
@@ -132,7 +114,7 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
     ...state,
     resources: newResources,
     meta: newMeta,
-    labels: newLabels,
+    requests: newRequests,
     lists: newLists
   };
 }
