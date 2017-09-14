@@ -15,6 +15,9 @@ describe('reducerGenerator:', function() {
           sandwichStatus: requestStatuses.PENDING
         }
       },
+      lists: {
+        bookmarks: [1, 2, 3]
+      },
       labels: {
         italiano: {
           sandwiches: true,
@@ -44,6 +47,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED,
           sandwichStatus: requestStatuses.PENDING
         }
+      },
+      lists: {
+        bookmarks: [1, 2, 3]
       },
       labels: {
         italiano: {
@@ -98,6 +104,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED
         }
       },
+      lists: {
+        bookmarks: [1, 2, 3]
+      },
       labels: {
         italiano: {
           sandwiches: true,
@@ -121,6 +130,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED,
           sandwichStatus: requestStatuses.PENDING
         }
+      },
+      lists: {
+        bookmarks: [1, 2, 3]
       },
       labels: {
         italiano: {
@@ -167,6 +179,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED
         }
       },
+      lists: {
+        bookmarks: [1, 2, 3]
+      },
       labels: {
         italiano: {
           sandwiches: true,
@@ -190,6 +205,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED,
           sandwichStatus: requestStatuses.PENDING
         }
+      },
+      lists: {
+        bookmarks: [1, 2, 3]
       },
       labels: {
         italiano: {
@@ -218,6 +236,9 @@ describe('reducerGenerator:', function() {
           sandwichStatus: requestStatuses.PENDING
         }
       },
+      lists: {
+        bookmarks: [1, 2, 3]
+      },
       labels: {
         italiano: {
           sandwiches: true,
@@ -241,6 +262,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED,
           sandwichStatus: requestStatuses.PENDING
         }
+      },
+      lists: {
+        bookmarks: [1, 2, 3]
       },
       labels: {
         italiano: {
@@ -288,6 +312,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED
         }
       },
+      lists: {
+        bookmarks: [1, 2, 3]
+      },
       labels: {
         italiano: {
           sandwiches: true,
@@ -311,6 +338,9 @@ describe('reducerGenerator:', function() {
           pastaStatus: requestStatuses.FAILED,
           sandwichStatus: requestStatuses.PENDING
         }
+      },
+      lists: {
+        bookmarks: [1, 2, 3]
       },
       labels: {
         italiano: {
@@ -357,6 +387,9 @@ describe('reducerGenerator:', function() {
           deleteStatus: requestStatuses.NULL,
           pastaStatus: requestStatuses.FAILED
         }
+      },
+      lists: {
+        bookmarks: [1, 2, 3]
       },
       labels: {
         italiano: {

@@ -23,6 +23,7 @@ The initial state slice has the following shape:
 {
   resources: {},
   meta: {},
+  lists: {},  
   labels: {}
 }
 ```
@@ -166,6 +167,7 @@ IDs `2` and `23`, then their state slice will look like the following:
       deleteStatus: 'NULL'
     }
   },
+  lists: { ... },
   labels: { ... }
 }
 ```
@@ -201,6 +203,7 @@ resources, the slice would then look like this:
       deleteStatus: 'NULL'
     }
   },
+  lists: { ... },
   labels: { ... }
 }
 ```
@@ -214,6 +217,10 @@ directly on your state instead, then you could do that. Just know that
 the option is there to store your own, additional metadata per-resource within
 `meta`.
 
+### Lists
+
+Lists stuff needs to go here.
+
 ### Labels
 
 The last piece of the slice is called labels. Any time that you initiate a
@@ -221,12 +228,20 @@ CRUD operation request, you can assign it a label. A label is just a string,
 such as `"createBook"`. Resourceful Redux associates the following data about
 the request with your label:
 
+1. the status (pending, failed, and so on) of the request
 1. which resources were returned by the request
-2. the status (pending, failed, and so on) of the request
 
-You might be wondering what labels are for. The Labels guide later on in
-this documentation is dedicated to answering that question in detail. For now,
-let's just look at what the structure of the `labels` is:
+The primary use case for labels is to track the status of requests in your
+application. In the above section on `meta`, we used the fact that some
+requests target specific resources (by their ID) to track the request
+status on the resource's metadata.
+
+We can't always do that, though. Consider a request that searches for books
+by the title that the user has typed in. There's no specific ID associated
+with this request, so we can't store it with a resource's metadata. By giving
+requests like these a label, we can keep track of their status, too.
+
+The structure of a slice with labels looks like the following:
 
 ```js
 {
@@ -235,7 +250,10 @@ let's just look at what the structure of the `labels` is:
   },
   meta: {
     // The resource meta is in here.
-  }
+  },
+  lists: {
+    // Lists are in here
+  },
   labels: {
     createBook: {
       ids: [],

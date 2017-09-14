@@ -13,6 +13,7 @@ describe('reducers: update', function() {
           3: {id: 3},
           4: {id: 4},
         },
+        lists: {},
         labels: {
           pasta: {
             hungry: true

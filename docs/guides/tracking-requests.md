@@ -119,8 +119,8 @@ label `"create"` or `"createBook"`. And for fetching the latest movies, you
 might use `"latestMovies"`. It turns out that there's usually a label that makes
 sense for each request in your application.
 
-Labels have other uses aside from request tracking. The next guide on
-[Request Labels](/docs/guides/request-labels.md) covers the other use cases.
+For more on labels, check out the next guide on
+[Request Labels](/docs/guides/request-labels.md).
 
 ### Using Statuses
 

@@ -11,6 +11,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -44,6 +45,7 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4, lastName: 'camomile'}
         },
+        lists: {},
         labels: {},
         meta: {
           1: {
@@ -80,6 +82,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -112,6 +115,7 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4, lastName: 'camomile'}
         },
+        lists: {},
         labels: {},
         meta: {
           1: {
@@ -149,6 +153,7 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4},
         },
+        lists: {},
         labels: {
           pasta: {
             hungry: true
@@ -183,6 +188,7 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4},
         },
+        lists: {},
         labels: {
           pasta: {
             hungry: true
@@ -221,6 +227,7 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4},
         },
+        lists: {},
         labels: {
           pasta: {
             hungry: true
@@ -255,6 +262,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -290,6 +298,7 @@ describe('reducers: read:', function() {
           4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
           5: {id: 5}
         },
+        lists: {},
         labels: {},
         meta: {
           1: {
@@ -324,6 +333,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -356,6 +366,7 @@ describe('reducers: read:', function() {
           4: {id: 4, name: 'sandwiches'},
           5: {id: 5}
         },
+        lists: {},
         labels: {},
         meta: {
           1: {
@@ -389,6 +400,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {},
           meta: {
             1: {
@@ -421,6 +433,7 @@ describe('reducers: read:', function() {
           4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
           5: {id: 5}
         },
+        lists: {},
         labels: {},
         meta: {
           1: {
@@ -454,6 +467,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -495,6 +509,94 @@ describe('reducers: read:', function() {
           4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
           5: {id: 5}
         },
+        lists: {},
+        labels: {
+          sandwiches: {
+            ids: [1, 3],
+            status: requestStatuses.FAILED
+          },
+          pasta: {
+            ids: [4],
+            status: requestStatuses.PENDING
+          }
+        },
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: true,
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          },
+          5: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          }
+        }
+      });
+      expect(console.error.callCount).to.equal(1);
+    });
+
+    it('warns when a badly formatted list is passed in', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
+          lists: {},
+          labels: {
+            sandwiches: {
+              ids: [1, 3],
+              status: requestStatuses.FAILED
+            },
+            pasta: {
+              ids: [4],
+              status: requestStatuses.PENDING
+            }
+          },
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            },
+            4: {
+              selected: true
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        list: {},
+        resources: [
+          {id: 4, name: 'sandwiches'},
+          5
+        ]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
+        lists: {},
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -539,6 +641,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -579,6 +682,101 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
           5: {id: 5}
+        },
+        lists: {},
+        labels: {
+          sandwiches: {
+            ids: [1, 3],
+            status: requestStatuses.FAILED
+          },
+          pasta: {
+            ids: [4, 5],
+            status: requestStatuses.SUCCEEDED
+          }
+        },
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: true,
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          },
+          5: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          }
+        }
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('returns state with resource object, labels, and list, ensuring no label+list ID dupes', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
+          lists: {
+            oinks: [1, 3],
+            pasta: [4]
+          },
+          labels: {
+            sandwiches: {
+              ids: [1, 3],
+              status: requestStatuses.FAILED
+            },
+            pasta: {
+              ids: [4],
+              status: requestStatuses.PENDING
+            }
+          },
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            },
+            4: {
+              selected: true
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        label: 'pasta',
+        list: 'pasta',
+        resources: [
+          {id: 4, name: 'sandwiches'},
+          5
+        ]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
+        lists: {
+          oinks: [1, 3],
+          pasta: [4, 5]
         },
         labels: {
           sandwiches: {
@@ -623,6 +821,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -663,6 +862,7 @@ describe('reducers: read:', function() {
           4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
           5: {id: 5}
         },
+        lists: {},
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -697,6 +897,75 @@ describe('reducers: read:', function() {
       });
     });
 
+    it('returns state with resource object and list, ensuring nonexistent list works', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
+          lists: {},
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            },
+            4: {
+              selected: true
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        list: 'pasta',
+        resources: [
+          {id: 4, name: 'sandwiches'},
+          5
+        ]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
+        lists: {
+          pasta: [4, 5]
+        },
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: true,
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          },
+          5: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          }
+        }
+      });
+    });
+
     it('returns state with resource object and label, with mergeLabelIds: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -705,6 +974,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -747,6 +1017,7 @@ describe('reducers: read:', function() {
           4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
           5: {id: 5}
         },
+        lists: {},
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -781,6 +1052,80 @@ describe('reducers: read:', function() {
       });
     });
 
+    it('returns state with resource object and list, with mergeListIds: false', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
+          lists: {
+            sandwiches: [1, 3],
+            pasta: [100, 200]
+          },
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            },
+            4: {
+              selected: true
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        list: 'pasta',
+        mergeListIds: false,
+        resources: [
+          {id: 4, name: 'sandwiches'},
+          5
+        ]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
+          5: {id: 5}
+        },
+        lists: {
+          sandwiches: [1, 3],
+          pasta: [4, 5]
+        },
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: true,
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          },
+          5: {
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL,
+          }
+        }
+      });
+    });
+
     it('replaces label IDs with resource array and label, with mergeLabelIds: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -789,6 +1134,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -827,6 +1173,7 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4, lastName: 'camomile'},
         },
+        lists: {},
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -851,6 +1198,66 @@ describe('reducers: read:', function() {
       });
     });
 
+    it('replaces list IDs with resource array and list, with mergeListIds: false', () => {
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: {id: 1},
+            3: {id: 3},
+            4: {id: 4, lastName: 'camomile'},
+          },
+          lists: {
+            sandwiches: [1, 3],
+            pasta: [100, 200]
+          },
+          labels: {},
+          meta: {
+            1: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            },
+            4: {
+              selected: true
+            }
+          }
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        list: 'pasta',
+        mergeListIds: false,
+        resources: []
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, lastName: 'camomile'},
+        },
+        lists: {
+          sandwiches: [1, 3],
+          pasta: []
+        },
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: true
+          }
+        }
+      });
+    });
+
     it('returns state without a resource array, with a label', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
@@ -860,6 +1267,7 @@ describe('reducers: read:', function() {
             3: {id: 3},
             4: {id: 4, lastName: 'camomile'},
           },
+          lists: {},
           labels: {
             sandwiches: {
               ids: [1, 3],
@@ -896,6 +1304,7 @@ describe('reducers: read:', function() {
           3: {id: 3},
           4: {id: 4, lastName: 'camomile'},
         },
+        lists: {},
         labels: {
           sandwiches: {
             ids: [1, 3],
@@ -921,5 +1330,66 @@ describe('reducers: read:', function() {
 
       expect(console.error.callCount).to.equal(1);
     });
+  });
+
+  it('returns state without a resource array, with a list', () => {
+    stub(console, 'error');
+    const reducer = resourceReducer('hellos', {
+      initialState: {
+        resources: {
+          1: {id: 1},
+          3: {id: 3},
+          4: {id: 4, lastName: 'camomile'},
+        },
+        lists: {
+          sandwiches: [1, 3],
+          pasta: [1]
+        },
+        labels: {},
+        meta: {
+          1: {
+            name: 'what'
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: true
+          }
+        }
+      }
+    });
+
+    const reduced = reducer(undefined, {
+      type: 'READ_RESOURCES_SUCCEEDED',
+      resourceName: 'hellos',
+      list: 'pasta',
+    });
+
+    expect(reduced).to.deep.equal({
+      resources: {
+        1: {id: 1},
+        3: {id: 3},
+        4: {id: 4, lastName: 'camomile'},
+      },
+      lists: {
+        sandwiches: [1, 3],
+        pasta: [1]
+      },
+      labels: {},
+      meta: {
+        1: {
+          name: 'what'
+        },
+        3: {
+          deleteStatus: 'sandwiches'
+        },
+        4: {
+          selected: true,
+        }
+      }
+    });
+
+    expect(console.error.callCount).to.equal(1);
   });
 });

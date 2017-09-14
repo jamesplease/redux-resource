@@ -18,6 +18,9 @@ describe('reducers: create', function() {
             hungry: true
           }
         },
+        lists: {
+          bookmarks: [1, 2, 3]
+        },
         meta: {
           1: {
             name: 'what'

@@ -62,6 +62,26 @@ metadata. An example is:
 }
 ```
 
+### Lists
+
+Often, applications need to keep track of ordered groupings of resources. In
+Resourceful Redux, this is done through a concept named "lists."
+
+Lists in your store are an array of resource IDs. A resource's lists might look
+like the following:
+
+```js
+{
+  lists: {
+    searchResults: [10, 233, 4, 50],
+    shoppingCart: [10, 409],
+  }
+}
+```
+
+As a user interacts with your application, Resourceful Redux provides a straightforward
+API to keep lists up-to-date.
+
 ### CRUD Operations
 
 There are four interactions you can have with a resource: you can create them,
