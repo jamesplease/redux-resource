@@ -9,7 +9,7 @@ export default function generateDefaultInitialState() {
     meta: {},
     // Labeled requests are used to track the statuses of requests that aren't
     // associated with a resource ID
-    labels: {},
+    requests: {},
     // Lists are ordered collections of resources
     lists: {}
   };
