@@ -8,9 +8,9 @@ import warning from './warning';
 // Basically, two things can change:
 //
 // 1. Request status for resource IDs in `meta`, if IDs are passed in
-// 2. Request status for a labeled request
+// 2. Request status for a named request
 //
-// A labeled requests's IDs don't change, and neither does the resource. Consequently,
+// A named requests's IDs don't change, and neither does the resource. Consequently,
 // this helper completely defines all of the ways in which the non-success reducers
 // can change the state.
 export default function(crudAction, requestStatus) {
