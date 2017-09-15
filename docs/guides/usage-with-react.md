@@ -10,7 +10,8 @@ using frequently with Resourceful.
 
 ### Using `mapStateToProps`
 
-We recommend placing your calls to [`getResources`](/docs/api-reference/get-resources.md) and [`getStatus`](/docs/api-reference/get-status.md) within
+We recommend placing your calls to [`getResources`](/docs/api-reference/get-resources.md)
+and [`getStatus`](/docs/api-reference/get-status.md) within
 `mapStateToProps`. That way, you can access this information from any of the
 component's lifecycle methods, without needing to compute them for each method.
 
@@ -21,7 +22,7 @@ import { getResources, getStatus } from 'resourceful-redux';
 
 function mapStateToProps(state) {
   const searchedBooks = getResources(state, 'books', 'searchResults');
-  const searchStatus = getStatus(state, 'books.labels.searchResults.status');
+  const searchStatus = getStatus(state, 'books.requests.getSearchResults.status');
 
   return {
     searchedBooks,
@@ -106,7 +107,7 @@ class BooksList extends Component {
       return;
     }
 
-    const nextSearchStatus = getStatus(nextProps, 'books.labels.searchResults.status');
+    const nextSearchStatus = getStatus(nextProps, 'books.requests.getSearchResults.status');
 
     if (nextSearchStatus.succeeded) {
       console.log('The search request just succeeded.');
@@ -117,7 +118,7 @@ class BooksList extends Component {
 
 function mapStateToProps(state) {
   const books = state.books;
-  const searchStatus = getStatus(state, 'books.labels.searchResults.status');
+  const searchStatus = getStatus(state, 'books.requests.getSearchResults.status');
 
   return {
     searchStatus,

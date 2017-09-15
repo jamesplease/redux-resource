@@ -49,7 +49,7 @@ aggregation work as follows:
 
 A status location is a string that specifies a location of a request status in
 your state tree. For instance `"books.meta.24.readStatus"` or
-`"books.labels.dashboardSearch.status"`.
+`"books.requests.dashboardSearch.status"`.
 
 > Keep in mind that `treatNullAsPending` also works when aggregating.
 
@@ -76,7 +76,7 @@ const bookReadStatus = getStatus(
   state,
   [
     'articles.meta.23.readStatus',
-    'comments.labels.detailsRead.status'
+    'comments.requests.detailsRead.status'
   ],
   true
 );

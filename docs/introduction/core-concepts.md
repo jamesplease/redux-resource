@@ -1,6 +1,6 @@
 # Core Concepts
 
-Resourceful Redux is intended to be a simple solution to a complicated problem.
+Understanding these core concepts is useful when using Resourceful Redux.
 
 ### Resources
 
@@ -125,11 +125,9 @@ then your metadata for that resource will start off looking like this:
 ```
 
 For requests that don't target a resource (or resources) by ID, you can assign
-the request a "label," which is just a string, to keep track of its status.
-
-Because this information is stored at such a granular level, you're not limited
-by the user experiences that you can build. Instead of
+the request a "name." A name is just a string that you can use to look up that
+request's status.
 
 By storing this information at such a granular level, Resourceful Redux provides
-a solid foundation to build truly great user experiences. And you don't even
-need to write any boilerplate.
+a robust foundation from which you can build truly great user experiences. And
+you don't even need to write any boilerplate.

@@ -23,15 +23,15 @@ of action creators:
 
 No, you can use any system for making requests that you'd like.
 
-#### Should all Actions have labels?
+#### Should all Actions use a named requests?
 
-Probably not.  We recommend using labels when they provide you value. Two common
-use cases for labels are:
+Probably not.  We recommend using named requests when they provide you value. Two
+common use cases for named requests are:
 
 1. creating resources
 
 2. multiple bulk reads of the same resource type on the same page
 
-A handy rule of thumb for when to use labels, as well as much more information
-about labels, can be found in
-[the Labels guide](/docs/guides/request-labels.md#when-to-use-labels).
+A handy rule of thumb for when to use named requests, as well as much more
+information about named requests, can be found in
+[the Named Requests guide](/docs/guides/named-requests.md#when-to-use-named-requests).

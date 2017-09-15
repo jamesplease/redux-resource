@@ -24,7 +24,7 @@ The initial state slice has the following shape:
   resources: {},
   meta: {},
   lists: {},  
-  labels: {}
+  requests: {}
 }
 ```
 
@@ -76,15 +76,18 @@ then your state slice will end up looking like this:
   meta: {
     // Resource metadata here
   },
-  labels: {
-    // Request labels here
+  lists: {
+    // Resource lists go here
+  },
+  requests: {
+    // Named requests here
   }
 }
 ```
 
 The `resources` object allows you to quickly look up resources given their ID.
-You may be wondering how ordering from the server is preserved. You use request
-labels to do this, which is a concept we will cover shortly.
+You may be wondering how ordering from the server is preserved. You use "lists"
+for this, which is a feature that we will cover shortly.
 
 Keep in mind that Resourceful Redux doesn't care about the specific format that
 your server sends the data back in. You just need to make sure that the resources
@@ -141,9 +144,9 @@ IDs `2` and `23`, then their state slice will look like the following:
 
 ```js
 {
-  resources: [
+  resources: {
     // The resources themselves are in here.
-  ],
+  },
   meta: {
     2: {
       selected: true,
@@ -168,7 +171,7 @@ IDs `2` and `23`, then their state slice will look like the following:
     }
   },
   lists: { ... },
-  labels: { ... }
+  requests: { ... }
 }
 ```
 
@@ -204,7 +207,7 @@ resources, the slice would then look like this:
     }
   },
   lists: { ... },
-  labels: { ... }
+  requests: { ... }
 }
 ```
 
@@ -213,25 +216,58 @@ to that resource's `meta` object to keep track of it.
 
 Keep in mind that you don't _need_ to store any additional metadata here. For
 instance, in the above example, if you'd rather have a `selectedIds` property
-directly on your state instead, then you could do that. Just know that
+directly on your state slice instead, then you could do that. Just know that
 the option is there to store your own, additional metadata per-resource within
 `meta`.
 
 ### Lists
 
-Lists stuff needs to go here.
+Lists are a way to keep track of _ordered subsets_ of resources. The `resources`
+section of the slice (described above), is useful in that it provides a single
+location for all resources of a single type to exist. It's also useful because
+it provides quick lookups for all resources, given their ID.
 
-### Labels
+There are two common things that applications need to do that the `resources`
+slice doesn't account for:
 
-The last piece of the slice is called labels. Any time that you initiate a
-CRUD operation request, you can assign it a label. A label is just a string,
+The first is keeping track of ordering. JavaScript objects are unordered, so they
+are unable to keep track of, say, the order that a server returns your resources in.
+
+The second is keeping track of different groups of resources. Imagine an
+application for managing books, where the user has a list of books returned
+by a search result, and also a shopping cart with a list of books.
+
+Because these are the same resource (books), they belong in the same slice.
+But there are two different "groupings" of them, and they may have a different
+order. Lists lets you keep track of this information.
+
+In the above example, let's see what those lists might look in the state slice:
+
+```js
+{
+  resources: {
+    // The resources themselves are in here.
+  },
+  meta: { ... },
+  lists: {
+    shoppingCart: [24, 100, 10],
+    searchResults: [9, 34, 782, 24, 30]
+  },
+  requests: { ... }
+}
+```
+
+### Requests
+
+The last piece of the slice is called "requests." Any time that you initiate a
+CRUD operation request, you can assign it a name. A name is just a string,
 such as `"createBook"`. Resourceful Redux associates the following data about
-the request with your label:
+the request with your named request:
 
 1. the status (pending, failed, and so on) of the request
 1. which resources were returned by the request
 
-The primary use case for labels is to track the status of requests in your
+The primary use case for named requests is to track statuses in your
 application. In the above section on `meta`, we used the fact that some
 requests target specific resources (by their ID) to track the request
 status on the resource's metadata.
@@ -239,9 +275,9 @@ status on the resource's metadata.
 We can't always do that, though. Consider a request that searches for books
 by the title that the user has typed in. There's no specific ID associated
 with this request, so we can't store it with a resource's metadata. By giving
-requests like these a label, we can keep track of their status, too.
+requests like these a name, we can keep track of their status, too.
 
-The structure of a slice with labels looks like the following:
+The structure of a slice with named requests looks like the following:
 
 ```js
 {
@@ -254,7 +290,7 @@ The structure of a slice with labels looks like the following:
   lists: {
     // Lists are in here
   },
-  labels: {
+  requests: {
     createBook: {
       ids: [],
       status: 'PENDING'

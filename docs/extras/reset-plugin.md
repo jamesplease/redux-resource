@@ -1,7 +1,7 @@
 # Reset Plugin
 
 The reset plugin allows you to remove all of the data in the state, effectively
-"resetting" it. If you pass a `label`, then _just_ that label will be reset.
+"resetting" it. If you pass a `list`, then _just_ that list will be reset.
 
 ### Usage
 
@@ -32,34 +32,28 @@ Resetting a slice will leave you with the following state:
 {
   resources: {},
   meta: {},
-  labels: {},
+  lists: {},
+  requests: {}
 }
 ```
 
-Resetting a label will turn just that label into this:
+Resetting a list will set the list to be an empty array.
 
-```js
-{
-  ids: [],
-  status: 'NULL'
-}
-```
-
-The additional initial that you pass to `resourceReducer` will also be
-included when you reset your state.
+The additional initial state that you pass to `resourceReducer` will also
+be included when you reset your state.
 
 ---
 
-### `resetResource(resourceName, [label])`
+### `resetResource(resourceName, [list])`
 
-Resets the slice for `resourceName`. If `label` is passed, then _just_ that
-label will be reset.
+Resets the slice for `resourceName`. If `list` is passed, then _just_ that
+list will be reset.
 
 #### Arguments
 
 1. `resourceName` *(String)*: The name of the slice to reset.
 
-2. [`label`] *(String)*: The label to reset.
+2. [`list`] *(String)*: The list to reset.
 
 #### Returns
 

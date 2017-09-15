@@ -26,19 +26,18 @@ store.dispatch({
 });
 ```
 
-You should use the same list for the lifetime of the request. For instance,
-if you use a particular list for the "pending" action, then you will want
-to use that same list for the "success" action, too.
-
 You only need to specify a list for create or read actions. Because lists
 only store IDs, they get resource updates automatically. And successful
 deletes will remove the deleted resources from all lists automatically.
+
+> Note: If you specify a list for other actions, nothing bad will happen. It's
+  just not necessary.
 
 ### Why Use Lists
 
 There are two use cases for lists. Let's look at them.
 
-#### Server-side Ordering
+#### Ordering
 
 In your state slice, resources aren't stored in any order: they're just
 keys on the `resources` object. Frequently, applications will need to preserve
@@ -61,8 +60,8 @@ may look like something like:
   meta: {
     // Metadata about resources is stored in here
   },
-  labels: {
-    // Labels go here
+  requests: {
+    // Named requests go here
   }
 }
 ```
@@ -105,8 +104,8 @@ store.dispatch({
 
 ### Avoid Dynamic Lists
 
-Just like labels, dynamically-named lists are harder to reason about. We
-strongly recommend that you use statically-named lists whenever possible.
+As with named requests, dynamically-named lists are harder to reason about.
+We strongly recommend that you use statically-named lists whenever possible.
 
 There may be valid reasons to use dynamically-named lists, but they are few
 and far between.

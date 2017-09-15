@@ -34,8 +34,11 @@ to give you more information about those types of requests and responses.
 Furthermore, if you're using a system like JSON API, then you can use plugins to
 add support for features such as relationships or response metadata.
 
-Officially maintained plugins for common protocols is in the works, but in the
-meantime, we've done our best to make it straightforward to write your own.
+There's [an official HTTP Status Codes plugin](/docs/extras/http-status-codes-plugin.html)
+that makes working with HTTP requests even better.
+
+Officially maintained plugins for other common protocols are on our to do list, but
+in the meantime, we've done our best to make it straightforward to write your own.
 
 ### Using a Plugin
 
