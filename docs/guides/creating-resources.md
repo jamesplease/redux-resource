@@ -22,15 +22,15 @@ following way:
 - `CREATE_RESOURCES_NULL`: Use this is the request is aborted.
 - `CREATE_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
-### Using Labels
+### Using Named Requests
 
 For many create requests, you don't have the ID of the resource being created
 until after the operation succeeds. Therefore, to track the status of the
-request, you will need a label.
+request, you will need a named request.
 
 Many interfaces only allow one creation request at a time (although that
 request may be for a bulk creation). In these situations, you can just use a
-single label, such as `"create"`, for all of your creation requests.
+single named request, such as `"create"`, for all of your creation requests.
 
 ### Successful Creates
 
@@ -41,7 +41,7 @@ included in the action's `resources`.
 The metadata for each of those resources will also be changed to have
 `createStatus: 'SUCCEEDED'`.
 
-If a `label` is passed, then the IDs for the label will be updated to include
+If a `list` is passed, then the IDs for the list will be updated to include
 the new IDs.
 
 ### Resourceful XHR
@@ -66,7 +66,7 @@ export default function createBook(bookDetails) {
     dispatch({
       type: actionTypes.CREATE_RESOURCES_PENDING,
       resourceName: 'books',
-      label: 'create'
+      request: 'create'
     });
 
     const req = xhr.post(
@@ -79,19 +79,19 @@ export default function createBook(bookDetails) {
           dispatch({
             type: actionTypes.CREATE_RESOURCES_NULL,
             resourceName: 'books',
-            label: 'create'
+            request: 'create'
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.CREATE_RESOURCES_FAILED,
             resourceName: 'books',
-            label: 'create'
+            request: 'create'
           });
         } else {
           dispatch({
             type: actionTypes.CREATE_RESOURCES_SUCCEEDED,
             resourceName: 'books',
-            label: 'create',
+            request: 'create',
             resources: [body]
           });
         }

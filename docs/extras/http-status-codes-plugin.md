@@ -56,7 +56,7 @@ keys, depending on the CRUD operation being performed:
 - `updateStatusCode`
 - `deleteStatusCode`
 
-On a label, the code is just available under `statusCode`.
+On a named request, the code is just available under `statusCode`.
 
 ```js
 import store from './store';
@@ -66,8 +66,8 @@ const state = store.getState();
 // Access the status codes of some resource meta
 const bookStatusCode = state.books.meta[24].readStatusCode;
 
-// Access the status code from a label
-const searchStatusCode = state.books.labels.search.statusCode;
+// Access the status code from a named requests
+const searchStatusCode = state.books.requests.search.statusCode;
 ```
 
 ### Tips

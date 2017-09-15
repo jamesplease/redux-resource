@@ -6,7 +6,7 @@ a request. The status of a request can be used to display feedback to the user
 of your application, such as showing loading indicators or error messages.
 
 There are two ways to track CRUD operation requests in Resourceful Redux:
-tracking the status on some resources' metadata, and using a labeled request.
+tracking the status on some resources' metadata, and using a named request.
 
 You'll always use _at least_ one of these when performing CRUD operations.
 Sometimes, you might use both.
@@ -57,16 +57,16 @@ The rule of thumb is:
 **You can track CRUD operation requests on resource metadata anytime you have an
 ID when you fire the "start" action type.**
 
-The above condition isn't always met. In those situations, you use request
-labels to track requests.
+The above condition isn't always met. In those situations, you use _named requests_
+to track requests.
 
-### Request Labels
+### Named Requests
 
-A request label is a name that you give an individual request. You can use
-labels to track the status of any CRUD operation request in your application,
-whether or not you have IDs at the start of the action.
+Individual requests can be given a name. You can use named requests to track the status
+of any CRUD operation request in your application, whether or not you have IDs at the
+start of the action.
 
-The following information is stored about each labeled request in your state
+The following information is stored about each named request in your state
 slice:
 
 ```js
@@ -79,9 +79,9 @@ slice:
 where `status` is the request status, and `ids` are any associated resource IDs
 with this request.
 
-Information about labeled requests is stored in the `labels` section of your
+Information about named requests is stored in the `requests` section of your
 state slice. For instance, if you dispatch a pending action for a request with
-the label `create`, then your state slice would look like:
+the name `create`, then your state slice would look like:
 
 ```js
 {
@@ -91,7 +91,10 @@ the label `create`, then your state slice would look like:
   meta: {
     // resource metadata in here
   },
-  labels: {
+  lists: {
+    // lists are in here
+  },
+  requests: {
     create: {
       status: 'PENDING',
       ids: []
@@ -101,9 +104,9 @@ the label `create`, then your state slice would look like:
 ```
 
 You can use [`getStatus`](/docs/api-reference/get-status.md) to conveniently
-access and use the status of a labeled request in your view layer.
+access and use the status of a named request in your view layer.
 
-Two common examples of when to use a label include:
+Two common examples of when to use a named request include:
 
 - Read many requests, where the user is passing some sort of query to filter a
   large list by
@@ -115,12 +118,12 @@ included in the start action.
 
 It might seem strange to associate a name with a request, but we find that it
 works out well in practice. For instance, for creating a book, you might use the
-label `"create"` or `"createBook"`. And for fetching the latest movies, you
-might use `"latestMovies"`. It turns out that there's usually a label that makes
+name `"create"` or `"createBook"`. And for fetching the latest movies, you
+might use `"latestMovies"`. It turns out that there's usually a name that makes
 sense for each request in your application.
 
-For more on labels, check out the next guide on
-[Request Labels](/docs/guides/request-labels.md).
+For more on named requests, check out the guide on
+[Named Requests](/docs/guides/named-requests.md).
 
 ### Using Statuses
 

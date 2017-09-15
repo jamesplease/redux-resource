@@ -44,12 +44,13 @@ request, Resourceful Redux doesn't know where to put this information in your
 state tree. Consequently, this action is a no-op.
 
 To reflect a request status in the state tree, you need to supply at least one
-of these two values in your action: a `resources` array, or a `label`.
+of these two values in your action: a `resources` array, or a `request`, which
+is a name to represent the request.
 
 ### `resources`
 
 A `resources` array represents the resources being affected by the action.
-It can be an array if IDs, such as `[1, 2, 3]`, or an array of resource objects,
+It can be an array of IDs, such as `[1, 2, 3]`, or an array of resource objects,
 such as
 
 ```js
@@ -125,17 +126,18 @@ The "success" action types also have special behavior with the `resources`
 array. For creates, reads, and updates, your state's resources object will be
 updated to reflect any new data. For successful deletes, the state for that
 resource will be changed to be `null`, and the resource will be removed from the
-`ids` array of all labels.
+`ids` array of all lists.
 
 It isn't always possible to provide an array of `resources` in your action. For
 instance, if the user is searching for books by entering a title, you couldn't
 know which books will be returned until after the request has completed.
 
-To keep track of the resources for requests like these, you need to use labels.
+To keep track of the resources for requests like these, you need to use named
+requests.
 
-### `label`
+### `request`
 
-Supplying a `label` will track the status of this request under the `labels`
+Supplying a `request` will track the status of this request under the `requests`
 property of your store.
 
 For instance, if your interface allows users to search for a books resource, you
@@ -148,14 +150,14 @@ import store from './store';
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
-  label: 'booksSearch',
+  request: 'booksSearch',
   query: 'Lord of the Flies'
 });
 ```
 
 Resources are primarily used to keep
 [track of the request status](/docs/guides/tracking-requests.md). For more, refer
-to [the guide on labels](/docs/guides/request-labels.md).
+to [the guide on named requests](/docs/guides/named-requests.md).
 
 ### `list`
 
@@ -194,16 +196,6 @@ The following CRUD Action attributes are all optional.
   list of IDs for that list. When `true`, it will protect against duplicate
   IDs being added. Defaults to `true`. This only applies for successful read
   and write Actions that have a `list` specified.
-
-#### Deprecated CRUD Action properties
-
-These properties are slated to be removed in v2.0.0 of Resourceful Redux.
-
-- `mergeLabelIds` *(Boolean)*: When a label is supplied, this lets you control
-  whether or not the new list of IDs replaces or gets merged into the existing
-  list of IDs for that label. When `true`, it will protect against duplicate
-  IDs being added. Defaults to `true`. This only applies for successful read,
-  write, and update Actions that have a `label` specified.
 
 ### Action Creators
 

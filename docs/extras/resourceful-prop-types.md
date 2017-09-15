@@ -37,7 +37,8 @@ This checks that the object has a shape like:
 {
   resources: {},
   meta: {},
-  labels: {}
+  requests: {},
+  lists: {}
 }
 ```
 
@@ -58,7 +59,7 @@ mapStateToProps(state) {
 #### `resourceIdsPropType`
 
 Validates an Array of resource IDs. Sometimes, it's convenient to store a
-reference to a subset of resources as an array of IDs. For instance, Labels
+reference to a subset of resources as an array of IDs. For instance, lists
 store their associated resources as an array of IDs. In your own application
 code, you might choose to represent a list of "selected" resources as an array
 of IDs.

@@ -22,9 +22,9 @@ following way:
 - `UPDATE_RESOURCES_NULL`: Use this is the request is aborted.
 - `UPDATE_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
-### Using Labels
+### Using Named Requests
 
-For most applications, labels won't be necessary for updates. This is because
+For most applications, named requests won't be necessary for updates. This is because
 you typically know the IDs of the resources that you're updating, so you can
 just track the requests on the resource's metadata directly.
 
@@ -37,7 +37,7 @@ included in the action's `resources`.
 The metadata for each of those resources will also be changed to have
 `readStatus: 'SUCCEEDED'`.
 
-If a `label` is passed, then the IDs for the label will be updated to include
+If a `list` is passed, then the IDs for the list will be updated to include
 the new IDs.
 
 ### Resourceful XHR

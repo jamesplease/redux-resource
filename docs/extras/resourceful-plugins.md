@@ -39,5 +39,5 @@ documentation pages to learn more.
   might be useful to you.
 
 - [`reset`](/docs/extras/reset-plugin.md): This plugin provides action types
-  that let you reset the state of an entire slice. You can also pass a label to
-  reset the state of just that label.
+  that let you reset the state of an entire slice. You can also pass a list to
+  reset the state of just that list.

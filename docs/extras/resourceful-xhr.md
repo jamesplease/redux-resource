@@ -115,8 +115,9 @@ crudAction({
   dispatch: store.dispatch,
   crudAction: 'read',
   resourceName: 'books',
-  label: 'homePageBooks',
-  mergeLabelIds: false,
+  request: 'getHomePageBooks',
+  list: 'homePageBooks',
+  mergeListIds: false,
   xhrOptions
 });
 ```
@@ -154,8 +155,7 @@ const xhrOptions = {
 createResources({
   dispatch: store.dispatch,
   resourceName: 'books',
-  label: 'createBooks',
-  mergeLabelIds: false,
+  request: 'createBooks',
   xhrOptions
 });
 ```
@@ -337,8 +337,9 @@ xhr.get('/books/24')
 
       return readResources({
         resourceName: 'books',
-        label: 'homePageBooks',
-        mergeLabelIds: false,
+        request: 'getHomePageBooks',
+        list: 'homePageBooks',
+        mergeListIds: false,
         xhrOptions,
         dispatch
       });

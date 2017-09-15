@@ -50,7 +50,7 @@ function mapStateToProps(state, props) {
   // A user can pass a `bookId` into this Component to view the book's data
   const bookId = props.bookId;
   const readStatus = getStatus(state, `books.meta.${bookId}.readStatus`, true);
-  const book = state.books.resources.find(book => book.id === bookId);
+  const book = state.books.resources[book.id];
 
   return {
     book,
@@ -89,7 +89,7 @@ const state = store.getState();
 
 const aggregatedStatus = getStatus(state, [
   'books.meta.23.readStatus',
-  'books.labels.bookComments.status'
+  'books.requests.getBookComments.status'
 ], true);
 ```
 
