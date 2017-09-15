@@ -1,5 +1,4 @@
-// Returns a list of resources by IDs or label
-export default function(state, resourceName, idsOrLabel) {
+export default function(state, resourceName, idsOrList) {
   const resourceSlice = state[resourceName];
   if (!resourceSlice) {
     return [];
@@ -8,21 +7,16 @@ export default function(state, resourceName, idsOrLabel) {
   const resources = resourceSlice.resources;
   let idsList;
 
-  // This conditional handles the situation where `idsOrLabel` is an ID
-  if (typeof idsOrLabel === 'string') {
-    const label = resourceSlice.labels[idsOrLabel];
-    if (!label) {
+  // This conditional handles the situation where `idsOrList` is an ID
+  if (typeof idsOrList === 'string') {
+    const list = resourceSlice.lists[idsOrList];
+    if (!list) {
       return [];
     }
 
-    const labelIds = label.ids;
-    if (!labelIds) {
-      return [];
-    }
-
-    idsList = labelIds;
+    idsList = list;
   } else {
-    idsList = idsOrLabel;
+    idsList = idsOrList;
   }
 
   if (!(idsList && idsList.length)) {
