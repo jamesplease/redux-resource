@@ -62,6 +62,17 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
       status: requestStatuses.SUCCEEDED
     };
 
+    const newRequestIds = [];
+    if (hasResources) {
+      resources.forEach(resource => {
+        const id = typeof resource === 'object' ? resource.id : resource;
+        if (!newRequestIds.includes(id)) {
+          newRequestIds.push(id);
+        }
+      });
+    }
+    newRequest.ids = newRequestIds;
+
     newRequests = {
       ...state.requests,
       [request]: newRequest
