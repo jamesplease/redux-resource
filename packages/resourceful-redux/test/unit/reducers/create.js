@@ -13,7 +13,7 @@ describe('reducers: create', function() {
           3: {id: 3},
           4: {id: 4},
         },
-        labels: {
+        requests: {
           pasta: {
             hungry: true
           }

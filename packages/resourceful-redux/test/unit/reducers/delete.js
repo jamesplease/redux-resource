@@ -2,7 +2,7 @@ import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: delete', function() {
   describe('DELETE_RESOURCES_SUCCEEDED', () => {
-    it('returns the right state without a label, without IDs', () => {
+    it('returns the right state without a request, without IDs', () => {
       stub(console, 'error');
       const initialState = {
         resources: {
@@ -11,7 +11,7 @@ describe('reducers: delete', function() {
           4: {id: 4},
         },
         lists: {},
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -43,7 +43,7 @@ describe('reducers: delete', function() {
             4: {id: 4},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -77,7 +77,7 @@ describe('reducers: delete', function() {
             4: {id: 4},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -112,7 +112,7 @@ describe('reducers: delete', function() {
             4: {id: 4},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -146,7 +146,7 @@ describe('reducers: delete', function() {
             4: {id: 4},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -170,7 +170,7 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
-    it('returns the right state without a label, with IDs', () => {
+    it('returns the right state without a request, with IDs', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -180,7 +180,7 @@ describe('reducers: delete', function() {
             4: {id: 4},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -208,7 +208,7 @@ describe('reducers: delete', function() {
           4: null
         },
         lists: {},
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -232,7 +232,7 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('warns and ignores a poorly-formatted label', () => {
+    it('warns and ignores a poorly-formatted request', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -242,7 +242,7 @@ describe('reducers: delete', function() {
             4: {id: 4},
           },
           lists: {},
-          labels: {
+          requests: {
             oink: {
               hungry: true,
               ids: [10, 3]
@@ -267,7 +267,7 @@ describe('reducers: delete', function() {
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: {},
+        request: {},
         resources: [
           3,
           {id: 4}
@@ -281,14 +281,14 @@ describe('reducers: delete', function() {
           4: null
         },
         lists: {},
-        labels: {
+        requests: {
           italiano: {
             status: requestStatuses.PENDING,
-            ids: [1],
+            ids: [1, 3, 4],
             hangry: false
           },
           oink: {
-            ids: [10],
+            ids: [10, 3],
             hungry: true
           }
         },
@@ -313,7 +313,7 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
-    it('returns the right state with a label, with IDs', () => {
+    it('returns the right state with a request, with IDs', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -323,7 +323,7 @@ describe('reducers: delete', function() {
             4: {id: 4},
           },
           lists: {},
-          labels: {
+          requests: {
             oink: {
               hungry: true,
               ids: [10, 3]
@@ -348,7 +348,7 @@ describe('reducers: delete', function() {
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'italiano',
+        request: 'italiano',
         resources: [
           3,
           {id: 4}
@@ -362,14 +362,14 @@ describe('reducers: delete', function() {
           4: null
         },
         lists: {},
-        labels: {
+        requests: {
           italiano: {
             status: requestStatuses.SUCCEEDED,
-            ids: [1],
+            ids: [3,4],
             hangry: false
           },
           oink: {
-            ids: [10],
+            ids: [10,3],
             hungry: true
           }
         },
@@ -407,7 +407,7 @@ describe('reducers: delete', function() {
             oink: [10, 3],
             italiano: [1, 3, 4],
           },
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -438,7 +438,7 @@ describe('reducers: delete', function() {
           oink: [10],
           italiano: [1],
         },
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -460,7 +460,7 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('returns the right state with a label, without IDs', () => {
+    it('returns the right state with a request, without IDs', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -473,7 +473,7 @@ describe('reducers: delete', function() {
             stuff: [1, 10, 100],
             ok: [2, 50]
           },
-          labels: {
+          requests: {
             oink: {
               hungry: true
             },
@@ -497,7 +497,7 @@ describe('reducers: delete', function() {
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'italiano',
+        request: 'italiano',
       });
 
       expect(reduced).to.deep.equal({
@@ -510,10 +510,10 @@ describe('reducers: delete', function() {
           stuff: [1, 10, 100],
           ok: [2, 50]
         },
-        labels: {
+        requests: {
           italiano: {
             status: requestStatuses.SUCCEEDED,
-            ids: [1, 3, 4],
+            ids: [],
             hangry: false
           },
           oink: {

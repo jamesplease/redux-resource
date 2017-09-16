@@ -11,7 +11,7 @@ describe('getStatus', function() {
           116: {id: 116, name: 'pickles'},
         },
         meta: {},
-        labels: {
+        requests: {
           dashboardSearch: {
             ids: [10, 22, 102],
             status: requestStatuses.SUCCEEDED
@@ -26,7 +26,7 @@ describe('getStatus', function() {
       movies: {
         resources: {},
         meta: {},
-        labels: {}
+        requests: {}
       }
     };
   });
@@ -43,20 +43,20 @@ describe('getStatus', function() {
     });
   });
 
-  describe('labels', () => {
-    it('should return an empty array when the label does not exist', () => {
+  describe('requests', () => {
+    it('should return an empty array when the request does not exist', () => {
       expect(getResources(this.state, 'books', 'sandwiches')).to.deep.equal([]);
     });
 
-    it('should return an empty array when the label exists, and has no IDs', () => {
+    it('should return an empty array when the request exists, and has no IDs', () => {
       expect(getResources(this.state, 'books', 'detailsPage')).to.deep.equal([]);
     });
 
-    it('should return an empty array when the label exists, but does not have an IDs array (this should never happen!)', () => {
+    it('should return an empty array when the request exists, but does not have an IDs array (this should never happen!)', () => {
       expect(getResources(this.state, 'books', 'malformedLabel')).to.deep.equal([]);
     });
 
-    it('should return the resources that exist when the label exists', () => {
+    it('should return the resources that exist when the request exists', () => {
       expect(getResources(this.state, 'books', 'dashboardSearch')).to.deep.equal([
         {id: 10, name: 'pizza'},
         {id: 102, name: 'fried'},

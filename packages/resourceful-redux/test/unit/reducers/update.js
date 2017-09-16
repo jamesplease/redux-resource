@@ -14,7 +14,7 @@ describe('reducers: update', function() {
           4: {id: 4},
         },
         lists: {},
-        labels: {
+        requests: {
           pasta: {
             hungry: true
           }

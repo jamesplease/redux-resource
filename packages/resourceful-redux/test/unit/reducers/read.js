@@ -12,7 +12,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -35,7 +35,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_PENDING',
         resourceName: 'hellos',
-        label: true,
+        request: true,
         resources: [4, 5]
       });
 
@@ -46,7 +46,7 @@ describe('reducers: read:', function() {
           4: {id: 4, lastName: 'camomile'}
         },
         lists: {},
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -83,7 +83,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -116,7 +116,7 @@ describe('reducers: read:', function() {
           4: {id: 4, lastName: 'camomile'}
         },
         lists: {},
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -154,7 +154,7 @@ describe('reducers: read:', function() {
           4: {id: 4},
         },
         lists: {},
-        labels: {
+        requests: {
           pasta: {
             hungry: true
           }
@@ -189,7 +189,7 @@ describe('reducers: read:', function() {
           4: {id: 4},
         },
         lists: {},
-        labels: {
+        requests: {
           pasta: {
             hungry: true
           }
@@ -228,7 +228,7 @@ describe('reducers: read:', function() {
           4: {id: 4},
         },
         lists: {},
-        labels: {
+        requests: {
           pasta: {
             hungry: true
           }
@@ -263,7 +263,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -299,7 +299,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -334,7 +334,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -367,7 +367,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -401,7 +401,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -434,7 +434,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -468,7 +468,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -495,7 +495,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: {},
+        request: {},
         resources: [
           {id: 4, name: 'sandwiches'},
           5
@@ -510,7 +510,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
@@ -555,7 +555,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -597,7 +597,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
@@ -632,7 +632,7 @@ describe('reducers: read:', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
-    it('returns state with resource object and label, ensuring no label ID dupes', () => {
+    it('returns state with resource object and request, ensuring no request ID dupes', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -642,7 +642,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -669,7 +669,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'pasta',
+        request: 'pasta',
         resources: [
           {id: 4, name: 'sandwiches'},
           5
@@ -684,7 +684,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
@@ -719,7 +719,7 @@ describe('reducers: read:', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('returns state with resource object, labels, and list, ensuring no label+list ID dupes', () => {
+    it('returns state with resource object, requests, and list, ensuring no label+list ID dupes', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -732,7 +732,7 @@ describe('reducers: read:', function() {
             oinks: [1, 3],
             pasta: [4]
           },
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -759,7 +759,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'pasta',
+        request: 'pasta',
         list: 'pasta',
         resources: [
           {id: 4, name: 'sandwiches'},
@@ -778,7 +778,7 @@ describe('reducers: read:', function() {
           oinks: [1, 3],
           pasta: [4, 5]
         },
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
@@ -822,7 +822,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -848,7 +848,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'pasta',
+        request: 'pasta',
         resources: [
           {id: 4, name: 'sandwiches'},
           5
@@ -863,7 +863,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
@@ -906,7 +906,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -941,7 +941,7 @@ describe('reducers: read:', function() {
         lists: {
           pasta: [4, 5]
         },
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -975,7 +975,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -1002,7 +1002,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'pasta',
+        request: 'pasta',
         mergeLabelIds: false,
         resources: [
           {id: 4, name: 'sandwiches'},
@@ -1018,7 +1018,7 @@ describe('reducers: read:', function() {
           5: {id: 5}
         },
         lists: {},
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
@@ -1064,7 +1064,7 @@ describe('reducers: read:', function() {
             sandwiches: [1, 3],
             pasta: [100, 200]
           },
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -1101,7 +1101,7 @@ describe('reducers: read:', function() {
           sandwiches: [1, 3],
           pasta: [4, 5]
         },
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -1135,7 +1135,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -1162,7 +1162,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'pasta',
+        request: 'pasta',
         mergeLabelIds: false,
         resources: []
       });
@@ -1174,7 +1174,7 @@ describe('reducers: read:', function() {
           4: {id: 4, lastName: 'camomile'},
         },
         lists: {},
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
@@ -1210,7 +1210,7 @@ describe('reducers: read:', function() {
             sandwiches: [1, 3],
             pasta: [100, 200]
           },
-          labels: {},
+          requests: {},
           meta: {
             1: {
               name: 'what'
@@ -1243,7 +1243,7 @@ describe('reducers: read:', function() {
           sandwiches: [1, 3],
           pasta: []
         },
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -1268,7 +1268,7 @@ describe('reducers: read:', function() {
             4: {id: 4, lastName: 'camomile'},
           },
           lists: {},
-          labels: {
+          requests: {
             sandwiches: {
               ids: [1, 3],
               status: requestStatuses.FAILED
@@ -1295,7 +1295,7 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        label: 'pasta',
+        request: 'pasta',
       });
 
       expect(reduced).to.deep.equal({
@@ -1305,13 +1305,13 @@ describe('reducers: read:', function() {
           4: {id: 4, lastName: 'camomile'},
         },
         lists: {},
-        labels: {
+        requests: {
           sandwiches: {
             ids: [1, 3],
             status: requestStatuses.FAILED
           },
           pasta: {
-            ids: [1],
+            ids: [],
             status: requestStatuses.SUCCEEDED
           }
         },
@@ -1345,7 +1345,7 @@ describe('reducers: read:', function() {
           sandwiches: [1, 3],
           pasta: [1]
         },
-        labels: {},
+        requests: {},
         meta: {
           1: {
             name: 'what'
@@ -1376,7 +1376,7 @@ describe('reducers: read:', function() {
         sandwiches: [1, 3],
         pasta: [1]
       },
-      labels: {},
+      requests: {},
       meta: {
         1: {
           name: 'what'
