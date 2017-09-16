@@ -7,7 +7,7 @@ describe('getStatus', function() {
     this.state = {
       books: {
         meta: {},
-        labels: {
+        requests: {
           dashboardSearch: {
             ids: [10, 22],
             status: requestStatuses.SUCCEEDED
@@ -50,8 +50,8 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
-    it('should warn when a path does not resolve to a request status; label', () => {
-      const status = getStatus(this.state, 'books.labels.dashboardSearch');
+    it('should warn when a path does not resolve to a request status; request name', () => {
+      const status = getStatus(this.state, 'books.requests.dashboardSearch');
 
       expect(status).to.deep.equal({
         null: false,
@@ -75,8 +75,8 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('should return a label meta that exists', () => {
-      expect(getStatus(this.state, 'books.labels.dashboardSearch.status')).to.deep.equal({
+    it('should return a request status that exists', () => {
+      expect(getStatus(this.state, 'books.requests.dashboardSearch.status')).to.deep.equal({
         null: false,
         pending: false,
         failed: false,
@@ -186,7 +186,7 @@ describe('getStatus', function() {
     it('should return combined statuses where everything has succeeded', () => {
       const result = getStatus(
         this.state,
-        ['sandwiches.meta.102.readStatus', 'books.labels.dashboardSearch.status']
+        ['sandwiches.meta.102.readStatus', 'books.requests.dashboardSearch.status']
       );
 
       expect(result).to.deep.equal({
@@ -203,7 +203,7 @@ describe('getStatus', function() {
         this.state,
         [
           'sandwiches.meta.102.readStatus',
-          'books.labels.dashboardSearch.status',
+          'books.requests.dashboardSearch.status',
           'sandwiches.meta.102.updateStatus'
         ]
       );

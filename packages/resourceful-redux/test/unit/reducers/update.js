@@ -5,7 +5,7 @@ describe('reducers: update', function() {
   // reducer-generator tests
 
   describe('UPDATE_RESOURCES_SUCCEEDED:', () => {
-    it('returns the right state without a label, without IDs', () => {
+    it('returns the right state without a request name, without IDs', () => {
       stub(console, 'error');
       const initialState = {
         resources: {
@@ -14,7 +14,7 @@ describe('reducers: update', function() {
           4: {id: 4},
         },
         lists: {},
-        labels: {
+        requests: {
           pasta: {
             hungry: true
           }

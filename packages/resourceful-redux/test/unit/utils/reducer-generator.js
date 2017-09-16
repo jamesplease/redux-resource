@@ -2,7 +2,7 @@ import reducerGenerator from '../../../src/utils/reducer-generator';
 import {requestStatuses} from '../../../src';
 
 describe('reducerGenerator:', function() {
-  it('passing no IDs and no label', () => {
+  it('passing no IDs and no request', () => {
     stub(console, 'error');
 
     const state = {
@@ -18,7 +18,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -36,7 +36,7 @@ describe('reducerGenerator:', function() {
     expect(console.error.callCount).to.equal(1);
   });
 
-  it('passing mixed resources array and no label', () => {
+  it('passing mixed resources array and no request name', () => {
     const state = {
       meta: {
         1: {
@@ -51,7 +51,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -107,7 +107,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -119,7 +119,7 @@ describe('reducerGenerator:', function() {
     });
   });
 
-  it('passing resources and no label', () => {
+  it('passing resources and no request name', () => {
     const state = {
       meta: {
         1: {
@@ -134,7 +134,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -182,7 +182,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -194,7 +194,7 @@ describe('reducerGenerator:', function() {
     });
   });
 
-  it('passing no IDs, but passing a label', () => {
+  it('passing no IDs, but passing a request name', () => {
     const state = {
       meta: {
         1: {
@@ -209,7 +209,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -222,7 +222,7 @@ describe('reducerGenerator:', function() {
 
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
     const result = reducer(state, {
-      label: 'italiano'
+      request: 'italiano'
     });
 
     expect(result).to.deep.equal({
@@ -239,7 +239,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.FAILED
@@ -251,7 +251,7 @@ describe('reducerGenerator:', function() {
     });
   });
 
-  it('passing IDs and passing a label', () => {
+  it('passing IDs and passing a request name', () => {
     const state = {
       meta: {
         1: {
@@ -266,7 +266,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -280,7 +280,7 @@ describe('reducerGenerator:', function() {
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
     const result = reducer(state, {
       resources: [1, 5, 6],
-      label: 'italiano'
+      request: 'italiano'
     });
 
     expect(result).to.deep.equal({
@@ -315,7 +315,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.FAILED
@@ -327,7 +327,7 @@ describe('reducerGenerator:', function() {
     });
   });
 
-  it('passing IDs and passing a label with `mergeMeta: false`', () => {
+  it('passing IDs and passing a request name with `mergeMeta: false`', () => {
     const state = {
       meta: {
         1: {
@@ -342,7 +342,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.PENDING
@@ -356,7 +356,7 @@ describe('reducerGenerator:', function() {
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
     const result = reducer(state, {
       resources: [1, 5, 6],
-      label: 'italiano',
+      request: 'italiano',
       mergeMeta: false
     });
 
@@ -391,7 +391,7 @@ describe('reducerGenerator:', function() {
       lists: {
         bookmarks: [1, 2, 3]
       },
-      labels: {
+      requests: {
         italiano: {
           sandwiches: true,
           status: requestStatuses.FAILED
