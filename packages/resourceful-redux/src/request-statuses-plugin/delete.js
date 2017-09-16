@@ -89,9 +89,11 @@ function delSucceed(state, action, {initialResourceMeta}) {
   const lists = state.lists;
 
   if (request) {
+    const existingRequest = requests[request] || {};
     newRequests = {
       ...requests,
       [request]: {
+        ...existingRequest,
         status: requestStatuses.SUCCEEDED,
         ids: idList || [],
       }
