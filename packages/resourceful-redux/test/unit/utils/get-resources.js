@@ -1,6 +1,6 @@
 import {getResources, requestStatuses} from '../../../src';
 
-describe('getStatus', function() {
+describe('getResources', function() {
   beforeEach(() => {
     this.state = {
       books: {
@@ -11,7 +11,7 @@ describe('getStatus', function() {
           116: {id: 116, name: 'pickles'},
         },
         meta: {},
-        requests: {
+        lists: {
           dashboardSearch: {
             ids: [10, 22, 102],
             status: requestStatuses.SUCCEEDED
