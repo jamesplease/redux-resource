@@ -365,11 +365,11 @@ describe('reducers: delete', function() {
         requests: {
           italiano: {
             status: requestStatuses.SUCCEEDED,
-            ids: [3,4],
+            ids: [3, 4],
             hangry: false
           },
           oink: {
-            ids: [10,3],
+            ids: [10, 3],
             hungry: true
           }
         },
