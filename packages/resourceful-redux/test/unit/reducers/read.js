@@ -2,7 +2,7 @@ import {resourceReducer, requestStatuses} from '../../../src';
 
 describe('reducers: read:', function() {
   describe('READ_RESOURCES_PENDING:', () => {
-    it('should warn and not set a badly configured label', () => {
+    it('should warn and not set a badly configured request name', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -219,7 +219,7 @@ describe('reducers: read:', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
-    it('warns and returns the right state without a label, without IDs', () => {
+    it('warns and returns the right state without a request name, without IDs', () => {
       stub(console, 'error');
       const initialState = {
         resources: {
@@ -254,7 +254,7 @@ describe('reducers: read:', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
-    it('returns state with resource array, no label, default options', () => {
+    it('returns state with resource array, no request name, default options', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -325,7 +325,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource array, no label, mergeResources: false', () => {
+    it('returns state with resource array, no request name, mergeResources: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -392,7 +392,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state with resource object, no label, mergeMeta: false', () => {
+    it('returns state with resource object, no request name, mergeMeta: false', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -458,7 +458,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('warns when a badly formatted label is passed in', () => {
+    it('warns when a badly formatted request name is passed in', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -719,7 +719,7 @@ describe('reducers: read:', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('returns state with resource object, requests, and list, ensuring no label+list ID dupes', () => {
+    it('returns state with resource object, requests and lists, ensuring no request+list ID dupes', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -813,7 +813,7 @@ describe('reducers: read:', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('returns state with resource object and label, ensuring empty label IDs works', () => {
+    it('returns state with resource object and request name, ensuring empty request name IDs works', () => {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
@@ -1258,7 +1258,7 @@ describe('reducers: read:', function() {
       });
     });
 
-    it('returns state without a resource array, with a label', () => {
+    it('returns state without a resource array, with a request name', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
