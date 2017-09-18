@@ -5,7 +5,7 @@ describe('reducers: create', function() {
   // reducer-generator tests
 
   describe('CREATE_RESOURCES_SUCCEEDED:', () => {
-    it('returns the right state without a label, without IDs', () => {
+    it('returns the right state without a request name, without IDs', () => {
       stub(console, 'error');
       const initialState = {
         resources: {
