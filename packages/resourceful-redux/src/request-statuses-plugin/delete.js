@@ -10,9 +10,9 @@ const delNull = reducerGenerator('delete', requestStatuses.NULL);
 function delSucceed(state, action, {initialResourceMeta}) {
   const resources = action.resources;
 
-  let label;
-  if (action.label && typeof action.label === 'string') {
-    label = action.label;
+  let request;
+  if (action.request && typeof action.request === 'string') {
+    request = action.request;
   }
 
   if (process.env.NODE_ENV !== 'production') {
@@ -76,35 +76,30 @@ function delSucceed(state, action, {initialResourceMeta}) {
 
   const hasIds = idList && idList.length;
 
-  // If we have no, IDs, list, nor request label, then there is nothing to update
-  if (!hasIds && !label) {
+  // If we have no IDs nor request, then there is nothing to update
+  if (!hasIds && !request) {
     return state;
   }
 
   let newMeta;
-  let newLabels = {};
   let newLists = {};
+  let newRequests = {};
   const meta = state.meta;
-  const labels = state.labels;
+  const requests = state.requests;
   const lists = state.lists;
-  for (let requestLabel in labels) {
-    const existingLabel = labels[requestLabel] || {};
-    const existingLabelIds = existingLabel.ids || [];
-    const newLabel = {
-      ...existingLabel
+
+  if (request) {
+    const existingRequest = requests[request] || {};
+    newRequests = {
+      ...requests,
+      [request]: {
+        ...existingRequest,
+        status: requestStatuses.SUCCEEDED,
+        ids: idList || [],
+      }
     };
-
-    if (hasIds && existingLabel.ids) {
-      newLabel.ids = existingLabelIds.filter(r => !idList.includes(r));
-    } else if (existingLabel.ids) {
-      newLabel.ids = existingLabelIds;
-    }
-
-    if (label && label === requestLabel) {
-      newLabel.status = requestStatuses.SUCCEEDED;
-    }
-
-    newLabels[requestLabel] = newLabel;
+  } else {
+    newRequests = requests;
   }
 
   for (let resourceList in lists) {
@@ -150,7 +145,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
     ...state,
     meta: newMeta,
     lists: newLists,
-    labels: newLabels,
+    requests: newRequests,
     resources: newResources
   };
 }

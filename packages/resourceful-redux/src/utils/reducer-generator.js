@@ -8,19 +8,19 @@ import warning from './warning';
 // Basically, two things can change:
 //
 // 1. Request status for resource IDs in `meta`, if IDs are passed in
-// 2. Request status for a labeled request
+// 2. Request status for a named request
 //
-// A label's IDs don't change, and neither does the resource. Consequently, this
-// helper completely defines all of the ways in which the non-success reducers
+// A named request's IDs don't change, and neither does the resource. Consequently,
+// this helper completely defines all of the ways in which the non-success reducers
 // can change the state.
 export default function(crudAction, requestStatus) {
   return function(state, action, {initialResourceMeta} = {}) {
     const resources = action.resources;
     const mergeMeta = action.mergeMeta;
 
-    let label;
-    if (action.label && typeof action.label === 'string') {
-      label = action.label;
+    let request;
+    if (action.request && typeof action.request === 'string') {
+      request = action.request;
     }
 
     let idList;
@@ -37,13 +37,13 @@ export default function(crudAction, requestStatus) {
     }
 
     const statusAttribute = `${crudAction}Status`;
-    let newLabels, newMeta, newLists;
+    let newRequests, newMeta, newLists;
 
-    if (!label && !idList.length) {
+    if (!request && !idList.length) {
       if (process.env.NODE_ENV !== 'production') {
         warning(
           `A Resourceful Redux action of type ${action.type} was dispatched ` +
-          `without a "label", "list," or "resources" array. Without one of these ` +
+          `without a "request", "list," or "resources" array. Without one of these ` +
           `values, Resourceful Redux cannot track your CRUD operation. You ` +
           `should check your Action Creators. Read more about CRUD Actions ` +
           `at: https://resourceful-redux.js.org/docs/guides/crud-actions.html`
@@ -53,18 +53,18 @@ export default function(crudAction, requestStatus) {
       return state;
     }
 
-    if (label) {
-      const existingLabel = state.labels[label] || {};
+    if (request) {
+      const existingRequest = state.requests[request] || {};
 
-      newLabels = {
-        ...state.labels,
-        [label]: {
-          ...existingLabel,
+      newRequests = {
+        ...state.requests,
+        [request]: {
+          ...existingRequest,
           status: requestStatus
         }
       };
     } else {
-      newLabels = {...state.labels};
+      newRequests = state.requests;
     }
 
     // Lists only change when a request succeeds
@@ -87,7 +87,7 @@ export default function(crudAction, requestStatus) {
 
     return {
       ...state,
-      labels: newLabels,
+      requests: newRequests,
       lists: newLists,
       meta: newMeta
     };

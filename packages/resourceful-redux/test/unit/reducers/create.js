@@ -5,7 +5,7 @@ describe('reducers: create', function() {
   // reducer-generator tests
 
   describe('CREATE_RESOURCES_SUCCEEDED:', () => {
-    it('returns the right state without a label, without IDs', () => {
+    it('returns the right state without a request name, without IDs', () => {
       stub(console, 'error');
       const initialState = {
         resources: {
@@ -13,7 +13,7 @@ describe('reducers: create', function() {
           3: {id: 3},
           4: {id: 4},
         },
-        labels: {
+        requests: {
           pasta: {
             hungry: true
           }
