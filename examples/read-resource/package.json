@@ -14,8 +14,8 @@
     "react-redux": "^5.0.5",
     "redux": "^3.5.2",
     "redux-thunk": "^2.2.0",
-    "resourceful-prop-types": "0.0.10",
-    "resourceful-redux": "0.0.10"
+    "resourceful-prop-types": "2.0.0",
+    "resourceful-redux": "2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
