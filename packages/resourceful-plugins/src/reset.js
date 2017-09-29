@@ -4,11 +4,12 @@ const actionTypes = {
   RESET_RESOURCE: 'RESET_RESOURCE'
 };
 
-function resetResource(resourceName, label) {
+function resetResource(resourceName, {request, list} = {}) {
   return {
     type: 'RESET_RESOURCE',
     resourceName,
-    label
+    request,
+    list
   };
 }
 
@@ -18,29 +19,40 @@ function reset(resourceName, options = {}) {
       return state;
     }
 
-    const {label} = action;
+    const {request, list} = action;
 
-    if (!label) {
+    if (!request && !list) {
       return {
         resources: {},
         meta: {},
-        labels: {},
+        lists: {},
+        requests: {},
         ...options.initialState,
       };
     }
 
-    else {
-      return {
-        ...state,
-        labels: {
-          ...state.labels,
-          [label]: {
-            ids: [],
-            status: requestStatuses.NULL
-          }
+    const newState = {
+      ...state
+    };
+
+    if (request) {
+      newState.requests = {
+        ...state.requests,
+        [request]: {
+          ids: [],
+          status: requestStatuses.NULL
         }
       };
     }
+
+    if (list) {
+      newState.lists = {
+        ...state.lists,
+        [list]: []
+      };
+    }
+
+    return newState;
   };
 }
 
