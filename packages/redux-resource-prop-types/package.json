@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-prop-types",
-  "version": "1.0.1",
+  "version": "2.0.0-beta",
   "description": "prop-types for Redux Resource",
   "main": "dist/redux-resource-prop-types.js",
   "scripts": {
