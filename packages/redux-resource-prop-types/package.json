@@ -2,12 +2,14 @@
   "name": "redux-resource-prop-types",
   "version": "2.0.0-beta",
   "description": "prop-types for Redux Resource",
-  "main": "dist/redux-resource-prop-types.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "scripts": {
     "clean": "rimraf dist tmp",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
-    "build": "npm run clean && npm run build:umd && npm run build:umd:min && npm run build:es",
+    "build": "npm run clean && npm run build:umd && npm run build:umd:min && npm run build:es && npm run build:commonjs",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=build babel src --out-dir es",
     "build:umd": "cross-env NODE_ENV=development BABEL_ENV=build rollup -c -i src/index.js -o dist/redux-resource-prop-types.js",
     "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=build rollup -c -i src/index.js -o dist/redux-resource-prop-types.min.js"
@@ -71,6 +73,7 @@
     "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.2.1",
     "rollup-plugin-uglify": "^2.0.1",
     "webpack": "^3.1.0"
   },

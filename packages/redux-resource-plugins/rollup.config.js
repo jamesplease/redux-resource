@@ -1,6 +1,7 @@
 import nodeResolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import uglify from 'rollup-plugin-uglify';
+import replace from 'rollup-plugin-replace';
 
 var env = process.env.NODE_ENV;
 var config = {
@@ -16,6 +17,9 @@ var config = {
     }),
     babel({
       exclude: 'node_modules/**'
+    }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(env)
     }),
   ]
 };

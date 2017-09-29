@@ -42,7 +42,7 @@
     "sourceMap": false,
     "instrument": false,
     "exclude": [
-      "packages/*/{dist,test}/**/*.js",
+      "packages/*/{dist,test,lib}/**/*.js",
       "packages/node_modules/**/*"
     ]
   }

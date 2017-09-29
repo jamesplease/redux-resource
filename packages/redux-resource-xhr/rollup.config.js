@@ -2,6 +2,7 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import uglify from 'rollup-plugin-uglify';
 import commonjs from 'rollup-plugin-commonjs';
+import replace from 'rollup-plugin-replace';
 
 var env = process.env.NODE_ENV;
 var config = {
@@ -22,7 +23,10 @@ var config = {
     commonjs({
       include: 'node_modules/**',
       exclude: ['node_modules/redux-resource/**'],
-    })
+    }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(env)
+    }),
   ]
 };
 
