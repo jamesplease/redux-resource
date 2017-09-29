@@ -33,6 +33,7 @@ tmp
 .DS_Store
 dist
 es
+lib
 _site
 _book
 .nyc_output
