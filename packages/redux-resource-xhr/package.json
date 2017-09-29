@@ -49,6 +49,11 @@
   "bugs": {
     "url": "https://github.com/jmeas/redux-resource/issues"
   },
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
   "homepage": "https://redux-resource.js.org",
   "dependencies": {
     "querystringify": "^1.0.0",
