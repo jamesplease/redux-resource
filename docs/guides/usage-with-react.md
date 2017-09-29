@@ -1,12 +1,12 @@
 # Usage With React
 
-Like Redux itself, you don't _need_ to use React with Resourceful Redux,
+Like Redux itself, you don't _need_ to use React with Redux Resource,
 but the two do work well together. We recommend using the
 [react-redux](https://github.com/reactjs/react-redux) library to handle
 [using Redux with React](http://redux.js.org/docs/basics/UsageWithReact.html).
 
 If you're using react-redux, there are a few patterns that we find ourselves
-using frequently with Resourceful.
+using frequently with Redux Resource.
 
 ### Using `mapStateToProps`
 
@@ -18,7 +18,7 @@ component's lifecycle methods, without needing to compute them for each method.
 For example:
 
 ```js
-import { getResources, getStatus } from 'resourceful-redux';
+import { getResources, getStatus } from 'redux-resource';
 
 function mapStateToProps(state) {
   const searchedBooks = getResources(state, 'books', 'searchResults');
@@ -39,9 +39,9 @@ do this, though – only do it if you're sure that you need to.
 
 ### Type Checking with Prop Types
 
-Resourceful Prop Types exports a number of helpful prop types for common props
-that you'll pass into your React Components. Read the [Resourceful Prop Types
-documentation](/docs/extras/resourceful-prop-types.md) for more.
+Redux Resource Prop Types exports a number of helpful prop types for common props
+that you'll pass into your React Components. Read the [Redux Resource Prop Types
+documentation](/docs/extras/redux-resource-prop-types.md) for more.
 
 ### Using Statuses
 
@@ -90,7 +90,7 @@ We recommend performing this check within `componentWillReceiveProps`. This
 might look like:
 
 ```js
-import { getResources, getStatus } from 'resourceful-redux';
+import { getResources, getStatus } from 'redux-resource';
 
 class BooksList extends Component {
   render() {

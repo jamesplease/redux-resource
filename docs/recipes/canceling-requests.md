@@ -42,8 +42,8 @@ then that can lead to the wrong search results being shown.
 Canceling a previous request resolves this problem, as it means that only one
 search request will ever be in flight at a time, and it will be the user's most
 recent search. If you're using an action creator that returns a native
-XMLHttpRequest object, such as the action creators in Resourceful Action 
-Creators, then your code may look like this:
+XMLHttpRequest object, such as the action creators in Redux Resource XHR, then
+your code may look like this:
 
 ```js
 class Typeahead extends Component {
@@ -133,8 +133,8 @@ const request = xhr.get('/books/23', (err, res) => {
 request.abort();
 ```
 
-[Resourceful XHR](/docs/extras/resourceful-xhr.md) for 
-Resourceful Redux uses [`xhr`](https://github.com/naugtur/xhr) for requests.
+[Redux Resource XHR](/docs/extras/redux-resource-xhr.md) for 
+Redux Resource uses [`xhr`](https://github.com/naugtur/xhr) for requests.
 These action creators return a native XHR object, so you can use the `abort`
 method to cancel those requests.
 
@@ -144,7 +144,7 @@ The native [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 method is a tool for making requests that returns a
 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 Native Promises cannot be cancelled, so we do not recommend using `fetch` with
-Resourceful Redux.
+Redux Resource.
 
 #### axios
 

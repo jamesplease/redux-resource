@@ -5,7 +5,7 @@ request: is it pending, failing, succeeded? This is what we mean by "tracking"
 a request. The status of a request can be used to display feedback to the user
 of your application, such as showing loading indicators or error messages.
 
-There are two ways to track CRUD operation requests in Resourceful Redux:
+There are two ways to track CRUD operation requests in Redux Resource:
 tracking the status on some resources' metadata, and using a named request.
 
 You'll always use _at least_ one of these when performing CRUD operations.

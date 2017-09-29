@@ -1,9 +1,9 @@
 # General FAQ
 
-#### When should I use Resourceful Redux?
+#### When should I use Redux Resource?
 
 If you feel that you're writing too much boilerplate when using Redux by itself,
-then it might be worth giving a library like Resourceful Redux a try. There are
+then it might be worth giving a library like Redux Resource a try. There are
 [similar projects](/docs/introduction/similar-projects.md) that also aim to
 reduce Redux boilerplate, which are also worth your consideration.
 
@@ -17,11 +17,11 @@ similar API to Redux.
 This library uses shallow cloning for state tree updates. This has worked well
 for us, even on medium-to-large sized applications.
 
-Resourceful Redux does not work well with libraries like
+Redux Resource does not work well with libraries like
 [Immutable.js](https://facebook.github.io/immutable-js/), although we're open
 to adding support for Immutable if it doesn't bloat the library too much. If
 this is something you're interested in,
-[open an issue](https://github.com/jmeas/resourceful-redux/issues/new) and we
+[open an issue](https://github.com/jmeas/redux-resource/issues/new) and we
 can talk more about it.
 
 #### Does this only work with APIs that return data in a specific format?
@@ -51,10 +51,10 @@ a JavaScript object with an `id` attribute.
 
 For more on this, refer to [the Resources guide](/docs/guides/resources.md).
 
-#### Does Resourceful Redux handle forms, or client-side changes to data?
+#### Does Redux Resource handle forms, or client-side changes to data?
 
 This library complements, but does not replace, solutions for managing forms
-and other ways to manipulate resource data on the client. Resourceful Redux
+and other ways to manipulate resource data on the client. Redux Resource
 works will with any system for managing forms, such as local Component state,
 [react-redux-form](https://github.com/davidkpiano/react-redux-form),
 or [redux-form](https://github.com/erikras/redux-form).

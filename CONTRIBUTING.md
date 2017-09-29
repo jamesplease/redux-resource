@@ -2,7 +2,7 @@
 
 > :wave: Hey there! Thanks for your interest in helping out. If you happen to
 run into any issues following this guide, please
-[open an issue](https://github.com/jmeas/resourceful-redux/issues/new?title=Contributing+help),
+[open an issue](https://github.com/jmeas/redux-resource/issues/new?title=Contributing+help),
 and we'll do our best to help out.
 
 To begin contributing, you'll first need to
@@ -10,9 +10,9 @@ To begin contributing, you'll first need to
 then navigate into the repository's directory.
 
 ```sh
-git clone git@github.com:jmeas/resourceful-redux.git
+git clone git@github.com:jmeas/redux-resource.git
 
-cd resourceful-redux
+cd redux-resource
 ```
 
 Next, install the dependencies using [npm](https://www.npmjs.com/).
@@ -23,10 +23,10 @@ npm install && npm run bootstrap
 
 ### Contributing to the Code
 
-This repository contains the main Resourceful Redux library (`resourceful-redux`
+This repository contains the main Redux Resource library (`redux-resource`
 on npm), as well as extras 
-(["Ecosystem Extras"](https://resourceful-redux.js.org/docs/extras/)) that can be useful when
-using Resourceful Redux. Each package has its own directory within the
+(["Ecosystem Extras"](https://redux-resource.js.org/docs/extras/)) that can be useful when
+using Redux Resource. Each package has its own directory within the
 `packages` directory of this repository.
 
 Find the library you're interested in updating, and make changes as you see fit.
@@ -53,8 +53,8 @@ Once you're done, commit your changes and open a Pull Request. Also, thanks!
 
 If you make a contribution to this project, you should go ahead and add yourself
 to the list of contributors on the
-[README](https://github.com/jmeas/resourceful-redux#contributors) and the
-[website](https://resourceful-redux.js.org/#contributors).
+[README](https://github.com/jmeas/redux-resource#contributors) and the
+[website](https://redux-resource.js.org/#contributors).
 
 To add yourself, run this command from the terminal:
 

@@ -16,7 +16,7 @@ To use a list, add the `list` property to your
 [CRUD operation actions](./crud-actions.md).
 
 ```js
-import { actionTypes } fom 'resourceful-redux';
+import { actionTypes } fom 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -88,7 +88,7 @@ the old list IDs with the new. You can outright replace the old list with the
 new by passing `mergeListIds: false` in your action. For instance:
 
 ```js
-import { actionTypes } fom 'resourceful-redux';
+import { actionTypes } fom 'redux-resource';
 import store from './store';
 
 store.dispatch({

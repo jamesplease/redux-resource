@@ -5,7 +5,7 @@ is represented in your state tree.
 
 ### State Slices
 
-Typical usage of Resourceful Redux involves using
+Typical usage of Redux Resource involves using
 [`combineReducers`](http://redux.js.org/docs/api/combineReducers.html) to
 separate each type of resource into its own "slice" within your overall state
 tree. Each of these slices will store information about a single type of
@@ -28,7 +28,7 @@ The initial state slice has the following shape:
 }
 ```
 
-As you dispatch Action types, Resourceful Redux will make changes to these
+As you dispatch Action types, Redux Resource will make changes to these
 values in a predictable way. We will cover what goes inside each of these pieces
 in this guide.
 
@@ -37,7 +37,7 @@ in this guide.
 All of your resource data will be available in the state slice's `resources`
 property. This is an object of resources of a single type.
 
-Resourceful Redux enforces a
+Redux Resource enforces a
 [normalized](https://en.wikipedia.org/wiki/Database_normalization) structure to
 your data: each individual resource can be found in exactly one place in the
 state tree.
@@ -89,9 +89,9 @@ The `resources` object allows you to quickly look up resources given their ID.
 You may be wondering how ordering from the server is preserved. You use "lists"
 for this, which is a feature that we will cover shortly.
 
-Keep in mind that Resourceful Redux doesn't care about the specific format that
+Keep in mind that Redux Resource doesn't care about the specific format that
 your server sends the data back in. You just need to make sure that the resources
-you pass into Resourceful Redux have an `id` attribute.
+you pass into Redux Resource have an `id` attribute.
 
 ### Resource Metadata
 
@@ -103,7 +103,7 @@ Metadata includes information about requests, such as whether the resource is
 being updated, or deleted. You can store additional, application-specific
 metadata here, such as whether or not a resource is "selected" in your UI.
 
-Resourceful Redux comes with built-in metadata for each resource, representing
+Redux Resource comes with built-in metadata for each resource, representing
 the status of any CRUD request related to that resource. This built-in metadata
 looks like the following:
 
@@ -264,7 +264,7 @@ Using the above example, let's see what those lists might look in the state slic
 
 The last piece of the slice is called "requests." Any time that you initiate a
 CRUD operation request, you can assign it a name. A name is just a string,
-such as `"createBook"`. Resourceful Redux associates the following data about
+such as `"createBook"`. Redux Resource associates the following data about
 the request with your named request:
 
 1. the lifecycle status (pending, failed, and so on) of the request

@@ -18,11 +18,11 @@ any of them like this:
 #### ES6
 
 ```js
-import { resourceReducer } from 'resourceful-redux';
+import { resourceReducer } from 'redux-resource';
 ```
 
 #### ES5 (CommonJS)
 
 ```js
-var resourceReducer = require('resourceful-redux').resourceReducer;
+var resourceReducer = require('redux-resource').resourceReducer;
 ```

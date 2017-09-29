@@ -28,7 +28,7 @@ Update one or more individual resources with the same metadata.
 #### Example
 
 ```js
-import { setResourceMeta } from 'resourceful-redux';
+import { setResourceMeta } from 'redux-resource';
 import actionTypes from './my-action-types';
 
 export default function reducer(state, action) {

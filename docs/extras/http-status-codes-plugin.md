@@ -15,8 +15,8 @@ First, you need to register this plugin when you call
 [`resourceReducer`](/docs/api-reference/resource-reducer.md).
 
 ```js
-import { resourceReducer } from 'resourceful-redux';
-import { httpStatusCodes } from 'resourceful-plugins';
+import { resourceReducer } from 'redux-resource';
+import { httpStatusCodes } from 'redux-resource-plugins';
 
 const reducer = resourceReducer('books', {
   plugins: [httpStatusCodes]
@@ -32,7 +32,7 @@ in your state tree.
 Passing the status code looks like the following:
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -44,7 +44,7 @@ store.dispatch({
 ```
 
 If you're using the
-[Resourceful XHR](/docs/extras/resourceful-xhr.md)
+[Redux Resource XHR](/docs/extras/redux-resource-xhr.md)
 library, then you don't need to do anything differently: request status
 codes are already included in the actions dispatched from that library.
 
@@ -73,7 +73,7 @@ const searchStatusCode = state.books.requests.search.statusCode;
 ### Tips
 
 - The status code of an unsent and in-flight XHR requests is `0`, and the
-  Resourceful XHR respects this. What this means is that any new
+  Redux Resource XHR respects this. What this means is that any new
   requests will _immediately_ update any existing status code to be `0`.
 
   If you're using the status code to display UI elements, you may need to cache

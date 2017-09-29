@@ -20,7 +20,7 @@ like this.
 
 #### Extending Built-in Action Types
 
-The notion of a "request" in Resourceful Redux is intentionally generic. It's
+The notion of a "request" in Redux Resource is intentionally generic. It's
 not tied to any specific protocol, such as HTTP. What this means is that when
 a request fails, the _only_ information that you have is that the request
 failed, and not that it failed with, say, a 404 status code. That's because 404
@@ -48,7 +48,7 @@ argument to that function is an `options` options, and within it you can pass
 `plugins` as an array:
 
 ```js
-import resourceReducer from 'resourceful-redux';
+import resourceReducer from 'redux-resource';
 import somePlugin from './some-plugin';
 import anotherPlugin from './another-plugin';
 
@@ -102,7 +102,7 @@ Let's build a plugin that lets a user select resources from a list. The code
 for this plugin looks like this:
 
 ```js
-import { setResourceMeta } from 'resourceful-redux';
+import { setResourceMeta } from 'redux-resource';
 import myActionTypes from './my-action-types';
 
 export default function(resourceName, options) {
@@ -147,7 +147,7 @@ You would then use this plugin like so:
 
 ```js
 import { createStore, combineReducers } from 'redux';
-import { resourceReducer } from 'resourceful-redux';
+import { resourceReducer } from 'redux-resource';
 import selectResources from './plugins/select-resources';
 
 let store = createStore(
@@ -161,7 +161,7 @@ let store = createStore(
 
 ### Changing Built-In Action Type behavior
 
-Interestingly, the built-in behavior of Resourceful is itself just a plugin.
+Interestingly, the built-in behavior of Redux Resource is itself just a plugin.
 
 Additional plugins are run **after** this built-in plugin runs, so you can write
 plugins that make further adjustments to the state after the built-in plugin. In
@@ -211,7 +211,7 @@ then you could trigger the special behavior by passing
 `useSpecialBehavior: true` as an option to `resourceReducer`:
 
 ```js
-import resourceReducer from 'resourceful-redux';
+import resourceReducer from 'redux-resource';
 import customizablePlugin from './customizable-plugin';
 
 export default resourceReducer('books', {
@@ -240,7 +240,7 @@ export default function(pluginOptions) {
 which would be used in the following way:
 
 ```js
-import resourceReducer from 'resourceful-redux';
+import resourceReducer from 'redux-resource';
 import customizablePlugin from './customizable-plugin';
 
 export default resourceReducer('books', {

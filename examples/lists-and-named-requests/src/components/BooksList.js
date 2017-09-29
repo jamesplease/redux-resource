@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getStatus, getResources } from 'resourceful-redux';
-import { slicePropType } from 'resourceful-prop-types';
+import { getStatus, getResources } from 'redux-resource';
+import { slicePropType } from 'redux-resource-prop-types';
 
 class BooksList extends Component {
   render() {

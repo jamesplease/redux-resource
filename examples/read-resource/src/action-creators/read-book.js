@@ -1,4 +1,4 @@
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 
 export default function readBook(id) {
   return function(dispatch) {

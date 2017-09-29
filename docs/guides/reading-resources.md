@@ -1,6 +1,6 @@
 # Reading Resources
 
-Resourceful Redux provides four [action types](./faq/action-types.md) for
+Redux Resource provides four [action types](./faq/action-types.md) for
 reading resources. They are as follows:
 
 ```js
@@ -44,9 +44,9 @@ The metadata for each of those resources will also be changed to have
 If a `list` is passed, then the IDs for the list will be updated to include
 the new IDs.
 
-### Resourceful XHR
+### Redux Resource XHR
 
-[Resourceful XHR](/docs/extras/resourceful-xhr.md) 
+[Redux Resource XHR](/docs/extras/redux-resource-xhr.md) 
 provides a collection of out-of-the-box action creators that you can use to read 
 resources. If you'd like to build your own, then that's fine, too. The example 
 below may help.
@@ -58,7 +58,7 @@ This example shows an action creator to read a single book. It uses the
 library [xhr](https://github.com/naugtur/xhr) for making requests.
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import xhr from 'xhr';
 
 export default function readBook(bookId) {
@@ -109,7 +109,7 @@ a query string, it uses the
 [querystring module](https://github.com/Gozala/querystring).
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import xhr from 'xhr';
 import qs from 'querystring';
 

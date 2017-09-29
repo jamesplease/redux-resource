@@ -15,8 +15,8 @@ adds an additional property to your slice, `selectedIds`, so it comes with
 initial state that you should add to the slice, too.
 
 ```js
-import { resourceReducer } from 'resourceful-redux';
-import { selection } from 'resourceful-plugins';
+import { resourceReducer } from 'redux-resource';
+import { selection } from 'redux-resource-plugins';
 
 const reducer = resourceReducer('books', {
   initialState: {
@@ -30,7 +30,7 @@ Then, you can use the action creators that ships with the plugin to manage the
 selected resources.
 
 ```js
-import { selection } from 'resourceful-plugins';
+import { selection } from 'redux-resource-plugins';
 import store from './store';
 
 // Select resources with ID "24" and ID "100"

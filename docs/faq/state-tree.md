@@ -24,5 +24,5 @@ slice. Use another slice for other information.
 We don't recommend doing this right now, but that's just because the library
 isn't built to support it. If you have a compelling use case for this feature,
 let us know by
-[opening an issue](https://github.com/jmeas/resourceful-redux/issues/new) about
+[opening an issue](https://github.com/jmeas/redux-resource/issues/new) about
 it.

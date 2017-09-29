@@ -58,7 +58,7 @@ your state tree. For instance `"books.meta.24.readStatus"` or
 In this example, we pass a single status location:
 
 ```js
-import { getStatus } from 'resourceful-redux';
+import { getStatus } from 'redux-resource';
 import store from './store';
 
 const state = store.getState();
@@ -68,7 +68,7 @@ const bookDeleteStatus = getStatus(state, 'books.meta.23.deleteStatus');
 In this example, we pass two locations:
 
 ```js
-import { getStatus } from 'resourceful-redux';
+import { getStatus } from 'redux-resource';
 import store from './store';
 
 const state = store.getState();
