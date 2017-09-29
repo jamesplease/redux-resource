@@ -27,25 +27,27 @@ like. Two differences between a real-world application and this example are:
 - A real-world application would likely use [`combineReducers`](http://redux.js.org/docs/api/combineReducers.html)
   so that it could have multiple resources in its state tree.
 
-### Lists: Read Many
+### Lists and Named Requests
 
 To run this example:
 
 ```
 git clone https://github.com/jmeas/resourceful-redux.git
 
-cd resourceful-redux/examples/lists
+cd resourceful-redux/examples/lists-and-named-requests
 npm install
 npm start
 
 open http://localhost:3000/
 ```
 
-This example shows one of the main uses of lists: displaying two different
-lists of the same type of resource. In this example, a user's owned books are
-fetched, then displayed in a list on the interface. At the same time, a list of
-recently released books are also fetched, and displayed in another list in the
-interface.
+This example shows how you can use named requests to track requests that
+don't target a specific resource ID. It also shows you how lists can be used
+to display two different ordered subsets of the same type of resource.
+
+In this example, a user's owned books are fetched, then displayed in a list on
+the interface. At the same time, a list of recently released books are also
+fetched, and displayed in another list in the interface.
 
 A real-world application would likely use the performant
 [React Redux](https://github.com/reactjs/react-redux) bindings for re-rendering.

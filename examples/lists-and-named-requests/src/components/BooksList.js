@@ -6,8 +6,8 @@ import { slicePropType } from 'resourceful-prop-types';
 class BooksList extends Component {
   render() {
     const { state } = this.props;
-    const searchStatus = getStatus(state, 'books.labels.userBooks.status', true);
-    const latestStatus = getStatus(state, 'books.labels.latestBooks.status', true);
+    const searchStatus = getStatus(state, 'books.requests.readUserBooks.status', true);
+    const latestStatus = getStatus(state, 'books.requests.readLatestBooks.status', true);
     const userBooks = getResources(state, 'books', 'userBooks');
     const latestBooks = getResources(state, 'books', 'latestBooks');
 
