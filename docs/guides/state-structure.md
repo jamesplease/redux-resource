@@ -224,11 +224,11 @@ the option is there to store your own, additional metadata per-resource within
 
 Lists are a way to keep track of _ordered subsets_ of resources. The `resources`
 section of the slice (described above), is useful in that it provides a single
-location for all resources of a single type to exist. It's also useful because
+location for all resources of a single type to live. It's also useful because
 it provides quick lookups for all resources, given their ID.
 
-There are two common things that applications need to do that the `resources`
-slice doesn't account for:
+The `resources` object does not account for two things that applications
+commonly need:
 
 The first is keeping track of ordering. JavaScript objects are unordered, so they
 are unable to keep track of, say, the order that a server returns your resources in.
@@ -239,9 +239,12 @@ by a search result, and also a shopping cart with a list of books.
 
 Because these are the same resource (books), they belong in the same slice.
 But there are two different "groupings" of them, and they may have a different
-order. Lists lets you keep track of this information.
+order.
 
-In the above example, let's see what those lists might look in the state slice:
+Lists lets you do both of these things. Lists allow you to keep track of an ordering
+that the server returns to you, and you can have as many lists as you'd like.
+
+Using the above example, let's see what those lists might look in the state slice:
 
 ```js
 {
@@ -264,7 +267,7 @@ CRUD operation request, you can assign it a name. A name is just a string,
 such as `"createBook"`. Resourceful Redux associates the following data about
 the request with your named request:
 
-1. the status (pending, failed, and so on) of the request
+1. the lifecycle status (pending, failed, and so on) of the request
 1. which resources were returned by the request
 
 The primary use case for named requests is to track statuses in your
@@ -274,8 +277,9 @@ status on the resource's metadata.
 
 We can't always do that, though. Consider a request that searches for books
 by the title that the user has typed in. There's no specific ID associated
-with this request, so we can't store it with a resource's metadata. By giving
-requests like these a name, we can keep track of their status, too.
+with this request, so we can't store information about the request with a
+resource's metadata. By giving requests like these a name, we can keep track
+of their lifecycle, too.
 
 The structure of a slice with named requests looks like the following:
 
