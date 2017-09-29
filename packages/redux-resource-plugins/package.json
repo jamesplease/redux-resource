@@ -71,7 +71,7 @@
     "cross-env": "^5.0.1",
     "in-publish": "^2.0.0",
     "mocha": "^3.4.2",
-    "redux-resource": "2.0.0-beta",
+    "redux-resource": "^2.0.0-beta",
     "rimraf": "^2.6.1",
     "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",
@@ -82,6 +82,6 @@
   },
   "peerDependencies": {
     "redux": "3.x",
-    "redux-resource": "2.0.0-beta"
+    "redux-resource": "^2.0.0-beta"
   }
 }

@@ -57,7 +57,7 @@
   "homepage": "https://redux-resource.js.org",
   "dependencies": {
     "querystringify": "^1.0.0",
-    "redux-resource": "2.0.0-beta",
+    "redux-resource": "^2.0.0-beta",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
