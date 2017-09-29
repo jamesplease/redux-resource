@@ -1,7 +1,7 @@
 # Ecosystem Extras
 
-The Resourceful Redux ecosystem provides bits of code that make working with the library even better.
+The Redux Resource ecosystem provides bits of code that make working with the library even better.
 
-* [Resourceful XHR](/docs/extras/resourceful-xhr.md)
-* [Resourceful Plugins](/docs/extras/resourceful-plugins.md)
-* [Resourceful Prop Types](/docs/extras/resourceful-prop-types.md)
+* [Redux Resource XHR](/docs/extras/redux-resource-xhr.md)
+* [Redux Resource Plugins](/docs/extras/redux-resource-plugins.md)
+* [Redux Resource Prop Types](/docs/extras/redux-resource-prop-types.md)

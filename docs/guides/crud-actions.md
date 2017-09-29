@@ -1,11 +1,11 @@
 # CRUD Actions
 
-Resourceful Redux exports Action types to help you create, read, update,
+Redux Resource exports Action types to help you create, read, update,
 and delete resources.
 
 ### "Start" and "end" Actions
 
-CRUD operations are usually asynchronous. In Resourceful Redux, these
+CRUD operations are usually asynchronous. In Redux Resource, these
 asynchronous CRUD operations are represented as a sequence of two Redux Actions.
 First, there is a "start" action, which updates your store to reflect that the
 CRUD operation is in a "pending" state. This is later followed by an end action,
@@ -30,7 +30,7 @@ of the resource that is being affected. The simplest action, then, looks
 something like this:
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -40,7 +40,7 @@ store.dispatch({
 ```
 
 This action type isn't very useful, however. Without more information about this
-request, Resourceful Redux doesn't know where to put this information in your
+request, Redux Resource doesn't know where to put this information in your
 state tree. Consequently, this action is a no-op.
 
 To reflect a request status in the state tree, you need to supply at least one
@@ -89,7 +89,7 @@ ID at the time that you dispatch the start action, so we include that ID in
 the action's `resources` array:
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -104,7 +104,7 @@ book to add to your store. So you would include the full book definition in the
 success action's `resources`:
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -119,7 +119,7 @@ store.dispatch({
 });
 ```
 
-Whenever a `resources` array is supplied, Resourceful Redux will update the
+Whenever a `resources` array is supplied, Redux Resource will update the
 `meta` for each resource in that array.
 
 The "success" action types also have special behavior with the `resources`
@@ -144,7 +144,7 @@ For instance, if your interface allows users to search for a books resource, you
 might dispatch the following action:
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -165,7 +165,7 @@ For create and read CRUD operations, you can supply a `list` to add the resource
 returned from the operation with one of the lists in your slice.
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -199,8 +199,8 @@ The following CRUD Action attributes are all optional.
 
 ### Action Creators
 
-The core Resourceful Redux library does not include action creators, but there
-is [a library, Resourceful XHR](/docs/extras/resourceful-xhr.md), that includes
+The core Redux Resource library does not include action creators, but there
+is [a library, Redux Resource XHR](/docs/extras/redux-resource-xhr.md), that includes
 action creators.
 
 You're also free to build your own action creators. For examples, refer to the
@@ -217,7 +217,7 @@ One of this library's exports are these CRUD action types. You can use them in
 your application by importing them like so:
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 ```
 
 For a complete list of all of the action types, refer to the

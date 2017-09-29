@@ -1,6 +1,6 @@
 # Core Concepts
 
-Understanding these core concepts is useful when using Resourceful Redux.
+Understanding these core concepts is useful when using Redux Resource.
 
 ### Resources
 
@@ -15,7 +15,7 @@ or "releaseYear."
 Resources don't necessarily need to represent tangible objects. They can be more
 abstract things, too, such as "workflows" or "permissions."
 
-In Resourceful Redux, each resource will be kept in its own
+In Redux Resource, each resource will be kept in its own
 [slice](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) of
 your store. Within that slice, all of the resources of a single type are kept in
 an object, where the key of the object is the resource's ID. This looks like the
@@ -45,7 +45,7 @@ selected would be metadata about the books resource.
 A rule of thumb is that metadata is any data about a resource that is **not**
 persisted to a remote server.
 
-In Resourceful Redux, all metadata is stored on an object. This meta object,
+In Redux Resource, all metadata is stored on an object. This meta object,
 like the resources object, has resource IDs as its keys, and has values that are
 metadata. An example is:
 
@@ -65,7 +65,7 @@ metadata. An example is:
 ### Lists
 
 Often, applications need to keep track of ordered groupings of resources. In
-Resourceful Redux, this is done through a concept named "lists."
+Redux Resource, this is done through a concept named "lists."
 
 Lists in your store are an array of resource IDs. A resource's lists might look
 like the following:
@@ -79,7 +79,7 @@ like the following:
 }
 ```
 
-As a user interacts with your application, Resourceful Redux provides a straightforward
+As a user interacts with your application, Redux Resource provides a straightforward
 API to keep lists up-to-date.
 
 ### CRUD Operations
@@ -97,14 +97,14 @@ called "requests." Typically, they are HTTP requests.
 
 Because requests occur over a network, they do not happen instantly.
 They might take awhile to complete, and they don't always succeed.
-In Resourceful Redux, this information is represented as one of four "statuses":
+In Redux Resource, this information is represented as one of four "statuses":
 
 - `NULL`: the request hasn't begun yet
 - `PENDING`: the request has started, but has not yet finished
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
 
-When you use Resourceful Redux, the status of **every** CRUD operation that you
+When you use Redux Resource, the status of **every** CRUD operation that you
 make in your application is stored in your application's state tree.
 
 For requests that target specific resources by their ID, the request status will
@@ -128,6 +128,6 @@ For requests that don't target a resource (or resources) by ID, you can assign
 the request a "name." A name is just a string that you can use to look up that
 request's status.
 
-By storing this information at such a granular level, Resourceful Redux provides
+By storing this information at such a granular level, Redux Resource provides
 a robust foundation from which you can build truly great user experiences. And
 you don't even need to write any boilerplate.

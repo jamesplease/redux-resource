@@ -17,7 +17,7 @@ Returns an array of resources.
 #### Example
 
 ```js
-import { getResources } from 'resourceful-redux';
+import { getResources } from 'redux-resource';
 import store from './store';
 
 const state = store.getState();

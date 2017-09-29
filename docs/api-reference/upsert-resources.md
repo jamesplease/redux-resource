@@ -19,7 +19,7 @@ Add new or update existing resources in your state tree.
 #### Example
 
 ```js
-import { upsertResources } from 'resourceful-redux';
+import { upsertResources } from 'redux-resource';
 import actionTypes from './my-action-types';
 
 export default function reducer(state, action) {

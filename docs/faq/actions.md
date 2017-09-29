@@ -19,7 +19,7 @@ of action creators:
 - [Creating resources](/docs/guides/reading-resources.md)
 - [Deleting resources](/docs/guides/reading-resources.md)
 
-#### Does Resourceful Redux require you to use a specific tool for making HTTP requests?
+#### Does Redux Resource require you to use a specific tool for making HTTP requests?
 
 No, you can use any system for making requests that you'd like.
 

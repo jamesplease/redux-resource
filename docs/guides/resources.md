@@ -40,12 +40,12 @@ attribute. The following are some examples of valid resources:
 
 Not all backend services return data that have an ID attribute. For such
 services, a transformation function will need to be written to change that data
-into Resourceful Redux-compatible resources. We understand that this isn't
-ideal, but we believe the benefits of Resourceful Redux outweigh this
+into Redux Resource-compatible resources. We understand that this isn't
+ideal, but we believe the benefits of Redux Resource outweigh this
 inconvenience.
 
 Here are some examples of common data formats that a backend may send over, and
-how you can change them into Resourceful Redux compatible resources.
+how you can change them into Redux Resource compatible resources.
 
 ```js
 // Backend returns:

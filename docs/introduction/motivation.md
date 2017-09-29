@@ -25,10 +25,10 @@ of reducer code. You may omit writing some of that code to save on time. This
 contributes to inconsistency, and also gives you, the developer, less
 information to use when providing feedback to users.
 
-Resourceful Redux is intended to solve these problems. It provides a system of
+Redux Resource is intended to solve these problems. It provides a system of
 organizing information about request state in a consistent way. It also comes
 with reducers that keep track of as much information as possible about every
 request made to remote servers, so that you don't have to.
 
-Use Resourceful Redux to have more time to build great interfaces, rather than
+Use Redux Resource to have more time to build great interfaces, rather than
 writing boilerplate Redux code.

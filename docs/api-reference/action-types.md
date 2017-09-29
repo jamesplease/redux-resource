@@ -43,7 +43,7 @@ This example shows an action creator that reads a single book. It uses the
 library [xhr](https://github.com/naugtur/xhr) for making requests.
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import xhr from 'xhr';
 
 export default function readBook(bookId) {

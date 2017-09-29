@@ -1,4 +1,4 @@
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 
 // This action creator represents retrieving a user's books.
 export default function getUserBooks() {

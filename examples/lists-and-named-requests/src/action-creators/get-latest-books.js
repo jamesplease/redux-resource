@@ -1,4 +1,4 @@
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 
 // This action creator represents retrieving a list of recently-released books.
 export default function getLatestBooks() {

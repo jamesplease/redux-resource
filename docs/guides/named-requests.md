@@ -37,7 +37,7 @@ Using a named request is straightforward: add the `request` property to
 the [Actions for a CRUD operation](./crud-actions.md).
 
 ```js
-import { actionTypes } fom 'resourceful-redux';
+import { actionTypes } fom 'redux-resource';
 import store from './store';
 
 store.dispatch({
@@ -79,7 +79,7 @@ your state, and you can access it with
 [`getStatus`](/docs/api-reference/get-status.md):
 
 ```js
-import { getStatus } from 'resourceful-redux';
+import { getStatus } from 'redux-resource';
 import store from './store';
 
 const state = store.getState();
@@ -98,7 +98,7 @@ const searchStatus = getStatus(state, 'books.requests.search.status');
 When the request succeeds, you dispatch the following action:
 
 ```js
-import { actionTypes } fom 'resourceful-redux';
+import { actionTypes } fom 'redux-resource';
 import store from './store';
 
 store.dispatch({

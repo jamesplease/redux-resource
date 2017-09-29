@@ -15,7 +15,7 @@ complete object is shown below:
 #### Example
 
 ```js
-import { requestStatuses } from 'resourceful-redux';
+import { requestStatuses } from 'redux-resource';
 import store from './store';
 
 const state = store.getState();

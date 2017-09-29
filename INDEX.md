@@ -1,11 +1,11 @@
-# Resourceful Redux
+# Redux Resource
 
-[![Gitter](https://badges.gitter.im/jmeas/resourceful-redux.svg)](https://gitter.im/jmeas/resourceful-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Travis build status](http://img.shields.io/travis/jmeas/resourceful-redux.svg?style=flat)](https://travis-ci.org/jmeas/resourceful-redux)
-[![npm version](https://img.shields.io/npm/v/resourceful-redux.svg)](https://www.npmjs.com/package/resourceful-redux)
-[![Test Coverage](https://codeclimate.com/github/jmeas/resourceful-redux/badges/coverage.svg)](https://codeclimate.com/github/jmeas/resourceful-redux)
-[![Code Climate GPA](https://codeclimate.com/github/jmeas/resourceful-redux/badges/gpa.svg)](https://codeclimate.com/github/jmeas/resourceful-redux)
-[![gzip size](http://img.badgesize.io/https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js?compression=gzip)](https://unpkg.com/resourceful-redux/dist/resourceful-redux.min.js)
+[![Gitter](https://badges.gitter.im/jmeas/redux-resource.svg)](https://gitter.im/jmeas/redux-resource?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Travis build status](http://img.shields.io/travis/jmeas/redux-resource.svg?style=flat)](https://travis-ci.org/jmeas/redux-resource)
+[![npm version](https://img.shields.io/npm/v/redux-resource.svg)](https://www.npmjs.com/package/redux-resource)
+[![Test Coverage](https://codeclimate.com/github/jmeas/redux-resource/badges/coverage.svg)](https://codeclimate.com/github/jmeas/redux-resource)
+[![Code Climate GPA](https://codeclimate.com/github/jmeas/redux-resource/badges/gpa.svg)](https://codeclimate.com/github/jmeas/redux-resource)
+[![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip)](https://unpkg.com/redux-resource/dist/redux-resource.min.js)
 
 A tiny but powerful system for managing 'resources': data that is persisted to
 remote servers.
@@ -20,17 +20,17 @@ remote servers.
 
 ### Installation
 
-To install the latest stable version:
+To install the latest version:
 
 ```
-npm install --save resourceful-redux
+npm install --save redux-resource@2.0.0-beta
 ```
 
 ### Table of Contents
 
 * **[Quick Start](#quick-start)**
 
-  The quick start guide is a quick overview of basic Resourceful Redux usage.
+  The quick start guide is a quick overview of basic Redux Resource usage.
 
 * **[Introduction](/docs/introduction/README.md)**
 
@@ -50,7 +50,7 @@ npm install --save resourceful-redux
 
 * **[Ecosystem Extras](/docs/extras/README.md)**
 
-  Resourceful Redux provides officially maintained bits of code that make
+  Redux Resource provides officially maintained bits of code that make
   working with the library even better.
 
 * **[FAQ](/docs/faq/README.md)**
@@ -59,12 +59,12 @@ npm install --save resourceful-redux
 
 * **[API Reference](/docs/api-reference/README.md)**
 
-  Describes the API of all of the exports of Resourceful Redux.
+  Describes the API of all of the exports of Redux Resource.
 
 ### Quick Start
 
-Follow this guide to get a taste of what it's like to work with Resourceful
-Redux.
+Follow this guide to get a taste of what it's like to work with Redux
+Resource.
 
 First, we set up our store with a "resource reducer," which is a reducer that
 manages the state for one type of resource. In this guide, our reducer will
@@ -72,7 +72,7 @@ handle the data for our "books" resource.
 
 ```js
 import { store, combineReducers } from 'redux';
-import { resourceReducer } from 'resourceful-redux';
+import { resourceReducer } from 'redux-resource';
 
 const reducer = combineReducers({
   books: resourceReducer('books')
@@ -87,7 +87,7 @@ action representing success. There are two actions, because requests usually
 occur over a network, and therefore take time to complete.
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 // This action represents beginning the request to read a book with ID of 24. This
@@ -116,7 +116,7 @@ Later, in your view layer, you can access information about the status of
 this request. When it succeeds, accessing the returned book is straightforward.
 
 ```js
-import { getStatus } from 'resourceful-redux';
+import { getStatus } from 'redux-resource';
 import store from './my-store';
 
 const state = store.getState();
@@ -139,21 +139,21 @@ else if (readStatus.succeeded) {
 }
 ```
 
-This is just a small sample of what it's like working with Resourceful Redux.
+This is just a small sample of what it's like working with Redux Resource.
 
 For a real-life webapp example that uses many more CRUD operations, check out
 the **[zero-boilerplate-redux webapp ⇗](https://github.com/jmeas/zero-boilerplate-redux)**.
 This example project uses [React](https://facebook.github.io/react/), although
-Resourceful Redux works well with any view layer.
+Redux Resource works well with any view layer.
 
 ### Contributors
 
 ([Emoji key](https://github.com/kentcdodds/all-contributors#emoji-key))
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars3.githubusercontent.com/u/2322305?v=4" width="100px;"/><br /><sub>James, please</sub>](http://www.jmeas.com)<br />[💻](https://github.com/jmeas/resourceful-redux/commits?author=jmeas "Code") [🔌](#plugin-jmeas "Plugin/utility libraries") [📖](https://github.com/jmeas/resourceful-redux/commits?author=jmeas "Documentation") [🤔](#ideas-jmeas "Ideas & Planning") | [<img src="https://avatars3.githubusercontent.com/u/682566?v=4" width="100px;"/><br /><sub>Stephen Rivas JR</sub>](http://www.stephenrivasjr.com)<br />[💻](https://github.com/jmeas/resourceful-redux/commits?author=sprjr "Code") [📖](https://github.com/jmeas/resourceful-redux/commits?author=sprjr "Documentation") [🤔](#ideas-sprjr "Ideas & Planning") | [<img src="https://avatars0.githubusercontent.com/u/4119765?v=4" width="100px;"/><br /><sub>Ian Stewart</sub>](https://github.com/ianmstew)<br />[🤔](#ideas-ianmstew "Ideas & Planning") | [<img src="https://avatars3.githubusercontent.com/u/181635?v=4" width="100px;"/><br /><sub>Tim Branyen</sub>](http://tbranyen.com/)<br />[🤔](#ideas-tbranyen "Ideas & Planning") | [<img src="https://avatars1.githubusercontent.com/u/254562?v=4" width="100px;"/><br /><sub>Jason Laster</sub>](https://github.com/jasonLaster)<br />[🤔](#ideas-jasonLaster "Ideas & Planning") | [<img src="https://avatars2.githubusercontent.com/u/1104846?v=4" width="100px;"/><br /><sub>marlonpp</sub>](https://github.com/marlonpp)<br />[🤔](#ideas-marlonpp "Ideas & Planning") | [<img src="https://avatars1.githubusercontent.com/u/4296756?v=4" width="100px;"/><br /><sub>Javier Porrero</sub>](https://github.com/JPorry)<br />[🤔](#ideas-JPorry "Ideas & Planning") |
+| [<img src="https://avatars3.githubusercontent.com/u/2322305?v=4" width="100px;"/><br /><sub>James, please</sub>](http://www.jmeas.com)<br />[💻](https://github.com/jmeas/redux-resource/commits?author=jmeas "Code") [🔌](#plugin-jmeas "Plugin/utility libraries") [📖](https://github.com/jmeas/redux-resource/commits?author=jmeas "Documentation") [🤔](#ideas-jmeas "Ideas & Planning") | [<img src="https://avatars3.githubusercontent.com/u/682566?v=4" width="100px;"/><br /><sub>Stephen Rivas JR</sub>](http://www.stephenrivasjr.com)<br />[💻](https://github.com/jmeas/redux-resource/commits?author=sprjr "Code") [📖](https://github.com/jmeas/redux-resource/commits?author=sprjr "Documentation") [🤔](#ideas-sprjr "Ideas & Planning") | [<img src="https://avatars0.githubusercontent.com/u/4119765?v=4" width="100px;"/><br /><sub>Ian Stewart</sub>](https://github.com/ianmstew)<br />[🤔](#ideas-ianmstew "Ideas & Planning") | [<img src="https://avatars3.githubusercontent.com/u/181635?v=4" width="100px;"/><br /><sub>Tim Branyen</sub>](http://tbranyen.com/)<br />[🤔](#ideas-tbranyen "Ideas & Planning") | [<img src="https://avatars1.githubusercontent.com/u/254562?v=4" width="100px;"/><br /><sub>Jason Laster</sub>](https://github.com/jasonLaster)<br />[🤔](#ideas-jasonLaster "Ideas & Planning") | [<img src="https://avatars2.githubusercontent.com/u/1104846?v=4" width="100px;"/><br /><sub>marlonpp</sub>](https://github.com/marlonpp)<br />[🤔](#ideas-marlonpp "Ideas & Planning") | [<img src="https://avatars1.githubusercontent.com/u/4296756?v=4" width="100px;"/><br /><sub>Javier Porrero</sub>](https://github.com/JPorry)<br />[🤔](#ideas-JPorry "Ideas & Planning") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars2.githubusercontent.com/u/25591356?v=4" width="100px;"/><br /><sub>Smai Fullerton</sub>](https://github.com/smaifullerton-wk)<br />[📖](https://github.com/jmeas/resourceful-redux/commits?author=smaifullerton-wk "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/276971?v=4" width="100px;"/><br /><sub>vinodkl</sub>](https://github.com/vinodkl)<br />[🤔](#ideas-vinodkl "Ideas & Planning") | [<img src="https://avatars3.githubusercontent.com/u/828125?v=4" width="100px;"/><br /><sub>Eric Valadas</sub>](https://github.com/ericvaladas)<br />[📖](https://github.com/jmeas/resourceful-redux/commits?author=ericvaladas "Documentation") |
+| [<img src="https://avatars2.githubusercontent.com/u/25591356?v=4" width="100px;"/><br /><sub>Smai Fullerton</sub>](https://github.com/smaifullerton-wk)<br />[📖](https://github.com/jmeas/redux-resource/commits?author=smaifullerton-wk "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/276971?v=4" width="100px;"/><br /><sub>vinodkl</sub>](https://github.com/vinodkl)<br />[🤔](#ideas-vinodkl "Ideas & Planning") | [<img src="https://avatars3.githubusercontent.com/u/828125?v=4" width="100px;"/><br /><sub>Eric Valadas</sub>](https://github.com/ericvaladas)<br />[📖](https://github.com/jmeas/redux-resource/commits?author=ericvaladas "Documentation") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors)

@@ -26,11 +26,11 @@ code, although this same system works for other representations, too.
 Whenever an unauthorized response from the backend is returned in your CRUD
 action creators, include the status code in the action that you dispatch.
 
-If you're using [Resourceful XHR](/docs/extras/resourceful-xhr.md),
+If you're using [Redux Resource XHR](/docs/extras/redux-resource-xhr.md),
 then the entire `res` object will be attached to the action. You can access the
 status code at `action.res.statusCode`.
 
-If you're not using Resourceful XHR, then your code may look
+If you're not using Redux Resource XHR, then your code may look
 something like:
 
 ```js
@@ -68,7 +68,7 @@ The final step is to write a reducer that updates the state tree whenever
 these failed actions occur. Here is an example reducer that does this:
 
 ```js
-import { actionTypes } from 'resourceful-redux';
+import { actionTypes } from 'redux-resource';
 
 const {
   READ_RESOURCES_FAILED,

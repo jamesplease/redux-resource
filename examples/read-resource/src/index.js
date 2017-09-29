@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { resourceReducer } from 'resourceful-redux';
+import { resourceReducer } from 'redux-resource';
 import Book from './components/Book';
 import readBook from './action-creators/read-book';
 

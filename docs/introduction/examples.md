@@ -1,23 +1,23 @@
 # Examples
 
 A number of examples are distributed with the library's
-[source code](https://github.com/jmeas/resourceful-redux).
+[source code](https://github.com/jmeas/redux-resource).
 
 ### Read Resource
 
 To run this example:
 
 ```
-git clone https://github.com/jmeas/resourceful-redux.git
+git clone https://github.com/jmeas/redux-resource.git
 
-cd resourceful-redux/examples/read-resource
+cd redux-resource/examples/read-resource
 npm install
 npm start
 
 open http://localhost:3000/
 ```
 
-This example shows what the most basic usage of Resourceful Redux looks
+This example shows what the most basic usage of Redux Resource looks
 like. Two differences between a real-world application and this example are:
 
 - A real-world application would likely use the performant
@@ -32,9 +32,9 @@ like. Two differences between a real-world application and this example are:
 To run this example:
 
 ```
-git clone https://github.com/jmeas/resourceful-redux.git
+git clone https://github.com/jmeas/redux-resource.git
 
-cd resourceful-redux/examples/lists-and-named-requests
+cd redux-resource/examples/lists-and-named-requests
 npm install
 npm start
 

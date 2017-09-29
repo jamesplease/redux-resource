@@ -9,8 +9,8 @@ list or request.
 First, you need to register this plugin for any slice that needs it.
 
 ```js
-import { resourceReducer } from 'resourceful-redux';
-import { reset } from 'resourceful-plugins';
+import { resourceReducer } from 'redux-resource';
+import { reset } from 'redux-resource-plugins';
 
 const reducer = resourceReducer('books', {
   plugins: [reset]
@@ -21,7 +21,7 @@ Then, you can use the action creator that ships with the plugin to perform the
 reset.
 
 ```js
-import { reset } from 'resourceful-plugins';
+import { reset } from 'redux-resource-plugins';
 import store from './store';
 
 store.dispatch(reset.resetResource('books'));
@@ -46,7 +46,7 @@ be included when you reset your state.
 You can pass a second argument, `options`, to scope what is reset:
 
 ```js
-import { reset } from 'resourceful-plugins';
+import { reset } from 'redux-resource-plugins';
 import store from './store';
 
 // Reset just the "createBook" request
