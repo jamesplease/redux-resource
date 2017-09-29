@@ -54,6 +54,11 @@
   "bugs": {
     "url": "https://github.com/jmeas/redux-resource/issues"
   },
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
   "homepage": "https://redux-resource.js.org",
   "devDependencies": {
     "babel-cli": "^6.24.1",
