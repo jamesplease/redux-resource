@@ -13,3 +13,5 @@ exclude_paths:
 - "package.json"
 - "packages/*/test/**/*"
 - "packages/*/dist/**/*"
+- "packages/*/es/**/*"
+- "packages/*/lib/**/*"
