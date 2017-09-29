@@ -26,7 +26,7 @@ const deleteEndActions = [
   actionTypes.DELETE_RESOURCES_NULL,
 ];
 
-// This sets a new meta property on resource and label metadata: `statusCode`.
+// This sets a new meta property on resource and request metadata: `statusCode`.
 // This will be equal to the last status code for a request
 export default function httpStatusCodes(resourceName) {
   return function(state, action) {
@@ -49,12 +49,12 @@ export default function httpStatusCodes(resourceName) {
     const statusCode = action.statusCode || 0;
     const resources = action.resources;
 
-    let label;
-    if (action.label && typeof action.label === 'string') {
-      label = action.label;
+    let request;
+    if (action.request && typeof action.request === 'string') {
+      request = action.request;
     }
 
-    let newLabels, newMeta, idList;
+    let newRequests, newMeta, idList;
     if (resources) {
       idList = resources.map(r => {
         if (typeof r === 'object') {
@@ -67,18 +67,18 @@ export default function httpStatusCodes(resourceName) {
       idList = [];
     }
 
-    if (label) {
-      const existingLabel = state.labels[label] || {};
+    if (request) {
+      const existingRequest = state.requests[request] || {};
 
-      newLabels = {
-        ...state.labels,
-        [label]: {
-          ...existingLabel,
+      newRequests = {
+        ...state.requests,
+        [request]: {
+          ...existingRequest,
           statusCode
         }
       };
     } else {
-      newLabels = {...state.labels};
+      newRequests = {...state.requests};
     }
 
     if (idList.length) {
@@ -107,7 +107,7 @@ export default function httpStatusCodes(resourceName) {
 
     return {
       ...state,
-      labels: newLabels,
+      requests: newRequests,
       meta: newMeta
     };
   };
