@@ -1,7 +1,8 @@
 # Reset Plugin
 
-The reset plugin allows you to remove all of the data in the state, effectively
-"resetting" it. If you pass a `list`, then _just_ that list will be reset.
+The reset plugin allows you to remove all of the data in a slice, effectively
+"resetting" it. You may optionally scope the resetting to affect a single
+list or request.
 
 ### Usage
 
@@ -42,18 +43,44 @@ Resetting a list will set the list to be an empty array.
 The additional initial state that you pass to `resourceReducer` will also
 be included when you reset your state.
 
+You can pass a second argument, `options`, to scope what is reset:
+
+```js
+import { reset } from 'resourceful-plugins';
+import store from './store';
+
+// Reset just the "createBook" request
+store.dispatch(reset.resetResource('books', {
+  request: 'createBook'
+}));
+
+// Reset just the "favorites" list
+store.dispatch(reset.resetResource('books', {
+  list: 'favorites'
+}));
+
+// Reset a list and a request at the same time
+store.dispatch(reset.resetResource('books', {
+  list: 'favorites',
+  request: 'readFavorites'
+}));
+```
+
 ---
 
-### `resetResource(resourceName, [list])`
+### `resetResource(resourceName, [options])`
 
-Resets the slice for `resourceName`. If `list` is passed, then _just_ that
-list will be reset.
+Resets the slice for `resourceName`. Pass `options` to scope what's reset.
+There are two valid options:
+
+- `request`: Reset the request with this name
+- `list`: Reset the list with this name
 
 #### Arguments
 
 1. `resourceName` *(String)*: The name of the slice to reset.
 
-2. [`list`] *(String)*: The list to reset.
+2. [`options`] *(String)*: Options to scope what is reset.
 
 #### Returns
 
