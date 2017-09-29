@@ -25,7 +25,8 @@ describe('Resourceful Prop Types', function() {
         slice: {
           resources: {},
           meta: {},
-          labels: {}
+          requests: {},
+          lists: {}
         }
       };
 
@@ -42,7 +43,8 @@ describe('Resourceful Prop Types', function() {
         slice: {
           resources: true,
           meta: {},
-          labels: {}
+          requests: {},
+          lists: {}
         }
       };
 

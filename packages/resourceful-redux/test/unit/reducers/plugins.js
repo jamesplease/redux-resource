@@ -50,7 +50,7 @@ describe('reducer', function() {
         }
       },
       lists: {},
-      labels: {},
+      requests: {},
       pizza: 'yum'
     });
   });
@@ -81,7 +81,7 @@ describe('reducer', function() {
       resources: {},
       meta: {},
       lists: {},
-      labels: {},
+      requests: {},
       tastiness: 'quite'
     });
   });
@@ -121,7 +121,7 @@ describe('reducer', function() {
       resources: {},
       meta: {},
       lists: {},
-      labels: {},
+      requests: {},
       tastiness: true
     });
   });

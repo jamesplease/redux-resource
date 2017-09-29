@@ -22,17 +22,22 @@ following way:
 - `DELETE_RESOURCES_NULL`: Use this is the request is aborted.
 - `DELETE_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
-### Using Labels
+### Using Named Requests
 
 Because you usually know the ID of the resources that you're deleting, you
-typically don't need to use labels for delete operations. The metadata for the
-delete request can just be stored on the resource metadata directly.
+typically don't need to use named requests for delete operations. The metadata
+for the delete request can just be stored on the resource metadata directly.
+
+Sometimes, you might do a bulk delete of, say, 5 resources. You're more than
+welcome to just choose one of those 5 resources, and use its metadata to track the
+delete for the other 4 resources. However, if this doesn't sound like a good system
+to you, then you can also use a named request to track that bulk action.
 
 ### Successful Deletes
 
 When an action of type `DELETE_RESOURCES_SUCCEEDED` is dispatched, any resources
 included in the action will be removed from the `resources` array of your state
-tree. They will also be removed from the ID array of any label.
+tree. They will also be removed from the ID array of any list.
 
 The meta for each of the resources will be reset to the default metadata,
 except for `deleteStatus`, which will be set to `"SUCCEEDED"`.

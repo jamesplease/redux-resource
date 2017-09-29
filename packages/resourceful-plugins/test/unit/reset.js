@@ -18,7 +18,8 @@ describe('reset', function() {
       meta: {
         24: {oinky: true}
       },
-      labels: {
+      lists: {},
+      requests: {
         pasta: {
           ids: [24],
           status: 'PENDING'
@@ -43,7 +44,8 @@ describe('reset', function() {
       meta: {
         24: {oinky: true}
       },
-      labels: {
+      lists: {},
+      requests: {
         pasta: {
           ids: [24],
           status: 'PENDING'
@@ -59,7 +61,7 @@ describe('reset', function() {
     expect(result).to.equal(state);
   });
 
-  it('should reset the slice when there is no label', () => {
+  it('should reset the slice when there is no request name', () => {
     const reducer = reset('books');
 
     const state = {
@@ -70,7 +72,8 @@ describe('reset', function() {
       meta: {
         24: {oinky: true}
       },
-      labels: {
+      lists: {},
+      requests: {
         pasta: {
           ids: [24],
           status: 'PENDING'
@@ -84,11 +87,12 @@ describe('reset', function() {
     expect(result).to.deep.equal({
       resources: {},
       meta: {},
-      labels: {}
+      lists: {},
+      requests: {}
     });
   });
 
-  it('should reset the label when there is a label', () => {
+  it('should reset the request when there is a request name', () => {
     const reducer = reset('books');
 
     const state = {
@@ -99,7 +103,10 @@ describe('reset', function() {
       meta: {
         24: {oinky: true}
       },
-      labels: {
+      lists: {
+        stuff: [1, 2, 3]
+      },
+      requests: {
         pasta: {
           ids: [24],
           status: 'PENDING'
@@ -111,7 +118,7 @@ describe('reset', function() {
       }
     };
 
-    const action = resetResource('books', 'spaghetti');
+    const action = resetResource('books', {request: 'spaghetti'});
 
     const result = reducer(state, action);
     expect(result).to.deep.equal({
@@ -122,7 +129,10 @@ describe('reset', function() {
       meta: {
         24: {oinky: true}
       },
-      labels: {
+      lists: {
+        stuff: [1, 2, 3]
+      },
+      requests: {
         pasta: {
           ids: [24],
           status: 'PENDING'
@@ -130,6 +140,59 @@ describe('reset', function() {
         spaghetti: {
           ids: [],
           status: 'NULL'
+        }
+      }
+    });
+  });
+
+  it('should reset the list when there is a list name', () => {
+    const reducer = reset('books');
+
+    const state = {
+      selectedIds: [24],
+      resources: {
+        24: {name: 'James'}
+      },
+      meta: {
+        24: {oinky: true}
+      },
+      lists: {
+        stuff: [1, 2, 3]
+      },
+      requests: {
+        pasta: {
+          ids: [24],
+          status: 'PENDING'
+        },
+        spaghetti: {
+          ids: [100, 20],
+          status: 'SUCCEEDED'
+        }
+      }
+    };
+
+    const action = resetResource('books', {list: 'stuff'});
+
+    const result = reducer(state, action);
+    expect(result).to.deep.equal({
+      selectedIds: [24],
+      resources: {
+        24: {name: 'James'}
+      },
+      meta: {
+        24: {oinky: true}
+      },
+      lists: {
+        stuff: []
+      },
+      requests: {
+        pasta: {
+          ids: [24],
+          status: 'PENDING'
+        },
+        spaghetti: {
+          ids: [100, 20],
+          status: 'SUCCEEDED'
         }
       }
     });

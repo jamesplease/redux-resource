@@ -22,15 +22,15 @@ following way:
 - `READ_RESOURCES_NULL`: Use this is the request is aborted.
 - `READ_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
-### Using Labels
+### Using Named Requests
 
 When reading a single resource, you usually use an ID to read it. Therefore,
-labels aren't usually needed for single reads, as you can track the request
-on the resource's metadata directly.
+named requests aren't usually needed for single reads, as you can track the
+request on the resource's metadata directly.
 
 For bulk reads, you sometimes use some sort of filter or query to retrieve a
-list of resources. In these situations, it's often a good idea to use a label
-to keep track of the request.
+list of resources. In these situations, it's often a good idea to use a named
+request to keep track of the request.
 
 ### Successful Reads
 
@@ -41,7 +41,7 @@ included in the action's `resources`.
 The metadata for each of those resources will also be changed to have
 `readStatus: 'SUCCEEDED'`.
 
-If a `label` is passed, then the IDs for the label will be updated to include
+If a `list` is passed, then the IDs for the list will be updated to include
 the new IDs.
 
 ### Resourceful XHR
@@ -118,7 +118,7 @@ export default function readBooks(query) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
       resourceName: 'books',
-      label: 'search'
+      request: 'search'
     });
 
     const queryString = qs.stringify(query);
@@ -131,19 +131,19 @@ export default function readBooks(query) {
           dispatch({
             type: actionTypes.READ_RESOURCES_NULL,
             resourceName: 'books',
-            label: 'search'
+            request: 'search'
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.READ_RESOURCES_FAILED,
             resourceName: 'books',
-            label: 'search'
+            request: 'search'
           });
         } else {
           dispatch({
             type: actionTypes.READ_RESOURCES_SUCCEEDED,
             resourceName: 'books',
-            label: 'search',
+            request: 'search',
             resources: body
           });
         }

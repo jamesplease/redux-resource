@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 const slicePropType = PropTypes.shape({
   resources: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
-  labels: PropTypes.object.isRequired
+  requests: PropTypes.object.isRequired,
+  lists: PropTypes.object.isRequired
 });
 
 // An array of Resource IDs

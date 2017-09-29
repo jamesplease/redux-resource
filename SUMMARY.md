@@ -11,7 +11,7 @@
   * [State Structure](/docs/guides/state-structure.md)
   * [Tracking Requests](/docs/guides/tracking-requests.md)
   * [CRUD Actions](/docs/guides/crud-actions.md)
-  * [Request Labels](/docs/guides/request-labels.md)
+  * [Named Requests](/docs/guides/named-requests.md)
   * [Request Statuses](/docs/guides/request-statuses.md)
   * [Lists](/docs/guides/lists.md)
   * [Reading Resources](/docs/guides/reading-resources.md)

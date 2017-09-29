@@ -12,7 +12,7 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      labels: {}
+      requests: {}
     };
 
     const action = {
@@ -32,7 +32,7 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      labels: {}
+      requests: {}
     };
 
     const action = {
@@ -57,7 +57,7 @@ describe('httpStatusCodes', function() {
           createStatusCode: 0
         }
       },
-      labels: {}
+      requests: {}
     };
 
     const action = {
@@ -76,7 +76,7 @@ describe('httpStatusCodes', function() {
           createStatusCode: 201
         }
       },
-      labels: {}
+      requests: {}
     });
   });
 
@@ -87,7 +87,7 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      labels: {}
+      requests: {}
     };
 
     const action = {
@@ -105,7 +105,7 @@ describe('httpStatusCodes', function() {
           readStatusCode: 0
         }
       },
-      labels: {}
+      requests: {}
     });
   });
 
@@ -115,7 +115,7 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      labels: {}
+      requests: {}
     };
 
     const action = {
@@ -133,17 +133,17 @@ describe('httpStatusCodes', function() {
           updateStatusCode: 404
         }
       },
-      labels: {}
+      requests: {}
     });
   });
 
-  it('should set the status code on a label', () => {
+  it('should set the status code on a request', () => {
     const reducer = httpStatusCodes('books');
 
     const state = {
       resources: {},
       meta: {},
-      labels: {
+      requests: {
         search: {
           ids: [20],
           statusCode: 0
@@ -154,7 +154,7 @@ describe('httpStatusCodes', function() {
     const action = {
       type: actionTypes.READ_RESOURCES_FAILED,
       resourceName: 'books',
-      label: 'search',
+      request: 'search',
       statusCode: 404
     };
 
@@ -162,7 +162,7 @@ describe('httpStatusCodes', function() {
     expect(result).to.deep.equal({
       resources: {},
       meta: {},
-      labels: {
+      requests: {
         search: {
           ids: [20],
           statusCode: 404
@@ -171,13 +171,13 @@ describe('httpStatusCodes', function() {
     });
   });
 
-  it('should set the status code on a resource and a label (delete)', () => {
+  it('should set the status code on a resource and a request (delete)', () => {
     const reducer = httpStatusCodes('books');
 
     const state = {
       resources: {},
       meta: {},
-      labels: {
+      requests: {
         search: {
           ids: [20],
           statusCode: 0
@@ -191,7 +191,7 @@ describe('httpStatusCodes', function() {
       resources: [{
         id: 24
       }],
-      label: 'search',
+      request: 'search',
       statusCode: 404
     };
 
@@ -203,7 +203,7 @@ describe('httpStatusCodes', function() {
           deleteStatusCode: 404
         }
       },
-      labels: {
+      requests: {
         search: {
           ids: [20],
           statusCode: 404
