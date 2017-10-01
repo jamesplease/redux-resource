@@ -15,7 +15,7 @@ export default function(state, resourceName, idsOrList) {
       return [];
     }
 
-    idsList = list.ids;
+    idsList = list;
   } else {
     idsList = idsOrList;
   }

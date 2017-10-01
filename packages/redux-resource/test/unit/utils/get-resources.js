@@ -1,4 +1,4 @@
-import {getResources, requestStatuses} from '../../../src';
+import {getResources} from '../../../src';
 
 describe('getResources', function() {
   beforeEach(() => {
@@ -12,14 +12,8 @@ describe('getResources', function() {
         },
         meta: {},
         lists: {
-          dashboardSearch: {
-            ids: [10, 22, 102],
-            status: requestStatuses.SUCCEEDED
-          },
-          detailsPage: {
-            ids: [],
-            status: requestStatuses.FAILED
-          },
+          dashboardSearch: [10, 22, 102],
+          detailsPage: [],
           malformedList: {}
         }
       },
