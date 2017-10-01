@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-xhr",
-  "version": "2.0.0-beta",
+  "version": "2.0.0-beta1",
   "description": "Action creators for Redux Resource using the xhr library",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -57,7 +57,7 @@
   "homepage": "https://redux-resource.js.org",
   "dependencies": {
     "querystringify": "^1.0.0",
-    "redux-resource": "^2.0.0-beta",
+    "redux-resource": "^2.0.0-beta1",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
