@@ -102,6 +102,27 @@ store.dispatch({
 });
 ```
 
+### Naming Lists
+
+I like naming my lists in a way that describes what they are. For instance, `usersBooks`, `shoppingCart`,
+or `favoriteBooks`. Then, I use named requests that represent CRUD operations against that list. For instance:
+
+```
+{
+  request: 'readFavoriteBooks',
+  list: 'favoriteBooks'
+}
+```
+
+```
+{
+  request: 'createFavoriteBook',
+  list: 'favoriteBooks'
+}
+```
+
+> Remember, you only need to specify the list for read and create CRUD operations.
+
 ### Avoid Dynamic Lists
 
 As with named requests, dynamically-named lists are harder to reason about.
@@ -109,3 +130,7 @@ We strongly recommend that you use statically-named lists whenever possible.
 
 There may be valid reasons to use dynamically-named lists, but they are few
 and far between.
+
+### More Reading
+
+For more on lists, refer to [the Lists FAQ](/docs/faq/lists.md).

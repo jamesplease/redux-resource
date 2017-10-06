@@ -13,7 +13,7 @@ npm install redux-resource@2.0.0-beta1
 ### Unchanged Utilities
 
 Several utilities are unchanged between these releases. The first thing that you can do is
-update your  dapplication to use these instead of the Resourceful Redux versions.
+update your application to use these instead of the Resourceful Redux versions.
 
 ```diff
 - import { getStatus, actionTypes, requestStatuses } from 'resourceful-redux';
