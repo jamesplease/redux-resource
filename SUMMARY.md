@@ -20,6 +20,7 @@
   * [Deleting Resources](/docs/guides/deleting-resources.md)
   * [Usage With React](/docs/guides/usage-with-react.md)
   * [Plugins](/docs/guides/plugins.md)
+  * [Migrating](/docs/guides/migrating.md)
 * [Recipes](/docs/recipes/README.md)
   * [Canceling Requests](/docs/recipes/canceling-requests.md)
   * [Unauthorized Responses](/docs/recipes/unauthorized-responses.md)
