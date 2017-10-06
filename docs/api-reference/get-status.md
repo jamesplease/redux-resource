@@ -53,6 +53,10 @@ your state tree. For instance `"books.meta.24.readStatus"` or
 
 > Keep in mind that `treatNullAsPending` also works when aggregating.
 
+A limitation of `getStatus` is that it does not support paths that contain periods
+in the object keys. For more, refer to
+[gh-166](https://github.com/jmeas/redux-resource/issues/166).
+
 #### Examples
 
 In this example, we pass a single status location:
