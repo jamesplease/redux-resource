@@ -111,6 +111,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "yihangho",
+      "name": "Yihang Ho",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4226956?v=4",
+      "profile": "https://www.yihangho.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
