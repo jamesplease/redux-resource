@@ -35,5 +35,5 @@ account at once. Therefore, it's much better to just use a single list.
 As the user moves between pages in the application, you can set `mergeListIds`
 to `false` to throw away the previous list, and start fresh.
 
-Concerned about caching? That shouldn't be done at the list level: we recommend
-caching requests instead.
+Concerned about caching? Check out [the caching recipe](/docs/recipes/caching.md)
+for more.
