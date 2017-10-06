@@ -8,7 +8,8 @@ Returns an array of resources.
 
 3. `resourceName` *(String)*: The name of the resource.
 
-4. `idsOrList` *(Array)*: An array of resource IDs.
+4. `idsOrList` *(Array|String)*: An array of resource IDs, or
+  the name of a [list](/docs/guides/lists.md).
 
 #### Returns
 

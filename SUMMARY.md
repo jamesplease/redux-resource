@@ -37,6 +37,7 @@
   * [General](/docs/faq/general.md)
   * [State Tree](/docs/faq/state-tree.md)
   * [Actions](/docs/faq/actions.md)
+  * [Lists](/docs/faq/lists.md)
 * [API Reference](/docs/api-reference/README.md)
   * [resourceReducer](/docs/api-reference/resource-reducer.md)
   * [getStatus](/docs/api-reference/get-status.md)
