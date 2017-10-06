@@ -1,3 +1,28 @@
+## 9/30/17
+
+##### `@2.0.0-beta1`
+
+**Bug Fixes**
+
+- `getResources` now works properly.
+
+## 9/29/17
+
+##### `@2.0.0-beta`
+
+**Breaking Changes**
+
+- `getResources` now returns resources from lists, rather than requests.
+- The `labels` section of a slice has been renamed to be `requests`.
+- The library has been renamed from `resourceful-redux` to be `redux-resource`
+
+**New Features**
+
+- Loading Redux Resource in browser global environments (when you're not using
+  Webpack, Browserify, Rollup, or another bundler like these) now works.
+- The reset plugin now supports resetting a list and/or a request, or the entire
+  state slice.
+
 ## 9/14/17
 
 ##### `resourceful-redux@1.1.0-beta`
