@@ -121,8 +121,7 @@ or `favoriteBooks`. Then, I use named requests that represent CRUD operations ag
 }
 ```
 
-> :information_desk_person: Remember, you only need to specify the list for read and
-  create CRUD operations.
+> Remember, you only need to specify the list for read and create CRUD operations.
 
 ### Avoid Dynamic Lists
 

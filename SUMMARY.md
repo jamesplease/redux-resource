@@ -25,6 +25,7 @@
   * [Canceling Requests](/docs/recipes/canceling-requests.md)
   * [Unauthorized Responses](/docs/recipes/unauthorized-responses.md)
   * [User Feedback](/docs/recipes/user-feedback.md)
+  * [Caching](/docs/recipes/caching.md)
 * [Ecosystem Extras](/docs/extras/README.md)
   * [Redux Resource XHR](/docs/extras/redux-resource-xhr.md)
   * [Redux Resource Prop Types](/docs/extras/redux-resource-prop-types.md)
