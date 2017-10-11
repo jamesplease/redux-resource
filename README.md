@@ -23,7 +23,7 @@ remote servers.
 To install the latest version:
 
 ```
-npm install --save redux-resource@2.0.0-beta1
+npm install --save redux-resource
 ```
 
 ### Documentation
