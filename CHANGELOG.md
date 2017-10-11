@@ -1,3 +1,31 @@
+## 10/11/17
+
+##### `@2.0.0`
+
+> Note: No changes were made from `2.0.0-beta1`.
+
+Here is a summary of changes between 1.0.x and 2.0.0:
+
+**Breaking Changes**
+
+- `getResources` now returns resources from lists, rather than requests.
+- The `labels` section of a slice has been renamed to be `requests`.
+- The library has been renamed from `resourceful-redux` to be `redux-resource`
+
+**New Features**
+
+- The `resourceful-redux` library now supports lists, which separates two use
+  cases both previously managed by `labels`. Lists are designed to track ordered
+  collections of resources, like results from a search or a 'most popular books'.
+  Labels are now able to focus solely on named requests that aren't necessarily
+  tied to specific resources (e.g. to track the creation of new resources that
+  may not have IDs yet). For more info, refer to #187 or read further in
+  our [docs](https://resourceful-redux.js.org/).
+- Loading Redux Resource in browser global environments (when you're not using
+  Webpack, Browserify, Rollup, or another bundler like these) now works.
+- The reset plugin now supports resetting a list and/or a request, or the entire
+  state slice.
+
 ## 9/30/17
 
 ##### `@2.0.0-beta1`
