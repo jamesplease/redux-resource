@@ -71,11 +71,11 @@ how you can change them into Redux Resource compatible resources.
 
 ```js
 // Backend returns:
-[
+{
  'en': 'English',
  'fr': 'French',
  'es': 'Spanish'
-]
+}
 
 // Transform it like so:
 [
