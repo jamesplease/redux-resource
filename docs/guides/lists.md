@@ -4,7 +4,7 @@ When you read or create resources, they get added to the `resources` object
 within your state slice. This is useful for quick lookups of a single
 resource, but there are a few things this doesn't let you do:
 
-1. keep track of resource ordering
+1. keep track of server-side resource ordering
 2. manage subsets of resources
 
 Lists allow you to do both of these things. We will consider these two use cases
@@ -126,10 +126,11 @@ or `favoriteBooks`. Then, I use named requests that represent CRUD operations ag
 ### Avoid Dynamic Lists
 
 As with named requests, dynamically-named lists are harder to reason about.
-We strongly recommend that you use statically-named lists whenever possible.
+We recommend that you use statically-named lists whenever possible.
 
-There may be valid reasons to use dynamically-named lists, but they are few
-and far between.
+One reason to use a dynamically-named list is to support caching at the
+list level. Refer to [the recipe on caching](/docs/recipes/caching.md) for more
+on caching at the list level.
 
 ### More Reading
 
