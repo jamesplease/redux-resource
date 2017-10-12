@@ -71,7 +71,7 @@ manages the state for one type of resource. In this guide, our reducer will
 handle the data for our "books" resource.
 
 ```js
-import { store, combineReducers } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { resourceReducer } from 'redux-resource';
 
 const reducer = combineReducers({
