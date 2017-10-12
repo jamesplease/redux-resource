@@ -61,7 +61,7 @@ import { actionTypes } from 'redux-resource';
 import store from './store';
 
 // This action represents beginning the request to read a book with ID of 24. This
-// may could represent the start of an HTTP request, for instance.
+// could represent the start of an HTTP request, for instance.
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
@@ -87,10 +87,10 @@ this request. When it succeeds, accessing the returned book is straightforward.
 
 ```js
 import { getStatus } from 'redux-resource';
-import store from './my-store';
+import store from './store';
 
 const state = store.getState();
-// The second argument to this method is a path into the state. This method
+// The second argument to this method is a path into the state tree. This method
 // protects you from needing to check for undefined values.
 const readStatus = getStatus(store, 'books.meta.24.readStatus');
 
