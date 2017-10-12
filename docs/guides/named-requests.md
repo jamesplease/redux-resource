@@ -122,7 +122,40 @@ Now when you call `getStatus` for this named request, you get the following obje
 }
 ```
 
-### Avoid Dynamic Names
+### Tips for Naming
+
+We recommend using a verb somewhere in your request name. For instance, `getFavorites`
+rather than just `favorites`.
+
+Some verb ideas are:
+
+- create
+- get
+- read
+- search
+- find
+- update
+- change
+- delete
+
+If you're associating the request with a [list](/docs/guides/lists.md), then you may
+want to use the list name as well. For instance, if the list is `favorites`, and the
+request is for a user searching through their favorites, then you may use
+`searchFavorites`.
+
+Reusing a request name is fine, but be sure that you're reusing the name for the same
+'type' of request. For instance, if a user can create books in your application, and you
+wish to use a named request for that action, then you can just use `createBook`. This works
+really well as long as a user is only able to send off one create request at a time.
+
+We don't encourage using the same named request across different 'types' of actions.
+For instance, if a user can create favorite books, as well as delete favorite books,
+you should use something like `createFavorite` and `deleteFavorite` for these two
+actions, rather than, say, using `changeFavorites` for both. This makes your code more
+expressive, and also allows you to track both in the event that both are in flight
+at the same time.
+
+#### Avoid Dynamic Names
 
 **Avoid using dynamic names**. Common dynamic names that developers use are:
 

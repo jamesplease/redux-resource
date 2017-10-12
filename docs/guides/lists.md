@@ -4,7 +4,7 @@ When you read or create resources, they get added to the `resources` object
 within your state slice. This is useful for quick lookups of a single
 resource, but there are a few things this doesn't let you do:
 
-1. keep track of resource ordering
+1. keep track of server-side resource ordering
 2. manage subsets of resources
 
 Lists allow you to do both of these things. We will consider these two use cases
