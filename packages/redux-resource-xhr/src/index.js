@@ -40,7 +40,7 @@ function performXhr(dispatch, options, callback) {
         `No URL was passed to a Redux Resource action creator. You must ` +
         `pass either "xhrOptions.url" or "xhrOptions.uri". For more, refer to ` +
         `the Action Creators Extension documentation: ` +
-        `https://redux-resource.js.org/docs/extensions/action-creators.html`
+        `https://redux-resource.js.org/docs/extras/redux-resource-xhr.html`
       );
     }
   }
