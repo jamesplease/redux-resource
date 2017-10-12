@@ -3,7 +3,7 @@
 #### Are there Action Creators?
 
 Not in the core library, but there is an
-[HTTP Action Creators library](/docs/extensions/redux-resource-xhr.md).
+[HTTP Action Creators library](/docs/extras/redux-resource-xhr.md).
 
 Developers have different preferences when it comes to making requests, so
 we made this library easy to use with any library that you choose. We've
