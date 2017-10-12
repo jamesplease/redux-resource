@@ -127,7 +127,7 @@ Now when you call `getStatus` for this named request, you get the following obje
 We recommend using a verb somewhere in your request name. For instance, `getFavorites`
 rather than just `favorites`.
 
-Some verb ideas are:
+Some good CRUD-related verbs are:
 
 - create
 - get
@@ -155,19 +155,39 @@ actions, rather than, say, using `changeFavorites` for both. This makes your cod
 expressive, and also allows you to track both in the event that both are in flight
 at the same time.
 
-#### Avoid Dynamic Names
+#### A Note on Dynamic Names
 
-**Avoid using dynamic names**. Common dynamic names that developers use are:
+Typically, you'll want to avoid dynamic names. A dynamic request name is any name
+that includes a variable. Common dynamic names that developers use are:
 
 1. serializing a search to create unique names for each search
-2. serializing a new resource's attributes to create a unique name for each
+2. serializing a new resource's attributes to create a unique request name for each
   created resource
-2. putting a resource ID in a name for some reason or another
+2. putting a resource ID in a name
 
-Dynamic names are more error-prone, harder to reason about, and often unnecessary,
-so you should strongly consider if you need them before using them.
+Dynamic names can be useful in some situations, but they are often not needed. The
+benefit to using static names, such as `"create"` is that they're easier to reason about,
+and are less prone to errors.
 
-Instead, stick to "static" strings for names such as `"create"`, or
-`"readBooks"`. Most applications don't need to distinguish requests any
-further because they typically only allow one of these "types" of requests
-to be active at a single time. Keep it simple!
+Here are two use cases for dynamic names, although there may be more:
+
+- Caching by request name. There's no official caching system within redux-resource,
+  but using request names is one way that would work well. If you want to cache, say,
+  a user's search results based on what they enter, then you may want to serialize
+  the search so that you can look it up later. For more, refer to
+  [the recipe on caching](/docs/recipes/caching.md).
+
+- Supporting multiple of the same 'type' of request at once, when you are unable to
+  track the request statuses on a resource's metadata. That's a lot to take in, so
+  let's disect that.
+
+  If you can track a request status on a resource's metadata, then you don't need
+  named requests at all. Consequently, you also don't need a dynamically named
+  request.
+
+  An example where you (typically) don't have an ID is when a user is creating
+  a new resource. If a user can begin the process for creating a new resource,
+  and while that first request is in flight, they can initiate another, you
+  will usually want to track these requests separately to provide the best user
+  experience. To do this using named requests, you will either need to use a
+  dynamic label, or some other approach such as a temporary ID.

@@ -126,10 +126,11 @@ or `favoriteBooks`. Then, I use named requests that represent CRUD operations ag
 ### Avoid Dynamic Lists
 
 As with named requests, dynamically-named lists are harder to reason about.
-We strongly recommend that you use statically-named lists whenever possible.
+We recommend that you use statically-named lists whenever possible.
 
-There may be valid reasons to use dynamically-named lists, but they are few
-and far between.
+One reason to use a dynamically-named list is to support caching at the
+list level. Refer to [the recipe on caching](/docs/recipes/caching.md) for more
+on caching at the list level.
 
 ### More Reading
 
