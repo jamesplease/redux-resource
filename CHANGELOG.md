@@ -1,3 +1,12 @@
+## 10/13/17
+
+##### `redux-resource@2.1.0`
+
+**New Features**
+
+- `getResources` now accepts a filter function. Read more on
+  [the API documentation page](https://redux-resource.js.org/docs/api-reference/get-resources.html).
+
 ## 10/11/17
 
 ##### `@2.0.0`
