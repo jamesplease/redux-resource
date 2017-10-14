@@ -20,8 +20,8 @@ import store from './store';
 
 const state = store.getState();
 
-if (state.books.meta['23'] === requestStatuses.PENDING) {
-  console.log('A book with id "23" is in progress.');
+if (state.books.meta['23'].readStatus === requestStatuses.PENDING) {
+  console.log('A book with id "23" is currently being fetched.');
 }
 ```
 
