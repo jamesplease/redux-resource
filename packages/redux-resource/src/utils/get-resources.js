@@ -1,5 +1,5 @@
 // Returns a list of resources by IDs or list name
-export default function(state, resourceName, idsOrList) {
+export default function(state, resourceName, filter) {
   const resourceSlice = state[resourceName];
   if (!resourceSlice) {
     return [];
@@ -8,16 +8,21 @@ export default function(state, resourceName, idsOrList) {
   const resources = resourceSlice.resources;
   let idsList;
 
-  // This conditional handles the situation where `idsOrList` is an list name
-  if (typeof idsOrList === 'string') {
-    const list = resourceSlice.lists[idsOrList];
+  if (typeof filter === 'function') {
+    return Object.values(resources)
+      .filter(resource => filter(resource, resourceSlice.meta[resource.id], resourceSlice));
+  }
+
+  // This conditional handles the situation where `filter` is an list name
+  else if (typeof filter === 'string') {
+    const list = resourceSlice.lists[filter];
     if (!list) {
       return [];
     }
 
     idsList = list;
   } else {
-    idsList = idsOrList;
+    idsList = filter;
   }
 
   if (!(idsList && idsList.length)) {
