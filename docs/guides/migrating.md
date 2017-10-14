@@ -60,7 +60,9 @@ rather than `labels`.
 ```
 
 If you were using `getResources` to render out the response from this request, you will want to
-now also use a [list](https://redux-resource.js.org/docs/guides/lists.html).
+now also use a [list](https://redux-resource.js.org/docs/guides/lists.html). Now is also a
+good opportunity to switch to the new `getResources` API. The old API still works, but it will
+be removed in v3.0.0 sometime in early 2018.
 
 ```diff
   readResources({
@@ -70,7 +72,7 @@ now also use a [list](https://redux-resource.js.org/docs/guides/lists.html).
   });
 
 -  getResources(state, 'books', 'readBooks');
-+  getResources(state, 'books', 'usersBooks');
++  getResources(state.books, 'usersBooks');
 ```
 
 If you were using `mergeLabelIds`, be sure to change that to be `mergeListIds`:

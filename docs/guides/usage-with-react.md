@@ -21,7 +21,7 @@ For example:
 import { getResources, getStatus } from 'redux-resource';
 
 function mapStateToProps(state) {
-  const searchedBooks = getResources(state, 'books', 'searchResults');
+  const searchedBooks = getResources(state.books, 'searchResults');
   const searchStatus = getStatus(state, 'books.requests.getSearchResults.status');
 
   return {

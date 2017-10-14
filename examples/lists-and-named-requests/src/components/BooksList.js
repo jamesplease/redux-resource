@@ -8,8 +8,8 @@ class BooksList extends Component {
     const { state } = this.props;
     const searchStatus = getStatus(state, 'books.requests.readUserBooks.status', true);
     const latestStatus = getStatus(state, 'books.requests.readLatestBooks.status', true);
-    const userBooks = getResources(state, 'books', 'userBooks');
-    const latestBooks = getResources(state, 'books', 'latestBooks');
+    const userBooks = getResources(state.books, 'userBooks');
+    const latestBooks = getResources(state.books, 'latestBooks');
 
     return (
       <div style={{display: 'flex'}}>
