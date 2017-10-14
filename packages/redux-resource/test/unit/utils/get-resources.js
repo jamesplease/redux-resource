@@ -10,7 +10,18 @@ describe('getResources', function() {
           102: {id: 102, name: 'fried'},
           116: {id: 116, name: 'pickles'},
         },
-        meta: {},
+        meta: {
+          1: {},
+          10: {
+            selected: true
+          },
+          102: {
+            selected: false
+          },
+          116: {
+            selected: true
+          }
+        },
         lists: {
           dashboardSearch: [10, 22, 102],
           detailsPage: [],
@@ -67,6 +78,37 @@ describe('getResources', function() {
       expect(getResources(this.state, 'books', [1, 116, 130])).to.deep.equal([
         {id: 1, name: 'sandwiches'},
         {id: 116, name: 'pickles'},
+      ]);
+    });
+  });
+
+  describe('filter function', () => {
+    it('should return an empty array when nothing matches a filtering function', () => {
+      const filter = (resource, meta, resourceSlice) => {
+        const resourceId = resource.id;
+        expect(resource).to.deep.equal(this.state.books.resources[resourceId]);
+        expect(resourceSlice).to.deep.equal(this.state.books);
+        expect(meta).to.deep.equal(this.state.books.meta[resourceId]);
+
+        return false;
+      };
+
+      expect(getResources(this.state, 'books', filter)).to.deep.equal([]);
+    });
+
+    it('should return the resources that match a filtering function', () => {
+      const filter = (resource, meta, resourceSlice) => {
+        const resourceId = resource.id;
+        expect(resource).to.deep.equal(this.state.books.resources[resourceId]);
+        expect(resourceSlice).to.deep.equal(this.state.books);
+        expect(meta).to.deep.equal(this.state.books.meta[resourceId]);
+
+        return meta.selected;
+      };
+
+      expect(getResources(this.state, 'books', filter)).to.deep.equal([
+        {id: 10, name: 'pizza'},
+        {id: 116, name: 'pickles'}
       ]);
     });
   });

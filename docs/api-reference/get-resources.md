@@ -1,6 +1,6 @@
-# `getResources(state, resourceName, idsOrList)`
+# `getResources(state, resourceName, filter)`
 
-Returns an array of resources.
+Returns an array of resources based on the `filter` provided.
 
 #### Arguments
 
@@ -8,8 +8,11 @@ Returns an array of resources.
 
 3. `resourceName` *(String)*: The name of the resource.
 
-4. `idsOrList` *(Array|String)*: An array of resource IDs, or
-  the name of a [list](/docs/guides/lists.md).
+4. `filter` *(Array|String|Function)*: The filter to apply. It can be an array of resource
+  IDs, or the name of a [list](/docs/guides/lists.md). If a function is provided, then
+  `getResources` will iterate over the collection of resources, returning an array of
+  resources that the function returns truthy for. The function will be called with three arguments:
+  `(resource, resourceMeta, resourceSlice)`.
 
 #### Returns
 
@@ -24,10 +27,13 @@ import store from './store';
 const state = store.getState();
 
 // Retrieve resources by an array of IDs
-const bookSelection = getResources(state, 'books', [1, 12, 23]);
+const someBooks = getResources(state, 'books', [1, 12, 23]);
 
 // Retrieve resources by a list name
-const bookSelection = getResources(state, 'books', 'mostPopular');
+const popularBooks = getResources(state, 'books', 'mostPopular');
+
+// Retrieve the "selected" resources
+const selectedBooks = getResources(state, 'books', (resource, meta) => meta.selected);
 ```
 
 ### Tips
