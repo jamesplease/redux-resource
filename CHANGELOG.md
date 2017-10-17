@@ -1,3 +1,17 @@
+## 10/x/17
+
+##### `redux-resource@2.2.0`
+
+**New Features**
+
+- `getResources` has a new signature that only accepts two arguments. This makes it easier to use
+  `getResources` in applications that aren't using `combineReducers`. Read more on
+  [the API documentation page](https://redux-resource.js.org/docs/api-reference/get-resources.html).
+
+**Deprecations**
+
+- The old API of `getResources` that accepts three arguments.
+
 ## 10/13/17
 
 ##### `redux-resource@2.1.0`

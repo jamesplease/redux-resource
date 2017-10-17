@@ -1,14 +1,13 @@
-# `getResources(state, resourceName, filter)`
+# `getResources(resourceSlice, filter)`
 
-Returns an array of resources based on the `filter` provided.
+Returns an array of resources from `resourceSlice` based on the `filter` provided.
 
 #### Arguments
 
-1. `state` *(Object)*: The current state of the Redux store.
+1. `resourceSlice` *(Object)*: The slice of your state that a `resourceReducer` is
+  responsible for.
 
-3. `resourceName` *(String)*: The name of the resource.
-
-4. `filter` *(Array|String|Function)*: The filter to apply. It can be an array of resource
+2. `filter` *(Array|String|Function)*: The filter to apply. It can be an array of resource
   IDs, or the name of a [list](/docs/guides/lists.md). If a function is provided, then
   `getResources` will iterate over the collection of resources, returning an array of
   resources that the function returns truthy for. The function will be called with three arguments:
@@ -27,13 +26,13 @@ import store from './store';
 const state = store.getState();
 
 // Retrieve resources by an array of IDs
-const someBooks = getResources(state, 'books', [1, 12, 23]);
+const someBooks = getResources(state.books, [1, 12, 23]);
 
 // Retrieve resources by a list name
-const popularBooks = getResources(state, 'books', 'mostPopular');
+const popularBooks = getResources(state.books, 'mostPopular');
 
 // Retrieve the "selected" resources
-const selectedBooks = getResources(state, 'books', (resource, meta) => meta.selected);
+const selectedBooks = getResources(state.books, (resource, meta) => meta.selected);
 ```
 
 ### Tips
@@ -41,3 +40,8 @@ const selectedBooks = getResources(state, 'books', (resource, meta) => meta.sele
 - You don't _always_ need to use this method to access resources. Just need one
   resource? If the resource is on the `books` slice, you can directly access it
   via `store.getState().books.resources[bookId]`.
+
+### Old Signatures
+
+In v2 of Redux Resource, you may use the signature: `getResources(state, resourceName, filter)`,
+but this has been deprecated as of v2.2.0, and will be removed in v3.0.0.
