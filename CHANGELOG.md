@@ -1,5 +1,19 @@
 ## 10/17/17
 
+##### `redux-resource@2.2.1`
+
+**Changes**
+
+- A README has been added to the npm package.
+
+##### Extras `@2.0.1`
+
+**Changes**
+
+- A README has been added to the npm packages.
+
+## 10/17/17
+
 ##### `redux-resource@2.2.0`
 
 **New Features**

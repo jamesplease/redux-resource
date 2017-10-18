@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-prop-types",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "prop-types for Redux Resource",
   "main": "lib/index.js",
   "module": "es/index.js",
