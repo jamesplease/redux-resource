@@ -32,6 +32,21 @@ describe('getStatus', function() {
             updateStatus: requestStatuses.FAILED,
           }
         },
+      },
+      things: {
+        'pasta.is.tasty': {
+          readStatus: requestStatuses.SUCCEEDED
+        },
+        24: {
+          updateStatus: requestStatuses.FAILED
+        },
+        100: requestStatuses.PENDING,
+        '\\\'': {
+          deleteStatus: requestStatuses.PENDING
+        },
+        '[\'a\']': {
+          '[\\"a\\"]': requestStatuses.FAILED
+        }
       }
     };
   });
@@ -65,8 +80,18 @@ describe('getStatus', function() {
   });
 
   describe('singular', () => {
-    it('should return a meta that exists', () => {
+    it('should return a request status that exists', () => {
       expect(getStatus(this.state, 'sandwiches.meta.102.readStatus')).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: false,
+        succeeded: true
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should return a request status that exists; bracket syntax', () => {
+      expect(getStatus(this.state, 'sandwiches.meta[102].readStatus')).to.deep.equal({
         null: false,
         pending: false,
         failed: false,
@@ -95,6 +120,16 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
+    it('should return a meta that exists and is null; bracket syntax', () => {
+      expect(getStatus(this.state, 'sandwiches.meta[100].readStatus')).to.deep.equal({
+        null: true,
+        pending: false,
+        failed: false,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
     it('should return a meta that exists and is null with `treatNullAsPending` set to true', () => {
       expect(getStatus(this.state, 'sandwiches.meta.100.readStatus', true)).to.deep.equal({
         null: false,
@@ -105,8 +140,28 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
+    it('should return a meta that exists and is null with `treatNullAsPending` set to true; bracket syntax', () => {
+      expect(getStatus(this.state, 'sandwiches.meta[100].readStatus', true)).to.deep.equal({
+        null: false,
+        pending: true,
+        failed: false,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
     it('should return a meta that exists and is succeeded with `treatNullAsPending` set to true', () => {
       expect(getStatus(this.state, 'sandwiches.meta.102.readStatus', true)).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: false,
+        succeeded: true
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should return a meta that exists and is succeeded with `treatNullAsPending` set to true; bracket syntax', () => {
+      expect(getStatus(this.state, 'sandwiches.meta[102].readStatus', true)).to.deep.equal({
         null: false,
         pending: false,
         failed: false,
@@ -130,6 +185,88 @@ describe('getStatus', function() {
         null: false,
         pending: true,
         failed: false,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support bracket syntax for keys with periods in them, double quotes', () => {
+      expect(getStatus(this.state, 'things["pasta.is.tasty"].readStatus')).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: false,
+        succeeded: true
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support bracket syntax for keys with periods in them, single quotes', () => {
+      expect(getStatus(this.state, "things['pasta.is.tasty'].readStatus")).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: false,
+        succeeded: true
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support bracket syntax for numbers', () => {
+      expect(getStatus(this.state, 'things[24].updateStatus')).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: true,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support bracket syntax, ending on a bracket', () => {
+      expect(getStatus(this.state, 'things[100]')).to.deep.equal({
+        null: false,
+        pending: true,
+        failed: false,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support bracket syntax, ending on a bracket, but missing ending bracket', () => {
+      expect(getStatus(this.state, 'things[100')).to.deep.equal({
+        null: false,
+        pending: true,
+        failed: false,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support bracket syntax, ending on a bracket, but missing ending bracket with quotes', () => {
+      expect(getStatus(this.state, 'things["100')).to.deep.equal({
+        null: false,
+        pending: true,
+        failed: false,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support strings with escaped quotes', () => {
+      // eslint-disable-next-line
+      expect(getStatus(this.state, "things[\'\\\'\'].deleteStatus")).to.deep.equal({
+        null: false,
+        pending: true,
+        failed: false,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should support strings with escaped quotes', () => {
+      // eslint-disable-next-line
+      expect(getStatus(this.state, 'things["[\'a\']"][\'[\\"a\\"]\']')).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: true,
         succeeded: false
       });
       expect(console.error.callCount).to.equal(0);
@@ -205,6 +342,25 @@ describe('getStatus', function() {
           'sandwiches.meta.102.readStatus',
           'books.requests.dashboardSearch.status',
           'sandwiches.meta.102.updateStatus'
+        ]
+      );
+
+      expect(result).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: true,
+        succeeded: false
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should fail when one is failed; bracket syntax', () => {
+      const result = getStatus(
+        this.state,
+        [
+          'sandwiches.meta[102].readStatus',
+          'books.requests.dashboardSearch.status',
+          'sandwiches.meta[102].updateStatus'
         ]
       );
 

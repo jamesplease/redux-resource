@@ -1,8 +1,9 @@
 import requestStatuses from './request-statuses';
+import getPathParts from './get-path-parts';
 import warning from './warning';
 
 function getSingleStatus(state, statusLocation, treatNullAsPending) {
-  const splitPath = statusLocation.split('.');
+  const splitPath = getPathParts(statusLocation);
 
   let status;
   let currentVal = state;
