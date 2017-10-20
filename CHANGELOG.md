@@ -1,3 +1,12 @@
+## 10/19/17
+
+##### `redux-resource@2.3.0`
+
+**New Features**
+
+- `getStatus` now supports bracket notation for pathing. For instance,
+  `getStatus(state, 'books.resources[24].readStatus')`.
+
 ## 10/17/17
 
 ##### `redux-resource@2.2.1`
