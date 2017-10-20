@@ -71,6 +71,7 @@
     "babel-register": "^6.24.1",
     "cross-env": "^5.0.1",
     "in-publish": "^2.0.0",
+    "qs": "^6.5.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",

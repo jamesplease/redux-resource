@@ -9,8 +9,13 @@ import qs from 'querystringify';
 //   2. Pass a `qs` option for query string support
 
 function buildUrl(uri, options) {
+  let qsStringify = options.qsStringify || qs.stringify;
   if (options.qs) {
-    uri += qs.stringify(options.qs, true);
+    let stringified = qsStringify(options.qs, options.qsStringifyOptions);
+    if (stringified[0] !== '?') {
+      stringified = `?${stringified}`;
+    }
+    uri += stringified;
   }
   return uri;
 }

@@ -279,12 +279,45 @@ This is the library used to make HTTP requests. It is a thin wrapper around the
 library [`xhr`](https://github.com/naugtur/xhr), and supports all of the same
 options and signatures.
 
-On top of that, it adds two features:
+On top of that, it adds several new features:
 
-1. Support for a `qs` option (similar to the [`request`](https://github.com/request/request#requestoptions-callback) library).
+1. Support for query string serialization (similar to the [`request`](https://github.com/request/request#requestoptions-callback) library).
 
 2. Omitting the callback will return a native
   [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+
+#### Customizing Query String Serialization
+
+If you pass a `qs` object, then the object will be serialized into a query parameter
+using the [`querystringify`](https://www.npmjs.com/package/querystringify) library. This
+library supports basic serialization, but we don't expect it to work for every API that
+you interface with.
+
+You can change how the query string is serialized using two options:
+
+- `qsStringify` - a function with the signature `(qs, options)`. It should return
+  the string to be appended to the URI.
+
+- `qsStringifyOptions` - an object that is passed as the second argument to the `qsStringify`
+  method.
+
+For instance, if you wish to use the `qs` library, you might do this:
+
+```js
+import { xhr } from 'redux-resource-xhr';
+import qs from 'qs';
+
+xhr('/books', {
+  method: 'GET',
+  qs: {
+    pageSize: 10,
+    pageNumber: 0,
+    publishers: ['goldenBooks', 'penguinBooks']
+  },
+  qsStringify: qs.stringify,
+  qsStringifyOptions: { arrayFormat: 'brackets' }
+}, cb);
+```
 
 #### Example
 
