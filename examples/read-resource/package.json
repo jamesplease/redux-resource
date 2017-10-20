@@ -14,8 +14,8 @@
     "react-redux": "^5.0.5",
     "redux": "^3.5.2",
     "redux-thunk": "^2.2.0",
-    "redux-resource-prop-types": "2.0.0-beta1",
-    "redux-resource": "2.0.0-beta1"
+    "redux-resource-prop-types": "^2.0.1",
+    "redux-resource": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
