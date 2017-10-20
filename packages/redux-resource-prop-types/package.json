@@ -61,7 +61,8 @@
   ],
   "homepage": "https://redux-resource.js.org",
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "redux-resource": "^2.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

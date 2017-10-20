@@ -4,6 +4,9 @@
 
 A collection of [prop-types](https://github.com/facebook/prop-types) objects.
 
+> Trying to migrate from v2 of this library? Check out
+  [the migration guide](https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-prop-types/MIGRATING.md).
+
 ### Installation
 
 Install `redux-resource-prop-types` with npm:
@@ -18,84 +21,31 @@ import { resourcesPropType } from 'redux-resource-prop-types';
 
 ### Usage
 
-There are four prop types. If you're using React, refer to the [Typechecking with
+If you're using React, refer to the [Typechecking with
 PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
-guide on how to use them. If you're not using React, refer to the documentation
-of the [prop-types](https://github.com/facebook/prop-types) library.
+guide on how to use the exported prop types. If you're not using React, refer to the
+documentation of the [prop-types](https://github.com/facebook/prop-types) library.
 
-#### `slicePropType`
+We recommend using the prop types in this library to build your own prop types, which
+you can reuse throughout your application.
 
-Validates the state slice that a
-[`resourceReducer`](/docs/api-reference/resource-reducer.md) is associated with.
-It's called a "slice" because the most common usage of Redux Resource
-involves using
-[`combineReducers`](http://redux.js.org/docs/api/combineReducers.html).
+#### `idPropType`
 
-This checks that the object has a shape like:
-
-```js
-{
-  resources: {},
-  meta: {},
-  requests: {},
-  lists: {}
-}
-```
-
-```js
-import { slicePropType } from 'redux-resource-prop-types';
-
-MyComponent.propTypes = {
-  books: slicePropType
-};
-
-mapStateToProps(state) {
-  return {
-    books: state.books
-  };
-}
-```
-
-#### `resourceIdsPropType`
-
-Validates an Array of resource IDs. Sometimes, it's convenient to store a
-reference to a subset of resources as an array of IDs. For instance, lists
-store their associated resources as an array of IDs. In your own application
-code, you might choose to represent a list of "selected" resources as an array
-of IDs.
+Validates a single resource ID.
 
 > Tip: This prop type requires that your IDs be either strings or numbers.
 
 ```js
-import { resourceIdsPropType } from 'redux-resource-prop-types';
+import PropTypes from 'prop-types';
+import { idPropType } from 'redux-resource-prop-types';
 
 MyComponent.propTypes = {
-  selectedBookIds: resourceIdsPropType
+  selectedBookIds: PropTypes.arrayOf(idPropType).isRequired
 };
 
 mapStateToProps(state) {
   return {
-    selectedBookIds: state.books.selectedBookIds
-  };
-}
-```
-
-#### `resourcesPropTypes`
-
-Validates an array of resources. Resources are JavaScript objects that have an
-`id` attribute. For more, see
-[the Resources guide](/docs/guides/resources.md).
-
-```js
-import { resourcesPropType } from 'redux-resource-prop-types';
-
-MyComponent.propTypes = {
-  books: resourcesPropType
-};
-
-mapStateToProps(state) {
-  return {
-    books: state.books.resources
+    selectedBookIds: state.books.selectedIds
   };
 }
 ```
@@ -115,6 +65,71 @@ MyComponent.propTypes = {
 mapStateToProps(state) {
   return {
     bookReadStatus: getStatus(state, 'books.meta[23].readStatus');
+  };
+}
+```
+
+#### `requestStatusPropType`
+
+Validates that a value is one of the [`requestStatuses`](/docs/api-reference/request-statuses.md)`.
+Typically, you'll want to use `statusPropType` instead, but this can be useful when verifying
+the structure of your slice.
+
+```js
+import { requestStatusPropType } from 'redux-resource-prop-types';
+
+MyComponent.propTypes = {
+  bookRequestStatus: requestStatusPropType
+};
+
+mapStateToProps(state) {
+  return {
+    bookRequestStatus: state.books.meta[23].readStatus
+  };
+}
+```
+
+#### `resourcePropType`
+
+Validates a resource. Similar to `PropTypes.shape()`, except that it enforces an ID.
+
+```js
+import PropTypes from 'prop-types';
+import { resourcePropType } from 'redux-resource-prop-types';
+
+MyComponent.propTypes = {
+  book: resourcePropType({
+    name: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired
+  })
+};
+
+mapStateToProps(state) {
+  return {
+    book: state.books.resources[23]
+  };
+}
+```
+
+#### `resourcePropType`
+
+Validates a request. Similar to `PropTypes.shape()`, except that it enforces `ids`
+and `status`. Typically, you won't need to use this, but it can be useful to verify
+the structure of your state.
+
+```js
+import PropTypes from 'prop-types';
+import { requestPropType } from 'redux-resource-prop-types';
+
+MyComponent.propTypes = {
+  searchRequest: requestPropType({
+    statusCode: PropTypes.number.isRequired
+  })
+};
+
+mapStateToProps(state) {
+  return {
+    searchRequest: state.books.requests.search
   };
 }
 ```

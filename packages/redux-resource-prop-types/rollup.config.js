@@ -7,9 +7,10 @@ var env = process.env.NODE_ENV;
 var config = {
   format: 'umd',
   moduleName: 'ReduxResourcePropTypes',
-  external: 'prop-types',
+  external: ['redux-resource', 'prop-types'],
   globals: {
-    'prop-types': 'PropTypes'
+    'prop-types': 'PropTypes',
+    'redux-resource': 'ReduxResource'
   },
   plugins: [
     nodeResolve({

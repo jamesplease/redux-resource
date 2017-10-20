@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {requestStatuses} from 'redux-resource';
 import * as types from '../../src';
 
 describe('Redux Resource Prop Types', function() {
@@ -12,26 +13,24 @@ describe('Redux Resource Prop Types', function() {
 
   it('should have the right keys', () => {
     expect(types).to.have.keys([
-      'slicePropType',
-      'resourceIdsPropType',
-      'resourcesPropType',
-      'statusPropType'
+      'idPropType',
+      'requestStatusPropType',
+      'resourcePropType',
+      'requestPropType',
+      'statusPropType',
     ]);
   });
 
-  describe('slicePropType', () => {
+  describe('idPropType', () => {
     it('should not console.error when a valid slice is passed', () => {
       const props = {
-        slice: {
-          resources: {},
-          meta: {},
-          requests: {},
-          lists: {}
-        }
+        idOne: 'beep',
+        idTwo: 2
       };
 
       const propTypes = {
-        slice: types.slicePropType
+        idOne: types.idPropType,
+        idTwo: types.idPropType
       };
 
       PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
@@ -40,16 +39,11 @@ describe('Redux Resource Prop Types', function() {
 
     it('should console.error when an invalid slice is passed', () => {
       const props = {
-        slice: {
-          resources: true,
-          meta: {},
-          requests: {},
-          lists: {}
-        }
+        id: {},
       };
 
       const propTypes = {
-        slice: types.slicePropType
+        id: types.idPropType
       };
 
       PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
@@ -57,17 +51,16 @@ describe('Redux Resource Prop Types', function() {
     });
   });
 
-  describe('resourceIdsPropType', () => {
+  describe('requestStatusPropType', () => {
     it('should not console.error when a valid slice is passed', () => {
       const props = {
-        ids: [
-          'mmm',
-          100
-        ]
+        requestOne: requestStatuses.NULL,
+        requestTwo: requestStatuses.PENDING
       };
 
       const propTypes = {
-        ids: types.resourceIdsPropType
+        requestOne: types.requestStatusPropType,
+        requestTwo: types.requestStatusPropType
       };
 
       PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
@@ -76,11 +69,11 @@ describe('Redux Resource Prop Types', function() {
 
     it('should console.error when an invalid slice is passed', () => {
       const props = {
-        ids: [{}, '24']
+        requestStatus: 'pizza',
       };
 
       const propTypes = {
-        ids: types.resourceIdsPropType
+        requestStatus: types.requestStatusPropType
       };
 
       PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
@@ -88,17 +81,19 @@ describe('Redux Resource Prop Types', function() {
     });
   });
 
-  describe('resourcesPropType', () => {
+  describe('resourcePropType', () => {
     it('should not console.error when a valid slice is passed', () => {
       const props = {
-        resources: [
-          {id: 'mm'},
-          {id: 100}
-        ]
+        resource: {
+          id: 'mm',
+          name: 'sandwiches'
+        }
       };
 
       const propTypes = {
-        resources: types.resourcesPropType
+        resource: types.resourcePropType({
+          name: PropTypes.string.isRequired
+        })
       };
 
       PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
@@ -107,11 +102,55 @@ describe('Redux Resource Prop Types', function() {
 
     it('should console.error when an invalid slice is passed', () => {
       const props = {
-        resources: [{}, '24']
+        resource: {
+          name: 'spaghetti'
+        }
       };
 
       const propTypes = {
-        resources: types.resourcesPropType
+        resource: types.resourcePropType({
+          name: PropTypes.string.isRequired
+        })
+      };
+
+      PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
+      expect(console.error.callCount).to.equal(1);
+    });
+  });
+
+  describe('requestPropType', () => {
+    it('should not console.error when a valid slice is passed', () => {
+      const props = {
+        resource: {
+          ids: [1, 'ok'],
+          status: requestStatuses.FAILED,
+          blah: 'sandwiches'
+        }
+      };
+
+      const propTypes = {
+        resource: types.requestPropType({
+          blah: PropTypes.string.isRequired
+        })
+      };
+
+      PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('should console.error when an invalid slice is passed', () => {
+      const props = {
+        resource: {
+          ids: [{}],
+          status: true,
+          blah: 'spaghetti'
+        }
+      };
+
+      const propTypes = {
+        resource: types.requestPropType({
+          blah: PropTypes.string.isRequired
+        })
       };
 
       PropTypes.checkPropTypes(propTypes, props, 'prop', 'MyComponent');
