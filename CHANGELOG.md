@@ -1,3 +1,13 @@
+## 10/20/17
+
+##### `redux-resource-xhr@2.1.0`
+
+**New Features**
+
+- You can now customize the query string serializer by using the
+  `qsStringify` and `qsStringifyOptions` XHR options. For more, refer
+  to [the documentation](https://redux-resource.js.org/docs/extras/redux-resource-xhr.html).
+
 ## 10/19/17
 
 ##### `redux-resource@2.3.0`
