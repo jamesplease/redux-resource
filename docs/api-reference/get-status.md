@@ -66,7 +66,7 @@ import { getStatus } from 'redux-resource';
 import store from './store';
 
 const state = store.getState();
-const bookDeleteStatus = getStatus(state, 'books.meta.23.deleteStatus');
+const bookDeleteStatus = getStatus(state, 'books.meta[23].deleteStatus');
 ```
 
 In this example, we pass two locations:
@@ -79,7 +79,7 @@ const state = store.getState();
 const bookReadStatus = getStatus(
   state,
   [
-    'articles.meta.23.readStatus',
+    'articles.meta[23].readStatus',
     'comments.requests.detailsRead.status'
   ],
   true

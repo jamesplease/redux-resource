@@ -114,7 +114,7 @@ MyComponent.propTypes = {
 
 mapStateToProps(state) {
   return {
-    bookReadStatus: getStatus(state, 'books.meta.23.readStatus');
+    bookReadStatus: getStatus(state, 'books.meta[23].readStatus');
   };
 }
 ```
