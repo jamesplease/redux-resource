@@ -49,7 +49,7 @@ export class BookDetails extends Component {
 function mapStateToProps(state, props) {
   // A user can pass a `bookId` into this Component to view the book's data
   const bookId = props.bookId;
-  const readStatus = getStatus(state, `books.meta.${bookId}.readStatus`, true);
+  const readStatus = getStatus(state, `books.meta[${bookId}].readStatus`, true);
   const book = state.books.resources[book.id];
 
   return {

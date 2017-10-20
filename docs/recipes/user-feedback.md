@@ -23,7 +23,7 @@ this might look like:
 ```jsx
 render() {
   const { state } = this.props;
-  const readStatus = getStatus(state, 'books.meta.24.readStatus');
+  const readStatus = getStatus(state, 'books.meta[24].readStatus');
 
   return (
     <div>
@@ -77,7 +77,7 @@ If you're using React, an example code snippet of disabling a button is:
 ```jsx
 render() {
   const { state } = this.props;
-  const readStatus = getStatus(state, 'books.meta.24.readStatus');
+  const readStatus = getStatus(state, 'books.meta[24].readStatus');
 
   return (
     <div>
@@ -111,7 +111,7 @@ React, a typical error message might look like the following:
 ```jsx
 render() {
   const { state } = this.props;
-  const readStatus = getStatus(state, 'books.meta.24.readStatus');
+  const readStatus = getStatus(state, 'books.meta[24].readStatus');
 
   return (
     <div>
@@ -186,7 +186,7 @@ using React. For instance:
 ```jsx
 render() {
   const { state } = this.props;
-  const updateState = getStatus(state, 'books.meta.24.updateStatus');
+  const updateState = getStatus(state, 'books.meta[24].updateStatus');
 
   return (
     <div>

@@ -122,7 +122,7 @@ import store from './store';
 const state = store.getState();
 // The second argument to this method is a path into the state tree. This method
 // protects you from needing to check for undefined values.
-const readStatus = getStatus(store, 'books.meta.24.readStatus');
+const readStatus = getStatus(store, 'books.meta[24].readStatus');
 
 if (readStatus.pending) {
   console.log('The request is in flight.');

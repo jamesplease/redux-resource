@@ -6,7 +6,7 @@ import { slicePropType } from 'redux-resource-prop-types';
 class Book extends Component {
   render() {
     const { state, readBook, bookId } = this.props;
-    const readStatus = getStatus(state, 'meta.24.readStatus');
+    const readStatus = getStatus(state, 'meta[24].readStatus');
     const book = state.resources[bookId];
 
     return (
