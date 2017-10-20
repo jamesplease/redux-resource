@@ -1,4 +1,5 @@
 import xhr, {__RewireAPI__} from '../../src/xhr';
+import qs from 'qs';
 
 describe('xhr', function() {
   afterEach(() => {
@@ -67,6 +68,30 @@ describe('xhr', function() {
       expect(this.xhrStub).to.have.been.calledWith({
         uri: 'https://www.google.com',
         method: 'GET'
+      }, cb);
+    });
+  });
+
+  describe('xhr(url, options, cb); custom query string serializer', () => {
+    it('should call xhr with the correct args', () => {
+      this.xhrStub = stub();
+      __RewireAPI__.__Rewire__('xhr', this.xhrStub);
+
+      const cb = stub();
+      const options = {
+        method: 'GET',
+        qs: {a: 'b', c: ['d', 'e=f'], f: [['g'], ['h']]},
+        qsStringify: qs.stringify,
+        qsStringifyOptions: {encodeValuesOnly: true}
+      };
+      xhr('https://www.google.com', options, cb);
+
+      expect(this.xhrStub).to.have.been.calledWith({
+        uri: 'https://www.google.com?a=b&c[0]=d&c[1]=e%3Df&f[0][0]=g&f[1][0]=h',
+        method: 'GET',
+        qs: {a: 'b', c: ['d', 'e=f'], f: [['g'], ['h']]},
+        qsStringify: qs.stringify,
+        qsStringifyOptions: {encodeValuesOnly: true}
       }, cb);
     });
   });
