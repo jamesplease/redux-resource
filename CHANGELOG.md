@@ -8,6 +8,20 @@
   `qsStringify` and `qsStringifyOptions` XHR options. For more, refer
   to [the documentation](https://redux-resource.js.org/docs/extras/redux-resource-xhr.html).
 
+##### `redux-resource-prop-types@3.0.0`
+
+**Breaking Changes**
+
+- `resourceIdsPropType` has been removed
+- `slicePropType` has been removed
+- `resourcesPropType` has been removed
+
+**New Features**
+
+- Several new prop types that you can use to build better replacements for the
+  above deletions. For more, refer to
+  [the migration guide]((https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-prop-types/MIGRATING.md)).
+
 ## 10/19/17
 
 ##### `redux-resource@2.3.0`
