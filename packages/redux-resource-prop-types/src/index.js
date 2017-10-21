@@ -1,34 +1,41 @@
 import PropTypes from 'prop-types';
+import {requestStatuses} from 'redux-resource';
 
-// The state from a `resourceReducer` slice of your store. It's called a
-// "slice" because most folks use `resourceReducer` alongside `combineReducers`,
-// although it works just as well if you're not.
-const slicePropType = PropTypes.shape({
-  resources: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired,
-  requests: PropTypes.object.isRequired,
-  lists: PropTypes.object.isRequired
-});
+// Verifies a resource ID. Useful as a "building block" for
+// more advanced prop types.
+const idPropType = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.number,
+]);
 
-// An array of Resource IDs
-const resourceIdsPropType = PropTypes.arrayOf(
-  PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ])
-);
+// Verifies a request status. useful as a "building block" for
+// more advanced prop types.
+const requestStatusPropType = PropTypes.oneOf([
+  requestStatuses.NULL,
+  requestStatuses.PENDING,
+  requestStatuses.FAILED,
+  requestStatuses.SUCCEEDED
+]);
 
-// The return value from `getResources`
-const resourcesPropType = PropTypes.arrayOf(
-  PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ])
-  })
-);
+// Similar to `.shape()`, except that it enforces an ID.
+const resourcePropType = function(props) {
+  return PropTypes.shape({
+    ...props,
+    id: idPropType.isRequired
+  });
+};
 
-// The return value from `getStatus`
+// Similar to `.shape()`, except that it enforces proper request
+// statuses, as well as an ID list
+const requestPropType = function(props) {
+  return PropTypes.shape({
+    ...props,
+    ids: PropTypes.arrayOf(idPropType).isRequired,
+    status: requestStatusPropType.isRequired
+  });
+};
+
+// The return value from `getStatus`.
 const statusPropType = PropTypes.shape({
   null: PropTypes.bool.isRequired,
   pending: PropTypes.bool.isRequired,
@@ -37,8 +44,9 @@ const statusPropType = PropTypes.shape({
 });
 
 export {
-  slicePropType,
-  resourceIdsPropType,
-  resourcesPropType,
-  statusPropType
+  idPropType,
+  requestStatusPropType,
+  resourcePropType,
+  requestPropType,
+  statusPropType,
 };

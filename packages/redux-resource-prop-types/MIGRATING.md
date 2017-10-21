@@ -1,0 +1,84 @@
+# Migrating
+
+This guide covers a migration from v2.x to v3.x.
+
+v3.0.0 of `redux-resource-prop-types` introduced several breaking changes. The philosophy behind
+v3.0.0 is that we want to provide you with better primitive prop types to build more robust
+prop types.
+
+The v2 prop types were very basic, and consequently didn't do a very good at protecting you from
+bugs. Using the new prop types in v3, you can have much more confidence that the prop types
+that you build are actually helping you find issues with your props.
+
+### New Prop Types
+
+Familiarize yourself with the new prop types. You'll want to use these to build new, better
+prop types.
+
+You can read about them on
+[the documentation page](https://redux-resource.js.org/docs/extras/redux-resource-prop-types.html).
+
+### Removed Prop Types
+
+#### `resourceIdsPropType`
+
+You can instead use the new prop type, `idPropType`, like so:
+
+```js
+import PropTypes from 'prop-types';
+import { idPropType } from 'redux-resource-prop-types';
+
+PropTypes.arrayOf(idPropType);
+```
+
+#### `resourcesPropType`
+
+If you'd like to continue using the old version, here's the code:
+
+```js
+const resourcesPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ])
+  })
+);
+```
+
+Instead, we recommend using the new `resourcePropType` (note that that name is singular!) to create
+a more robust prop type for your resources. Then, you can use that prop type to build an array prop
+type:
+
+```js
+const booksPropType = PropTypes.arrayOf(bookPropType);
+```
+
+#### `slicePropType`
+
+If you'd like to continue using the old version in your application, then you can copy and paste this
+code into your application:
+
+```js
+const slicePropType = PropTypes.shape({
+  resources: PropTypes.object.isRequired,
+  meta: PropTypes.object.isRequired,
+  requests: PropTypes.object.isRequired,
+  lists: PropTypes.object.isRequired
+});
+```
+
+However, we recommend building a more robust prop type, such as:
+
+```js
+import { idsPropType } from 'redux-resource-prop-types';
+
+const booksSlicePropType = PropTypes.shape({
+  resources: PropTypes.objectOf(booksPropType).isRequired,
+  meta: PropTypes.objectOf(booksMetaPropType).isRequired,
+  requests: PropType.objectOf(booksRequestPropType).isRequired,
+  lists: PropType.objectOf(idsPropType).isRequired,
+  customStuff: myCustomPropType,
+  // ...and so on
+});
+```
