@@ -1,5 +1,6 @@
 # Redux Resource Prop Types
 
+[![npm version](https://img.shields.io/npm/v/redux-resource-prop-types.svg)](https://www.npmjs.com/package/redux-resource-prop-types)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-prop-types/dist/redux-resource-prop-types.min.js?compression=gzip)](https://unpkg.com/redux-resource-prop-types/dist/redux-resource-prop-types.min.js)
 
 A collection of [prop-types](https://github.com/facebook/prop-types) objects.

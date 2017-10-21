@@ -1,5 +1,6 @@
 # Redux Resource Plugins
 
+[![npm version](https://img.shields.io/npm/v/redux-resource-plugins.svg)](https://www.npmjs.com/package/redux-resource-plugins)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-plugins/dist/redux-resource-plugins.min.js?compression=gzip)](https://unpkg.com/redux-resource-plugins/dist/redux-resource-plugins.min.js)
 
 These plugins can be used to augment the reducer returned by `resourceReducer`.
