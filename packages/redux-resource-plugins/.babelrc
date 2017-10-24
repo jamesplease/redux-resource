@@ -7,6 +7,12 @@
       ],
       "plugins": ["external-helpers"]
     },
+    "es": {
+      "presets": [
+        ["env", {"modules": false}],
+        "stage-3"
+      ]
+    },
     "commonjs": {
       "plugins": [
         ["transform-es2015-modules-commonjs", {"loose": true}]
