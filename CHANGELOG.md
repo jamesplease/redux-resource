@@ -1,3 +1,13 @@
+## 10/24/17
+
+##### `redux-resource@2.3.1`
+
+**Bug Fixes**
+
+- The warning message when a `request` or `resources` attribute is missing from
+  an action has been fixed. Previously, it would suggest that adding a `"list"`
+  would resolve the warning, but that's not true!
+
 ## 10/20/17
 
 ##### `redux-resource-xhr@2.1.0`
