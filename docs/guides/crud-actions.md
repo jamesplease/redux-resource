@@ -164,6 +164,9 @@ to [the guide on named requests](/docs/guides/named-requests.md).
 For create and read CRUD operations, you can supply a `list` to add the resources
 returned from the operation with one of the lists in your slice.
 
+> Note: you'll nearly always want to use a named request when using lists. This is
+  so that you can track the request status.
+
 ```js
 import { actionTypes } from 'redux-resource';
 import store from './store';
@@ -172,6 +175,7 @@ store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
   list: 'mostPopular',
+  request: 'getMostPopular',
   query: 'Lord of the Flies'
 });
 ```
