@@ -43,10 +43,10 @@ export default function(crudAction, requestStatus) {
       if (process.env.NODE_ENV !== 'production') {
         warning(
           `A Redux Resource action of type ${action.type} was dispatched ` +
-          `without a "request", "list," or "resources" array. Without one of these ` +
-          `values, Redux Resource cannot track your CRUD operation. You ` +
-          `should check your Action Creators. Read more about CRUD Actions ` +
-          `at: https://redux-resource.js.org/docs/guides/crud-actions.html`
+          `without a "request" or "resources" array. Without one of these ` +
+          `values, Redux Resource cannot track the request status for this` +
+          `CRUD operation. You should check your Action Creators. Read more about` +
+          `request tracking at: https://redux-resource.js.org/docs/guides/tracking-requests.html`
         );
       }
 

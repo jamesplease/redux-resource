@@ -22,7 +22,9 @@ import store from './store';
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
-  list: 'mostPopular'
+  list: 'mostPopular',
+  // Remember, we always want to track the request status
+  request: 'getMostPopular'
 });
 ```
 
