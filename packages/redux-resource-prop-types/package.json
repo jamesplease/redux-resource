@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-prop-types",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "prop-types for Redux Resource",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -62,7 +62,7 @@
   "homepage": "https://redux-resource.js.org",
   "dependencies": {
     "prop-types": "^15.5.10",
-    "redux-resource": "^2.3.0"
+    "redux-resource": "^2.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
