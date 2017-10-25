@@ -1,5 +1,20 @@
 ## 10/24/17
 
+**Bug Fixes**
+
+- All libraries have been updated to fix an issue with the ES Modules build where
+  the Babel helpers were not included in the bundle. The published package
+  versions with this fix are:
+  
+  - `redux-resource@2.3.2`
+  - `redux-resource-xhr@2.1.1`
+  - `redux-resource-plugins@2.0.2`
+  - `redux-resource-prop-types@3.0.1`
+
+##### `redux-resource@2.3.1`
+
+## 10/24/17
+
 ##### `redux-resource@2.3.1`
 
 **Bug Fixes**
