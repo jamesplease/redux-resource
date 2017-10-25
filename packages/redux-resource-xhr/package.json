@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-xhr",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Action creators for Redux Resource using the xhr library",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -10,7 +10,7 @@
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
     "build": "npm run clean && cross-env npm run build:umd && npm run build:umd:min && npm run build:es && npm run build:commonjs",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "build:es": "cross-env BABEL_ENV=build babel src --out-dir es",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:umd": "cross-env NODE_ENV=development BABEL_ENV=build rollup -c -i src/index.js -o dist/redux-resource-xhr.js",
     "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=build rollup -c -i src/index.js -o dist/redux-resource-xhr.min.js"
   },
@@ -57,7 +57,7 @@
   "homepage": "https://redux-resource.js.org",
   "dependencies": {
     "querystringify": "^1.0.0",
-    "redux-resource": "^2.0.0",
+    "redux-resource": "^2.3.2",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
