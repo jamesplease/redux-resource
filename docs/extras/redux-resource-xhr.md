@@ -50,10 +50,7 @@ A generic action creator for performing CRUD operations.
 
 #### Arguments
 
-1. `options` *(Object|Function)*: Options to configure the CRUD operation.
-  If a function is passed, it will be passed one argument: `state`, which is
-  the current state of the Redux store. Passing a function allows you to
-  configure the action creator based on the state.
+1. `options` *(Object)*: Options to configure the CRUD operation.
 
   All of the options that you pass in will be included in the Actions that are
   dispatched. Because of this, all of
