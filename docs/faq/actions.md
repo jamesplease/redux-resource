@@ -39,3 +39,8 @@ and that's fine.
 A handy rule of thumb for when to use named requests, as well as much more
 information about named requests, can be found in
 [the Named Requests guide](/docs/guides/named-requests.md#when-to-use-named-requests).
+
+#### When is setting the `mergeMeta` action attribute to `false` useful?
+
+At the moment, we don't know of any use case for doing this. We included this attribute
+in the event that you find one – we're sure there's one out there!

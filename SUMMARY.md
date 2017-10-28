@@ -22,6 +22,7 @@
   * [Plugins](/docs/guides/plugins.md)
   * [Migrating](/docs/guides/migrating.md)
 * [Recipes](/docs/recipes/README.md)
+  * [Forms](/docs/recipes/forms.md)
   * [Canceling Requests](/docs/recipes/canceling-requests.md)
   * [Unauthorized Responses](/docs/recipes/unauthorized-responses.md)
   * [User Feedback](/docs/recipes/user-feedback.md)

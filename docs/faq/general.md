@@ -58,3 +58,14 @@ and other ways to manipulate resource data on the client. Redux Resource
 works will with any system for managing forms, such as local Component state,
 [react-redux-form](https://github.com/davidkpiano/react-redux-form),
 or [redux-form](https://github.com/erikras/redux-form).
+
+#### Why does `getStatus` take the entire state as the first argument, while `getResources` takes a slice?
+
+`getResources` always returns one subset of resources of a single type, so it wouldn't make sense to pass
+the entire state as the first argument. When aggregating request statuses, you may need to aggregate across
+multiple slices, so it's a requirement that `getStatus` support that.
+
+In older versions of Redux Resource, `getResources` accepted `state` as the first argument. The problem
+with this approach is that it really only worked well when you were using `combineReducers`. Although we
+believe that most people are likely using `combineReducers`, we didn't want that to be a hard requirement
+for using Redux Resource.
