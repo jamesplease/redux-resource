@@ -38,3 +38,19 @@ to `false` to throw away the previous list, and start fresh.
 
 Concerned about caching? Check out [the caching recipe](/docs/recipes/caching.md)
 for more.
+
+#### Why is `mergeListIds` set to `true` by default?
+
+There are a few reasons.
+
+1. It's nice that all of the `mergeX` attributes of the CRUD actions are `true` by default.
+2. Multiple requests can contribute to a list. For instance, a user may read a list of
+  favorites, and then create a new favorite. In this situation, we have multiple requests
+  contributing to the same list, so it's good that the resources are merged, rather than
+  replaced.
+
+We understand that `mergeListIds` is one of those attributes that you'll frequently be
+setting to false. We believe the reasons above justify keeping it `true` by default, but
+if you disagree, feel free to
+[open an issue](https://github.com/jmeas/redux-resource/issues/new?title=mergeListIds+defaults+to+true)
+and we'd be happy to discuss it further with you!

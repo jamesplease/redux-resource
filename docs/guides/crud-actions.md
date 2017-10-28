@@ -151,6 +151,11 @@ store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
   resourceName: 'books',
   request: 'booksSearch',
+
+  // You may also includes additional attributes on a request.
+  // This attribute, "query" isn't used by Redux Resource, but you
+  // could customize the resource reducer (using "plugins") to make use
+  // of it.
   query: 'Lord of the Flies'
 });
 ```
@@ -180,7 +185,7 @@ store.dispatch({
 });
 ```
 
-To learn more about lists, refer to [the lists guide]().
+To learn more about lists, refer to [the lists guide](/docs/guides/lists.md).
 
 ### Other CRUD Action properties
 

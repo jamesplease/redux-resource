@@ -107,8 +107,7 @@ class BooksList extends Component {
       return;
     }
 
-    const nextSearchStatus = getStatus(nextProps, 'books.requests.getSearchResults.status');
-
+    const nextSearchStatus = nextProps.searchStatus;
     if (nextSearchStatus.succeeded) {
       console.log('The search request just succeeded.');
     }
@@ -117,12 +116,10 @@ class BooksList extends Component {
 
 
 function mapStateToProps(state) {
-  const books = state.books;
   const searchStatus = getStatus(state, 'books.requests.getSearchResults.status');
 
   return {
-    searchStatus,
-    books
+    searchStatus
   };
 }
 ```
