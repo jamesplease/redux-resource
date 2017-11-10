@@ -164,11 +164,9 @@ cancellation using an `onCancel` method.
 Refer to [the Bluebird documentation](http://bluebirdjs.com/docs/api/cancellation.html)
 for specifics on the `onCancel` method.
 
-#### RxJS Observables
+#### Observables in RxJS
 
-RxJS Observables are another tool that can be used to make HTTP requests. The
-[`takeUntil`](https://github.com/Reactive-Extensions/RxJS/blob/6879837b422f590617beb7c5b94347aad64a8b1d/doc/api/core/operators/takeuntil.md)
-method can be used to cancel RxJS requests.
+[RxJS](http://reactivex.io/rxjs/) is a Reactive Programming library for async code using Observables. It includes [`Observable.ajax()`](https://chrisnoring.gitbooks.io/rxjs-5-ultimate/content/operators-and-ajax.html) for HTTP requests and supports cancellation by calling `subscription.unsubscribe()`, or using something like [`.takeUntil()`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-takeUntil).
 
 If you happen to be using redux-observable, refer to that library's documentation
 for
