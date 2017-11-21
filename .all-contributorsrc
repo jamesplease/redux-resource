@@ -129,6 +129,16 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "jcrben",
+      "name": "Ben Creasy",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5614134?v=4",
+      "profile": "http://bencreasy.com",
+      "contributions": [
+        "docs",
+        "docs2"
+      ]
     }
   ]
 }
