@@ -12,28 +12,32 @@ more in-depth in this guide, but first, let's cover how to use lists.
 
 ### Using Lists
 
-To use a list, add the `list` property to your
-[CRUD operation actions](./crud-actions.md).
+To use a list, add the `list` property to a success
+[CRUD operation action](./crud-actions.md).
 
 ```js
 import { actionTypes } fom 'redux-resource';
 import store from './store';
 
 store.dispatch({
-  type: actionTypes.READ_RESOURCES_PENDING,
+  type: actionTypes.READ_RESOURCES_SUCCEEDED,
   resourceName: 'books',
   list: 'mostPopular',
   // Remember, we always want to track the request status
   request: 'getMostPopular'
+  // `newResources` is the list of books that were returned by the server
+  // for this query.
+  resources: newResources
 });
 ```
 
-You only need to specify a list for create or read actions. Because lists
-only store IDs, they get resource updates automatically. And successful
+You only need to specify a list for create or read *success* actions.
+Because lists only store IDs, they get resource updates automatically. And successful
 deletes will remove the deleted resources from all lists automatically.
 
-> Note: If you specify a list for other actions, nothing bad will happen. It's
-  just not necessary.
+> Note: If you specify a list for create or read pending actions or update and delete actions, nothing bad will happen. It's
+  just not necessary. For pending actions, it may be worthwhile to pass the list especially since that provides
+  more information to plugins.
 
 ### Why Use Lists
 
