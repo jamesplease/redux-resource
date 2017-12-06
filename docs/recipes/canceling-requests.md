@@ -99,6 +99,39 @@ makes them easy to ignore, but they're still worth protecting against.
 
 ### How to do it
 
+Typically, applications do not need to inform the user when a request is aborted.
+Accordingly, redux-resource does not track if a request is in an aborted state. Instead,
+we encourage you to set the request status back to `"NULL"` when the request is canceled.
+
+For a read request, this may look something like:
+
+```js
+import { actionTypes } from 'redux-resource';
+
+// You will need to determine that the request was aborted;
+// different libraries have different systems for doing this
+let requestWasAborted;
+
+if (requestWasAborted) {
+  dispatch({
+    type: actionTypes.READ_RESOURCES_NULL,
+    ...otherActionAttributes
+  })
+}
+```
+
+> Note: If your application requires tracking the aborted status of a request, you
+  can write a [plugin](/docs/guides/plugin.md) to add support for additional action types.
+
+
+> Note: We understand that some users want their action type names to reflect the action
+  that is being performed, rather than the result of the action. We agree that this is a good
+  practice to follow. If you do, too, it may irritate you that there is no `READ_RESOURCES_ABORT`
+  action type. This is omitted in an effort to keep the surface area of redux-resource small,
+  since that action would behave the same as `READ_RESOURCES_NULL`.
+
+### Canceling requests in popular libraries
+
 There are many different tools developers use to make requests. In this section,
 we will go through how to cancel requests using some of the most common tools.
 
@@ -143,8 +176,8 @@ method to cancel those requests.
 The native [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 method is a tool for making requests that returns a
 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
-Native Promises cannot be cancelled, so we do not recommend using `fetch` with
-Redux Resource.
+Native Promises cannot be cancelled ([yet](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)),
+so we cannot recommend using `fetch`.
 
 #### axios
 
