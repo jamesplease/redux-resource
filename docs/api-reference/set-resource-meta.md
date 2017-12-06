@@ -7,7 +7,7 @@ Update one or more individual resources with the same metadata.
 1. `options` *(Object)*: An object that defines how to update the metadata. The
   options are as follows:
 
-  * `resources` *(Array)*: An array of the resources, or resource IDs, to update
+  * `resources` *(Array|Object)*: An array of the resources, or resource IDs, to update
   with the new meta.
 
   * `newMeta` *(Object)*: The meta to set on each of the resources.

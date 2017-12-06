@@ -4,14 +4,21 @@ export default function setResourceMeta(options) {
     resources, newMeta, meta, mergeMeta,
     initialResourceMeta = {}
   } = options;
-  let mergeMetaOption = typeof mergeMeta !== 'undefined' ? mergeMeta : true;
+
   const next = {...meta};
 
-  if (!(resources && resources.length)) {
+  if (!resources) {
+    return meta;
+  }
+
+  let mergeMetaOption = typeof mergeMeta !== 'undefined' ? mergeMeta : true;
+  const resourcesArray = resources instanceof Array ? resources : Object.values(resources);
+
+  if (!resourcesArray.length) {
     return next;
   }
 
-  resources.forEach((resource) => {
+  resourcesArray.forEach((resource) => {
     const id = typeof resource === 'object' ? resource.id : resource;
 
     // If we have no ID for this resource, or if its not a number or string,

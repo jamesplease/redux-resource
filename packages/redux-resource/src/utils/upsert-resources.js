@@ -2,12 +2,15 @@ import warning from './warning';
 
 // Add or update resources
 export default function upsertResources(resources, newResources, mergeResources) {
-  if (!(newResources instanceof Array)) {
+  if (!newResources) {
     return resources;
   }
+
+  const resourcesArray = newResources instanceof Array ? newResources : Object.values(newResources);
+
   const mergeResourcesOption = typeof mergeResources !== 'undefined' ? mergeResources : true;
   const shallowClone = Object.assign({}, resources);
-  newResources.forEach(resource => {
+  resourcesArray.forEach(resource => {
     const resourceIsObject = typeof resource === 'object';
     const id = resourceIsObject ? resource.id : resource;
 

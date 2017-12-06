@@ -6,7 +6,7 @@ Add new or update existing resources in your state tree.
 
 1. `resources` *(Object)*: The current resources object from your state tree.
 
-2. `newResources` *(Array)*: The list of resources to add or update.
+2. `newResources` *(Array|Object)*: The new resources to add or update.
 
 3. [`mergeResources`] *(Boolean)*: Whether or not to merge individual resources
   with the existing resource in the store, or to replace it with the new data.
