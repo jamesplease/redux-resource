@@ -4,7 +4,6 @@
 [![Travis build status](http://img.shields.io/travis/jmeas/redux-resource.svg?style=flat)](https://travis-ci.org/jmeas/redux-resource)
 [![npm version](https://img.shields.io/npm/v/redux-resource.svg)](https://www.npmjs.com/package/redux-resource)
 [![Test Coverage](https://codeclimate.com/github/jmeas/redux-resource/badges/coverage.svg)](https://codeclimate.com/github/jmeas/redux-resource)
-[![Code Climate GPA](https://codeclimate.com/github/jmeas/redux-resource/badges/gpa.svg)](https://codeclimate.com/github/jmeas/redux-resource)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip)](https://unpkg.com/redux-resource/dist/redux-resource.min.js)
 
 A tiny but powerful system for managing 'resources': data that is persisted to
