@@ -14,7 +14,7 @@ remote servers.
 ✓ Encourages [normalized state](http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html)  
 ✓ Works well with APIs that adhere to standardized formats, such as JSON API  
 ✓ Works well with APIs that don't adhere to standardized formats, too  
-✓ Integrates well with lots of technologies: HTTP, GRPC, streams, redux-observable, redux-saga, and more    
+✓ Integrates well with lots of technologies: [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), [gRPC](https://grpc.io/), [normalizr](https://github.com/paularmstrong/normalizr), [redux-observable](https://redux-observable.js.org/), [redux-saga](https://redux-saga.js.org/), and more    
 ✓ Microscopic file size (2kb gzipped!)
 
 ### Installation
