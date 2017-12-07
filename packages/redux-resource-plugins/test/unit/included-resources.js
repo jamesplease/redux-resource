@@ -273,7 +273,7 @@ describe('includedResources', function() {
     });
   });
 
-  it('integrates with normalizr', () => {
+  it('integrates with normalizr; included resources', () => {
     const reducer = includedResources('comments');
 
     const state = {
@@ -335,6 +335,80 @@ describe('includedResources', function() {
       },
       meta: {
         324: {readStatus: 'SUCCEEDED'},
+        24: {oinky: true}
+      },
+      lists: {},
+      requests: {}
+    });
+  });
+
+  it('integrates with normalizr; primary resource', () => {
+    const reducer = includedResources('articles');
+
+    const state = {
+      selectedIds: [24],
+      resources: {
+        24: {id: 24, name: 'comment24'}
+      },
+      meta: {
+        24: {oinky: true}
+      },
+      lists: {},
+      requests: {}
+    };
+
+    const user = new schema.Entity('users');
+
+    const comment = new schema.Entity('comments', {
+      commenter: user
+    });
+
+    const article = new schema.Entity('articles', {
+      author: user,
+      comments: [comment]
+    });
+
+    const originalData = [{
+      id: '123',
+      author: {
+        id: '1',
+        name: 'Paul'
+      },
+      title: 'My awesome blog post',
+      comments: [
+        {
+          id: '324',
+          commenter: {
+            id: '2',
+            name: 'Nicole'
+          }
+        }
+      ]
+    }];
+
+    const normalizedData = normalize(originalData, [article]);
+
+    const action = {
+      type: actionTypes.READ_RESOURCES_SUCCEEDED,
+      resourceName: article.key,
+      resources: normalizedData.result,
+      includedResources: normalizedData.entities
+    };
+
+    const result = reducer(state, action);
+    expect(result).to.deep.equal({
+      selectedIds: [24],
+      resources: {
+        24: {id: 24, name: 'comment24'},
+        123: {
+          id: '123',
+          author: '1',
+          title: 'My awesome blog post',
+          comments: ['324']
+        }
+      },
+      meta: {
+        123: {readStatus: 'SUCCEEDED'},
         24: {oinky: true}
       },
       lists: {},
