@@ -6,7 +6,8 @@ function performXhr(dispatch, options, callback) {
     xhrOptions = {},
     crudAction,
     transformData,
-    resourceName
+    resourceName,
+    additionalProperties
   } = options;
 
   const crudActionOption = crudAction ? crudAction : '';
@@ -57,9 +58,16 @@ function performXhr(dispatch, options, callback) {
 
   const req = xhr(xhrOptions, (err, res, body) => {
     const statusCode = res ? res.statusCode : 0;
+
+    let additions;
+    if (typeof additionalProperties === 'function') {
+      additions = additionalProperties(err, res, body);
+    }
+
     if (req.aborted) {
       dispatch({
         ...options,
+        ...additions,
         type: actionTypes[`${crudType}_RESOURCES_NULL`],
         statusCode,
         res
@@ -67,6 +75,7 @@ function performXhr(dispatch, options, callback) {
     } else if (err || statusCode >= 400 || statusCode === 0) {
       dispatch({
         ...options,
+        ...additions,
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
         statusCode,
         res,
@@ -87,6 +96,7 @@ function performXhr(dispatch, options, callback) {
 
       dispatch({
         ...options,
+        ...additions,
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
         statusCode,
         resources,
