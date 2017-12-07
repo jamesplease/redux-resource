@@ -1,10 +1,10 @@
 # Related Resources
 
 Endpoints frequently more than one resource type in a single response. For instance,
-a request for a single `author` may return that author's `books`, too.
+a request for a single `author` may also include the author's `books`.
 
 Because different backends return related resources in many different ways,
-Redux Resource couldn't possibly include a built-in solution that works for every
+Redux Resource couldn't possibly include a single built-in solution that works for every
 API. Instead, [plugins](/docs/guides/plugins.md) can be used to support related resources
 in a way that works for for your specific backend.
 
@@ -79,8 +79,20 @@ At the moment, the easiest way to support JSON API compound documents is to use
 the [jsonapi-normalizr](https://github.com/maxatwork/jsonapi-normalizr) library, and then
 follow the normalizr guide above.
 
-An official JSON API plugin is [planned](https://github.com/jmeas/redux-resource/issues/38).
+An official JSON API plugin is being [planned](https://github.com/jmeas/redux-resource/issues/38).
 We would love your help!
+
+If you would like to try your hand at writing a JSON API relationship plugin, here are a few tips.
+In short, you would need to interpet the `included` member of a
+[compound document](http://jsonapi.org/format/#document-compound-documents). This
+would likely work in 2 steps:
+
+1. Filter the Array of `included` resources to find _just_ the resources whose
+  JSON API `type` matches the `resourceName` of the slice.
+2. Use [`upsertResources`](/docs/api/upsert-resources.md) to add those resources to the slice.
+
+You would also want to place the each individual resource's `meta` into the `meta` section of the
+slice.
 
 ### GraphQL
 
