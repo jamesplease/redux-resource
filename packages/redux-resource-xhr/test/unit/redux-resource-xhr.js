@@ -332,6 +332,102 @@ describe('Redux Resource XHR', function() {
       });
     });
 
+    describe('success, with a body + transformData fn + additionalProperties fn', () => {
+      it('should dispatch the correct actions', (done) => {
+        const body = {
+          data: [
+            {id: 21},
+            {id: 42}
+          ],
+          included: {
+            24: {}
+          }
+        };
+
+        const transformData = body => body.data;
+        const additionalProperties = (err, res, body) => ({included: body.included});
+
+        this.xhrStub = stub().callsFake((options, cb) => {
+          setTimeout(() => {
+            cb(
+              null,
+              {
+                statusCode: 201,
+                body
+              },
+              body
+            );
+
+            expect(options).to.deep.equal({
+              url: 'https://www.google.com',
+              method: 'GET'
+            });
+
+            expect(this.dispatch.callCount).to.equal(2);
+            expect(this.dispatch.args[0]).to.deep.equal([{
+              type: 'READ_RESOURCES_PENDING',
+              resourceName: 'hello',
+              crudAction: 'read',
+              statusCode: 0,
+              resources: [21, 42],
+              transformData,
+              additionalProperties,
+              xhrOptions: {
+                url: 'https://www.google.com',
+                method: 'GET'
+              }
+            }]);
+
+            expect(this.dispatch.args[1]).to.deep.equal([{
+              type: 'READ_RESOURCES_SUCCEEDED',
+              resourceName: 'hello',
+              crudAction: 'read',
+              statusCode: 201,
+              res: {
+                statusCode: 201,
+                body
+              },
+              resources: [
+                {id: 21},
+                {id: 42}
+              ],
+              included: {
+                24: {}
+              },
+              additionalProperties,
+              transformData,
+              xhrOptions: {
+                url: 'https://www.google.com',
+                method: 'GET'
+              }
+            }]);
+
+            done();
+          });
+
+          return {
+            aborted: false
+          };
+        });
+
+        __RewireAPI__.__Rewire__('xhr', this.xhrStub);
+
+        this.performXhr(this.dispatch, {
+          resourceName: 'hello',
+          crudAction: 'read',
+          resources: [21, 42],
+          transformData,
+          additionalProperties,
+          xhrOptions: {
+            method: 'GET',
+            url: 'https://www.google.com'
+          }
+        });
+
+        expect(this.xhrStub.callCount).to.equal(1);
+      });
+    });
+
     describe('success, without a body', () => {
       it('should dispatch the correct actions', (done) => {
         this.xhrStub = stub().callsFake((options, cb) => {
@@ -403,6 +499,9 @@ describe('Redux Resource XHR', function() {
     describe('when the request errors, without a status code', () => {
       it('should dispatch the correct actions', (done) => {
         const err = new Error('oops');
+
+        const additionalProperties = err => ({didError: Boolean(err)});
+
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
             cb(err);
@@ -418,6 +517,7 @@ describe('Redux Resource XHR', function() {
               resourceName: 'hello',
               crudAction: 'delete',
               statusCode: 0,
+              additionalProperties,
               resources: [1, 14],
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -432,6 +532,8 @@ describe('Redux Resource XHR', function() {
               statusCode: 0,
               resources: [1, 14],
               err,
+              additionalProperties,
+              didError: true,
               res: undefined,
               xhrOptions: {
                 url: 'https://www.google.com',
@@ -453,6 +555,7 @@ describe('Redux Resource XHR', function() {
           resourceName: 'hello',
           crudAction: 'delete',
           resources: [1, 14],
+          additionalProperties,
           xhrOptions: {
             method: 'DELETE',
             url: 'https://www.google.com'
