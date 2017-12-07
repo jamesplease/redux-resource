@@ -42,3 +42,7 @@ documentation pages to learn more.
 - [`reset`](/docs/extras/reset-plugin.md): This plugin provides action types
   that let you reset the state of an entire slice. You can also pass a list to
   reset the state of just that list.
+
+- [`included-resources`](/docs/extras/included-resources-plugin.md): This plugin
+  adds support for including multiple resource types into a single action for
+  read requests. This can be useful if you're using GraphQL, JSON API, or normalizr.

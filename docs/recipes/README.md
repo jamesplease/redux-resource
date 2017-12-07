@@ -7,5 +7,6 @@ topics in the [guides](/docs/guides/README.md).
 * [Forms](/docs/recipes/forms.md)
 * [Canceling Requests](/docs/recipes/canceling-requests.md)
 * [Unauthorized Responses](/docs/recipes/unauthorized-responses.md)
-* [Request Feedback](/docs/recipes/request-feedback.md)
+* [User Feedback](/docs/recipes/user-feedback.md)
+* [Related Resources](/docs/recipes/related-resources.md)
 * [Caching](/docs/recipes/caching.md)
