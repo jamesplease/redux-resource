@@ -13,6 +13,13 @@ Today's updates include features that make it easier to work with
 - There is now a new plugin,
   [Included Resources](https://redux-resource.js.org/docs/extras/included-resources-plugin.html).
 
+##### `redux-resource-xhr@2.2.0`
+
+- Introduces a new API that provides the user with more control over when actions
+  are dispatched, and the shape of those actions.
+- Deprecates the old API. See
+ [the migration guide](https://redux-resource.js.org/docs/extras/redux-resource-xhr-migration.md).
+
 ## 10/24/17
 
 **Bug Fixes**
