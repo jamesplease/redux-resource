@@ -30,6 +30,8 @@
   * [Caching](/docs/recipes/caching.md)
 * [Ecosystem Extras](/docs/extras/README.md)
   * [Redux Resource XHR](/docs/extras/redux-resource-xhr.md)
+    * [Redux Resource XHR (2.x)](/docs/extras/redux-resource-xhr-2.md)
+    * [Migrating to redux-resource-xhr@3.0.0](/docs/extras/redux-resource-xhr-migration.md)
   * [Redux Resource Prop Types](/docs/extras/redux-resource-prop-types.md)
   * [Redux Resource Plugins](/docs/extras/redux-resource-plugins.md)
     * [HTTP Status Codes](/docs/extras/http-status-codes-plugin.md)
