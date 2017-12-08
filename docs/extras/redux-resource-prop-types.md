@@ -112,7 +112,7 @@ mapStateToProps(state) {
 }
 ```
 
-#### `resourcePropType`
+#### `requestPropType`
 
 Validates a request. Similar to `PropTypes.shape()`, except that it enforces `ids`
 and `status`. Typically, you won't need to use this, but it can be useful to verify
