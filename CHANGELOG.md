@@ -1,3 +1,13 @@
+## 12/8/17
+
+Today's updates include features that make it easier to work with
+[related resources](https://redux-resource.js.org/docs/recipes/related-resources.html).
+
+##### `redux-resource@2.4.0`
+
+- `upsertResources` and `setResourceMeta` now accept an Object for `resources`
+  as well as an Array.
+
 ## 10/24/17
 
 **Bug Fixes**
@@ -10,8 +20,6 @@
   - `redux-resource-xhr@2.1.1`
   - `redux-resource-plugins@2.0.2`
   - `redux-resource-prop-types@3.0.1`
-
-##### `redux-resource@2.3.1`
 
 ## 10/24/17
 
