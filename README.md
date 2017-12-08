@@ -119,7 +119,9 @@ Redux Resource works well with any view layer.
 
 This repository is a [Lerna](https://github.com/lerna/lerna) project. That means
 it's a single repository that allows us to control the publishing of a number
-of packages:
+of packages. The source for each package can be found in the[
+  `./packages`](https://github.com/jmeas/redux-resource/tree/master/packages)
+  directory.
 
 | Package | Version | Size | Description |
 | ---- | ---- | ---- | ---- |
