@@ -1,6 +1,6 @@
 # Redux Resource XHR
 
-Action Creators for Redux Resource that use the [xhr](https://github.com/naugtur/xhr) library.
+Redux Resource XHR is an action creator that simplifies CRUD operations.
 
 ### Installation
 
