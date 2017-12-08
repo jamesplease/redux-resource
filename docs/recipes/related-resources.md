@@ -21,13 +21,14 @@ technologies:
 ### normalizr
 
 The [Included Resources Plugin](/docs/extras/included-resources-plugin.md) works
-well with [normalizr](https://github.com/paularmstrong/normalizr) responses. Refer to
-their documentation to familiarize yourself with the API of that plugin.
+well with [normalizr](https://github.com/paularmstrong/normalizr) data. Refer to
+the Included Resources Plugin documentation to familiarize yourself with its API.
 
-Here's an example demonstrating using Redux Resource with normalizr:
+Here's an example demonstrating using Redux Resource with normalizr on a slice that
+has the Included Resources Plugin:
 
 ```js
-import {normalize, schema} from 'normalizr';
+import { normalize, schema } from 'normalizr';
 import store from './store';
 
 const user = new schema.Entity('users');
@@ -71,6 +72,40 @@ const action = {
 };
 
 store.dispatch(action);
+```
+
+If you're using the [`redux-resource-xhr`](/docs/extras/redux-resource-xhr.md) library,
+you can perform this normalization in the `onSucceeded` callback:
+
+```js
+import { crudRequest } from 'redux-resource-xhr';
+import { normalize } from 'normalizr';
+import authorSchema from './schema';
+
+export function readAuthor(authorId) {
+  const xhrOptions = {
+    method: 'GET',
+    url: `/authors/${authorId}`,
+    json: true
+  };
+
+  return dispatch => crudRequest('read', {
+    dispatch,
+    xhrOptions,
+    actionDefaults: {
+      resourceName: 'authors',
+      resources: [authorId]
+    },
+    onSucceeded(action, res, body) {
+      const normalizedData = normalize(body, authorSchema);
+
+      dispatch({
+        ...action,
+        includedResources: normalizedData.entities
+      });
+    }
+  });
+}
 ```
 
 ### JSON API

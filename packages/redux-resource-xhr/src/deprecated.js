@@ -1,26 +1,13 @@
 import {actionTypes} from 'redux-resource';
 import xhr from './xhr';
-import {
-  crudAction,
-  createResources,
-  readResources,
-  updateResources,
-  deleteResources
-} from './deprecated';
 
-function crudRequest(crudAction, options) {
+function performXhr(dispatch, options, callback) {
   const {
-    dispatch,
     xhrOptions = {},
+    crudAction,
     transformData,
-    actionDefaults = {},
-    onPending,
-    onFailed,
-    onSucceeded,
-    onAborted
+    resourceName
   } = options;
-
-  const {resourceName} = actionDefaults;
 
   const crudActionOption = crudAction ? crudAction : '';
 
@@ -60,49 +47,31 @@ function crudRequest(crudAction, options) {
 
   const crudType = crudActionOption.toUpperCase();
 
-  const pendingAction = {
-    ...actionDefaults,
+  dispatch({
+    ...options,
     type: actionTypes[`${crudType}_RESOURCES_PENDING`],
     // This may seem strange, but any unresolved request has a status code of 0
     // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status
     statusCode: 0
-  };
-
-  if (onPending) {
-    onPending(pendingAction);
-  } else {
-    dispatch(pendingAction);
-  }
+  });
 
   const req = xhr(xhrOptions, (err, res, body) => {
     const statusCode = res ? res.statusCode : 0;
     if (req.aborted) {
-      const abortedAction = {
-        ...actionDefaults,
+      dispatch({
+        ...options,
         type: actionTypes[`${crudType}_RESOURCES_NULL`],
         statusCode,
         res
-      };
-
-      if (onAborted) {
-        onAborted(abortedAction, res);
-      } else {
-        dispatch(abortedAction);
-      }
+      });
     } else if (err || statusCode >= 400 || statusCode === 0) {
-      const failedAction = {
-        ...actionDefaults,
+      dispatch({
+        ...options,
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
         statusCode,
         res,
         err,
-      };
-
-      if (onFailed) {
-        onFailed(failedAction, err, res);
-      } else {
-        dispatch(failedAction);
-      }
+      });
     } else {
       let resources;
 
@@ -113,31 +82,91 @@ function crudRequest(crudAction, options) {
           resources = body;
         }
       } else {
-        resources = actionDefaults.resources;
+        resources = options.resources;
       }
 
-      const succeededAction = {
-        ...actionDefaults,
+      dispatch({
+        ...options,
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
         statusCode,
         resources,
         res
-      };
+      });
+    }
 
-      if (onSucceeded) {
-        onSucceeded(succeededAction, res, body);
-      } else {
-        dispatch(succeededAction);
-      }
+    if (typeof callback === 'function') {
+      callback(err, res, body);
     }
   });
 
   return req;
 }
 
+function crudAction(options = {}, callback) {
+  return performXhr(options.dispatch, options, callback);
+}
+
+function createResources(options = {}, callback) {
+  const xhrOpts = options.xhrOptions || {};
+
+  const newOptions = {
+    crudAction: 'create',
+    ...options,
+    xhrOptions: {
+      method: 'POST',
+      ...xhrOpts
+    }
+  };
+
+  return performXhr(options.dispatch, newOptions, callback);
+}
+
+function readResources(options = {}, callback) {
+  const xhrOpts = options.xhrOptions || {};
+
+  const newOptions = {
+    crudAction: 'read',
+    ...options,
+    xhrOptions: {
+      method: 'GET',
+      ...xhrOpts
+    }
+  };
+
+  return performXhr(options.dispatch, newOptions, callback);
+}
+
+function updateResources(options = {}, callback) {
+  const xhrOpts = options.xhrOptions || {};
+
+  const newOptions = {
+    crudAction: 'update',
+    ...options,
+    xhrOptions: {
+      method: 'PATCH',
+      ...xhrOpts
+    }
+  };
+
+  return performXhr(options.dispatch, newOptions, callback);
+}
+
+function deleteResources(options = {}, callback) {
+  const xhrOpts = options.xhrOptions || {};
+
+  const newOptions = {
+    crudAction: 'delete',
+    ...options,
+    xhrOptions: {
+      method: 'DELETE',
+      ...xhrOpts
+    }
+  };
+
+  return performXhr(options.dispatch, newOptions, callback);
+}
+
 export {
-  xhr,
-  crudRequest,
   crudAction,
   createResources,
   readResources,

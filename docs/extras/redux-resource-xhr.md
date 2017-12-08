@@ -3,28 +3,23 @@
 [![npm version](https://img.shields.io/npm/v/redux-resource-xhr.svg)](https://www.npmjs.com/package/redux-resource-xhr)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js?compression=gzip)](https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js)
 
-Redux Resource provides a collection of action creators for Redux Resource
-Actions. These action creators use a thin wrapper around the
-[xhr](https://github.com/naugtur/xhr) library for making HTTP requests.
+> Looking for the 2.x API? [Click here](/docs/extras/redux-resource-xhr-2.md). Better
+yet, looking to migrate to 3.x? Check out
+[the migration guide](/docs/extras/redux-resource-xhr-migration.md).
 
-More information about understanding how to use these action creators can be
-found in the [CRUD Actions](/docs/guides/crud-actions.md) guide, as well as
-the four guides for each CRUD operation:
+Redux Resource XHR is an action creator that simplifies CRUD operations.
+
+More information about CRUD actions in Redux Resource can be
+found in the [CRUD Actions](/docs/guides/crud-actions.md) guide and the four
+guides on CRUD:
 
 - [Reading resources](/docs/guides/reading-resources.md)
 - [Updating resources](/docs/guides/updating-resources.md)
 - [Creating resources](/docs/guides/creating-resources.md)
 - [Deleting resources](/docs/guides/deleting-resources.md)
 
-These action creators work well for endpoints that operate on a single resource
-type. If your backend includes endpoints that involve more than one resource
-type (such as including a primary resource _and_ its related resources in a
-single GET request), then you will likely need to write custom action creators
-to handle those specific endpoints.
-
-A pattern that works well is to use these action creators for endpoints that
-target a single resource type, and then write custom action creators for more
-complex endpoints.
+We recommend familiarizing yourself with the content in those guides before using
+this library.
 
 ### Installation
 
@@ -32,44 +27,39 @@ Install `redux-resource-xhr` from npm:
 
 `npm install redux-resource-xhr --save`
 
-Then, import the pieces of the package that you need:
+Then, import the `crudRequest` action creator in your application:
 
 ```js
-import { readResources } from 'redux-resource-xhr';
+import { crudRequest } from 'redux-resource-xhr';
 ```
 
 ### Usage
 
-This collection exports five action creators, one for each of the CRUD
-operations, and one generic one. It also exports the library that is used for
-making HTTP requests.
+This library has two exports: an action creator for CRUD operations, [`crudRequest`](#crudrequest-options-),
+and the library used for making the HTTP requests, [`xhr`](#xhr-options-).
 
-### `crudAction( options, [callback] )`
+### `crudRequest( crudAction, options )`
 
-A generic action creator for performing CRUD operations.
+An action creator for CRUD requests.
 
 #### Arguments
 
-1. `options` *(Object)*: Options to configure the CRUD operation.
+1. `crudAction`: *(String)* The CRUD operation being performed. One of "create",
+  "read", "update", or "delete". This determines the
+  [CRUD Action types](/docs/api-reference/action-types.md) that are dispatched.
 
-  All of the options that you pass in will be included in the Actions that are
-  dispatched. Because of this, all of
-  [the CRUD Action options](/docs/guides/crud-actions.md) are supported, such
-  as `resourceName`.
+1. `options` *(Object)*: Options to configure the CRUD request.
 
-  There are several additional options that can be used to configure the
-  actions:
+  * `actionDefaults`: *(Object)* Properties that will be included on each dispatched
+    action. All of [the CRUD Action options](/docs/guides/crud-actions.md) are
+    supported, such as `resourceName` and `resources`.
 
   * `dispatch`: *(Function)* The `dispatch` function of a Redux store. If you're using
     [`redux-thunk`]((https://github.com/gaearon/redux-thunk)), this will be the first
     argument of the thunk.
 
-  * `crudAction`: *(String)* The CRUD operation being performed. One of "create",
-    "read", "update", or "delete". This determines which
-    [CRUD Action types](/docs/api-reference/action-types.md) are dispatched.
-
-  * `xhrOptions`: *(Object)* Options to pass to the `xhr` library. You must pass
-    a a `url` (or `uri`) option. You will typically also want to pass
+  * `xhrOptions`: *(Object)* Options to pass to the [`xhr`](#xhr-options-) library.
+    You must pass a a `url` (or `uri`) option. You will typically also want to pass
     `json: true`, which will serialize your request body into JSON, as well as
     parse the response body as JSON. For more, see the examples below and
     [the xhr documentation](https://github.com/naugtur/xhr).
@@ -81,11 +71,28 @@ A generic action creator for performing CRUD operations.
     Redux Resource-compatible format. For more, see the guide on
     [Resources](/docs/guides/resources.md).
 
-2. `callback` *(Function, optional)*: This is called _after_ the "end" action is
-  dispatched for this CRUD action. It receives 3 arguments `(err, res, body)`,
-  which are the same arguments passed to the
-  [xhr](https://www.npmjs.com/package/xhr#var-req--xhroptions-callback)
-  callback.
+  * [`onPending`]: *(Function)* An optional function that allows you to modify
+    the "pending" action, as well as control when it is dispatched. It is called
+    with one argument: `action`. When this function is provided, you will be
+    responsible for dispatching the action.
+
+  * [`onAborted`]: *(Function)* An optional function that allows you to modify
+    the "aborted" action, as well as control when it is dispatched. It is called
+    with arguments `(action, res)`. When this function is provided, you will be
+    responsible for dispatching the action.
+
+  * [`onFailed`]: *(Function)* An optional function that allows you to modify
+    the "failed" action, as well as control when it is dispatched. It is called
+    with arguments `(action, err, res)`. When this function is provided, you will be
+    responsible for dispatching the action.
+
+  * [`onSucceeded`]: *(Function)* An optional function that allows you to modify
+    the "succeeded" action, as well as control when it is dispatched. It is called
+    with arguments `(action, res, body)`. When this function is provided, you will be
+    responsible for dispatching the action.
+
+    If all that you need to do is transform the resources that your backend returns,
+    then you should use `transformData` instead of `onSuceeded`.
 
 #### Returns
 
@@ -97,7 +104,7 @@ calling `myXhr.abort()`.
 #### Example
 
 ```js
-import { crudAction } from 'redux-resource-xhr';
+import { crudRequest } from 'redux-resource-xhr';
 import store from './store';
 
 const xhrOptions = {
@@ -109,166 +116,19 @@ const xhrOptions = {
   }
 };
 
-crudAction({
+const xhr = crudRequest('read', {
   dispatch: store.dispatch,
-  crudAction: 'read',
-  resourceName: 'books',
-  request: 'getHomePageBooks',
-  list: 'homePageBooks',
-  mergeListIds: false,
+  actionDefaults: {
+    resourceName: 'books',
+    request: 'getHomePageBooks',
+    list: 'homePageBooks',
+    mergeListIds: false
+  },
   xhrOptions
 });
-```
 
-### `createResources( options, [callback] )`
-
-A convenience wrapper for the `crudAction` action creator that passes these
-options by default:
-
-```js
-{
-  crudAction: 'create',
-  xhrOptions: {
-    method: 'POST'
-  }
-}
-```
-
-#### Example
-
-```js
-import { createResources } from 'redux-resource-xhr';
-import store from './store';
-
-const newBook = {
-  title: 'My Name is Red',
-  releaseYear: 2004
-};
-
-const xhrOptions = {
-  url: '/books',
-  json: newBook
-};
-
-createResources({
-  dispatch: store.dispatch,
-  resourceName: 'books',
-  request: 'createBooks',
-  xhrOptions
-});
-```
-
-### `readResources( options, [callback] )`
-
-A convenience wrapper for the `crudAction` action creator that passes these
-options by default:
-
-```js
-{
-  crudAction: 'read',
-  xhrOptions: {
-    method: 'GET'
-  }
-}
-```
-
-#### Example
-
-```js
-import { readResources } from 'redux-resource-xhr';
-import store from './store';
-
-const xhrOptions = {
-  url: '/books/1',
-  json: true
-};
-
-// This is a singular endpoint, so it returns just one resource. But all of the
-// Action Creators are bulk CRUD operations, so we place the result
-// into an Array
-function transformData(body) {
-  return [body];
-}
-
-readResources({
-  dispatch: store.dispatch,
-  resourceName: 'books',
-  resources: [1],
-  xhrOptions,
-  transformData
-});
-```
-
-### `updateResources( options, [callback] )`
-
-A convenience wrapper for the `crudAction` action creator that passes these
-options by default:
-
-```js
-{
-  crudAction: 'update',
-  xhrOptions: {
-    method: 'PATCH'
-  }
-}
-```
-
-#### Example
-
-```js
-import { updateResources } from 'redux-resource-xhr';
-import store from './store';
-
-const updatedBook = {
-  id: 10,
-  title: 'My Name is Red',
-  releaseYear: 2004
-};
-
-const xhrOptions = {
-  url: '/books/10',
-  json: updatedBook
-};
-
-updateResources({
-  dispatch: store.dispatch,
-  resourceName: 'books',
-  resources: [10],
-  xhrOptions
-});
-```
-
-### `deleteResources( options, [callback] )`
-
-A convenience wrapper for the `crudAction` action creator that passes these
-options by default:
-
-```js
-{
-  crudAction: 'delete',
-  xhrOptions: {
-    method: 'DELETE'
-  }
-}
-```
-
-#### Example
-
-```js
-import { deleteResources } from 'redux-resource-xhr';
-import store from './store';
-
-const xhrOptions = {
-  url: '/books/22',
-  json: true
-};
-
-deleteResources({
-  dispatch: store.dispatch,
-  resourceName: 'books',
-  resources: [22],
-  xhrOptions
-});
+// Cancel the request if you need to
+xhr.abort();
 ```
 
 ### `xhr( options )`
@@ -347,17 +207,22 @@ xhr.get('/books/24')
 
 ### Tips
 
+- The `onSucceeded` option of `crudRequest` can be useful if your backend returns
+  [related resources](docs/recipes/related-resources.md) in a single request. Or,
+  if you wish to chain requests before dispatching an action, you can do that with
+  `onSucceeded`, too.
+
 - A good pattern for using this collection is to make your own action creators
   that "wrap" these action creators using
   [redux-thunk](https://github.com/gaearon/redux-thunk). That way, your view layer
   doesn't need to concern itself with all of the configuration necessary to use
-  these action creators. For instances, your application's read many action creator
-  may look like the following:
+  these action creators. For instances, an action creator for reading books in
+  your application may look like the following:
 
   ```js
-  import { readResources } from 'redux-resource-xhr';
+  import { crudRequest } from 'redux-resource-xhr';
 
-  function readManyBooks(pageNumber) {
+  function readManyBooks({ pageNumber }) {
     return (dispatch) => {
       const xhrOptions = {
         method: 'GET',
@@ -366,14 +231,18 @@ xhr.get('/books/24')
         qs: { pageNumber }
       };
 
-      return readResources({
-        resourceName: 'books',
-        request: 'getHomePageBooks',
-        list: 'homePageBooks',
-        mergeListIds: false,
+      return crudRequest('read', {
+        actionDefaults: {
+          resourceName: 'books',
+          request: 'getHomePageBooks',
+          list: 'homePageBooks',
+          mergeListIds: false,
+        },
         xhrOptions,
         dispatch
       });
     };
   }
   ```
+
+  Then, in your view layer, you can call `readManyBooks({ pageNumber: 5 })`.
