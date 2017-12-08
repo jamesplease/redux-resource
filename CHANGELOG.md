@@ -8,6 +8,11 @@ Today's updates include features that make it easier to work with
 - `upsertResources` and `setResourceMeta` now accept an Object for `resources`
   as well as an Array.
 
+##### `redux-resource-plugins@2.1.0`
+
+- There is now a new plugin,
+  [Included Resources](https://redux-resource.js.org/docs/extras/included-resources-plugin.html).
+
 ## 10/24/17
 
 **Bug Fixes**
