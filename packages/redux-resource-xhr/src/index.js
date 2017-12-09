@@ -1,12 +1,5 @@
 import {actionTypes} from 'redux-resource';
 import xhr from './xhr';
-import {
-  crudAction,
-  createResources,
-  readResources,
-  updateResources,
-  deleteResources
-} from './deprecated';
 
 function crudRequest(crudAction, options) {
   const {
@@ -135,12 +128,4 @@ function crudRequest(crudAction, options) {
   return req;
 }
 
-export {
-  xhr,
-  crudRequest,
-  crudAction,
-  createResources,
-  readResources,
-  updateResources,
-  deleteResources
-};
+export {crudRequest, xhr};
