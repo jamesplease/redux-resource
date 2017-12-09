@@ -112,4 +112,10 @@ describe('getResources', function() {
       ]);
     });
   });
+
+  describe('no filter', () => {
+    it('should return all of the resources', () => {
+      expect(getResources(this.state.books)).to.deep.equal(Object.values(this.state.books.resources));
+    });
+  });
 });
