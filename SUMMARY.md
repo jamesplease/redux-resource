@@ -35,7 +35,7 @@
     * [HTTP Status Codes](/docs/extras/http-status-codes-plugin.md)
     * [Selection](/docs/extras/selection-plugin.md)
     * [Reset](/docs/extras/reset-plugin.md)
-    * [Included Resources](/docs/extras/included-resources.md)
+    * [Included Resources](/docs/extras/included-resources-plugin.md)
 * [FAQ](/docs/faq/README.md)
   * [General](/docs/faq/general.md)
   * [State Tree](/docs/faq/state-tree.md)

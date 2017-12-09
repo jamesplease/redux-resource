@@ -43,6 +43,6 @@ documentation pages to learn more.
   that let you reset the state of an entire slice. You can also pass a list to
   reset the state of just that list.
 
-- [`included-resources`](/docs/extras/included-resources-plugin.md): This plugin
+- [`includedResources`](/docs/extras/included-resources-plugin.md): This plugin
   adds support for including multiple resource types into a single action for
   read requests. This can be useful if you're using GraphQL, JSON API, or normalizr.
