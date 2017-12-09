@@ -7,9 +7,10 @@ export default function(resourceSlice, filter) {
   const resources = resourceSlice.resources;
   let idsList;
 
-  if (typeof filter === 'function') {
+  if (typeof filter === 'function' || !filter) {
+    const filterToUse = filter ? filter : () => true;
     return Object.values(resources)
-      .filter(resource => filter(resource, resourceSlice.meta[resource.id], resourceSlice));
+      .filter(resource => filterToUse(resource, resourceSlice.meta[resource.id], resourceSlice));
   }
 
   // This conditional handles the situation where `filter` is an list name
