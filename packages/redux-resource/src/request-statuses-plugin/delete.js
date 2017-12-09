@@ -5,7 +5,7 @@ import warning from '../utils/warning';
 
 const del = reducerGenerator('delete', requestStatuses.PENDING);
 const delFail = reducerGenerator('delete', requestStatuses.FAILED);
-const delNull = reducerGenerator('delete', requestStatuses.NULL);
+const delIdle = reducerGenerator('delete', requestStatuses.IDLE);
 
 function delSucceed(state, action, {initialResourceMeta}) {
   const resources = action.resources;
@@ -150,4 +150,4 @@ function delSucceed(state, action, {initialResourceMeta}) {
   };
 }
 
-export {del, delFail, delNull, delSucceed};
+export {del, delFail, delIdle, delSucceed};

@@ -4,7 +4,7 @@ import requestStatuses from '../utils/request-statuses';
 
 const read = reducerGenerator('read', requestStatuses.PENDING);
 const readFail = reducerGenerator('read', requestStatuses.FAILED);
-const readNull = reducerGenerator('read', requestStatuses.NULL);
+const readIdle = reducerGenerator('read', requestStatuses.IDLE);
 
 function readSucceed(state, action, options) {
   return cruReducerHelper(state, action, options, {
@@ -12,4 +12,4 @@ function readSucceed(state, action, options) {
   });
 }
 
-export {read, readFail, readNull, readSucceed};
+export {read, readFail, readIdle, readSucceed};

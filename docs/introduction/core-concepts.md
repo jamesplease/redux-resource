@@ -99,7 +99,7 @@ Because requests occur over a network, they do not happen instantly.
 They might take awhile to complete, and they don't always succeed.
 In Redux Resource, this information is represented as one of four "statuses":
 
-- `NULL`: the request hasn't begun yet
+- `IDLE`: the request hasn't begun yet
 - `PENDING`: the request has started, but has not yet finished
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
@@ -115,10 +115,10 @@ then your metadata for that resource will start off looking like this:
 {
   meta: {
     24: {
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+      createStatus: 'IDLE',
+      readStatus: 'IDLE',
+      updateStatus: 'IDLE',
+      deleteStatus: 'IDLE'
     }
   }
 }

@@ -7,7 +7,7 @@ updating resources. They are as follows:
 "UPDATE_RESOURCES_PENDING"
 "UPDATE_RESOURCES_FAILED"
 "UPDATE_RESOURCES_SUCCEEDED"
-"UPDATE_RESOURCES_NULL"
+"UPDATE_RESOURCES_IDLE"
 ```
 
 Each request will always begin with an action with type
@@ -19,7 +19,7 @@ following way:
   could be network errors, or any
   [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
   greater than 400.
-- `UPDATE_RESOURCES_NULL`: Use this is the request is aborted.
+- `UPDATE_RESOURCES_IDLE`: Use this is the request is aborted.
 - `UPDATE_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
 ### Using Named Requests
@@ -82,7 +82,7 @@ export default function updateBook(bookDetails) {
       (err, res, body) => {
         if (req.aborted) {
           dispatch({
-            type: actionTypes.UPDATE_RESOURCES_NULL,
+            type: actionTypes.UPDATE_RESOURCES_IDLE,
             resourceName: 'books',
             resources: [bookDetails.id]
           });

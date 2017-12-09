@@ -39,10 +39,10 @@ When this is dispatched, your slice's metadata will be updated like this:
 {
   meta: {
     24: {
-      createStatus: 'NULL',
+      createStatus: 'IDLE',
       readStatus: 'PENDING',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+      updateStatus: 'IDLE',
+      deleteStatus: 'IDLE'
     }
   }
 }
@@ -71,7 +71,7 @@ slice:
 
 ```js
 {
-  status: 'NULL',
+  status: 'IDLE',
   ids: []
 }
 ```

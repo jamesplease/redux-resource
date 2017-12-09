@@ -43,10 +43,10 @@ describe('reducer', function() {
       },
       meta: {
         3: {
-          createStatus: 'NULL',
+          createStatus: 'IDLE',
           readStatus: 'SUCCEEDED',
-          updateStatus: 'NULL',
-          deleteStatus: 'NULL'
+          updateStatus: 'IDLE',
+          deleteStatus: 'IDLE'
         }
       },
       lists: {},
