@@ -7,7 +7,7 @@ reading resources. They are as follows:
 "READ_RESOURCES_PENDING"
 "READ_RESOURCES_FAILED"
 "READ_RESOURCES_SUCCEEDED"
-"READ_RESOURCES_NULL"
+"READ_RESOURCES_IDLE"
 ```
 
 Each request will always begin with an action with type
@@ -19,7 +19,7 @@ following way:
   could be network errors, or any
   [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
   greater than 400.
-- `READ_RESOURCES_NULL`: Use this is the request is aborted.
+- `READ_RESOURCES_IDLE`: Use this is the request is aborted.
 - `READ_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
 ### Using Named Requests
@@ -74,7 +74,7 @@ export default function readBook(bookId) {
       (err, res, body) => {
         if (req.aborted) {
           dispatch({
-            type: actionTypes.READ_RESOURCES_NULL,
+            type: actionTypes.READ_RESOURCES_IDLE,
             resourceName: 'books',
             resources: [bookId]
           });
@@ -128,7 +128,7 @@ export default function readBooks(query) {
       (err, res, body) => {
         if (req.aborted) {
           dispatch({
-            type: actionTypes.READ_RESOURCES_NULL,
+            type: actionTypes.READ_RESOURCES_IDLE,
             resourceName: 'books',
             request: 'search'
           });
