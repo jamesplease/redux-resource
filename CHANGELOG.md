@@ -18,7 +18,7 @@ Today's updates include features that make it easier to work with
 - Introduces a new API that provides the user with more control over when actions
   are dispatched, and the shape of those actions.
 - Deprecates the old API. See
- [the migration guide](https://redux-resource.js.org/docs/extras/redux-resource-xhr-migration.md).
+ [the migration guide](https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/2-to-3.md).
 
 ##### `redux-resource-xhr@3.0.0`
 
