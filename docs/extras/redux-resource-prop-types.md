@@ -6,7 +6,7 @@
 A collection of [prop-types](https://github.com/facebook/prop-types) objects.
 
 > Trying to migrate from v2 of this library? Check out
-  [the migration guide](https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-prop-types/MIGRATING.md).
+  [the migration guide](https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-prop-types/docs/migration-guides/2-to-3.md).
 
 ### Installation
 
