@@ -47,9 +47,8 @@ the new IDs.
 ### Redux Resource XHR
 
 [Redux Resource XHR](/docs/extras/redux-resource-xhr.md) 
-provides a collection of out-of-the-box action creators that you can use to 
-create resources. If you'd like to build your own, then that's fine, too. The 
-example below may help.
+provides an action creator that simplifies making CRUD requests. If you'd like to
+build your own, then that's fine, too. The example below may help.
 
 ### Example Action Creator
 
