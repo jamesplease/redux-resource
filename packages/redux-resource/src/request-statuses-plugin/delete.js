@@ -5,7 +5,7 @@ import warning from '../utils/warning';
 
 const del = reducerGenerator('delete', requestStatuses.PENDING);
 const delFail = reducerGenerator('delete', requestStatuses.FAILED);
-const delNull = reducerGenerator('delete', requestStatuses.NULL);
+const delIdle = reducerGenerator('delete', requestStatuses.IDLE);
 
 function delSucceed(state, action, { initialResourceMeta }) {
   const resources = action.resources;
@@ -104,8 +104,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
       [request]: {
         ...existingRequest,
         status: requestStatuses.SUCCEEDED,
-        ids: idList || []
-      }
+        ids: idList || [],
+      },
     };
   } else {
     newRequests = requests;
@@ -129,14 +129,14 @@ function delSucceed(state, action, { initialResourceMeta }) {
       memo[id] = {
         ...initialResourceMetaState,
         ...initialResourceMeta,
-        deleteStatus: requestStatuses.SUCCEEDED
+        deleteStatus: requestStatuses.SUCCEEDED,
       };
       return memo;
     }, {});
 
     newMeta = {
       ...meta,
-      ...nullMeta
+      ...nullMeta,
     };
   } else {
     newMeta = meta;
@@ -155,8 +155,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
     meta: newMeta,
     lists: newLists,
     requests: newRequests,
-    resources: newResources
+    resources: newResources,
   };
 }
 
-export { del, delFail, delNull, delSucceed };
+export { del, delFail, delIdle, delSucceed };

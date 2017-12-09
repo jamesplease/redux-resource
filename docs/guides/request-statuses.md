@@ -103,31 +103,31 @@ The rules of aggregation work as follows:
 
 At most, only one of these values will ever be `true`.
 
-If `treatNullAsPending` (the third argument, see below) is `false`, then all three
+If `treatIdleAsPending` (the third argument, see below) is `false`, then all three
 values will be `false` if all of the request statuses in the state tree are
-`"NULL"`.
+`"IDLE"`.
 
-### `treatNullAsPending`
+### `treatIdleAsPending`
 
-The third argument to `getStatus` is a Boolean called `treatNullAsPending`. It
-determines whether a request status of `"NULL"` will count as `pending` or not.
+The third argument to `getStatus` is a Boolean called `treatIdleAsPending`. It
+determines whether a request status of `"IDLE"` will count as `pending` or not.
 
 Consider an interface that loads a particular book when the page loads. Right
 at page load, there will always be a short moment when the request hasn't begun,
 yet your store has been set up. At this moment, the request status for this read
-will have a value of `"NULL"`.
+will have a value of `"IDLE"`.
 
 If you don't pass `true`, then there will be a "flash of no content" unless
-you explicitly check for the `"NULL"` status yourself. To avoid this, pass
-`treatNullAsPending` as true, and `getStatus` will instead consider that to be a
+you explicitly check for the `"IDLE"` status yourself. To avoid this, pass
+`treatIdleAsPending` as true, and `getStatus` will instead consider that to be a
 pending state.
 
-The default value of `treatNullAsPending` is `false`.
+The default value of `treatIdleAsPending` is `false`.
 
 ##### The Rule of Thumb
 
-There is a rule of thumb for using `treatNullAsPending`:
+There is a rule of thumb for using `treatIdleAsPending`:
 
-- For requests that happen when the page loads, pass `treatNullAsPending` as `true`
+- For requests that happen when the page loads, pass `treatIdleAsPending` as `true`
 - For requests that happen as a response to a user's action (such as clicking a
-  button), pass `treatNullAsPending` as `false`
+  button), pass `treatIdleAsPending` as `false`
