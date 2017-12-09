@@ -83,6 +83,6 @@
   },
   "peerDependencies": {
     "redux": "3.x",
-    "redux-resource": "^2.3.2"
+    "redux-resource": "^2.4.0"
   }
 }
