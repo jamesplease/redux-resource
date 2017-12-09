@@ -6,7 +6,7 @@
 > Looking for the 2.x API?
 [Click here](https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-xhr/docs/old-versions/2.md).
 Better yet, looking to migrate to 3.x? Check out
-[the migration guide](https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-xhr/docs//2-to-3.md).
+[the migration guide](https://github.com/jmeas/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/2-to-3.md).
 
 Redux Resource XHR is an action creator that simplifies CRUD operations.
 

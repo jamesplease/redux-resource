@@ -11,4 +11,4 @@
 * [Deleting Resources](/docs/guides/deleting-resources.md)
 * [Usage With React](/docs/guides/usage-with-react.md)
 * [Plugins](/docs/guides/plugins.md)
-* [Migrating](/docs/guides/migrating.md)
+* [Migration Guides](/docs/guides/migration-guides.md)
