@@ -45,7 +45,7 @@ function crudRequest(crudAction, options) {
       console.warn(
         `No URL was passed to a Redux Resource action creator. You must ` +
         `pass either "xhrOptions.url" or "xhrOptions.uri". For more, refer to ` +
-        `the Action Creators Extension documentation: ` +
+        `the Redux Resource XHR documentation: ` +
         `https://redux-resource.js.org/docs/extras/redux-resource-xhr.html`
       );
     }
