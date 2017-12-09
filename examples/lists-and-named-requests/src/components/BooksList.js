@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getStatus, getResources } from 'redux-resource';
-import { slicePropType } from 'redux-resource-prop-types';
 
 class BooksList extends Component {
   render() {
@@ -56,7 +55,12 @@ BooksList.propTypes = {
   getUserBooks: PropTypes.func.isRequired,
   getLatestBooks: PropTypes.func.isRequired,
   state: PropTypes.shape({
-    books: slicePropType
+    books: PropTypes.shape({
+      resources: PropTypes.object.isRequired,
+      meta: PropTypes.object.isRequired,
+      requests: PropTypes.object.isRequired,
+      lists: PropTypes.object.isRequired
+    })
   }).isRequired
 };
 

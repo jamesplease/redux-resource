@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getStatus } from 'redux-resource';
-import { slicePropType } from 'redux-resource-prop-types';
 
 class Book extends Component {
   render() {
@@ -30,7 +29,12 @@ class Book extends Component {
 Book.propTypes = {
   bookId: PropTypes.number.isRequired,
   readBook: PropTypes.func.isRequired,
-  state: slicePropType
+  state: PropTypes.shape({
+    resources: PropTypes.object.isRequired,
+    meta: PropTypes.object.isRequired,
+    requests: PropTypes.object.isRequired,
+    lists: PropTypes.object.isRequired
+  })
 };
 
 export default Book;
