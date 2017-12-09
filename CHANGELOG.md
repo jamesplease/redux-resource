@@ -20,6 +20,10 @@ Today's updates include features that make it easier to work with
 - Deprecates the old API. See
  [the migration guide](https://redux-resource.js.org/docs/extras/redux-resource-xhr-migration.md).
 
+##### `redux-resource-xhr@3.0.0`
+
+- Removes the deprecated `2.x` API.
+
 ## 10/24/17
 
 **Bug Fixes**
