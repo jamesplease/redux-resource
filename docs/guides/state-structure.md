@@ -109,15 +109,15 @@ looks like the following:
 
 ```js
 {
-  createStatus: 'NULL',
-  readStatus: 'NULL',
-  updateStatus: 'NULL',
-  deleteStatus: 'NULL'
+  createStatus: 'IDLE',
+  readStatus: 'IDLE',
+  updateStatus: 'IDLE',
+  deleteStatus: 'IDLE'
 }
 ```
 
 These four keys represent the four CRUD actions. The values of the keys are
-one of the four request statuses – `"NULL"`, `"PENDING"`, `"SUCCEEDED"`, or
+one of the four request statuses – `"IDLE"`, `"PENDING"`, `"SUCCEEDED"`, or
 `"FAILED"`, representing the status of any requests to CRUD that resource.
 
 You're encouraged to store additional, application-specific metadata for your
@@ -128,10 +128,10 @@ that it would look like:
 
 ```js
 {
-  createStatus: 'NULL',
-  readStatus: 'NULL',
-  updateStatus: 'NULL',
-  deleteStatus: 'NULL',
+  createStatus: 'IDLE',
+  readStatus: 'IDLE',
+  updateStatus: 'IDLE',
+  deleteStatus: 'IDLE',
   selected: false
 }
 ```
@@ -150,24 +150,24 @@ IDs `2` and `23`, then their state slice will look like the following:
   meta: {
     2: {
       selected: true,
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+      createStatus: 'IDLE',
+      readStatus: 'IDLE',
+      updateStatus: 'IDLE',
+      deleteStatus: 'IDLE'
     },
     23: {
       selected: true,
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+      createStatus: 'IDLE',
+      readStatus: 'IDLE',
+      updateStatus: 'IDLE',
+      deleteStatus: 'IDLE'
     },
     100: {
       selected: false,
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+      createStatus: 'IDLE',
+      readStatus: 'IDLE',
+      updateStatus: 'IDLE',
+      deleteStatus: 'IDLE'
     }
   },
   lists: { ... },
@@ -186,24 +186,24 @@ resources, the slice would then look like this:
   meta: {
     2: {
       selected: true,
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
+      createStatus: 'IDLE',
+      readStatus: 'IDLE',
+      updateStatus: 'IDLE',
       deleteStatus: 'PENDING'
     },
     23: {
       selected: true,
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
+      createStatus: 'IDLE',
+      readStatus: 'IDLE',
+      updateStatus: 'IDLE',
       deleteStatus: 'PENDING'
     },
     100: {
       selected: false,
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+      createStatus: 'IDLE',
+      readStatus: 'IDLE',
+      updateStatus: 'IDLE',
+      deleteStatus: 'IDLE'
     }
   },
   lists: { ... },

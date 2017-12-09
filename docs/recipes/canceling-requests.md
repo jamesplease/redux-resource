@@ -102,7 +102,7 @@ makes them easy to ignore, but they're still worth protecting against.
 
 Typically, applications do not need to inform the user when a request is aborted.
 Accordingly, Redux Resource does not track if a request is in an aborted state. Instead,
-we encourage you to set the request status back to `"NULL"` when the request is canceled.
+we encourage you to set the request status back to `"IDLE"` when the request is canceled.
 
 For a read request, this may look something like:
 
@@ -115,7 +115,7 @@ let requestWasAborted;
 
 if (requestWasAborted) {
   dispatch({
-    type: actionTypes.READ_RESOURCES_NULL,
+    type: actionTypes.READ_RESOURCES_IDLE,
     ...otherActionAttributes
   })
 }
@@ -129,7 +129,7 @@ if (requestWasAborted) {
   that is being performed, rather than the result of the action. We agree that this is a good
   practice to follow. If you do, too, it may irritate you that there is no `READ_RESOURCES_ABORT`
   action type. This is omitted in an effort to keep the surface area of Redux Resource small,
-  since that action would behave the same as `READ_RESOURCES_NULL`.
+  since that action would behave the same as `READ_RESOURCES_IDLE`.
 
 ### Canceling requests in popular libraries
 
