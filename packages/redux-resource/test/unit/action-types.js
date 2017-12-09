@@ -10,7 +10,7 @@ describe('actionTypes', function() {
       expect(actionTypes.CREATE_RESOURCES_PENDING).to.equal('CREATE_RESOURCES_PENDING');
       expect(actionTypes.CREATE_RESOURCES_SUCCEEDED).to.equal('CREATE_RESOURCES_SUCCEEDED');
       expect(actionTypes.CREATE_RESOURCES_FAILED).to.equal('CREATE_RESOURCES_FAILED');
-      expect(actionTypes.CREATE_RESOURCES_NULL).to.equal('CREATE_RESOURCES_NULL');
+      expect(actionTypes.CREATE_RESOURCES_IDLE).to.equal('CREATE_RESOURCES_IDLE');
     });
   });
 
@@ -19,7 +19,7 @@ describe('actionTypes', function() {
       expect(actionTypes.READ_RESOURCES_PENDING).to.equal('READ_RESOURCES_PENDING');
       expect(actionTypes.READ_RESOURCES_SUCCEEDED).to.equal('READ_RESOURCES_SUCCEEDED');
       expect(actionTypes.READ_RESOURCES_FAILED).to.equal('READ_RESOURCES_FAILED');
-      expect(actionTypes.READ_RESOURCES_NULL).to.equal('READ_RESOURCES_NULL');
+      expect(actionTypes.READ_RESOURCES_IDLE).to.equal('READ_RESOURCES_IDLE');
     });
   });
 
@@ -28,7 +28,7 @@ describe('actionTypes', function() {
       expect(actionTypes.UPDATE_RESOURCES_PENDING).to.equal('UPDATE_RESOURCES_PENDING');
       expect(actionTypes.UPDATE_RESOURCES_SUCCEEDED).to.equal('UPDATE_RESOURCES_SUCCEEDED');
       expect(actionTypes.UPDATE_RESOURCES_FAILED).to.equal('UPDATE_RESOURCES_FAILED');
-      expect(actionTypes.UPDATE_RESOURCES_NULL).to.equal('UPDATE_RESOURCES_NULL');
+      expect(actionTypes.UPDATE_RESOURCES_IDLE).to.equal('UPDATE_RESOURCES_IDLE');
     });
   });
 
@@ -37,7 +37,7 @@ describe('actionTypes', function() {
       expect(actionTypes.DELETE_RESOURCES_PENDING).to.equal('DELETE_RESOURCES_PENDING');
       expect(actionTypes.DELETE_RESOURCES_SUCCEEDED).to.equal('DELETE_RESOURCES_SUCCEEDED');
       expect(actionTypes.DELETE_RESOURCES_FAILED).to.equal('DELETE_RESOURCES_FAILED');
-      expect(actionTypes.DELETE_RESOURCES_NULL).to.equal('DELETE_RESOURCES_NULL');
+      expect(actionTypes.DELETE_RESOURCES_IDLE).to.equal('DELETE_RESOURCES_IDLE');
     });
   });
 });

@@ -75,10 +75,10 @@ describe('reducerGenerator:', function() {
     expect(result).to.deep.equal({
       meta: {
         1: {
-          createStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
           readStatus: requestStatuses.PENDING,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
           selected: false,
           hangry: true
@@ -88,18 +88,18 @@ describe('reducerGenerator:', function() {
           sandwichStatus: requestStatuses.PENDING
         },
         5: {
-          createStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
           readStatus: requestStatuses.PENDING,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           selected: false,
           pastaStatus: requestStatuses.FAILED
         },
         6: {
-          createStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
           readStatus: requestStatuses.PENDING,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           selected: false,
           pastaStatus: requestStatuses.FAILED
         }
@@ -153,10 +153,10 @@ describe('reducerGenerator:', function() {
     expect(result).to.deep.equal({
       meta: {
         1: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
           hangry: true
         },
@@ -165,17 +165,17 @@ describe('reducerGenerator:', function() {
           sandwichStatus: requestStatuses.PENDING
         },
         5: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED
         },
         6: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED
         }
       },
@@ -286,10 +286,10 @@ describe('reducerGenerator:', function() {
     expect(result).to.deep.equal({
       meta: {
         1: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
           hangry: true
         },
@@ -298,17 +298,17 @@ describe('reducerGenerator:', function() {
           sandwichStatus: requestStatuses.PENDING
         },
         5: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
         },
         6: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED
         }
       },
@@ -363,10 +363,10 @@ describe('reducerGenerator:', function() {
     expect(result).to.deep.equal({
       meta: {
         1: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
         },
         2: {
@@ -374,17 +374,17 @@ describe('reducerGenerator:', function() {
           sandwichStatus: requestStatuses.PENDING
         },
         5: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
         },
         6: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED
         }
       },

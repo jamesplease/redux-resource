@@ -2,7 +2,7 @@ import requestStatuses from './request-statuses';
 import getPathParts from './get-path-parts';
 import warning from './warning';
 
-function getSingleStatus(state, statusLocation, treatNullAsPending) {
+function getSingleStatus(state, statusLocation, treatIdleAsPending) {
   const splitPath = getPathParts(statusLocation);
 
   let status;
@@ -10,7 +10,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
   for (let i = 0; i < splitPath.length; i++) {
     const pathValue = currentVal[splitPath[i]];
     if (typeof pathValue === 'undefined') {
-      status = requestStatuses.NULL;
+      status = requestStatuses.IDLE;
       break;
     } else if (i === splitPath.length - 1) {
       status = pathValue;
@@ -20,7 +20,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    const isStatus = status === requestStatuses.NULL ||
+    const isStatus = status === requestStatuses.IDLE ||
       status === requestStatuses.PENDING ||
       status === requestStatuses.FAILED ||
       status === requestStatuses.SUCCEEDED;
@@ -34,12 +34,12 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
   }
 
   const isPending = status === requestStatuses.PENDING;
-  const isNull = status === requestStatuses.NULL;
-  const treatNullAsPendingBool = Boolean(treatNullAsPending);
+  const isIdle = status === requestStatuses.IDLE;
+  const treatIdleAsPendingBool = Boolean(treatIdleAsPending);
 
   return {
-    null: isNull && !treatNullAsPendingBool,
-    pending: isPending || (isNull && treatNullAsPendingBool),
+    null: isIdle && !treatIdleAsPendingBool,
+    pending: isPending || (isIdle && treatIdleAsPendingBool),
     failed: status === requestStatuses.FAILED,
     succeeded: status === requestStatuses.SUCCEEDED,
   };
@@ -50,7 +50,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
 // `state`: A piece of the Redux store containing the relevant resources
 // `action`: The CRUD action in question
 // `statusLocation`: A location of the meta resource (see `find-meta.js` for more)
-// `treatNullAsPending`: Whether or not to count a status of `NULL` as pending.
+// `treatIdleAsPending`: Whether or not to count a status of `IDLE` as pending.
 //
 // Returns an Object with the following properties:
 //
@@ -63,12 +63,12 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
 //
 // Note that at most _one_ of those properties will be true. It is
 // possible for them to all be false.
-export default function getStatus(state, statusLocations, treatNullAsPending) {
+export default function getStatus(state, statusLocations, treatIdleAsPending) {
   if (!(statusLocations instanceof Array)) {
-    return getSingleStatus(state, statusLocations, treatNullAsPending);
+    return getSingleStatus(state, statusLocations, treatIdleAsPending);
   }
 
-  const statusValues = statusLocations.map(loc => getSingleStatus(state, loc, treatNullAsPending));
+  const statusValues = statusLocations.map(loc => getSingleStatus(state, loc, treatIdleAsPending));
 
   let nullValue = true;
   let pending = false;

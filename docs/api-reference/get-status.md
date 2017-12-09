@@ -1,4 +1,4 @@
-# `getStatus(state, statusLocation, [treatNullAsPending])`
+# `getStatus(state, statusLocation, [treatIdleAsPending])`
 
 Returns an object with boolean values representing the request status of a
 particular CRUD action. It can also be used to aggregate multiple request
@@ -15,7 +15,7 @@ statuses together.
   will be aggregated. For more on status locations and status aggregation, see
   the Notes below.
 
-4. [`treatNullAsPending`] *(Boolean)*: Whether or not a request status of `NULL` is
+4. [`treatIdleAsPending`] *(Boolean)*: Whether or not a request status of `IDLE` is
   to be considered as a `pending` request. Defaults to `false`. See Tips on
   when to use this.
 
@@ -34,8 +34,8 @@ statuses together.
   ```
 
   One of these values is always `true`, reflecting the value of the request
-  status. When `treatNullAsPending` is `true`, then request statuses that are
-  `"NULL"` will be returned as `pending: true`.
+  status. When `treatIdleAsPending` is `true`, then request statuses that are
+  `"IDLE"` will be returned as `pending: true`.
 
 #### Notes
 
@@ -51,7 +51,7 @@ A status location is a string that specifies a location of a request status in
 your state tree. For instance `"books.meta.24.readStatus"` or
 `"books.requests.dashboardSearch.status"`.
 
-> Keep in mind that `treatNullAsPending` also works when aggregating.
+> Keep in mind that `treatIdleAsPending` also works when aggregating.
 
 #### Examples
 
@@ -84,10 +84,10 @@ const bookReadStatus = getStatus(
 
 #### Tips
 
-- The third argument, `treatNullAsPending`, is useful for requests that are made when
+- The third argument, `treatIdleAsPending`, is useful for requests that are made when
   your components mount. The components will often render before the request
-  begins, so the status of these requests will be `NULL`. Passing `treatNullAsPending`
-  will consider these `NULL` states as `pending: true`.
+  begins, so the status of these requests will be `IDLE`. Passing `treatIdleAsPending`
+  will consider these `IDLE` states as `pending: true`.
 
 - If you're using React, we recommend computing your `getStatus` values in
   `mapStateToProps`, and then passing them in as props into your component. That
