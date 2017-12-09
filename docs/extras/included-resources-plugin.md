@@ -1,23 +1,28 @@
 # Included Resources Plugin
 
-Many APIs support returning multiple resource types in a single request. For instance,
-a backend may let you fetch an author as well as that author's books in one request. In
-this example, `authors` and `books` are two different resources.
+APIs frequently support returning multiple resource types in a single request. For
+instance, an endpoint may allow you to fetch an author as well as that author's
+books. In this example, `authors` and `books` are two different resource types.
 
-Different backends return included resources in different ways. This plugin is optimized
-to receive normalized data, such as what is output from
-[`normalizr`](https://github.com/paularmstrong/normalizr).
+This plugin is designed to allow you to dispatch a single action that includes
+multiple types. It is optimized to receive normalized data, such as what is
+returned from [`normalizr`](https://github.com/paularmstrong/normalizr).
 
 ### Usage
 
-First, you need to register this plugin when you call
-[`resourceReducer`](/docs/api-reference/resource-reducer.md).
+Add this plugin when you call
+[`resourceReducer`](/docs/api-reference/resource-reducer.md). Be sure to add it to
+the "primary" resource slice, as well as to the included resource slices.
 
 ```js
 import { resourceReducer } from 'redux-resource';
 import { includedResources } from 'redux-resource-plugins';
 
-const reducer = resourceReducer('authors', {
+const authorReducer = resourceReducer('authors', {
+  plugins: [includedResources]
+});
+
+const booksReducer = resourceReducer('books', {
   plugins: [includedResources]
 });
 ```
@@ -59,7 +64,7 @@ store.dispatch({
       }
     },
 
-    // And down here we pass comments as an Array. Either works!
+    // Notice here that comments is an Array. This format works, too.
     comments: [
       {
         id: 23,
@@ -78,3 +83,11 @@ Be sure to use `includedResources` on _every_ resource slice that can appear in 
 In the above example, we would want to include the plugin for our `authors`, `books`, and `comments`.
 
 This plugin will respect the `mergeResources` and `mergeMeta` action properties.
+
+### Related Reading
+
+Not every API returns included resources in a normalized manner, so a different plugin may be more
+appropriate for certain backends. As an example, JSON API does not provide included resources in a
+format that can interpreted by this plugin.
+
+For more on this subject, refer to the [Related Resources recipe](/docs/recipes/related-resources.md).

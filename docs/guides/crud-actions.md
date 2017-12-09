@@ -39,7 +39,7 @@ store.dispatch({
 });
 ```
 
-This action type isn't very useful, however. Without more information about this
+This action isn't very useful, however. Without more information about this
 request, Redux Resource doesn't know where to put this information in your
 state tree. Consequently, this action is a no-op.
 
