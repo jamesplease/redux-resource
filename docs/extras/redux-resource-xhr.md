@@ -49,7 +49,7 @@ An action creator for CRUD requests.
   "read", "update", or "delete". This determines the
   [CRUD Action types](/docs/api-reference/action-types.md) that are dispatched.
 
-1. `options` *(Object)*: Options to configure the CRUD request.
+2. `options` *(Object)*: Options to configure the CRUD request.
 
   * `actionDefaults`: *(Object)* Properties that will be included on each dispatched
     action. All of [the CRUD Action options](/docs/guides/crud-actions.md) are
