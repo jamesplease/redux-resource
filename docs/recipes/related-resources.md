@@ -124,7 +124,7 @@ would likely work in 2 steps:
 
 1. Filter the Array of `included` resources to find _just_ the resources whose
   JSON API `type` matches the `resourceName` of the slice.
-2. Use [`upsertResources`](/docs/api/upsert-resources.md) to add those resources to the slice.
+2. Use [`upsertResources`](/docs/api-reference/upsert-resources.md) to add those resources to the slice.
 
 You would also want to place the each individual resource's `meta` into the `meta` section of the
 slice.
