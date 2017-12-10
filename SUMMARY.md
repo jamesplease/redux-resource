@@ -29,6 +29,7 @@
   * [Related Resources](/docs/recipes/related-resources.md)
   * [Caching](/docs/recipes/caching.md)
 * [Ecosystem Extras](/docs/extras/README.md)
+  * [Redux Resource Action Creators](/docs/extras/redux-resource-action-creators.md)
   * [Redux Resource XHR](/docs/extras/redux-resource-xhr.md)
   * [Redux Resource Prop Types](/docs/extras/redux-resource-prop-types.md)
   * [Redux Resource Plugins](/docs/extras/redux-resource-plugins.md)
