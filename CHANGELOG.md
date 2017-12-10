@@ -1,3 +1,10 @@
+## 12/9/17
+
+##### `redux-resource-action-creators@1.0.0`
+
+- This new library that may help you create valid Redux Resource action. For more,
+  see [the documentation](https://redux-resource.js.org/docs/extras/redux-resource-action-creators.html).
+
 ## 12/8/17
 
 Today's updates include features that make it easier to work with
