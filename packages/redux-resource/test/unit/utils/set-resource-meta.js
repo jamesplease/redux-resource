@@ -170,4 +170,18 @@ describe('setResourceMeta', function() {
       expect(result[3]).to.equal(this.meta[3]);
     });
   });
+
+  describe('update resource meta', () => {
+    it('should perform updates for any valid resource ids (gh-298)', () => {
+      const result = setResourceMeta({
+        meta: {},
+        newMeta: {updated: true},
+        resources: [0, '', {id: false}, 1, 2, 3, '1234'],
+      });
+
+      expect(result).to.have.property('0');
+      expect(result[0]).to.eql({updated: true});
+      expect(result).to.not.have.property('false');
+    });
+  });
 });
