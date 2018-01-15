@@ -26,7 +26,7 @@ export default function setResourceMeta(options) {
     // the user with meta **and** attribute update problems. If the ID check
     // is moved into the success reducers directly, then we may be able to
     // remove these typeof checks for efficiency.
-    if (!id || (typeof id !== 'string' && typeof id !== 'number')) {
+    if ((!id && id !== 0) || (typeof id !== 'string' && typeof id !== 'number')) {
       return;
     }
 

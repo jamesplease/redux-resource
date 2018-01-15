@@ -232,6 +232,68 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
+    it('returns the right state without a request name, with IDs, including an ID of the number 0 (gh-298)', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            0: {id: 0},
+            3: {id: 3},
+            4: {id: 4},
+          },
+          lists: {},
+          requests: {},
+          meta: {
+            0: {
+              name: 'what'
+            },
+            3: {
+              deleteStatus: 'sandwiches'
+            }
+          }
+        },
+        initialResourceMeta: {
+          selected: false
+        }
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        resources: [0, {id: 4}]
+      });
+
+      expect(reduced).to.deep.equal({
+        resources: {
+          0: null,
+          3: {id: 3},
+          4: null
+        },
+        lists: {},
+        requests: {},
+        meta: {
+          0: {
+            selected: false,
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          },
+          3: {
+            deleteStatus: 'sandwiches'
+          },
+          4: {
+            selected: false,
+            createStatus: requestStatuses.NULL,
+            readStatus: requestStatuses.NULL,
+            updateStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.SUCCEEDED
+          }
+        }
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
     it('warns and ignores a poorly-formatted request name', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {

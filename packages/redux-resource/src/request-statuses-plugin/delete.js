@@ -48,7 +48,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
     idList = resources.map(r => {
       if (typeof r === 'object') {
         if (process.env.NODE_ENV !== 'production') {
-          if (!r.id || (typeof r.id !== 'string' && typeof r.id !== 'number')) {
+          if ((!r.id && r.id !== 0) || (typeof r.id !== 'string' && typeof r.id !== 'number')) {
             warning(
               `A resource without an ID was passed to an action with type ` +
               `${action.type}. Every resource must have an ID that is either ` +

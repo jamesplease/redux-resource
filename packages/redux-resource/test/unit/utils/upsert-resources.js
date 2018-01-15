@@ -20,6 +20,16 @@ describe('upsertResources', function() {
     expect(console.error.callCount).to.equal(1);
   });
 
+  it('should not warn when a resource with an ID of 0 is passed', () => {
+    stub(console, 'error');
+
+    upsertResources(this.resources, [
+      {id: 0}
+    ]);
+
+    expect(console.error.callCount).to.equal(0);
+  });
+
   it('should accept an empty array of newResources', () => {
     const nullResult = upsertResources(this.resources, null);
     expect(nullResult).to.equal(this.resources);

@@ -15,7 +15,7 @@ export default function upsertResources(resources, newResources, mergeResources)
     const id = resourceIsObject ? resource.id : resource;
 
     // If a resource doesn't have an ID, then it cannot be tracked
-    if (!id) {
+    if (!id && id !== 0) {
       if (process.env.NODE_ENV !== 'production') {
         warning(
           `You attempted to update or add a resource without an ID attribute. ` +
