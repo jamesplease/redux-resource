@@ -1,10 +1,26 @@
-# Redux Resource
+<p align="center">
+<a href="http://redux-resource.js.org">
+<img src="https://user-images.githubusercontent.com/2322305/35475616-7c854ce6-0356-11e8-8801-5dfb6bcc1ac6.png" height="120" alt="Redux Resource Logo" aria-label="redux-resource.js.org" />
+</a>
+</p>
 
-[![Gitter](https://badges.gitter.im/jmeas/redux-resource.svg)](https://gitter.im/jmeas/redux-resource?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Travis build status](http://img.shields.io/travis/jmeas/redux-resource.svg?style=flat)](https://travis-ci.org/jmeas/redux-resource)
-[![npm version](https://img.shields.io/npm/v/redux-resource.svg)](https://www.npmjs.com/package/redux-resource)
-[![Test Coverage](https://codeclimate.com/github/jmeas/redux-resource/badges/coverage.svg)](https://codeclimate.com/github/jmeas/redux-resource)
-[![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip)](https://unpkg.com/redux-resource/dist/redux-resource.min.js)
+<p align="center">
+  <a href="https://gitter.im/jmeas/redux-resource?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+    <img src="https://badges.gitter.im/jmeas/redux-resource.svg" alt="Redux Resource on Gitter" />
+  </a>
+  <a href="https://travis-ci.org/jmeas/redux-resource">
+    <img src="http://img.shields.io/travis/jmeas/redux-resource.svg?style=flat" alt="Redux Resource Travis Builds" />
+  </a>
+  <a href="https://www.npmjs.com/package/redux-resource">
+    <img src="https://img.shields.io/npm/v/redux-resource.svg" alt="Redux Resource NPM Package" />
+  </a>
+  <a href="https://codeclimate.com/github/jmeas/redux-resource">
+    <img src="https://codeclimate.com/github/jmeas/redux-resource/badges/coverage.svg" alt="Redux Resource Code Coverage" />
+  </a>
+  <a href="https://unpkg.com/redux-resource/dist/redux-resource.min.js">
+    <img src="http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip" alt="Redux Resource gzip Size" />
+  </a>
+</p>
 
 A tiny but powerful system for managing 'resources': data that is persisted to
 remote servers.
