@@ -90,7 +90,7 @@ describe('httpStatusCodes', function() {
     };
 
     const action = {
-      type: actionTypes.READ_RESOURCES_NULL,
+      type: actionTypes.READ_RESOURCES_IDLE,
       resourceName: 'books',
       resources: [24],
       statusCode: 0
