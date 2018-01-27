@@ -17,5 +17,6 @@ export default {
   ...createTypes,
   ...readTypes,
   ...updateTypes,
-  ...deleteTypes
+  ...deleteTypes,
+  UPDATE_RESOURCE_LISTS: 'UPDATE_RESOURCE_LISTS'
 };
