@@ -43,7 +43,7 @@ function reset(resourceName, options = {}) {
         ...state.requests,
         [request]: {
           ids: [],
-          status: requestStatuses.NULL
+          status: requestStatuses.IDLE
         }
       };
     }
