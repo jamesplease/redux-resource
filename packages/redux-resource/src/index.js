@@ -5,6 +5,7 @@ import setResourceMeta from './utils/set-resource-meta';
 import upsertResources from './utils/upsert-resources';
 import getStatus from './utils/get-status';
 import getResources from './utils/get-resources';
+import getList from './utils/get-list';
 import warning from './utils/warning';
 
 /* eslint-disable no-empty-function */
@@ -36,5 +37,6 @@ export {
   setResourceMeta,
   upsertResources,
   getStatus,
-  getResources
+  getResources,
+  getList
 };
