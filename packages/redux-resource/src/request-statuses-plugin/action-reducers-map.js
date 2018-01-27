@@ -2,8 +2,11 @@ import * as readReducers from './read';
 import * as createReducers from './create';
 import * as updateReducers from './update';
 import * as deleteReducers from './delete';
+import updateList from './update-list';
 
 export default {
+  UPDATE_RESOURCE_LISTS: updateList,
+
   CREATE_RESOURCES_PENDING: createReducers.create,
   CREATE_RESOURCES_FAILED: createReducers.createFail,
   CREATE_RESOURCES_SUCCEEDED: createReducers.createSucceed,
