@@ -1,6 +1,6 @@
 <p align="center">
 <a href="http://redux-resource.js.org">
-<img src="https://user-images.githubusercontent.com/2322305/35475616-7c854ce6-0356-11e8-8801-5dfb6bcc1ac6.png" height="120" alt="Redux Resource Logo" aria-label="redux-resource.js.org" />
+<img src="https://user-images.githubusercontent.com/2322305/35485454-ebe99632-0414-11e8-8dfe-08a18625f8b8.png" height="120" alt="Redux Resource Logo" aria-label="redux-resource.js.org" />
 </a>
 </p>
 
