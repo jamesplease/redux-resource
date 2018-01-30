@@ -29,6 +29,7 @@ tmp
 
 # Users Environment Variables
 .lock-wscript
+.vscode
 
 .DS_Store
 dist
