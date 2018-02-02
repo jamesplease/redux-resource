@@ -1,4 +1,5 @@
 import resourceReducer from './resource-reducer';
+import resourceRequestReducer from './request-reducer';
 import actionTypes from './action-types';
 import requestStatuses from './utils/request-statuses';
 import setResourceMeta from './utils/set-resource-meta';
@@ -32,6 +33,7 @@ if (
 
 export {
   resourceReducer,
+  resourceRequestReducer,
   actionTypes,
   requestStatuses,
   setResourceMeta,
