@@ -215,16 +215,16 @@ describe('reducers: delete', function() {
           },
           3: {
             selected: false,
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           },
           4: {
             selected: false,
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           }
         }
@@ -297,15 +297,15 @@ describe('reducers: delete', function() {
             name: 'what'
           },
           3: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           },
           4: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           }
         }
@@ -378,15 +378,15 @@ describe('reducers: delete', function() {
             name: 'what'
           },
           3: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           },
           4: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           }
         }
@@ -458,15 +458,15 @@ describe('reducers: delete', function() {
             name: 'what'
           },
           3: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           },
           4: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           }
         }
@@ -524,15 +524,15 @@ describe('reducers: delete', function() {
             name: 'what'
           },
           3: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           },
           4: {
-            createStatus: requestStatuses.NULL,
-            readStatus: requestStatuses.NULL,
-            updateStatus: requestStatuses.NULL,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
             deleteStatus: requestStatuses.SUCCEEDED
           }
         }

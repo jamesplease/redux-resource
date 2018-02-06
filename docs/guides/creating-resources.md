@@ -7,7 +7,7 @@ creating resources. They are as follows:
 "CREATE_RESOURCES_PENDING"
 "CREATE_RESOURCES_FAILED"
 "CREATE_RESOURCES_SUCCEEDED"
-"CREATE_RESOURCES_NULL"
+"CREATE_RESOURCES_IDLE"
 ```
 
 Each request will always begin with an action with type
@@ -19,7 +19,7 @@ following way:
   could be network errors, or any
   [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
   greater than 400.
-- `CREATE_RESOURCES_NULL`: Use this is the request is aborted.
+- `CREATE_RESOURCES_IDLE`: Use this is the request is aborted.
 - `CREATE_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
 ### Using Named Requests
@@ -76,7 +76,7 @@ export default function createBook(bookDetails) {
       (err, res, body) => {
         if (req.aborted) {
           dispatch({
-            type: actionTypes.CREATE_RESOURCES_NULL,
+            type: actionTypes.CREATE_RESOURCES_IDLE,
             resourceName: 'books',
             request: 'create'
           });

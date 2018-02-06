@@ -72,7 +72,7 @@ function crudRequest(crudAction, options) {
     if (req.aborted) {
       const abortedAction = {
         ...actionDefaults,
-        type: actionTypes[`${crudType}_RESOURCES_NULL`],
+        type: actionTypes[`${crudType}_RESOURCES_IDLE`],
         statusCode,
         res
       };

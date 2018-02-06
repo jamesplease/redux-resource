@@ -4,7 +4,7 @@ import requestStatuses from '../utils/request-statuses';
 
 const update = reducerGenerator('update', requestStatuses.PENDING);
 const updateFail = reducerGenerator('update', requestStatuses.FAILED);
-const updateNull = reducerGenerator('update', requestStatuses.NULL);
+const updateIdle = reducerGenerator('update', requestStatuses.IDLE);
 
 function updateSucceed(state, action, options) {
   return cruReducerHelper(state, action, options, {
@@ -12,4 +12,4 @@ function updateSucceed(state, action, options) {
   });
 }
 
-export {update, updateFail, updateNull, updateSucceed};
+export {update, updateFail, updateIdle, updateSucceed};

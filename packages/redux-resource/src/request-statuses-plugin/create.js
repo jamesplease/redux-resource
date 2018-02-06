@@ -4,7 +4,7 @@ import requestStatuses from '../utils/request-statuses';
 
 const create = reducerGenerator('create', requestStatuses.PENDING);
 const createFail = reducerGenerator('create', requestStatuses.FAILED);
-const createNull = reducerGenerator('create', requestStatuses.NULL);
+const createIdle = reducerGenerator('create', requestStatuses.IDLE);
 
 function createSucceed(state, action, options) {
   return cruReducerHelper(state, action, options, {
@@ -13,4 +13,4 @@ function createSucceed(state, action, options) {
   });
 }
 
-export {create, createFail, createNull, createSucceed};
+export {create, createFail, createIdle, createSucceed};

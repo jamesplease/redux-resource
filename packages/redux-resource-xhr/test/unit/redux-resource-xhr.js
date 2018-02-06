@@ -105,7 +105,7 @@ describe('Redux Resource XHR', function() {
             }]);
 
             expect(this.dispatch.args[1]).to.deep.equal([{
-              type: 'READ_RESOURCES_NULL',
+              type: 'READ_RESOURCES_IDLE',
               resourceName: 'hello',
               statusCode: 0,
               res: undefined,
@@ -159,7 +159,7 @@ describe('Redux Resource XHR', function() {
 
             expect(this.onAbortedStub.callCount).to.equal(1);
             expect(this.onAbortedStub.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_NULL',
+              type: 'READ_RESOURCES_IDLE',
               resourceName: 'hello',
               statusCode: 0,
               res: undefined,

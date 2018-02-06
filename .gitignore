@@ -39,3 +39,4 @@ _site
 _book
 .nyc_output
 package-lock.json
+.vscode

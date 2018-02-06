@@ -9,6 +9,6 @@ describe('requestStatuses', function() {
     expect(requestStatuses.PENDING).to.equal('PENDING');
     expect(requestStatuses.SUCCEEDED).to.equal('SUCCEEDED');
     expect(requestStatuses.FAILED).to.equal('FAILED');
-    expect(requestStatuses.NULL).to.equal('NULL');
+    expect(requestStatuses.IDLE).to.equal('IDLE');
   });
 });
