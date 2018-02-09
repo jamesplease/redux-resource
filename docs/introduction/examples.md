@@ -51,3 +51,18 @@ fetched, and displayed in another list in the interface.
 
 A real-world application would likely use the performant
 [React Redux](https://github.com/reactjs/react-redux) bindings for re-rendering.
+
+---
+
+### "Real World" Examples
+
+This is a list of open-source projects that are using Redux Resource.
+
+- [Chronos Timetracker](https://github.com/web-pal/chronos-timetracker): A desktop client
+  for JIRA.
+
+- [Zero boilerplate redux](https://github.com/jmeas/zero-boilerplate-redux): A simple
+  recreation of the GitHub Gists webapp.
+
+> Do you have an open source project that uses Redux Resource that you would like to
+  add to the list? Open an issue or make a Pull Request!
