@@ -5,6 +5,14 @@
 - IDs that were a the number `0` would cause error messages to be logged in certain situations. Also,
   they would not be deleted when using the built-in delete action type. This issue has been resolved.
 
+##### `redux-resource-action-creators@1.0.1`
+
+- The file names for the UMD builds were incorrect. Previously, it was `redux-resource-prop-types.min.js`.
+  Now, it is `redux-resource-action-creators.min.js`.
+
+  This change should not impact Webpack, Node, nor Browserify users. It only impacts developers who were
+  using this path directly in their application code.
+
 ## 12/9/17
 
 ##### `redux-resource-action-creators@1.0.0`
