@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
-    "clean": "rimraf dist es tmp",
+    "clean": "rimraf dist es tmp lib",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint src/**/*.js test/**/*.js webpack.config.js",
     "build": "npm run clean && npm run build:umd && npm run build:umd:min && npm run build:es && npm run build:commonjs",
