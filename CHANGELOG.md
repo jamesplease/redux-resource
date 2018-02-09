@@ -1,3 +1,10 @@
+## 2/8/18
+
+##### `redux-resource@2.4.1`
+
+- IDs that were a the number `0` would cause error messages to be logged in certain situations. Also,
+  they would not be deleted when using the built-in delete action type. This issue has been resolved.
+
 ## 12/9/17
 
 ##### `redux-resource-action-creators@1.0.0`
