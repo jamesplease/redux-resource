@@ -170,4 +170,32 @@ describe('setResourceMeta', function() {
       expect(result[3]).to.equal(this.meta[3]);
     });
   });
+
+  describe('update resource meta', () => {
+    it('should perform updates for IDs that are the number 0 (gh-298)', () => {
+      const result = setResourceMeta({
+        meta: {},
+        newMeta: {updated: true},
+        resources: [0, '', {id: false}, 1, 2, 3, '1234'],
+      });
+
+      expect(result).to.deep.equal({
+        0: {
+          updated: true
+        },
+        1: {
+          updated: true,
+        },
+        2: {
+          updated: true,
+        },
+        3: {
+          updated: true,
+        },
+        1234: {
+          updated: true,
+        },
+      });
+    });
+  });
 });
