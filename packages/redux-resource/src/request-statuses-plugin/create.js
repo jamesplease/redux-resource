@@ -9,8 +9,8 @@ const createNull = reducerGenerator('create', requestStatuses.NULL);
 function createSucceed(state, action, options) {
   return cruReducerHelper(state, action, options, {
     readStatus: requestStatuses.SUCCEEDED,
-    createStatus: requestStatuses.SUCCEEDED,
+    createStatus: requestStatuses.SUCCEEDED
   });
 }
 
-export {create, createFail, createNull, createSucceed};
+export { create, createFail, createNull, createSucceed };

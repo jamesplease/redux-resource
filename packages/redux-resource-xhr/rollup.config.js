@@ -22,11 +22,11 @@ var config = {
     }),
     commonjs({
       include: 'node_modules/**',
-      exclude: ['node_modules/redux-resource/**'],
+      exclude: ['node_modules/redux-resource/**']
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(env)
-    }),
+    })
   ]
 };
 

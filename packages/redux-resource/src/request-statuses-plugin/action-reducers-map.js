@@ -22,5 +22,5 @@ export default {
   DELETE_RESOURCES_PENDING: deleteReducers.del,
   DELETE_RESOURCES_FAILED: deleteReducers.delFail,
   DELETE_RESOURCES_SUCCEEDED: deleteReducers.delSucceed,
-  DELETE_RESOURCES_NULL: deleteReducers.delNull,
+  DELETE_RESOURCES_NULL: deleteReducers.delNull
 };

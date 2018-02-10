@@ -1,4 +1,4 @@
-import {resourceReducer, requestStatuses} from '../../../src';
+import { resourceReducer, requestStatuses } from '../../../src';
 
 describe('reducers: read:', function() {
   describe('READ_RESOURCES_PENDING:', () => {
@@ -7,9 +7,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {},
@@ -41,9 +41,9 @@ describe('reducers: read:', function() {
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, lastName: 'camomile'}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, lastName: 'camomile' }
         },
         lists: {},
         requests: {},
@@ -59,14 +59,14 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.SUCCEEDED,
             readStatus: requestStatuses.PENDING,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             selected: false,
             createStatus: requestStatuses.PENDING,
             readStatus: requestStatuses.PENDING,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -78,9 +78,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {},
@@ -111,9 +111,9 @@ describe('reducers: read:', function() {
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, lastName: 'camomile'}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, lastName: 'camomile' }
         },
         lists: {},
         requests: {},
@@ -129,14 +129,14 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.SUCCEEDED,
             readStatus: requestStatuses.PENDING,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             selected: false,
             createStatus: requestStatuses.PENDING,
             readStatus: requestStatuses.PENDING,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -149,9 +149,9 @@ describe('reducers: read:', function() {
       stub(console, 'error');
       const initialState = {
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4 }
         },
         lists: {},
         requests: {
@@ -169,7 +169,7 @@ describe('reducers: read:', function() {
         }
       };
 
-      const reducer = resourceReducer('hellos', {initialState});
+      const reducer = resourceReducer('hellos', { initialState });
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
@@ -184,9 +184,9 @@ describe('reducers: read:', function() {
       stub(console, 'error');
       const initialState = {
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4 }
         },
         lists: {},
         requests: {
@@ -204,7 +204,7 @@ describe('reducers: read:', function() {
         }
       };
 
-      const reducer = resourceReducer('hellos', {initialState});
+      const reducer = resourceReducer('hellos', { initialState });
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
@@ -223,9 +223,9 @@ describe('reducers: read:', function() {
       stub(console, 'error');
       const initialState = {
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4 }
         },
         lists: {},
         requests: {
@@ -243,7 +243,7 @@ describe('reducers: read:', function() {
         }
       };
 
-      const reducer = resourceReducer('hellos', {initialState});
+      const reducer = resourceReducer('hellos', { initialState });
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
@@ -258,9 +258,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {},
@@ -285,18 +285,15 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {},
         requests: {},
@@ -312,14 +309,14 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.SUCCEEDED,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             selected: false,
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -329,9 +326,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {},
@@ -353,18 +350,15 @@ describe('reducers: read:', function() {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         mergeResources: false,
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches' },
+          5: { id: 5 }
         },
         lists: {},
         requests: {},
@@ -380,13 +374,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -396,9 +390,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {},
@@ -420,18 +414,15 @@ describe('reducers: read:', function() {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         mergeMeta: false,
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {},
         requests: {},
@@ -446,13 +437,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -463,9 +454,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {
@@ -496,18 +487,15 @@ describe('reducers: read:', function() {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         request: {},
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {},
         requests: {
@@ -532,13 +520,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -550,9 +538,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {
@@ -583,18 +571,15 @@ describe('reducers: read:', function() {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         list: {},
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {},
         requests: {
@@ -619,13 +604,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -637,9 +622,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {
@@ -670,18 +655,15 @@ describe('reducers: read:', function() {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         request: 'pasta',
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {},
         requests: {
@@ -706,13 +688,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -724,9 +706,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {
             oinks: [1, 3],
@@ -761,18 +743,15 @@ describe('reducers: read:', function() {
         resourceName: 'hellos',
         request: 'pasta',
         list: 'pasta',
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {
           oinks: [1, 3],
@@ -800,13 +779,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -817,9 +796,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {
@@ -849,18 +828,15 @@ describe('reducers: read:', function() {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         request: 'pasta',
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {},
         requests: {
@@ -885,13 +861,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -901,9 +877,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {},
@@ -925,18 +901,15 @@ describe('reducers: read:', function() {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
         list: 'pasta',
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {
           pasta: [4, 5]
@@ -954,13 +927,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -970,9 +943,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {
             sandwiches: [1, 3],
@@ -998,18 +971,15 @@ describe('reducers: read:', function() {
         resourceName: 'hellos',
         list: 'pasta',
         mergeListIds: false,
-        resources: [
-          {id: 4, name: 'sandwiches'},
-          5
-        ]
+        resources: [{ id: 4, name: 'sandwiches' }, 5]
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, name: 'sandwiches', lastName: 'camomile'},
-          5: {id: 5}
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 }
         },
         lists: {
           sandwiches: [1, 3],
@@ -1028,13 +998,13 @@ describe('reducers: read:', function() {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           },
           5: {
             createStatus: requestStatuses.NULL,
             readStatus: requestStatuses.SUCCEEDED,
             updateStatus: requestStatuses.NULL,
-            deleteStatus: requestStatuses.NULL,
+            deleteStatus: requestStatuses.NULL
           }
         }
       });
@@ -1044,9 +1014,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {
             sandwiches: [1, 3],
@@ -1077,9 +1047,9 @@ describe('reducers: read:', function() {
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, lastName: 'camomile'},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, lastName: 'camomile' }
         },
         lists: {
           sandwiches: [1, 3],
@@ -1105,9 +1075,9 @@ describe('reducers: read:', function() {
       const reducer = resourceReducer('hellos', {
         initialState: {
           resources: {
-            1: {id: 1},
-            3: {id: 3},
-            4: {id: 4, lastName: 'camomile'},
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' }
           },
           lists: {},
           requests: {
@@ -1137,14 +1107,14 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
         resourceName: 'hellos',
-        request: 'pasta',
+        request: 'pasta'
       });
 
       expect(reduced).to.deep.equal({
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, lastName: 'camomile'},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, lastName: 'camomile' }
         },
         lists: {},
         requests: {
@@ -1165,7 +1135,7 @@ describe('reducers: read:', function() {
             deleteStatus: 'sandwiches'
           },
           4: {
-            selected: true,
+            selected: true
           }
         }
       });
@@ -1179,9 +1149,9 @@ describe('reducers: read:', function() {
     const reducer = resourceReducer('hellos', {
       initialState: {
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4, lastName: 'camomile'},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, lastName: 'camomile' }
         },
         lists: {
           sandwiches: [1, 3],
@@ -1205,14 +1175,14 @@ describe('reducers: read:', function() {
     const reduced = reducer(undefined, {
       type: 'READ_RESOURCES_SUCCEEDED',
       resourceName: 'hellos',
-      list: 'pasta',
+      list: 'pasta'
     });
 
     expect(reduced).to.deep.equal({
       resources: {
-        1: {id: 1},
-        3: {id: 3},
-        4: {id: 4, lastName: 'camomile'},
+        1: { id: 1 },
+        3: { id: 3 },
+        4: { id: 4, lastName: 'camomile' }
       },
       lists: {
         sandwiches: [1, 3],
@@ -1227,7 +1197,7 @@ describe('reducers: read:', function() {
           deleteStatus: 'sandwiches'
         },
         4: {
-          selected: true,
+          selected: true
         }
       }
     });

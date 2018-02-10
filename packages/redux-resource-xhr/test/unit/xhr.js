@@ -1,4 +1,4 @@
-import xhr, {__RewireAPI__} from '../../src/xhr';
+import xhr, { __RewireAPI__ } from '../../src/xhr';
 import qs from 'qs';
 
 describe('xhr', function() {
@@ -14,9 +14,7 @@ describe('xhr', function() {
     this.xhrStub = stub();
     __RewireAPI__.__Rewire__('xhr', this.xhrStub);
 
-    expect(xhr).to.have.keys([
-      'get', 'put', 'post', 'patch', 'head', 'del'
-    ]);
+    expect(xhr).to.have.keys(['get', 'put', 'post', 'patch', 'head', 'del']);
   });
 
   describe('xhr(url, options)', () => {
@@ -27,7 +25,7 @@ describe('xhr', function() {
       });
       __RewireAPI__.__Rewire__('xhr', this.xhrStub);
 
-      const result = xhr('https://www.google.com', {method: 'GET'});
+      const result = xhr('https://www.google.com', { method: 'GET' });
       expect(result).to.be.a('Promise');
 
       result
@@ -38,14 +36,14 @@ describe('xhr', function() {
         });
     });
 
-    it('should return a Promise that resolves when there is no error', (done) => {
+    it('should return a Promise that resolves when there is no error', done => {
       const res = {};
       this.xhrStub = stub().callsFake((options, cb) => {
         cb(undefined, res);
       });
       __RewireAPI__.__Rewire__('xhr', this.xhrStub);
 
-      const result = xhr('https://www.google.com', {method: 'GET'});
+      const result = xhr('https://www.google.com', { method: 'GET' });
       expect(result).to.be.a('Promise');
 
       result
@@ -63,12 +61,15 @@ describe('xhr', function() {
       __RewireAPI__.__Rewire__('xhr', this.xhrStub);
 
       const cb = stub();
-      xhr('https://www.google.com', {method: 'GET'}, cb);
+      xhr('https://www.google.com', { method: 'GET' }, cb);
 
-      expect(this.xhrStub).to.have.been.calledWith({
-        uri: 'https://www.google.com',
-        method: 'GET'
-      }, cb);
+      expect(this.xhrStub).to.have.been.calledWith(
+        {
+          uri: 'https://www.google.com',
+          method: 'GET'
+        },
+        cb
+      );
     });
   });
 
@@ -80,19 +81,23 @@ describe('xhr', function() {
       const cb = stub();
       const options = {
         method: 'GET',
-        qs: {a: 'b', c: ['d', 'e=f'], f: [['g'], ['h']]},
+        qs: { a: 'b', c: ['d', 'e=f'], f: [['g'], ['h']] },
         qsStringify: qs.stringify,
-        qsStringifyOptions: {encodeValuesOnly: true}
+        qsStringifyOptions: { encodeValuesOnly: true }
       };
       xhr('https://www.google.com', options, cb);
 
-      expect(this.xhrStub).to.have.been.calledWith({
-        uri: 'https://www.google.com?a=b&c[0]=d&c[1]=e%3Df&f[0][0]=g&f[1][0]=h',
-        method: 'GET',
-        qs: {a: 'b', c: ['d', 'e=f'], f: [['g'], ['h']]},
-        qsStringify: qs.stringify,
-        qsStringifyOptions: {encodeValuesOnly: true}
-      }, cb);
+      expect(this.xhrStub).to.have.been.calledWith(
+        {
+          uri:
+            'https://www.google.com?a=b&c[0]=d&c[1]=e%3Df&f[0][0]=g&f[1][0]=h',
+          method: 'GET',
+          qs: { a: 'b', c: ['d', 'e=f'], f: [['g'], ['h']] },
+          qsStringify: qs.stringify,
+          qsStringifyOptions: { encodeValuesOnly: true }
+        },
+        cb
+      );
     });
   });
 
@@ -104,9 +109,12 @@ describe('xhr', function() {
       const cb = stub();
       xhr('https://www.google.com', cb);
 
-      expect(this.xhrStub).to.have.been.calledWith({
-        uri: 'https://www.google.com',
-      }, cb);
+      expect(this.xhrStub).to.have.been.calledWith(
+        {
+          uri: 'https://www.google.com'
+        },
+        cb
+      );
     });
   });
 
@@ -116,21 +124,27 @@ describe('xhr', function() {
       __RewireAPI__.__Rewire__('xhr', this.xhrStub);
 
       const cb = stub();
-      xhr({
-        url: 'https://www.google.com',
-        method: 'GET',
-        qs: {
-          pasta: true
-        }
-      }, cb);
-
-      expect(this.xhrStub).to.have.been.calledWith({
-        uri: 'https://www.google.com?pasta=true',
-        qs: {
-          pasta: true
+      xhr(
+        {
+          url: 'https://www.google.com',
+          method: 'GET',
+          qs: {
+            pasta: true
+          }
         },
-        method: 'GET'
-      }, cb);
+        cb
+      );
+
+      expect(this.xhrStub).to.have.been.calledWith(
+        {
+          uri: 'https://www.google.com?pasta=true',
+          qs: {
+            pasta: true
+          },
+          method: 'GET'
+        },
+        cb
+      );
     });
   });
 
@@ -140,11 +154,15 @@ describe('xhr', function() {
       __RewireAPI__.__Rewire__('xhr', this.xhrStub);
 
       const cb = stub();
-      xhr.get('https://www.google.com', {
-        qs: {
-          pasta: true
-        }
-      }, cb);
+      xhr.get(
+        'https://www.google.com',
+        {
+          qs: {
+            pasta: true
+          }
+        },
+        cb
+      );
 
       expect(this.xhrStub).to.have.been.calledWith(
         {
@@ -179,7 +197,7 @@ describe('xhr', function() {
       __RewireAPI__.__Rewire__('xhr', this.xhrStub);
 
       const cb = stub();
-      xhr.get({uri: 'https://www.google.com'}, cb);
+      xhr.get({ uri: 'https://www.google.com' }, cb);
 
       expect(this.xhrStub).to.have.been.calledWith(
         {

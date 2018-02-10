@@ -11,21 +11,19 @@ const reducer = combineReducers({
   books: resourceReducer('books')
 });
 
-const store = createStore(
-  reducer,
-  applyMiddleware(thunk)
-);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 const rootEl = document.getElementById('root');
 
-const render = () => ReactDOM.render(
-  <BooksList
-    state={store.getState()}
-    getUserBooks={() => store.dispatch(getUserBooks())}
-    getLatestBooks={() => store.dispatch(getLatestBooks())}
-  />,
-  rootEl
-);
+const render = () =>
+  ReactDOM.render(
+    <BooksList
+      state={store.getState()}
+      getUserBooks={() => store.dispatch(getUserBooks())}
+      getLatestBooks={() => store.dispatch(getLatestBooks())}
+    />,
+    rootEl
+  );
 
 render();
 store.subscribe(render);

@@ -1,4 +1,4 @@
-import {resourceReducer} from '../../../src';
+import { resourceReducer } from '../../../src';
 
 describe('reducer', function() {
   it('should be a function', () => {
@@ -15,7 +15,7 @@ describe('reducer', function() {
       hungry: []
     };
 
-    const reduced = reducer(state, {type: 'does_not_exist'});
+    const reduced = reducer(state, { type: 'does_not_exist' });
     expect(reduced).to.equal(state);
     expect(console.error.callCount).to.equal(0);
   });

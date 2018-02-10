@@ -1,21 +1,18 @@
-import {upsertResources} from '../../../src';
+import { upsertResources } from '../../../src';
 
 describe('upsertResources', function() {
   beforeEach(() => {
     this.resources = {
-      1: {id: 1, first_name: 'james', last_name: 'please'},
-      5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-      7: {id: 7, first_name: 'shilpa', last_name: 'm'}
+      1: { id: 1, first_name: 'james', last_name: 'please' },
+      5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+      7: { id: 7, first_name: 'shilpa', last_name: 'm' }
     };
   });
 
   it('should warn when a resource without an ID is passed', () => {
     stub(console, 'error');
 
-    upsertResources(this.resources, [
-      {id: 23},
-      {name: 'sandwich'}
-    ]);
+    upsertResources(this.resources, [{ id: 23 }, { name: 'sandwich' }]);
 
     expect(console.error.callCount).to.equal(1);
   });
@@ -23,9 +20,7 @@ describe('upsertResources', function() {
   it('should not warn when a resource with an ID of 0 is passed', () => {
     stub(console, 'error');
 
-    upsertResources(this.resources, [
-      {id: 0}
-    ]);
+    upsertResources(this.resources, [{ id: 0 }]);
 
     expect(console.error.callCount).to.equal(0);
   });
@@ -42,17 +37,14 @@ describe('upsertResources', function() {
     it('should replace the data for "matched" resources', () => {
       const result = upsertResources(
         this.resources,
-        [
-          {id: 1, first_name: 'oink'},
-          5
-        ],
+        [{ id: 1, first_name: 'oink' }, 5],
         false
       );
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'oink'},
-        5: {id: 5},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'}
+        1: { id: 1, first_name: 'oink' },
+        5: { id: 5 },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
       });
 
       // Shallow clones the resources obj
@@ -63,16 +55,16 @@ describe('upsertResources', function() {
       const result = upsertResources(
         this.resources,
         {
-          1: {id: 1, first_name: 'oink'},
-          5: {id: 5}
+          1: { id: 1, first_name: 'oink' },
+          5: { id: 5 }
         },
         false
       );
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'oink'},
-        5: {id: 5},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'}
+        1: { id: 1, first_name: 'oink' },
+        5: { id: 5 },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
       });
 
       // Shallow clones the resources obj
@@ -82,15 +74,15 @@ describe('upsertResources', function() {
     it('should add a brand new resource', () => {
       const result = upsertResources(
         this.resources,
-        [{id: 10, first_name: 'oink'}],
+        [{ id: 10, first_name: 'oink' }],
         false
       );
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'james', last_name: 'please'},
-        5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'},
-        10: {id: 10, first_name: 'oink'},
+        1: { id: 1, first_name: 'james', last_name: 'please' },
+        5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
+        10: { id: 10, first_name: 'oink' }
       });
 
       // Shallow clones the resources obj
@@ -100,15 +92,15 @@ describe('upsertResources', function() {
     it('should add a brand new resource when a `newResources` object is passed', () => {
       const result = upsertResources(
         this.resources,
-        {10: {id: 10, first_name: 'oink'}},
+        { 10: { id: 10, first_name: 'oink' } },
         false
       );
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'james', last_name: 'please'},
-        5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'},
-        10: {id: 10, first_name: 'oink'},
+        1: { id: 1, first_name: 'james', last_name: 'please' },
+        5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
+        10: { id: 10, first_name: 'oink' }
       });
 
       // Shallow clones the resources obj
@@ -116,17 +108,13 @@ describe('upsertResources', function() {
     });
 
     it('should add a brand new resource with the ID shorthand', () => {
-      const result = upsertResources(
-        this.resources,
-        [10],
-        false
-      );
+      const result = upsertResources(this.resources, [10], false);
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'james', last_name: 'please'},
-        5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'},
-        10: {id: 10},
+        1: { id: 1, first_name: 'james', last_name: 'please' },
+        5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
+        10: { id: 10 }
       });
 
       // Shallow clones the resources obj
@@ -138,14 +126,14 @@ describe('upsertResources', function() {
     it('should keep "unmatched" resources in the store, and merge the data for "matched" resources', () => {
       const result = upsertResources(
         this.resources,
-        [{id: 1, first_name: 'oink'}],
+        [{ id: 1, first_name: 'oink' }],
         false
       );
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'oink'},
-        5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'}
+        1: { id: 1, first_name: 'oink' },
+        5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
       });
 
       // Shallow clones the resources obj
@@ -160,14 +148,14 @@ describe('upsertResources', function() {
     it('should keep "unmatched" resources in the store, and merge the data for "matched" resources when a `newResources` object is passed', () => {
       const result = upsertResources(
         this.resources,
-        {1: {id: 1, first_name: 'oink'}},
+        { 1: { id: 1, first_name: 'oink' } },
         false
       );
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'oink'},
-        5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'}
+        1: { id: 1, first_name: 'oink' },
+        5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
       });
 
       // Shallow clones the resources obj
@@ -180,16 +168,12 @@ describe('upsertResources', function() {
     });
 
     it('should keep "unmatched" resources in the store, and merge the data for "matched" resources with resources shorthand', () => {
-      const result = upsertResources(
-        this.resources,
-        [1],
-        false
-      );
+      const result = upsertResources(this.resources, [1], false);
 
       expect(result).to.deep.equal({
-        1: {id: 1},
-        5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'}
+        1: { id: 1 },
+        5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
       });
 
       // Shallow clones the resources obj
@@ -204,15 +188,15 @@ describe('upsertResources', function() {
     it('should add a brand new resource', () => {
       const result = upsertResources(
         this.resources,
-        [{id: 10, first_name: 'oink'}],
+        [{ id: 10, first_name: 'oink' }],
         true
       );
 
       expect(result).to.deep.equal({
-        1: {id: 1, first_name: 'james', last_name: 'please'},
-        5: {id: 5, first_name: 'stephen', last_name: 'rjr'},
-        7: {id: 7, first_name: 'shilpa', last_name: 'm'},
-        10: {id: 10, first_name: 'oink'},
+        1: { id: 1, first_name: 'james', last_name: 'please' },
+        5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
+        10: { id: 10, first_name: 'oink' }
       });
 
       // Shallow clones the resources obj

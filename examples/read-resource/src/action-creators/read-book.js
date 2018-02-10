@@ -23,5 +23,5 @@ export default function readBook(id) {
         ]
       });
     }, 2000);
-  }
+  };
 }

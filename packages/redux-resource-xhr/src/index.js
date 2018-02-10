@@ -1,4 +1,4 @@
-import {actionTypes} from 'redux-resource';
+import { actionTypes } from 'redux-resource';
 import xhr from './xhr';
 
 function crudRequest(crudAction, options) {
@@ -13,7 +13,7 @@ function crudRequest(crudAction, options) {
     onAborted
   } = options;
 
-  const {resourceName} = actionDefaults;
+  const { resourceName } = actionDefaults;
 
   const crudActionOption = crudAction ? crudAction : '';
 
@@ -21,32 +21,34 @@ function crudRequest(crudAction, options) {
   if (process.env.NODE_ENV !== 'production') {
     const lowercaseCrud = crudActionOption.toLowerCase();
     const isValidCrudType =
-      lowercaseCrud === 'update' || lowercaseCrud === 'delete' ||
-      lowercaseCrud === 'read' || lowercaseCrud === 'create';
-    const {url, uri} = xhrOptions;
+      lowercaseCrud === 'update' ||
+      lowercaseCrud === 'delete' ||
+      lowercaseCrud === 'read' ||
+      lowercaseCrud === 'create';
+    const { url, uri } = xhrOptions;
 
     if (!resourceName) {
       console.warn(
         `A resourceName was not passed to a Redux Resource Action ` +
-        `creator. A resourceName must be passed so that Redux Resource ` +
-        `knows which resource slice to update. Refer to the CRUD Actions ` +
-        `guide for more: https://redux-resource.js.org/docs/guides/crud-actions.html`
+          `creator. A resourceName must be passed so that Redux Resource ` +
+          `knows which resource slice to update. Refer to the CRUD Actions ` +
+          `guide for more: https://redux-resource.js.org/docs/guides/crud-actions.html`
       );
     }
 
     if (!isValidCrudType) {
       console.warn(
         `An invalid "crudAction" was passed to a Redux Resource action creator. ` +
-        `It must be one of: "create", "read", "update", "delete"`
+          `It must be one of: "create", "read", "update", "delete"`
       );
     }
 
     if (!url && !uri) {
       console.warn(
         `No URL was passed to a Redux Resource action creator. You must ` +
-        `pass either "xhrOptions.url" or "xhrOptions.uri". For more, refer to ` +
-        `the Redux Resource XHR documentation: ` +
-        `https://redux-resource.js.org/docs/extras/redux-resource-xhr.html`
+          `pass either "xhrOptions.url" or "xhrOptions.uri". For more, refer to ` +
+          `the Redux Resource XHR documentation: ` +
+          `https://redux-resource.js.org/docs/extras/redux-resource-xhr.html`
       );
     }
   }
@@ -88,7 +90,7 @@ function crudRequest(crudAction, options) {
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
         statusCode,
         res,
-        err,
+        err
       };
 
       if (onFailed) {
@@ -128,4 +130,4 @@ function crudRequest(crudAction, options) {
   return req;
 }
 
-export {crudRequest, xhr};
+export { crudRequest, xhr };

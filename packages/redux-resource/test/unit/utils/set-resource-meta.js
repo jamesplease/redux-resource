@@ -1,4 +1,4 @@
-import {setResourceMeta} from '../../../src';
+import { setResourceMeta } from '../../../src';
 
 describe('setResourceMeta', function() {
   beforeEach(() => {
@@ -10,8 +10,8 @@ describe('setResourceMeta', function() {
           food: 'pizza'
         }
       },
-      2: {thirsty: true},
-      3: {what: false}
+      2: { thirsty: true },
+      3: { what: false }
     };
   });
 
@@ -19,16 +19,16 @@ describe('setResourceMeta', function() {
     it('should only keep metadata that is passed in', () => {
       const result = setResourceMeta({
         meta: this.meta,
-        newMeta: {isSelected: true},
+        newMeta: { isSelected: true },
         resources: [1, 2, 5],
         mergeMeta: false
       });
 
       expect(result).to.deep.equal({
-        1: {isSelected: true},
-        2: {isSelected: true},
-        3: {what: false},
-        5: {isSelected: true}
+        1: { isSelected: true },
+        2: { isSelected: true },
+        3: { what: false },
+        5: { isSelected: true }
       });
 
       // The original `meta` is shallow cloned
@@ -41,20 +41,20 @@ describe('setResourceMeta', function() {
     it('should only keep metadata that is passed in when `resources` is an object', () => {
       const result = setResourceMeta({
         meta: this.meta,
-        newMeta: {isSelected: true},
+        newMeta: { isSelected: true },
         resources: {
-          1: {id: 1},
-          2: {id: 2},
-          5: {id: 5}
+          1: { id: 1 },
+          2: { id: 2 },
+          5: { id: 5 }
         },
         mergeMeta: false
       });
 
       expect(result).to.deep.equal({
-        1: {isSelected: true},
-        2: {isSelected: true},
-        3: {what: false},
-        5: {isSelected: true}
+        1: { isSelected: true },
+        2: { isSelected: true },
+        3: { what: false },
+        5: { isSelected: true }
       });
 
       // The original `meta` is shallow cloned
@@ -67,15 +67,15 @@ describe('setResourceMeta', function() {
     it('should ignore badly formed resources, object form (gh-118)', () => {
       const result = setResourceMeta({
         meta: this.meta,
-        newMeta: {isSelected: true},
-        resources: [1, {name: 'pasta'}],
+        newMeta: { isSelected: true },
+        resources: [1, { name: 'pasta' }],
         mergeMeta: false
       });
 
       expect(result).to.deep.equal({
-        1: {isSelected: true},
-        2: {thirsty: true},
-        3: {what: false}
+        1: { isSelected: true },
+        2: { thirsty: true },
+        3: { what: false }
       });
 
       // The original `meta` is shallow cloned
@@ -87,15 +87,15 @@ describe('setResourceMeta', function() {
     it('should ignore badly formed resources, non-object form (gh-118)', () => {
       const result = setResourceMeta({
         meta: this.meta,
-        newMeta: {isSelected: true},
-        resources: [1, {id: {}}],
+        newMeta: { isSelected: true },
+        resources: [1, { id: {} }],
         mergeMeta: false
       });
 
       expect(result).to.deep.equal({
-        1: {isSelected: true},
-        2: {thirsty: true},
-        3: {what: false}
+        1: { isSelected: true },
+        2: { thirsty: true },
+        3: { what: false }
       });
 
       // The original `meta` is shallow cloned
@@ -109,7 +109,7 @@ describe('setResourceMeta', function() {
     it('should keep other list items and merge in the new results', () => {
       const result = setResourceMeta({
         meta: this.meta,
-        newMeta: {isSelected: true},
+        newMeta: { isSelected: true },
         resources: [1, 2, 5],
         mergeMeta: true
       });
@@ -122,9 +122,9 @@ describe('setResourceMeta', function() {
             food: 'pizza'
           }
         },
-        2: {thirsty: true, isSelected: true},
-        3: {what: false},
-        5: {isSelected: true}
+        2: { thirsty: true, isSelected: true },
+        3: { what: false },
+        5: { isSelected: true }
       });
 
       // The original `meta` is shallow cloned
@@ -139,11 +139,11 @@ describe('setResourceMeta', function() {
     it('should keep other list items and merge in the new results when `resources` is an object', () => {
       const result = setResourceMeta({
         meta: this.meta,
-        newMeta: {isSelected: true},
+        newMeta: { isSelected: true },
         resources: {
-          1: {id: 1},
-          2: {id: 2},
-          5: {id: 5}
+          1: { id: 1 },
+          2: { id: 2 },
+          5: { id: 5 }
         },
         mergeMeta: true
       });
@@ -156,9 +156,9 @@ describe('setResourceMeta', function() {
             food: 'pizza'
           }
         },
-        2: {thirsty: true, isSelected: true},
-        3: {what: false},
-        5: {isSelected: true}
+        2: { thirsty: true, isSelected: true },
+        3: { what: false },
+        5: { isSelected: true }
       });
 
       // The original `meta` is shallow cloned
@@ -175,8 +175,8 @@ describe('setResourceMeta', function() {
     it('should perform updates for IDs that are the number 0 (gh-298)', () => {
       const result = setResourceMeta({
         meta: {},
-        newMeta: {updated: true},
-        resources: [0, '', {id: false}, 1, 2, 3, '1234'],
+        newMeta: { updated: true },
+        resources: [0, '', { id: false }, 1, 2, 3, '1234']
       });
 
       expect(result).to.deep.equal({
@@ -184,17 +184,17 @@ describe('setResourceMeta', function() {
           updated: true
         },
         1: {
-          updated: true,
+          updated: true
         },
         2: {
-          updated: true,
+          updated: true
         },
         3: {
-          updated: true,
+          updated: true
         },
         1234: {
-          updated: true,
-        },
+          updated: true
+        }
       });
     });
   });

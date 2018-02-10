@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
-import {requestStatuses} from 'redux-resource';
+import { requestStatuses } from 'redux-resource';
 
 // Verifies a resource ID. Useful as a "building block" for
 // more advanced prop types.
-const idPropType = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.number,
-]);
+const idPropType = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 
 // Verifies a request status. useful as a "building block" for
 // more advanced prop types.
@@ -48,5 +45,5 @@ export {
   requestStatusPropType,
   resourcePropType,
   requestPropType,
-  statusPropType,
+  statusPropType
 };

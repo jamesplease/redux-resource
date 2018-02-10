@@ -1,29 +1,29 @@
-import {actionTypes, setResourceMeta} from 'redux-resource';
+import { actionTypes, setResourceMeta } from 'redux-resource';
 
 // End actions can be failed, succeeded, or null. Null should be dispatched
 // when the request is aborted (with a status code of 0).
 const createEndActions = [
   actionTypes.CREATE_RESOURCES_FAILED,
   actionTypes.CREATE_RESOURCES_SUCCEEDED,
-  actionTypes.CREATE_RESOURCES_NULL,
+  actionTypes.CREATE_RESOURCES_NULL
 ];
 
 const readEndActions = [
   actionTypes.READ_RESOURCES_FAILED,
   actionTypes.READ_RESOURCES_SUCCEEDED,
-  actionTypes.READ_RESOURCES_NULL,
+  actionTypes.READ_RESOURCES_NULL
 ];
 
 const updateEndActions = [
   actionTypes.UPDATE_RESOURCES_FAILED,
   actionTypes.UPDATE_RESOURCES_SUCCEEDED,
-  actionTypes.UPDATE_RESOURCES_NULL,
+  actionTypes.UPDATE_RESOURCES_NULL
 ];
 
 const deleteEndActions = [
   actionTypes.DELETE_RESOURCES_FAILED,
   actionTypes.DELETE_RESOURCES_SUCCEEDED,
-  actionTypes.DELETE_RESOURCES_NULL,
+  actionTypes.DELETE_RESOURCES_NULL
 ];
 
 // This sets a new meta property on resource and request metadata: `statusCode`.
@@ -39,7 +39,12 @@ export default function httpStatusCodes(resourceName) {
     const isUpdateEndAction = updateEndActions.indexOf(action.type) !== -1;
     const isDeleteEndAction = deleteEndActions.indexOf(action.type) !== -1;
 
-    if (!isCreateEndAction && !isReadEndAction && !isUpdateEndAction && !isDeleteEndAction) {
+    if (
+      !isCreateEndAction &&
+      !isReadEndAction &&
+      !isUpdateEndAction &&
+      !isDeleteEndAction
+    ) {
       return state;
     }
 
@@ -78,7 +83,7 @@ export default function httpStatusCodes(resourceName) {
         }
       };
     } else {
-      newRequests = {...state.requests};
+      newRequests = { ...state.requests };
     }
 
     if (idList.length) {

@@ -39,5 +39,5 @@ export default function getUserBooks() {
         ]
       });
     }, 1800);
-  }
+  };
 }

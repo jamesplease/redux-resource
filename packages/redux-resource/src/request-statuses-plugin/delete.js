@@ -7,7 +7,7 @@ const del = reducerGenerator('delete', requestStatuses.PENDING);
 const delFail = reducerGenerator('delete', requestStatuses.FAILED);
 const delNull = reducerGenerator('delete', requestStatuses.NULL);
 
-function delSucceed(state, action, {initialResourceMeta}) {
+function delSucceed(state, action, { initialResourceMeta }) {
   const resources = action.resources;
 
   let request;
@@ -19,25 +19,27 @@ function delSucceed(state, action, {initialResourceMeta}) {
     if (!resources) {
       warning(
         `A 'resources' array was not included in a Redux Resource ` +
-        `"success" action with type "${action.type}. Without a 'resources' ` +
-        `Array, Redux Resource will not be able to track which resources ` +
-        `were affected by this CRUD operation. You should check your Action ` +
-        `Creators to make sure that they always include a 'resources' array.`
+          `"success" action with type "${action.type}. Without a 'resources' ` +
+          `Array, Redux Resource will not be able to track which resources ` +
+          `were affected by this CRUD operation. You should check your Action ` +
+          `Creators to make sure that they always include a 'resources' array.`
       );
     } else if (!Array.isArray(resources)) {
       warning(
         `A non-array 'resources' value was passed to a Redux Resource ` +
-        `"success" action with type "${action.type}". 'resources' must be an ` +
-        `array. If your backend returned a single object, be sure to wrap it ` +
-        `inside of an array. If you're using the Redux Resource XHR ` +
-        `library, you can do this using the "transformData" option.`
+          `"success" action with type "${
+            action.type
+          }". 'resources' must be an ` +
+          `array. If your backend returned a single object, be sure to wrap it ` +
+          `inside of an array. If you're using the Redux Resource XHR ` +
+          `library, you can do this using the "transformData" option.`
       );
     }
 
     if (action.list) {
       warning(
         `You included a "list" in a delete action. You don't need to do this, ` +
-        `because successful deletes remove the deleted resources from all lists.`
+          `because successful deletes remove the deleted resources from all lists.`
       );
     }
   }
@@ -48,12 +50,17 @@ function delSucceed(state, action, {initialResourceMeta}) {
     idList = resources.map(r => {
       if (typeof r === 'object') {
         if (process.env.NODE_ENV !== 'production') {
-          if ((!r.id && r.id !== 0) || (typeof r.id !== 'string' && typeof r.id !== 'number')) {
+          if (
+            (!r.id && r.id !== 0) ||
+            (typeof r.id !== 'string' && typeof r.id !== 'number')
+          ) {
             warning(
               `A resource without an ID was passed to an action with type ` +
-              `${action.type}. Every resource must have an ID that is either ` +
-              `a number of a string. You should check your action creators to ` +
-              `make sure that an ID is always included in your resources.`
+                `${
+                  action.type
+                }. Every resource must have an ID that is either ` +
+                `a number of a string. You should check your action creators to ` +
+                `make sure that an ID is always included in your resources.`
             );
           }
         }
@@ -63,9 +70,11 @@ function delSucceed(state, action, {initialResourceMeta}) {
           if (typeof r !== 'string' && typeof r !== 'number') {
             warning(
               `A resource without an ID was passed to an action with type ` +
-              `${action.type}. Every resource must have an ID that is either ` +
-              `a number of a string. You should check your action creators to ` +
-              `make sure that an ID is always included in your resources.`
+                `${
+                  action.type
+                }. Every resource must have an ID that is either ` +
+                `a number of a string. You should check your action creators to ` +
+                `make sure that an ID is always included in your resources.`
             );
           }
         }
@@ -95,7 +104,7 @@ function delSucceed(state, action, {initialResourceMeta}) {
       [request]: {
         ...existingRequest,
         status: requestStatuses.SUCCEEDED,
-        ids: idList || [],
+        ids: idList || []
       }
     };
   } else {
@@ -150,4 +159,4 @@ function delSucceed(state, action, {initialResourceMeta}) {
   };
 }
 
-export {del, delFail, delNull, delSucceed};
+export { del, delFail, delNull, delSucceed };

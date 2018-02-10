@@ -1,14 +1,14 @@
-import {getResources} from '../../../src';
+import { getResources } from '../../../src';
 
 describe('getResources', function() {
   beforeEach(() => {
     this.state = {
       books: {
         resources: {
-          1: {id: 1, name: 'sandwiches'},
-          10: {id: 10, name: 'pizza'},
-          102: {id: 102, name: 'fried'},
-          116: {id: 116, name: 'pickles'},
+          1: { id: 1, name: 'sandwiches' },
+          10: { id: 10, name: 'pizza' },
+          102: { id: 102, name: 'fried' },
+          116: { id: 116, name: 'pickles' }
         },
         meta: {
           1: {},
@@ -63,8 +63,8 @@ describe('getResources', function() {
 
     it('should return the resources that exist when the list exists', () => {
       expect(getResources(this.state.books, 'dashboardSearch')).to.deep.equal([
-        {id: 10, name: 'pizza'},
-        {id: 102, name: 'fried'},
+        { id: 10, name: 'pizza' },
+        { id: 102, name: 'fried' }
       ]);
     });
   });
@@ -76,8 +76,8 @@ describe('getResources', function() {
 
     it('should return the resources that when the IDs array is non-empty', () => {
       expect(getResources(this.state.books, [1, 116, 130])).to.deep.equal([
-        {id: 1, name: 'sandwiches'},
-        {id: 116, name: 'pickles'},
+        { id: 1, name: 'sandwiches' },
+        { id: 116, name: 'pickles' }
       ]);
     });
   });
@@ -107,8 +107,8 @@ describe('getResources', function() {
       };
 
       expect(getResources(this.state.books, filter)).to.deep.equal([
-        {id: 10, name: 'pizza'},
-        {id: 116, name: 'pickles'}
+        { id: 10, name: 'pizza' },
+        { id: 116, name: 'pickles' }
       ]);
     });
   });

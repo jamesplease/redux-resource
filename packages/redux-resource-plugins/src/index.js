@@ -3,4 +3,4 @@ import includedResources from './included-resources';
 import selection from './selection';
 import reset from './reset';
 
-export {httpStatusCodes, selection, reset, includedResources};
+export { httpStatusCodes, selection, reset, includedResources };

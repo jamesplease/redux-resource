@@ -6,20 +6,18 @@ import { resourceReducer } from 'redux-resource';
 import Book from './components/Book';
 import readBook from './action-creators/read-book';
 
-const store = createStore(
-  resourceReducer('books'),
-  applyMiddleware(thunk)
-);
+const store = createStore(resourceReducer('books'), applyMiddleware(thunk));
 const rootEl = document.getElementById('root');
 
-const render = () => ReactDOM.render(
-  <Book
-    bookId={24}
-    state={store.getState()}
-    readBook={() => store.dispatch(readBook(24))}
-  />,
-  rootEl
-);
+const render = () =>
+  ReactDOM.render(
+    <Book
+      bookId={24}
+      state={store.getState()}
+      readBook={() => store.dispatch(readBook(24))}
+    />,
+    rootEl
+  );
 
 render();
 store.subscribe(render);

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {requestStatuses} from 'redux-resource';
+import { requestStatuses } from 'redux-resource';
 import * as types from '../../src';
 
 describe('Redux Resource Prop Types', function() {
@@ -17,7 +17,7 @@ describe('Redux Resource Prop Types', function() {
       'requestStatusPropType',
       'resourcePropType',
       'requestPropType',
-      'statusPropType',
+      'statusPropType'
     ]);
   });
 
@@ -39,7 +39,7 @@ describe('Redux Resource Prop Types', function() {
 
     it('should console.error when an invalid slice is passed', () => {
       const props = {
-        id: {},
+        id: {}
       };
 
       const propTypes = {
@@ -69,7 +69,7 @@ describe('Redux Resource Prop Types', function() {
 
     it('should console.error when an invalid slice is passed', () => {
       const props = {
-        requestStatus: 'pizza',
+        requestStatus: 'pizza'
       };
 
       const propTypes = {

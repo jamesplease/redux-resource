@@ -1,10 +1,10 @@
-import {requestStatuses} from 'redux-resource';
+import { requestStatuses } from 'redux-resource';
 
 const actionTypes = {
   RESET_RESOURCE: 'RESET_RESOURCE'
 };
 
-function resetResource(resourceName, {request, list} = {}) {
+function resetResource(resourceName, { request, list } = {}) {
   return {
     type: 'RESET_RESOURCE',
     resourceName,
@@ -15,11 +15,14 @@ function resetResource(resourceName, {request, list} = {}) {
 
 function reset(resourceName, options = {}) {
   return function(state, action) {
-    if (action.type !== actionTypes.RESET_RESOURCE || action.resourceName !== resourceName) {
+    if (
+      action.type !== actionTypes.RESET_RESOURCE ||
+      action.resourceName !== resourceName
+    ) {
       return state;
     }
 
-    const {request, list} = action;
+    const { request, list } = action;
 
     if (!request && !list) {
       return {
@@ -27,7 +30,7 @@ function reset(resourceName, options = {}) {
         meta: {},
         lists: {},
         requests: {},
-        ...options.initialState,
+        ...options.initialState
       };
     }
 
