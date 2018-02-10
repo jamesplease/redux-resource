@@ -16,7 +16,7 @@ var config = {
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(env)
-    }),
+    })
   ]
 };
 

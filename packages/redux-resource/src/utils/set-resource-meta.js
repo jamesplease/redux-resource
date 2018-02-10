@@ -1,24 +1,28 @@
 // Update the meta for `resources`
 export default function setResourceMeta(options) {
   const {
-    resources, newMeta, meta, mergeMeta,
+    resources,
+    newMeta,
+    meta,
+    mergeMeta,
     initialResourceMeta = {}
   } = options;
 
-  const next = {...meta};
+  const next = { ...meta };
 
   if (!resources) {
     return meta;
   }
 
   let mergeMetaOption = typeof mergeMeta !== 'undefined' ? mergeMeta : true;
-  const resourcesArray = resources instanceof Array ? resources : Object.values(resources);
+  const resourcesArray =
+    resources instanceof Array ? resources : Object.values(resources);
 
   if (!resourcesArray.length) {
     return next;
   }
 
-  resourcesArray.forEach((resource) => {
+  resourcesArray.forEach(resource => {
     const id = typeof resource === 'object' ? resource.id : resource;
 
     // If we have no ID for this resource, or if its not a number or string,
@@ -26,7 +30,10 @@ export default function setResourceMeta(options) {
     // the user with meta **and** attribute update problems. If the ID check
     // is moved into the success reducers directly, then we may be able to
     // remove these typeof checks for efficiency.
-    if ((!id && id !== 0) || (typeof id !== 'string' && typeof id !== 'number')) {
+    if (
+      (!id && id !== 0) ||
+      (typeof id !== 'string' && typeof id !== 'number')
+    ) {
       return;
     }
 

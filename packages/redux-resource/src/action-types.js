@@ -1,11 +1,11 @@
 // This function generates the five statuses from a single CRUD action.
 // For instance, you'd probably pass "CREATE", "READ", "UPDATE", or "DELETE"
 // as `crudAction`.
-const mapConstant = (crudAction) => ({
+const mapConstant = crudAction => ({
   [`${crudAction}_RESOURCES_PENDING`]: `${crudAction}_RESOURCES_PENDING`,
   [`${crudAction}_RESOURCES_SUCCEEDED`]: `${crudAction}_RESOURCES_SUCCEEDED`,
   [`${crudAction}_RESOURCES_FAILED`]: `${crudAction}_RESOURCES_FAILED`,
-  [`${crudAction}_RESOURCES_NULL`]: `${crudAction}_RESOURCES_NULL`,
+  [`${crudAction}_RESOURCES_NULL`]: `${crudAction}_RESOURCES_NULL`
 });
 
 const createTypes = mapConstant('CREATE');

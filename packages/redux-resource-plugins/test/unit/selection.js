@@ -1,6 +1,10 @@
-import {selection} from '../../src';
+import { selection } from '../../src';
 
-const {selectResources, deselectResources, clearSelectedResources} = selection;
+const {
+  selectResources,
+  deselectResources,
+  clearSelectedResources
+} = selection;
 
 describe('selection', function() {
   beforeEach(() => {
@@ -62,9 +66,11 @@ describe('selection', function() {
       selectedIds: [24, 100, 1000]
     };
 
-    const action = deselectResources('books', [{
-      id: 100
-    }]);
+    const action = deselectResources('books', [
+      {
+        id: 100
+      }
+    ]);
 
     const result = reducer(state, action);
     expect(result).to.deep.equal({

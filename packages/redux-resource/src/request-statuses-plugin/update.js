@@ -12,4 +12,4 @@ function updateSucceed(state, action, options) {
   });
 }
 
-export {update, updateFail, updateNull, updateSucceed};
+export { update, updateFail, updateNull, updateSucceed };

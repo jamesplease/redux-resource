@@ -18,10 +18,10 @@ export default function requestStatusesPlugin(resourceName, options = {}) {
       if (reducer && !action.resourceName) {
         warning(
           `A resourceName was not included in an action with type ` +
-          `"${action.type}". Without a resourceName, Redux Resource will ` +
-          `not be able to update a slice of your store. For more, refer to ` +
-          `the guide on CRUD Actions: ` +
-          `https://redux-resource.js.org/docs/guides/crud-actions.html`
+            `"${action.type}". Without a resourceName, Redux Resource will ` +
+            `not be able to update a slice of your store. For more, refer to ` +
+            `the guide on CRUD Actions: ` +
+            `https://redux-resource.js.org/docs/guides/crud-actions.html`
         );
       }
     }

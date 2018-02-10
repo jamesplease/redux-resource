@@ -1,4 +1,4 @@
-import {crudRequest, __RewireAPI__} from '../../src';
+import { crudRequest, __RewireAPI__ } from '../../src';
 
 describe('Redux Resource XHR', function() {
   beforeEach(() => {
@@ -24,7 +24,7 @@ describe('Redux Resource XHR', function() {
         crudRequest('read', {
           dispatch: this.dispatch,
           actionDefaults: {
-            resourceName: 'hello',
+            resourceName: 'hello'
           },
           xhrOptions: {
             url: 'https://www.google.com'
@@ -38,7 +38,7 @@ describe('Redux Resource XHR', function() {
         crudRequest('update', {
           dispatch: this.dispatch,
           actionDefaults: {
-            resourceName: 'hello',
+            resourceName: 'hello'
           }
         });
 
@@ -77,7 +77,7 @@ describe('Redux Resource XHR', function() {
             resourceName: 'hello'
           },
           xhrOptions: {
-            url: 'https://www.google.com',
+            url: 'https://www.google.com'
           }
         });
 
@@ -86,7 +86,7 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('when the request is aborted', () => {
-      it('should dispatch the correct actions', (done) => {
+      it('should dispatch the correct actions', done => {
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
             cb();
@@ -97,20 +97,24 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(2);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [21, 42]
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [21, 42]
+              }
+            ]);
 
-            expect(this.dispatch.args[1]).to.deep.equal([{
-              type: 'READ_RESOURCES_NULL',
-              resourceName: 'hello',
-              statusCode: 0,
-              res: undefined,
-              resources: [21, 42]
-            }]);
+            expect(this.dispatch.args[1]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_NULL',
+                resourceName: 'hello',
+                statusCode: 0,
+                res: undefined,
+                resources: [21, 42]
+              }
+            ]);
 
             done();
           });
@@ -139,7 +143,7 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('when the request is aborted; passing onAborted', () => {
-      it('should dispatch the correct actions', (done) => {
+      it('should dispatch the correct actions', done => {
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
             cb();
@@ -150,21 +154,26 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(1);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [21, 42]
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [21, 42]
+              }
+            ]);
 
             expect(this.onAbortedStub.callCount).to.equal(1);
-            expect(this.onAbortedStub.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_NULL',
-              resourceName: 'hello',
-              statusCode: 0,
-              res: undefined,
-              resources: [21, 42]
-            }, undefined]);
+            expect(this.onAbortedStub.args[0]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_NULL',
+                resourceName: 'hello',
+                statusCode: 0,
+                res: undefined,
+                resources: [21, 42]
+              },
+              undefined
+            ]);
 
             done();
           });
@@ -196,11 +205,8 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('success, with a body; passing `onPending`', () => {
-      it('should dispatch the correct actions', (done) => {
-        const body = [
-          {id: 21},
-          {id: 42}
-        ];
+      it('should dispatch the correct actions', done => {
+        const body = [{ id: 21 }, { id: 42 }];
 
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
@@ -220,19 +226,18 @@ describe('Redux Resource XHR', function() {
 
             expect(this.dispatch.callCount).to.equal(1);
 
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_SUCCEEDED',
-              resourceName: 'hello',
-              statusCode: 200,
-              res: {
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_SUCCEEDED',
+                resourceName: 'hello',
                 statusCode: 200,
-                body
-              },
-              resources: [
-                {id: 21},
-                {id: 42}
-              ]
-            }]);
+                res: {
+                  statusCode: 200,
+                  body
+                },
+                resources: [{ id: 21 }, { id: 42 }]
+              }
+            ]);
 
             done();
           });
@@ -261,21 +266,20 @@ describe('Redux Resource XHR', function() {
 
         expect(this.xhrStub.callCount).to.equal(1);
         expect(this.onPendingStub.callCount).to.equal(1);
-        expect(this.onPendingStub.args[0]).to.deep.equal([{
-          type: 'READ_RESOURCES_PENDING',
-          resourceName: 'hello',
-          statusCode: 0,
-          resources: [21, 42]
-        }]);
+        expect(this.onPendingStub.args[0]).to.deep.equal([
+          {
+            type: 'READ_RESOURCES_PENDING',
+            resourceName: 'hello',
+            statusCode: 0,
+            resources: [21, 42]
+          }
+        ]);
       });
     });
 
     describe('success, with a body; passing `onSucceeded`', () => {
-      it('should dispatch the correct actions', (done) => {
-        const body = [
-          {id: 21},
-          {id: 42}
-        ];
+      it('should dispatch the correct actions', done => {
+        const body = [{ id: 21 }, { id: 42 }];
 
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
@@ -294,12 +298,14 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(1);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [21, 42]
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [21, 42]
+              }
+            ]);
 
             expect(this.onSucceededStub.callCount).to.equal(1);
             expect(this.onSucceededStub.args[0]).to.deep.equal([
@@ -311,10 +317,7 @@ describe('Redux Resource XHR', function() {
                   statusCode: 200,
                   body
                 },
-                resources: [
-                  {id: 21},
-                  {id: 42}
-                ]
+                resources: [{ id: 21 }, { id: 42 }]
               },
               {
                 statusCode: 200,
@@ -353,11 +356,8 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('success, with a body', () => {
-      it('should dispatch the correct actions', (done) => {
-        const body = [
-          {id: 21},
-          {id: 42}
-        ];
+      it('should dispatch the correct actions', done => {
+        const body = [{ id: 21 }, { id: 42 }];
 
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
@@ -376,26 +376,27 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(2);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [21, 42]
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [21, 42]
+              }
+            ]);
 
-            expect(this.dispatch.args[1]).to.deep.equal([{
-              type: 'READ_RESOURCES_SUCCEEDED',
-              resourceName: 'hello',
-              statusCode: 200,
-              res: {
+            expect(this.dispatch.args[1]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_SUCCEEDED',
+                resourceName: 'hello',
                 statusCode: 200,
-                body
-              },
-              resources: [
-                {id: 21},
-                {id: 42}
-              ]
-            }]);
+                res: {
+                  statusCode: 200,
+                  body
+                },
+                resources: [{ id: 21 }, { id: 42 }]
+              }
+            ]);
 
             done();
           });
@@ -424,12 +425,9 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('success, with a body + transformData fn', () => {
-      it('should dispatch the correct actions', (done) => {
+      it('should dispatch the correct actions', done => {
         const body = {
-          data: [
-            {id: 21},
-            {id: 42}
-          ]
+          data: [{ id: 21 }, { id: 42 }]
         };
 
         const transformData = body => body.data;
@@ -451,26 +449,27 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(2);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'READ_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [21, 42]
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [21, 42]
+              }
+            ]);
 
-            expect(this.dispatch.args[1]).to.deep.equal([{
-              type: 'READ_RESOURCES_SUCCEEDED',
-              resourceName: 'hello',
-              statusCode: 201,
-              res: {
+            expect(this.dispatch.args[1]).to.deep.equal([
+              {
+                type: 'READ_RESOURCES_SUCCEEDED',
+                resourceName: 'hello',
                 statusCode: 201,
-                body
-              },
-              resources: [
-                {id: 21},
-                {id: 42}
-              ]
-            }]);
+                res: {
+                  statusCode: 201,
+                  body
+                },
+                resources: [{ id: 21 }, { id: 42 }]
+              }
+            ]);
 
             done();
           });
@@ -500,15 +499,12 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('success, without a body', () => {
-      it('should dispatch the correct actions', (done) => {
+      it('should dispatch the correct actions', done => {
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
-            cb(
-              null,
-              {
-                statusCode: 204
-              }
-            );
+            cb(null, {
+              statusCode: 204
+            });
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
@@ -516,22 +512,26 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(2);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'DELETE_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [1, 14],
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'DELETE_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [1, 14]
+              }
+            ]);
 
-            expect(this.dispatch.args[1]).to.deep.equal([{
-              type: 'DELETE_RESOURCES_SUCCEEDED',
-              resourceName: 'hello',
-              statusCode: 204,
-              resources: [1, 14],
-              res: {
-                statusCode: 204
-              },
-            }]);
+            expect(this.dispatch.args[1]).to.deep.equal([
+              {
+                type: 'DELETE_RESOURCES_SUCCEEDED',
+                resourceName: 'hello',
+                statusCode: 204,
+                resources: [1, 14],
+                res: {
+                  statusCode: 204
+                }
+              }
+            ]);
 
             done();
           });
@@ -560,7 +560,7 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('when the request errors, without a status code', () => {
-      it('should dispatch the correct actions', (done) => {
+      it('should dispatch the correct actions', done => {
         const err = new Error('oops');
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
@@ -572,21 +572,25 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(2);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'DELETE_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [1, 14],
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'DELETE_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [1, 14]
+              }
+            ]);
 
-            expect(this.dispatch.args[1]).to.deep.equal([{
-              type: 'DELETE_RESOURCES_FAILED',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [1, 14],
-              err,
-              res: undefined,
-            }]);
+            expect(this.dispatch.args[1]).to.deep.equal([
+              {
+                type: 'DELETE_RESOURCES_FAILED',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [1, 14],
+                err,
+                res: undefined
+              }
+            ]);
 
             done();
           });
@@ -615,7 +619,7 @@ describe('Redux Resource XHR', function() {
     });
 
     describe('when the request errors, without a status code; passing onFailed', () => {
-      it('should dispatch the correct actions', (done) => {
+      it('should dispatch the correct actions', done => {
         const err = new Error('oops');
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
@@ -627,22 +631,28 @@ describe('Redux Resource XHR', function() {
             });
 
             expect(this.dispatch.callCount).to.equal(1);
-            expect(this.dispatch.args[0]).to.deep.equal([{
-              type: 'DELETE_RESOURCES_PENDING',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [1, 14],
-            }]);
+            expect(this.dispatch.args[0]).to.deep.equal([
+              {
+                type: 'DELETE_RESOURCES_PENDING',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [1, 14]
+              }
+            ]);
 
             expect(this.onFailedStub.callCount).to.equal(1);
-            expect(this.onFailedStub.args[0]).to.deep.equal([{
-              type: 'DELETE_RESOURCES_FAILED',
-              resourceName: 'hello',
-              statusCode: 0,
-              resources: [1, 14],
+            expect(this.onFailedStub.args[0]).to.deep.equal([
+              {
+                type: 'DELETE_RESOURCES_FAILED',
+                resourceName: 'hello',
+                statusCode: 0,
+                resources: [1, 14],
+                err,
+                res: undefined
+              },
               err,
-              res: undefined,
-            }, err, undefined]);
+              undefined
+            ]);
 
             done();
           });

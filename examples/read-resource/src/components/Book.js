@@ -10,19 +10,19 @@ class Book extends Component {
 
     return (
       <div>
-        <button onClick={readBook}>
-          Fetch book data
-        </button>
-        <br/>
-        {readStatus.pending && ('Loading book data...')}
+        <button onClick={readBook}>Fetch book data</button>
+        <br />
+        {readStatus.pending && 'Loading book data...'}
         {readStatus.succeeded && (
           <div>
             <h1>{book.title}</h1>
-            <div>{book.author} - {book.releaseYear}</div>
+            <div>
+              {book.author} - {book.releaseYear}
+            </div>
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 

@@ -1,4 +1,4 @@
-import {resourceReducer} from '../../../src';
+import { resourceReducer } from '../../../src';
 
 describe('reducers: create', function() {
   // Intentionally mostly-empty. Refer to the read reducer tests and the
@@ -9,9 +9,9 @@ describe('reducers: create', function() {
       stub(console, 'error');
       const initialState = {
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4 }
         },
         requests: {
           pasta: {
@@ -31,7 +31,7 @@ describe('reducers: create', function() {
         }
       };
 
-      const reducer = resourceReducer('hellos', {initialState});
+      const reducer = resourceReducer('hellos', { initialState });
 
       const reduced = reducer(undefined, {
         type: 'CREATE_RESOURCES_SUCCEEDED',

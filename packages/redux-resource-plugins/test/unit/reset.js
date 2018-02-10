@@ -1,6 +1,6 @@
-import {reset} from '../../src';
+import { reset } from '../../src';
 
-const {resetResource} = reset;
+const { resetResource } = reset;
 
 describe('reset', function() {
   beforeEach(() => {
@@ -13,10 +13,10 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: {name: 'James'}
+        24: { name: 'James' }
       },
       meta: {
-        24: {oinky: true}
+        24: { oinky: true }
       },
       lists: {},
       requests: {
@@ -39,10 +39,10 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: {name: 'James'}
+        24: { name: 'James' }
       },
       meta: {
-        24: {oinky: true}
+        24: { oinky: true }
       },
       lists: {},
       requests: {
@@ -67,10 +67,10 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: {name: 'James'}
+        24: { name: 'James' }
       },
       meta: {
-        24: {oinky: true}
+        24: { oinky: true }
       },
       lists: {},
       requests: {
@@ -98,10 +98,10 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: {name: 'James'}
+        24: { name: 'James' }
       },
       meta: {
-        24: {oinky: true}
+        24: { oinky: true }
       },
       lists: {
         stuff: [1, 2, 3]
@@ -118,16 +118,16 @@ describe('reset', function() {
       }
     };
 
-    const action = resetResource('books', {request: 'spaghetti'});
+    const action = resetResource('books', { request: 'spaghetti' });
 
     const result = reducer(state, action);
     expect(result).to.deep.equal({
       selectedIds: [24],
       resources: {
-        24: {name: 'James'}
+        24: { name: 'James' }
       },
       meta: {
-        24: {oinky: true}
+        24: { oinky: true }
       },
       lists: {
         stuff: [1, 2, 3]
@@ -151,10 +151,10 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: {name: 'James'}
+        24: { name: 'James' }
       },
       meta: {
-        24: {oinky: true}
+        24: { oinky: true }
       },
       lists: {
         stuff: [1, 2, 3]
@@ -171,16 +171,16 @@ describe('reset', function() {
       }
     };
 
-    const action = resetResource('books', {list: 'stuff'});
+    const action = resetResource('books', { list: 'stuff' });
 
     const result = reducer(state, action);
     expect(result).to.deep.equal({
       selectedIds: [24],
       resources: {
-        24: {name: 'James'}
+        24: { name: 'James' }
       },
       meta: {
-        24: {oinky: true}
+        24: { oinky: true }
       },
       lists: {
         stuff: []

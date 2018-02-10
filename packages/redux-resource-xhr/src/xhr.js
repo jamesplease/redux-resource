@@ -25,14 +25,12 @@ export default function request(uri, options, cb) {
   // This handles the `xhr(options, cb)` syntax
   if (typeof uri === 'object') {
     params = uri;
-  }
-  // This handles the `xhr(uri, options, cb)` syntax
-  else if (typeof uri === 'string' && typeof options === 'object') {
+  } else if (typeof uri === 'string' && typeof options === 'object') {
+    // This handles the `xhr(uri, options, cb)` syntax
     params = options;
     params.uri = uri;
-  }
-  // This handles the `xhr(uri, cb)` syntax
-  else {
+  } else {
+    // This handles the `xhr(uri, cb)` syntax
     params.uri = uri;
   }
 
@@ -75,17 +73,21 @@ export default function request(uri, options, cb) {
 // xhr[method](url, options, callback)
 // xhr[method](options, callback)
 //
-(['get', 'put', 'post', 'patch', 'head', 'delete']).forEach((method) => {
-  request[method === 'delete' ? 'del' : method] = function(uri, options, callback) {
+['get', 'put', 'post', 'patch', 'head', 'delete'].forEach(method => {
+  request[method === 'delete' ? 'del' : method] = function(
+    uri,
+    options,
+    callback
+  ) {
     let opts, cb;
     if (typeof uri === 'object') {
       opts = uri;
       cb = options;
     } else if (typeof options === 'object') {
-      opts = Object.assign({uri}, options);
+      opts = Object.assign({ uri }, options);
       cb = callback;
     } else if (typeof uri === 'string' && typeof options !== 'object') {
-      opts = {uri};
+      opts = { uri };
       cb = options;
     }
     opts.method = method.toUpperCase();

@@ -14,7 +14,7 @@ import warning from './warning';
 // this helper completely defines all of the ways in which the non-success reducers
 // can change the state.
 export default function(crudAction, requestStatus) {
-  return function(state, action, {initialResourceMeta} = {}) {
+  return function(state, action, { initialResourceMeta } = {}) {
     const resources = action.resources;
     const mergeMeta = action.mergeMeta;
 
@@ -43,10 +43,10 @@ export default function(crudAction, requestStatus) {
       if (process.env.NODE_ENV !== 'production') {
         warning(
           `A Redux Resource action of type ${action.type} was dispatched ` +
-          `without a "request" or "resources" array. Without one of these ` +
-          `values, Redux Resource cannot track the request status for this` +
-          `CRUD operation. You should check your Action Creators. Read more about` +
-          `request tracking at: https://redux-resource.js.org/docs/guides/tracking-requests.html`
+            `without a "request" or "resources" array. Without one of these ` +
+            `values, Redux Resource cannot track the request status for this` +
+            `CRUD operation. You should check your Action Creators. Read more about` +
+            `request tracking at: https://redux-resource.js.org/docs/guides/tracking-requests.html`
         );
       }
 
@@ -68,12 +68,12 @@ export default function(crudAction, requestStatus) {
     }
 
     // Lists only change when a request succeeds
-    newLists = {...state.lists};
+    newLists = { ...state.lists };
 
     if (idList.length) {
       newMeta = setResourceMeta({
         meta: state.meta,
-        newMeta: {[statusAttribute]: requestStatus},
+        newMeta: { [statusAttribute]: requestStatus },
         resources: idList,
         mergeMeta,
         initialResourceMeta: {

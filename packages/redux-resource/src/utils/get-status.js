@@ -20,15 +20,16 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    const isStatus = status === requestStatuses.NULL ||
+    const isStatus =
+      status === requestStatuses.NULL ||
       status === requestStatuses.PENDING ||
       status === requestStatuses.FAILED ||
       status === requestStatuses.SUCCEEDED;
     if (!isStatus) {
       warning(
         `You called "getStatus" with path "${statusLocation}", which resolved ` +
-        `to a value that is not a valid resource status. You may want to ` +
-        `check that this path is correct.`
+          `to a value that is not a valid resource status. You may want to ` +
+          `check that this path is correct.`
       );
     }
   }
@@ -41,7 +42,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
     null: isNull && !treatNullAsPendingBool,
     pending: isPending || (isNull && treatNullAsPendingBool),
     failed: status === requestStatuses.FAILED,
-    succeeded: status === requestStatuses.SUCCEEDED,
+    succeeded: status === requestStatuses.SUCCEEDED
   };
 }
 
@@ -68,7 +69,9 @@ export default function getStatus(state, statusLocations, treatNullAsPending) {
     return getSingleStatus(state, statusLocations, treatNullAsPending);
   }
 
-  const statusValues = statusLocations.map(loc => getSingleStatus(state, loc, treatNullAsPending));
+  const statusValues = statusLocations.map(loc =>
+    getSingleStatus(state, loc, treatNullAsPending)
+  );
 
   let nullValue = true;
   let pending = false;
@@ -98,5 +101,5 @@ export default function getStatus(state, statusLocations, treatNullAsPending) {
     succeeded = true;
   }
 
-  return {null: nullValue, pending, failed, succeeded};
+  return { null: nullValue, pending, failed, succeeded };
 }

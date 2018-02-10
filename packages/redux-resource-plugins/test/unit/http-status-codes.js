@@ -1,5 +1,5 @@
-import {actionTypes} from 'redux-resource';
-import {httpStatusCodes} from '../../src';
+import { actionTypes } from 'redux-resource';
+import { httpStatusCodes } from '../../src';
 
 describe('httpStatusCodes', function() {
   beforeEach(() => {
@@ -79,7 +79,6 @@ describe('httpStatusCodes', function() {
       requests: {}
     });
   });
-
 
   it('should set the status code on resource meta (read)', () => {
     const reducer = httpStatusCodes('books');
@@ -188,9 +187,11 @@ describe('httpStatusCodes', function() {
     const action = {
       type: actionTypes.DELETE_RESOURCES_FAILED,
       resourceName: 'books',
-      resources: [{
-        id: 24
-      }],
+      resources: [
+        {
+          id: 24
+        }
+      ],
       request: 'search',
       statusCode: 404
     };

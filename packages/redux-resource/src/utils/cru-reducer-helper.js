@@ -5,7 +5,7 @@ import warning from './warning';
 
 // This reducer helper handles the "CRU" in "CRUD".
 
-export default function(state, action, {initialResourceMeta}, updatedMeta) {
+export default function(state, action, { initialResourceMeta }, updatedMeta) {
   const resources = action.resources;
   const resourcesIsUndefined = typeof resources === 'undefined';
   const hasResources = resources && resources.length;
@@ -24,18 +24,20 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
     if (!resources) {
       warning(
         `A 'resources' array was not included in a Redux Resource ` +
-        `"success" action with type "${action.type}. Without a 'resources' ` +
-        `Array, Redux Resource will not be able to track which resources ` +
-        `were affected by this CRUD operation. You should check your Action ` +
-        `Creators to make sure that they always include a 'resources' array.`
+          `"success" action with type "${action.type}. Without a 'resources' ` +
+          `Array, Redux Resource will not be able to track which resources ` +
+          `were affected by this CRUD operation. You should check your Action ` +
+          `Creators to make sure that they always include a 'resources' array.`
       );
     } else if (!Array.isArray(resources)) {
       warning(
         `A non-array 'resources' value was passed to a Redux Resource ` +
-        `"success" action with type "${action.type}". 'resources' must be an ` +
-        `array. If your backend returned a single object, be sure to wrap it ` +
-        `inside of an array. If you're using the Redux Resource XHR ` +
-        `library, you can do this using the "transformData" option.`
+          `"success" action with type "${
+            action.type
+          }". 'resources' must be an ` +
+          `array. If your backend returned a single object, be sure to wrap it ` +
+          `inside of an array. If you're using the Redux Resource XHR ` +
+          `library, you can do this using the "transformData" option.`
       );
     }
   }
@@ -45,7 +47,11 @@ export default function(state, action, {initialResourceMeta}, updatedMeta) {
     return state;
   }
 
-  const newResources = upsertResources(state.resources, resources, action.mergeResources);
+  const newResources = upsertResources(
+    state.resources,
+    resources,
+    action.mergeResources
+  );
   const newMeta = setResourceMeta({
     resources,
     meta: state.meta,

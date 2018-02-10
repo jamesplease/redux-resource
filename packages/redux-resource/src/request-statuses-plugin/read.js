@@ -12,4 +12,4 @@ function readSucceed(state, action, options) {
   });
 }
 
-export {read, readFail, readNull, readSucceed};
+export { read, readFail, readNull, readSucceed };

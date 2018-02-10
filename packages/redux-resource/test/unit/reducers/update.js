@@ -1,4 +1,4 @@
-import {resourceReducer} from '../../../src';
+import { resourceReducer } from '../../../src';
 
 describe('reducers: update', function() {
   // Intentionally mostly-empty. Refer to the read reducer tests and the
@@ -9,9 +9,9 @@ describe('reducers: update', function() {
       stub(console, 'error');
       const initialState = {
         resources: {
-          1: {id: 1},
-          3: {id: 3},
-          4: {id: 4},
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4 }
         },
         lists: {},
         requests: {
@@ -29,7 +29,7 @@ describe('reducers: update', function() {
         }
       };
 
-      const reducer = resourceReducer('hellos', {initialState});
+      const reducer = resourceReducer('hellos', { initialState });
 
       const reduced = reducer(undefined, {
         type: 'UPDATE_RESOURCES_SUCCEEDED',

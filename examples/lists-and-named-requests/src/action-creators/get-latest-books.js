@@ -33,5 +33,5 @@ export default function getLatestBooks() {
         ]
       });
     }, 900);
-  }
+  };
 }

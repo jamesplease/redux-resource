@@ -1,0 +1,9 @@
+package.json
+_book
+dist
+es
+lib
+docs
+coverage
+.vscode
+.nyc_output

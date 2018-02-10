@@ -1,4 +1,4 @@
-import {resourceReducer, actionTypes} from '../../../src';
+import { resourceReducer, actionTypes } from '../../../src';
 
 describe('reducer', function() {
   it('should warn when a bad plugin is initialized', () => {
@@ -39,7 +39,7 @@ describe('reducer', function() {
 
     expect(reduced).to.deep.equal({
       resources: {
-        3: {id: 3}
+        3: { id: 3 }
       },
       meta: {
         3: {
@@ -114,7 +114,7 @@ describe('reducer', function() {
 
     const reduced = reducer(undefined, {
       type: 'SANDWICHES_ARE_GOOD',
-      resourceName: 'hellos',
+      resourceName: 'hellos'
     });
 
     expect(reduced).to.deep.equal({

@@ -17,12 +17,11 @@ export default function(state, resourceName, filter) {
   let idsList;
 
   if (typeof filterToUse === 'function') {
-    return Object.values(resources)
-      .filter(resource => filterToUse(resource, resourceSlice.meta[resource.id], resourceSlice));
-  }
-
-  // This conditional handles the situation where `filter` is an list name
-  else if (typeof filterToUse === 'string') {
+    return Object.values(resources).filter(resource =>
+      filterToUse(resource, resourceSlice.meta[resource.id], resourceSlice)
+    );
+  } else if (typeof filterToUse === 'string') {
+    // This conditional handles the situation where `filter` is an list name
     const list = resourceSlice.lists[filterToUse];
     if (!list) {
       return [];
