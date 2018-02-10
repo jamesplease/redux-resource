@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "./node_modules/pleaserc/.eslintrc"
-  ],
+  "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -9,7 +7,9 @@
       "experimentalObjectRestSpread": true
     }
   },
-  "rules": {},
+  "rules": {
+    "no-console": "off"
+  },
   "env": {
     "browser": true,
     "node": true
