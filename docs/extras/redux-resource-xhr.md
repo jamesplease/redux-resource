@@ -209,9 +209,12 @@ xhr.get('/books/24')
 ### Tips
 
 - The `onSucceeded` option of `crudRequest` can be useful if your backend returns
-  [related resources](docs/recipes/related-resources.md) in a single request. Or,
-  if you wish to chain requests before dispatching an action, you can do that with
-  `onSucceeded`, too.
+  [related resources](docs/recipes/related-resources.md) in a single request.
+
+- The `onSucceeded` and `onFailed` options can also be used for chaining requests.
+  You can make a second (or third, or fourth!) HTTP request in these callbacks. This
+  is useful when you need to make multiple requests to get all of the data that your
+  interface needs.
 
 - A good pattern for using this collection is to make your own action creators
   that "wrap" these action creators using
