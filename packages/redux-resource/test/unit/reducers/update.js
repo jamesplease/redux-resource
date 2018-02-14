@@ -36,7 +36,10 @@ describe('reducers: update', function() {
         resourceName: 'hellos'
       });
 
-      expect(reduced).to.deep.equal(initialState);
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceName: 'hellos'
+      });
       expect(console.error.callCount).to.equal(1);
     });
   });
