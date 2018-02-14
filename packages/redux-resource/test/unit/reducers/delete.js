@@ -29,7 +29,10 @@ describe('reducers: delete', function() {
         resourceName: 'hellos'
       });
 
-      expect(reduced).to.deep.equal(initialState);
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceName: 'hellos'
+      });
       expect(console.error.callCount).to.equal(1);
     });
 
@@ -202,6 +205,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: null,
@@ -264,6 +268,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           0: null,
           3: { id: 3 },
@@ -334,6 +339,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: null,
@@ -412,6 +418,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: null,
@@ -489,6 +496,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: null,
@@ -559,6 +567,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: null,
@@ -631,6 +640,7 @@ describe('reducers: delete', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
