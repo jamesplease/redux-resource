@@ -16,25 +16,29 @@ export default () => {
       action.type === actionTypes.CREATE_RESOURCES_PENDING ||
       action.type === actionTypes.READ_RESOURCES_PENDING ||
       action.type === actionTypes.UPDATE_RESOURCES_PENDING ||
-      action.type === actionTypes.DELETE_RESOURCES_PENDING;
+      action.type === actionTypes.DELETE_RESOURCES_PENDING ||
+      action.type === actionTypes.REQUEST_PENDING;
 
     const isSucceededAction =
       action.type === actionTypes.CREATE_RESOURCES_SUCCEEDED ||
       action.type === actionTypes.READ_RESOURCES_SUCCEEDED ||
       action.type === actionTypes.UPDATE_RESOURCES_SUCCEEDED ||
-      action.type === actionTypes.DELETE_RESOURCES_SUCCEEDED;
+      action.type === actionTypes.DELETE_RESOURCES_SUCCEEDED ||
+      action.type === actionTypes.REQUEST_SUCCEEDED;
 
     const isFailedAction =
       action.type === actionTypes.CREATE_RESOURCES_FAILED ||
       action.type === actionTypes.READ_RESOURCES_FAILED ||
       action.type === actionTypes.UPDATE_RESOURCES_FAILED ||
-      action.type === actionTypes.DELETE_RESOURCES_FAILED;
+      action.type === actionTypes.DELETE_RESOURCES_FAILED ||
+      action.type === actionTypes.REQUEST_FAILED;
 
     const isNullAction =
       action.type === actionTypes.CREATE_RESOURCES_NULL ||
       action.type === actionTypes.READ_RESOURCES_NULL ||
       action.type === actionTypes.UPDATE_RESOURCES_NULL ||
-      action.type === actionTypes.DELETE_RESOURCES_NULL;
+      action.type === actionTypes.DELETE_RESOURCES_NULL ||
+      action.type === actionTypes.REQUEST_NULL;
 
     // If the action type isn't a Redux Resource CRUD action, then there is nothing
     // for us to update.
@@ -54,6 +58,11 @@ export default () => {
       ...action.requestAttributes,
       requestName
     };
+
+    if (action.crudAction) {
+      newRequest.crudAction = action.crudAction;
+    }
+
     if (isPendingAction) {
       newRequest.status = requestStatuses.PENDING;
     } else if (isFailedAction) {

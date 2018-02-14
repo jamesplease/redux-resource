@@ -14,8 +14,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_PENDING',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_PENDING',
       resourceName: 'hellos',
       resources: [1]
     });
@@ -60,8 +59,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_PENDING',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_PENDING',
       resourceName: 'hellos',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
@@ -72,7 +70,6 @@ describe('Request Reducer', function() {
       requests: {
         pasta: {
           hungry: true,
-          crudAction: 'create',
           requestName: 'GET /pasta',
           status: 'PENDING'
         }
@@ -95,8 +92,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_PENDING',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_PENDING',
       resourceName: 'hellos',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
@@ -111,7 +107,6 @@ describe('Request Reducer', function() {
       requests: {
         pasta: {
           hungry: false,
-          crudAction: 'create',
           statusCode: 404,
           requestName: 'GET /pasta',
           status: 'PENDING'
@@ -135,8 +130,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_FAILED',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_FAILED',
       resourceName: 'hellos',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
@@ -146,7 +140,6 @@ describe('Request Reducer', function() {
     expect(reduced).to.deep.equal({
       requests: {
         pasta: {
-          crudAction: 'create',
           hungry: true,
           requestName: 'GET /pasta',
           status: 'FAILED'
@@ -170,8 +163,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_NULL',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_NULL',
       resourceName: 'hellos',
       // This tests the deprecated API
       request: 'pasta',
@@ -182,7 +174,6 @@ describe('Request Reducer', function() {
       requests: {
         pasta: {
           hungry: true,
-          crudAction: 'create',
           requestName: 'pasta',
           status: 'NULL'
         }
@@ -205,8 +196,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_SUCCEEDED',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_SUCCEEDED',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
       resources: {
@@ -221,7 +211,6 @@ describe('Request Reducer', function() {
           hungry: true,
           requestName: 'GET /pasta',
           status: 'SUCCEEDED',
-          crudAction: 'create',
           resources: {
             books: [24, 50],
             authors: [100]
@@ -246,8 +235,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_SUCCEEDED',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_SUCCEEDED',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
       resources: {
@@ -262,7 +250,6 @@ describe('Request Reducer', function() {
           hungry: true,
           requestName: 'GET /pasta',
           status: 'SUCCEEDED',
-          crudAction: 'create',
           resources: {
             books: [24, 50],
             authors: [100]
@@ -287,8 +274,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_SUCCEEDED',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_SUCCEEDED',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
       resourceName: 'books',
@@ -300,7 +286,6 @@ describe('Request Reducer', function() {
         pasta: {
           hungry: true,
           requestName: 'GET /pasta',
-          crudAction: 'create',
           status: 'SUCCEEDED',
           resources: {
             books: [24, 50]
@@ -325,8 +310,7 @@ describe('Request Reducer', function() {
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_PENDING',
-      crudAction: 'create',
+      type: 'CREATE_RESOURCES_PENDING',
       resourceName: 'hellos',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
@@ -339,7 +323,6 @@ describe('Request Reducer', function() {
           hungry: true
         },
         pasta: {
-          crudAction: 'create',
           requestName: 'GET /pasta',
           status: 'PENDING'
         }
