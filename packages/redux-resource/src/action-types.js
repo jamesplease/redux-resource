@@ -17,5 +17,9 @@ export default {
   ...createTypes,
   ...readTypes,
   ...updateTypes,
-  ...deleteTypes
+  ...deleteTypes,
+  REQUEST_PENDING: 'REQUEST_PENDING',
+  REQUEST_FAILED: 'REQUEST_FAILED',
+  REQUEST_SUCCEEDED: 'REQUEST_SUCCEEDED',
+  REQUEST_NULL: 'REQUEST_NULL'
 };
