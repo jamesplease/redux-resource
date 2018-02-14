@@ -51,6 +51,7 @@ export default () => {
 
     const newRequest = {
       ...state.requests[requestKey],
+      ...action.requestAttributes,
       requestName
     };
     if (isPendingAction) {

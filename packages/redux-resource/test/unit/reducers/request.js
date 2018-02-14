@@ -79,6 +79,44 @@ describe('Request Reducer', function() {
     expect(console.error.callCount).to.equal(0);
   });
 
+  it('returns the right state with an existing request key, with IDs: PENDING and requestAttributes', () => {
+    stub(console, 'error');
+    const initialState = {
+      requests: {
+        pasta: {
+          hungry: true
+        }
+      }
+    };
+
+    const reducer = resourceRequestReducer({ initialState });
+
+    const reduced = reducer(undefined, {
+      type: 'CREATE_RESOURCES_PENDING',
+      resourceName: 'hellos',
+      requestName: 'GET /pasta',
+      requestKey: 'pasta',
+      resources: [1],
+      requestAttributes: {
+        statusCode: 404,
+        hungry: false
+      }
+    });
+
+    expect(reduced).to.deep.equal({
+      requests: {
+        pasta: {
+          hungry: false,
+          statusCode: 404,
+          requestName: 'GET /pasta',
+          status: 'PENDING'
+        }
+      }
+    });
+
+    expect(console.error.callCount).to.equal(0);
+  });
+
   it('returns the right state with an existing request key, with IDs: FAILED', () => {
     stub(console, 'error');
     const initialState = {
