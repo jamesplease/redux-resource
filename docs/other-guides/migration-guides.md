@@ -5,6 +5,7 @@ links to various migration guides.
 
 #### redux-resource
 
+- [v2 ⇨ v3](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md)
 - [`resourceful-redux` ⇨ `redux-resource`](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/1-to-2.md)
 
 #### redux-resource-xhr

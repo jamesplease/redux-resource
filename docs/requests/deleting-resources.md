@@ -1,7 +1,7 @@
 # Deleting Resources
 
-Redux Resource provides four [action types](./faq/action-types.md) for
-deleting resources. They are as follows:
+Redux Resource provides four [action types](./request-actions.md) for
+deleting resources asynchronously. They are:
 
 ```js
 "DELETE_RESOURCES_PENDING"
@@ -12,44 +12,45 @@ deleting resources. They are as follows:
 
 Each request will always begin with an action with type
 `DELETE_RESOURCES_PENDING`. Then, one of the other three action types will be
-used to represent the resolution of that request. Use the requests in the
+used to represent the resolution of that request. Use the other action types in the
 following way:
 
 - `DELETE_RESOURCES_FAILED`: Use this if the request fails for any reason. This
   could be network errors, or any
   [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-  greater than 400.
-- `DELETE_RESOURCES_IDLE`: Use this is the request is aborted.
+  greater than or equal to 400.
+- `DELETE_RESOURCES_IDLE`: Use this when the request is aborted.
 - `DELETE_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
-### Using Named Requests
+### Request Objects
+
+Specifying a [request key](/docs/requests/request-keys.md) on the actions will create a
+request object in the store for this request. This object can be used to look up
+the [status](/docs/requests/request-statuses.md) of the request.
+
+Although it is recommended that you specify a request key whenever possible, there are some
+situations when you may not need to when deleting resources.
 
 Because you usually know the ID of the resources that you're deleting, you
-typically don't need to use named requests for delete operations. The metadata
-for the delete request can just be stored on the resource metadata directly.
+may not need to specify a request key for delete operations. The metadata for
+the delete request can just be stored on the resource metadata directly.
 
-Sometimes, you might do a bulk delete of, say, 5 resources. You're more than
-welcome to just choose one of those 5 resources, and use its metadata to track the
-delete for the other 4 resources. However, if this doesn't sound like a good system
-to you, then you can also use a named request to track that bulk action.
+For delete requests that affect multiple resources, it is typically preferable to
+specify a request key.
 
 ### Successful Deletes
 
-When an action of type `DELETE_RESOURCES_SUCCEEDED` is dispatched, any resources
-included in the action will be removed from the `resources` array of your state
-tree. They will also be removed from the ID array of any list.
+When an action of type `DELETE_RESOURCES_SUCCEEDED` is dispatched, three things
+will happen:
 
-The meta for each of the resources will be reset to the default metadata,
-except for `deleteStatus`, which will be set to `"SUCCEEDED"`.
+1. The `resources` included in the action will be replaced with `null` in the `resources` section
+  of your resource slice.
+  
+2. The `resources` included in the action will be removed from all lists in
+  the resource slice.
 
-> Note: Keep in mind that this means that a resource's metadata will never
-  completely go away with the built-in reducers. If we handled this cleanup for
-  you, then you would never get the successful status for delete requests!
-
-> For most applications, this won't be a problem, and you can just leave the
-  metadata in your state tree. If your application involves deleting many, many
-  resources, you may want to write a [plugin](/docs/guides/plugins.md) to clear
-  out old, unused metadata.
+3.  The value of `deleteStatus` will be set to `"SUCCEEDED"`. All other meta
+  values will be set to the default meta for that resource slice.
 
 ### Redux Resource XHR
 
@@ -72,7 +73,7 @@ export default function deleteBook(bookId) {
     dispatch({
       type: actionTypes.DELETE_RESOURCES_PENDING,
       resourceType: 'books',
-      resources: [bookId]
+      resources: [bookId],
     });
 
     const req = xhr.del(
@@ -82,19 +83,25 @@ export default function deleteBook(bookId) {
           dispatch({
             type: actionTypes.DELETE_RESOURCES_IDLE,
             resourceType: 'books',
-            resources: [bookId]
+            resources: [bookId],
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.DELETE_RESOURCES_FAILED,
             resourceType: 'books',
-            resources: [bookId]
+            resources: [bookId],
+            requestProperties: {
+              statusCode: res.statusCode 
+            }
           });
         } else {
           dispatch({
             type: actionTypes.DELETE_RESOURCES_SUCCEEDED,
             resourceType: 'books',
-            resources: [bookId]
+            resources: [bookId],
+            requestProperties: {
+              statusCode: res.statusCode 
+            }
           });
         }
       }

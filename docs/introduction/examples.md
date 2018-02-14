@@ -41,7 +41,7 @@ npm start
 open http://localhost:3000/
 ```
 
-This example shows how you can use named requests to track requests that
+This example shows how you can use request objects to track requests that
 don't target a specific resource ID. It also shows you how lists can be used
 to display two different ordered subsets of the same type of resource.
 

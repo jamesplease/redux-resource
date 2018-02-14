@@ -1,5 +1,30 @@
 # Selection Plugin
 
+### Deprecated
+
+This plugin is deprecated. You can use the built-in `UPDATE_RESOURCES` action
+type to modify lists directly.
+
+Here is an example action type that replaces the `selectResources` action type:
+
+```js
+function selectResources(resourceType, ids) {
+  return {
+    type: 'UPDATE_RESOURCES',
+    resources: {
+      [resourceType]: {
+        selected: ids
+      }
+    }
+  };
+}
+```
+
+You can build similar action creators for `deselectResources` and
+`clearSelectedResources`.
+
+### Documentation
+
 Use this plugin to maintain a list of "selected" resources within a slice.
 This is useful for interfaces that let users select a subset of resources to
 perform a bulk CRUD operation on.

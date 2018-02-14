@@ -25,7 +25,7 @@
 A tiny but powerful system for managing 'resources': data that is persisted to
 remote servers.
 
-✓ Removes nearly all "boilerplate" code for remotely-stored data  
+✓ Removes nearly all boilerplate code for remotely-stored data  
 ✓ Incrementally adoptable  
 ✓ Encourages best practices like [normalized state](http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html)  
 ✓ Works well with APIs that adhere to standardized formats, such as JSON API  
@@ -52,16 +52,22 @@ npm install --save redux-resource
   The introduction explains why this library exists, and also explores
   alternative solutions.
 
-* **[Guides](/docs/guides/README.md)**
+* **[Resources](/docs/resources/README.md)**
 
-  The guides explain the concepts in this library. The guides also contain a
-  number of examples.
+  This section of the guides cover resource data, resource metadata, and resource lists.
+
+* **[Requests](/docs/requests/README.md)**
+
+  Requests represent asynchronous updates to resources. Learn more about them here.
+
+* **[Other Guides](/docs/other-guides/README.md)**
+
+  These guides cover additional topics related to using React Request.
 
 * **[Recipes](/docs/recipes/README.md)**
 
   Recipes are recommended patterns and best practices that you can use in your
-  application. They assume that you understand all of the material in the
-  [Guides](/docs/guides/README.md).
+  application.
 
 * **[Ecosystem Extras](/docs/extras/README.md)**
 
@@ -109,14 +115,14 @@ import store from './store';
 // could represent the start of an HTTP request, for instance.
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   resources: [24]
 });
 
 // Later, when the request succeeds, we dispatch the success action.
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  resourceName: 'books',
+  resourceType: 'books',
   // The `resources` list here is usually the response from an API call
   resources: [{
     id: 24,

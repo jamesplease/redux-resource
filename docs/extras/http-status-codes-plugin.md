@@ -91,7 +91,7 @@ keys, depending on the CRUD operation being performed:
 - `updateStatusCode`
 - `deleteStatusCode`
 
-On a named request, the code is just available under `statusCode`.
+On a request object, the code is just available under `statusCode`.
 
 ```js
 import store from './store';
@@ -101,7 +101,7 @@ const state = store.getState();
 // Access the status codes of some resource meta
 const bookStatusCode = state.books.meta[24].readStatusCode;
 
-// Access the status code from a named requests
+// Access the status code from a request object
 const searchStatusCode = state.books.requests.search.statusCode;
 ```
 

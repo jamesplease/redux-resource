@@ -24,11 +24,15 @@ code, although this same system works for other representations, too.
 ### Action Creators
 
 Whenever an unauthorized response from the backend is returned in your CRUD
-action creators, include the status code in the action that you dispatch.
+action creators, include the status code in the [request action](/docs/requests/request-actions.md)
+that you dispatch.
+
+You can attach arbitrary data to a request by specifying `requestProperties` on
+the action.
 
 If you're using [Redux Resource XHR](/docs/extras/redux-resource-xhr.md),
-then the entire `res` object will be attached to the action. You can access the
-status code at `action.res.statusCode`.
+then this will be set for you. You can access the status code at
+`action.requestProperties.statusCode`.
 
 If you're not using Redux Resource XHR, then your code may look
 something like:
@@ -42,13 +46,21 @@ export function readBook(id) {
       resources: [id]
     });
 
+    // `request` would be whatever function you are using to make HTTP
+    // requests. It could be `window.fetch()`, axios, superagent, xhr,
+    // or anything else that you prefer.
     request('/some-url', (err, res) => {
-      if (err || res.statusCode >= 400) {
+      // Different libraries attach the status code to different properties.
+      // It is usually either `res.status` or `res.statusCode`. You do not
+      // need to check both properties if you know which one your library uses.
+      if (err || res.statusCode >= 400 || res.status >= 400) {
         dispatch({
           type: actionTypes.READ_RESOURCES_FAILED,
           resourceType: 'books',
           resources: [id],
-          res
+          requestProperties: {
+            statusCode: res.statusCode
+          }
         });
 
         return;
@@ -83,7 +95,7 @@ export default function reducer(state = false, action) {
     action.type === CREATE_RESOURCES_FAILED ||
     action.type === DELETE_RESOURCES_FAILED;
 
-  if (isFailedAction && action.res.statusCode === 401) {
+  if (isFailedAction && action.requestProperties.statusCode === 401) {
     return true;
   }
 
