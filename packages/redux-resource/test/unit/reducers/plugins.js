@@ -38,6 +38,7 @@ describe('reducer', function() {
     });
 
     expect(reduced).to.deep.equal({
+      resourceName: 'hellos',
       resources: {
         3: { id: 3 }
       },
@@ -78,6 +79,7 @@ describe('reducer', function() {
     });
 
     expect(reduced).to.deep.equal({
+      resourceName: 'hellos',
       resources: {},
       meta: {},
       lists: {},
@@ -118,6 +120,7 @@ describe('reducer', function() {
     });
 
     expect(reduced).to.deep.equal({
+      resourceName: 'hellos',
       resources: {},
       meta: {},
       lists: {},

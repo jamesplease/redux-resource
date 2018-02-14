@@ -40,6 +40,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -110,6 +111,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -176,7 +178,10 @@ describe('reducers: read:', function() {
         resources: [1, 2]
       });
 
-      expect(reduced).to.deep.equal(initialState);
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceName: 'hellos'
+      });
       expect(console.error.callCount).to.equal(1);
     });
 
@@ -215,7 +220,10 @@ describe('reducers: read:', function() {
         }
       });
 
-      expect(reduced).to.deep.equal(initialState);
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceName: 'hellos'
+      });
       expect(console.error.callCount).to.equal(1);
     });
 
@@ -250,7 +258,10 @@ describe('reducers: read:', function() {
         resourceName: 'hellos'
       });
 
-      expect(reduced).to.deep.equal(initialState);
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceName: 'hellos'
+      });
       expect(console.error.callCount).to.equal(1);
     });
 
@@ -289,6 +300,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -354,6 +366,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -418,6 +431,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -491,6 +505,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -575,6 +590,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -659,6 +675,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -747,6 +764,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -832,6 +850,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -905,6 +924,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -975,6 +995,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -1046,6 +1067,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -1111,6 +1133,7 @@ describe('reducers: read:', function() {
       });
 
       expect(reduced).to.deep.equal({
+        resourceName: 'hellos',
         resources: {
           1: { id: 1 },
           3: { id: 3 },
@@ -1179,6 +1202,7 @@ describe('reducers: read:', function() {
     });
 
     expect(reduced).to.deep.equal({
+      resourceName: 'hellos',
       resources: {
         1: { id: 1 },
         3: { id: 3 },
