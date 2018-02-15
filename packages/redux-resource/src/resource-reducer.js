@@ -1,3 +1,4 @@
+import updateResourcesPlugin from './update-resources-plugin';
 import requestStatusesPlugin from './request-statuses-plugin';
 import generateDefaultInitialState from './utils/generate-default-initial-state';
 import composeReducers from './utils/compose-reducers';
@@ -14,7 +15,7 @@ export default function resourceReducer(resourceName, options = {}) {
   const initial = {
     ...defaultInitialState,
     ...initialState,
-    resourceName
+    resourceName,
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -27,7 +28,10 @@ export default function resourceReducer(resourceName, options = {}) {
     }
   }
 
-  const allPlugins = plugins.concat(requestStatusesPlugin);
+  const allPlugins = plugins.concat(
+    requestStatusesPlugin,
+    updateResourcesPlugin
+  );
 
   const computedPlugins = allPlugins.map(plugin => {
     const result = plugin(resourceName, options);
