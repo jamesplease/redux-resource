@@ -6,9 +6,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -17,7 +17,7 @@ describe('Request Reducer', function() {
       type: 'REQUEST_PENDING',
       crudAction: 'create',
       resourceName: 'hellos',
-      resources: [1]
+      resources: [1],
     });
 
     expect(reduced).to.deep.equal(initialState);
@@ -29,9 +29,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -40,7 +40,7 @@ describe('Request Reducer', function() {
       type: 'BLEEP_BLOOP',
       resourceName: 'hellos',
       requestKey: 'ok',
-      resources: [1]
+      resources: [1],
     });
 
     expect(reduced).to.deep.equal(initialState);
@@ -52,9 +52,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -65,7 +65,7 @@ describe('Request Reducer', function() {
       resourceName: 'hellos',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
-      resources: [1]
+      resources: [1],
     });
 
     expect(reduced).to.deep.equal({
@@ -74,9 +74,9 @@ describe('Request Reducer', function() {
           hungry: true,
           crudAction: 'create',
           requestName: 'GET /pasta',
-          status: 'PENDING'
-        }
-      }
+          status: 'PENDING',
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);
@@ -87,9 +87,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -103,8 +103,8 @@ describe('Request Reducer', function() {
       resources: [1],
       requestAttributes: {
         statusCode: 404,
-        hungry: false
-      }
+        hungry: false,
+      },
     });
 
     expect(reduced).to.deep.equal({
@@ -114,9 +114,9 @@ describe('Request Reducer', function() {
           crudAction: 'create',
           statusCode: 404,
           requestName: 'GET /pasta',
-          status: 'PENDING'
-        }
-      }
+          status: 'PENDING',
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);
@@ -127,9 +127,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -140,7 +140,7 @@ describe('Request Reducer', function() {
       resourceName: 'hellos',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
-      resources: [1]
+      resources: [1],
     });
 
     expect(reduced).to.deep.equal({
@@ -149,33 +149,33 @@ describe('Request Reducer', function() {
           crudAction: 'create',
           hungry: true,
           requestName: 'GET /pasta',
-          status: 'FAILED'
-        }
-      }
+          status: 'FAILED',
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);
   });
 
-  it('returns the right state with an existing request key, with IDs: NULL', () => {
+  it('returns the right state with an existing request key, with IDs: IDLE', () => {
     stub(console, 'error');
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
 
     const reduced = reducer(undefined, {
-      type: 'REQUEST_NULL',
+      type: 'REQUEST_IDLE',
       crudAction: 'create',
       resourceName: 'hellos',
       // This tests the deprecated API
       request: 'pasta',
-      resources: [1]
+      resources: [1],
     });
 
     expect(reduced).to.deep.equal({
@@ -184,9 +184,9 @@ describe('Request Reducer', function() {
           hungry: true,
           crudAction: 'create',
           requestName: 'pasta',
-          status: 'NULL'
-        }
-      }
+          status: 'IDLE',
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);
@@ -197,9 +197,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -211,8 +211,8 @@ describe('Request Reducer', function() {
       requestKey: 'pasta',
       resources: {
         books: [{ id: 24, title: 'Things' }, { id: 50, title: 'Things2' }],
-        authors: [{ id: 100 }]
-      }
+        authors: [{ id: 100 }],
+      },
     });
 
     expect(reduced).to.deep.equal({
@@ -224,10 +224,10 @@ describe('Request Reducer', function() {
           crudAction: 'create',
           resources: {
             books: [24, 50],
-            authors: [100]
-          }
-        }
-      }
+            authors: [100],
+          },
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);
@@ -238,9 +238,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -252,8 +252,8 @@ describe('Request Reducer', function() {
       requestKey: 'pasta',
       resources: {
         books: [24, 50],
-        authors: [100]
-      }
+        authors: [100],
+      },
     });
 
     expect(reduced).to.deep.equal({
@@ -265,10 +265,10 @@ describe('Request Reducer', function() {
           crudAction: 'create',
           resources: {
             books: [24, 50],
-            authors: [100]
-          }
-        }
-      }
+            authors: [100],
+          },
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);
@@ -279,9 +279,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         pasta: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -292,7 +292,7 @@ describe('Request Reducer', function() {
       requestName: 'GET /pasta',
       requestKey: 'pasta',
       resourceName: 'books',
-      resources: [{ id: 24, title: 'Things' }, { id: 50, title: 'Things2' }]
+      resources: [{ id: 24, title: 'Things' }, { id: 50, title: 'Things2' }],
     });
 
     expect(reduced).to.deep.equal({
@@ -303,10 +303,10 @@ describe('Request Reducer', function() {
           crudAction: 'create',
           status: 'SUCCEEDED',
           resources: {
-            books: [24, 50]
-          }
-        }
-      }
+            books: [24, 50],
+          },
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);
@@ -317,9 +317,9 @@ describe('Request Reducer', function() {
     const initialState = {
       requests: {
         sandwiches: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = resourceRequestReducer({ initialState });
@@ -330,20 +330,20 @@ describe('Request Reducer', function() {
       resourceName: 'hellos',
       requestName: 'GET /pasta',
       requestKey: 'pasta',
-      resources: [1]
+      resources: [1],
     });
 
     expect(reduced).to.deep.equal({
       requests: {
         sandwiches: {
-          hungry: true
+          hungry: true,
         },
         pasta: {
           crudAction: 'create',
           requestName: 'GET /pasta',
-          status: 'PENDING'
-        }
-      }
+          status: 'PENDING',
+        },
+      },
     });
 
     expect(console.error.callCount).to.equal(0);

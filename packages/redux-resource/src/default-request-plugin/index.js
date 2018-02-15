@@ -34,11 +34,11 @@ export default () => {
       action.type === actionTypes.REQUEST_FAILED;
 
     const isNullAction =
-      action.type === actionTypes.CREATE_RESOURCES_NULL ||
-      action.type === actionTypes.READ_RESOURCES_NULL ||
-      action.type === actionTypes.UPDATE_RESOURCES_NULL ||
-      action.type === actionTypes.DELETE_RESOURCES_NULL ||
-      action.type === actionTypes.REQUEST_NULL;
+      action.type === actionTypes.CREATE_RESOURCES_IDLE ||
+      action.type === actionTypes.READ_RESOURCES_IDLE ||
+      action.type === actionTypes.UPDATE_RESOURCES_IDLE ||
+      action.type === actionTypes.DELETE_RESOURCES_IDLE ||
+      action.type === actionTypes.REQUEST_IDLE;
 
     // If the action type isn't a Redux Resource CRUD action, then there is nothing
     // for us to update.
@@ -56,7 +56,7 @@ export default () => {
     const newRequest = {
       ...state.requests[requestKey],
       ...action.requestAttributes,
-      requestName
+      requestName,
     };
 
     if (action.crudAction) {
@@ -90,15 +90,15 @@ export default () => {
         // Maybe log a helpful error here?
       }
     } else if (isNullAction) {
-      newRequest.status = requestStatuses.NULL;
+      newRequest.status = requestStatuses.IDLE;
     }
 
     return {
       ...state,
       requests: {
         ...state.requests,
-        [requestKey]: newRequest
-      }
+        [requestKey]: newRequest,
+      },
     };
   };
 };

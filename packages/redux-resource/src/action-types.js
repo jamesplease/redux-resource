@@ -5,7 +5,7 @@ const mapConstant = crudAction => ({
   [`${crudAction}_RESOURCES_PENDING`]: `${crudAction}_RESOURCES_PENDING`,
   [`${crudAction}_RESOURCES_SUCCEEDED`]: `${crudAction}_RESOURCES_SUCCEEDED`,
   [`${crudAction}_RESOURCES_FAILED`]: `${crudAction}_RESOURCES_FAILED`,
-  [`${crudAction}_RESOURCES_NULL`]: `${crudAction}_RESOURCES_NULL`
+  [`${crudAction}_RESOURCES_IDLE`]: `${crudAction}_RESOURCES_IDLE`,
 });
 
 const createTypes = mapConstant('CREATE');
@@ -21,5 +21,5 @@ export default {
   REQUEST_PENDING: 'REQUEST_PENDING',
   REQUEST_FAILED: 'REQUEST_FAILED',
   REQUEST_SUCCEEDED: 'REQUEST_SUCCEEDED',
-  REQUEST_NULL: 'REQUEST_NULL'
+  REQUEST_IDLE: 'REQUEST_IDLE',
 };

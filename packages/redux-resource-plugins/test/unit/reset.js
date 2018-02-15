@@ -139,7 +139,7 @@ describe('reset', function() {
         },
         spaghetti: {
           ids: [],
-          status: 'NULL'
+          status: 'IDLE'
         }
       }
     });
