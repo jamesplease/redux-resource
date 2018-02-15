@@ -40,8 +40,3 @@ const selectedBooks = getResources(state.books, (resource, meta) => meta.selecte
 - You don't _always_ need to use this method to access resources. Just need one
   resource? If the resource is on the `books` slice, you can directly access it
   via `store.getState().books.resources[bookId]`.
-
-### Old Signatures
-
-In v2 of Redux Resource, you may use the signature: `getResources(state, resourceName, filter)`,
-but this has been deprecated as of v2.2.0, and will be removed in v3.0.0.
