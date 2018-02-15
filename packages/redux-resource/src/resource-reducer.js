@@ -13,7 +13,8 @@ export default function resourceReducer(resourceName, options = {}) {
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,
-    ...initialState
+    ...initialState,
+    resourceName
   };
 
   if (process.env.NODE_ENV !== 'production') {
