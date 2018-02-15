@@ -11,7 +11,8 @@ Returns an array of resources from `resourceSlice` based on the `filter` provide
   IDs, or the name of a [list](/docs/guides/lists.md). If a function is provided, then
   `getResources` will iterate over the collection of resources, returning an array of
   resources that the function returns truthy for. The function will be called with three arguments:
-  `(resource, resourceMeta, resourceSlice)`.
+  `(resource, resourceMeta, resourceSlice)`. If no `filter` is provided, then all of the
+ +  resources in the `resourceSlice` will be returned.
 
 #### Returns
 
