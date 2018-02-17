@@ -1,6 +1,10 @@
 // This function generates the five statuses from a single CRUD action.
 // For instance, you'd probably pass "CREATE", "READ", "UPDATE", or "DELETE"
 // as `crudAction`.
+//
+// These are deprecated in favor of the simpler alternatives listed in
+// `./action-types`. Those work the _exact_ same way. Because there are
+// fewer of them, they should be easier to use.
 const mapConstant = crudAction => ({
   [`${crudAction}_RESOURCES_PENDING`]: `${crudAction}_RESOURCES_PENDING`,
   [`${crudAction}_RESOURCES_SUCCEEDED`]: `${crudAction}_RESOURCES_SUCCEEDED`,
@@ -18,8 +22,4 @@ export default {
   ...readTypes,
   ...updateTypes,
   ...deleteTypes,
-  REQUEST_PENDING: 'REQUEST_PENDING',
-  REQUEST_FAILED: 'REQUEST_FAILED',
-  REQUEST_SUCCEEDED: 'REQUEST_SUCCEEDED',
-  REQUEST_IDLE: 'REQUEST_IDLE',
 };
