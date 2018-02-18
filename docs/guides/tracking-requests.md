@@ -28,7 +28,7 @@ of a book with ID 24 looks like the following:
 ```js
 {
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   resources: [24]
 }
 ```

@@ -25,7 +25,7 @@ recommended for making action creators for these CRUD operations.
 
 ### Action Attributes
 
-All actions have a single required value, `resourceName`, which is the name
+All actions have a single required value, `resourceType`, which is the name
 of the resource that is being affected. The simplest action, then, looks
 something like this:
 
@@ -35,7 +35,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books'
+  resourceType: 'books'
 });
 ```
 
@@ -94,7 +94,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   resources: [23]
 });
 ```
@@ -109,7 +109,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  resourceName: 'books',
+  resourceType: 'books',
   resources: [{
     id: 23,
     releaseYear: 2015,
@@ -149,7 +149,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   request: 'booksSearch',
 
   // You may also includes additional attributes on a request.
@@ -178,7 +178,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   list: 'mostPopular',
   request: 'getMostPopular',
   query: 'Lord of the Flies'

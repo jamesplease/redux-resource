@@ -21,7 +21,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  resourceName: 'books',
+  resourceType: 'books',
   list: 'mostPopular',
   // Remember, we always want to track the request status
   request: 'getMostPopular'
@@ -99,7 +99,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  resourceName: 'books',
+  resourceType: 'books',
   list: 'mostPopular',
   mergeListIds: false,
   // `newResources` is the list of books that were returned by the server

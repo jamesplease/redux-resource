@@ -28,9 +28,10 @@ const deleteEndActions = [
 
 // This sets a new meta property on resource and request metadata: `statusCode`.
 // This will be equal to the last status code for a request
-export default function httpStatusCodes(resourceName) {
+export default function httpStatusCodes(resourceType) {
   return function(state, action) {
-    if (action.resourceName !== resourceName) {
+    const typeToCheck = action.resourceType || action.resourceName;
+    if (typeToCheck !== resourceType) {
       return state;
     }
 

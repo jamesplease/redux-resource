@@ -1,4 +1,4 @@
-# `resourceReducer(resourceName, [options])`
+# `resourceReducer(resourceType, [options])`
 
 Creates a Redux [reducer](http://redux.js.org/docs/basics/Reducers.html) that
 changes your store's state when actions with one of the CRUD
@@ -6,9 +6,9 @@ changes your store's state when actions with one of the CRUD
 
 #### Arguments
 
-1. `resourceName` *(String)*: The name of your resource. Typically, you'll want
-  to use a plural name. For instance, "books," rather than "book." You should
-  also use this as the name of your store slice when using
+1. `resourceType` *(String)*: The type of your resource. Typically, you'll want
+  to use a plural type. For instance, "books," rather than "book." You should
+  also use this as the key of your store slice when using
   [combineReducers](http://redux.js.org/docs/api/combineReducers.html), for
   consistency.
 

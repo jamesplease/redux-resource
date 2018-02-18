@@ -36,7 +36,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
       });
       expect(console.error.callCount).to.equal(0);
     });
@@ -81,7 +81,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         lists: {
           bookmarks: [1, 2, 3],
           new: [10, 100, 1000],
@@ -134,7 +134,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         lists: {
           bookmarks: [2, 5, 6],
           new: [10, 100, 1000],
@@ -193,7 +193,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: {
           1: { id: 1, name: 'Test2' },
           3: { id: 3 },
@@ -250,7 +250,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: {
           1: { id: 1, name: 'Test2' },
           3: { id: 3 },
@@ -304,7 +304,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: {
           1: { id: 1, name: 'Test2' },
           3: { id: 3 },
@@ -360,7 +360,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: {
           1: { id: 1, name: 'Test2' },
           3: { id: 3 },
@@ -417,7 +417,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         meta: {
           1: {
             name: 'what',
@@ -477,7 +477,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
       });
       expect(console.error.callCount).to.equal(0);
     });
@@ -525,7 +525,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         meta: {
           1: {
             name: 'Test2',
@@ -583,7 +583,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       expect(reduced).to.deep.equal({
         ...initialState,
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         meta: {
           1: {
             name: 'Test2',

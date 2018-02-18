@@ -42,7 +42,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   request: 'search'
 });
 ```
@@ -103,7 +103,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  resourceName: 'books',
+  resourceType: 'books',
   request: 'search',
   // `newResources` are the list of books that were returned by the server
   // for this query.

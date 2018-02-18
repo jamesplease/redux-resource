@@ -50,7 +50,7 @@ export default function readBook(bookId) {
   return function(dispatch) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
-      resourceName: 'books'
+      resourceType: 'books'
       resources: [bookId]
     });
 
@@ -58,19 +58,19 @@ export default function readBook(bookId) {
       if (req.aborted) {
         dispatch({
           type: actionTypes.READ_RESOURCES_IDLE,
-          resourceName: 'books',
+          resourceType: 'books',
           resources: [bookId]
         });
       } else if (err || res.statusCode >= 400) {
         dispatch({
           type: actionTypes.READ_RESOURCES_FAILED,
-          resourceName: 'books',
+          resourceType: 'books',
           resources: [bookId]
         });
       } else {
         dispatch({
           type: actionTypes.READ_RESOURCES_SUCCEEDED,
-          resourceName: 'books',
+          resourceType: 'books',
           resources: [res.body]
         });
       }
