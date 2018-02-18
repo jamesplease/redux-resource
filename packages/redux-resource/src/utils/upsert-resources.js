@@ -72,7 +72,6 @@ export default function upsertResources(
       } else {
         resourceToInsert = {
           ...resource,
-          id,
         };
       }
 

@@ -1,6 +1,6 @@
 import { resourceReducer } from '../../../src';
 
-describe.only('reducers: UPDATE_RESOURCES', function() {
+describe('reducers: UPDATE_RESOURCES', function() {
   describe('When nothing else is passed', () => {
     it('does not change the state', () => {
       stub(console, 'error');
@@ -538,7 +538,7 @@ describe.only('reducers: UPDATE_RESOURCES', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it.only('respects mergeMeta: {hellos: false}', () => {
+    it('respects mergeMeta: {hellos: false}', () => {
       stub(console, 'error');
       const initialState = {
         resources: {
