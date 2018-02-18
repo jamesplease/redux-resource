@@ -1,23 +1,24 @@
 import { requestStatuses } from 'redux-resource';
 
 const actionTypes = {
-  RESET_RESOURCE: 'RESET_RESOURCE'
+  RESET_RESOURCE: 'RESET_RESOURCE',
 };
 
-function resetResource(resourceName, { request, list } = {}) {
+function resetResource(resourceType, { request, list } = {}) {
   return {
     type: 'RESET_RESOURCE',
-    resourceName,
+    resourceType,
     request,
-    list
+    list,
   };
 }
 
-function reset(resourceName, options = {}) {
+function reset(resourceType, options = {}) {
   return function(state, action) {
+    const typeToUse = action.resourceType || action.resourceName;
     if (
       action.type !== actionTypes.RESET_RESOURCE ||
-      action.resourceName !== resourceName
+      typeToUse !== resourceType
     ) {
       return state;
     }
@@ -30,12 +31,12 @@ function reset(resourceName, options = {}) {
         meta: {},
         lists: {},
         requests: {},
-        ...options.initialState
+        ...options.initialState,
       };
     }
 
     const newState = {
-      ...state
+      ...state,
     };
 
     if (request) {
@@ -43,15 +44,15 @@ function reset(resourceName, options = {}) {
         ...state.requests,
         [request]: {
           ids: [],
-          status: requestStatuses.IDLE
-        }
+          status: requestStatuses.IDLE,
+        },
       };
     }
 
     if (list) {
       newState.lists = {
         ...state.lists,
-        [list]: []
+        [list]: [],
       };
     }
 

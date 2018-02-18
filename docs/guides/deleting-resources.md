@@ -71,7 +71,7 @@ export default function deleteBook(bookId) {
   return function(dispatch) {
     dispatch({
       type: actionTypes.DELETE_RESOURCES_PENDING,
-      resourceName: 'books',
+      resourceType: 'books',
       resources: [bookId]
     });
 
@@ -81,19 +81,19 @@ export default function deleteBook(bookId) {
         if (req.aborted) {
           dispatch({
             type: actionTypes.DELETE_RESOURCES_IDLE,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [bookId]
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.DELETE_RESOURCES_FAILED,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [bookId]
           });
         } else {
           dispatch({
             type: actionTypes.DELETE_RESOURCES_SUCCEEDED,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [bookId]
           });
         }

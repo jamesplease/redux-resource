@@ -38,7 +38,7 @@ export function readBook(id) {
   return function(dispatch) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
-      resourceName: 'books',
+      resourceType: 'books',
       resources: [id]
     });
 
@@ -46,7 +46,7 @@ export function readBook(id) {
       if (err || res.statusCode >= 400) {
         dispatch({
           type: actionTypes.READ_RESOURCES_FAILED,
-          resourceName: 'books',
+          resourceType: 'books',
           resources: [id],
           res
         });

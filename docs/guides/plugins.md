@@ -62,10 +62,10 @@ export default resourceReducer('books', {
 A plugin is a function that with the following signature:
 
 ```js
-(resourceName, options) => reducerFunction
+(resourceType, options) => reducerFunction
 ```
 
-Where `resourceName` and `options` are the same values that you passed to
+Where `resourceType` and `options` are the same values that you passed to
 [`resourceReducer`](/docs/api-reference/resource-reducer.md).
 
 The return value, `reducerFunction`, is also a function. This returned function
@@ -81,7 +81,7 @@ reducer and `action` is the action that was dispatched.
 The simplest plugin then (which doesn't do anything), would look like this:
 
 ```js
-function myPlugin(resourceName, options) {
+function myPlugin(resourceType, options) {
   return function(state, action) {
     return state;
   }
@@ -91,7 +91,7 @@ function myPlugin(resourceName, options) {
 If you prefer using arrow functions, you might choose to write this like so:
 
 ```js
-const myPlugin = (resourceName, option) => (state, action) => state;
+const myPlugin = (resourceType, option) => (state, action) => state;
 ```
 
 This plugin isn't very exciting, so let's look at more realistic examples.
@@ -105,10 +105,10 @@ for this plugin looks like this:
 import { setResourceMeta } from 'redux-resource';
 import myActionTypes from './my-action-types';
 
-export default function(resourceName, options) {
+export default function(resourceType, options) {
   return function(state, action) {
     // Ignore actions that were dispatched for another resource type
-    if (action.resourceName !== resourceName) {
+    if (action.resourceType !== resourceType) {
       return state;
     }
 
@@ -169,11 +169,11 @@ the following plugin, we set a property on the store anytime a successful read
 occurs:
 
 ```js
-export default function(resourceName, options) {
+export default function(resourceType, options) {
   return function(state, action) {
     // Only take action if the resource name of the Action matches the
     // resource this plugin is registered for
-    if (action.resourceName !== resourceName) {
+    if (action.resourceType !== resourceType) {
       return state;
     }
 
@@ -196,7 +196,7 @@ the fact that the `resourceReducer`'s options are passed into plugins. For
 instance, if you had a plugin like the following:
 
 ```js
-export default function customizablePlugin(resourceName, options) {
+export default function customizablePlugin(resourceType, options) {
   return function(state, action) {
     if (options.useSpecialBehavior) {
       // Perform a computation
@@ -225,7 +225,7 @@ in a function, like so:
 
 ```js
 export default function(pluginOptions) {
-  return function customizablePlugin(resourceName, options) {
+  return function customizablePlugin(resourceType, options) {
     return function(state, action) {
       if (pluginOptions.useSpecialBehavior) {
         // Perform a computation

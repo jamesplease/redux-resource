@@ -53,7 +53,7 @@ An action creator for CRUD requests.
 
   * `actionDefaults`: *(Object)* Properties that will be included on each dispatched
     action. All of [the CRUD Action options](/docs/guides/crud-actions.md) are
-    supported, such as `resourceName` and `resources`.
+    supported, such as `resourceType` and `resources`.
 
   * `dispatch`: *(Function)* The `dispatch` function of a Redux store. If you're using
     [`redux-thunk`]((https://github.com/gaearon/redux-thunk)), this will be the first
@@ -120,7 +120,7 @@ const xhrOptions = {
 const xhr = crudRequest('read', {
   dispatch: store.dispatch,
   actionDefaults: {
-    resourceName: 'books',
+    resourceType: 'books',
     request: 'getHomePageBooks',
     list: 'homePageBooks',
     mergeListIds: false
@@ -237,7 +237,7 @@ xhr.get('/books/24')
 
       return crudRequest('read', {
         actionDefaults: {
-          resourceName: 'books',
+          resourceType: 'books',
           request: 'getHomePageBooks',
           list: 'homePageBooks',
           mergeListIds: false,

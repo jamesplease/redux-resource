@@ -38,7 +38,7 @@ This library has a single export, `createActionCreators`.
 
 2. `actionDefaults` *(Object)*: Properties that will be included on each dispatched
     action. The [the CRUD Action guide](/docs/guides/crud-actions.md) lists possible
-    options, such as `resourceName` and `resources`. You *must* include `resourceName`.
+    options, such as `resourceType` and `resources`. You *must* include `resourceType`.
 
 #### Returns
 
@@ -53,7 +53,7 @@ import createActionCreators from 'redux-resource-action-creators';
 import store from './store';
 
 const readActionCreators = createActionCreators('read', {
-  resourceName: 'books',
+  resourceType: 'books',
   request: 'getHomePageBooks',
   list: 'homePageBooks',
   mergeListIds: false
@@ -83,7 +83,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   request: 'getHomePageBooks',
   list: 'homePageBooks'
 });
@@ -92,21 +92,21 @@ const req = fetchData((err, res, body) => {
   if (req.aborted) {
     store.dispatch({
       type: actionTypes.READ_RESOURCES_NULL,
-      resourceName: 'books',
+      resourceType: 'books',
       request: 'getHomePageBooks',
       list: 'homePageBooks'
     });
   } else if (err) {
     store.dispatch({
       type: actionTypes.READ_RESOURCES_FAILED,
-      resourceName: 'books',
+      resourceType: 'books',
       request: 'getHomePageBooks',
       list: 'homePageBooks'
     });
   } else {
     store.dispatch(readActionCreators.succeeded({
       type: actionTypes.READ_RESOURCES_SUCCEEDED,
-      resourceName: 'books',
+      resourceType: 'books',
       request: 'getHomePageBooks',
       list: 'homePageBooks',
       resources: body
@@ -123,7 +123,7 @@ import { actionTypes } from 'redux-resource';
 import store from './store';
 
 const actionDefaults = {
-  resourceName: 'books',
+  resourceType: 'books',
   request: 'getHomePageBooks',
   list: 'homePageBooks'
 };

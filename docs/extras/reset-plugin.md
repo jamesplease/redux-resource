@@ -68,9 +68,9 @@ store.dispatch(reset.resetResource('books', {
 
 ---
 
-### `resetResource(resourceName, [options])`
+### `resetResource(resourceType, [options])`
 
-Resets the slice for `resourceName`. Pass `options` to scope what's reset.
+Resets the slice for `resourceType`. Pass `options` to scope what's reset.
 There are two valid options:
 
 - `request`: Reset the request with this name
@@ -78,7 +78,7 @@ There are two valid options:
 
 #### Arguments
 
-1. `resourceName` *(String)*: The name of the slice to reset.
+1. `resourceType` *(String)*: The name of the slice to reset.
 
 2. [`options`] *(String)*: Options to scope what is reset.
 

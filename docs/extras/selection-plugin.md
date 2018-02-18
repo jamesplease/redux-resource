@@ -80,14 +80,14 @@ deleteBooks(books.selectedIds);
 
 ---
 
-### `selectResources(resourceName, resources)`
+### `selectResources(resourceType, resources)`
 
-Selects `resources` for slice `resourceName`. Resources that are already
+Selects `resources` for slice `resourceType`. Resources that are already
 selected will be ignored.
 
 #### Arguments
 
-1. `resourceName` *(String)*: The name of the slice to select resources from.
+1. `resourceType` *(String)*: The name of the slice to select resources from.
 
 2. `resources` *(Array)*: An array of resources, or resource IDs, to be
   selected.
@@ -98,14 +98,14 @@ selected will be ignored.
 
 ---
 
-### `deselectResources(resourceName, resources)`
+### `deselectResources(resourceType, resources)`
 
-Deselects `resources` for slice `resourceName`. Resources that aren't selected
+Deselects `resources` for slice `resourceType`. Resources that aren't selected
 will be ignored.
 
 #### Arguments
 
-1. `resourceName` *(String)*: The name of the slice to deselect resources from.
+1. `resourceType` *(String)*: The name of the slice to deselect resources from.
 
 2. `resources` *(Array)*: An array of resources, or resource IDs, to deselect.
 
@@ -115,13 +115,13 @@ will be ignored.
 
 ---
 
-### `clearSelectedResources(resourceName)`
+### `clearSelectedResources(resourceType)`
 
-Deselects every resource for slice `resourceName`.
+Deselects every resource for slice `resourceType`.
 
 #### Arguments
 
-1. `resourceName` *(String)*: The name of the slice to clear the selected
+1. `resourceType` *(String)*: The name of the slice to clear the selected
   resources from.
 
 #### Returns
