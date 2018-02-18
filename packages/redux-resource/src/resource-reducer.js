@@ -6,22 +6,22 @@ import warning from './utils/warning';
 
 // Create a resource reducer.
 //
-// `resourceName`: the plural name of your resource. For instance, "books".
+// `resourceType`: the kind of resource that this slice represents. For instance, "books".
 // `options`: pass options to change the behavior of the reducer. See the docs
 //   for more information on the available options.
-export default function resourceReducer(resourceName, options = {}) {
+export default function resourceReducer(resourceType, options = {}) {
   const { plugins = [], initialState = {} } = options;
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,
     ...initialState,
-    resourceName,
+    resourceType,
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    if (typeof resourceName !== 'string') {
+    if (typeof resourceType !== 'string') {
       warning(
-        `The value of "resourceName" that you passed to resourceReducer was ` +
+        `The value of "resourceType" that you passed to resourceReducer was ` +
           `not a string. The resource name must be a string. You should check ` +
           `your reducer configuration.`
       );
@@ -34,7 +34,7 @@ export default function resourceReducer(resourceName, options = {}) {
   );
 
   const computedPlugins = allPlugins.map(plugin => {
-    const result = plugin(resourceName, options);
+    const result = plugin(resourceType, options);
     if (process.env.NODE_ENV !== 'production') {
       if (typeof result !== 'function') {
         warning(

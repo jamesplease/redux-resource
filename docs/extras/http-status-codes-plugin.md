@@ -37,7 +37,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_FAILED,
-  resourceName: 'books',
+  resourceType: 'books',
   resources: [10],
   statusCode: 404
 });

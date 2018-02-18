@@ -1,19 +1,19 @@
 import upsertResources from '../utils/upsert-resources';
 import upsertMeta from '../utils/upsert-meta';
 
-export default resourceName => (state, action) => {
+export default resourceType => (state, action) => {
   if (action.type !== 'UPDATE_RESOURCES') {
     return state;
   }
 
-  const naiveNewResources = action.resources && action.resources[resourceName];
-  const naiveNewMeta = action.meta && action.meta[resourceName];
+  const naiveNewResources = action.resources && action.resources[resourceType];
+  const naiveNewMeta = action.meta && action.meta[resourceType];
 
   let mergeResources;
   if (typeof action.mergeResources === 'boolean') {
     mergeResources = action.mergeResources;
   } else if (typeof action.mergeResources === 'object') {
-    mergeResources = action.mergeResources[resourceName];
+    mergeResources = action.mergeResources[resourceType];
   } else {
     mergeResources = true;
   }
@@ -22,7 +22,7 @@ export default resourceName => (state, action) => {
   if (typeof action.mergeMeta === 'boolean') {
     mergeMeta = action.mergeMeta;
   } else if (typeof action.mergeMeta === 'object') {
-    mergeMeta = action.mergeMeta[resourceName];
+    mergeMeta = action.mergeMeta[resourceType];
   } else {
     mergeMeta = true;
   }
@@ -41,7 +41,7 @@ export default resourceName => (state, action) => {
   }
 
   let newLists = state.lists;
-  const additionalLists = action.lists && action.lists[resourceName];
+  const additionalLists = action.lists && action.lists[resourceType];
 
   if (additionalLists) {
     newLists = {

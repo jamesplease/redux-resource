@@ -42,7 +42,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  resourceName: 'authors',
+  resourceType: 'authors',
   resources: [{
     id: 10,
     name: 'Sarah'

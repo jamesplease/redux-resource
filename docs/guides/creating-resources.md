@@ -64,7 +64,7 @@ export default function createBook(bookDetails) {
   return function(dispatch) {
     dispatch({
       type: actionTypes.CREATE_RESOURCES_PENDING,
-      resourceName: 'books',
+      resourceType: 'books',
       request: 'create'
     });
 
@@ -77,19 +77,19 @@ export default function createBook(bookDetails) {
         if (req.aborted) {
           dispatch({
             type: actionTypes.CREATE_RESOURCES_IDLE,
-            resourceName: 'books',
+            resourceType: 'books',
             request: 'create'
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.CREATE_RESOURCES_FAILED,
-            resourceName: 'books',
+            resourceType: 'books',
             request: 'create'
           });
         } else {
           dispatch({
             type: actionTypes.CREATE_RESOURCES_SUCCEEDED,
-            resourceName: 'books',
+            resourceType: 'books',
             request: 'create',
             resources: [body]
           });

@@ -67,7 +67,7 @@ export default function updateBook(bookDetails) {
   return function(dispatch) {
     dispatch({
       type: actionTypes.UPDATE_RESOURCES_PENDING,
-      resourceName: 'books',
+      resourceType: 'books',
       // You can pass either the whole `bookDetails`, or just the ID. Both work.
       // Just be sure to pass the whole object on success, so that the updated
       // attributes are persisted to your state tree!
@@ -83,19 +83,19 @@ export default function updateBook(bookDetails) {
         if (req.aborted) {
           dispatch({
             type: actionTypes.UPDATE_RESOURCES_IDLE,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [bookDetails.id]
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.UPDATE_RESOURCES_FAILED,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [bookDetails.id]
           });
         } else {
           dispatch({
             type: actionTypes.UPDATE_RESOURCES_SUCCEEDED,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [body]
           });
         }

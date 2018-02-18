@@ -2,12 +2,12 @@ import {
   upsertResources,
   setResourceMeta,
   requestStatuses,
-  actionTypes
+  actionTypes,
 } from 'redux-resource';
 
 // This plugin adds support for "compound documents," or including multiple
 // resource types in a single action.
-export default function includedResources(resourceName, options = {}) {
+export default function includedResources(resourceType, options = {}) {
   return (state, action) => {
     const { initialResourceMeta } = options;
     const { includedResources, mergeMeta, mergeResources, type } = action;
@@ -23,7 +23,7 @@ export default function includedResources(resourceName, options = {}) {
     }
 
     // If there are no included resources for this slice, then we do nothing
-    const includedResourceList = includedResources[resourceName];
+    const includedResourceList = includedResources[resourceType];
 
     if (!includedResourceList) {
       return state;
@@ -39,16 +39,16 @@ export default function includedResources(resourceName, options = {}) {
       resources: includedResourceList,
       meta: state.meta,
       newMeta: {
-        readStatus: requestStatuses.SUCCEEDED
+        readStatus: requestStatuses.SUCCEEDED,
       },
       initialResourceMeta,
-      mergeMeta
+      mergeMeta,
     });
 
     return {
       ...state,
       meta,
-      resources
+      resources,
     };
   };
 }

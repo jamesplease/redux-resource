@@ -12,7 +12,7 @@ describe('reducer', function() {
 
     const state = {
       sandwiches: true,
-      hungry: []
+      hungry: [],
     };
 
     const reduced = reducer(state, { type: 'does_not_exist' });
@@ -20,13 +20,13 @@ describe('reducer', function() {
     expect(console.error.callCount).to.equal(0);
   });
 
-  it('should warn when no resourceName is passed', () => {
+  it('should warn when no resourceType is passed', () => {
     stub(console, 'error');
     resourceReducer();
     expect(console.error.callCount).to.equal(1);
   });
 
-  it('should warn when a non-string resourceName is passed', () => {
+  it('should warn when a non-string resourceType is passed', () => {
     stub(console, 'error');
     resourceReducer({});
     expect(console.error.callCount).to.equal(1);

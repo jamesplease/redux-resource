@@ -64,7 +64,7 @@ export default function readBook(bookId) {
   return function(dispatch) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
-      resourceName: 'books',
+      resourceType: 'books',
       resources: [bookId]
     });
 
@@ -75,19 +75,19 @@ export default function readBook(bookId) {
         if (req.aborted) {
           dispatch({
             type: actionTypes.READ_RESOURCES_IDLE,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [bookId]
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.READ_RESOURCES_FAILED,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [bookId]
           });
         } else {
           dispatch({
             type: actionTypes.READ_RESOURCES_SUCCEEDED,
-            resourceName: 'books',
+            resourceType: 'books',
             resources: [body]
           });
         }
@@ -116,7 +116,7 @@ export default function readBooks(query) {
   return function(dispatch) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
-      resourceName: 'books',
+      resourceType: 'books',
       request: 'search'
     });
 
@@ -129,19 +129,19 @@ export default function readBooks(query) {
         if (req.aborted) {
           dispatch({
             type: actionTypes.READ_RESOURCES_IDLE,
-            resourceName: 'books',
+            resourceType: 'books',
             request: 'search'
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.READ_RESOURCES_FAILED,
-            resourceName: 'books',
+            resourceType: 'books',
             request: 'search'
           });
         } else {
           dispatch({
             type: actionTypes.READ_RESOURCES_SUCCEEDED,
-            resourceName: 'books',
+            resourceType: 'books',
             request: 'search',
             resources: body
           });
