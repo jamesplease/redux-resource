@@ -10,7 +10,7 @@ To begin contributing, you'll first need to
 then navigate into the repository's directory.
 
 ```sh
-git clone git@github.com:jmeas/redux-resource.git
+git clone git@github.com:jamesplease/redux-resource.git
 
 cd redux-resource
 ```

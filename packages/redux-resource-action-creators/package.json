@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jmeas/redux-resource.git"
+    "url": "https://github.com/jamesplease/redux-resource.git"
   },
   "keywords": [
     "redux",
@@ -40,7 +40,7 @@
   "author": "Stephen Rivas Jr <sprjr@me.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jmeas/redux-resource/issues"
+    "url": "https://github.com/jamesplease/redux-resource/issues"
   },
   "files": [
     "dist",

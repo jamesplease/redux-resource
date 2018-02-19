@@ -1,6 +1,6 @@
 {
   "projectName": "redux-resource",
-  "projectOwner": "jmeas",
+  "projectOwner": "jamesplease",
   "files": [
     "README.md",
     "INDEX.md"
@@ -9,7 +9,7 @@
   "commit": true,
   "contributors": [
     {
-      "login": "jmeas",
+      "login": "jamesplease",
       "name": "James, please",
       "avatar_url": "https://avatars3.githubusercontent.com/u/2322305?v=4",
       "profile": "http://www.jmeas.com",
