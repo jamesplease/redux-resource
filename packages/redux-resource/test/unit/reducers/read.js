@@ -689,6 +689,182 @@ describe('reducers: read:', function() {
             status: requestStatuses.FAILED,
           },
           pasta: {
+            requestKey: 'pasta',
+            requestName: 'pasta',
+            ids: [4, 5],
+            status: requestStatuses.SUCCEEDED,
+          },
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            deleteStatus: 'sandwiches',
+          },
+          4: {
+            selected: true,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.IDLE,
+          },
+          5: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.IDLE,
+          },
+        },
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('returns state with resource object and request key+name, ensuring no request ID dupes', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' },
+          },
+          lists: {},
+          requests: {
+            sandwiches: {
+              ids: [1, 3],
+              status: requestStatuses.FAILED,
+            },
+            abc12345: {
+              ids: [4],
+              status: requestStatuses.PENDING,
+            },
+          },
+          meta: {
+            1: {
+              name: 'what',
+            },
+            3: {
+              deleteStatus: 'sandwiches',
+            },
+            4: {
+              selected: true,
+            },
+          },
+        },
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        requestKey: 'abc12345',
+        requestName: 'readStuff',
+        resources: [{ id: 4, name: 'sandwiches' }, 5],
+      });
+
+      expect(reduced).to.deep.equal({
+        resourceType: 'hellos',
+        resources: {
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 },
+        },
+        lists: {},
+        requests: {
+          sandwiches: {
+            ids: [1, 3],
+            status: requestStatuses.FAILED,
+          },
+          abc12345: {
+            requestKey: 'abc12345',
+            requestName: 'readStuff',
+            ids: [4, 5],
+            status: requestStatuses.SUCCEEDED,
+          },
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            deleteStatus: 'sandwiches',
+          },
+          4: {
+            selected: true,
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.IDLE,
+          },
+          5: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.SUCCEEDED,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.IDLE,
+          },
+        },
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('returns state with resource object and request key + no name, ensuring no request ID dupes', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' },
+          },
+          lists: {},
+          requests: {
+            sandwiches: {
+              ids: [1, 3],
+              status: requestStatuses.FAILED,
+            },
+            abc12345: {
+              ids: [4],
+              status: requestStatuses.PENDING,
+            },
+          },
+          meta: {
+            1: {
+              name: 'what',
+            },
+            3: {
+              deleteStatus: 'sandwiches',
+            },
+            4: {
+              selected: true,
+            },
+          },
+        },
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        requestKey: 'abc12345',
+        resources: [{ id: 4, name: 'sandwiches' }, 5],
+      });
+
+      expect(reduced).to.deep.equal({
+        resourceType: 'hellos',
+        resources: {
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, name: 'sandwiches', lastName: 'camomile' },
+          5: { id: 5 },
+        },
+        lists: {},
+        requests: {
+          sandwiches: {
+            ids: [1, 3],
+            status: requestStatuses.FAILED,
+          },
+          abc12345: {
+            requestKey: 'abc12345',
             ids: [4, 5],
             status: requestStatuses.SUCCEEDED,
           },
@@ -781,6 +957,8 @@ describe('reducers: read:', function() {
             status: requestStatuses.FAILED,
           },
           pasta: {
+            requestKey: 'pasta',
+            requestName: 'pasta',
             ids: [4, 5],
             status: requestStatuses.SUCCEEDED,
           },
@@ -864,6 +1042,8 @@ describe('reducers: read:', function() {
             status: requestStatuses.FAILED,
           },
           pasta: {
+            requestKey: 'pasta',
+            requestName: 'pasta',
             ids: [4, 5],
             status: requestStatuses.SUCCEEDED,
           },
@@ -1146,6 +1326,8 @@ describe('reducers: read:', function() {
             status: requestStatuses.FAILED,
           },
           pasta: {
+            requestKey: 'pasta',
+            requestName: 'pasta',
             ids: [],
             status: requestStatuses.SUCCEEDED,
           },

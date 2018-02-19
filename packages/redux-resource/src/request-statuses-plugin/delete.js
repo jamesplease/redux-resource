@@ -10,9 +10,15 @@ const delIdle = reducerGenerator('delete', requestStatuses.IDLE);
 function delSucceed(state, action, { initialResourceMeta }) {
   const resources = action.resources;
 
-  let request;
+  let requestKey, requestName;
   if (action.request && typeof action.request === 'string') {
-    request = action.request;
+    requestKey = requestName = action.request;
+  }
+  if (action.requestKey && typeof action.requestKey === 'string') {
+    requestKey = action.requestKey;
+  }
+  if (action.requestName && typeof action.requestName === 'string') {
+    requestName = action.requestName;
   }
 
   if (process.env.NODE_ENV !== 'production') {
@@ -85,8 +91,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
 
   const hasIds = idList && idList.length;
 
-  // If we have no IDs nor request, then there is nothing to update
-  if (!hasIds && !request) {
+  // If we have no IDs nor requestKey, then there is nothing to update
+  if (!hasIds && !requestKey) {
     return state;
   }
 
@@ -97,15 +103,21 @@ function delSucceed(state, action, { initialResourceMeta }) {
   const requests = state.requests;
   const lists = state.lists;
 
-  if (request) {
-    const existingRequest = requests[request] || {};
+  if (requestKey) {
+    const existingRequest = requests[requestKey] || {};
+    const newRequest = {
+      ...existingRequest,
+      requestKey,
+      status: requestStatuses.SUCCEEDED,
+      ids: idList || [],
+    };
+
+    if (requestName) {
+      newRequest.requestName = requestName;
+    }
     newRequests = {
       ...requests,
-      [request]: {
-        ...existingRequest,
-        status: requestStatuses.SUCCEEDED,
-        ids: idList || [],
-      },
+      [requestKey]: newRequest,
     };
   } else {
     newRequests = requests;
