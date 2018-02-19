@@ -7,7 +7,7 @@ it is not possible for the main library to provide a caching mechanism.
 
 With that said, bindings for view libraries, such as React, are the perfect place for
 caching to be implemented. Official React bindings for Redux Resource are in the works, and
-they will be built using [React Request](https://github.com/jmeas/react-request), a powerful,
+they will be built using [React Request](https://github.com/jamesplease/react-request), a powerful,
 declarative HTTP library for React.
 
 This recipe contains tips that could help you if you're interested in writing your own
@@ -21,9 +21,9 @@ that we recommend doing it is by using [named requests](/docs/guides/named-reque
 Here's how it works with React Request:
 
 React Request implements its own
-[caching system](https://github.com/jmeas/react-request/blob/master/docs/guides/response-caching.md).
+[caching system](https://github.com/jamesplease/react-request/blob/master/docs/guides/response-caching.md).
 Its caching is powered by a string called a
-["request key"](https://github.com/jmeas/react-request/blob/master/docs/guides/request-keys.md) based
+["request key"](https://github.com/jamesplease/react-request/blob/master/docs/guides/request-keys.md) based
 on the request configuration you pass to it. Two requests with the same key are considered identical.
 
 This automatically-generated "request key" will be used as the Redux Resource request name, which is

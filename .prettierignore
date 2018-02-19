@@ -7,3 +7,4 @@ docs
 coverage
 .vscode
 .nyc_output
+*.md

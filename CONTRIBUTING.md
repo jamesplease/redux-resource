@@ -2,7 +2,7 @@
 
 > :wave: Hey there! Thanks for your interest in helping out. If you happen to
 run into any issues following this guide, please
-[open an issue](https://github.com/jmeas/redux-resource/issues/new?title=Contributing+help),
+[open an issue](https://github.com/jamesplease/redux-resource/issues/new?title=Contributing+help),
 and we'll do our best to help out.
 
 To begin contributing, you'll first need to
@@ -74,7 +74,7 @@ These scripts are useful when working on the website.
 
 If you make a contribution to this project, you should go ahead and add yourself
 to the list of contributors on the
-[README](https://github.com/jmeas/redux-resource#contributors) and the
+[README](https://github.com/jamesplease/redux-resource#contributors) and the
 [website](https://redux-resource.js.org/#contributors).
 
 To add yourself, run this command from the terminal:

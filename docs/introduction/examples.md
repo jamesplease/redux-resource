@@ -1,14 +1,14 @@
 # Examples
 
 A number of examples are distributed with the library's
-[source code](https://github.com/jmeas/redux-resource).
+[source code](https://github.com/jamesplease/redux-resource).
 
 ### Read Resource
 
 To run this example:
 
 ```
-git clone https://github.com/jmeas/redux-resource.git
+git clone https://github.com/jamesplease/redux-resource.git
 
 cd redux-resource/examples/read-resource
 npm install
@@ -32,7 +32,7 @@ like. Two differences between a real-world application and this example are:
 To run this example:
 
 ```
-git clone https://github.com/jmeas/redux-resource.git
+git clone https://github.com/jamesplease/redux-resource.git
 
 cd redux-resource/examples/lists-and-named-requests
 npm install
@@ -61,7 +61,7 @@ This is a list of open-source projects that are using Redux Resource.
 - [Chronos Timetracker](https://github.com/web-pal/chronos-timetracker): A desktop client
   for JIRA.
 
-- [Zero boilerplate redux](https://github.com/jmeas/zero-boilerplate-redux): A simple
+- [Zero boilerplate redux](https://github.com/jamesplease/zero-boilerplate-redux): A simple
   recreation of the GitHub Gists webapp.
 
 > Do you have an open source project that uses Redux Resource that you would like to

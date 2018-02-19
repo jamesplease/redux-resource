@@ -16,7 +16,7 @@ technologies:
 - [GraphQL](#graphql)
 
 > Would you like us to include a guide for a technology not listed here? Just
-  [open an issue](https://github.com/jmeas/redux-resource/issues/new?title=related%20resource%20plugin&body=I%27d%20like%20to%20see%20a%20related%20resource%20guide%20for%20a%20new%20technology)!
+  [open an issue](https://github.com/jamesplease/redux-resource/issues/new?title=related%20resource%20plugin&body=I%27d%20like%20to%20see%20a%20related%20resource%20guide%20for%20a%20new%20technology)!
 
 ### normalizr
 
@@ -114,7 +114,7 @@ At the moment, the easiest way to support JSON API compound documents is to use
 the [jsonapi-normalizr](https://github.com/maxatwork/jsonapi-normalizr) library, and then
 follow the normalizr guide above.
 
-An official JSON API plugin is being [planned](https://github.com/jmeas/redux-resource/issues/38).
+An official JSON API plugin is being [planned](https://github.com/jamesplease/redux-resource/issues/38).
 We would love your help!
 
 If you would like to try your hand at writing a JSON API relationship plugin, here are a few tips.
@@ -133,5 +133,5 @@ slice.
 
 We would love to support GraphQL, but we need your help. If you're interested in helping out,
 please
-[open an issue](https://github.com/jmeas/redux-resource/issues/new?title=GraphQL%20plugin&body=I%27m%20interested%20in%20helping%20out%20with%20a%20GraphQL%20plugin)
+[open an issue](https://github.com/jamesplease/redux-resource/issues/new?title=GraphQL%20plugin&body=I%27m%20interested%20in%20helping%20out%20with%20a%20GraphQL%20plugin)
 to chat about it. Thank you!
