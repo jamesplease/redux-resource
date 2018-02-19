@@ -14,8 +14,8 @@
   <a href="https://www.npmjs.com/package/redux-resource">
     <img src="https://img.shields.io/npm/v/redux-resource.svg" alt="Redux Resource NPM Package" />
   </a>
-  <a href="https://codeclimate.com/github/jmeas/redux-resource">
-    <img src="https://codeclimate.com/github/jmeas/redux-resource/badges/coverage.svg" alt="Redux Resource Code Coverage" />
+  <a href="https://coveralls.io/github/jamesplease/redux-resource?branch=master">
+    <img src="https://coveralls.io/repos/github/jamesplease/redux-resource/badge.svg?branch=master" alt="Redux Resource Code Coverage" />
   </a>
   <a href="https://unpkg.com/redux-resource/dist/redux-resource.min.js">
     <img src="http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip" alt="Redux Resource gzip Size" />
