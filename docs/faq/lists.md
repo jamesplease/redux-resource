@@ -52,5 +52,5 @@ There are a few reasons.
 We understand that `mergeListIds` is one of those attributes that you'll frequently be
 setting to false. We believe the reasons above justify keeping it `true` by default, but
 if you disagree, feel free to
-[open an issue](https://github.com/jmeas/redux-resource/issues/new?title=mergeListIds+defaults+to+true)
+[open an issue](https://github.com/jamesplease/redux-resource/issues/new?title=mergeListIds+defaults+to+true)
 and we'd be happy to discuss it further with you!

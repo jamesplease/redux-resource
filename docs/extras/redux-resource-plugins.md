@@ -8,7 +8,7 @@ The plugins are a collection of common patterns that you may find yourself
 needing when writing a CRUD application.
 
 Do you find yourself using the same plugin over and over?
-[Let us know](https://github.com/jmeas/redux-resource/issues/new?title=New+plugin+suggestion),
+[Let us know](https://github.com/jamesplease/redux-resource/issues/new?title=New+plugin+suggestion),
 and it might find its way into this package!
 
 ### Installation

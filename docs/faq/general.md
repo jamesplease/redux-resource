@@ -21,7 +21,7 @@ Redux Resource does not work well with libraries like
 [Immutable.js](https://facebook.github.io/immutable-js/), although we're open
 to adding support for Immutable if it doesn't bloat the library too much. If
 this is something you're interested in,
-[open an issue](https://github.com/jmeas/redux-resource/issues/new) and we
+[open an issue](https://github.com/jamesplease/redux-resource/issues/new) and we
 can talk more about it.
 
 #### Does this only work with APIs that return data in a specific format?
