@@ -427,6 +427,252 @@ describe('reducers: delete', function() {
         lists: {},
         requests: {
           italiano: {
+            requestKey: 'italiano',
+            requestName: 'italiano',
+            status: requestStatuses.SUCCEEDED,
+            ids: [3, 4],
+            hangry: false,
+          },
+          oink: {
+            ids: [10, 3],
+            hungry: true,
+          },
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.SUCCEEDED,
+          },
+          4: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.SUCCEEDED,
+          },
+        },
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('returns the right state with a request key and name, with IDs', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4 },
+          },
+          lists: {},
+          requests: {
+            oink: {
+              hungry: true,
+              ids: [10, 3],
+            },
+            abc12345: {
+              status: requestStatuses.PENDING,
+              ids: [1, 3, 4],
+              hangry: false,
+            },
+          },
+          meta: {
+            1: {
+              name: 'what',
+            },
+            3: {
+              deleteStatus: 'sandwiches',
+            },
+          },
+        },
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        requestKey: 'abc12345',
+        requestName: 'deleteStuff',
+        resources: [3, { id: 4 }],
+      });
+
+      expect(reduced).to.deep.equal({
+        resourceType: 'hellos',
+        resources: {
+          1: { id: 1 },
+          3: null,
+          4: null,
+        },
+        lists: {},
+        requests: {
+          abc12345: {
+            requestKey: 'abc12345',
+            requestName: 'deleteStuff',
+            status: requestStatuses.SUCCEEDED,
+            ids: [3, 4],
+            hangry: false,
+          },
+          oink: {
+            ids: [10, 3],
+            hungry: true,
+          },
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.SUCCEEDED,
+          },
+          4: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.SUCCEEDED,
+          },
+        },
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('returns the right state with a request key and request name, with IDs', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4 },
+          },
+          lists: {},
+          requests: {
+            oink: {
+              hungry: true,
+              ids: [10, 3],
+            },
+            abc12345: {
+              status: requestStatuses.PENDING,
+              ids: [1, 3, 4],
+              hangry: false,
+            },
+          },
+          meta: {
+            1: {
+              name: 'what',
+            },
+            3: {
+              deleteStatus: 'sandwiches',
+            },
+          },
+        },
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        requestKey: 'abc12345',
+        requestName: 'deleteStuff',
+        resources: [3, { id: 4 }],
+      });
+
+      expect(reduced).to.deep.equal({
+        resourceType: 'hellos',
+        resources: {
+          1: { id: 1 },
+          3: null,
+          4: null,
+        },
+        lists: {},
+        requests: {
+          abc12345: {
+            requestKey: 'abc12345',
+            requestName: 'deleteStuff',
+            status: requestStatuses.SUCCEEDED,
+            ids: [3, 4],
+            hangry: false,
+          },
+          oink: {
+            ids: [10, 3],
+            hungry: true,
+          },
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.SUCCEEDED,
+          },
+          4: {
+            createStatus: requestStatuses.IDLE,
+            readStatus: requestStatuses.IDLE,
+            updateStatus: requestStatuses.IDLE,
+            deleteStatus: requestStatuses.SUCCEEDED,
+          },
+        },
+      });
+      expect(console.error.callCount).to.equal(0);
+    });
+
+    it('returns the right state with a request key and no request name, with IDs', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4 },
+          },
+          lists: {},
+          requests: {
+            oink: {
+              hungry: true,
+              ids: [10, 3],
+            },
+            abc12345: {
+              status: requestStatuses.PENDING,
+              ids: [1, 3, 4],
+              hangry: false,
+            },
+          },
+          meta: {
+            1: {
+              name: 'what',
+            },
+            3: {
+              deleteStatus: 'sandwiches',
+            },
+          },
+        },
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'DELETE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+        requestKey: 'abc12345',
+        resources: [3, { id: 4 }],
+      });
+
+      expect(reduced).to.deep.equal({
+        resourceType: 'hellos',
+        resources: {
+          1: { id: 1 },
+          3: null,
+          4: null,
+        },
+        lists: {},
+        requests: {
+          abc12345: {
+            requestKey: 'abc12345',
             status: requestStatuses.SUCCEEDED,
             ids: [3, 4],
             hangry: false,
@@ -652,6 +898,8 @@ describe('reducers: delete', function() {
         },
         requests: {
           italiano: {
+            requestKey: 'italiano',
+            requestName: 'italiano',
             status: requestStatuses.SUCCEEDED,
             ids: [],
             hangry: false,

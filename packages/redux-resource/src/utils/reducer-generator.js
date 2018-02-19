@@ -18,9 +18,15 @@ export default function(crudAction, requestStatus) {
     const resources = action.resources;
     const mergeMeta = action.mergeMeta;
 
-    let request;
+    let requestKey, requestName;
     if (action.request && typeof action.request === 'string') {
-      request = action.request;
+      requestKey = requestName = action.request;
+    }
+    if (action.requestKey && typeof action.requestKey === 'string') {
+      requestKey = action.requestKey;
+    }
+    if (action.requestName && typeof action.requestName === 'string') {
+      requestName = action.requestName;
     }
 
     let idList;
@@ -39,11 +45,11 @@ export default function(crudAction, requestStatus) {
     const statusAttribute = `${crudAction}Status`;
     let newRequests, newMeta, newLists;
 
-    if (!request && !idList.length) {
+    if (!requestKey && !idList.length) {
       if (process.env.NODE_ENV !== 'production') {
         warning(
           `A Redux Resource action of type ${action.type} was dispatched ` +
-            `without a "request" or "resources" array. Without one of these ` +
+            `without a "requestKey" or "resources" array. Without one of these ` +
             `values, Redux Resource cannot track the request status for this` +
             `CRUD operation. You should check your Action Creators. Read more about` +
             `request tracking at: https://redux-resource.js.org/docs/guides/tracking-requests.html`
@@ -53,15 +59,22 @@ export default function(crudAction, requestStatus) {
       return state;
     }
 
-    if (request) {
-      const existingRequest = state.requests[request] || {};
+    if (requestKey) {
+      const existingRequest = state.requests[requestKey] || {};
+
+      const newRequest = {
+        ...existingRequest,
+        requestKey,
+        status: requestStatus,
+      };
+
+      if (requestName) {
+        newRequest.requestName = requestName;
+      }
 
       newRequests = {
         ...state.requests,
-        [request]: {
-          ...existingRequest,
-          status: requestStatus
-        }
+        [requestKey]: newRequest,
       };
     } else {
       newRequests = state.requests;
@@ -78,8 +91,8 @@ export default function(crudAction, requestStatus) {
         mergeMeta,
         initialResourceMeta: {
           ...initialResourceMetaState,
-          ...initialResourceMeta
-        }
+          ...initialResourceMeta,
+        },
       });
     } else {
       newMeta = state.meta;
@@ -89,7 +102,7 @@ export default function(crudAction, requestStatus) {
       ...state,
       requests: newRequests,
       lists: newLists,
-      meta: newMeta
+      meta: newMeta,
     };
   };
 }
