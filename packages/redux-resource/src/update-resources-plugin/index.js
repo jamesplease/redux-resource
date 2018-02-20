@@ -14,6 +14,8 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
 
   const naiveNewResources = action.resources && action.resources[resourceType];
   const naiveNewMeta = action.meta && action.meta[resourceType];
+  const additionalLists = action.lists && action.lists[resourceType];
+
   if (action.type === 'UPDATE_RESOURCES') {
     if (process.env.NODE_ENV !== 'production') {
       if (typeof action.mergeListIds !== 'undefined') {
@@ -22,6 +24,13 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
             `This property only works for the request action types (such as ` +
             `READ_RESOURCES_PENDING). When using UPDATE_RESOURCES, you must modify the ` +
             `list yourself, and then pass the new list to the action creator.`
+        );
+      }
+
+      if (!action.resources && !action.meta && !action.lists) {
+        warning(
+          `You dispatched an UPDATE_RESOURCES action without any resources, meta, ` +
+            `or lists, so the store will not be updated.`
         );
       }
     }
@@ -58,7 +67,6 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
     }
 
     let newLists = state.lists;
-    const additionalLists = action.lists && action.lists[resourceType];
 
     if (additionalLists) {
       newLists = {
@@ -75,6 +83,13 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
       lists: newLists,
     };
   } else {
+    if (!naiveNewResources && !naiveNewMeta) {
+      warning(
+        `You dispatched a DELETE_RESOURCES action without any resources or meta, ` +
+          `so the store will not be updated.`
+      );
+    }
+
     let idList;
     if (naiveNewResources && naiveNewResources.map) {
       idList = naiveNewResources.map(r => {

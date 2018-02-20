@@ -38,7 +38,7 @@ describe('reducers: DELETE_RESOURCES', function() {
         ...initialState,
         resourceType: 'hellos',
       });
-      expect(console.error.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(1);
     });
   });
 

@@ -38,7 +38,7 @@ describe('reducers: UPDATE_RESOURCES', function() {
         ...initialState,
         resourceType: 'hellos',
       });
-      expect(console.error.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(1);
     });
   });
 
@@ -73,6 +73,11 @@ describe('reducers: UPDATE_RESOURCES', function() {
 
       const reduced = reducer(undefined, {
         type: 'UPDATE_RESOURCES',
+        resources: {
+          // It is important that this is not "hellos". This verifies that the
+          // reducer will only log when the resources object is entirely empty
+          books: [1, 2, 3],
+        },
         mergeListIds: false,
       });
 
