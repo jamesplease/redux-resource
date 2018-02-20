@@ -1,5 +1,40 @@
 # HTTP Status Codes Plugin
 
+##### Deprecation Notice
+
+This plugin is no longer needed as of Redux Resource v3.0.0. In Redux
+Resource v3.0.0, you may attach an HTTP Status Code (and any other
+information) onto a request object by specifying
+`requestProperties` within an action.
+
+For instance,
+
+```js
+dispatch({
+  type: 'READ_RESOURCES_FAILED',
+  resourceType: 'books',
+  requestKey: 'searchBooks',
+  requestProperties: {
+    statusCode: 404
+  }
+});
+
+// => resource object:
+//
+// {
+//   requestKey: 'searchBooks',
+//   status: 'FAILED',
+//   statusCode: 404
+// }
+```
+
+If you are using the Redux Resource XHR library, then the HTTP status codes will
+automatically be attached to your request objects.
+
+---
+
+### Documentation
+
 Add this plugin to keep track of status codes of your HTTP Requests. This is
 useful because status codes give you more detail information about your
 in-flight requests.

@@ -85,12 +85,14 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
       lists: newLists,
     };
   } else {
-    if (!naiveNewResources && !naiveNewMeta) {
-      warning(
-        `You dispatched a DELETE_RESOURCES action without any resources or meta, ` +
-          `so the store will not be updated.`,
-        'DELETE_RESOURCES_NO_OP'
-      );
+    if (process.env.NODE_ENV !== 'production') {
+      if (!naiveNewResources && !naiveNewMeta) {
+        warning(
+          `You dispatched a DELETE_RESOURCES action without any resources or meta, ` +
+            `so the store will not be updated.`,
+          'DELETE_RESOURCES_NO_OP'
+        );
+      }
     }
 
     let idList;
