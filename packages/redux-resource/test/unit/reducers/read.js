@@ -1,6 +1,11 @@
 import { resourceReducer, requestStatuses } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: read:', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   describe('READ_RESOURCES_PENDING:', () => {
     it('should warn and not set a badly configured request name', () => {
       stub(console, 'error');
@@ -34,7 +39,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_PENDING',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: true,
         resources: [4, 5],
       });
@@ -106,7 +111,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_PENDING',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [4, 5],
       });
 
@@ -147,7 +152,7 @@ describe('reducers: read:', function() {
   });
 
   describe('READ_RESOURCES_SUCCEEDED:', () => {
-    it('warns when no resourceName is passed', () => {
+    it('warns when no resourceType is passed', () => {
       stub(console, 'error');
       const initialState = {
         resources: {
@@ -213,7 +218,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: {
           id: 20,
           firstName: 'sandwiches',
@@ -255,7 +260,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
       });
 
       expect(reduced).to.deep.equal({
@@ -295,7 +300,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
 
@@ -360,7 +365,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         mergeResources: false,
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -425,7 +430,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         mergeMeta: false,
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -499,7 +504,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: {},
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -584,7 +589,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         list: {},
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -669,7 +674,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: 'pasta',
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -756,7 +761,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         requestKey: 'abc12345',
         requestName: 'readStuff',
         resources: [{ id: 4, name: 'sandwiches' }, 5],
@@ -844,7 +849,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         requestKey: 'abc12345',
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -933,7 +938,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: 'pasta',
         list: 'pasta',
         resources: [{ id: 4, name: 'sandwiches' }, 5],
@@ -1022,7 +1027,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: 'pasta',
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -1098,7 +1103,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         list: 'pasta',
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
@@ -1168,7 +1173,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         list: 'pasta',
         mergeListIds: false,
         resources: [{ id: 4, name: 'sandwiches' }, 5],
@@ -1240,7 +1245,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         list: 'pasta',
         mergeListIds: false,
         resources: [],
@@ -1308,7 +1313,7 @@ describe('reducers: read:', function() {
 
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: 'pasta',
       });
 
@@ -1379,7 +1384,7 @@ describe('reducers: read:', function() {
 
     const reduced = reducer(undefined, {
       type: 'READ_RESOURCES_SUCCEEDED',
-      resourceName: 'hellos',
+      resourceType: 'hellos',
       list: 'pasta',
     });
 

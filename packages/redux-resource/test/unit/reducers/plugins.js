@@ -1,6 +1,11 @@
 import { resourceReducer, actionTypes } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducer', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   it('should warn when a bad plugin is initialized', () => {
     stub(console, 'error');
 

@@ -1,11 +1,14 @@
 import { upsertResources } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('upsertResources', function() {
   beforeEach(() => {
+    resetCodeCache();
+
     this.resources = {
       1: { id: 1, first_name: 'james', last_name: 'please' },
       5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
-      7: { id: 7, first_name: 'shilpa', last_name: 'm' }
+      7: { id: 7, first_name: 'shilpa', last_name: 'm' },
     };
   });
 
@@ -44,7 +47,7 @@ describe('upsertResources', function() {
       expect(result).to.deep.equal({
         1: { id: 1, first_name: 'oink' },
         5: { id: 5 },
-        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
       });
 
       // Shallow clones the resources obj
@@ -56,7 +59,7 @@ describe('upsertResources', function() {
         this.resources,
         {
           1: { id: 1, first_name: 'oink' },
-          5: { id: 5 }
+          5: { id: 5 },
         },
         false
       );
@@ -64,7 +67,7 @@ describe('upsertResources', function() {
       expect(result).to.deep.equal({
         1: { id: 1, first_name: 'oink' },
         5: { id: 5 },
-        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
       });
 
       // Shallow clones the resources obj
@@ -82,7 +85,7 @@ describe('upsertResources', function() {
         1: { id: 1, first_name: 'james', last_name: 'please' },
         5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
         7: { id: 7, first_name: 'shilpa', last_name: 'm' },
-        10: { id: 10, first_name: 'oink' }
+        10: { id: 10, first_name: 'oink' },
       });
 
       // Shallow clones the resources obj
@@ -100,7 +103,7 @@ describe('upsertResources', function() {
         1: { id: 1, first_name: 'james', last_name: 'please' },
         5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
         7: { id: 7, first_name: 'shilpa', last_name: 'm' },
-        10: { id: 10, first_name: 'oink' }
+        10: { id: 10, first_name: 'oink' },
       });
 
       // Shallow clones the resources obj
@@ -114,7 +117,7 @@ describe('upsertResources', function() {
         1: { id: 1, first_name: 'james', last_name: 'please' },
         5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
         7: { id: 7, first_name: 'shilpa', last_name: 'm' },
-        10: { id: 10 }
+        10: { id: 10 },
       });
 
       // Shallow clones the resources obj
@@ -133,7 +136,7 @@ describe('upsertResources', function() {
       expect(result).to.deep.equal({
         1: { id: 1, first_name: 'oink' },
         5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
-        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
       });
 
       // Shallow clones the resources obj
@@ -155,7 +158,7 @@ describe('upsertResources', function() {
       expect(result).to.deep.equal({
         1: { id: 1, first_name: 'oink' },
         5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
-        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
       });
 
       // Shallow clones the resources obj
@@ -173,7 +176,7 @@ describe('upsertResources', function() {
       expect(result).to.deep.equal({
         1: { id: 1 },
         5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
-        7: { id: 7, first_name: 'shilpa', last_name: 'm' }
+        7: { id: 7, first_name: 'shilpa', last_name: 'm' },
       });
 
       // Shallow clones the resources obj
@@ -196,7 +199,7 @@ describe('upsertResources', function() {
         1: { id: 1, first_name: 'james', last_name: 'please' },
         5: { id: 5, first_name: 'stephen', last_name: 'rjr' },
         7: { id: 7, first_name: 'shilpa', last_name: 'm' },
-        10: { id: 10, first_name: 'oink' }
+        10: { id: 10, first_name: 'oink' },
       });
 
       // Shallow clones the resources obj

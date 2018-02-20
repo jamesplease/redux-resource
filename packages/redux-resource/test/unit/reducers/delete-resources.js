@@ -1,6 +1,11 @@
 import { resourceReducer, requestStatuses } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: DELETE_RESOURCES', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   describe('When nothing else is passed', () => {
     it('does not change the state', () => {
       stub(console, 'error');
@@ -38,7 +43,7 @@ describe('reducers: DELETE_RESOURCES', function() {
         ...initialState,
         resourceType: 'hellos',
       });
-      expect(console.error.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(1);
     });
   });
 

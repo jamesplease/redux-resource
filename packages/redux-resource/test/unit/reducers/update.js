@@ -1,6 +1,11 @@
 import { resourceReducer } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: update', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   // Intentionally mostly-empty. Refer to the read reducer tests and the
   // reducer-generator tests
 
@@ -78,7 +83,7 @@ describe('reducers: update', function() {
         ...initialState,
         resourceType: 'hellos',
       });
-      expect(console.error.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(2);
     });
   });
 });

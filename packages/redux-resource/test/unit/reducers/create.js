@@ -1,8 +1,13 @@
 import { resourceReducer } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: create', function() {
   // Intentionally mostly-empty. Refer to the read reducer tests and the
   // reducer-generator tests
+
+  beforeEach(() => {
+    resetCodeCache();
+  });
 
   describe('CREATE_RESOURCES_SUCCEEDED:', () => {
     it('returns the right state without a request name, without IDs', () => {
@@ -82,7 +87,7 @@ describe('reducers: create', function() {
         ...initialState,
         resourceType: 'hellos',
       });
-      expect(console.error.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(2);
     });
   });
 });

@@ -50,6 +50,31 @@ export default function resourceReducer(resourceType, options = {}) {
 
   return function reducer(state = initial, action) {
     if (process.env.NODE_ENV !== 'production') {
+      if (
+        action.type === 'REQUEST_PENDING' ||
+        action.type === 'REQUEST_IDLE' ||
+        action.type === 'REQUEST_FAILED' ||
+        action.type === 'REQUEST_SUCCEEDED'
+      ) {
+        warning(
+          `You dispatched an action with type ${
+            action.type
+          }. This is a reserved ` +
+            `action type that will be used in a future version of Redux Resource. ` +
+            `We recommend that you use a different type to avoid conflict.`
+        );
+      }
+
+      if (action.resourceName && typeof action.resourceName === 'string') {
+        warning(
+          `You dispatched an action of type ${
+            action.type
+          } with a "resourceName" property. This property been ` +
+            `deprecated in favor of "resourceType." This new property behaves ` +
+            `exactly the same; it simply has been renamed. Please update your action creators.`
+        );
+      }
+
       if (action.request && typeof action.request !== 'string') {
         warning(
           `An invalid request name was included in an action with type ` +

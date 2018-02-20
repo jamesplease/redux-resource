@@ -1,6 +1,11 @@
 import { resourceReducer } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: UPDATE_RESOURCES', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   describe('When nothing else is passed', () => {
     it('does not change the state', () => {
       stub(console, 'error');
@@ -38,7 +43,54 @@ describe('reducers: UPDATE_RESOURCES', function() {
         ...initialState,
         resourceType: 'hellos',
       });
-      expect(console.error.callCount).to.equal(0);
+      expect(console.error.callCount).to.equal(1);
+    });
+  });
+
+  describe('When `mergeListIds` is passed', () => {
+    it('logs a warning to the console', () => {
+      stub(console, 'error');
+      const initialState = {
+        resources: {
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4 },
+        },
+        requests: {
+          pasta: {
+            hungry: true,
+          },
+        },
+        lists: {
+          bookmarks: [1, 2, 3],
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            deleteStatus: 'sandwiches',
+          },
+        },
+      };
+
+      const reducer = resourceReducer('hellos', { initialState });
+
+      const reduced = reducer(undefined, {
+        type: 'UPDATE_RESOURCES',
+        resources: {
+          // It is important that this is not "hellos". This verifies that the
+          // reducer will only log when the resources object is entirely empty
+          books: [1, 2, 3],
+        },
+        mergeListIds: false,
+      });
+
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceType: 'hellos',
+      });
+      expect(console.error.callCount).to.equal(1);
     });
   });
 
