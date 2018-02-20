@@ -15,6 +15,17 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
   const naiveNewResources = action.resources && action.resources[resourceType];
   const naiveNewMeta = action.meta && action.meta[resourceType];
   if (action.type === 'UPDATE_RESOURCES') {
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof action.mergeListIds !== 'undefined') {
+        warning(
+          `You passed the "mergeListId" properties to an UPDATE_RESOURCES action. ` +
+            `This property only works for the request action types (such as ` +
+            `READ_RESOURCES_PENDING). When using UPDATE_RESOURCES, you must modify the ` +
+            `list yourself, and then pass the new list to the action creator.`
+        );
+      }
+    }
+
     let mergeResources;
     if (typeof action.mergeResources === 'boolean') {
       mergeResources = action.mergeResources;
