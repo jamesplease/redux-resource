@@ -78,7 +78,7 @@ describe('reducers: update', function() {
         ...initialState,
         resourceType: 'hellos',
       });
-      expect(console.error.callCount).to.equal(1);
+      expect(console.error.callCount).to.equal(2);
     });
   });
 });

@@ -65,6 +65,16 @@ export default function resourceReducer(resourceType, options = {}) {
         );
       }
 
+      if (action.resourceName && typeof action.resourceName === 'string') {
+        warning(
+          `You dispatched an action of type ${
+            action.type
+          } with a "resourceName" property. This property been ` +
+            `deprecated in favor of "resourceType." This new property behaves ` +
+            `exactly the same; it simply has been renamed. Please update your action creators.`
+        );
+      }
+
       if (action.request && typeof action.request !== 'string') {
         warning(
           `An invalid request name was included in an action with type ` +

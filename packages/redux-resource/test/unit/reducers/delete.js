@@ -26,7 +26,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
       });
 
       expect(reduced).to.deep.equal({
@@ -63,7 +63,7 @@ describe('reducers: delete', function() {
 
       reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [3, { name: 'sandwiches' }],
       });
 
@@ -97,7 +97,7 @@ describe('reducers: delete', function() {
 
       reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         list: 'stuff',
         resources: [3],
       });
@@ -132,7 +132,7 @@ describe('reducers: delete', function() {
 
       reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [true, { id: 3 }],
       });
 
@@ -166,7 +166,7 @@ describe('reducers: delete', function() {
 
       reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: { id: 4 },
       });
 
@@ -200,7 +200,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [3, { id: 4 }],
       });
 
@@ -263,7 +263,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [0, { id: 4 }],
       });
 
@@ -333,7 +333,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: {},
         resources: [3, { id: 4 }],
       });
@@ -412,7 +412,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: 'italiano',
         resources: [3, { id: 4 }],
       });
@@ -493,7 +493,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         requestKey: 'abc12345',
         requestName: 'deleteStuff',
         resources: [3, { id: 4 }],
@@ -575,7 +575,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         requestKey: 'abc12345',
         requestName: 'deleteStuff',
         resources: [3, { id: 4 }],
@@ -657,7 +657,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         requestKey: 'abc12345',
         resources: [3, { id: 4 }],
       });
@@ -737,7 +737,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [3, { id: 4 }],
       });
 
@@ -808,7 +808,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         resources: [3, { id: 4 }],
       });
 
@@ -881,7 +881,7 @@ describe('reducers: delete', function() {
 
       const reduced = reducer(undefined, {
         type: 'DELETE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos',
+        resourceType: 'hellos',
         request: 'italiano',
       });
 

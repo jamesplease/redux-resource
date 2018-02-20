@@ -32,6 +32,22 @@ describe('reducer', function() {
     expect(console.error.callCount).to.equal(1);
   });
 
+  it('should warn when a resourceName is passed', () => {
+    stub(console, 'error');
+    const reducer = resourceReducer('books');
+    expect(console.error.callCount).to.equal(0);
+
+    reducer(
+      {},
+      {
+        type: 'UPDATE_RESOURCES_PENDING',
+        resources: [1],
+        resourceName: 'books',
+      }
+    );
+    expect(console.error.callCount).to.equal(1);
+  });
+
   describe('reserved action types', () => {
     it('should warn with REQUEST_IDLE', () => {
       stub(console, 'error');
