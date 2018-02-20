@@ -112,6 +112,10 @@ describe('reducers: read:', function() {
       const reduced = reducer(undefined, {
         type: 'READ_RESOURCES_PENDING',
         resourceType: 'hellos',
+        requestKey: 'sandwich',
+        requestProperties: {
+          something: 'ok',
+        },
         resources: [4, 5],
       });
 
@@ -123,7 +127,13 @@ describe('reducers: read:', function() {
           4: { id: 4, lastName: 'camomile' },
         },
         lists: {},
-        requests: {},
+        requests: {
+          sandwich: {
+            requestKey: 'sandwich',
+            something: 'ok',
+            status: 'PENDING',
+          },
+        },
         meta: {
           1: {
             name: 'what',
@@ -725,7 +735,7 @@ describe('reducers: read:', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('returns state with resource object and request key+name, ensuring no request ID dupes', () => {
+    it('returns state with resource object, request key+name, and requestProperties, ensuring no request ID dupes', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -764,6 +774,10 @@ describe('reducers: read:', function() {
         resourceType: 'hellos',
         requestKey: 'abc12345',
         requestName: 'readStuff',
+        requestProperties: {
+          statusCode: 404,
+          hungry: true,
+        },
         resources: [{ id: 4, name: 'sandwiches' }, 5],
       });
 
@@ -785,6 +799,8 @@ describe('reducers: read:', function() {
             requestKey: 'abc12345',
             requestName: 'readStuff',
             ids: [4, 5],
+            statusCode: 404,
+            hungry: true,
             status: requestStatuses.SUCCEEDED,
           },
         },
