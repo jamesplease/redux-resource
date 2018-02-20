@@ -73,6 +73,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
     const existingRequest = state.requests[requestKey] || {};
     const newRequest = {
       ...existingRequest,
+      ...action.requestProperties,
       requestKey,
       status: requestStatuses.SUCCEEDED,
     };

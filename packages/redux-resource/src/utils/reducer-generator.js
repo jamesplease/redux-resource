@@ -65,6 +65,7 @@ export default function(crudAction, requestStatus) {
 
       const newRequest = {
         ...existingRequest,
+        ...action.requestProperties,
         requestKey,
         status: requestStatus,
       };

@@ -383,7 +383,7 @@ describe('reducers: delete', function() {
       expect(console.error.callCount).to.equal(1);
     });
 
-    it('returns the right state with a request name, with IDs', () => {
+    it('returns the right state with a request name, with IDs, and requestProperties', () => {
       stub(console, 'error');
       const reducer = resourceReducer('hellos', {
         initialState: {
@@ -419,6 +419,10 @@ describe('reducers: delete', function() {
         type: 'DELETE_RESOURCES_SUCCEEDED',
         resourceType: 'hellos',
         request: 'italiano',
+        requestProperties: {
+          statusCode: 404,
+          hangry: true,
+        },
         resources: [3, { id: 4 }],
       });
 
@@ -436,7 +440,8 @@ describe('reducers: delete', function() {
             requestName: 'italiano',
             status: requestStatuses.SUCCEEDED,
             ids: [3, 4],
-            hangry: false,
+            statusCode: 404,
+            hangry: true,
           },
           oink: {
             ids: [10, 3],
