@@ -1,6 +1,11 @@
 import { getStatus, requestStatuses } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('getStatus', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   beforeEach(() => {
     stub(console, 'error');
 
@@ -54,6 +59,21 @@ describe('getStatus', function() {
   describe('warnings', () => {
     it('should warn when a path does not resolve to a request status; resource', () => {
       const status = getStatus(this.state, 'sandwiches.meta.102');
+
+      expect(status).to.deep.equal({
+        null: false,
+        pending: false,
+        failed: false,
+        succeeded: false,
+      });
+
+      expect(console.error.callCount).to.equal(1);
+    });
+
+    it('only warns one time for the same problem', () => {
+      const status = getStatus(this.state, 'sandwiches.meta.102');
+      getStatus(this.state, 'sandwiches.meta.102');
+      getStatus(this.state, 'sandwiches.meta.102');
 
       expect(status).to.deep.equal({
         null: false,

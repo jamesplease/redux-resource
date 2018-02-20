@@ -21,7 +21,8 @@ export default function requestStatusesPlugin(resourceType, options = {}) {
             `"${action.type}". Without a resourceType, Redux Resource will ` +
             `not be able to update a slice of your store. For more, refer to ` +
             `the guide on CRUD Actions: ` +
-            `https://redux-resource.js.org/docs/guides/crud-actions.html`
+            `https://redux-resource.js.org/docs/guides/crud-actions.html`,
+          'MISSING_RESOURCE_TYPE'
         );
       }
     }

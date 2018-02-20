@@ -1,6 +1,11 @@
 import { resourceReducer, requestStatuses } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: read:', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   describe('READ_RESOURCES_PENDING:', () => {
     it('should warn and not set a badly configured request name', () => {
       stub(console, 'error');

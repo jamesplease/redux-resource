@@ -1,6 +1,11 @@
 import { resourceReducer, requestStatuses } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: DELETE_RESOURCES', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   describe('When nothing else is passed', () => {
     it('does not change the state', () => {
       stub(console, 'error');

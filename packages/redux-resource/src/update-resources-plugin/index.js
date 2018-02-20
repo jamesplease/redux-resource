@@ -23,14 +23,16 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
           `You passed the "mergeListId" properties to an UPDATE_RESOURCES action. ` +
             `This property only works for the request action types (such as ` +
             `READ_RESOURCES_PENDING). When using UPDATE_RESOURCES, you must modify the ` +
-            `list yourself, and then pass the new list to the action creator.`
+            `list yourself, and then pass the new list to the action creator.`,
+          'MERGE_LIST_ID_UPDATE_RESOURCES'
         );
       }
 
       if (!action.resources && !action.meta && !action.lists) {
         warning(
           `You dispatched an UPDATE_RESOURCES action without any resources, meta, ` +
-            `or lists, so the store will not be updated.`
+            `or lists, so the store will not be updated.`,
+          'UPDATE_RESOURCES_NO_OP'
         );
       }
     }
@@ -86,7 +88,8 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
     if (!naiveNewResources && !naiveNewMeta) {
       warning(
         `You dispatched a DELETE_RESOURCES action without any resources or meta, ` +
-          `so the store will not be updated.`
+          `so the store will not be updated.`,
+        'DELETE_RESOURCES_NO_OP'
       );
     }
 
@@ -105,7 +108,8 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
                     action.type
                   }. Every resource must have an ID that is either ` +
                   `a number of a string. You should check your action creators to ` +
-                  `make sure that an ID is always included in your resources.`
+                  `make sure that an ID is always included in your resources.`,
+                'NO_RESOURCE_ID'
               );
             }
           }
@@ -119,7 +123,8 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
                     action.type
                   }. Every resource must have an ID that is either ` +
                   `a number of a string. You should check your action creators to ` +
-                  `make sure that an ID is always included in your resources.`
+                  `make sure that an ID is always included in your resources.`,
+                'NO_RESOURCE_ID'
               );
             }
           }

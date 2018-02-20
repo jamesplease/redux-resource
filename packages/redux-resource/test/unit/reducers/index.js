@@ -1,6 +1,11 @@
 import { resourceReducer } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducer', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   it('should be a function', () => {
     const reducer = resourceReducer('hellos');
     expect(reducer).to.be.a('function');

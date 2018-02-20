@@ -26,7 +26,8 @@ export default function upsertResources(
             `You attempted to update or add a resource without an ID attribute. ` +
               `Redux Resource requires that all resources have an ID. You should ` +
               `double-check your Action Creators to make sure that all entries in ` +
-              `are either an ID or an object with an "id" attribute.`
+              `are either an ID or an object with an "id" attribute.`,
+            'MISSING_ID_UPSERT'
           );
         }
 

@@ -1,6 +1,11 @@
 import { resourceReducer, requestStatuses } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: delete', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   describe('DELETE_RESOURCES_SUCCEEDED', () => {
     it('returns the right state without a request name, without IDs', () => {
       stub(console, 'error');

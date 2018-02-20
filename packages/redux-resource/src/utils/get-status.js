@@ -29,7 +29,8 @@ function getSingleStatus(state, statusLocation, treatIdleAsPending) {
       warning(
         `You called "getStatus" with path "${statusLocation}", which resolved ` +
           `to a value that is not a valid resource status. You may want to ` +
-          `check that this path is correct.`
+          `check that this path is correct.`,
+        'GET_STATUS_PATH'
       );
     }
   }
