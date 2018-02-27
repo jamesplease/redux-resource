@@ -122,7 +122,7 @@ if (requestWasAborted) {
 ```
 
 > Note: If your application requires tracking the aborted status of a request, you
-  can write a [plugin](/docs/guides/plugin.md) to add support for additional action types.
+  can write a [plugin](/docs/other-guides/plugin.md) to add support for additional action types.
 
 
 > Note: We understand that some users want their action type names to reflect the action

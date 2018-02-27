@@ -5,7 +5,7 @@ a request for a single `author` may also include the author's `books`.
 
 Because different backends return related resources in many different ways,
 Redux Resource couldn't possibly include a single built-in solution that works for every
-API. Instead, [plugins](/docs/guides/plugins.md) can be used to support related resources
+API. Instead, [plugins](/docs/other-guides/plugins.md) can be used to support related resources
 in a way that works for for your specific backend.
 
 The rest of this guide will describe supporting related resources for the following

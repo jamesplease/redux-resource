@@ -16,7 +16,7 @@ caching implementation, either by using React Request or by writing your own sys
 ### Caching using requests
 
 How can you know if a response has already been returned for a given request? The way
-that we recommend doing it is by using [named requests](/docs/guides/named-requests.md).
+that we recommend doing it is by using [request objects](/docs/requests/request-objects.md).
 
 Here's how it works with React Request:
 

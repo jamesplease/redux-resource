@@ -1,7 +1,7 @@
 # Reading Resources
 
-Redux Resource provides four [action types](./faq/action-types.md) for
-reading resources. They are as follows:
+Redux Resource provides four [action types](./request-actions.md) for
+reading resources asynchronously. They are:
 
 ```js
 "READ_RESOURCES_PENDING"
@@ -12,37 +12,49 @@ reading resources. They are as follows:
 
 Each request will always begin with an action with type
 `READ_RESOURCES_PENDING`. Then, one of the other three action types will be
-used to represent the resolution of that request. Use the requests in the
+used to represent the resolution of that request. Use the other action types in the
 following way:
 
 - `READ_RESOURCES_FAILED`: Use this if the request fails for any reason. This
   could be network errors, or any
   [HTTP Status Code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-  greater than 400.
-- `READ_RESOURCES_IDLE`: Use this is the request is aborted.
+  greater than or equal to 400.
+- `READ_RESOURCES_IDLE`: Use this when the request is aborted.
 - `READ_RESOURCES_SUCCEEDED`: Use this when the request was successful.
 
-### Using Named Requests
+### Request Objects
 
-When reading a single resource, you usually use an ID to read it. Therefore,
-named requests aren't usually needed for single reads, as you can track the
-request on the resource's metadata directly.
+Specifying a [request key](/docs/requests/request-keys.md) on the actions will create a
+request object in the store for this request. This object can be used to look up
+the [status](/docs/requests/request-statuses.md) of the request.
 
-For bulk reads, you sometimes use some sort of filter or query to retrieve a
-list of resources. In these situations, it's often a good idea to use a named
-request to keep track of the request.
+Although it is recommended that you specify a request key when possible, there are some
+situations when you may not need to when fetching resources.
+
+When fetching a single resource, you typically provide the ID to be fetched. Therefore,
+[request objects](/docs/requests/request-objects.md) aren't always necessary, as you can
+track the request on the resource's metadata directly.
+
+For read requests that return multiple resources, it is typically preferable to specify
+a request key.
 
 ### Successful Reads
 
-When an action of type `READ_RESOURCES_SUCCEEDED` is dispatched, the
-reducer will update any of the resources in your state tree with the ones
-included in the action's `resources`.
+When an action of type `READ_RESOURCES_SUCCEEDED` is dispatched, three things
+will happen:
 
-The metadata for each of those resources will also be changed to have
-`readStatus: 'SUCCEEDED'`.
+1. the resources included in the action's `resources` will be added to the
+  `resources` section of the resource slice. Existing resources with the same ID
+  will be merged with the new ones. To replace existing resources, rather than
+  merge them, specify `mergeResources: false` on the action.
 
-If a `list` is passed, then the IDs for the list will be updated to include
-the new IDs.
+2. The metadata for each of the `resources` specified on the action will be updated
+  with  `readStatus: 'SUCCEEDED'`. To replace all of the existing meta, rather than
+  merging it, specify `mergeMeta: false` on the action.
+
+3. When a `list` is passed, the IDs from the `resources` array on the action will
+  added to the list. You may specify `mergeListIds: false` to _replace_ the existing
+  list instead.
 
 ### Redux Resource XHR
 
@@ -65,7 +77,7 @@ export default function readBook(bookId) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
       resourceType: 'books',
-      resources: [bookId]
+      resources: [bookId],
     });
 
     const req = xhr.get(
@@ -76,19 +88,25 @@ export default function readBook(bookId) {
           dispatch({
             type: actionTypes.READ_RESOURCES_IDLE,
             resourceType: 'books',
-            resources: [bookId]
+            resources: [bookId],
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.READ_RESOURCES_FAILED,
             resourceType: 'books',
-            resources: [bookId]
+            resources: [bookId],
+            requestProperties: {
+              statusCode: res.statusCode 
+            }
           });
         } else {
           dispatch({
             type: actionTypes.READ_RESOURCES_SUCCEEDED,
             resourceType: 'books',
-            resources: [body]
+            resources: [body],
+            requestProperties: {
+              statusCode: res.statusCode 
+            }
           });
         }
       }
@@ -117,7 +135,10 @@ export default function readBooks(query) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
       resourceType: 'books',
-      request: 'search'
+      requestKey: 'search',
+      requestProperties: {
+        statusCode: null
+      }
     });
 
     const queryString = qs.stringify(query);
@@ -130,20 +151,29 @@ export default function readBooks(query) {
           dispatch({
             type: actionTypes.READ_RESOURCES_IDLE,
             resourceType: 'books',
-            request: 'search'
+            requestKey: 'search',
+            requestProperties: {
+              statusCode: null
+            }
           });
         } else if (err || res.statusCode >= 400) {
           dispatch({
             type: actionTypes.READ_RESOURCES_FAILED,
             resourceType: 'books',
-            request: 'search'
+            requestKey: 'search',
+            requestProperties: {
+              statusCode: res.statusCode 
+            }
           });
         } else {
           dispatch({
             type: actionTypes.READ_RESOURCES_SUCCEEDED,
             resourceType: 'books',
-            request: 'search',
-            resources: body
+            requestKey: 'search',
+            resources: body,
+            requestProperties: {
+              statusCode: res.statusCode 
+            }
           });
         }
       }

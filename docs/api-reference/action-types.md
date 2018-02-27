@@ -8,6 +8,13 @@ The complete object is shown below:
 
 ```js
 {
+  // Update resources, metadata, and lists synchronously
+  UPDATE_RESOURCES: 'UPDATE_RESOURCES',
+  // Remove resources from the store synchronously
+  DELETE_RESOURCES: 'DELETE_RESOURCES',
+
+  // The following action types are to support CRUD'ing resources
+  // asynchronously using requests
   CREATE_RESOURCES_PENDING: 'CREATE_RESOURCES_PENDING',
   CREATE_RESOURCES_FAILED: 'CREATE_RESOURCES_FAILED',
   CREATE_RESOURCES_SUCCEEDED: 'CREATE_RESOURCES_SUCCEEDED',
@@ -32,9 +39,15 @@ The complete object is shown below:
 
 #### Notes
 
-There are four groups of action types, one for each of the four
-[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) actions.
-Within each CRUD action, the four actions reflect the four request statuses.
+The action types can be organized into two groups:
+
+- Direct manipulation of the store. `UPDATE_RESOURCES` and `DELETE_RESOURCES` allow
+  you to synchronously modify the store, independent of requests.
+
+- The rest of the action types are for requests. Within the request action types,
+  there are four groups of action types, one for each of the four
+  [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) actions.
+  Within each CRUD action "group," the four action types reflect the four request statuses.
 
 #### Example
 

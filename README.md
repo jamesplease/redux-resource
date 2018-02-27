@@ -25,7 +25,7 @@
 A tiny but powerful system for managing 'resources': data that is persisted to
 remote servers.
 
-✓ Removes nearly all "boilerplate" code for remotely-stored data  
+✓ Removes nearly all boilerplate code for remotely-stored data  
 ✓ Incrementally adoptable  
 ✓ Encourages best practices like [normalized state](http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html)  
 ✓ Works well with APIs that adhere to standardized formats, such as JSON API  
@@ -79,14 +79,14 @@ import store from './store';
 // could represent the start of an HTTP request, for instance.
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
+  resourceType: 'books',
   resources: [24]
 });
 
 // Later, when the request succeeds, we dispatch the success action.
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  resourceName: 'books',
+  resourceType: 'books',
   // The `resources` list here is usually the response from an API call
   resources: [{
     id: 24,

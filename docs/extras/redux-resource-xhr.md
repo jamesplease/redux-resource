@@ -11,13 +11,13 @@ Better yet, looking to migrate to 3.x? Check out
 Redux Resource XHR is an action creator that simplifies CRUD operations.
 
 More information about CRUD actions in Redux Resource can be
-found in the [CRUD Actions](/docs/guides/crud-actions.md) guide and the four
+found in the [Request Actions](/docs/requests/request-actions.md) guide and the four
 guides on CRUD:
 
-- [Reading resources](/docs/guides/reading-resources.md)
-- [Updating resources](/docs/guides/updating-resources.md)
-- [Creating resources](/docs/guides/creating-resources.md)
-- [Deleting resources](/docs/guides/deleting-resources.md)
+- [Reading resources](/docs/requests/reading-resources.md)
+- [Updating resources](/docs/requests/updating-resources.md)
+- [Creating resources](/docs/requests/creating-resources.md)
+- [Deleting resources](/docs/requests/deleting-resources.md)
 
 We recommend familiarizing yourself with the content in those guides before using
 this library.
@@ -52,7 +52,7 @@ An action creator for CRUD requests.
 2. `options` *(Object)*: Options to configure the CRUD request.
 
   * `actionDefaults`: *(Object)* Properties that will be included on each dispatched
-    action. All of [the CRUD Action options](/docs/guides/crud-actions.md) are
+    action. All of [the Request Action options](/docs/requests/request-actions.md) are
     supported, such as `resourceType` and `resources`.
 
   * `dispatch`: *(Function)* The `dispatch` function of a Redux store. If you're using
@@ -70,7 +70,7 @@ An action creator for CRUD requests.
     response from the server, parsed as JSON. Return a transformed list of
     `resources`. This can be used to format the server response into a
     Redux Resource-compatible format. For more, see the guide on
-    [Resources](/docs/guides/resources.md).
+    [Resource objects](/docs/resources/resource-objects.md).
 
   * [`onPending`]: *(Function)* An optional function that allows you to modify
     the "pending" action, as well as control when it is dispatched. It is called
@@ -121,7 +121,7 @@ const xhr = crudRequest('read', {
   dispatch: store.dispatch,
   actionDefaults: {
     resourceType: 'books',
-    request: 'getHomePageBooks',
+    requestKey: 'getHomePageBooks',
     list: 'homePageBooks',
     mergeListIds: false
   },
@@ -238,7 +238,7 @@ xhr.get('/books/24')
       return crudRequest('read', {
         actionDefaults: {
           resourceType: 'books',
-          request: 'getHomePageBooks',
+          requestKey: 'getHomePageBooks',
           list: 'homePageBooks',
           mergeListIds: false,
         },

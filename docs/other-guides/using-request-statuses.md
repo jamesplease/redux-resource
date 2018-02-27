@@ -1,19 +1,20 @@
-# Request Statuses
+# Using Request Statuses
 
-We now know that when the CRUD action types are dispatched, Redux Resource
-will set some metadata about those requests for us in the store. In this guide,
-we will cover how you can use this state in your view layer.
+When request action types are dispatched, Redux Resource
+will [store information about those requests](/docs/tracking-request-statuses.md)
+in the store. This guide will cover how you can use those statuses in your
+view layer.
 
-In these examples, we will be writing React components using react-redux. Do
-keep in mind that nothing in Redux Resource requires React: if you're using Redux
-with any other view layer, then this library will work just as well.
+> Note: these examples are React components using react-redux. Keep in mind
+that nothing in Redux Resource requires React: if you're using Redux with any other
+view layer, then this library will work just as well.
 
 ### `getStatus`
 
 One of the exports of this library is
 [`getStatus`](/docs/api-reference/get-status.md). This function facilitates
-using Redux Resource data to build your interfaces, and for this reason it
-will likely be the function of Redux Resource that you use the most.
+using Redux Resource request statuses to build your interfaces. It will likely
+be one of the Redux Resource functions that you rely on the most.
 
 Let's look at an example. Let's say we have a page that displays details about
 a book. We might write the following component:

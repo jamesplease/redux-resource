@@ -1,7 +1,7 @@
 # `getStatus(state, statusLocation, [treatIdleAsPending])`
 
 Returns an object with boolean values representing the request status of a
-particular CRUD action. It can also be used to aggregate multiple request
+particular CRUD operation. It can also be used to aggregate multiple request
 statuses together.
 
 #### Arguments
@@ -26,30 +26,30 @@ statuses together.
 
   ```js
   {
-    null: Boolean,
+    idle: Boolean,
     pending: Boolean,
     failed: Boolean,
     succeeded: Boolean
   }
   ```
 
-  One of these values is always `true`, reflecting the value of the request
+  Only one of these values is always `true`, reflecting the value of the request
   status. When `treatIdleAsPending` is `true`, then request statuses that are
   `"IDLE"` will be returned as `pending: true`.
 
 #### Notes
 
-Passing more than one status location will aggregate the statuses. The rules of
-aggregation work as follows:
+- Passing an array of status locations as the second argument will aggregate the statuses. The
+  aggregation works as follows:
 
-- If all of the requests are null, then the aggregate is null
-- If *any* of the requests are failed, then the aggregate is failed.
-- If no requests have failed, but some are pending, then the aggregate is pending.
-- If all requests have succeeded, then the aggregate has succeeded.
+  - If all of the requests are idle, then the aggregate status is idle
+  - If *any* of the requests are failed, then the aggregate status is failed.
+  - If no requests have failed, but some are pending, then the aggregate status is pending.
+  - If all requests have succeeded, then the aggregate status is succeeded.
 
-A status location is a string that specifies a location of a request status in
-your state tree. For instance `"books.meta.24.readStatus"` or
-`"books.requests.dashboardSearch.status"`.
+- A status location is a string that specifies a location of a request status in
+  your state tree. For instance `"books.meta.24.readStatus"` or
+  `"books.requests.dashboardSearch.status"`.
 
 > Keep in mind that `treatIdleAsPending` also works when aggregating.
 

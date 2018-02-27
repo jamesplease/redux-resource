@@ -1,48 +1,16 @@
-# Plugins
+# Custom Action Types
 
-Plugins are a way to add or change the behavior of a
-[`resourceReducer`](/docs/api-reference/resource-reducer.md).
+You can add support for additional action types to a
+[`resourceReducer`](/docs/api-reference/resource-reducer.md)
+using plugins.
 
-There are two main use cases for plugins:
-
-1. adding additional functionality to the reducer, such as custom action types
-
-2. extending the behavior of the reducer for the built-in action types
-
-#### Adding Additional Functionality
-
-You will often want to use more action types than the built-in action types.
-For instance, if your interface allows users to "select" resources with
-checkboxes, then you want may to add support for some selection action types.
-
-Plugins allow you to add support for custom action types to support features
-like this.
-
-#### Extending Built-in Action Types
-
-The notion of a "request" in Redux Resource is intentionally generic. It's
-not tied to any specific protocol, such as HTTP. What this means is that when
-a request fails, the _only_ information that you have is that the request
-failed, and not that it failed with, say, a 404 status code. That's because 404
-status codes are a feature of HTTP requests. Consequently, if you're using HTTP
-requests, then you'll likely want to use a plugin to give you more information
-about the requests that you make.
-
-Similarly, if you're using GRPC, or some other system, then you'll want a plugin
-to give you more information about those types of requests and responses.
-
-Furthermore, if you're using a system like JSON API, then you can use plugins to
-add support for features such as relationships or response metadata.
-
-There's [an official HTTP Status Codes plugin](/docs/extras/http-status-codes-plugin.html)
-that makes working with HTTP requests even better.
-
-Officially maintained plugins for other common protocols are on our to do list, but
-in the meantime, we've done our best to make it straightforward to write your own.
+The name 'plugins' may seem intimidating, but don't be worried. Plugins are reducers
+that you can reuse for any resource slice. If you know how to write a reducer,
+then you know how to write a plugin.
 
 ### Using a Plugin
 
-You define plugins per-resource when you call
+You define plugins for each resource type when you call
 [`resourceReducer`](/docs/api-reference/resource-reducer.md). The second
 argument to that function is an `options` options, and within it you can pass
 `plugins` as an array:
@@ -65,7 +33,7 @@ A plugin is a function that with the following signature:
 (resourceType, options) => reducerFunction
 ```
 
-Where `resourceType` and `options` are the same values that you passed to
+Where `resourceType` and `options` are the arguments that you passed to
 [`resourceReducer`](/docs/api-reference/resource-reducer.md).
 
 The return value, `reducerFunction`, is also a function. This returned function
@@ -96,9 +64,9 @@ const myPlugin = (resourceType, option) => (state, action) => state;
 
 This plugin isn't very exciting, so let's look at more realistic examples.
 
-### Custom Action Types
+### Selecting Resources
 
-Let's build a plugin that lets a user select resources from a list. The code
+Let's build a plugin that lets a user select resources. The code
 for this plugin looks like this:
 
 ```js
@@ -157,36 +125,6 @@ let store = createStore(
     }),
   })
 );
-```
-
-### Changing Built-In Action Type behavior
-
-Interestingly, the built-in behavior of Redux Resource is itself just a plugin.
-
-Additional plugins are run **after** this built-in plugin runs, so you can write
-plugins that make further adjustments to the state after the built-in plugin. In
-the following plugin, we set a property on the store anytime a successful read
-occurs:
-
-```js
-export default function(resourceType, options) {
-  return function(state, action) {
-    // Only take action if the resource name of the Action matches the
-    // resource this plugin is registered for
-    if (action.resourceType !== resourceType) {
-      return state;
-    }
-
-    if (action.type === 'READ_RESOURCES_SUCCEEDED') {
-      return {
-        ...state,
-        readSucceeded: true
-      };
-    } else {
-      return state;
-    }
-  };
-}
 ```
 
 ### Customizable Plugins
