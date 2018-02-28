@@ -15,12 +15,10 @@ and it might find its way into this package!
 
 **Old Documentation**
 
-- [2.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-plugins/docs/old-versions/2.md)
-- [3.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-plugins/docs/old-versions/3.md)
+- [2.x documentation](https://github.com/jamesplease/redux-resource/blob/33a79cfdddb0dc5dae10f7073ece28e90dbd1455/docs/extras/redux-resource-plugins.md)
 
 **Migration Guides**
 
-- [v1 to v2](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-plugins/docs/migration-guides/1-to-2.md)
 - [v2 to v3](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-plugins/docs/migration-guides/2-to-3.md)
 
 ### Installation
