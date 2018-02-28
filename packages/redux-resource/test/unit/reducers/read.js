@@ -131,6 +131,7 @@ describe('reducers: read:', function() {
           sandwich: {
             requestKey: 'sandwich',
             something: 'ok',
+            resourceType: 'hellos',
             status: 'PENDING',
           },
         },
@@ -707,6 +708,7 @@ describe('reducers: read:', function() {
             requestKey: 'pasta',
             requestName: 'pasta',
             ids: [4, 5],
+            resourceType: 'hellos',
             status: requestStatuses.SUCCEEDED,
           },
         },
@@ -798,6 +800,7 @@ describe('reducers: read:', function() {
           abc12345: {
             requestKey: 'abc12345',
             requestName: 'readStuff',
+            resourceType: 'hellos',
             ids: [4, 5],
             statusCode: 404,
             hungry: true,
@@ -886,6 +889,7 @@ describe('reducers: read:', function() {
           },
           abc12345: {
             requestKey: 'abc12345',
+            resourceType: 'hellos',
             ids: [4, 5],
             status: requestStatuses.SUCCEEDED,
           },
@@ -980,6 +984,7 @@ describe('reducers: read:', function() {
           pasta: {
             requestKey: 'pasta',
             requestName: 'pasta',
+            resourceType: 'hellos',
             ids: [4, 5],
             status: requestStatuses.SUCCEEDED,
           },
@@ -1065,6 +1070,7 @@ describe('reducers: read:', function() {
           pasta: {
             requestKey: 'pasta',
             requestName: 'pasta',
+            resourceType: 'hellos',
             ids: [4, 5],
             status: requestStatuses.SUCCEEDED,
           },
@@ -1349,6 +1355,7 @@ describe('reducers: read:', function() {
           pasta: {
             requestKey: 'pasta',
             requestName: 'pasta',
+            resourceType: 'hellos',
             ids: [],
             status: requestStatuses.SUCCEEDED,
           },

@@ -114,6 +114,7 @@ function delSucceed(state, action, { initialResourceMeta }) {
       ...existingRequest,
       ...action.requestProperties,
       requestKey,
+      resourceType: action.resourceType || action.resourceName,
       status: requestStatuses.SUCCEEDED,
       ids: idList || [],
     };

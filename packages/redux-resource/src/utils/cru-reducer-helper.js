@@ -74,6 +74,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
     const newRequest = {
       ...existingRequest,
       ...action.requestProperties,
+      resourceType: action.resourceType || action.resourceName,
       requestKey,
       status: requestStatuses.SUCCEEDED,
     };

@@ -438,6 +438,7 @@ describe('reducers: delete', function() {
           italiano: {
             requestKey: 'italiano',
             requestName: 'italiano',
+            resourceType: 'hellos',
             status: requestStatuses.SUCCEEDED,
             ids: [3, 4],
             statusCode: 404,
@@ -521,6 +522,7 @@ describe('reducers: delete', function() {
           abc12345: {
             requestKey: 'abc12345',
             requestName: 'deleteStuff',
+            resourceType: 'hellos',
             status: requestStatuses.SUCCEEDED,
             ids: [3, 4],
             hangry: false,
@@ -603,6 +605,7 @@ describe('reducers: delete', function() {
           abc12345: {
             requestKey: 'abc12345',
             requestName: 'deleteStuff',
+            resourceType: 'hellos',
             status: requestStatuses.SUCCEEDED,
             ids: [3, 4],
             hangry: false,
@@ -684,6 +687,7 @@ describe('reducers: delete', function() {
           abc12345: {
             requestKey: 'abc12345',
             status: requestStatuses.SUCCEEDED,
+            resourceType: 'hellos',
             ids: [3, 4],
             hangry: false,
           },
@@ -910,6 +914,7 @@ describe('reducers: delete', function() {
           italiano: {
             requestKey: 'italiano',
             requestName: 'italiano',
+            resourceType: 'hellos',
             status: requestStatuses.SUCCEEDED,
             ids: [],
             hangry: false,

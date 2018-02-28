@@ -227,6 +227,7 @@ describe('reducerGenerator:', function() {
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
     const result = reducer(state, {
       request: 'italiano',
+      resourceType: 'hellos',
     });
 
     expect(result).to.deep.equal({
@@ -248,6 +249,7 @@ describe('reducerGenerator:', function() {
           requestKey: 'italiano',
           requestName: 'italiano',
           sandwiches: true,
+          resourceType: 'hellos',
           status: requestStatuses.FAILED,
         },
         meep: {
@@ -287,6 +289,7 @@ describe('reducerGenerator:', function() {
     const result = reducer(state, {
       resources: [1, 5, 6],
       request: 'italiano',
+      resourceType: 'hellos',
     });
 
     expect(result).to.deep.equal({
@@ -325,6 +328,7 @@ describe('reducerGenerator:', function() {
         italiano: {
           requestKey: 'italiano',
           requestName: 'italiano',
+          resourceType: 'hellos',
           sandwiches: true,
           status: requestStatuses.FAILED,
         },
@@ -365,6 +369,7 @@ describe('reducerGenerator:', function() {
     const result = reducer(state, {
       resources: [1, 5, 6],
       requestKey: 'italiano',
+      resourceType: 'hellos',
     });
 
     expect(result).to.deep.equal({
@@ -402,6 +407,7 @@ describe('reducerGenerator:', function() {
       requests: {
         italiano: {
           requestKey: 'italiano',
+          resourceType: 'hellos',
           sandwiches: true,
           status: requestStatuses.FAILED,
         },
@@ -443,6 +449,7 @@ describe('reducerGenerator:', function() {
       resources: [1, 5, 6],
       requestKey: 'abc12345',
       requestName: 'someRequest',
+      resourceType: 'hellos',
     });
 
     expect(result).to.deep.equal({
@@ -485,6 +492,7 @@ describe('reducerGenerator:', function() {
         abc12345: {
           requestKey: 'abc12345',
           requestName: 'someRequest',
+          resourceType: 'hellos',
           status: requestStatuses.FAILED,
         },
         meep: {
@@ -524,6 +532,7 @@ describe('reducerGenerator:', function() {
     const result = reducer(state, {
       resources: [1, 5, 6],
       request: 'italiano',
+      resourceType: 'hellos',
       mergeMeta: false,
     });
 
@@ -562,6 +571,7 @@ describe('reducerGenerator:', function() {
         italiano: {
           requestKey: 'italiano',
           requestName: 'italiano',
+          resourceType: 'hellos',
           sandwiches: true,
           status: requestStatuses.FAILED,
         },
