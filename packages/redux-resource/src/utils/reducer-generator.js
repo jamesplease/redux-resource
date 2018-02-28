@@ -67,6 +67,7 @@ export default function(crudAction, requestStatus) {
         ...existingRequest,
         ...action.requestProperties,
         requestKey,
+        resourceType: action.resourceType || action.resourceName,
         status: requestStatus,
       };
 
