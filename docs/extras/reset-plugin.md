@@ -2,7 +2,7 @@
 
 The reset plugin allows you to remove all of the data in a slice, effectively
 "resetting" it. You may optionally scope the resetting to affect a single
-list or request.
+[list](/docs/resources/lists.md) or [request object](/docs/requests/request-objects.md).
 
 ### Usage
 
@@ -51,7 +51,7 @@ import store from './store';
 
 // Reset just the "createBook" request
 store.dispatch(reset.resetResource('books', {
-  request: 'createBook'
+  requestKey: 'createBook'
 }));
 
 // Reset just the "favorites" list
@@ -62,7 +62,7 @@ store.dispatch(reset.resetResource('books', {
 // Reset a list and a request at the same time
 store.dispatch(reset.resetResource('books', {
   list: 'favorites',
-  request: 'readFavorites'
+  requestKey: 'readFavorites'
 }));
 ```
 
@@ -73,7 +73,7 @@ store.dispatch(reset.resetResource('books', {
 Resets the slice for `resourceType`. Pass `options` to scope what's reset.
 There are two valid options:
 
-- `request`: Reset the request with this name
+- `requestKey`: Reset the request with this key
 - `list`: Reset the list with this name
 
 #### Arguments

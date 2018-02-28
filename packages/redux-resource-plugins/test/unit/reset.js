@@ -13,18 +13,18 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: { name: 'James' }
+        24: { name: 'James' },
       },
       meta: {
-        24: { oinky: true }
+        24: { oinky: true },
       },
       lists: {},
       requests: {
         pasta: {
           ids: [24],
-          status: 'PENDING'
-        }
-      }
+          status: 'PENDING',
+        },
+      },
     };
 
     const action = resetResource('pasta');
@@ -39,22 +39,22 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: { name: 'James' }
+        24: { name: 'James' },
       },
       meta: {
-        24: { oinky: true }
+        24: { oinky: true },
       },
       lists: {},
       requests: {
         pasta: {
           ids: [24],
-          status: 'PENDING'
-        }
-      }
+          status: 'PENDING',
+        },
+      },
     };
 
     const action = {
-      type: 'OINK'
+      type: 'OINK',
     };
 
     const result = reducer(state, action);
@@ -67,18 +67,18 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: { name: 'James' }
+        24: { name: 'James' },
       },
       meta: {
-        24: { oinky: true }
+        24: { oinky: true },
       },
       lists: {},
       requests: {
         pasta: {
           ids: [24],
-          status: 'PENDING'
-        }
-      }
+          status: 'PENDING',
+        },
+      },
     };
 
     const action = resetResource('books');
@@ -88,7 +88,7 @@ describe('reset', function() {
       resources: {},
       meta: {},
       lists: {},
-      requests: {}
+      requests: {},
     });
   });
 
@@ -98,24 +98,24 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: { name: 'James' }
+        24: { name: 'James' },
       },
       meta: {
-        24: { oinky: true }
+        24: { oinky: true },
       },
       lists: {
-        stuff: [1, 2, 3]
+        stuff: [1, 2, 3],
       },
       requests: {
         pasta: {
           ids: [24],
-          status: 'PENDING'
+          status: 'PENDING',
         },
         spaghetti: {
           ids: [100, 20],
-          status: 'SUCCEEDED'
-        }
-      }
+          status: 'SUCCEEDED',
+        },
+      },
     };
 
     const action = resetResource('books', { request: 'spaghetti' });
@@ -124,24 +124,26 @@ describe('reset', function() {
     expect(result).to.deep.equal({
       selectedIds: [24],
       resources: {
-        24: { name: 'James' }
+        24: { name: 'James' },
       },
       meta: {
-        24: { oinky: true }
+        24: { oinky: true },
       },
       lists: {
-        stuff: [1, 2, 3]
+        stuff: [1, 2, 3],
       },
       requests: {
         pasta: {
           ids: [24],
-          status: 'PENDING'
+          status: 'PENDING',
         },
         spaghetti: {
+          resourceType: 'books',
+          requestKey: 'spaghetti',
           ids: [],
-          status: 'IDLE'
-        }
-      }
+          status: 'IDLE',
+        },
+      },
     });
   });
 
@@ -151,24 +153,24 @@ describe('reset', function() {
     const state = {
       selectedIds: [24],
       resources: {
-        24: { name: 'James' }
+        24: { name: 'James' },
       },
       meta: {
-        24: { oinky: true }
+        24: { oinky: true },
       },
       lists: {
-        stuff: [1, 2, 3]
+        stuff: [1, 2, 3],
       },
       requests: {
         pasta: {
           ids: [24],
-          status: 'PENDING'
+          status: 'PENDING',
         },
         spaghetti: {
           ids: [100, 20],
-          status: 'SUCCEEDED'
-        }
-      }
+          status: 'SUCCEEDED',
+        },
+      },
     };
 
     const action = resetResource('books', { list: 'stuff' });
@@ -177,24 +179,24 @@ describe('reset', function() {
     expect(result).to.deep.equal({
       selectedIds: [24],
       resources: {
-        24: { name: 'James' }
+        24: { name: 'James' },
       },
       meta: {
-        24: { oinky: true }
+        24: { oinky: true },
       },
       lists: {
-        stuff: []
+        stuff: [],
       },
       requests: {
         pasta: {
           ids: [24],
-          status: 'PENDING'
+          status: 'PENDING',
         },
         spaghetti: {
           ids: [100, 20],
-          status: 'SUCCEEDED'
-        }
-      }
+          status: 'SUCCEEDED',
+        },
+      },
     });
   });
 });

@@ -23,9 +23,10 @@ function reset(resourceType, options = {}) {
       return state;
     }
 
-    const { request, list } = action;
+    const { request, requestKey, list } = action;
+    const keyToUse = requestKey || request;
 
-    if (!request && !list) {
+    if (!keyToUse && !list) {
       return {
         resources: {},
         meta: {},
@@ -39,13 +40,24 @@ function reset(resourceType, options = {}) {
       ...state,
     };
 
-    if (request) {
+    if (keyToUse) {
+      const existingRequest = state.requests[keyToUse];
+      const requestName = existingRequest && existingRequest.requestName;
+
+      const newRequest = {
+        resourceType: typeToUse,
+        requestKey: keyToUse,
+        ids: [],
+        status: requestStatuses.IDLE,
+      };
+
+      if (requestName) {
+        newRequest.requestName = requestName;
+      }
+
       newState.requests = {
         ...state.requests,
-        [request]: {
-          ids: [],
-          status: requestStatuses.IDLE,
-        },
+        [keyToUse]: newRequest,
       };
     }
 

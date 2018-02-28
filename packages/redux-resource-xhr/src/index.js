@@ -13,7 +13,7 @@ function crudRequest(crudAction, options) {
     onAborted,
   } = options;
 
-  const { resourceName, resourceType } = actionDefaults;
+  const { resourceName, resourceType, requestProperties } = actionDefaults;
   const typeToUse = resourceType || resourceName;
 
   const crudActionOption = crudAction ? crudAction : '';
@@ -59,9 +59,9 @@ function crudRequest(crudAction, options) {
   const pendingAction = {
     ...actionDefaults,
     type: actionTypes[`${crudType}_RESOURCES_PENDING`],
-    // This may seem strange, but any unresolved request has a status code of 0
-    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status
-    statusCode: 0,
+    requestProperties: {
+      statusCode: null,
+    },
   };
 
   if (onPending) {
@@ -71,12 +71,15 @@ function crudRequest(crudAction, options) {
   }
 
   const req = xhr(xhrOptions, (err, res, body) => {
-    const statusCode = res ? res.statusCode : 0;
+    const statusCode = res ? res.statusCode : null;
     if (req.aborted) {
       const abortedAction = {
         ...actionDefaults,
         type: actionTypes[`${crudType}_RESOURCES_IDLE`],
-        statusCode,
+        requestProperties: {
+          ...requestProperties,
+          statusCode,
+        },
         res,
       };
 
@@ -89,7 +92,10 @@ function crudRequest(crudAction, options) {
       const failedAction = {
         ...actionDefaults,
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
-        statusCode,
+        requestProperties: {
+          ...requestProperties,
+          statusCode,
+        },
         res,
         err,
       };
@@ -115,7 +121,10 @@ function crudRequest(crudAction, options) {
       const succeededAction = {
         ...actionDefaults,
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
-        statusCode,
+        requestProperties: {
+          ...requestProperties,
+          statusCode,
+        },
         resources,
         res,
       };

@@ -12,14 +12,14 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      requests: {}
+      requests: {},
     };
 
     const action = {
       type: actionTypes.READ_RESOURCES_FAILED,
       resourceName: 'sandwiches',
       resources: [24],
-      statusCode: 404
+      statusCode: 404,
     };
 
     const result = reducer(state, action);
@@ -32,14 +32,14 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      requests: {}
+      requests: {},
     };
 
     const action = {
       type: actionTypes.READ_RESOURCES_PENDING,
       resourceName: 'books',
       resources: [24],
-      statusCode: 0
+      statusCode: 0,
     };
 
     const result = reducer(state, action);
@@ -54,17 +54,17 @@ describe('httpStatusCodes', function() {
       meta: {
         24: {
           readStatusCode: 200,
-          createStatusCode: 0
-        }
+          createStatusCode: 0,
+        },
       },
-      requests: {}
+      requests: {},
     };
 
     const action = {
       type: actionTypes.CREATE_RESOURCES_SUCCEEDED,
       resourceName: 'books',
       resources: [24],
-      statusCode: 201
+      statusCode: 201,
     };
 
     const result = reducer(state, action);
@@ -73,10 +73,10 @@ describe('httpStatusCodes', function() {
       meta: {
         24: {
           readStatusCode: 200,
-          createStatusCode: 201
-        }
+          createStatusCode: 201,
+        },
       },
-      requests: {}
+      requests: {},
     });
   });
 
@@ -86,14 +86,14 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      requests: {}
+      requests: {},
     };
 
     const action = {
       type: actionTypes.READ_RESOURCES_IDLE,
       resourceName: 'books',
       resources: [24],
-      statusCode: 0
+      statusCode: 0,
     };
 
     const result = reducer(state, action);
@@ -101,10 +101,10 @@ describe('httpStatusCodes', function() {
       resources: {},
       meta: {
         24: {
-          readStatusCode: 0
-        }
+          readStatusCode: 0,
+        },
       },
-      requests: {}
+      requests: {},
     });
   });
 
@@ -114,14 +114,14 @@ describe('httpStatusCodes', function() {
     const state = {
       resources: {},
       meta: {},
-      requests: {}
+      requests: {},
     };
 
     const action = {
       type: actionTypes.UPDATE_RESOURCES_FAILED,
       resourceName: 'books',
       resources: [24],
-      statusCode: 404
+      statusCode: 404,
     };
 
     const result = reducer(state, action);
@@ -129,10 +129,10 @@ describe('httpStatusCodes', function() {
       resources: {},
       meta: {
         24: {
-          updateStatusCode: 404
-        }
+          updateStatusCode: 404,
+        },
       },
-      requests: {}
+      requests: {},
     });
   });
 
@@ -145,16 +145,16 @@ describe('httpStatusCodes', function() {
       requests: {
         search: {
           ids: [20],
-          statusCode: 0
-        }
-      }
+          statusCode: 0,
+        },
+      },
     };
 
     const action = {
       type: actionTypes.READ_RESOURCES_FAILED,
       resourceName: 'books',
       request: 'search',
-      statusCode: 404
+      statusCode: 404,
     };
 
     const result = reducer(state, action);
@@ -164,9 +164,9 @@ describe('httpStatusCodes', function() {
       requests: {
         search: {
           ids: [20],
-          statusCode: 404
-        }
-      }
+          statusCode: 404,
+        },
+      },
     });
   });
 
@@ -179,9 +179,9 @@ describe('httpStatusCodes', function() {
       requests: {
         search: {
           ids: [20],
-          statusCode: 0
-        }
-      }
+          statusCode: 0,
+        },
+      },
     };
 
     const action = {
@@ -189,11 +189,11 @@ describe('httpStatusCodes', function() {
       resourceName: 'books',
       resources: [
         {
-          id: 24
-        }
+          id: 24,
+        },
       ],
       request: 'search',
-      statusCode: 404
+      statusCode: 404,
     };
 
     const result = reducer(state, action);
@@ -201,15 +201,15 @@ describe('httpStatusCodes', function() {
       resources: {},
       meta: {
         24: {
-          deleteStatusCode: 404
-        }
+          deleteStatusCode: 404,
+        },
       },
       requests: {
         search: {
           ids: [20],
-          statusCode: 404
-        }
-      }
+          statusCode: 404,
+        },
+      },
     });
   });
 });
