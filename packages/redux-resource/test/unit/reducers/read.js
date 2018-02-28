@@ -1356,7 +1356,7 @@ describe('reducers: read:', function() {
             requestKey: 'pasta',
             requestName: 'pasta',
             resourceType: 'hellos',
-            ids: [],
+            ids: [1],
             status: requestStatuses.SUCCEEDED,
           },
         },

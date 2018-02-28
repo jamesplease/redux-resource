@@ -89,7 +89,10 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
         return typeof resource === 'object' ? resource.id : resource;
       });
     }
-    newRequest.ids = newRequestIds || [];
+
+    if (newRequestIds) {
+      newRequest.ids = newRequestIds;
+    }
 
     newRequests = {
       ...state.requests,
