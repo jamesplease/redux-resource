@@ -5,32 +5,33 @@ import { actionTypes, setResourceMeta } from 'redux-resource';
 const createEndActions = [
   actionTypes.CREATE_RESOURCES_FAILED,
   actionTypes.CREATE_RESOURCES_SUCCEEDED,
-  actionTypes.CREATE_RESOURCES_NULL
+  actionTypes.CREATE_RESOURCES_IDLE,
 ];
 
 const readEndActions = [
   actionTypes.READ_RESOURCES_FAILED,
   actionTypes.READ_RESOURCES_SUCCEEDED,
-  actionTypes.READ_RESOURCES_NULL
+  actionTypes.READ_RESOURCES_IDLE,
 ];
 
 const updateEndActions = [
   actionTypes.UPDATE_RESOURCES_FAILED,
   actionTypes.UPDATE_RESOURCES_SUCCEEDED,
-  actionTypes.UPDATE_RESOURCES_NULL
+  actionTypes.UPDATE_RESOURCES_IDLE,
 ];
 
 const deleteEndActions = [
   actionTypes.DELETE_RESOURCES_FAILED,
   actionTypes.DELETE_RESOURCES_SUCCEEDED,
-  actionTypes.DELETE_RESOURCES_NULL
+  actionTypes.DELETE_RESOURCES_IDLE,
 ];
 
 // This sets a new meta property on resource and request metadata: `statusCode`.
 // This will be equal to the last status code for a request
-export default function httpStatusCodes(resourceName) {
+export default function httpStatusCodes(resourceType) {
   return function(state, action) {
-    if (action.resourceName !== resourceName) {
+    const typeToCheck = action.resourceType || action.resourceName;
+    if (typeToCheck !== resourceType) {
       return state;
     }
 
@@ -79,8 +80,8 @@ export default function httpStatusCodes(resourceName) {
         ...state.requests,
         [request]: {
           ...existingRequest,
-          statusCode
-        }
+          statusCode,
+        },
       };
     } else {
       newRequests = { ...state.requests };
@@ -101,10 +102,10 @@ export default function httpStatusCodes(resourceName) {
       newMeta = setResourceMeta({
         meta: state.meta,
         newMeta: {
-          [`${metaPrefix}StatusCode`]: statusCode
+          [`${metaPrefix}StatusCode`]: statusCode,
         },
         resources: idList,
-        mergeMeta: true
+        mergeMeta: true,
       });
     } else {
       newMeta = state.meta;
@@ -113,7 +114,7 @@ export default function httpStatusCodes(resourceName) {
     return {
       ...state,
       requests: newRequests,
-      meta: newMeta
+      meta: newMeta,
     };
   };
 }

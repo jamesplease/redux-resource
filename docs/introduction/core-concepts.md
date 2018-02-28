@@ -1,28 +1,65 @@
 # Core Concepts
 
-Understanding these core concepts is useful when using Redux Resource.
+Redux Resource has two concepts: "Resources" and "Requests."
 
 ### Resources
 
-A resource is an entity that you interact with in your application. For
+A resource is an object of data that you interact with in your applications.
+Typically, applications will have resources of several different "types." For
 instance, if your web application manages a public library, then you might have
-two resources: "books" and "members."
+two resource types: "books" and "members."
 
-Each instance of a resource has a unique ID, which differentiates it from other
-resources of the same time. They typically also have attributes, such as "name"
-or "releaseYear."
-
-Resources don't necessarily need to represent tangible objects. They can be more
-abstract things, too, such as "workflows" or "permissions."
-
-In Redux Resource, each resource will be kept in its own
-[slice](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) of
-your store. Within that slice, all of the resources of a single type are kept in
-an object, where the key of the object is the resource's ID. This looks like the
-following:
+Each individual resource has a unique ID, which differentiates it from other resources of the
+same type. Resources typically have other attributes, too. Here's an example book resource:
 
 ```js
 {
+  id: '1312',
+  title: 'The Hobbit',
+  releaseYear: 1937,
+  author: 'J.R.R. Tolkien'
+}
+```
+
+In Redux Resource, each resource type will be kept in its own
+[slice](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) of
+your store.
+
+The slices contain not just the "raw" resource data, but also other information
+that help you to manage and organize the data on the client.
+
+There are five pieces within a resource slice:
+
+- `resourceType`: The resource type (such as "books" or "authors")
+- `resources`: The location of individual resource's primary attributes
+- `meta`: Additional information about individual resources. You can store information
+  here that isn't persisted to a remote server.
+- `lists`: A way to store ordered arrays of resources.
+- `requests`: Information about the requests that are modifying this resource type (requests
+  will be covered in greater detail in the "Requests" section of this guide)
+
+An empty resource slice looks like the following:
+
+```js
+// "books" resource slice
+{
+  resourceType: 'books',
+  resources: {},
+  meta: {},
+  lists: {},
+  requests: {}
+}
+```
+
+##### Resources
+
+In the `resources` section of the slice, each key of the object is the resource's ID. This
+looks like the following:
+
+```js
+// "books" resource type slice
+{
+  resourceType: 'books',
   resources: {
     24: {
       // Attributes of book 24
@@ -30,19 +67,23 @@ following:
     100: {
       // Attributes of book 100
     }
-  }
+  },
+  meta: {},
+  lists: {},
+  requests: {}
 }
 ```
 
-### Resource Metadata
+This structure makes it convenient to quickly access a resource's attributes if you
+know its ID.
 
-In addition to an ID and attributes, resources have "metadata" about them, which
-is additional information about a resource that is useful for your interface.
-For instance, if your interface displays a list of books that the user can
-select by clicking checkboxes, then the information about which books are
-selected would be metadata about the books resource.
+##### Resource Metadata
 
-A rule of thumb is that metadata is any data about a resource that is **not**
+Typically, client-side applications need to store additional information about
+resources, such as if the resource has been "selected" by a user, or maybe
+information about the resource that has been input into a form.
+
+Resource metadata is for this purpose. It's any information that is **not**
 persisted to a remote server.
 
 In Redux Resource, all metadata is stored on an object. This meta object,
@@ -50,7 +91,10 @@ like the resources object, has resource IDs as its keys, and has values that are
 metadata. An example is:
 
 ```js
+// "books" resource type slice
 {
+  resourceType: 'books',
+  resources: {},
   meta: {
     24: {
       // Metadata for book 24
@@ -58,76 +102,90 @@ metadata. An example is:
     100: {
       // Metadata for book 100
     }
-  }
+  },
+  lists: {},
+  requests: {}
 }
 ```
 
-### Lists
+##### Resource Lists
 
-Often, applications need to keep track of ordered groupings of resources. In
-Redux Resource, this is done through a concept named "lists."
+Often, applications need to keep track of ordered groupings of resources. For instance,
+has a user selected certain books on the interface? Or did you fetch a user's recent book
+purchases from a server, sorted by purchase date?
+
+In Redux Resource, both of these situations can be handled using resource lists.
 
 Lists in your store are an array of resource IDs. A resource's lists might look
 like the following:
 
 ```js
 {
+  resourceType: 'books',
+  resources: {},
+  meta: {},
   lists: {
     searchResults: [10, 233, 4, 50],
     shoppingCart: [10, 409],
-  }
+  },
+  requests: {}
 }
 ```
 
-As a user interacts with your application, Redux Resource provides a straightforward
-API to keep lists up-to-date.
+Redux Resource provides Redux actions for you to create, update, and delete lists.
 
-### CRUD Operations
+##### Requests
 
-There are four interactions you can have with a resource: you can create them,
-retrieve them, update them, or delete them. These four operations are
-collectively known as
-[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete).
+The last section of the resource slice is called `requests`. This is an object
+where each key is maps to a request object, described below.
 
-### CRUD Operation Requests
+### Requests
 
-For many applications, resources are stored in an external system, and
-CRUD operations with the resources occur over a network. These interactions are
-called "requests." Typically, they are HTTP requests.
+Request objects represent network requests, such as HTTP requests. Like resources,
+they are stored in the store.
 
-Because requests occur over a network, they do not happen instantly.
-They might take awhile to complete, and they don't always succeed.
-In Redux Resource, this information is represented as one of four "statuses":
+Typically, requests are HTTP requests, but they can represent anything that is
+asynchronous. The primary characteristic of requests is that they do not occur instantly.
+They take time to complete, and they don't always succeed.
 
-- `NULL`: the request hasn't begun yet
+In Redux Resource, this characteristic of requests is represented as one of four "statuses":
+
+- `IDLE`: the request hasn't begun yet
 - `PENDING`: the request has started, but has not yet finished
 - `FAILED`: the request was unsuccessful
 - `SUCCEEDED`: the request was successful
 
-When you use Redux Resource, the status of **every** CRUD operation that you
-make in your application is stored in your application's state tree.
+In addition to having a status, a request keeps track of the resources it operated upon.
 
-For requests that target specific resources by their ID, the request status will
-be associated with those resources. So if you had one resource with an ID of 24,
-then your metadata for that resource will start off looking like this:
+Requests in Redux Resource are associated with a resource type, which is the primary resource
+type that is being affected by the request. Accordingly, the requests can be found within
+that resource's slice, under the `requests` key.
+
+Within `requests`, each key is a "request key," which is a string used to identify that request.
+A request with the key `"readFavoriteBooks"` would be stored like the following:
 
 ```js
 {
-  meta: {
-    24: {
-      createStatus: 'NULL',
-      readStatus: 'NULL',
-      updateStatus: 'NULL',
-      deleteStatus: 'NULL'
+  resourceType: 'books',
+  resources: {},
+  meta: {},
+  lists: {},
+  requests: {
+    readFavoriteBooks: {
+      requestKey: 'readFavoriteBooks',
+      status: 'SUCCEEDED',
+      // The resources that were affected by this crud action
+      ids: [24, 10, 50]
     }
   }
 }
 ```
 
-For requests that don't target a resource (or resources) by ID, you can assign
-the request a "name." A name is just a string that you can use to look up that
-request's status.
+### Conclusion
+
+When you use Redux Resource, information about **every** CRUD operation that you
+make in your application is stored in your application's state tree.
 
 By storing this information at such a granular level, Redux Resource provides
 a robust foundation from which you can build truly great user experiences. And
-you don't even need to write any boilerplate.
+you avoid writing a substantial amount of boilerplate code.

@@ -5,14 +5,20 @@ import warning from '../utils/warning';
 
 const del = reducerGenerator('delete', requestStatuses.PENDING);
 const delFail = reducerGenerator('delete', requestStatuses.FAILED);
-const delNull = reducerGenerator('delete', requestStatuses.NULL);
+const delIdle = reducerGenerator('delete', requestStatuses.IDLE);
 
 function delSucceed(state, action, { initialResourceMeta }) {
   const resources = action.resources;
 
-  let request;
+  let requestKey, requestName;
   if (action.request && typeof action.request === 'string') {
-    request = action.request;
+    requestKey = requestName = action.request;
+  }
+  if (action.requestKey && typeof action.requestKey === 'string') {
+    requestKey = action.requestKey;
+  }
+  if (action.requestName && typeof action.requestName === 'string') {
+    requestName = action.requestName;
   }
 
   if (process.env.NODE_ENV !== 'production') {
@@ -22,7 +28,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
           `"success" action with type "${action.type}. Without a 'resources' ` +
           `Array, Redux Resource will not be able to track which resources ` +
           `were affected by this CRUD operation. You should check your Action ` +
-          `Creators to make sure that they always include a 'resources' array.`
+          `Creators to make sure that they always include a 'resources' array.`,
+        'SUCCESS_NO_RESOURCES'
       );
     } else if (!Array.isArray(resources)) {
       warning(
@@ -32,14 +39,16 @@ function delSucceed(state, action, { initialResourceMeta }) {
           }". 'resources' must be an ` +
           `array. If your backend returned a single object, be sure to wrap it ` +
           `inside of an array. If you're using the Redux Resource XHR ` +
-          `library, you can do this using the "transformData" option.`
+          `library, you can do this using the "transformData" option.`,
+        'NON_ARRAY_RESOURCES'
       );
     }
 
     if (action.list) {
       warning(
         `You included a "list" in a delete action. You don't need to do this, ` +
-          `because successful deletes remove the deleted resources from all lists.`
+          `because successful deletes remove the deleted resources from all lists.`,
+        'DELETE_LISTS'
       );
     }
   }
@@ -60,7 +69,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
                   action.type
                 }. Every resource must have an ID that is either ` +
                 `a number of a string. You should check your action creators to ` +
-                `make sure that an ID is always included in your resources.`
+                `make sure that an ID is always included in your resources.`,
+              'NO_RESOURCE_ID'
             );
           }
         }
@@ -74,7 +84,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
                   action.type
                 }. Every resource must have an ID that is either ` +
                 `a number of a string. You should check your action creators to ` +
-                `make sure that an ID is always included in your resources.`
+                `make sure that an ID is always included in your resources.`,
+              'NO_RESOURCE_ID'
             );
           }
         }
@@ -85,8 +96,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
 
   const hasIds = idList && idList.length;
 
-  // If we have no IDs nor request, then there is nothing to update
-  if (!hasIds && !request) {
+  // If we have no IDs nor requestKey, then there is nothing to update
+  if (!hasIds && !requestKey) {
     return state;
   }
 
@@ -97,15 +108,23 @@ function delSucceed(state, action, { initialResourceMeta }) {
   const requests = state.requests;
   const lists = state.lists;
 
-  if (request) {
-    const existingRequest = requests[request] || {};
+  if (requestKey) {
+    const existingRequest = requests[requestKey] || {};
+    const newRequest = {
+      ...existingRequest,
+      ...action.requestProperties,
+      requestKey,
+      resourceType: action.resourceType || action.resourceName,
+      status: requestStatuses.SUCCEEDED,
+      ids: idList || [],
+    };
+
+    if (requestName) {
+      newRequest.requestName = requestName;
+    }
     newRequests = {
       ...requests,
-      [request]: {
-        ...existingRequest,
-        status: requestStatuses.SUCCEEDED,
-        ids: idList || []
-      }
+      [requestKey]: newRequest,
     };
   } else {
     newRequests = requests;
@@ -129,14 +148,14 @@ function delSucceed(state, action, { initialResourceMeta }) {
       memo[id] = {
         ...initialResourceMetaState,
         ...initialResourceMeta,
-        deleteStatus: requestStatuses.SUCCEEDED
+        deleteStatus: requestStatuses.SUCCEEDED,
       };
       return memo;
     }, {});
 
     newMeta = {
       ...meta,
-      ...nullMeta
+      ...nullMeta,
     };
   } else {
     newMeta = meta;
@@ -155,8 +174,8 @@ function delSucceed(state, action, { initialResourceMeta }) {
     meta: newMeta,
     lists: newLists,
     requests: newRequests,
-    resources: newResources
+    resources: newResources,
   };
 }
 
-export { del, delFail, delNull, delSucceed };
+export { del, delFail, delIdle, delSucceed };

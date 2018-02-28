@@ -8,25 +8,25 @@ describe('reducerGenerator:', function() {
     const state = {
       meta: {
         1: {
-          pastaStatus: requestStatuses.PENDING
+          pastaStatus: requestStatuses.PENDING,
         },
         2: {
           pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        }
+          sandwichStatus: requestStatuses.PENDING,
+        },
       },
       lists: {
-        bookmarks: [1, 2, 3]
+        bookmarks: [1, 2, 3],
       },
       requests: {
         italiano: {
           sandwiches: true,
-          status: requestStatuses.PENDING
+          status: requestStatuses.PENDING,
         },
         meep: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
@@ -36,374 +36,549 @@ describe('reducerGenerator:', function() {
     expect(console.error.callCount).to.equal(1);
   });
 
-  it('passing mixed resources array and no request name', () => {
+  it('passing mixed resources array and no request key', () => {
     const state = {
       meta: {
         1: {
           pastaStatus: requestStatuses.PENDING,
-          hangry: true
+          hangry: true,
         },
         2: {
           pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        }
+          sandwichStatus: requestStatuses.PENDING,
+        },
       },
       lists: {
-        bookmarks: [1, 2, 3]
+        bookmarks: [1, 2, 3],
       },
       requests: {
         italiano: {
           sandwiches: true,
-          status: requestStatuses.PENDING
+          status: requestStatuses.PENDING,
         },
         meep: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     };
 
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
     const result = reducer(
       state,
       {
-        resources: [{ id: 1 }, { id: 5 }, 6]
+        resources: [{ id: 1 }, { id: 5 }, 6],
       },
       {
         initialResourceMeta: {
           selected: false,
-          readStatus: requestStatuses.PENDING
-        }
+          readStatus: requestStatuses.PENDING,
+        },
       }
     );
 
     expect(result).to.deep.equal({
       meta: {
         1: {
-          createStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
           readStatus: requestStatuses.PENDING,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
           selected: false,
-          hangry: true
+          hangry: true,
         },
         2: {
           pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
+          sandwichStatus: requestStatuses.PENDING,
         },
         5: {
-          createStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
           readStatus: requestStatuses.PENDING,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           selected: false,
-          pastaStatus: requestStatuses.FAILED
+          pastaStatus: requestStatuses.FAILED,
         },
         6: {
-          createStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
           readStatus: requestStatuses.PENDING,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           selected: false,
-          pastaStatus: requestStatuses.FAILED
-        }
+          pastaStatus: requestStatuses.FAILED,
+        },
       },
       lists: {
-        bookmarks: [1, 2, 3]
+        bookmarks: [1, 2, 3],
       },
       requests: {
         italiano: {
           sandwiches: true,
-          status: requestStatuses.PENDING
+          status: requestStatuses.PENDING,
         },
         meep: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     });
   });
 
-  it('passing resources and no request name', () => {
+  it('passing resources and no request key', () => {
     const state = {
       meta: {
         1: {
           pastaStatus: requestStatuses.PENDING,
-          hangry: true
+          hangry: true,
         },
         2: {
           pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        }
+          sandwichStatus: requestStatuses.PENDING,
+        },
       },
       lists: {
-        bookmarks: [1, 2, 3]
+        bookmarks: [1, 2, 3],
       },
       requests: {
         italiano: {
           sandwiches: true,
-          status: requestStatuses.PENDING
+          status: requestStatuses.PENDING,
         },
         meep: {
-          hungry: true
-        }
-      }
-    };
-
-    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
-    const result = reducer(state, {
-      resources: [1, 5, 6]
-    });
-
-    expect(result).to.deep.equal({
-      meta: {
-        1: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED,
-          hangry: true
+          hungry: true,
         },
-        2: {
-          pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        },
-        5: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED
-        },
-        6: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED
-        }
       },
-      lists: {
-        bookmarks: [1, 2, 3]
-      },
-      requests: {
-        italiano: {
-          sandwiches: true,
-          status: requestStatuses.PENDING
-        },
-        meep: {
-          hungry: true
-        }
-      }
-    });
-  });
-
-  it('passing no IDs, but passing a request name', () => {
-    const state = {
-      meta: {
-        1: {
-          pastaStatus: requestStatuses.PENDING,
-          hangry: true
-        },
-        2: {
-          pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        }
-      },
-      lists: {
-        bookmarks: [1, 2, 3]
-      },
-      requests: {
-        italiano: {
-          sandwiches: true,
-          status: requestStatuses.PENDING
-        },
-        meep: {
-          hungry: true
-        }
-      }
-    };
-
-    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
-    const result = reducer(state, {
-      request: 'italiano'
-    });
-
-    expect(result).to.deep.equal({
-      meta: {
-        1: {
-          pastaStatus: requestStatuses.PENDING,
-          hangry: true
-        },
-        2: {
-          pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        }
-      },
-      lists: {
-        bookmarks: [1, 2, 3]
-      },
-      requests: {
-        italiano: {
-          sandwiches: true,
-          status: requestStatuses.FAILED
-        },
-        meep: {
-          hungry: true
-        }
-      }
-    });
-  });
-
-  it('passing IDs and passing a request name', () => {
-    const state = {
-      meta: {
-        1: {
-          pastaStatus: requestStatuses.PENDING,
-          hangry: true
-        },
-        2: {
-          pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        }
-      },
-      lists: {
-        bookmarks: [1, 2, 3]
-      },
-      requests: {
-        italiano: {
-          sandwiches: true,
-          status: requestStatuses.PENDING
-        },
-        meep: {
-          hungry: true
-        }
-      }
     };
 
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
     const result = reducer(state, {
       resources: [1, 5, 6],
-      request: 'italiano'
     });
 
     expect(result).to.deep.equal({
       meta: {
         1: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
           pastaStatus: requestStatuses.FAILED,
-          hangry: true
+          hangry: true,
         },
         2: {
           pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
+          sandwichStatus: requestStatuses.PENDING,
         },
         5: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
         },
         6: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED
-        }
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
       },
       lists: {
-        bookmarks: [1, 2, 3]
+        bookmarks: [1, 2, 3],
       },
       requests: {
         italiano: {
           sandwiches: true,
-          status: requestStatuses.FAILED
+          status: requestStatuses.PENDING,
         },
         meep: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
     });
   });
 
-  it('passing IDs and passing a request name with `mergeMeta: false`', () => {
+  it('passing no IDs, but passing a request key', () => {
     const state = {
       meta: {
         1: {
           pastaStatus: requestStatuses.PENDING,
-          hangry: true
+          hangry: true,
         },
         2: {
           pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
-        }
+          sandwichStatus: requestStatuses.PENDING,
+        },
       },
       lists: {
-        bookmarks: [1, 2, 3]
+        bookmarks: [1, 2, 3],
       },
       requests: {
         italiano: {
           sandwiches: true,
-          status: requestStatuses.PENDING
+          status: requestStatuses.PENDING,
         },
         meep: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
+    };
+
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
+      request: 'italiano',
+      resourceType: 'hellos',
+    });
+
+    expect(result).to.deep.equal({
+      meta: {
+        1: {
+          pastaStatus: requestStatuses.PENDING,
+          hangry: true,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          requestKey: 'italiano',
+          requestName: 'italiano',
+          sandwiches: true,
+          resourceType: 'hellos',
+          status: requestStatuses.FAILED,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
+    });
+  });
+
+  it('passing IDs and passing a request key', () => {
+    const state = {
+      meta: {
+        1: {
+          pastaStatus: requestStatuses.PENDING,
+          hangry: true,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          sandwiches: true,
+          status: requestStatuses.PENDING,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
     };
 
     const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
     const result = reducer(state, {
       resources: [1, 5, 6],
       request: 'italiano',
-      mergeMeta: false
+      resourceType: 'hellos',
     });
 
     expect(result).to.deep.equal({
       meta: {
         1: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+          hangry: true,
         },
         2: {
           pastaStatus: requestStatuses.FAILED,
-          sandwichStatus: requestStatuses.PENDING
+          sandwichStatus: requestStatuses.PENDING,
         },
         5: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
         },
         6: {
-          createStatus: requestStatuses.NULL,
-          readStatus: requestStatuses.NULL,
-          updateStatus: requestStatuses.NULL,
-          deleteStatus: requestStatuses.NULL,
-          pastaStatus: requestStatuses.FAILED
-        }
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
       },
       lists: {
-        bookmarks: [1, 2, 3]
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          requestKey: 'italiano',
+          requestName: 'italiano',
+          resourceType: 'hellos',
+          sandwiches: true,
+          status: requestStatuses.FAILED,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
+    });
+  });
+
+  it('passing IDs and passing a request key, but no request name', () => {
+    const state = {
+      meta: {
+        1: {
+          pastaStatus: requestStatuses.PENDING,
+          hangry: true,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
       },
       requests: {
         italiano: {
           sandwiches: true,
-          status: requestStatuses.FAILED
+          status: requestStatuses.PENDING,
         },
         meep: {
-          hungry: true
-        }
-      }
+          hungry: true,
+        },
+      },
+    };
+
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
+      resources: [1, 5, 6],
+      requestKey: 'italiano',
+      resourceType: 'hellos',
+    });
+
+    expect(result).to.deep.equal({
+      meta: {
+        1: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+          hangry: true,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+        5: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
+        6: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          requestKey: 'italiano',
+          resourceType: 'hellos',
+          sandwiches: true,
+          status: requestStatuses.FAILED,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
+    });
+  });
+
+  it('passing IDs and passing a request key and request name', () => {
+    const state = {
+      meta: {
+        1: {
+          pastaStatus: requestStatuses.PENDING,
+          hangry: true,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          sandwiches: true,
+          status: requestStatuses.PENDING,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
+    };
+
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
+      resources: [1, 5, 6],
+      requestKey: 'abc12345',
+      requestName: 'someRequest',
+      resourceType: 'hellos',
+    });
+
+    expect(result).to.deep.equal({
+      meta: {
+        1: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+          hangry: true,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+        5: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
+        6: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          sandwiches: true,
+          status: requestStatuses.PENDING,
+        },
+        abc12345: {
+          requestKey: 'abc12345',
+          requestName: 'someRequest',
+          resourceType: 'hellos',
+          status: requestStatuses.FAILED,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
+    });
+  });
+
+  it('passing IDs and passing a request key with `mergeMeta: false`', () => {
+    const state = {
+      meta: {
+        1: {
+          pastaStatus: requestStatuses.PENDING,
+          hangry: true,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          sandwiches: true,
+          status: requestStatuses.PENDING,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
+    };
+
+    const reducer = reducerGenerator('pasta', requestStatuses.FAILED);
+    const result = reducer(state, {
+      resources: [1, 5, 6],
+      request: 'italiano',
+      resourceType: 'hellos',
+      mergeMeta: false,
+    });
+
+    expect(result).to.deep.equal({
+      meta: {
+        1: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
+        2: {
+          pastaStatus: requestStatuses.FAILED,
+          sandwichStatus: requestStatuses.PENDING,
+        },
+        5: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
+        6: {
+          createStatus: requestStatuses.IDLE,
+          readStatus: requestStatuses.IDLE,
+          updateStatus: requestStatuses.IDLE,
+          deleteStatus: requestStatuses.IDLE,
+          pastaStatus: requestStatuses.FAILED,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      requests: {
+        italiano: {
+          requestKey: 'italiano',
+          requestName: 'italiano',
+          resourceType: 'hellos',
+          sandwiches: true,
+          status: requestStatuses.FAILED,
+        },
+        meep: {
+          hungry: true,
+        },
+      },
     });
   });
 });

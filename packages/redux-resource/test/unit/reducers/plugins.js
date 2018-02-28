@@ -1,6 +1,11 @@
 import { resourceReducer, actionTypes } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducer', function() {
+  beforeEach(() => {
+    resetCodeCache();
+  });
+
   it('should warn when a bad plugin is initialized', () => {
     stub(console, 'error');
 
@@ -8,8 +13,8 @@ describe('reducer', function() {
       plugins: [
         () => {
           // Intentionally blank
-        }
-      ]
+        },
+      ],
     });
 
     expect(console.error.callCount).to.equal(1);
@@ -22,36 +27,37 @@ describe('reducer', function() {
           if (action.type === actionTypes.READ_RESOURCES_SUCCEEDED) {
             return {
               ...state,
-              pizza: 'yum'
+              pizza: 'yum',
             };
           }
 
           return state;
-        }
-      ]
+        },
+      ],
     });
 
     const reduced = reducer(undefined, {
       type: 'READ_RESOURCES_SUCCEEDED',
-      resourceName: 'hellos',
-      resources: [3]
+      resourceType: 'hellos',
+      resources: [3],
     });
 
     expect(reduced).to.deep.equal({
+      resourceType: 'hellos',
       resources: {
-        3: { id: 3 }
+        3: { id: 3 },
       },
       meta: {
         3: {
-          createStatus: 'NULL',
+          createStatus: 'IDLE',
           readStatus: 'SUCCEEDED',
-          updateStatus: 'NULL',
-          deleteStatus: 'NULL'
-        }
+          updateStatus: 'IDLE',
+          deleteStatus: 'IDLE',
+        },
       },
       lists: {},
       requests: {},
-      pizza: 'yum'
+      pizza: 'yum',
     });
   });
 
@@ -62,27 +68,28 @@ describe('reducer', function() {
           if (action.type === 'SANDWICHES_ARE_GOOD') {
             return {
               ...state,
-              tastiness: action.tastiness
+              tastiness: action.tastiness,
             };
           }
 
           return state;
-        }
-      ]
+        },
+      ],
     });
 
     const reduced = reducer(undefined, {
       type: 'SANDWICHES_ARE_GOOD',
-      resourceName: 'hellos',
-      tastiness: 'quite'
+      resourceType: 'hellos',
+      tastiness: 'quite',
     });
 
     expect(reduced).to.deep.equal({
+      resourceType: 'hellos',
       resources: {},
       meta: {},
       lists: {},
       requests: {},
-      tastiness: 'quite'
+      tastiness: 'quite',
     });
   });
 
@@ -93,7 +100,7 @@ describe('reducer', function() {
           if (action.type === 'SANDWICHES_ARE_GOOD') {
             return {
               ...state,
-              tastiness: true
+              tastiness: true,
             };
           }
 
@@ -103,26 +110,27 @@ describe('reducer', function() {
           if (action.type === 'SANDWICHES_ARE_GOOD') {
             return {
               ...state,
-              tastiness: false
+              tastiness: false,
             };
           }
 
           return state;
-        }
-      ]
+        },
+      ],
     });
 
     const reduced = reducer(undefined, {
       type: 'SANDWICHES_ARE_GOOD',
-      resourceName: 'hellos'
+      resourceType: 'hellos',
     });
 
     expect(reduced).to.deep.equal({
+      resourceType: 'hellos',
       resources: {},
       meta: {},
       lists: {},
       requests: {},
-      tastiness: true
+      tastiness: true,
     });
   });
 });

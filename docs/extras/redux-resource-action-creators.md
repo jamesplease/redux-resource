@@ -5,7 +5,7 @@
 
 This library makes it more convenient to create valid Redux Resource actions. It helps out in two ways:
 
-1. Remembering the [CRUD Action Types](/docs/api-reference/action-types.md) can be difficult
+1. Remembering the Redux Resource [action types](/docs/api-reference/action-types.md) can be difficult
 2. Often times, your "start" and "end" actions share many properties, and it can be verbose to copy + paste
   those properties
 
@@ -37,12 +37,12 @@ This library has a single export, `createActionCreators`.
   [CRUD Action types](/docs/api-reference/action-types.md) that are dispatched.
 
 2. `actionDefaults` *(Object)*: Properties that will be included on each dispatched
-    action. The [the CRUD Action guide](/docs/guides/crud-actions.md) lists possible
-    options, such as `resourceName` and `resources`. You *must* include `resourceName`.
+    action. The [the Request Action guide](/docs/requests/request-actions.md) lists possible
+    options, such as `resourceType` and `resources`. You *must* include `resourceType`.
 
 #### Returns
 
-(*`Object`*): An object with four methods: `pending`, `succeeded`, `failed`, and `null`.
+(*`Object`*): An object with four methods: `pending`, `succeeded`, `failed`, and `idle`.
   These action creators return actions for you, based on the action properties that
   you provide to them.
 
@@ -53,8 +53,8 @@ import createActionCreators from 'redux-resource-action-creators';
 import store from './store';
 
 const readActionCreators = createActionCreators('read', {
-  resourceName: 'books',
-  request: 'getHomePageBooks',
+  resourceType: 'books',
+  requestKey: 'getHomePageBooks',
   list: 'homePageBooks',
   mergeListIds: false
 });
@@ -63,7 +63,7 @@ store.dispatch(readActionCreators.pending());
 
 const req = fetchData((err, res, body) => {
   if (req.aborted) {
-    store.dispatch(readActionCreators.null());
+    store.dispatch(readActionCreators.idle());
   } else if (err) {
     store.dispatch(readActionCreators.failed());
   } else {
@@ -83,8 +83,8 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_PENDING,
-  resourceName: 'books',
-  request: 'getHomePageBooks',
+  resourceType: 'books',
+  requestKey: 'getHomePageBooks',
   list: 'homePageBooks'
 });
 
@@ -92,22 +92,22 @@ const req = fetchData((err, res, body) => {
   if (req.aborted) {
     store.dispatch({
       type: actionTypes.READ_RESOURCES_NULL,
-      resourceName: 'books',
-      request: 'getHomePageBooks',
+      resourceType: 'books',
+      requestKey: 'getHomePageBooks',
       list: 'homePageBooks'
     });
   } else if (err) {
     store.dispatch({
       type: actionTypes.READ_RESOURCES_FAILED,
-      resourceName: 'books',
-      request: 'getHomePageBooks',
+      resourceType: 'books',
+      requestKey: 'getHomePageBooks',
       list: 'homePageBooks'
     });
   } else {
     store.dispatch(readActionCreators.succeeded({
       type: actionTypes.READ_RESOURCES_SUCCEEDED,
-      resourceName: 'books',
-      request: 'getHomePageBooks',
+      resourceType: 'books',
+      requestKey: 'getHomePageBooks',
       list: 'homePageBooks',
       resources: body
     }));
@@ -123,8 +123,8 @@ import { actionTypes } from 'redux-resource';
 import store from './store';
 
 const actionDefaults = {
-  resourceName: 'books',
-  request: 'getHomePageBooks',
+  resourceType: 'books',
+  requestKey: 'getHomePageBooks',
   list: 'homePageBooks'
 };
 

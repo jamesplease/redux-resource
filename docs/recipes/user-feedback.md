@@ -1,19 +1,22 @@
 # User Feedback
 
-It's important to provide a user with feedback of the status of CRUD operation
-requests. When applications don't provide good request feedback, users often
-lose confidence in the tool. You may have experienced this first hand if you've
-ever clicked a button within an application, then thought to yourself,
+It's important to provide a user with feedback of the status of network
+requests. When applications don't provide good request feedback, users will
+lose confidence in the app. You may have experienced this first hand if you've
+ever clicked a button within an application, and then thought to yourself,
 "Did that work?"
 
+You don't want to create those negative experiences, and when you use Redux Resource,
+you have all of the information you need to create good ones instead.
+
 In this recipe, we will cover some tips for providing good feedback to your
-user when requests occur. Think of these as guidelines, rather than rules set in
-stone. Different applications will require different user experiences.
+user around requests. Think of these tips as guidelines, rather than rules set in
+stone. Different applications require different user experiences.
 
 ### Pending Requests
 
-You should communicate to the user when a request is in flight. This lets them
-know that the application is still processing the operation.
+You should visually communicate to the user anytime that a request is in flight. This
+lets them know that the application is processing the operation.
 
 The [`getState`](/docs/api-reference/get-state.md) method returns an object with
 a `pending` property, which will be `true` whenever the associated request is in
@@ -44,44 +47,48 @@ be unobtrusive. Some applications will overlay the whole interface, or a large
 section of the interface, with a spinner
 whenever an action occurs. This prevents the user from taking any other
 action with the page while also hindering their ability to read content on the
-page, contributing to a terrible user experience.
+page. This is a bad user experience.
 
-In many situations, a better approach is to display a loading indicator nearby
+In many situations, a better approach is to display a loading indicator near to
 the affected elements on the page. For instance, if the user is deleting a
 resource from a list of resources, then perhaps it makes sense for a spinner to
-be displayed next to the resource's name. This allows the user to initiate
-multiple delete requests at once, while keeping track of each their statuses
-independently. It also doesn't interfere with any other content on the page.
+be displayed next to the delete button that they clicked. This prevents
+the spinner from interfering with other, unrelated elements on the page.
 
 #### Disabling Interface Elements
 
-Sometimes, it makes sense to disable aspects of an interface when a CRUD
+Sometimes, it makes sense to disable elements of an interface when a CRUD
 request is in flight. Always take a minimalist approach when it comes
 to disabling interface elements: disable as little as possible.
 
-A short list of situations where it might make sense to disable an element are:
+Typically, if a user clicks a button to initiate a request, then you will
+want to disable that button so that they don't submit multiple requests at
+the same time.
 
-- When a user clicks a button to delete a resource. It doesn't make sense to
-  have two delete requests for a resource in flight at once.
+Some example buttons that you should consider disabling are:
 
-- When a user clicks a button to make a purchase.
+- a delete button. It doesn't make sense for two delete requests to be in
+  flight at the same time.
 
-- When a user clicks the "create" button to create a new resource.
+- a payment button
+
+- a "save" button to save their changes to a resource
 
 Sometimes, developers go too far when they disable interface elements. For
-instance, overing the whole page, or a large portion of the page, which a
-loading indicator effectively disables those regions.
+instance, some applications cover the entire page, or a large portion of the
+page, with a loading indicator. This prevents the user from interacting
+with a large portion of the page, which is a poor user experience.
 
 If you're using React, an example code snippet of disabling a button is:
 
 ```jsx
 render() {
   const { state } = this.props;
-  const readStatus = getStatus(state, 'books.meta[24].readStatus');
+  const deleteStatus = getStatus(state, 'books.meta[24].deleteStatus');
 
   return (
     <div>
-      <button disabled={readStatus.pending}>
+      <button disabled={deleteStatus.pending}>
         Delete Book
       </button>
     </div>
@@ -130,6 +137,14 @@ render() {
 }
 ```
 
+An even better UI would distinguish between different error types. Why was
+there an error? Did the network request fail because the user lost their
+internet connection? Did they get logged out? Did some form data fail
+server-side validation?
+
+You can store information about the error on the response object to provide
+an even better user experience.
+
 #### Unauthorized Responses
 
 Some applications expire a user's session after a period of time. When that
@@ -164,21 +179,22 @@ render() {
 
 ### Successful Requests
 
-Users typically know immediately when a read request succeeds because the data
-that was fetched is displayed in the interface. For other requests,
-you should provide some other indicator.
+Users typically know when a read request succeeds because the data
+that was fetched is displayed in the interface. For other requests, such as
+updating a resource or deleting a resource, you should consider providing
+some other indicator.
 
 Some examples of indicators include:
 
 - A toast or notification that appears, stating that the operation succeeded.
 
-- Text appearing elsewhere on the interface, stating that the request succeeded.
-  This is frequently seen on account and settings pages when changes are made.
+- Text appearing on the interface, stating that the request succeeded. This approach
+  is frequently seen on account and settings pages when changes are made.
 
 - If a spinner is used for the loading state, it could be transformed into
-  a green checkmark, indicating success
+  a green checkmark, indicating success.
 
-There are many other ways to indicate success, as well.
+This list is not meant to be exhaustive; there are many other ways to indicate success.
 
 Success indicators follow a similar pattern to the other indicators if you're
 using React. For instance:

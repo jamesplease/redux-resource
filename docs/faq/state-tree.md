@@ -6,9 +6,13 @@ You can, and we encourage it. We recommend that you avoid changing the values of
 the request statuses directly (use the built-in Action types to do this), but
 feel free to store anything else in there that you want.
 
-The best way to add support for custom metadata is by writing
-[plugins]('../guides/plugins.md') to add support custom Action types in a
-resource's reducer.
+You can use the `UPDATE_RESOURCES` action type to change the metadata of
+resources.
+
+If you'd like to update metadata alongside a request, then you can write a
+[plugin](../other-guides/plugins.md) for that.
+
+A future version of Redux Resource will support this without a plugin.
 
 #### Can I store additional properties on each state slice?
 
@@ -21,8 +25,4 @@ slice. Use another slice for other information.
 
 #### Can I store more than one resource per state slice?
 
-We don't recommend doing this right now, but that's just because the library
-isn't built to support it. If you have a compelling use case for this feature,
-let us know by
-[opening an issue](https://github.com/jamesplease/redux-resource/issues/new) about
-it.
+We don't recommend doing this.

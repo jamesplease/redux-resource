@@ -1,43 +1,27 @@
 # Forms
 
-Redux Resource complements, but does not replace, form libraries for React.
-If you're already using a form library, we encourage you to continue using it alongside
-Redux Resource.
+Redux Resource complements, but does not replace, form libraries. If you're already using a form
+library, we encourage you to continue using it alongside Redux Resource.
 
 ### Recommendations
 
-We've had great success using [react-redux-form](https://github.com/davidkpiano/react-redux-form)
-with Redux Resource, although [Redux Form](https://github.com/erikras/redux-form) is also worth
-considering.
+The following are two popular forms libraries for Redux:
 
-No matter what form library you go with, it should work well with Redux Resource.
+- [react-redux-form](https://github.com/davidkpiano/react-redux-form)
+- [redux-form](https://github.com/erikras/redux-form)
 
-### Usage Guidance
+Using component state for form data is also worth considering. However you decide to
+manage your form data, it should work well alongside Redux Resource.
 
-We've had luck using forms in the following way:
+### Using Resource Slices
 
-1. When the form mounts, we grab the resource that the user will be modifying from the Redux Resource
-  slice. We use that resource to hydrate the form data. If you're using React Redux Form, this would mean
-  using
-  [`actions.change`](https://davidkpiano.github.io/react-redux-form/docs/api/actions.html#actions-change)
-  to update the form's model.
-2. At this point, the user can enter data, and you would use the form library like usual.
-3. When it's time to submit the form, you can serialize the form data into a format that 
-  can be passed into a Redux Resource action. Typically, you would pass some version of the
-  data into a create or update action creator.
-4. Redux Resource will automatically update your resource slice appropriately, and you're on
-  your way.
+You can also store form information inside of the resource slice. A  Redux best practice is to
+separate your client-side data separate from your server-side data, so form information should
+be kept separate from the actual resource objects themselves.
 
-### Including Form Data into Redux Resource Slices
+Instead, you might choose to use [`meta`](/docs/resources/meta.md) for form information, or
+perhaps an additional "top-level" key within the resource slice, such as `forms`.
 
-Folks have asked if it's alright to place form data in a resource slice. Sure, I think so.
-I would recommend keeping the `resources` object as the last known representation of the
-resources from your server, and keeping a "working copy" of the resources elsewhere.
-
-There are two downsides to doing this:
-
-1. It couples your form implementation to Redux Resource, when it isn't necessary to do so
-2. Great libraries for handling Redux forms already exist! You'll want to make sure that what
-  you get from writing your own is worth the effort.
-
-If you decide to do something like this, let us know! We'd love to check it out.
+One thing to consider before going with this approach is whether or not your form allows a user
+to modify more than one resource at a time. If it does, then you may want to consider storing
+the form data outside of an individual resource slice.

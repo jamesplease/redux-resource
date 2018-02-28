@@ -10,9 +10,15 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
   const resourcesIsUndefined = typeof resources === 'undefined';
   const hasResources = resources && resources.length;
 
-  let request;
+  let requestKey, requestName;
   if (action.request && typeof action.request === 'string') {
-    request = action.request;
+    requestKey = requestName = action.request;
+  }
+  if (action.requestKey && typeof action.requestKey === 'string') {
+    requestKey = action.requestKey;
+  }
+  if (action.requestName && typeof action.requestName === 'string') {
+    requestName = action.requestName;
   }
 
   let list;
@@ -27,7 +33,8 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
           `"success" action with type "${action.type}. Without a 'resources' ` +
           `Array, Redux Resource will not be able to track which resources ` +
           `were affected by this CRUD operation. You should check your Action ` +
-          `Creators to make sure that they always include a 'resources' array.`
+          `Creators to make sure that they always include a 'resources' array.`,
+        'SUCCESS_NO_RESOURCES'
       );
     } else if (!Array.isArray(resources)) {
       warning(
@@ -37,13 +44,14 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
           }". 'resources' must be an ` +
           `array. If your backend returned a single object, be sure to wrap it ` +
           `inside of an array. If you're using the Redux Resource XHR ` +
-          `library, you can do this using the "transformData" option.`
+          `library, you can do this using the "transformData" option.`,
+        'NON_ARRAY_RESOURCES'
       );
     }
   }
 
-  // Without resources, a list, or a request name, there is nothing to update
-  if (!hasResources && !request && !list) {
+  // Without resources, a list, or a request key, there is nothing to update
+  if (!hasResources && !requestKey && !list) {
     return state;
   }
 
@@ -57,16 +65,23 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
     meta: state.meta,
     newMeta: updatedMeta,
     mergeMeta: action.mergeMeta,
-    initialResourceMeta
+    initialResourceMeta,
   });
 
   let newRequests;
-  if (request) {
-    const existingRequest = state.requests[request] || {};
+  if (requestKey) {
+    const existingRequest = state.requests[requestKey] || {};
     const newRequest = {
       ...existingRequest,
-      status: requestStatuses.SUCCEEDED
+      ...action.requestProperties,
+      resourceType: action.resourceType || action.resourceName,
+      requestKey,
+      status: requestStatuses.SUCCEEDED,
     };
+
+    if (requestName) {
+      newRequest.requestName = requestName;
+    }
 
     let newRequestIds;
     if (hasResources) {
@@ -78,7 +93,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
 
     newRequests = {
       ...state.requests,
-      [request]: newRequest
+      [requestKey]: newRequest,
     };
   } else {
     newRequests = state.requests;
@@ -110,7 +125,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
 
     newLists = {
       ...state.lists,
-      [list]: newList || currentList
+      [list]: newList || currentList,
     };
   } else {
     newLists = state.lists;
@@ -121,6 +136,6 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
     resources: newResources,
     meta: newMeta,
     requests: newRequests,
-    lists: newLists
+    lists: newLists,
   };
 }

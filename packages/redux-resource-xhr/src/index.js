@@ -10,10 +10,11 @@ function crudRequest(crudAction, options) {
     onPending,
     onFailed,
     onSucceeded,
-    onAborted
+    onAborted,
   } = options;
 
-  const { resourceName } = actionDefaults;
+  const { resourceName, resourceType } = actionDefaults;
+  const typeToUse = resourceType || resourceName;
 
   const crudActionOption = crudAction ? crudAction : '';
 
@@ -27,10 +28,10 @@ function crudRequest(crudAction, options) {
       lowercaseCrud === 'create';
     const { url, uri } = xhrOptions;
 
-    if (!resourceName) {
+    if (!typeToUse) {
       console.warn(
-        `A resourceName was not passed to a Redux Resource Action ` +
-          `creator. A resourceName must be passed so that Redux Resource ` +
+        `A resourceType was not passed to a Redux Resource Action ` +
+          `creator. A resourceType must be passed so that Redux Resource ` +
           `knows which resource slice to update. Refer to the CRUD Actions ` +
           `guide for more: https://redux-resource.js.org/docs/guides/crud-actions.html`
       );
@@ -60,7 +61,7 @@ function crudRequest(crudAction, options) {
     type: actionTypes[`${crudType}_RESOURCES_PENDING`],
     // This may seem strange, but any unresolved request has a status code of 0
     // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status
-    statusCode: 0
+    statusCode: 0,
   };
 
   if (onPending) {
@@ -74,9 +75,9 @@ function crudRequest(crudAction, options) {
     if (req.aborted) {
       const abortedAction = {
         ...actionDefaults,
-        type: actionTypes[`${crudType}_RESOURCES_NULL`],
+        type: actionTypes[`${crudType}_RESOURCES_IDLE`],
         statusCode,
-        res
+        res,
       };
 
       if (onAborted) {
@@ -90,7 +91,7 @@ function crudRequest(crudAction, options) {
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
         statusCode,
         res,
-        err
+        err,
       };
 
       if (onFailed) {
@@ -116,7 +117,7 @@ function crudRequest(crudAction, options) {
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
         statusCode,
         resources,
-        res
+        res,
       };
 
       if (onSucceeded) {

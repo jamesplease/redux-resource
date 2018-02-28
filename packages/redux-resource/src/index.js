@@ -25,7 +25,8 @@ if (
       'This means that you are running a slower development build of Redux Resource. ' +
       'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' +
       'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' +
-      'to ensure you have the correct code for your production build.'
+      'to ensure you have the correct code for your production build.',
+    'MINIFIED'
   );
 }
 
@@ -36,5 +37,5 @@ export {
   setResourceMeta,
   upsertResources,
   getStatus,
-  getResources
+  getResources,
 };

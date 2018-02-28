@@ -11,8 +11,8 @@ describe('Redux Resource Action Creators', function() {
   });
 
   describe('Creating Action Creators', () => {
-    it('should not console.error when a valid resourceName & crudType are provided', () => {
-      createActionCreators('create', { resourceName: 'sandwiches' });
+    it('should not console.error when a valid resourceType & crudType are provided', () => {
+      createActionCreators('create', { resourceType: 'sandwiches' });
       expect(this.consoleError.callCount).to.equal(0);
     });
 
@@ -22,14 +22,14 @@ describe('Redux Resource Action Creators', function() {
     });
 
     it('should console.error when a valid crudType is not provided', () => {
-      createActionCreators({ resourceName: 'sandwiches' });
-      // Two warnings: one for no `crudType`, and one for no `resourceName`
+      createActionCreators({ resourceType: 'sandwiches' });
+      // Two warnings: one for no `crudType`, and one for no `resourceType`
       expect(this.consoleError.callCount).to.equal(2);
     });
 
     it('should return an object with the expected action actionCreators methods', () => {
       const actionCreators = createActionCreators('delete', {
-        resourceName: 'sandwiches'
+        resourceType: 'sandwiches',
       });
       expect(this.consoleError.callCount).to.equal(0);
 
@@ -43,15 +43,15 @@ describe('Redux Resource Action Creators', function() {
   describe('pending()', () => {
     it('should create an action with the expected action properties', () => {
       this.actionCreators = createActionCreators('read', {
-        resourceName: 'sandwiches'
+        resourceType: 'sandwiches',
       });
 
       const action = this.actionCreators.pending({ customProp: 'customValue' });
 
       expect(action).to.deep.equal({
-        resourceName: 'sandwiches',
+        resourceType: 'sandwiches',
         type: actionTypes.READ_RESOURCES_PENDING,
-        customProp: 'customValue'
+        customProp: 'customValue',
       });
 
       expect(this.consoleError.callCount).to.equal(0);
@@ -59,16 +59,16 @@ describe('Redux Resource Action Creators', function() {
 
     it('should warn if type is provided, but ignore it', () => {
       this.actionCreators = createActionCreators('read', {
-        resourceName: 'sandwiches',
-        type: 'oops'
+        resourceType: 'sandwiches',
+        type: 'oops',
       });
 
       const action = this.actionCreators.pending({ customProp: 'customValue' });
 
       expect(action).to.deep.equal({
-        resourceName: 'sandwiches',
+        resourceType: 'sandwiches',
         type: actionTypes.READ_RESOURCES_PENDING,
-        customProp: 'customValue'
+        customProp: 'customValue',
       });
 
       expect(this.consoleError.callCount).to.equal(1);
@@ -78,15 +78,15 @@ describe('Redux Resource Action Creators', function() {
   describe('null()', () => {
     it('should create an action with the expected action properties', () => {
       const actionCreators = createActionCreators('update', {
-        resourceName: 'sandwiches'
+        resourceType: 'sandwiches',
       });
 
       const action = actionCreators.null({ customProp: 'customValue' });
 
       expect(action).to.deep.equal({
-        resourceName: 'sandwiches',
+        resourceType: 'sandwiches',
         type: actionTypes.UPDATE_RESOURCES_NULL,
-        customProp: 'customValue'
+        customProp: 'customValue',
       });
 
       expect(this.consoleError.callCount).to.equal(0);
@@ -96,19 +96,19 @@ describe('Redux Resource Action Creators', function() {
   describe('succeeded()', () => {
     it('should create an action with the expected action properties', () => {
       const actionCreators = createActionCreators('create', {
-        resourceName: 'sandwiches'
+        resourceType: 'sandwiches',
       });
 
       const action = actionCreators.succeeded({
         customProp: 'customValue',
-        resources: [{ id: 1, type: 'pb&j' }, { id: 2, type: 'cuban' }]
+        resources: [{ id: 1, type: 'pb&j' }, { id: 2, type: 'cuban' }],
       });
 
       expect(action).to.deep.equal({
-        resourceName: 'sandwiches',
+        resourceType: 'sandwiches',
         type: actionTypes.CREATE_RESOURCES_SUCCEEDED,
         customProp: 'customValue',
-        resources: [{ id: 1, type: 'pb&j' }, { id: 2, type: 'cuban' }]
+        resources: [{ id: 1, type: 'pb&j' }, { id: 2, type: 'cuban' }],
       });
 
       expect(this.consoleError.callCount).to.equal(0);
@@ -118,17 +118,17 @@ describe('Redux Resource Action Creators', function() {
   describe('failed()', () => {
     it('should create an action with the expected action properties', () => {
       const actionCreators = createActionCreators('delete', {
-        resourceName: 'sandwiches'
+        resourceType: 'sandwiches',
       });
 
       const action = actionCreators.failed({
-        error: 'you should never delete sandwiches'
+        error: 'you should never delete sandwiches',
       });
 
       expect(action).to.deep.equal({
-        resourceName: 'sandwiches',
+        resourceType: 'sandwiches',
         type: actionTypes.DELETE_RESOURCES_FAILED,
-        error: 'you should never delete sandwiches'
+        error: 'you should never delete sandwiches',
       });
 
       expect(this.consoleError.callCount).to.equal(0);

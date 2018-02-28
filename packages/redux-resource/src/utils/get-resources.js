@@ -1,14 +1,5 @@
 // Returns a list of resources by IDs or list name
-export default function(state, resourceName, filter) {
-  let resourceSlice, filterToUse;
-  if (!filter) {
-    resourceSlice = state;
-    filterToUse = resourceName;
-  } else {
-    resourceSlice = state[resourceName];
-    filterToUse = filter;
-  }
-
+export default function(resourceSlice, filter) {
   if (!resourceSlice) {
     return [];
   }
@@ -16,20 +7,21 @@ export default function(state, resourceName, filter) {
   const resources = resourceSlice.resources;
   let idsList;
 
-  if (typeof filterToUse === 'function') {
+  if (typeof filter === 'function' || !filter) {
+    const appliedFilter = filter ? filter : () => true;
     return Object.values(resources).filter(resource =>
-      filterToUse(resource, resourceSlice.meta[resource.id], resourceSlice)
+      appliedFilter(resource, resourceSlice.meta[resource.id], resourceSlice)
     );
-  } else if (typeof filterToUse === 'string') {
+  } else if (typeof filter === 'string') {
     // This conditional handles the situation where `filter` is an list name
-    const list = resourceSlice.lists[filterToUse];
+    const list = resourceSlice.lists[filter];
     if (!list) {
       return [];
     }
 
     idsList = list;
   } else {
-    idsList = filterToUse;
+    idsList = filter;
   }
 
   if (!(idsList && idsList.length)) {

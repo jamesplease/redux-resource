@@ -1,3 +1,4 @@
+import updateResourcesPlugin from './update-resources-plugin';
 import requestStatusesPlugin from './request-statuses-plugin';
 import generateDefaultInitialState from './utils/generate-default-initial-state';
 import composeReducers from './utils/compose-reducers';
@@ -5,31 +6,35 @@ import warning from './utils/warning';
 
 // Create a resource reducer.
 //
-// `resourceName`: the plural name of your resource. For instance, "books".
+// `resourceType`: the kind of resource that this slice represents. For instance, "books".
 // `options`: pass options to change the behavior of the reducer. See the docs
 //   for more information on the available options.
-export default function resourceReducer(resourceName, options = {}) {
+export default function resourceReducer(resourceType, options = {}) {
   const { plugins = [], initialState = {} } = options;
   const defaultInitialState = generateDefaultInitialState();
   const initial = {
     ...defaultInitialState,
-    ...initialState
+    ...initialState,
+    resourceType,
   };
 
   if (process.env.NODE_ENV !== 'production') {
-    if (typeof resourceName !== 'string') {
+    if (typeof resourceType !== 'string') {
       warning(
-        `The value of "resourceName" that you passed to resourceReducer was ` +
+        `The value of "resourceType" that you passed to resourceReducer was ` +
           `not a string. The resource name must be a string. You should check ` +
           `your reducer configuration.`
       );
     }
   }
 
-  const allPlugins = plugins.concat(requestStatusesPlugin);
+  const allPlugins = plugins.concat(
+    requestStatusesPlugin,
+    updateResourcesPlugin
+  );
 
   const computedPlugins = allPlugins.map(plugin => {
-    const result = plugin(resourceName, options);
+    const result = plugin(resourceType, options);
     if (process.env.NODE_ENV !== 'production') {
       if (typeof result !== 'function') {
         warning(
@@ -45,6 +50,31 @@ export default function resourceReducer(resourceName, options = {}) {
 
   return function reducer(state = initial, action) {
     if (process.env.NODE_ENV !== 'production') {
+      if (
+        action.type === 'REQUEST_PENDING' ||
+        action.type === 'REQUEST_IDLE' ||
+        action.type === 'REQUEST_FAILED' ||
+        action.type === 'REQUEST_SUCCEEDED'
+      ) {
+        warning(
+          `You dispatched an action with type ${
+            action.type
+          }. This is a reserved ` +
+            `action type that will be used in a future version of Redux Resource. ` +
+            `We recommend that you use a different type to avoid conflict.`
+        );
+      }
+
+      if (action.resourceName && typeof action.resourceName === 'string') {
+        warning(
+          `You dispatched an action of type ${
+            action.type
+          } with a "resourceName" property. This property been ` +
+            `deprecated in favor of "resourceType." This new property behaves ` +
+            `exactly the same; it simply has been renamed. Please update your action creators.`
+        );
+      }
+
       if (action.request && typeof action.request !== 'string') {
         warning(
           `An invalid request name was included in an action with type ` +
