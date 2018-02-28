@@ -5,8 +5,17 @@
 
 A collection of [prop-types](https://github.com/facebook/prop-types) objects.
 
-> Trying to migrate from v2 of this library? Check out
-  [the migration guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-prop-types/docs/migration-guides/2-to-3.md).
+### Other Guides
+
+**Old Documentation**
+
+- [2.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-prop-types/docs/old-versions/2.md)
+- [3.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-prop-types/docs/old-versions/3.md)
+
+**Migration Guides**
+
+- [v2 to v3](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-prop-types/docs/migration-guides/2-to-3.md)
+- [v3 to v4](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-prop-types/docs/migration-guides/3-to-4.md)
 
 ### Installation
 
@@ -72,7 +81,7 @@ mapStateToProps(state) {
 
 #### `requestStatusPropType`
 
-Validates that a value is one of the [`requestStatuses`](/docs/api-reference/request-statuses.md)`.
+Validates that a value is one of the [`requestStatuses`](/docs/api-reference/request-statuses.md).
 Typically, you'll want to use `statusPropType` instead, but this can be useful when verifying
 the structure of your slice.
 

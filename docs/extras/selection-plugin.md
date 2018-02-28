@@ -2,10 +2,11 @@
 
 ### Deprecated
 
-This plugin is deprecated. You can use the built-in `UPDATE_RESOURCES` action
-type to modify lists directly.
+This plugin is deprecated. You can use the
+[`UPDATE_RESOURCES` action type](/docs/resources/modifying-resources.md) to modify
+lists directly.
 
-Here is an example action type that replaces the `selectResources` action type:
+Here is an example action creator that replaces the `selectResources` action type:
 
 ```js
 function selectResources(resourceType, ids) {

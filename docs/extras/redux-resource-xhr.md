@@ -3,10 +3,6 @@
 [![npm version](https://img.shields.io/npm/v/redux-resource-xhr.svg)](https://www.npmjs.com/package/redux-resource-xhr)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js?compression=gzip)](https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js)
 
-> Looking for the 2.x API?
-[Click here](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/old-versions/2.md).
-Better yet, looking to migrate to 3.x? Check out
-[the migration guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/2-to-3.md).
 
 Redux Resource XHR is an action creator that simplifies CRUD operations.
 
@@ -22,6 +18,18 @@ guides on CRUD:
 We recommend familiarizing yourself with the content in those guides before using
 this library.
 
+### Other Guides
+
+**Old Documentation**
+
+- [2.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/old-versions/2.md)
+- [3.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/old-versions/3.md)
+
+**Migration Guides**
+
+- [v2 to v3](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/2-to-3.md)
+- [v3 to v4](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/3-to-4.md)
+
 ### Installation
 
 Install `redux-resource-xhr` from npm:
@@ -36,7 +44,7 @@ import { crudRequest } from 'redux-resource-xhr';
 
 ### Usage
 
-This library has two exports: an action creator for CRUD operations, [`crudRequest`](#crudrequest-options-),
+This library has two exports: an action creator for CRUD operations, `crudRequest`,
 and the library used for making the HTTP requests, [`xhr`](#xhr-options-).
 
 ### `crudRequest( crudAction, options )`

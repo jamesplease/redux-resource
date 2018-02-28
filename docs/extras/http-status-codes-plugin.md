@@ -1,13 +1,13 @@
 # HTTP Status Codes Plugin
 
-##### Deprecation Notice
+### Documentation
 
-This plugin is no longer needed as of Redux Resource v3.0.0. In Redux
-Resource v3.0.0, you may attach an HTTP Status Code (and any other
-information) onto a [request object](/docs/requests/request-objects.md) by specifying
-`requestProperties` within a [request action](/docs/requests/request-actions.md).
+Add this plugin to keep track of status codes of your HTTP Requests on
+resource metadata. This is useful because status codes give you more
+detail information about your in-flight requests.
 
-For instance,
+Note that you can simply use [request objects](/docs/requests/request-objects.md)
+instead of this plugin. For instance:
 
 ```js
 dispatch({
@@ -28,21 +28,8 @@ dispatch({
 // }
 ```
 
-If you are using the Redux Resource XHR library, then the HTTP status codes will
-automatically be attached to your request objects.
-
----
-
-### Documentation
-
-Add this plugin to keep track of status codes of your HTTP Requests. This is
-useful because status codes give you more detail information about your
-in-flight requests.
-
-One common use case is to be able to handle the different reasons for a failed
-request: was the resource not found (404), or did the user not have permissions
-(403)? This plugin makes it straightforward to track this information, and then
-use it in your view layer.
+This plugin is only useful when you specifically want to track the status on
+resource metadata.
 
 ### Usage
 
@@ -104,13 +91,3 @@ const bookStatusCode = state.books.meta[24].readStatusCode;
 // Access the status code from a request object
 const searchStatusCode = state.books.requests.search.statusCode;
 ```
-
-### Tips
-
-- The status code of an unsent and in-flight XHR requests is `0`, and the
-  Redux Resource XHR respects this. What this means is that any new
-  requests will _immediately_ update any existing status code to be `0`.
-
-  If you're using the status code to display UI elements, you may need to cache
-  the last completed request's status in your component's state to get the
-  behavior that you're looking for.

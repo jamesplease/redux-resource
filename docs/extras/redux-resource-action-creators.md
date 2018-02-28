@@ -3,14 +3,25 @@
 [![npm version](https://img.shields.io/npm/v/redux-resource-action-creators.svg)](https://www.npmjs.com/package/redux-resource-action-creators)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-action-creators/dist/redux-resource-action-creators.min.js?compression=gzip)](https://unpkg.com/redux-resource-action-creators/dist/redux-resource-action-creators.min.js)
 
-This library makes it more convenient to create valid Redux Resource actions. It helps out in two ways:
+This library makes it more convenient to create valid [request actions](/docs/requests/request-actions.md).
+It helps out in two ways:
 
-1. Remembering the Redux Resource [action types](/docs/api-reference/action-types.md) can be difficult
-2. Often times, your "start" and "end" actions share many properties, and it can be verbose to copy + paste
-  those properties
+1. Remembering the [request action types](/docs/api-reference/action-types.md) can be difficult
+2. Often times, your "start" and "end" actions share many properties, and it can feel like unnecessary
+  boilerplate to copy + paste those properties
 
 Unlike [Redux Resource XHR](/docs/extras/redux-resource-xhr.md), these action creators do not make the requests
 for you. All this library does is create the actions themselves.
+
+### Other Guides
+
+**Old Documentation**
+
+- [1.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-action-creators/docs/old-versions/1.md)
+
+**Migration Guides**
+
+- [v1 to v2](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-action-creators/docs/migration-guides/1-to-2.md)
 
 ### Installation
 
