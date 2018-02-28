@@ -101,9 +101,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [21, 42],
               },
             ]);
@@ -112,9 +110,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_IDLE',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 res: undefined,
                 resources: [21, 42],
               },
@@ -162,9 +158,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [21, 42],
               },
             ]);
@@ -174,9 +168,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_IDLE',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 res: undefined,
                 resources: [21, 42],
               },
@@ -280,9 +272,7 @@ describe('Redux Resource XHR', function() {
           {
             type: 'READ_RESOURCES_PENDING',
             resourceName: 'hello',
-            requestProperties: {
-              statusCode: null,
-            },
+            requestProperties: undefined,
             resources: [21, 42],
           },
         ]);
@@ -314,9 +304,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [21, 42],
               },
             ]);
@@ -396,9 +384,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [21, 42],
               },
             ]);
@@ -473,9 +459,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [21, 42],
               },
             ]);
@@ -540,9 +524,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [1, 14],
               },
             ]);
@@ -604,9 +586,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [1, 14],
               },
             ]);
@@ -667,9 +647,7 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                requestProperties: {
-                  statusCode: null,
-                },
+                requestProperties: undefined,
                 resources: [1, 14],
               },
             ]);
