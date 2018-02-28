@@ -8,17 +8,17 @@ const idPropType = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 // Verifies a request status. useful as a "building block" for
 // more advanced prop types.
 const requestStatusPropType = PropTypes.oneOf([
-  requestStatuses.NULL,
+  requestStatuses.IDLE,
   requestStatuses.PENDING,
   requestStatuses.FAILED,
-  requestStatuses.SUCCEEDED
+  requestStatuses.SUCCEEDED,
 ]);
 
 // Similar to `.shape()`, except that it enforces an ID.
 const resourcePropType = function(props) {
   return PropTypes.shape({
     ...props,
-    id: idPropType.isRequired
+    id: idPropType.isRequired,
   });
 };
 
@@ -27,17 +27,20 @@ const resourcePropType = function(props) {
 const requestPropType = function(props) {
   return PropTypes.shape({
     ...props,
+    resourceType: PropTypes.string.isRequired,
+    requestKey: PropTypes.string.isRequired,
+    requestName: PropTypes.string,
     ids: PropTypes.arrayOf(idPropType).isRequired,
-    status: requestStatusPropType.isRequired
+    status: requestStatusPropType.isRequired,
   });
 };
 
 // The return value from `getStatus`.
 const statusPropType = PropTypes.shape({
-  null: PropTypes.bool.isRequired,
+  idle: PropTypes.bool.isRequired,
   pending: PropTypes.bool.isRequired,
   failed: PropTypes.bool.isRequired,
-  succeeded: PropTypes.bool.isRequired
+  succeeded: PropTypes.bool.isRequired,
 });
 
 export {
@@ -45,5 +48,5 @@ export {
   requestStatusPropType,
   resourcePropType,
   requestPropType,
-  statusPropType
+  statusPropType,
 };

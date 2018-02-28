@@ -1,6 +1,6 @@
 import { actionTypes, setResourceMeta } from 'redux-resource';
 
-// End actions can be failed, succeeded, or null. Null should be dispatched
+// End actions can be failed, succeeded, or idle. Idle should be dispatched
 // when the request is aborted (with a status code of 0).
 const createEndActions = [
   actionTypes.CREATE_RESOURCES_FAILED,
@@ -49,15 +49,15 @@ export default function httpStatusCodes(resourceType) {
       return state;
     }
 
-    // If we have no statusCode, we still want to set the value to 0. Browsers
-    // tend to use 0 as a "null" state (i.e.; that is the status of a request
-    // that has not yet completed).
-    const statusCode = action.statusCode || 0;
+    const statusCode =
+      typeof action.statusCode === 'number' ? action.statusCode : null;
     const resources = action.resources;
 
     let request;
-    if (action.request && typeof action.request === 'string') {
-      request = action.request;
+
+    const naiveKey = action.requestKey || action.request;
+    if (naiveKey && typeof naiveKey === 'string') {
+      request = naiveKey;
     }
 
     let newRequests, newMeta, idList;

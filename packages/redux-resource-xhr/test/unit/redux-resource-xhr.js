@@ -101,7 +101,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [21, 42],
               },
             ]);
@@ -110,7 +112,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_IDLE',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 res: undefined,
                 resources: [21, 42],
               },
@@ -158,7 +162,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [21, 42],
               },
             ]);
@@ -168,7 +174,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_IDLE',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 res: undefined,
                 resources: [21, 42],
               },
@@ -230,7 +238,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 200,
+                requestProperties: {
+                  statusCode: 200,
+                },
                 res: {
                   statusCode: 200,
                   body,
@@ -270,7 +280,9 @@ describe('Redux Resource XHR', function() {
           {
             type: 'READ_RESOURCES_PENDING',
             resourceName: 'hello',
-            statusCode: 0,
+            requestProperties: {
+              statusCode: null,
+            },
             resources: [21, 42],
           },
         ]);
@@ -302,7 +314,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [21, 42],
               },
             ]);
@@ -312,7 +326,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 200,
+                requestProperties: {
+                  statusCode: 200,
+                },
                 res: {
                   statusCode: 200,
                   body,
@@ -380,7 +396,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [21, 42],
               },
             ]);
@@ -389,7 +407,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 200,
+                requestProperties: {
+                  statusCode: 200,
+                },
                 res: {
                   statusCode: 200,
                   body,
@@ -453,7 +473,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [21, 42],
               },
             ]);
@@ -462,7 +484,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 201,
+                requestProperties: {
+                  statusCode: 201,
+                },
                 res: {
                   statusCode: 201,
                   body,
@@ -516,7 +540,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [1, 14],
               },
             ]);
@@ -525,7 +551,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 204,
+                requestProperties: {
+                  statusCode: 204,
+                },
                 resources: [1, 14],
                 res: {
                   statusCode: 204,
@@ -576,7 +604,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [1, 14],
               },
             ]);
@@ -585,7 +615,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_FAILED',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [1, 14],
                 err,
                 res: undefined,
@@ -635,7 +667,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [1, 14],
               },
             ]);
@@ -645,7 +679,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_FAILED',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [1, 14],
                 err,
                 res: undefined,

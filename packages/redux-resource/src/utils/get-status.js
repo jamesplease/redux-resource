@@ -40,7 +40,7 @@ function getSingleStatus(state, statusLocation, treatIdleAsPending) {
   const treatIdleAsPendingBool = Boolean(treatIdleAsPending);
 
   return {
-    null: isIdle && !treatIdleAsPendingBool,
+    idle: isIdle && !treatIdleAsPendingBool,
     pending: isPending || (isIdle && treatIdleAsPendingBool),
     failed: status === requestStatuses.FAILED,
     succeeded: status === requestStatuses.SUCCEEDED,
@@ -57,7 +57,7 @@ function getSingleStatus(state, statusLocation, treatIdleAsPending) {
 // Returns an Object with the following properties:
 //
 // {
-//   null: false,
+//   idle: false,
 //   failed: false,
 //   pending: false,
 //   succeeded: true,
@@ -74,7 +74,7 @@ export default function getStatus(state, statusLocations, treatIdleAsPending) {
     getSingleStatus(state, loc, treatIdleAsPending)
   );
 
-  let nullValue = true;
+  let idleValue = true;
   let pending = false;
   let failed = false;
   let succeeded = false;
@@ -84,7 +84,7 @@ export default function getStatus(state, statusLocations, treatIdleAsPending) {
   for (let i = 0; i < statusValues.length; i++) {
     const status = statusValues[i];
     if (status.failed) {
-      nullValue = false;
+      idleValue = false;
       failed = true;
       break;
     } else if (status.pending) {
@@ -95,12 +95,12 @@ export default function getStatus(state, statusLocations, treatIdleAsPending) {
   }
 
   if (!failed && pendingCount > 0) {
-    nullValue = false;
+    idleValue = false;
     pending = true;
   } else if (successCount === statusValues.length) {
-    nullValue = false;
+    idleValue = false;
     succeeded = true;
   }
 
-  return { null: nullValue, pending, failed, succeeded };
+  return { idle: idleValue, pending, failed, succeeded };
 }

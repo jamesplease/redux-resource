@@ -114,9 +114,9 @@ mapStateToProps(state) {
 
 #### `requestPropType`
 
-Validates a request. Similar to `PropTypes.shape()`, except that it enforces `ids`
-and `status`. Typically, you won't need to use this, but it can be useful to verify
-the structure of your state.
+Validates a [request object](/docs/requests/request-objects.md). Similar to `PropTypes.shape()`,
+except that it enforces `ids`, `status`, `requestKey` and `resourceType`. Typically, you won't
+need to use this, but it can be useful to verify the structure of your state.
 
 ```js
 import PropTypes from 'prop-types';

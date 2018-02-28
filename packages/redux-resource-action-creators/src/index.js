@@ -63,11 +63,11 @@ const createActionCreators = (crudType, actionDefaults = {}) => {
         actionDefaults,
         actionTypes[`${uppercaseCrud}_RESOURCES_PENDING`]
       ),
-    null: actionProperties =>
+    idle: actionProperties =>
       _createAction(
         actionProperties,
         actionDefaults,
-        actionTypes[`${uppercaseCrud}_RESOURCES_NULL`]
+        actionTypes[`${uppercaseCrud}_RESOURCES_IDLE`]
       ),
     succeeded: actionProperties =>
       _createAction(

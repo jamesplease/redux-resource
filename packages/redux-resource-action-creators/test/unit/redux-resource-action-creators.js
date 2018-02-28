@@ -33,7 +33,7 @@ describe('Redux Resource Action Creators', function() {
       });
       expect(this.consoleError.callCount).to.equal(0);
 
-      expect(actionCreators.null).to.be.a('function');
+      expect(actionCreators.idle).to.be.a('function');
       expect(actionCreators.pending).to.be.a('function');
       expect(actionCreators.succeeded).to.be.a('function');
       expect(actionCreators.failed).to.be.a('function');
@@ -75,17 +75,17 @@ describe('Redux Resource Action Creators', function() {
     });
   });
 
-  describe('null()', () => {
+  describe('idle()', () => {
     it('should create an action with the expected action properties', () => {
       const actionCreators = createActionCreators('update', {
         resourceType: 'sandwiches',
       });
 
-      const action = actionCreators.null({ customProp: 'customValue' });
+      const action = actionCreators.idle({ customProp: 'customValue' });
 
       expect(action).to.deep.equal({
         resourceType: 'sandwiches',
-        type: actionTypes.UPDATE_RESOURCES_NULL,
+        type: actionTypes.UPDATE_RESOURCES_IDLE,
         customProp: 'customValue',
       });
 

@@ -4,8 +4,8 @@
 
 This plugin is no longer needed as of Redux Resource v3.0.0. In Redux
 Resource v3.0.0, you may attach an HTTP Status Code (and any other
-information) onto a request object by specifying
-`requestProperties` within an action.
+information) onto a [request object](/docs/requests/request-objects.md) by specifying
+`requestProperties` within a [request action](/docs/requests/request-actions.md).
 
 For instance,
 

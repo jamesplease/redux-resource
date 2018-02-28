@@ -61,7 +61,7 @@ describe('getStatus', function() {
       const status = getStatus(this.state, 'sandwiches.meta.102');
 
       expect(status).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: false,
@@ -76,7 +76,7 @@ describe('getStatus', function() {
       getStatus(this.state, 'sandwiches.meta.102');
 
       expect(status).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: false,
@@ -89,7 +89,7 @@ describe('getStatus', function() {
       const status = getStatus(this.state, 'books.requests.dashboardSearch');
 
       expect(status).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: false,
@@ -104,7 +104,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'sandwiches.meta.102.readStatus')
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -116,7 +116,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'sandwiches.meta[102].readStatus')
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -128,7 +128,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'books.requests.dashboardSearch.status')
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -136,11 +136,11 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('should return a meta that exists and is null', () => {
+    it('should return a meta that exists and is idle', () => {
       expect(
         getStatus(this.state, 'sandwiches.meta.100.readStatus')
       ).to.deep.equal({
-        null: true,
+        idle: true,
         pending: false,
         failed: false,
         succeeded: false,
@@ -148,11 +148,11 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('should return a meta that exists and is null; bracket syntax', () => {
+    it('should return a meta that exists and is idle; bracket syntax', () => {
       expect(
         getStatus(this.state, 'sandwiches.meta[100].readStatus')
       ).to.deep.equal({
-        null: true,
+        idle: true,
         pending: false,
         failed: false,
         succeeded: false,
@@ -160,11 +160,11 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('should return a meta that exists and is null with `treatIdleAsPending` set to true', () => {
+    it('should return a meta that exists and is idle with `treatIdleAsPending` set to true', () => {
       expect(
         getStatus(this.state, 'sandwiches.meta.100.readStatus', true)
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: true,
         failed: false,
         succeeded: false,
@@ -172,11 +172,11 @@ describe('getStatus', function() {
       expect(console.error.callCount).to.equal(0);
     });
 
-    it('should return a meta that exists and is null with `treatIdleAsPending` set to true; bracket syntax', () => {
+    it('should return a meta that exists and is idle with `treatIdleAsPending` set to true; bracket syntax', () => {
       expect(
         getStatus(this.state, 'sandwiches.meta[100].readStatus', true)
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: true,
         failed: false,
         succeeded: false,
@@ -188,7 +188,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'sandwiches.meta.102.readStatus', true)
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -200,7 +200,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'sandwiches.meta[102].readStatus', true)
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -211,7 +211,7 @@ describe('getStatus', function() {
     it('should return a meta that does not exist', () => {
       expect(getStatus(this.state, 'books.meta.10.updateStatus')).to.deep.equal(
         {
-          null: true,
+          idle: true,
           pending: false,
           failed: false,
           succeeded: false,
@@ -224,7 +224,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'books.meta.10.updateStatus', true)
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: true,
         failed: false,
         succeeded: false,
@@ -236,7 +236,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'things["pasta.is.tasty"].readStatus')
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -248,7 +248,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, "things['pasta.is.tasty'].readStatus")
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -258,7 +258,7 @@ describe('getStatus', function() {
 
     it('should support bracket syntax for numbers', () => {
       expect(getStatus(this.state, 'things[24].updateStatus')).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: true,
         succeeded: false,
@@ -268,7 +268,7 @@ describe('getStatus', function() {
 
     it('should support bracket syntax, ending on a bracket', () => {
       expect(getStatus(this.state, 'things[100]')).to.deep.equal({
-        null: false,
+        idle: false,
         pending: true,
         failed: false,
         succeeded: false,
@@ -278,7 +278,7 @@ describe('getStatus', function() {
 
     it('should support bracket syntax, ending on a bracket, but missing ending bracket', () => {
       expect(getStatus(this.state, 'things[100')).to.deep.equal({
-        null: false,
+        idle: false,
         pending: true,
         failed: false,
         succeeded: false,
@@ -288,7 +288,7 @@ describe('getStatus', function() {
 
     it('should support bracket syntax, ending on a bracket, but missing ending bracket with quotes', () => {
       expect(getStatus(this.state, 'things["100')).to.deep.equal({
-        null: false,
+        idle: false,
         pending: true,
         failed: false,
         succeeded: false,
@@ -300,7 +300,7 @@ describe('getStatus', function() {
       // eslint-disable-next-line
       expect(getStatus(this.state, "things['\\''].deleteStatus")).to.deep.equal(
         {
-          null: false,
+          idle: false,
           pending: true,
           failed: false,
           succeeded: false,
@@ -314,7 +314,7 @@ describe('getStatus', function() {
       expect(
         getStatus(this.state, 'things["[\'a\']"][\'[\\"a\\"]\']')
       ).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: true,
         succeeded: false,
@@ -331,7 +331,7 @@ describe('getStatus', function() {
       ]);
 
       expect(result).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: true,
         succeeded: false,
@@ -346,7 +346,7 @@ describe('getStatus', function() {
       ]);
 
       expect(result).to.deep.equal({
-        null: true,
+        idle: true,
         pending: false,
         failed: false,
         succeeded: false,
@@ -362,7 +362,7 @@ describe('getStatus', function() {
       );
 
       expect(result).to.deep.equal({
-        null: false,
+        idle: false,
         pending: true,
         failed: false,
         succeeded: false,
@@ -377,7 +377,7 @@ describe('getStatus', function() {
       ]);
 
       expect(result).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: false,
         succeeded: true,
@@ -393,7 +393,7 @@ describe('getStatus', function() {
       ]);
 
       expect(result).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: true,
         succeeded: false,
@@ -409,7 +409,7 @@ describe('getStatus', function() {
       ]);
 
       expect(result).to.deep.equal({
-        null: false,
+        idle: false,
         pending: false,
         failed: true,
         succeeded: false,
