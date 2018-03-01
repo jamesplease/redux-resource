@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-plugins",
-  "version": "3.0.0-beta1",
+  "version": "3.0.0-beta2",
   "description": "Official plugins for Redux Resource",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -72,7 +72,7 @@
     "in-publish": "^2.0.0",
     "mocha": "^3.4.2",
     "normalizr": "^3.2.4",
-    "redux-resource": "3.0.0-beta1",
+    "redux-resource": "3.0.0-beta2",
     "rimraf": "^2.6.1",
     "rollup": "^0.45.1",
     "rollup-plugin-babel": "^2.7.1",
@@ -83,6 +83,6 @@
   },
   "peerDependencies": {
     "redux": "3.x",
-    "redux-resource": "3.0.0-beta1"
+    "redux-resource": "3.0.0-beta2"
   }
 }
