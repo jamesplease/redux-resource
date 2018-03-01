@@ -43,7 +43,9 @@ function getSingleStatus(state, statusLocation, treatIdleAsPending) {
           `Redux Resource v3.0.0. You may need to verify that your code is ` +
           `compatible with Redux Resource v3.0.0. ` +
           `For more information, refer to the documentation for request statuses at: ` +
-          `https://redux-resource.js.org/docs/api-reference/request-statuses.html`,
+          `https://redux-resource.js.org/docs/api-reference/request-statuses.html\n\n` +
+          `Also, the migration guide to Redux Resource v3 can be found at: ` +
+          `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
         'INVALID_REQUEST_STATUS_GET_STATUS'
       );
     }

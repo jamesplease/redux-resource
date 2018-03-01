@@ -79,8 +79,10 @@ export default function resourceReducer(resourceType, options = {}) {
           } with a "resourceName" property. This property been ` +
             `deprecated in favor of "resourceType." This new property behaves ` +
             `exactly the same; it simply has been renamed. Please update your action creators. ` +
-            `For more information, refer to the documentation at: ` +
-            `https://redux-resource.js.org/docs/requests/request-actions.html`,
+            `For more information, refer to the request action documentation at: ` +
+            `https://redux-resource.js.org/docs/requests/request-actions.html\n\n` +
+            `Also, the migration guide to Redux Resource v3 can be found at: ` +
+            `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
           'DEPRECATED_RESOURCE_NAME_SPECIFIED'
         );
       }

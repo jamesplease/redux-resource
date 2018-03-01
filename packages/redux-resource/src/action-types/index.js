@@ -22,7 +22,9 @@ if (process.env.NODE_ENV !== 'production') {
         `in Redux Resource v3. Please update your application to ` +
         `use the new action type. For more information, refer to the action types ` +
         `documentation at: ` +
-        `https://redux-resource.js.org/docs/api-reference/action-types.html`,
+        `https://redux-resource.js.org/docs/api-reference/action-types.html\n\n` +
+        `Also, the migration guide to Redux Resource v3 can be found at: ` +
+        `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
       `INVALID_PROP_${propName}_ACCESSED`
     );
   }

@@ -9,7 +9,9 @@ export default function(resourceSlice, filter) {
           `v3.0.0 of Redux Resource. The old signature accepted three arguments. The new ` +
           `signature only accepts two. Please update your code to use the new signature. ` +
           `For more information, reference the documentation at ` +
-          `https://redux-resource.js.org/docs/api-reference/get-resources.html`,
+          `https://redux-resource.js.org/docs/api-reference/get-resources.html\n\n` +
+          `Also, the migration guide to Redux Resource v3 can be found at: ` +
+          `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
         'DEPRECATED_GET_RESOURCES_SIGNATURE'
       );
     }
