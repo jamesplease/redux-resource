@@ -39,7 +39,7 @@ For more, refer to [the Resource objects guide](/docs/resources/resource-objects
 
 #### Does this work with a backend that adheres to a well-defined format, such as JSON API?
 
-Yes, it does. You may want to write a [plugin](../other-guides/plugins.md) to handle
+Yes, it does. You may want to write a [plugin](../other-guides/custom-action-types.md) to handle
 some advanced features provided by specifications such as JSON API, such as rich
 relationship support.
 

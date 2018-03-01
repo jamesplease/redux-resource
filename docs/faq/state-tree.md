@@ -10,7 +10,7 @@ You can use the `UPDATE_RESOURCES` action type to change the metadata of
 resources.
 
 If you'd like to update metadata alongside a request, then you can write a
-[plugin](../other-guides/plugins.md) for that.
+[plugin](../other-guides/custom-action-types.md) for that.
 
 A future version of Redux Resource will support this without a plugin.
 

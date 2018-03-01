@@ -44,7 +44,7 @@ export default function resourceReducer(resourceType, options = {}) {
           `A plugin was initialized that did not return a function. Plugins ` +
             `should return a function with the same signature as a reducer. ` +
             `For more information, refer to the documentation on plugins: ` +
-            `https://redux-resource.js.org/docs/guides/plugins.html`,
+            `https://redux-resource.js.org/docs/other-guides/plugins.html`,
           'BAD_PLUGIN_INITIALIZED'
         );
       }

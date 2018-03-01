@@ -5,7 +5,7 @@ export default function getUserBooks() {
   return function(dispatch) {
     dispatch({
       type: actionTypes.READ_RESOURCES_PENDING,
-      resourceName: 'books',
+      resourceType: 'books',
       requestKey: 'readUserBooks',
       list: 'userBooks',
     });
@@ -14,7 +14,7 @@ export default function getUserBooks() {
     setTimeout(function() {
       dispatch({
         type: actionTypes.READ_RESOURCES_SUCCEEDED,
-        resourceName: 'books',
+        resourceType: 'books',
         requestKey: 'readUserBooks',
         list: 'userBooks',
         resources: [

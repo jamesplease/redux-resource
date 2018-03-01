@@ -178,7 +178,13 @@ The native [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 method is a tool for making requests that returns a
 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 Native Promises cannot be cancelled ([yet](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)),
-so we cannot recommend using `fetch`.
+but you can get around this limitation by "ignoring" the server response.
+
+One way to do this is to create a function that you return from your action creators.
+Then, only fire the "success" action as long as that function is not called.
+
+Although there are benefits to actually canceling the request, this solution will
+avoid the race condition bugs described in this guide.
 
 #### axios
 

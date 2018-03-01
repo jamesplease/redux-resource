@@ -18,7 +18,7 @@ stone. Different applications require different user experiences.
 You should visually communicate to the user anytime that a request is in flight. This
 lets them know that the application is processing the operation.
 
-The [`getState`](/docs/api-reference/get-state.md) method returns an object with
+The [`getStatus`](/docs/api-reference/get-status.md) method returns an object with
 a `pending` property, which will be `true` whenever the associated request is in
 flight. You can use this to show a spinner, for instance. If you're using React,
 this might look like:

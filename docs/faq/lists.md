@@ -9,7 +9,7 @@ particular order.
 
 If you'd like to maintain ordering of some kind within a specific
 list, or all of your lists, then we recommend
-[writing a plugin](/docs/other-guides/plugins.md) to handle that.
+[writing a plugin](/docs/other-guides/custom-action-types.md) to handle that.
 
 #### Can lists be used for keeping track of client-side lists of resources?
 

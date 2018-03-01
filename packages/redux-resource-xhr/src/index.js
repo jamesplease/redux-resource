@@ -32,8 +32,8 @@ function crudRequest(crudAction, options) {
       console.warn(
         `A resourceType was not passed to a Redux Resource Action ` +
           `creator. A resourceType must be passed so that Redux Resource ` +
-          `knows which resource slice to update. Refer to the CRUD Actions ` +
-          `guide for more: https://redux-resource.js.org/docs/guides/crud-actions.html`
+          `knows which resource slice to update. Refer to the Request Actions ` +
+          `guide for more: https://redux-resource.js.org/docs/requests/request-actions.html`
       );
     }
 
