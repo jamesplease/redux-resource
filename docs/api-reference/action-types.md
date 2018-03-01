@@ -49,6 +49,22 @@ The action types can be organized into two groups:
   [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) actions.
   Within each CRUD action "group," the four action types reflect the four request statuses.
 
+### Reserved Action Types
+
+An upcoming version of Redux Resource will utilize four new action types to simplify the
+request action types. Accordingly, these action types have been reserved, and we do not recommend
+that you use them in your application. The list of reserved action types is:
+
+```
+REQUEST_IDLE
+REQUEST_PENDING
+REQUEST_FAILED
+REQUEST_SUCCEEDED
+```
+
+> Note: A warning will be logged to the console if you dispatch an action with one of these
+> action types in your application.
+
 #### Example
 
 This example shows an action creator that reads a single book. It uses the

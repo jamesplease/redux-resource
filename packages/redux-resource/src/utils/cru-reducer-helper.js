@@ -33,7 +33,9 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
           `"success" action with type "${action.type}. Without a 'resources' ` +
           `Array, Redux Resource will not be able to track which resources ` +
           `were affected by this CRUD operation. You should check your Action ` +
-          `Creators to make sure that they always include a 'resources' array.`,
+          `Creators to make sure that they always include a 'resources' array. ` +
+          `For more information, refer to the request action documentation at: ` +
+          `https://redux-resource.js.org/docs/requests/request-actions.html`,
         'SUCCESS_NO_RESOURCES'
       );
     } else if (!Array.isArray(resources)) {
@@ -44,7 +46,9 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
           }". 'resources' must be an ` +
           `array. If your backend returned a single object, be sure to wrap it ` +
           `inside of an array. If you're using the Redux Resource XHR ` +
-          `library, you can do this using the "transformData" option.`,
+          `library, you can do this using the "transformData" option. ` +
+          `For more information, refer to the request action documentation at: ` +
+          `https://redux-resource.js.org/docs/requests/request-actions.html`,
         'NON_ARRAY_RESOURCES'
       );
     }

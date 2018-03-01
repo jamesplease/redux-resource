@@ -50,8 +50,8 @@ export default function(crudAction, requestStatus) {
         warning(
           `A Redux Resource action of type ${action.type} was dispatched ` +
             `without a "requestKey" or "resources" array. Without one of these ` +
-            `values, Redux Resource cannot track the request status for this` +
-            `CRUD operation. You should check your Action Creators. Read more about` +
+            `values, Redux Resource cannot track the request status for this ` +
+            `CRUD operation. You should check your Action Creators. Read more about ` +
             `request tracking at: https://redux-resource.js.org/docs/guides/tracking-requests.html`,
           'NO_OP_NON_SUCCESS_ACTION'
         );

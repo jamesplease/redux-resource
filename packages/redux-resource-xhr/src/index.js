@@ -59,9 +59,7 @@ function crudRequest(crudAction, options) {
   const pendingAction = {
     ...actionDefaults,
     type: actionTypes[`${crudType}_RESOURCES_PENDING`],
-    requestProperties: {
-      statusCode: null,
-    },
+    requestProperties,
   };
 
   if (onPending) {
@@ -76,10 +74,7 @@ function crudRequest(crudAction, options) {
       const abortedAction = {
         ...actionDefaults,
         type: actionTypes[`${crudType}_RESOURCES_IDLE`],
-        requestProperties: {
-          ...requestProperties,
-          statusCode,
-        },
+        requestProperties,
         res,
       };
 
