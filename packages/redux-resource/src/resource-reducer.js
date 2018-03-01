@@ -76,7 +76,7 @@ export default function resourceReducer(resourceType, options = {}) {
         warning(
           `You dispatched an action of type ${
             action.type
-          } with a "resourceName" property. This property been ` +
+          } with a "resourceName" property. Although this will continue to work, this property name been ` +
             `deprecated in favor of "resourceType." This new property behaves ` +
             `exactly the same; it simply has been renamed. Please update your action creators. ` +
             `For more information, refer to the request action documentation at: ` +
