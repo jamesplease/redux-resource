@@ -118,5 +118,25 @@ export default function getStatus(state, statusLocations, treatIdleAsPending) {
     succeeded = true;
   }
 
-  return { idle: idleValue, pending, failed, succeeded };
+  const status = { idle: idleValue, pending, failed, succeeded };
+
+  if (process.env.NODE_ENV !== 'production') {
+    Object.defineProperty(status, 'null', {
+      get() {
+        warning(
+          `You attempted to access a property named "null" from the object returned by ` +
+            `the getStatus method from Redux Resource. This property has been renamed to "idle" ` +
+            `in Redux Resource v3. Please update your application to ` +
+            `use the "idle" rather than "null". For more information, refer to the ` +
+            `documentation for getStatus at: ` +
+            `https://redux-resource.js.org/docs/api-reference/get-status.html\n\n` +
+            `Also, the migration guide to Redux Resource v3 can be found at: ` +
+            `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
+          `NULL_GET_STATUS_VALUE_ACCESSED`
+        );
+      },
+    });
+  }
+
+  return status;
 }
