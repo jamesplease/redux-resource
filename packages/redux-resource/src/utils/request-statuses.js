@@ -11,8 +11,8 @@ if (process.env.NODE_ENV !== 'production') {
   Object.defineProperty(requestStatuses, 'NULL', {
     get() {
       warning(
-        `You attempted to access the NULL request status that is exported from ` +
-          `Redux Resource. This request status has been renamed to IDLE ` +
+        `You attempted to access the NULL requestStatus that is exported from ` +
+          `Redux Resource. This requestStatus property has been renamed to IDLE ` +
           `in Redux Resource v3. Please update your application to ` +
           `use the new request status. For more information, refer to the ` +
           `documentation for the request statuses at: ` +
