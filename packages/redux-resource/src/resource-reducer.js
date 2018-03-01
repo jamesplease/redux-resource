@@ -23,7 +23,10 @@ export default function resourceReducer(resourceType, options = {}) {
       warning(
         `The value of "resourceType" that you passed to resourceReducer was ` +
           `not a string. The resource name must be a string. You should check ` +
-          `your reducer configuration.`
+          `your reducer configuration. ` +
+          `For more information, refer to the documentation at: ` +
+          `https://redux-resource.js.org/docs/requests/request-actions.html`,
+        'INVALID_RESOURCE_TYPE_PASSED'
       );
     }
   }
@@ -40,8 +43,9 @@ export default function resourceReducer(resourceType, options = {}) {
         warning(
           `A plugin was initialized that did not return a function. Plugins ` +
             `should return a function with the same signature as a reducer. ` +
-            `For more, refer to the documentation on plugins: ` +
-            `https://redux-resource.js.org/docs/guides/plugins.html`
+            `For more information, refer to the documentation on plugins: ` +
+            `https://redux-resource.js.org/docs/guides/plugins.html`,
+          'BAD_PLUGIN_INITIALIZED'
         );
       }
     }
@@ -61,7 +65,10 @@ export default function resourceReducer(resourceType, options = {}) {
             action.type
           }. This is a reserved ` +
             `action type that will be used in a future version of Redux Resource. ` +
-            `We recommend that you use a different type to avoid conflict.`
+            `We recommend that you use a different type to avoid conflict. ` +
+            `For more information, refer to the documentation at: ` +
+            `https://redux-resource.js.org/docs/api-reference/action-types.html#reserved-action-types`,
+          'RESERVED_ACTION_TYPE_USED'
         );
       }
 
@@ -71,21 +78,50 @@ export default function resourceReducer(resourceType, options = {}) {
             action.type
           } with a "resourceName" property. This property been ` +
             `deprecated in favor of "resourceType." This new property behaves ` +
-            `exactly the same; it simply has been renamed. Please update your action creators.`
+            `exactly the same; it simply has been renamed. Please update your action creators. ` +
+            `For more information, refer to the documentation at: ` +
+            `https://redux-resource.js.org/docs/requests/request-actions.html`,
+          'DEPRECATED_RESOURCE_NAME_SPECIFIED'
         );
       }
 
       if (action.request && typeof action.request !== 'string') {
         warning(
-          `An invalid request name was included in an action with type ` +
-            `"${action.type}". Request names must be strings.`
+          `An invalid request property was included in an action with type ` +
+            `"${action.type}". The request property must be a string. ` +
+            `For more information, refer to the documentation at: ` +
+            `https://redux-resource.js.org/docs/requests/request-actions.html`,
+          'INVALID_REQUEST_NAME_PASSED'
+        );
+      }
+
+      if (action.requestKey && typeof action.requestKey !== 'string') {
+        warning(
+          `An invalid requestKey property was included in an action with type ` +
+            `"${action.type}". The requestKey property must be a string. ` +
+            `For more information, refer to the documentation at: ` +
+            `https://redux-resource.js.org/docs/requests/request-keys.html`,
+          'INVALID_REQUEST_KEY_PASSED'
+        );
+      }
+
+      if (action.requestName && typeof action.requestName !== 'string') {
+        warning(
+          `An invalid requestName property was included in an action with type ` +
+            `"${action.type}". The requestName property must be a string. ` +
+            `For more information, refer to the documentation at: ` +
+            `https://redux-resource.js.org/docs/requests/request-names.html`,
+          'INVALID_REQUEST_NAME_PASSED'
         );
       }
 
       if (action.list && typeof action.list !== 'string') {
         warning(
           `An invalid list was included in an action with type ` +
-            `"${action.type}". Lists must be strings.`
+            `"${action.type}". Lists must be strings.` +
+            `For more information, refer to the documentation at: ` +
+            `https://redux-resource.js.org/docs/resources/lists.html`,
+          'INVALID_LIST_NAME_PASSED'
         );
       }
     }

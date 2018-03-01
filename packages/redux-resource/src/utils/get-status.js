@@ -29,8 +29,22 @@ function getSingleStatus(state, statusLocation, treatIdleAsPending) {
       warning(
         `You called "getStatus" with path "${statusLocation}", which resolved ` +
           `to a value that is not a valid resource status. You may want to ` +
-          `check that this path is correct.`,
+          `check that this path is correct. ` +
+          `Read more about getStatus on the documentation page: ` +
+          `https://redux-resource.js.org/docs/api-reference/get-status.html`,
         'GET_STATUS_PATH'
+      );
+    }
+
+    if (status === 'NULL') {
+      warning(
+        `You called "getStatus" with path "${statusLocation}", which resolved ` +
+          `to a value of NULL. The NULL request status was renamed to IDLE in ` +
+          `Redux Resource v3.0.0. You may need to verify that your code is ` +
+          `compatible with Redux Resource v3.0.0. ` +
+          `For more information, refer to the documentation for request statuses at: ` +
+          `https://redux-resource.js.org/docs/api-reference/request-statuses.html`,
+        'INVALID_REQUEST_STATUS_GET_STATUS'
       );
     }
   }

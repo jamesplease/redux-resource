@@ -19,7 +19,7 @@ export default function requestStatusesPlugin(resourceType, options = {}) {
         warning(
           `A resourceType was not included in an action with type ` +
             `"${action.type}". Without a resourceType, Redux Resource will ` +
-            `not be able to update a slice of your store. For more, refer to ` +
+            `not be able to update a slice of your store. For more information, refer to ` +
             `the guide on CRUD Actions: ` +
             `https://redux-resource.js.org/docs/guides/crud-actions.html`,
           'MISSING_RESOURCE_TYPE'

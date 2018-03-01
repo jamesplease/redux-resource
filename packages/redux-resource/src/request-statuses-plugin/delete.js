@@ -28,7 +28,9 @@ function delSucceed(state, action, { initialResourceMeta }) {
           `"success" action with type "${action.type}. Without a 'resources' ` +
           `Array, Redux Resource will not be able to track which resources ` +
           `were affected by this CRUD operation. You should check your Action ` +
-          `Creators to make sure that they always include a 'resources' array.`,
+          `Creators to make sure that they always include a 'resources' array. ` +
+          `For more information, refer to the request action documentation at: ` +
+          `https://redux-resource.js.org/docs/requests/request-actions.html`,
         'SUCCESS_NO_RESOURCES'
       );
     } else if (!Array.isArray(resources)) {
@@ -39,7 +41,9 @@ function delSucceed(state, action, { initialResourceMeta }) {
           }". 'resources' must be an ` +
           `array. If your backend returned a single object, be sure to wrap it ` +
           `inside of an array. If you're using the Redux Resource XHR ` +
-          `library, you can do this using the "transformData" option.`,
+          `library, you can do this using the "transformData" option. ` +
+          `For more information, refer to the request action documentation at: ` +
+          `https://redux-resource.js.org/docs/requests/request-actions.html`,
         'NON_ARRAY_RESOURCES'
       );
     }
@@ -47,7 +51,9 @@ function delSucceed(state, action, { initialResourceMeta }) {
     if (action.list) {
       warning(
         `You included a "list" in a delete action. You don't need to do this, ` +
-          `because successful deletes remove the deleted resources from all lists.`,
+          `because successful deletes remove the deleted resources from all lists. ` +
+          `For more information, refer to the documentation on deleting resources at: ` +
+          `https://redux-resource.js.org/docs/requests/deleting-resources.html`,
         'DELETE_LISTS'
       );
     }
@@ -69,7 +75,9 @@ function delSucceed(state, action, { initialResourceMeta }) {
                   action.type
                 }. Every resource must have an ID that is either ` +
                 `a number of a string. You should check your action creators to ` +
-                `make sure that an ID is always included in your resources.`,
+                `make sure that an ID is always included in your resources. ` +
+                `For more information, refer to the documentation on resource objects at: ` +
+                `https://redux-resource.js.org/docs/resources/resource-objects.html`,
               'NO_RESOURCE_ID'
             );
           }
@@ -84,7 +92,9 @@ function delSucceed(state, action, { initialResourceMeta }) {
                   action.type
                 }. Every resource must have an ID that is either ` +
                 `a number of a string. You should check your action creators to ` +
-                `make sure that an ID is always included in your resources.`,
+                `make sure that an ID is always included in your resources. ` +
+                `For more information, refer to the documentation on resource objects at: ` +
+                `https://redux-resource.js.org/docs/resources/resource-objects.html`,
               'NO_RESOURCE_ID'
             );
           }
