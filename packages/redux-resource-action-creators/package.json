@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-action-creators",
-  "version": "2.0.0-beta4",
+  "version": "2.0.0-beta5",
   "description": "Action creators for creating Redux Resource actions.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -49,7 +49,7 @@
   ],
   "homepage": "https://redux-resource.js.org",
   "dependencies": {
-    "redux-resource": "^3.0.0-beta4"
+    "redux-resource": "^3.0.0-beta5"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

@@ -175,7 +175,7 @@ function delSucceed(state, action, { initialResourceMeta }) {
   let newResources = Object.assign({}, state.resources);
   if (hasIds) {
     idList.forEach(id => {
-      newResources[id] = null;
+      delete newResources[id];
     });
   }
 
