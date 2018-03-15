@@ -166,10 +166,8 @@ describe('reducers: DELETE_RESOURCES', function() {
       ...initialState,
       resourceType: 'hellos',
       resources: {
-        1: null,
         3: { id: 3 },
         4: { id: 4 },
-        13: null,
       },
       lists: {
         bookmarks: [2, 3],
@@ -252,10 +250,8 @@ describe('reducers: DELETE_RESOURCES', function() {
       ...initialState,
       resourceType: 'hellos',
       resources: {
-        1: null,
         3: { id: 3 },
         4: { id: 4 },
-        13: null,
       },
       lists: {
         bookmarks: [2, 3],
@@ -329,10 +325,8 @@ describe('reducers: DELETE_RESOURCES', function() {
       ...initialState,
       resourceType: 'hellos',
       resources: {
-        1: null,
         3: { id: 3 },
         4: { id: 4 },
-        13: null,
       },
       lists: {
         bookmarks: [2, 3],
@@ -405,10 +399,8 @@ describe('reducers: DELETE_RESOURCES', function() {
       ...initialState,
       resourceType: 'hellos',
       resources: {
-        1: null,
         3: { id: 3 },
         4: { id: 4 },
-        13: null,
       },
       meta: {
         1: {

@@ -213,8 +213,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {},
         requests: {},
@@ -275,9 +273,7 @@ describe('reducers: delete', function() {
       expect(reduced).to.deep.equal({
         resourceType: 'hellos',
         resources: {
-          0: null,
           3: { id: 3 },
-          4: null,
         },
         lists: {},
         requests: {},
@@ -347,8 +343,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {},
         requests: {
@@ -430,8 +424,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {},
         requests: {
@@ -514,8 +506,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {},
         requests: {
@@ -597,8 +587,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {},
         requests: {
@@ -679,8 +667,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {},
         requests: {
@@ -759,8 +745,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {},
         requests: {
@@ -830,8 +814,6 @@ describe('reducers: delete', function() {
         resourceType: 'hellos',
         resources: {
           1: { id: 1 },
-          3: null,
-          4: null,
         },
         lists: {
           oink: [10],

@@ -182,7 +182,7 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
     let newResources = Object.assign({}, state.resources);
     if (hasIds) {
       idList.forEach(id => {
-        newResources[id] = null;
+        delete newResources[id];
       });
     }
 
