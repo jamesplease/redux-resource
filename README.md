@@ -43,8 +43,21 @@ npm install --save redux-resource
 
 ### Documentation
 
-View the documentation at
-**[redux-resource.js.org ⇗](https://redux-resource.js.org/)**.
+The latest stable release of Redux Resource is v2.4.1. The 2.4.1 documentation can be
+found at **[redux-resource.js.org ⇗](https://redux-resource.js.org/)**.
+
+The next major release of Redux Resource, v3.0.0, is in the works. Although it is unlikely that
+there will be major changes between the current beta and the final release, it is still wise to
+consider it unstable.
+
+The v3.0.0 documentation can be viewed at
+[jamesplease.github.io/redux-resource-3.0-docs ⇗](https://jamesplease.github.io/redux-resource-3.0-docs/).
+
+> Note: if you are unsure of which version to use, then you should use v2.4.1. If you are alright with
+> following the development of this repository closely, then it should be fine if you decide to use v3.0.0.
+>
+> There are not many breaking changes between the two versions, and the migration path was designed
+> to be reasonable. So you are not putting yourself in a bad position by using v2.4.1.
 
 ### Quick Start
 
