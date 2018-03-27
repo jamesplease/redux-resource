@@ -113,7 +113,7 @@ export interface Plugin<R, M=ResourceMeta> {
 
 interface ReducerOptions<R, M=ResourceMeta> {
   initialState?: ResourceSlice<R, M>;
-  plugins?: Plugin<R, ResourceSlice<R, M>>[];
+  plugins?: Plugin<R, M>[];
   initialResourceMeta?: any;
 }
 

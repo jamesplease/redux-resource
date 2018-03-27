@@ -2,7 +2,7 @@ import { Action, Reducer } from 'redux';
 import { ResourceSlice, ResourceMeta } from 'redux-resource';
 
 interface IncludedResourcesOptions<M extends Object = {}> {
-  initialResourceMeta: M;
+  initialResourceMeta?: M;
 }
 
 export function includedResources<R, M=ResourceMeta>(resourceType: string, options?: IncludedResourcesOptions<M>): Reducer<ResourceSlice<R, M>>;
