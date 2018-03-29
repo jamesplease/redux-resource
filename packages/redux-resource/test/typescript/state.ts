@@ -1,4 +1,4 @@
-import { ResourceSlice, ResourceMeta, getStatus, getResources, setResourceMeta, ResourceMetaMap, upsertResources } from 'redux-resource';
+import { ResourceSlice, ResourceMeta, getStatus, getResources, setResourceMeta, upsertResources } from 'redux-resource';
 
 interface Episode {
   id: number;
@@ -10,6 +10,7 @@ interface Meta extends ResourceMeta {
 }
 
 const state: ResourceSlice<Episode, Meta> = {
+  resourceType: 'episode',
   resources: {
     1: { id: 1, title: 'The Phantom Menace' },
     2: { id: 2, title: 'Attack of the Clones' },
@@ -44,6 +45,8 @@ const state: ResourceSlice<Episode, Meta> = {
   },
   requests: {
     allEpisodes: {
+      requestKey: 'allEpisodes',
+      resourceType: 'episode',
       ids: [ 1, 2, 3, 4, 5, 6, 7, 8 ],
       status: 'SUCCEEDED',
     }

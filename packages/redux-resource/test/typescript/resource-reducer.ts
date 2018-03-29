@@ -1,7 +1,8 @@
-import { resourceReducer, ResourceSlice, ResourceAction, ReducerOptions } from 'redux-resource';
+import { resourceReducer, ResourceSlice, ResourceAction, ReducerOptions, ResourceMeta } from 'redux-resource';
 
 const reducer = resourceReducer('books');
 reducer({
+  resourceType: 'books',
   resources: {},
   meta: {},
   lists: {},
@@ -10,8 +11,15 @@ reducer({
   type: 'ACTION',
 });
 
+interface Book {
+  title: string;
+}
 
-resourceReducer('books', {
+interface BookMeta extends ResourceMeta {
+  time: Date;
+}
+
+resourceReducer<Book, BookMeta>('books', {
   initialState: {
     resources: {},
     meta: {},

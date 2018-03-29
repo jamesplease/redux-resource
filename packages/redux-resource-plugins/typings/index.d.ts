@@ -1,11 +1,14 @@
 import { Action, Reducer } from 'redux';
-import { ResourceSlice, ResourceMeta } from 'redux-resource';
+import { ResourceSlice, ResourceMeta, ReducerOptions } from 'redux-resource';
 
-interface IncludedResourcesOptions<M extends Object = {}> {
-  initialResourceMeta?: M;
-}
-
-export function includedResources<R, M=ResourceMeta>(resourceType: string, options?: IncludedResourcesOptions<M>): Reducer<ResourceSlice<R, M>>;
+/**
+ * A plugin that allows a single action to include multiple resource types.
+ *
+ * @param {string} resourceType
+ * @param {ReducerOptions<M>} [options]
+ * @returns {Reducer<ResourceSlice<R, M>>}
+ */
+export function includedResources<R, M extends ResourceMeta>(resourceType: string, options?: ReducerOptions<R, M>): Reducer<ResourceSlice<R, M>>;
 
 export namespace reset {
   export type ActionType = 'RESET_RESOURCE';
@@ -14,11 +17,33 @@ export namespace reset {
     RESET_RESOURCE: 'RESET_RESOURCE';
   };
 
+  /**
+   * Options to scope what is reset.
+   *
+   * @interface ResetResourceOptions
+   */
   export interface ResetResourceOptions {
+    /**
+     * Reset the request with this name.
+     *
+     * @type {string}
+     */
     request?: string;
+
+    /**
+     * Reset the list with this name.
+     *
+     * @type {string}
+     */
     list?: string;
   }
 
+  /**
+   * A dispatchable action that will reset state.
+   *
+   * @interface ResetResourceAction
+   * @extends {Action}
+   */
   export interface ResetResourceAction extends Action {
     type: ActionType;
     resourceType: string;
@@ -26,16 +51,19 @@ export namespace reset {
     list?: string;
   }
 
+  /**
+   * Creates an action to reset part of the state.
+   *
+   * @param {string} resourceType The name of the resource slice to reset.
+   * @param {ResetResourceOptions} [options] Options to scope what is reset.
+   * @returns {ResetResourceAction}
+   */
   export function resetResource(resourceType: string, options?: ResetResourceOptions): ResetResourceAction;
 }
 
-interface ResetOptions {
-  initialState?: object;
-}
+export function reset<R, M extends ResourceMeta>(resourceType: string, options?: ReducerOptions<R, M>): Reducer<ResourceSlice<R, M>>;
 
-export function reset(resourceType: string, options?: ResetOptions): Reducer<ResourceSlice<any, any>>;
-
-export function httpStatusCodes(resourceType: string): Reducer<ResourceSlice<any, any>>;
+export function httpStatusCodes<R, M extends ResourceMeta>(resourceType: string): Reducer<ResourceSlice<R, M>>;
 
 export namespace selection {
   export type ActionType =
@@ -49,7 +77,7 @@ export namespace selection {
     CLEAR_SELECTED_RESOURCES: 'CLEAR_SELECTED_RESOURCES';
   }
 
-  interface InitialState {
+  export interface InitialState {
     selectedIds: Array<any>;
   }
 
@@ -71,4 +99,9 @@ export namespace selection {
   export function clearSelectedResources(resourceType: string): ClearSelectionAction;
 }
 
+/**
+ * @deprecated Use the built-in UPDATE_RESOURCES action type to modify lists directly.
+ * @param {string} resourceType
+ * @returns {Reducer<ResourceSlice<any, any>>}
+ */
 export function selection(resourceType: string): Reducer<ResourceSlice<any, any>>;
