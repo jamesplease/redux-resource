@@ -4,6 +4,7 @@
   "description": "Official plugins for Redux Resource",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "typings/index.d.ts",
   "scripts": {
     "clean": "rimraf dist es tmp lib",
     "prepublish": "in-publish && npm run build || not-in-publish",
@@ -57,7 +58,8 @@
   "files": [
     "dist",
     "lib",
-    "es"
+    "es",
+    "typings"
   ],
   "homepage": "https://redux-resource.js.org",
   "devDependencies": {
@@ -72,6 +74,7 @@
     "in-publish": "^2.0.0",
     "mocha": "^3.4.2",
     "normalizr": "^3.2.4",
+    "redux": "3.x",
     "redux-resource": "3.0.0-beta5",
     "rimraf": "^2.6.1",
     "rollup": "^0.45.1",
