@@ -76,10 +76,12 @@ export default function resourceReducer(resourceType, options = {}) {
         warning(
           `You dispatched an action of type ${
             action.type
-          } with a "resourceName" property. Although this will continue to work, this property name been ` +
-            `deprecated in favor of "resourceType." This new property behaves ` +
-            `exactly the same; it simply has been renamed. Please update your action creators. ` +
-            `For more information, refer to the request action documentation at: ` +
+          } with a "resourceName" property. This property has been deprecated in ` +
+            `favor of a new property, "resourceType." This new property serves ` +
+            `the same function; it has simply been renamed. The old property ` +
+            `will continue to work until the next major release of Redux Resource (v4). ` +
+            `Please update your action creators. For more information, refer to ` +
+            `the request action documentation at: ` +
             `https://redux-resource.js.org/docs/requests/request-actions.html\n\n` +
             `Also, the migration guide to Redux Resource v3 can be found at: ` +
             `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,

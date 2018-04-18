@@ -5,7 +5,7 @@ export default function(resourceSlice, filter) {
   if (process.env.NODE_ENV !== 'production') {
     if (arguments.length === 3) {
       warning(
-        `Your code is using an old signature of getResources that was removed in ` +
+        `You called getResources with an argument signature that was removed in ` +
           `v3.0.0 of Redux Resource. The old signature accepted three arguments. The new ` +
           `signature only accepts two. Please update your code to use the new signature. ` +
           `For more information, reference the documentation at ` +
