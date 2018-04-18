@@ -48,6 +48,9 @@ View the documentation at
 
 > Looking for the v2.4.1 documentation? **[View it here](https://jamesplease.github.io/redux-resource-2.4.1-docs/)**.
 
+> Migration guides to the latest version can be found
+> **[here](https://redux-resource.js.org/docs/other-guides/migration-guides.html)**.
+
 ### Quick Start
 
 Follow this guide to get a taste of what it's like to work with Redux

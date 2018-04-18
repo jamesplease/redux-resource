@@ -10,8 +10,8 @@ Here are two situations when you might find lists useful:
 - If your UI allows user to "select" resources on your interface by clicking a
   checkbox, then you could store the "selected" IDs in a list
 
-This list isn't meant to be exhaustive; it is simply to give you an idea of
-the sorts of situations where lists can be used. Any time that you need a
+The above isn't meant to be exhaustive; it is simply to give you an idea of
+the kinds of situations where lists can be useful. Any time that you need a
 subsection of your resources (whether it needs to be ordered or not), you
 should use lists.
 

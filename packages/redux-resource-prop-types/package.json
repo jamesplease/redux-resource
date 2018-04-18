@@ -84,6 +84,6 @@
     "webpack": "^3.1.0"
   },
   "peerDependencies": {
-    "redux": "3.x"
+    "redux": "3.x || 4.x"
   }
 }
