@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-plugins",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Official plugins for Redux Resource",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -82,7 +82,7 @@
     "webpack": "^3.1.0"
   },
   "peerDependencies": {
-    "redux": "3.x",
+    "redux": "3.x || 4.x",
     "redux-resource": "^2.4.0"
   }
 }

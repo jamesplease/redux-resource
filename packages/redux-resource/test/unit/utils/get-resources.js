@@ -32,6 +32,23 @@ describe('getResources', function() {
         resources: {},
         meta: {},
         requests: {}
+      },
+      nullResource: {
+        resources: {
+          1: {id: 1, name: 'sandwiches'},
+          10: null,
+          102: {id: 102, name: 'fried'},
+          116: {id: 116, name: 'pickles'},
+        },
+        meta: {
+          102: {
+            selected: false
+          },
+          116: {
+            selected: true
+          }
+        },
+        requests: {}
       }
     };
   });
@@ -108,6 +125,27 @@ describe('getResources', function() {
 
       expect(getResources(this.state.books, filter)).to.deep.equal([
         {id: 10, name: 'pizza'},
+        {id: 116, name: 'pickles'}
+      ]);
+    });
+  });
+
+  // Resources are set to null after they are deleted in the 2.x world.
+  describe('null resource', () => {
+    it('should return the resources that match a filtering function', () => {
+      const filter = (resource, meta, resourceSlice) => {
+        const resourceId = resource && resource.id;
+
+        if (resourceId) {
+          expect(resource).to.deep.equal(this.state.nullResource.resources[resourceId]);
+          expect(resourceSlice).to.deep.equal(this.state.nullResource);
+          expect(meta).to.deep.equal(this.state.nullResource.meta[resourceId]);
+        }
+
+        return meta && meta.selected;
+      };
+
+      expect(getResources(this.state.nullResource, filter)).to.deep.equal([
         {id: 116, name: 'pickles'}
       ]);
     });

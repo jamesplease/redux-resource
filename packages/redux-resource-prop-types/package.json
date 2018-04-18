@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-prop-types",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "prop-types for Redux Resource",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -84,6 +84,6 @@
     "webpack": "^3.1.0"
   },
   "peerDependencies": {
-    "redux": "3.x"
+    "redux": "3.x || 4.x"
   }
 }

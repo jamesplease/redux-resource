@@ -18,7 +18,10 @@ export default function(state, resourceName, filter) {
 
   if (typeof filterToUse === 'function') {
     return Object.values(resources)
-      .filter(resource => filterToUse(resource, resourceSlice.meta[resource.id], resourceSlice));
+      .filter(resource => {
+        const meta = resource ? resourceSlice.meta[resource.id] : {};
+        return filterToUse(resource, meta, resourceSlice);
+      });
   }
 
   // This conditional handles the situation where `filter` is an list name
