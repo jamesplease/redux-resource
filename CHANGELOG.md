@@ -1,6 +1,6 @@
 ## 4/17/18
 
-##### `redux-resource@3.0.0`
+##### `redux-resource@3.0.0` [Migration guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md)
 
 **Breaking Changes**
 
@@ -27,6 +27,40 @@
 **Deprecations**
 
 * Using the `resourceName` property on actions. Use `resourceType` instead.
+
+##### `redux-resource-xhr@4.0.0` [Migration Guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/3-to-4.md)
+
+**Breaking Changes**
+
+- The library now sets HTTP status codes onto Request Objects by default. The HTTP Status Codes plugin
+  is no longer nececessary for this functionality.
+
+- HTTP status codes are no longer wiped when a request becomes pending
+
+**New Features**
+
+- You can now pass `requestProperties` to your actions. These are additional properties that
+  will be added to the Request Object in the state.
+
+##### `redux-resource-plugins@3.0.0` [Migration Guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-plugins/docs/migration-guides/2-to-3.md)
+
+**Breaking Changes**
+
+- HTTP Status Codes Plugin: Actions without status codes will now set a status code of null rather than 0.
+
+##### `redux-resource-prop-types@4.0.0` [Migration Guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-prop-types/docs/migration-guides/3-to-4.md)
+
+**Breaking Changes**
+
+- The library has been updated to reflect the changes in `redux-resource@3.0.0`. You should
+not need to make any changes.
+
+##### `redux-resource-action-creators@2.0.0` [Migration Guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-action-creators/docs/migration-guides/1-to-2.md)
+
+**Breaking Changes**
+
+- The library has been updated to reflect the changes in `redux-resource@3.0.0`. You should
+not need to make any changes.
 
 ## 2/8/18
 
