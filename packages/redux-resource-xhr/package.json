@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-xhr",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Action creators for Redux Resource using the xhr library",
   "main": "lib/index.js",
   "module": "es/index.js",
