@@ -1,3 +1,7 @@
+## 4/18/18
+
+- All libraries have been updated to allow for Redux@4 as a peer dependency.
+
 ## 4/17/18
 
 ##### `redux-resource@3.0.0` [Migration guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md)

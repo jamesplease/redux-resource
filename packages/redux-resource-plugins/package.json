@@ -1,6 +1,6 @@
 {
   "name": "redux-resource-plugins",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Official plugins for Redux Resource",
   "main": "lib/index.js",
   "module": "es/index.js",
