@@ -33,6 +33,12 @@ remote servers.
 ✓ Integrates well with your favorite technologies: HTTP, gRPC, normalizr, redux-observable, redux-saga, and more  
 ✓ Microscopic file size (3kb gzipped!)
 
+### Older Documentation
+
+This website is for the v3.0.0 version of Redux Resource. If you are looking for the
+documentation for v2.4.1, then you should head over to
+**[https://jamesplease.github.io/redux-resource-2.4.1-docs/](https://jamesplease.github.io/redux-resource-2.4.1-docs/)**.
+
 ### Installation
 
 To install the latest version:

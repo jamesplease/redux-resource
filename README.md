@@ -46,6 +46,9 @@ npm install --save redux-resource
 View the documentation at
 **[redux-resource.js.org ⇗](https://redux-resource.js.org/)**.
 
+> Looking for the v2.4.1 documentation? View it here:
+> **[https://jamesplease.github.io/redux-resource-2.4.1-docs/](https://jamesplease.github.io/redux-resource-2.4.1-docs/)**
+
 ### Quick Start
 
 Follow this guide to get a taste of what it's like to work with Redux
