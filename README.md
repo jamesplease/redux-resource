@@ -31,7 +31,7 @@ remote servers.
 ✓ Works well with APIs that adhere to standardized formats, such as JSON API  
 ✓ Works well with APIs that don't adhere to standardized formats, too  
 ✓ Integrates well with your favorite technologies: HTTP, gRPC, normalizr, redux-observable, redux-saga, and more  
-✓ Microscopic file size (2kb gzipped!)
+✓ Microscopic file size (3kb gzipped!)
 
 ### Installation
 
@@ -43,21 +43,8 @@ npm install --save redux-resource
 
 ### Documentation
 
-The latest stable release of Redux Resource is v2.4.1. The 2.4.1 documentation can be
-found at **[redux-resource.js.org ⇗](https://redux-resource.js.org/)**.
-
-The next major release of Redux Resource, v3.0.0, is in the works. Although it is unlikely that
-there will be major changes between the current beta and the final release, it is still wise to
-consider it unstable.
-
-The v3.0.0 documentation can be viewed at
-[jamesplease.github.io/redux-resource-3.0-docs ⇗](https://jamesplease.github.io/redux-resource-3.0-docs/).
-
-> Note: if you are unsure of which version to use, then you should use v2.4.1. If you are alright with
-> following the development of this repository closely, then it should be fine if you decide to use v3.0.0.
->
-> There are not many breaking changes between the two versions, and the migration path was designed
-> to be reasonable. So you are not putting yourself in a bad position by using v2.4.1.
+View the documentation at
+**[redux-resource.js.org ⇗](https://redux-resource.js.org/)**.
 
 ### Quick Start
 
@@ -152,13 +139,13 @@ of packages. The source for each package can be found in the[
   `./packages`](https://github.com/jamesplease/redux-resource/tree/master/packages)
   directory.
 
-| Package | Version | Size | Description |
-| ---- | ---- | ---- | ---- |
-| `redux-resource` | [![npm version](https://img.shields.io/npm/v/redux-resource.svg)](https://www.npmjs.com/package/redux-resource) | [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip)](https://unpkg.com/redux-resource/dist/redux-resource.min.js) | The main library |
-| `redux-resource-xhr` | [![npm version](https://img.shields.io/npm/v/redux-resource-xhr.svg)](https://www.npmjs.com/package/redux-resource-xhr) | [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js?compression=gzip)](https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js) | A library that exports a powerful HTTP CRUD action creator |
-| `redux-resource-plugins` | [![npm version](https://img.shields.io/npm/v/redux-resource-plugins.svg)](https://www.npmjs.com/package/redux-resource-plugins) | [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-plugins/dist/redux-resource-plugins.min.js?compression=gzip)](https://unpkg.com/redux-resource-plugins/dist/redux-resource-plugins.min.js) | A collection of common plugins |
-| `redux-resource-prop-types` | [![npm version](https://img.shields.io/npm/v/redux-resource-prop-types.svg)](https://www.npmjs.com/package/redux-resource-prop-types) | [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-prop-types/dist/redux-resource-prop-types.min.js?compression=gzip)](https://unpkg.com/redux-resource-prop-types/dist/redux-resource-prop-types.min.js) | Handy Prop Types to use with Redux Resource |
-| `redux-resource-action-creators` | [![npm version](https://img.shields.io/npm/v/redux-resource-action-creators.svg)](https://www.npmjs.com/package/redux-resource-action-creators) | [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-action-creators/dist/redux-resource-action-creators.min.js?compression=gzip)](https://unpkg.com/redux-resource-action-creators/dist/redux-resource-action-creators.min.js) | Unopinionated action creators for Redux Resource (bring your own HTTP request) |
+| Package | Version | Description |
+| ---- | ---- | ---- |
+| `redux-resource` | [![npm version](https://img.shields.io/npm/v/redux-resource.svg)](https://www.npmjs.com/package/redux-resource) | The main library |
+| `redux-resource-xhr` | [![npm version](https://img.shields.io/npm/v/redux-resource-xhr.svg)](https://www.npmjs.com/package/redux-resource-xhr) | A library that exports a powerful HTTP CRUD action creator |
+| `redux-resource-plugins` | [![npm version](https://img.shields.io/npm/v/redux-resource-plugins.svg)](https://www.npmjs.com/package/redux-resource-plugins) | A collection of common plugins |
+| `redux-resource-prop-types` | [![npm version](https://img.shields.io/npm/v/redux-resource-prop-types.svg)](https://www.npmjs.com/package/redux-resource-prop-types) | Handy Prop Types to use with Redux Resource |
+| `redux-resource-action-creators` | [![npm version](https://img.shields.io/npm/v/redux-resource-action-creators.svg)](https://www.npmjs.com/package/redux-resource-action-creators) | Unopinionated action creators for Redux Resource (bring your own HTTP request) |
 
 ### Contributing
 

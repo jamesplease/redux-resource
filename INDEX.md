@@ -31,7 +31,7 @@ remote servers.
 ✓ Works well with APIs that adhere to standardized formats, such as JSON API  
 ✓ Works well with APIs that don't adhere to standardized formats, too  
 ✓ Integrates well with your favorite technologies: HTTP, gRPC, normalizr, redux-observable, redux-saga, and more  
-✓ Microscopic file size (2kb gzipped!)
+✓ Microscopic file size (3kb gzipped!)
 
 ### Installation
 
