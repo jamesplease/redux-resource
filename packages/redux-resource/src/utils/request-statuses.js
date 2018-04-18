@@ -16,8 +16,8 @@ if (process.env.NODE_ENV !== 'production') {
           `has been renamed to IDLE in Redux Resource v3. Please update your ` +
           `application to use the new request status. Typically, this can be ` +
           `done by doing a find and replace within your source code to ` +
-          `replace "NULL" with "IDLE". For more information, refer to the ` +
-          `documentation for the request statuses at: ` +
+          `replace the string "NULL" with "IDLE". For more information, refer to ` +
+          `the documentation for the request statuses at: ` +
           `https://redux-resource.js.org/docs/api-reference/request-statuses.html\n\n` +
           `Also, the migration guide to Redux Resource v3 can be found at: ` +
           `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
