@@ -73,6 +73,6 @@
     "rollup-plugin-uglify": "^2.0.1"
   },
   "peerDependencies": {
-    "redux": "3.x"
+    "redux": "3.x || 4.x"
   }
 }
