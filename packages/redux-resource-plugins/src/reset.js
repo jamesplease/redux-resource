@@ -4,11 +4,12 @@ const actionTypes = {
   RESET_RESOURCE: 'RESET_RESOURCE',
 };
 
-function resetResource(resourceType, { request, list } = {}) {
+function resetResource(resourceType, { request, requestKey, list } = {}) {
   return {
     type: 'RESET_RESOURCE',
     resourceType,
     request,
+    requestKey,
     list,
   };
 }
