@@ -94,9 +94,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
       });
     }
 
-    if (newRequestIds) {
-      newRequest.ids = newRequestIds;
-    }
+    newRequest.ids = newRequestIds || [];
 
     newRequests = {
       ...state.requests,
