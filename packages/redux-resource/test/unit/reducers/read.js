@@ -1356,7 +1356,7 @@ describe('reducers: read:', function() {
             requestKey: 'pasta',
             requestName: 'pasta',
             resourceType: 'hellos',
-            ids: [1],
+            ids: [],
             status: requestStatuses.SUCCEEDED,
           },
         },
@@ -1374,6 +1374,84 @@ describe('reducers: read:', function() {
       });
 
       expect(console.error.callCount).to.equal(1);
+    });
+
+    it('returns state with an empty resource array, with a request name', () => {
+      stub(console, 'error');
+      const reducer = resourceReducer('hellos', {
+        initialState: {
+          resources: {
+            1: { id: 1 },
+            3: { id: 3 },
+            4: { id: 4, lastName: 'camomile' },
+          },
+          lists: {},
+          requests: {
+            sandwiches: {
+              ids: [1, 3],
+              status: requestStatuses.FAILED,
+            },
+            pasta: {
+              ids: [1],
+              status: requestStatuses.PENDING,
+            },
+          },
+          meta: {
+            1: {
+              name: 'what',
+            },
+            3: {
+              deleteStatus: 'sandwiches',
+            },
+            4: {
+              selected: true,
+            },
+          },
+        },
+      });
+
+      const reduced = reducer(undefined, {
+        type: 'READ_RESOURCES_SUCCEEDED',
+        resourceType: 'hellos',
+        request: 'pasta',
+        resources: []
+      });
+
+      expect(reduced).to.deep.equal({
+        resourceType: 'hellos',
+        resources: {
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4, lastName: 'camomile' },
+        },
+        lists: {},
+        requests: {
+          sandwiches: {
+            ids: [1, 3],
+            status: requestStatuses.FAILED,
+          },
+          pasta: {
+            requestKey: 'pasta',
+            requestName: 'pasta',
+            resourceType: 'hellos',
+            ids: [],
+            status: requestStatuses.SUCCEEDED,
+          },
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            deleteStatus: 'sandwiches',
+          },
+          4: {
+            selected: true,
+          },
+        },
+      });
+
+      expect(console.error.callCount).to.equal(0);
     });
   });
 
