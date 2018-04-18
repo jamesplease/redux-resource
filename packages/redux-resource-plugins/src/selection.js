@@ -1,40 +1,41 @@
 const actionTypes = {
   SELECT_RESOURCES: 'SELECT_RESOURCES',
   DESELECT_RESOURCES: 'DESELECT_RESOURCES',
-  CLEAR_SELECTED_RESOURCES: 'CLEAR_SELECTED_RESOURCES'
+  CLEAR_SELECTED_RESOURCES: 'CLEAR_SELECTED_RESOURCES',
 };
 
 const initialState = {
-  selectedIds: []
+  selectedIds: [],
 };
 
-function selectResources(resourceName, resources) {
+function selectResources(resourceType, resources) {
   return {
     type: actionTypes.SELECT_RESOURCES,
-    resourceName,
-    resources
+    resourceType,
+    resources,
   };
 }
 
-function deselectResources(resourceName, resources) {
+function deselectResources(resourceType, resources) {
   return {
     type: actionTypes.DESELECT_RESOURCES,
-    resourceName,
-    resources
+    resourceType,
+    resources,
   };
 }
 
-function clearSelectedResources(resourceName) {
+function clearSelectedResources(resourceType) {
   return {
     type: actionTypes.CLEAR_SELECTED_RESOURCES,
-    resourceName
+    resourceType,
   };
 }
 
-function selection(resourceName) {
+function selection(resourceType) {
   return function(state, action) {
     // Ignore actions that were dispatched for another resource type
-    if (action.resourceName !== resourceName) {
+    const typeToUse = action.resourceType || action.resourceName;
+    if (typeToUse !== resourceType) {
       return state;
     }
 
@@ -53,7 +54,7 @@ function selection(resourceName) {
 
       return {
         ...state,
-        selectedIds
+        selectedIds,
       };
     } else if (action.type === actionTypes.DESELECT_RESOURCES) {
       selectedIds = [...state.selectedIds] || [];
@@ -61,12 +62,12 @@ function selection(resourceName) {
 
       return {
         ...state,
-        selectedIds: selectedIds.filter(id => !resourceIds.includes(id))
+        selectedIds: selectedIds.filter(id => !resourceIds.includes(id)),
       };
     } else if (action.type === actionTypes.CLEAR_SELECTED_RESOURCES) {
       return {
         ...state,
-        selectedIds: []
+        selectedIds: [],
       };
     }
 

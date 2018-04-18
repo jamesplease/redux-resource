@@ -1,13 +1,35 @@
 # HTTP Status Codes Plugin
 
-Add this plugin to keep track of status codes of your HTTP Requests. This is
-useful because status codes give you more detail information about your
-in-flight requests.
+### Documentation
 
-One common use case is to be able to handle the different reasons for a failed
-request: was the resource not found (404), or did the user not have permissions
-(403)? This plugin makes it straightforward to track this information, and then
-use it in your view layer.
+Add this plugin to keep track of status codes of your HTTP Requests on
+resource metadata. This is useful because status codes give you more
+detail information about your in-flight requests.
+
+Note that you can simply use [request objects](/docs/requests/request-objects.md)
+instead of this plugin. For instance:
+
+```js
+dispatch({
+  type: 'READ_RESOURCES_FAILED',
+  resourceType: 'books',
+  requestKey: 'searchBooks',
+  requestProperties: {
+    statusCode: 404
+  }
+});
+
+// => resource object:
+//
+// {
+//   requestKey: 'searchBooks',
+//   status: 'FAILED',
+//   statusCode: 404
+// }
+```
+
+This plugin is only useful when you specifically want to track the status on
+resource metadata.
 
 ### Usage
 
@@ -37,7 +59,7 @@ import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_FAILED,
-  resourceName: 'books',
+  resourceType: 'books',
   resources: [10],
   statusCode: 404
 });
@@ -56,7 +78,7 @@ keys, depending on the CRUD operation being performed:
 - `updateStatusCode`
 - `deleteStatusCode`
 
-On a named request, the code is just available under `statusCode`.
+On a request object, the code is just available under `statusCode`.
 
 ```js
 import store from './store';
@@ -66,16 +88,6 @@ const state = store.getState();
 // Access the status codes of some resource meta
 const bookStatusCode = state.books.meta[24].readStatusCode;
 
-// Access the status code from a named requests
+// Access the status code from a request object
 const searchStatusCode = state.books.requests.search.statusCode;
 ```
-
-### Tips
-
-- The status code of an unsent and in-flight XHR requests is `0`, and the
-  Redux Resource XHR respects this. What this means is that any new
-  requests will _immediately_ update any existing status code to be `0`.
-
-  If you're using the status code to display UI elements, you may need to cache
-  the last completed request's status in your component's state to get the
-  behavior that you're looking for.

@@ -5,7 +5,7 @@ complete object is shown below:
 
 ```js
 {
-  NULL: 'NULL',
+  IDLE: 'IDLE',
   PENDING: 'PENDING',
   FAILED: 'FAILED',
   SUCCEEDED: 'SUCCEEDED',

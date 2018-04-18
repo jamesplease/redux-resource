@@ -11,14 +11,6 @@
 
 #### v3.0.0
 
-**Breaking**
-
-- Rename `NULL` to be `IDLE`.
-
-- Remove deprecated getResources API: `getResources(state, resourceName, filter)`
-
-- Calling getResources with no filter will return all of the resources
-
 **New Features**
 
 - A new API to update resource information directly, independent from requests. This will support

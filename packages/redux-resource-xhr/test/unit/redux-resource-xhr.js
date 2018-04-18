@@ -24,11 +24,11 @@ describe('Redux Resource XHR', function() {
         crudRequest('read', {
           dispatch: this.dispatch,
           actionDefaults: {
-            resourceName: 'hello'
+            resourceName: 'hello',
           },
           xhrOptions: {
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(console.warn.callCount).to.equal(0);
@@ -38,8 +38,8 @@ describe('Redux Resource XHR', function() {
         crudRequest('update', {
           dispatch: this.dispatch,
           actionDefaults: {
-            resourceName: 'hello'
-          }
+            resourceName: 'hello',
+          },
         });
 
         expect(console.warn.callCount).to.equal(1);
@@ -49,8 +49,8 @@ describe('Redux Resource XHR', function() {
         crudRequest('read', {
           dispatch: this.dispatch,
           xhrOptions: {
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(console.warn.callCount).to.equal(1);
@@ -60,11 +60,11 @@ describe('Redux Resource XHR', function() {
         crudRequest('apples', {
           dispatch: this.dispatch,
           actionDefaults: {
-            resourceName: 'hello'
+            resourceName: 'hello',
           },
           xhrOptions: {
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(console.warn.callCount).to.equal(1);
@@ -74,11 +74,11 @@ describe('Redux Resource XHR', function() {
         crudRequest(undefined, {
           dispatch: this.dispatch,
           actionDefaults: {
-            resourceName: 'hello'
+            resourceName: 'hello',
           },
           xhrOptions: {
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(console.warn.callCount).to.equal(1);
@@ -93,7 +93,7 @@ describe('Redux Resource XHR', function() {
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'GET'
+              method: 'GET',
             });
 
             expect(this.dispatch.callCount).to.equal(2);
@@ -101,26 +101,26 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [21, 42]
-              }
+                requestProperties: undefined,
+                resources: [21, 42],
+              },
             ]);
 
             expect(this.dispatch.args[1]).to.deep.equal([
               {
-                type: 'READ_RESOURCES_NULL',
+                type: 'READ_RESOURCES_IDLE',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: undefined,
                 res: undefined,
-                resources: [21, 42]
-              }
+                resources: [21, 42],
+              },
             ]);
 
             done();
           });
 
           return {
-            aborted: true
+            aborted: true,
           };
         });
 
@@ -130,12 +130,12 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [21, 42]
+            resources: [21, 42],
           },
           xhrOptions: {
             method: 'GET',
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -150,7 +150,7 @@ describe('Redux Resource XHR', function() {
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'GET'
+              method: 'GET',
             });
 
             expect(this.dispatch.callCount).to.equal(1);
@@ -158,28 +158,28 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [21, 42]
-              }
+                requestProperties: undefined,
+                resources: [21, 42],
+              },
             ]);
 
             expect(this.onAbortedStub.callCount).to.equal(1);
             expect(this.onAbortedStub.args[0]).to.deep.equal([
               {
-                type: 'READ_RESOURCES_NULL',
+                type: 'READ_RESOURCES_IDLE',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: undefined,
                 res: undefined,
-                resources: [21, 42]
+                resources: [21, 42],
               },
-              undefined
+              undefined,
             ]);
 
             done();
           });
 
           return {
-            aborted: true
+            aborted: true,
           };
         });
 
@@ -190,14 +190,14 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [21, 42]
+            resources: [21, 42],
           },
           crudAction: 'read',
           xhrOptions: {
             method: 'GET',
-            url: 'https://www.google.com'
+            url: 'https://www.google.com',
           },
-          onAborted: this.onAbortedStub
+          onAborted: this.onAbortedStub,
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -214,14 +214,14 @@ describe('Redux Resource XHR', function() {
               null,
               {
                 statusCode: 200,
-                body
+                body,
               },
               body
             );
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'GET'
+              method: 'GET',
             });
 
             expect(this.dispatch.callCount).to.equal(1);
@@ -230,20 +230,22 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 200,
+                requestProperties: {
+                  statusCode: 200,
+                },
                 res: {
                   statusCode: 200,
-                  body
+                  body,
                 },
-                resources: [{ id: 21 }, { id: 42 }]
-              }
+                resources: [{ id: 21 }, { id: 42 }],
+              },
             ]);
 
             done();
           });
 
           return {
-            aborted: false
+            aborted: false,
           };
         });
 
@@ -255,13 +257,13 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [21, 42]
+            resources: [21, 42],
           },
           xhrOptions: {
             method: 'GET',
-            url: 'https://www.google.com'
+            url: 'https://www.google.com',
           },
-          onPending: this.onPendingStub
+          onPending: this.onPendingStub,
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -270,9 +272,9 @@ describe('Redux Resource XHR', function() {
           {
             type: 'READ_RESOURCES_PENDING',
             resourceName: 'hello',
-            statusCode: 0,
-            resources: [21, 42]
-          }
+            requestProperties: undefined,
+            resources: [21, 42],
+          },
         ]);
       });
     });
@@ -287,14 +289,14 @@ describe('Redux Resource XHR', function() {
               null,
               {
                 statusCode: 200,
-                body
+                body,
               },
               body
             );
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'GET'
+              method: 'GET',
             });
 
             expect(this.dispatch.callCount).to.equal(1);
@@ -302,9 +304,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [21, 42]
-              }
+                requestProperties: undefined,
+                resources: [21, 42],
+              },
             ]);
 
             expect(this.onSucceededStub.callCount).to.equal(1);
@@ -312,25 +314,27 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 200,
+                requestProperties: {
+                  statusCode: 200,
+                },
                 res: {
                   statusCode: 200,
-                  body
+                  body,
                 },
-                resources: [{ id: 21 }, { id: 42 }]
+                resources: [{ id: 21 }, { id: 42 }],
               },
               {
                 statusCode: 200,
-                body
+                body,
               },
-              body
+              body,
             ]);
 
             done();
           });
 
           return {
-            aborted: false
+            aborted: false,
           };
         });
 
@@ -342,13 +346,13 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [21, 42]
+            resources: [21, 42],
           },
           xhrOptions: {
             method: 'GET',
-            url: 'https://www.google.com'
+            url: 'https://www.google.com',
           },
-          onSucceeded: this.onSucceededStub
+          onSucceeded: this.onSucceededStub,
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -365,14 +369,14 @@ describe('Redux Resource XHR', function() {
               null,
               {
                 statusCode: 200,
-                body
+                body,
               },
               body
             );
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'GET'
+              method: 'GET',
             });
 
             expect(this.dispatch.callCount).to.equal(2);
@@ -380,29 +384,31 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [21, 42]
-              }
+                requestProperties: undefined,
+                resources: [21, 42],
+              },
             ]);
 
             expect(this.dispatch.args[1]).to.deep.equal([
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 200,
+                requestProperties: {
+                  statusCode: 200,
+                },
                 res: {
                   statusCode: 200,
-                  body
+                  body,
                 },
-                resources: [{ id: 21 }, { id: 42 }]
-              }
+                resources: [{ id: 21 }, { id: 42 }],
+              },
             ]);
 
             done();
           });
 
           return {
-            aborted: false
+            aborted: false,
           };
         });
 
@@ -412,12 +418,12 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [21, 42]
+            resources: [21, 42],
           },
           xhrOptions: {
             method: 'GET',
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -427,7 +433,7 @@ describe('Redux Resource XHR', function() {
     describe('success, with a body + transformData fn', () => {
       it('should dispatch the correct actions', done => {
         const body = {
-          data: [{ id: 21 }, { id: 42 }]
+          data: [{ id: 21 }, { id: 42 }],
         };
 
         const transformData = body => body.data;
@@ -438,14 +444,14 @@ describe('Redux Resource XHR', function() {
               null,
               {
                 statusCode: 201,
-                body
+                body,
               },
               body
             );
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'GET'
+              method: 'GET',
             });
 
             expect(this.dispatch.callCount).to.equal(2);
@@ -453,29 +459,31 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'READ_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [21, 42]
-              }
+                requestProperties: undefined,
+                resources: [21, 42],
+              },
             ]);
 
             expect(this.dispatch.args[1]).to.deep.equal([
               {
                 type: 'READ_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 201,
+                requestProperties: {
+                  statusCode: 201,
+                },
                 res: {
                   statusCode: 201,
-                  body
+                  body,
                 },
-                resources: [{ id: 21 }, { id: 42 }]
-              }
+                resources: [{ id: 21 }, { id: 42 }],
+              },
             ]);
 
             done();
           });
 
           return {
-            aborted: false
+            aborted: false,
           };
         });
 
@@ -485,13 +493,13 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [21, 42]
+            resources: [21, 42],
           },
           transformData,
           xhrOptions: {
             method: 'GET',
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -503,12 +511,12 @@ describe('Redux Resource XHR', function() {
         this.xhrStub = stub().callsFake((options, cb) => {
           setTimeout(() => {
             cb(null, {
-              statusCode: 204
+              statusCode: 204,
             });
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'DELETE'
+              method: 'DELETE',
             });
 
             expect(this.dispatch.callCount).to.equal(2);
@@ -516,28 +524,30 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [1, 14]
-              }
+                requestProperties: undefined,
+                resources: [1, 14],
+              },
             ]);
 
             expect(this.dispatch.args[1]).to.deep.equal([
               {
                 type: 'DELETE_RESOURCES_SUCCEEDED',
                 resourceName: 'hello',
-                statusCode: 204,
+                requestProperties: {
+                  statusCode: 204,
+                },
                 resources: [1, 14],
                 res: {
-                  statusCode: 204
-                }
-              }
+                  statusCode: 204,
+                },
+              },
             ]);
 
             done();
           });
 
           return {
-            aborted: false
+            aborted: false,
           };
         });
 
@@ -547,12 +557,12 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [1, 14]
+            resources: [1, 14],
           },
           xhrOptions: {
             method: 'DELETE',
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -568,7 +578,7 @@ describe('Redux Resource XHR', function() {
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'DELETE'
+              method: 'DELETE',
             });
 
             expect(this.dispatch.callCount).to.equal(2);
@@ -576,27 +586,29 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [1, 14]
-              }
+                requestProperties: undefined,
+                resources: [1, 14],
+              },
             ]);
 
             expect(this.dispatch.args[1]).to.deep.equal([
               {
                 type: 'DELETE_RESOURCES_FAILED',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [1, 14],
                 err,
-                res: undefined
-              }
+                res: undefined,
+              },
             ]);
 
             done();
           });
 
           return {
-            aborted: false
+            aborted: false,
           };
         });
 
@@ -606,12 +618,12 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [1, 14]
+            resources: [1, 14],
           },
           xhrOptions: {
             method: 'DELETE',
-            url: 'https://www.google.com'
-          }
+            url: 'https://www.google.com',
+          },
         });
 
         expect(this.xhrStub.callCount).to.equal(1);
@@ -627,7 +639,7 @@ describe('Redux Resource XHR', function() {
 
             expect(options).to.deep.equal({
               url: 'https://www.google.com',
-              method: 'DELETE'
+              method: 'DELETE',
             });
 
             expect(this.dispatch.callCount).to.equal(1);
@@ -635,9 +647,9 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_PENDING',
                 resourceName: 'hello',
-                statusCode: 0,
-                resources: [1, 14]
-              }
+                requestProperties: undefined,
+                resources: [1, 14],
+              },
             ]);
 
             expect(this.onFailedStub.callCount).to.equal(1);
@@ -645,20 +657,22 @@ describe('Redux Resource XHR', function() {
               {
                 type: 'DELETE_RESOURCES_FAILED',
                 resourceName: 'hello',
-                statusCode: 0,
+                requestProperties: {
+                  statusCode: null,
+                },
                 resources: [1, 14],
                 err,
-                res: undefined
+                res: undefined,
               },
               err,
-              undefined
+              undefined,
             ]);
 
             done();
           });
 
           return {
-            aborted: false
+            aborted: false,
           };
         });
 
@@ -669,14 +683,14 @@ describe('Redux Resource XHR', function() {
           dispatch: this.dispatch,
           actionDefaults: {
             resourceName: 'hello',
-            resources: [1, 14]
+            resources: [1, 14],
           },
           crudAction: 'delete',
           xhrOptions: {
             method: 'DELETE',
-            url: 'https://www.google.com'
+            url: 'https://www.google.com',
           },
-          onFailed: this.onFailedStub
+          onFailed: this.onFailedStub,
         });
 
         expect(this.xhrStub.callCount).to.equal(1);

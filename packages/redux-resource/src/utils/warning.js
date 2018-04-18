@@ -1,4 +1,15 @@
-export default function warning(message) {
+let codeCache = {};
+
+export default function warning(message, code) {
+  // This ensures that each warning type is only logged out one time
+  if (code) {
+    if (codeCache[code]) {
+      return;
+    }
+
+    codeCache[code] = true;
+  }
+
   if (typeof console !== 'undefined' && typeof console.error === 'function') {
     console.error(message);
   }
@@ -11,4 +22,8 @@ export default function warning(message) {
   } catch (e) {
     // Intentionally blank
   }
+}
+
+export function resetCodeCache() {
+  codeCache = {};
 }

@@ -1,8 +1,13 @@
 import { resourceReducer } from '../../../src';
+import { resetCodeCache } from '../../../src/utils/warning';
 
 describe('reducers: create', function() {
   // Intentionally mostly-empty. Refer to the read reducer tests and the
   // reducer-generator tests
+
+  beforeEach(() => {
+    resetCodeCache();
+  });
 
   describe('CREATE_RESOURCES_SUCCEEDED:', () => {
     it('returns the right state without a request name, without IDs', () => {
@@ -11,35 +16,78 @@ describe('reducers: create', function() {
         resources: {
           1: { id: 1 },
           3: { id: 3 },
-          4: { id: 4 }
+          4: { id: 4 },
         },
         requests: {
           pasta: {
-            hungry: true
-          }
+            hungry: true,
+          },
         },
         lists: {
-          bookmarks: [1, 2, 3]
+          bookmarks: [1, 2, 3],
         },
         meta: {
           1: {
-            name: 'what'
+            name: 'what',
           },
           3: {
-            deleteStatus: 'sandwiches'
-          }
-        }
+            deleteStatus: 'sandwiches',
+          },
+        },
       };
 
       const reducer = resourceReducer('hellos', { initialState });
 
       const reduced = reducer(undefined, {
         type: 'CREATE_RESOURCES_SUCCEEDED',
-        resourceName: 'hellos'
+        resourceType: 'hellos',
       });
 
-      expect(reduced).to.deep.equal(initialState);
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceType: 'hellos',
+      });
       expect(console.error.callCount).to.equal(1);
+    });
+
+    it('(deprecated) returns the right state without a request name, without IDs (resourceName)', () => {
+      stub(console, 'error');
+      const initialState = {
+        resources: {
+          1: { id: 1 },
+          3: { id: 3 },
+          4: { id: 4 },
+        },
+        requests: {
+          pasta: {
+            hungry: true,
+          },
+        },
+        lists: {
+          bookmarks: [1, 2, 3],
+        },
+        meta: {
+          1: {
+            name: 'what',
+          },
+          3: {
+            deleteStatus: 'sandwiches',
+          },
+        },
+      };
+
+      const reducer = resourceReducer('hellos', { initialState });
+
+      const reduced = reducer(undefined, {
+        type: 'CREATE_RESOURCES_SUCCEEDED',
+        resourceName: 'hellos',
+      });
+
+      expect(reduced).to.deep.equal({
+        ...initialState,
+        resourceType: 'hellos',
+      });
+      expect(console.error.callCount).to.equal(2);
     });
   });
 });

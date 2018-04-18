@@ -2,7 +2,7 @@ import requestStatuses from './request-statuses';
 import getPathParts from './get-path-parts';
 import warning from './warning';
 
-function getSingleStatus(state, statusLocation, treatNullAsPending) {
+function getSingleStatus(state, statusLocation, treatIdleAsPending) {
   const splitPath = getPathParts(statusLocation);
 
   let status;
@@ -10,7 +10,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
   for (let i = 0; i < splitPath.length; i++) {
     const pathValue = currentVal[splitPath[i]];
     if (typeof pathValue === 'undefined') {
-      status = requestStatuses.NULL;
+      status = requestStatuses.IDLE;
       break;
     } else if (i === splitPath.length - 1) {
       status = pathValue;
@@ -21,7 +21,7 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
 
   if (process.env.NODE_ENV !== 'production') {
     const isStatus =
-      status === requestStatuses.NULL ||
+      status === requestStatuses.IDLE ||
       status === requestStatuses.PENDING ||
       status === requestStatuses.FAILED ||
       status === requestStatuses.SUCCEEDED;
@@ -29,20 +29,37 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
       warning(
         `You called "getStatus" with path "${statusLocation}", which resolved ` +
           `to a value that is not a valid resource status. You may want to ` +
-          `check that this path is correct.`
+          `check that this path is correct. ` +
+          `Read more about getStatus on the documentation page: ` +
+          `https://redux-resource.js.org/docs/api-reference/get-status.html`,
+        'GET_STATUS_PATH'
+      );
+    }
+
+    if (status === 'NULL') {
+      warning(
+        `You called "getStatus" with path "${statusLocation}", which resolved ` +
+          `to a value of NULL. The NULL request status was renamed to IDLE in ` +
+          `Redux Resource v3.0.0. You may need to verify that your code is ` +
+          `compatible with Redux Resource v3.0.0. ` +
+          `For more information, refer to the documentation for request statuses at: ` +
+          `https://redux-resource.js.org/docs/api-reference/request-statuses.html\n\n` +
+          `Also, the migration guide to Redux Resource v3 can be found at: ` +
+          `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
+        'INVALID_REQUEST_STATUS_GET_STATUS'
       );
     }
   }
 
   const isPending = status === requestStatuses.PENDING;
-  const isNull = status === requestStatuses.NULL;
-  const treatNullAsPendingBool = Boolean(treatNullAsPending);
+  const isIdle = status === requestStatuses.IDLE;
+  const treatIdleAsPendingBool = Boolean(treatIdleAsPending);
 
   return {
-    null: isNull && !treatNullAsPendingBool,
-    pending: isPending || (isNull && treatNullAsPendingBool),
+    idle: isIdle && !treatIdleAsPendingBool,
+    pending: isPending || (isIdle && treatIdleAsPendingBool),
     failed: status === requestStatuses.FAILED,
-    succeeded: status === requestStatuses.SUCCEEDED
+    succeeded: status === requestStatuses.SUCCEEDED,
   };
 }
 
@@ -51,12 +68,12 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
 // `state`: A piece of the Redux store containing the relevant resources
 // `action`: The CRUD action in question
 // `statusLocation`: A location of the meta resource (see `find-meta.js` for more)
-// `treatNullAsPending`: Whether or not to count a status of `NULL` as pending.
+// `treatIdleAsPending`: Whether or not to count a status of `IDLE` as pending.
 //
 // Returns an Object with the following properties:
 //
 // {
-//   null: false,
+//   idle: false,
 //   failed: false,
 //   pending: false,
 //   succeeded: true,
@@ -64,16 +81,36 @@ function getSingleStatus(state, statusLocation, treatNullAsPending) {
 //
 // Note that at most _one_ of those properties will be true. It is
 // possible for them to all be false.
-export default function getStatus(state, statusLocations, treatNullAsPending) {
+export default function getStatus(state, statusLocations, treatIdleAsPending) {
   if (!(statusLocations instanceof Array)) {
-    return getSingleStatus(state, statusLocations, treatNullAsPending);
+    const status = getSingleStatus(state, statusLocations, treatIdleAsPending);
+
+    if (process.env.NODE_ENV !== 'production') {
+      Object.defineProperty(status, 'null', {
+        get() {
+          warning(
+            `You attempted to access a property named "null" from the object returned by ` +
+              `the getStatus method from Redux Resource. This property has been renamed to "idle" ` +
+              `in Redux Resource v3. Please update your application to ` +
+              `use the "idle" rather than "null". For more information, refer to the ` +
+              `documentation for getStatus at: ` +
+              `https://redux-resource.js.org/docs/api-reference/get-status.html\n\n` +
+              `Also, the migration guide to Redux Resource v3 can be found at: ` +
+              `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
+            `NULL_GET_STATUS_VALUE_ACCESSED`
+          );
+        },
+      });
+    }
+
+    return status;
   }
 
   const statusValues = statusLocations.map(loc =>
-    getSingleStatus(state, loc, treatNullAsPending)
+    getSingleStatus(state, loc, treatIdleAsPending)
   );
 
-  let nullValue = true;
+  let idleValue = true;
   let pending = false;
   let failed = false;
   let succeeded = false;
@@ -83,7 +120,7 @@ export default function getStatus(state, statusLocations, treatNullAsPending) {
   for (let i = 0; i < statusValues.length; i++) {
     const status = statusValues[i];
     if (status.failed) {
-      nullValue = false;
+      idleValue = false;
       failed = true;
       break;
     } else if (status.pending) {
@@ -94,12 +131,32 @@ export default function getStatus(state, statusLocations, treatNullAsPending) {
   }
 
   if (!failed && pendingCount > 0) {
-    nullValue = false;
+    idleValue = false;
     pending = true;
   } else if (successCount === statusValues.length) {
-    nullValue = false;
+    idleValue = false;
     succeeded = true;
   }
 
-  return { null: nullValue, pending, failed, succeeded };
+  const status = { idle: idleValue, pending, failed, succeeded };
+
+  if (process.env.NODE_ENV !== 'production') {
+    Object.defineProperty(status, 'null', {
+      get() {
+        warning(
+          `You attempted to access a property named "null" from the object returned by ` +
+            `the getStatus method from Redux Resource. This property has been renamed to "idle" ` +
+            `in Redux Resource v3. Please update your application to ` +
+            `use the "idle" rather than "null". For more information, refer to the ` +
+            `documentation for getStatus at: ` +
+            `https://redux-resource.js.org/docs/api-reference/get-status.html\n\n` +
+            `Also, the migration guide to Redux Resource v3 can be found at: ` +
+            `https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource/docs/migration-guides/2-to-3.md`,
+          `NULL_GET_STATUS_VALUE_ACCESSED`
+        );
+      },
+    });
+  }
+
+  return status;
 }

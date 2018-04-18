@@ -1,57 +1,71 @@
 import { requestStatuses } from 'redux-resource';
 
 const actionTypes = {
-  RESET_RESOURCE: 'RESET_RESOURCE'
+  RESET_RESOURCE: 'RESET_RESOURCE',
 };
 
-function resetResource(resourceName, { request, list } = {}) {
+function resetResource(resourceType, { request, requestKey, list } = {}) {
   return {
     type: 'RESET_RESOURCE',
-    resourceName,
+    resourceType,
     request,
-    list
+    requestKey,
+    list,
   };
 }
 
-function reset(resourceName, options = {}) {
+function reset(resourceType, options = {}) {
   return function(state, action) {
+    const typeToUse = action.resourceType || action.resourceName;
     if (
       action.type !== actionTypes.RESET_RESOURCE ||
-      action.resourceName !== resourceName
+      typeToUse !== resourceType
     ) {
       return state;
     }
 
-    const { request, list } = action;
+    const { request, requestKey, list } = action;
+    const keyToUse = requestKey || request;
 
-    if (!request && !list) {
+    if (!keyToUse && !list) {
       return {
         resources: {},
         meta: {},
         lists: {},
         requests: {},
-        ...options.initialState
+        ...options.initialState,
       };
     }
 
     const newState = {
-      ...state
+      ...state,
     };
 
-    if (request) {
+    if (keyToUse) {
+      const existingRequest = state.requests[keyToUse];
+      const requestName = existingRequest && existingRequest.requestName;
+
+      const newRequest = {
+        resourceType: typeToUse,
+        requestKey: keyToUse,
+        ids: [],
+        status: requestStatuses.IDLE,
+      };
+
+      if (requestName) {
+        newRequest.requestName = requestName;
+      }
+
       newState.requests = {
         ...state.requests,
-        [request]: {
-          ids: [],
-          status: requestStatuses.NULL
-        }
+        [keyToUse]: newRequest,
       };
     }
 
     if (list) {
       newState.lists = {
         ...state.lists,
-        [list]: []
+        [list]: [],
       };
     }
 

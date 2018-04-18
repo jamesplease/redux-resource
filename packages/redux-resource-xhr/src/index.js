@@ -10,10 +10,11 @@ function crudRequest(crudAction, options) {
     onPending,
     onFailed,
     onSucceeded,
-    onAborted
+    onAborted,
   } = options;
 
-  const { resourceName } = actionDefaults;
+  const { resourceName, resourceType, requestProperties } = actionDefaults;
+  const typeToUse = resourceType || resourceName;
 
   const crudActionOption = crudAction ? crudAction : '';
 
@@ -27,12 +28,12 @@ function crudRequest(crudAction, options) {
       lowercaseCrud === 'create';
     const { url, uri } = xhrOptions;
 
-    if (!resourceName) {
+    if (!typeToUse) {
       console.warn(
-        `A resourceName was not passed to a Redux Resource Action ` +
-          `creator. A resourceName must be passed so that Redux Resource ` +
-          `knows which resource slice to update. Refer to the CRUD Actions ` +
-          `guide for more: https://redux-resource.js.org/docs/guides/crud-actions.html`
+        `A resourceType was not passed to a Redux Resource Action ` +
+          `creator. A resourceType must be passed so that Redux Resource ` +
+          `knows which resource slice to update. Refer to the Request Actions ` +
+          `guide for more: https://redux-resource.js.org/docs/requests/request-actions.html`
       );
     }
 
@@ -58,9 +59,7 @@ function crudRequest(crudAction, options) {
   const pendingAction = {
     ...actionDefaults,
     type: actionTypes[`${crudType}_RESOURCES_PENDING`],
-    // This may seem strange, but any unresolved request has a status code of 0
-    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status
-    statusCode: 0
+    requestProperties,
   };
 
   if (onPending) {
@@ -70,13 +69,13 @@ function crudRequest(crudAction, options) {
   }
 
   const req = xhr(xhrOptions, (err, res, body) => {
-    const statusCode = res ? res.statusCode : 0;
+    const statusCode = res ? res.statusCode : null;
     if (req.aborted) {
       const abortedAction = {
         ...actionDefaults,
-        type: actionTypes[`${crudType}_RESOURCES_NULL`],
-        statusCode,
-        res
+        type: actionTypes[`${crudType}_RESOURCES_IDLE`],
+        requestProperties,
+        res,
       };
 
       if (onAborted) {
@@ -88,9 +87,12 @@ function crudRequest(crudAction, options) {
       const failedAction = {
         ...actionDefaults,
         type: actionTypes[`${crudType}_RESOURCES_FAILED`],
-        statusCode,
+        requestProperties: {
+          ...requestProperties,
+          statusCode,
+        },
         res,
-        err
+        err,
       };
 
       if (onFailed) {
@@ -114,9 +116,12 @@ function crudRequest(crudAction, options) {
       const succeededAction = {
         ...actionDefaults,
         type: actionTypes[`${crudType}_RESOURCES_SUCCEEDED`],
-        statusCode,
+        requestProperties: {
+          ...requestProperties,
+          statusCode,
+        },
         resources,
-        res
+        res,
       };
 
       if (onSucceeded) {

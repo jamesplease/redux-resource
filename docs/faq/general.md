@@ -35,11 +35,11 @@ For instance, if you're working with a books resource, then it might instead
 have an id attribute called `bookId`. In these situations, you will need to
 write a transform that maps that key to be `id` instead.
 
-For more, refer to [the Resources guide](/docs/guides/resources.md).
+For more, refer to [the Resource objects guide](/docs/resources/resource-objects.md).
 
 #### Does this work with a backend that adheres to a well-defined format, such as JSON API?
 
-Yes, it does. You may want to write a [plugin](../guides/plugins.md) to handle
+Yes, it does. You may want to write a [plugin](../other-guides/custom-action-types.md) to handle
 some advanced features provided by specifications such as JSON API, such as rich
 relationship support.
 
@@ -49,13 +49,13 @@ Yes. The only requirement is that the data returned can be reasonably mapped to
 the concept of a "resource." A resource, from this library's perspective, is
 a JavaScript object with an `id` attribute.
 
-For more on this, refer to [the Resources guide](/docs/guides/resources.md).
+For more on this, refer to [the Resource objects guide](/docs/resources/resource-objects.md).
 
 #### Does Redux Resource handle forms, or client-side changes to data?
 
 This library complements, but does not replace, solutions for managing forms
 and other ways to manipulate resource data on the client. Redux Resource
-works will with any system for managing forms, such as local Component state,
+works will with any system for managing forms, such as view state,
 [react-redux-form](https://github.com/davidkpiano/react-redux-form),
 or [redux-form](https://github.com/erikras/redux-form).
 

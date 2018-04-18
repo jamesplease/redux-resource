@@ -5,7 +5,7 @@ a request for a single `author` may also include the author's `books`.
 
 Because different backends return related resources in many different ways,
 Redux Resource couldn't possibly include a single built-in solution that works for every
-API. Instead, [plugins](/docs/guides/plugins.md) can be used to support related resources
+API. Instead, [plugins](/docs/other-guides/custom-action-types.md) can be used to support related resources
 in a way that works for for your specific backend.
 
 The rest of this guide will describe supporting related resources for the following
@@ -64,9 +64,9 @@ const normalizedData = normalize(originalData, [article]);
 
 const action = {
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
-  // We recommend that you use the same string for the `resourceName`, resource slice,
+  // We recommend that you use the same string for the `resourceType`, resource slice,
   // and normalizr key.
-  resourceName: article.key,
+  resourceType: article.key,
   resources: normalizedData.result,
   includedResources: normalizedData.entities
 };
@@ -93,7 +93,7 @@ export function readAuthor(authorId) {
     dispatch,
     xhrOptions,
     actionDefaults: {
-      resourceName: 'authors',
+      resourceType: 'authors',
       resources: [authorId]
     },
     onSucceeded(action, res, body) {
@@ -123,7 +123,7 @@ In short, you would need to interpet the `included` member of a
 would likely work in 2 steps:
 
 1. Filter the Array of `included` resources to find _just_ the resources whose
-  JSON API `type` matches the `resourceName` of the slice.
+  JSON API `type` matches the `resourceType` of the slice.
 2. Use [`upsertResources`](/docs/api-reference/upsert-resources.md) to add those resources to the slice.
 
 You would also want to place the each individual resource's `meta` into the `meta` section of the

@@ -16,7 +16,7 @@ caching implementation, either by using React Request or by writing your own sys
 ### Caching using requests
 
 How can you know if a response has already been returned for a given request? The way
-that we recommend doing it is by using [named requests](/docs/guides/named-requests.md).
+that we recommend doing it is by using [request objects](/docs/requests/request-objects.md).
 
 Here's how it works with React Request:
 
@@ -26,14 +26,8 @@ Its caching is powered by a string called a
 ["request key"](https://github.com/jamesplease/react-request/blob/master/docs/guides/request-keys.md) based
 on the request configuration you pass to it. Two requests with the same key are considered identical.
 
-This automatically-generated "request key" will be used as the Redux Resource request name, which is
+This automatically-generated "request key" will be used as the Redux Resource requestKey, which is
 what ties the two libraries together.
-
-> Note: a future update to Redux Resource will support having a separate "request key" and "request name."
-> The key will be useful for features such as response caching and request deduplication, while the
-> name will be used for debugging.
->
-> As it stands, the "name" in Redux Resource is fulfilling both roles.
 
 ### Accessing data from a dynamic key
 

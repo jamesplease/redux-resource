@@ -20,12 +20,13 @@ const _createAction = function(
   return {
     ...actionDefaults,
     ...actionProperties,
-    type
+    type,
   };
 };
 
 const createActionCreators = (crudType, actionDefaults = {}) => {
-  const { resourceName } = actionDefaults;
+  const { resourceName, resourceType } = actionDefaults;
+  const typeToUse = resourceType || resourceName;
   const uppercaseCrud =
     typeof crudType === 'string' ? crudType.toUpperCase() : '';
   const isValidCrudType =
@@ -44,10 +45,10 @@ const createActionCreators = (crudType, actionDefaults = {}) => {
       );
     }
 
-    if (typeof resourceName !== 'string') {
+    if (typeof typeToUse !== 'string') {
       warning(
-        `The value of "resourceName" that you passed to createActionCreators was ` +
-          `not a string. The resourceName must be a string. You should check ` +
+        `The value of "resourceType" that you passed to createActionCreators was ` +
+          `not a string. The resourceType must be a string. You should check ` +
           `your redux-resource-action-creators configuration.` +
           'For more, refer to the documentation: ' +
           'https://redux-resource.js.org/docs/extras/redux-resource-action-creators.html'
@@ -62,11 +63,11 @@ const createActionCreators = (crudType, actionDefaults = {}) => {
         actionDefaults,
         actionTypes[`${uppercaseCrud}_RESOURCES_PENDING`]
       ),
-    null: actionProperties =>
+    idle: actionProperties =>
       _createAction(
         actionProperties,
         actionDefaults,
-        actionTypes[`${uppercaseCrud}_RESOURCES_NULL`]
+        actionTypes[`${uppercaseCrud}_RESOURCES_IDLE`]
       ),
     succeeded: actionProperties =>
       _createAction(
@@ -79,7 +80,7 @@ const createActionCreators = (crudType, actionDefaults = {}) => {
         actionProperties,
         actionDefaults,
         actionTypes[`${uppercaseCrud}_RESOURCES_FAILED`]
-      )
+      ),
   };
 };
 

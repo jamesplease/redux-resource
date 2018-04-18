@@ -3,24 +3,32 @@
 [![npm version](https://img.shields.io/npm/v/redux-resource-xhr.svg)](https://www.npmjs.com/package/redux-resource-xhr)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js?compression=gzip)](https://unpkg.com/redux-resource-xhr/dist/redux-resource-xhr.min.js)
 
-> Looking for the 2.x API?
-[Click here](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/old-versions/2.md).
-Better yet, looking to migrate to 3.x? Check out
-[the migration guide](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/2-to-3.md).
 
 Redux Resource XHR is an action creator that simplifies CRUD operations.
 
 More information about CRUD actions in Redux Resource can be
-found in the [CRUD Actions](/docs/guides/crud-actions.md) guide and the four
+found in the [Request Actions](/docs/requests/request-actions.md) guide and the four
 guides on CRUD:
 
-- [Reading resources](/docs/guides/reading-resources.md)
-- [Updating resources](/docs/guides/updating-resources.md)
-- [Creating resources](/docs/guides/creating-resources.md)
-- [Deleting resources](/docs/guides/deleting-resources.md)
+- [Reading resources](/docs/requests/reading-resources.md)
+- [Updating resources](/docs/requests/updating-resources.md)
+- [Creating resources](/docs/requests/creating-resources.md)
+- [Deleting resources](/docs/requests/deleting-resources.md)
 
 We recommend familiarizing yourself with the content in those guides before using
 this library.
+
+### Other Guides
+
+**Old Documentation**
+
+- [2.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/old-versions/2.md)
+- [3.x documentation](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/old-versions/3.md)
+
+**Migration Guides**
+
+- [v2 to v3](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/2-to-3.md)
+- [v3 to v4](https://github.com/jamesplease/redux-resource/blob/master/packages/redux-resource-xhr/docs/migration-guides/3-to-4.md)
 
 ### Installation
 
@@ -36,7 +44,7 @@ import { crudRequest } from 'redux-resource-xhr';
 
 ### Usage
 
-This library has two exports: an action creator for CRUD operations, [`crudRequest`](#crudrequest-options-),
+This library has two exports: an action creator for CRUD operations, `crudRequest`,
 and the library used for making the HTTP requests, [`xhr`](#xhr-options-).
 
 ### `crudRequest( crudAction, options )`
@@ -52,8 +60,8 @@ An action creator for CRUD requests.
 2. `options` *(Object)*: Options to configure the CRUD request.
 
   * `actionDefaults`: *(Object)* Properties that will be included on each dispatched
-    action. All of [the CRUD Action options](/docs/guides/crud-actions.md) are
-    supported, such as `resourceName` and `resources`.
+    action. All of [the Request Action options](/docs/requests/request-actions.md) are
+    supported, such as `resourceType` and `resources`.
 
   * `dispatch`: *(Function)* The `dispatch` function of a Redux store. If you're using
     [`redux-thunk`]((https://github.com/gaearon/redux-thunk)), this will be the first
@@ -70,7 +78,7 @@ An action creator for CRUD requests.
     response from the server, parsed as JSON. Return a transformed list of
     `resources`. This can be used to format the server response into a
     Redux Resource-compatible format. For more, see the guide on
-    [Resources](/docs/guides/resources.md).
+    [Resource objects](/docs/resources/resource-objects.md).
 
   * [`onPending`]: *(Function)* An optional function that allows you to modify
     the "pending" action, as well as control when it is dispatched. It is called
@@ -120,8 +128,8 @@ const xhrOptions = {
 const xhr = crudRequest('read', {
   dispatch: store.dispatch,
   actionDefaults: {
-    resourceName: 'books',
-    request: 'getHomePageBooks',
+    resourceType: 'books',
+    requestKey: 'getHomePageBooks',
     list: 'homePageBooks',
     mergeListIds: false
   },
@@ -237,8 +245,8 @@ xhr.get('/books/24')
 
       return crudRequest('read', {
         actionDefaults: {
-          resourceName: 'books',
-          request: 'getHomePageBooks',
+          resourceType: 'books',
+          requestKey: 'getHomePageBooks',
           list: 'homePageBooks',
           mergeListIds: false,
         },
