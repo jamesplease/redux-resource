@@ -2,11 +2,8 @@
 
 This isn't the only library that aims to reduce boilerplate when it comes to
 managing resources. Below is a brief comparison between this library and a
-handful of others.
-
-Keep in mind that this comparison page is not intended to be complete.
-We encourage you to look into other options to determine which is the
-best fit for your use case.
+selection of others. Keep in mind that you're reading this comparison on
+the Redux Resource documentation site, so it may be biased.
 
 #### [redux-rest-resource](https://github.com/mgcrea/redux-rest-resource)
 

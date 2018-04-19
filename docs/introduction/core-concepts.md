@@ -31,12 +31,12 @@ that help you to manage and organize the data on the client.
 There are five pieces within a resource slice:
 
 - `resourceType`: The resource type (such as "books" or "authors")
-- `resources`: The location of individual resource's primary attributes
+- `resources`: Where the resource's primary attributes are located
 - `meta`: Additional information about individual resources. You can store information
   here that isn't persisted to a remote server.
-- `lists`: A way to store ordered arrays of resources.
+- `lists`: A place to store and manage ordered arrays of resources.
 - `requests`: Information about the requests that are modifying this resource type (requests
-  will be covered in greater detail in the "Requests" section of this guide)
+  will be covered in greater detail in the "Requests" section of these guides)
 
 An empty resource slice looks like the following:
 
