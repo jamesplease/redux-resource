@@ -171,3 +171,24 @@ how you can change them into Redux Resource compatible resources.
 There are two ways to modify resources: synchronously and asynchronously. The guide on
 [modifying resources](/docs/resources/modifying-resources.md) describes both of these
 approaches.
+
+### Best Practices
+
+A good rule of thumb is to treat the resource objects as the last-known source of truth from the server.
+In other words, don't modify the resource objects within the `resources` section of a slice unless the
+server tells you that they have changed.
+
+For local changes in your application, such as form data, you should store that information somewhere else.
+You can store it wherever you think is best: your favorite forms library, component state, or even in the metadata
+section of the resource slice.
+
+A good workflow that implements this pattern is:
+
+1. Fetch resources from the server
+2. Place them into the `resources` section of a resource slice
+3. If the user can modify resources, store the user's modification information somewhere other than
+  in the `resources` section of the resource slice
+4. Once you persist those changes to the server, and the server responds, update
+  the `resources` with the latest information from the server
+
+Following this pattern will help keep you organized, even as your application grows.
