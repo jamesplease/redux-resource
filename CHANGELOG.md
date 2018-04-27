@@ -1,3 +1,12 @@
+## 4/26/18
+
+##### `redux-resource@3.0.2`
+
+**Bug Fixes**
+
+- The `actionTypes` export has been fixed. It was not exporting `UPDATE_RESOURCES`
+  nor `DELETE_RESOURCES`.
+
 ## 4/18/18
 
 - All libraries have been updated to allow for Redux@4 as a peer dependency.
