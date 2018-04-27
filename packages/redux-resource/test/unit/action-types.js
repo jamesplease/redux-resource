@@ -5,6 +5,11 @@ describe('actionTypes', function() {
     expect(actionTypes).to.be.an('object');
   });
 
+  describe('synchronous actions', () => {
+    expect(actionTypes.UPDATE_RESOURCES).to.equal('UPDATE_RESOURCES');
+    expect(actionTypes.DELETE_RESOURCES).to.equal('DELETE_RESOURCES');
+  });
+
   describe('create', () => {
     it('should have the right actionTypes', () => {
       expect(actionTypes.CREATE_RESOURCES_PENDING).to.equal(
