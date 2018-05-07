@@ -1,5 +1,0 @@
-* [Resource Reducers](resource-reducers.md)
-* [Resource Objects](resource-objects.md)
-* [Meta](meta.md)
-* [Lists](lists.md)
-* [Modifying Resources](modifying-resources.md)
