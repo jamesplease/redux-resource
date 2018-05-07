@@ -9,19 +9,6 @@
 
 ### Future Versions
 
-#### v3.0.0
-
-**New Features**
-
-- A new API to update resource information directly, independent from requests. This will support
-  a few new use cases, including gRPC streaming endpoints.
-
-- "named requests" will be split into two concepts: `requestKey` and `requestName`. Keys will be used
-  for caching and lookups. Names are used for humans debugging the code.
-
-- A new `requestAttributes` attribute for request action types so that developers can put any
-  information that they want onto the request.
-
 #### v3.1.0
 
 - A new reducer specifically for requests. This allows for requests to be tracked independent
@@ -46,3 +33,4 @@
 
 - Deprecating request tracking on resource slices. The standalone request slice will be recommended instead.
 
+- Adopting the Standard Resource standard to add support for Computed Attributes and Relationships
