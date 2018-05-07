@@ -2,13 +2,13 @@
 
 ### Top-Level Exports
 
-* [resourceReducer](api-reference/resource-reducer.md)
-* [getStatus](api-reference/get-status.md)
-* [getResources](api-reference/get-resources.md)
-* [upsertResources](api-reference/upsert-resources.md)
-* [setResourceMeta](api-reference/set-resource-meta.md)
-* [actionTypes](api-reference/action-types.md)
-* [requestStatuses](api-reference/request-statuses.md)
+* [resourceReducer](resource-reducer.md)
+* [getStatus](get-status.md)
+* [getResources](get-resources.md)
+* [upsertResources](upsert-resources.md)
+* [setResourceMeta](set-resource-meta.md)
+* [actionTypes](action-types.md)
+* [requestStatuses](request-statuses.md)
 
 ### Importing
 

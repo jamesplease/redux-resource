@@ -1,6 +1,6 @@
 # Introduction
 
-* [Motivation](introduction/motivation.md)
-* [Core Concepts](introduction/core-concepts.md)
-* [Similar Projects](introduction/similar-projects.md)
-* [Examples](introduction/examples.md)
+* [Motivation](motivation.md)
+* [Core Concepts](core-concepts.md)
+* [Similar Projects](similar-projects.md)
+* [Examples](examples.md)
