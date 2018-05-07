@@ -1,8 +1,0 @@
-node_modules
-.nyc_output
-dist
-es
-lib
-examples
-packages
-test

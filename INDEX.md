@@ -1,26 +1,8 @@
-<p align="center">
-<a href="http://redux-resource.js.org">
-<img src="https://user-images.githubusercontent.com/2322305/35489731-63e3bb20-044e-11e8-8211-b7d153722865.png" height="120" alt="Redux Resource Logo" aria-label="redux-resource.js.org" />
-</a>
-</p>
-
-<p align="center">
-  <a href="https://gitter.im/jmeas/redux-resource?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
-    <img src="https://badges.gitter.im/jmeas/redux-resource.svg" alt="Redux Resource on Gitter" />
-  </a>
-  <a href="https://travis-ci.org/jamesplease/redux-resource">
-    <img src="http://img.shields.io/travis/jamesplease/redux-resource.svg?style=flat" alt="Redux Resource Travis Builds" />
-  </a>
-  <a href="https://www.npmjs.com/package/redux-resource">
-    <img src="https://img.shields.io/npm/v/redux-resource.svg" alt="Redux Resource NPM Package" />
-  </a>
-  <a href="https://coveralls.io/github/jamesplease/redux-resource?branch=master">
-    <img src="https://coveralls.io/repos/github/jamesplease/redux-resource/badge.svg?branch=master" alt="Redux Resource Code Coverage" />
-  </a>
-  <a href="https://unpkg.com/redux-resource/dist/redux-resource.min.js">
-    <img src="http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip" alt="Redux Resource gzip Size" />
-  </a>
-</p>
+[![Travis build status](https://badges.gitter.im/jmeas/redux-resource.svg)](https://gitter.im/jmeas/redux-resource?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Travis build status](http://img.shields.io/travis/jamesplease/redux-resource.svg?style=flat)](https://travis-ci.org/jamesplease/redux-resource)
+[![npm version](https://img.shields.io/npm/v/redux-resource.svg)](https://www.npmjs.com/package/redux-resource)
+[![Test Coverage](https://coveralls.io/repos/github/jamesplease/redux-resource/badge.svg?branch=master)](https://coveralls.io/github/jamesplease/redux-resource?branch=master)
+[![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip)](https://unpkg.com/redux-resource/dist/redux-resource.min.js)
 
 A tiny but powerful system for managing 'resources': data that is persisted to
 remote servers.
