@@ -23,7 +23,7 @@ versions are hosted elsewhere:
 - **[v2.4.1](https://jamesplease.github.io/redux-resource-2.4.1-docs/)**
 
 > Migration guides to the latest version can be found
-> **[here](https://redux-resource.js.org/docs/other-guides/migration-guides.html)**.
+> **[here](https://redux-resource.js.org/other-guides/migration-guides.html)**.
 
 ### Installation
 
