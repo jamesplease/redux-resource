@@ -8,8 +8,8 @@ The following are some patterns that we find ourselves using frequently with Red
 
 ### Using `mapStateToProps`
 
-We recommend placing your calls to [`getResources`](/docs/api-reference/get-resources.md)
-and [`getStatus`](/docs/api-reference/get-status.md) within
+We recommend placing your calls to [`getResources`](../api-reference/get-resources.md)
+and [`getStatus`](../api-reference/get-status.md) within
 `mapStateToProps`. That way, you can access this information from any of the
 component's lifecycle methods, without needing to compute them within each method.
 
@@ -33,12 +33,12 @@ function mapStateToProps(state) {
 
 Redux Resource Prop Types exports a number of helpful prop types for common props
 that you'll pass into your React Components. Read the [Redux Resource Prop Types
-documentation](/docs/extras/redux-resource-prop-types.md) for more.
+documentation](../extras/redux-resource-prop-types.md) for more.
 
 ### Using Request Statuses
 
 This is such an important topic that there is a
-[dedicated guide for it](/docs/other-guides/using-request-statuses.md).
+[dedicated guide for it](using-request-statuses.md).
 
 ### Determining When a Request Succeeds
 

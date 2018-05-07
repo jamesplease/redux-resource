@@ -9,7 +9,7 @@ particular order.
 
 If you'd like to maintain ordering of some kind within a specific
 list, or all of your lists, then we recommend
-[writing a plugin](/docs/other-guides/custom-action-types.md) to handle that.
+[writing a plugin](../other-guides/custom-action-types.md) to handle that.
 
 #### Can lists be used for keeping track of client-side lists of resources?
 
@@ -36,7 +36,7 @@ As the user moves between pages in the application, you can set `mergeListIds`
 to `false` to throw away the previous list, and start fresh.
 
 Concerned about caching? That should be handled at the request level instead. Check
-out [the caching recipe](/docs/recipes/caching.md) for more.
+out [the caching recipe](../recipes/caching.md) for more.
 
 If you need animations, then you may consider using dynamic lists or a solution
 like [freezus](https://github.com/threepointone/freezus) to "freeze" the state

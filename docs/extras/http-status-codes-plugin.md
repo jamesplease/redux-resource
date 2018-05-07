@@ -6,7 +6,7 @@ Add this plugin to keep track of status codes of your HTTP Requests on
 resource metadata. This is useful because status codes give you more
 detail information about your in-flight requests.
 
-Note that you can simply use [request objects](/docs/requests/request-objects.md)
+Note that you can simply use [request objects](../requests/request-objects.md)
 instead of this plugin. For instance:
 
 ```js
@@ -34,7 +34,7 @@ resource metadata.
 ### Usage
 
 First, you need to register this plugin when you call
-[`resourceReducer`](/docs/api-reference/resource-reducer.md).
+[`resourceReducer`](../api-reference/resource-reducer.md).
 
 ```js
 import { resourceReducer } from 'redux-resource';
@@ -47,7 +47,7 @@ const reducer = resourceReducer('books', {
 
 This plugin doesn't come with any custom action types. Instead, it changes the
 way the state is tranformed with the built-in CRUD
-[action types](/docs/api-reference/action-types.md). Any time that you pass a
+[action types](../api-reference/action-types.md). Any time that you pass a
 `statusCode` in an action with one of those types, then the code will be stored
 in your state tree.
 
@@ -66,7 +66,7 @@ store.dispatch({
 ```
 
 If you're using the
-[Redux Resource XHR](/docs/extras/redux-resource-xhr.md)
+[Redux Resource XHR](redux-resource-xhr.md)
 library, then you don't need to do anything differently: request status
 codes are already included in the actions dispatched from that library.
 

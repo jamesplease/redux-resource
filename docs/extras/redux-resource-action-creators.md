@@ -3,14 +3,14 @@
 [![npm version](https://img.shields.io/npm/v/redux-resource-action-creators.svg)](https://www.npmjs.com/package/redux-resource-action-creators)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource-action-creators/dist/redux-resource-action-creators.min.js?compression=gzip)](https://unpkg.com/redux-resource-action-creators/dist/redux-resource-action-creators.min.js)
 
-This library makes it more convenient to create valid [request actions](/docs/requests/request-actions.md).
+This library makes it more convenient to create valid [request actions](../requests/request-actions.md).
 It helps out in two ways:
 
-1. Remembering the [request action types](/docs/api-reference/action-types.md) can be difficult
+1. Remembering the [request action types](../api-reference/action-types.md) can be difficult
 2. Often times, your "start" and "end" actions share many properties, and it can feel like unnecessary
   boilerplate to copy + paste those properties
 
-Unlike [Redux Resource XHR](/docs/extras/redux-resource-xhr.md), these action creators do not make the requests
+Unlike [Redux Resource XHR](redux-resource-xhr.md), these action creators do not make the requests
 for you. All this library does is create the actions themselves.
 
 ### Other Guides
@@ -45,10 +45,10 @@ This library has a single export, `createActionCreators`.
 
 1. `crudAction`: *(String)* The CRUD operation being performed. One of "create",
   "read", "update", or "delete". This determines the
-  [CRUD Action types](/docs/api-reference/action-types.md) that are dispatched.
+  [CRUD Action types](../api-reference/action-types.md) that are dispatched.
 
 2. `actionDefaults` *(Object)*: Properties that will be included on each dispatched
-    action. The [the Request Action guide](/docs/requests/request-actions.md) lists possible
+    action. The [the Request Action guide](../requests/request-actions.md) lists possible
     options, such as `resourceType` and `resources`. You *must* include `resourceType`.
 
 #### Returns

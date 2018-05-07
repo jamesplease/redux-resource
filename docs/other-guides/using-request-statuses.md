@@ -1,9 +1,8 @@
 # Using Request Statuses
 
 When request action types are dispatched, Redux Resource
-will [store information about those requests](/docs/tracking-request-statuses.md)
-in the store. This guide will cover how you can use those statuses in your
-view layer.
+will store information about those requests in the store. This
+guide will cover how you can use those statuses in your view layer.
 
 > Note: these examples are React components using react-redux. Keep in mind
 that nothing in Redux Resource requires React: if you're using Redux with any other
@@ -12,7 +11,7 @@ view layer, then this library will work just as well.
 ### `getStatus`
 
 One of the exports of this library is
-[`getStatus`](/docs/api-reference/get-status.md). This function facilitates
+[`getStatus`](../api-reference/get-status.md). This function facilitates
 using Redux Resource request statuses to build your interfaces. It will likely
 be one of the Redux Resource functions that you rely on the most.
 

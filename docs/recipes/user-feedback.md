@@ -18,7 +18,7 @@ stone. Different applications require different user experiences.
 You should visually communicate to the user anytime that a request is in flight. This
 lets them know that the application is processing the operation.
 
-The [`getStatus`](/docs/api-reference/get-status.md) method returns an object with
+The [`getStatus`](../api-reference/get-status.md) method returns an object with
 a `pending` property, which will be `true` whenever the associated request is in
 flight. You can use this to show a spinner, for instance. If you're using React,
 this might look like:
@@ -151,7 +151,7 @@ Some applications expire a user's session after a period of time. When that
 occurs, the user won't be able to perform any CRUD operations until they log
 back in.
 
-There is [a recipe](/docs/recipes/unauthorized-responses.md) that provides you
+There is [a recipe](unauthorized-responses.md) that provides you
 with a Boolean that is `true` whenever this happens. Once you have that value,
 you can let the user know that they've been logged out.
 

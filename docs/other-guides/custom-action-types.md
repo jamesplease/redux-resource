@@ -1,7 +1,7 @@
 # Custom Action Types
 
 You can add support for additional action types to a
-[`resourceReducer`](/docs/api-reference/resource-reducer.md)
+[`resourceReducer`](../api-reference/resource-reducer.md)
 using plugins.
 
 The name 'plugins' may seem intimidating, but don't be worried. Plugins are reducers
@@ -11,7 +11,7 @@ then you know how to write a plugin.
 ### Using a Plugin
 
 You define plugins for each resource type when you call
-[`resourceReducer`](/docs/api-reference/resource-reducer.md). The second
+[`resourceReducer`](../api-reference/resource-reducer.md). The second
 argument to that function is an `options` options, and within it you can pass
 `plugins` as an array:
 
@@ -34,7 +34,7 @@ A plugin is a function that with the following signature:
 ```
 
 Where `resourceType` and `options` are the arguments that you passed to
-[`resourceReducer`](/docs/api-reference/resource-reducer.md).
+[`resourceReducer`](../api-reference/resource-reducer.md).
 
 The return value, `reducerFunction`, is also a function. This returned function
 has the same signature as a Redux reducer:

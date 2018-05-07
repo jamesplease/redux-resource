@@ -24,15 +24,15 @@ following way:
 
 ### Request Objects
 
-Specifying a [request key](/docs/requests/request-keys.md) on the actions will create a
+Specifying a [request key](requests/request-keys.md) on the actions will create a
 request object in the store for this request. This object can be used to look up
-the [status](/docs/requests/request-statuses.md) of the request.
+the [status](requests/request-statuses.md) of the request.
 
 Although it is recommended that you specify a request key when possible, there are some
 situations when you may not need to when fetching resources.
 
 When fetching a single resource, you typically provide the ID to be fetched. Therefore,
-[request objects](/docs/requests/request-objects.md) aren't always necessary, as you can
+[request objects](requests/request-objects.md) aren't always necessary, as you can
 track the request on the resource's metadata directly.
 
 For read requests that return multiple resources, it is typically preferable to specify
@@ -58,7 +58,7 @@ will happen:
 
 ### Redux Resource XHR
 
-[Redux Resource XHR](/docs/extras/redux-resource-xhr.md) 
+[Redux Resource XHR](../extras/redux-resource-xhr.md) 
 provides an action creator that simplifies making CRUD requests. If you'd like to
 build your own, then that's fine, too. The example below may help.
 

@@ -12,7 +12,7 @@ feature like this.
 
 This plugin is limited to supporting a single list. If you need support for multiple
 lists, then you may want to use the
-[`UPDATE_RESOURCES` action type](/docs/resources/modifying-resources.md) to modify
+[`UPDATE_RESOURCES` action type](../resources/modifying-resources.md) to modify
 lists directly instead.
 
 Here is an example action creator that replaces the `selectResources` action type:

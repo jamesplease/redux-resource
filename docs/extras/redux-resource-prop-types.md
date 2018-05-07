@@ -62,7 +62,7 @@ mapStateToProps(state) {
 
 #### `statusPropType`
 
-Validates the object returned by [`getStatus`](/docs/api-reference/get-status.md).
+Validates the object returned by [`getStatus`](../api-reference/get-status.md).
 
 ```js
 import { getStatus } from 'redux-resource';
@@ -81,7 +81,7 @@ mapStateToProps(state) {
 
 #### `requestStatusPropType`
 
-Validates that a value is one of the [`requestStatuses`](/docs/api-reference/request-statuses.md).
+Validates that a value is one of the [`requestStatuses`](../api-reference/request-statuses.md).
 Typically, you'll want to use `statusPropType` instead, but this can be useful when verifying
 the structure of your slice.
 
@@ -123,7 +123,7 @@ mapStateToProps(state) {
 
 #### `requestPropType`
 
-Validates a [request object](/docs/requests/request-objects.md). Similar to `PropTypes.shape()`,
+Validates a [request object](../requests/request-objects.md). Similar to `PropTypes.shape()`,
 except that it enforces `ids`, `status`, `requestKey` and `resourceType`. Typically, you won't
 need to use this, but it can be useful to verify the structure of your state.
 

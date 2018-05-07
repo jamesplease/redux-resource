@@ -24,9 +24,9 @@ following way:
 
 ### Request Objects
 
-Specifying a [request key](/docs/requests/request-keys.md) on the actions will create a
+Specifying a [request key](requests/request-keys.md) on the actions will create a
 request object in the store for this request. This object can be used to look up
-the [status](/docs/requests/request-statuses.md) of the request.
+the [status](requests/request-statuses.md) of the request.
 
 For many create requests, you don't have the ID of the resource being created
 until after the operation succeeds. Therefore, to track the status of the
@@ -57,7 +57,7 @@ will happen:
 
 ### Redux Resource XHR
 
-[Redux Resource XHR](/docs/extras/redux-resource-xhr.md) 
+[Redux Resource XHR](../extras/redux-resource-xhr.md) 
 provides an action creator that simplifies making CRUD requests. If you'd like to
 build your own, then that's fine, too. The example below may help.
 

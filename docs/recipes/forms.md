@@ -19,7 +19,7 @@ You can also store form information inside of the resource slice. A  Redux best 
 separate your client-side data separate from your server-side data, so form information should
 be kept separate from the actual resource objects themselves.
 
-Instead, you might choose to use [`meta`](/docs/resources/meta.md) for form information, or
+Instead, you might choose to use [`meta`](../resources/meta.md) for form information, or
 perhaps an additional "top-level" key within the resource slice, such as `forms`.
 
 One thing to consider before going with this approach is whether or not your form allows a user

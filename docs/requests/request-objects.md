@@ -24,7 +24,7 @@ A request object has the following properties:
 - `requestKey`: A string that serves as an identifier for the request
 - `requestName`: A human-readable string that can be useful for debugging
 - `resourceType`: The type of resource that is primarily affected by this request. This is
-  the [resource slice](/docs/resources/resource-reducers.md) that the request will be stored in.
+  the [resource slice](../resources/resource-reducers.md) that the request will be stored in.
 - `ids`: The resource IDs that are affected by this request
 - `status`: The "request status" of this request. This represents the state that the
   request is in. It is one of "IDLE", "PENDING", "SUCCEEDED", or "FAILED".

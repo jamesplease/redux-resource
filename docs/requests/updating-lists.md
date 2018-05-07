@@ -1,11 +1,11 @@
 # Updating Lists
 
 When a request succeeds, you will frequently want to add the resources returned
-by the response to a [list](/docs/resources/lists.md). There is a convenient way
-to do this using the [request actions](/docs/requests/request-actions.md).
+by the response to a [list](../resources/lists.md). There is a convenient way
+to do this using the [request actions](requests/request-actions.md).
 
 > Note: if you're not familiar with resource lists, then you may want to
-> read [the documentation for them](/docs/resources/lists.md) before continuing.  
+> read [the documentation for them](../resources/lists.md) before continuing.  
 
 ### Specifying a List
 
@@ -36,7 +36,7 @@ if you specify a list for an update or delete action.
 ### Why Specify a List
 
 There are two main reasons to specify a list when making a request. The
-[`getResources`](/docs/api-reference/get-resources.md) function lets you
+[`getResources`](../api-reference/get-resources.md) function lets you
 quickly access resources given a list name.
 
 For instance, if you specify the list `"favoriteBooks"` when a request succeeds
@@ -99,5 +99,5 @@ store.dispatch({
 
 ### More Reading
 
-For more on lists, refer to [the lists guide](/docs/resources/lists.md) and
-[the Lists FAQ](/docs/faq/lists.md).
+For more on lists, refer to [the lists guide](../resources/lists.md) and
+[the Lists FAQ](../faq/lists.md).

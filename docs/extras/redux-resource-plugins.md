@@ -38,15 +38,15 @@ import { selection } from 'redux-resource-plugins';
 This library is a collection of different plugins. Refer to their individual
 documentation pages to learn more.
 
-- [`reset`](/docs/extras/reset-plugin.md): This plugin provides action types
+- [`reset`](reset-plugin.md): This plugin provides action types
   that let you reset the state of an entire slice. You can also pass a list to
   reset the state of just that list.
 
-- [`includedResources`](/docs/extras/included-resources-plugin.md): This plugin
+- [`includedResources`](included-resources-plugin.md): This plugin
   adds support for including multiple resource types into a single action for
   read requests. This can be useful if you're using GraphQL, JSON API, or normalizr.
 
-- [`httpStatusCodes`](/docs/extras/http-status-codes-plugin.md): Add this plugin
+- [`httpStatusCodes`](http-status-codes-plugin.md): Add this plugin
   to track the HTTP status codes associated with each request. The built-in
   reducer behavior doesn't provide any information specific to HTTP. What this
   means is that if a request fails, for instance, you won't be able to tell that
@@ -57,7 +57,7 @@ documentation pages to learn more.
 The following plugins are deprecated. There are built-in features that provide
 the same functionality as these plugins.
 
-- [`selection`](/docs/extras/selection-plugin.md): This plugin allows you to
+- [`selection`](selection-plugin.md): This plugin allows you to
   maintain a list of "selected" resource IDs. If your interface displays a list
   of resources that the user can select to perform bulk operations on, then this
   might be useful to you.

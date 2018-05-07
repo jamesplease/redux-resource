@@ -4,7 +4,7 @@ Any time that you need to interact with resources over a network, you
 should use request actions.
 
 > Note: to make synchronous changes to a resource slice, you can use
-> [the synchronous actions](/docs/resources/modifying-resources.md) instead.
+> [the synchronous actions](../resources/modifying-resources.md) instead.
 
 ### Requests Require Two Actions
 
@@ -34,7 +34,7 @@ dispatch the "end" action (`SUCCEEDED` in this case).
 These are the following properties that you may include on a request action:
 
 - `type`: The action type. The full list of request action types can be viewed
-  [here.](/docs/api-reference/action-types.md)
+  [here.](../api-reference/action-types.md)
 - `resourceType`: The type the resource that is primarily being affected by this request
 - `resources`: An array of affected resources
 - `requestKey`: The request key
@@ -161,7 +161,7 @@ objects.
 
 ### `requestKey`
 
-Supplying a `requestKey` will create a [request object](/docs/requests/request-objects.md) for
+Supplying a `requestKey` will create a [request object](requests/request-objects.md) for
 this operation within the `requests` section of the resource slice.
 
 For instance, if your interface allows users to search for a books resource, you
@@ -181,7 +181,7 @@ store.dispatch({
 ### `requestName`
 
 A human-readable string to help with debugging. For more, refer to the
-[Request Keys and Names](/docs/requests/keys-and-names.md) guide.
+[Request Keys and Names](requests/keys-and-names.md) guide.
 
 ```js
 import { actionTypes } from 'redux-resource';
@@ -223,7 +223,7 @@ store.dispatch({
 });
 ```
 
-To learn more about lists, refer to [the lists guide](/docs/resources/lists.md).
+To learn more about lists, refer to [the lists guide](../resources/lists.md).
 
 ### Other Request Action properties
 
@@ -263,7 +263,7 @@ the next major release of Redux Resource (4.0.0):
 ### Action Creators
 
 The core Redux Resource library does not include action creators, but there
-is [a library, Redux Resource XHR](/docs/extras/redux-resource-xhr.md), that includes
+is [a library, Redux Resource XHR](../extras/redux-resource-xhr.md), that includes
 action creators.
 
 You're also free to build your own action creators. For examples, refer to these

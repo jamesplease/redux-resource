@@ -1,6 +1,6 @@
 # Resource Reducers
 
-The main export of Redux Resource, [`resourceReducer`](/docs/api-reference/resource-reducer.html),
+The main export of Redux Resource, [`resourceReducer`](../api-reference/resource-reducer.html),
 is a function that returns a reducer. For each resource type in your application, you should use
 this function to create a reducer. A resource reducer will manage all of the state for its resource
 type.
@@ -36,7 +36,7 @@ const reducer = combineReducers({
 ```
 
 The `resourceReducer` function takes a second option, which can be used to configure the resource reducer.
-Refer to [the API documentation for `resourceReducer`](/docs/api-reference/resource-reducer.md) to
+Refer to [the API documentation for `resourceReducer`](../api-reference/resource-reducer.md) to
 learn more.
 
 > Note: keep in mind that Redux Resource works with or without `combineReducers`.

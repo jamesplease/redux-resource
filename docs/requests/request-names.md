@@ -1,7 +1,7 @@
 # Request Names
 
 Request names are a feature that can be useful if you are automatically
-generating [request keys](/docs/requests/request-keys.md). If you are
+generating [request keys](requests/request-keys.md). If you are
 not automatically generating request keys, then you probably do not need
 to use request names.
 
@@ -52,7 +52,7 @@ store.dispatch({
 
 Every request has two actions: a start action, and an end action. You should specify the
 name for both of these actions. For more on request actions, refer to the
-[request actions guide](/docs/requests/request-actions.md).
+[request actions guide](requests/request-actions.md).
 
 > Note: if you specify the `request` property on an action, then it will be used
 > as both the key and the name. This API is from Redux Resource < 3.0. Although

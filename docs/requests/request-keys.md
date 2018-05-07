@@ -48,7 +48,7 @@ instance, if you use a particular key for the "pending" action, then you will wa
 to use that same key for the "success" action, too.
 
 > Note: if you specify the `request` property on an action, then it will be used
-> as both the key and the [name](/docs/resources/request-names.md). This API is
+> as both the key and the [name](../resources/request-names.md). This API is
 > from Redux Resource < 3.0. Although it will continue to work into the future, it
 > is recommended that you explicitly set `requestKey` and `requestName` separately
 > going forward.
@@ -81,7 +81,7 @@ We recommend using a verb somewhere in the request key or name. Some good CRUD-r
 - delete
 - remove
 
-If you're associating the request with a [list](/docs/requests/updating-lists.md), then you may
+If you're associating the request with a [list](requests/updating-lists.md), then you may
 want to use the list name in the request key/name as well. For instance, if the list is
 `favorites`, and the request is for a user searching through their favorites, then you may use
 `searchFavorites` as the key.
@@ -183,7 +183,7 @@ request key in this situation to determine the request status.
 
 When a request key is used, the status of the associated request is stored in
 your state, and you can access it with
-[`getStatus`](/docs/api-reference/get-status.md):
+[`getStatus`](../api-reference/get-status.md):
 
 ```js
 import { getStatus } from 'redux-resource';
@@ -261,7 +261,7 @@ Here are some use cases for dynamic keys:
 - Implementing response caching using request keys. If you plan to implement client-side
   caching, then you could get a more granular cache by storing some extra information
   about the request in the store. For more, check out
-  [the recipe on caching](/docs/recipes/caching.md).
+  [the recipe on caching](../recipes/caching.md).
 
 - Supporting multiple of the same 'type' of request at once. If a user can delete
   a book, and then, while that first request is loading, initiate a second request

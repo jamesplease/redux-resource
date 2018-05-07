@@ -19,7 +19,7 @@ object that is in a pending state:
 ```
 
 The request status values are exported as
-[`requestStatuses`](/docs/api-reference/request-statuses.md).
+[`requestStatuses`](../api-reference/request-statuses.md).
 
 > Note: the request status is different from an HTTP status code. A request that
   represents an HTTP request could _also_ have a status code associated with it, such

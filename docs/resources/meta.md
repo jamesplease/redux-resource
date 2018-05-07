@@ -43,15 +43,15 @@ updated, or deleted using a network request. The four values are:
 - `deleteStatus`
 
 The value of each of these properties will be one of the four
-[request statuses](/docs/requests/request-statuses.md): `IDLE`, `PENDING`, `SUCCEEDED`,
+[request statuses](../requests/request-statuses.md): `IDLE`, `PENDING`, `SUCCEEDED`,
 or `FAILED`.
 
 This metadata can be used to track the request status
 of CRUD operations against a particular resource in some situations. For more, refer to the
-[Tracking Request Statuses guide](/docs/other-guides/tracking-request-statuses.md).
+[Tracking Request Statuses guide](../other-guides/tracking-request-statuses.md).
 
 ### Modifying Metadata
 
 There are two ways to modify metadata: synchronously and asynchronously. The guide on
-[modifying resources](/docs/resources/modifying-resources.md) describes both of these
+[modifying resources](modifying-resources.md) describes both of these
 approaches.

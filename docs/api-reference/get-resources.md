@@ -8,7 +8,7 @@ Returns an array of resources from `resourceSlice` based on the `filter` provide
   responsible for.
 
 2. `filter` *(Array|String|Function)*: The filter to apply. It can be an array of resource
-  IDs, or the name of a [list](/docs/resources/lists.md). If a function is provided, then
+  IDs, or the name of a [list](../resources/lists.md). If a function is provided, then
   `getResources` will iterate over the collection of resources, returning an array of
   resources that the function returns truthy for. The function will be called with three arguments:
   `(resource, resourceMeta, resourceSlice)`. If no `filter` is provided, then all of the

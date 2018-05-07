@@ -7,13 +7,13 @@
 Redux Resource XHR is an action creator that simplifies CRUD operations.
 
 More information about CRUD actions in Redux Resource can be
-found in the [Request Actions](/docs/requests/request-actions.md) guide and the four
+found in the [Request Actions](../requests/request-actions.md) guide and the four
 guides on CRUD:
 
-- [Reading resources](/docs/requests/reading-resources.md)
-- [Updating resources](/docs/requests/updating-resources.md)
-- [Creating resources](/docs/requests/creating-resources.md)
-- [Deleting resources](/docs/requests/deleting-resources.md)
+- [Reading resources](../requests/reading-resources.md)
+- [Updating resources](../requests/updating-resources.md)
+- [Creating resources](../requests/creating-resources.md)
+- [Deleting resources](../requests/deleting-resources.md)
 
 We recommend familiarizing yourself with the content in those guides before using
 this library.
@@ -55,12 +55,12 @@ An action creator for CRUD requests.
 
 1. `crudAction`: *(String)* The CRUD operation being performed. One of "create",
   "read", "update", or "delete". This determines the
-  [CRUD Action types](/docs/api-reference/action-types.md) that are dispatched.
+  [CRUD Action types](../api-reference/action-types.md) that are dispatched.
 
 2. `options` *(Object)*: Options to configure the CRUD request.
 
   * `actionDefaults`: *(Object)* Properties that will be included on each dispatched
-    action. All of [the Request Action options](/docs/requests/request-actions.md) are
+    action. All of [the Request Action options](../requests/request-actions.md) are
     supported, such as `resourceType` and `resources`.
 
   * `dispatch`: *(Function)* The `dispatch` function of a Redux store. If you're using
@@ -78,7 +78,7 @@ An action creator for CRUD requests.
     response from the server, parsed as JSON. Return a transformed list of
     `resources`. This can be used to format the server response into a
     Redux Resource-compatible format. For more, see the guide on
-    [Resource objects](/docs/resources/resource-objects.md).
+    [Resource objects](../resources/resource-objects.md).
 
   * [`onPending`]: *(Function)* An optional function that allows you to modify
     the "pending" action, as well as control when it is dispatched. It is called

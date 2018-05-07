@@ -43,7 +43,7 @@ Canceling a previous request resolves this problem, as it means that only one
 search request will ever be in flight at a time, and it will be the user's most
 recent search. If you're using an action creator that returns a native
 XMLHttpRequest object, such as the action creator from
-[Redux Resource XHR](/docs/extras/redux-resource-xhr.md), then your code may look
+[Redux Resource XHR](../extras/redux-resource-xhr.md), then your code may look
 like this:
 
 ```js
@@ -122,7 +122,7 @@ if (requestWasAborted) {
 ```
 
 > Note: If your application requires tracking the aborted status of a request, you
-  can write a [plugin](/docs/other-guides/plugin.md) to add support for additional action types.
+  can write a [plugin](../other-guides/plugin.md) to add support for additional action types.
 
 
 > Note: We understand that some users want their action type names to reflect the action
@@ -167,7 +167,7 @@ const request = xhr.get('/books/23', (err, res) => {
 request.abort();
 ```
 
-[Redux Resource XHR](/docs/extras/redux-resource-xhr.md) for 
+[Redux Resource XHR](../extras/redux-resource-xhr.md) for 
 Redux Resource uses [`xhr`](https://github.com/naugtur/xhr) for requests.
 The action creator exported by this library returns a native XHR object, so you
 can use the `abort` method to cancel those requests.

@@ -24,13 +24,13 @@ code, although this same system works for other representations, too.
 ### Action Creators
 
 Whenever an unauthorized response from the backend is returned in your CRUD
-action creators, include the status code in the [request action](/docs/requests/request-actions.md)
+action creators, include the status code in the [request action](../requests/request-actions.md)
 that you dispatch.
 
 You can attach arbitrary data to a request by specifying `requestProperties` on
 the action.
 
-If you're using [Redux Resource XHR](/docs/extras/redux-resource-xhr.md),
+If you're using [Redux Resource XHR](../extras/redux-resource-xhr.md),
 then this will be set for you. You can access the status code at
 `action.requestProperties.statusCode`.
 

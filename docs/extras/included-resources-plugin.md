@@ -11,7 +11,7 @@ returned from [`normalizr`](https://github.com/paularmstrong/normalizr).
 ### Usage
 
 Add this plugin when you call
-[`resourceReducer`](/docs/api-reference/resource-reducer.md). Be sure to add it to
+[`resourceReducer`](../api-reference/resource-reducer.md). Be sure to add it to
 the "primary" resource slice, as well as to the included resource slices.
 
 ```js
@@ -29,7 +29,7 @@ const booksReducer = resourceReducer('books', {
 
 This plugin doesn't come with any custom action types. Instead, it changes the
 way the state is tranformed with the built-in successful read CRUD
-[action type](/docs/api-reference/action-types.md), `READ_RESOURCES_SUCCEEDED`.
+[action type](../api-reference/action-types.md), `READ_RESOURCES_SUCCEEDED`.
 
 When your actions have an `includedResources` object, they will be added to the
 appropriate slices.
@@ -90,4 +90,4 @@ Not every API returns included resources in a normalized manner, so a different 
 appropriate for certain backends. As an example, JSON API does not provide included resources in a
 format that can interpreted by this plugin.
 
-For more on this subject, refer to the [Related Resources recipe](/docs/recipes/related-resources.md).
+For more on this subject, refer to the [Related Resources recipe](../recipes/related-resources.md).

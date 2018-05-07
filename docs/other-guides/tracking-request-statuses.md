@@ -1,13 +1,13 @@
 # Tracking Request Statuses
 
 Displaying feedback about CRUD operations requires knowing the
-[status](/docs/requests/request-statuses.md) of its request: is it pending,
+[status](../requests/request-statuses.md) of its request: is it pending,
 failing, succeeded? This is what we mean by "tracking" a request. The status of
 a request can be used to display feedback to the user of your application, such
 as showing loading indicators or error messages.
 
 There are two ways to track CRUD operation requests in Redux Resource:
-using a [request object](/docs/requests/request-objects.md), or tracking the status
+using a [request object](../requests/request-objects.md), or tracking the status
 on resource metadata.
 
 Typically, you should use request objects, but in some situations you may prefer to use
@@ -20,7 +20,7 @@ objects are by far the more powerful of the two options for tracking requests,
 so we recommend using them whenever possible.
 
 To learn about the shape of request objects, refer to
-[the request objects guide](/docs/requests/request-objects.md).
+[the request objects guide](../requests/request-objects.md).
 
 To dispatch actions that create request objects, you need to supply a `requestKey` to
 with your request actions. For instance,
@@ -47,7 +47,7 @@ This will update your resource slice to look like the following:
 }
 ```
 
-For more on request actions, refer to the [request actions guide](/docs/requests/request-actions.md).
+For more on request actions, refer to the [request actions guide](../requests/request-actions.md).
 
 ### Resource Metadata
 
@@ -91,7 +91,7 @@ When this is dispatched, your slice's metadata will be updated like this:
 ```
 
 In your view layer, you can then use
-[`getStatus`](/docs/api-reference/get-status.md) to access this state in a
+[`getStatus`](../api-reference/get-status.md) to access this state in a
 convenient way.
 
 The rule of thumb is:
@@ -107,5 +107,5 @@ request, whereas resource metadata only works in a subset of situations.
 
 You now know how to _store_ the request statuses in your store. There is a
 separate guide on using
-[Using Request Statuses](/docs/other-guides/using-request-statuses.md) in your
+[Using Request Statuses](using-request-statuses.md) in your
 view layer.

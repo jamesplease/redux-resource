@@ -157,4 +157,4 @@ Resources are frequently modified as a result of network requests, which are asy
 
 With Redux Resource, these operations are represented using objects called Requests. Requests are
 covered in detail in the next section of these guides. If you want to read about them now, then follow
-[this link](/docs/requests/request-objects.md).
+[this link](../requests/request-objects.md).

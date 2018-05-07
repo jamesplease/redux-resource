@@ -2,7 +2,7 @@
 
 The reset plugin allows you to remove all of the data in a slice, effectively
 "resetting" it. You may optionally scope the resetting to affect a single
-[list](/docs/resources/lists.md) or [request object](/docs/requests/request-objects.md).
+[list](../resources/lists.md) or [request object](../requests/request-objects.md).
 
 ### Usage
 

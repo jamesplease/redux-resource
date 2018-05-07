@@ -120,7 +120,7 @@ request key in this situation to determine the request status.
 
 When a request key is used, the status of the associated request is stored in
 your state, and you can access it with
-[`getStatus`](/docs/api-reference/get-status.md):
+[`getStatus`](../api-reference/get-status.md):
 
 ```js
 import { getStatus } from 'redux-resource';
@@ -192,7 +192,7 @@ Some good CRUD-related verbs are:
 - delete
 - remove
 
-If you're associating the request with a [list](/docs/requests/updating-lists.md), then you may
+If you're associating the request with a [list](requests/updating-lists.md), then you may
 want to use the list name in the request key/name as well. For instance, if the list is
 `favorites`, and the request is for a user searching through their favorites, then you may use
 `searchFavorites` as the name or key.
@@ -233,7 +233,7 @@ Here are two use cases for dynamic keys, although there may be more:
   but using request keys is one way that would work well. If you want to cache, say,
   a user's search results based on what they enter, then you may want to serialize
   the search so that you can look it up later. For more, refer to
-  [the recipe on caching](/docs/recipes/caching.md).
+  [the recipe on caching](../recipes/caching.md).
 
 - Supporting multiple of the same 'type' of request at once, when you are unable to
   track the request statuses on a resource's metadata. That's a lot to take in, so

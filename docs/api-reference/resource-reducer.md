@@ -1,7 +1,7 @@
 # `resourceReducer(resourceType, [options])`
 
 Creates a Redux [reducer](http://redux.js.org/docs/basics/Reducers.html) that
-manages a [resource slice](/docs/introduction/core-concepts.md).
+manages a [resource slice](../introduction/core-concepts.md).
 
 #### Arguments
 
@@ -21,7 +21,7 @@ manages a [resource slice](/docs/introduction/core-concepts.md).
     Plugins are functions that are called with the arguments
     `(state, action, options)`, where `options` are the same options that you
     passed to `resourceReducer`. For more, refer to the
-    [Plugins](/docs/other-guides/custom-action-types.md) documentation.
+    [Plugins](../other-guides/custom-action-types.md) documentation.
 
   - `initialResourceMeta`: Additional metadata to include on any new resource's
     metadata after a read or create operation.
@@ -50,4 +50,4 @@ let store = createStore(
 - Any options you pass to the `resourceReducer` will also be passed to the
   plugins. You can use this fact to add your own custom `options` to
   configure the behavior of your plugins. To learn more about plugins, refer
-  to [the Plugins guide](/docs/other-guides/custom-action-types.md).
+  to [the Plugins guide](../other-guides/custom-action-types.md).

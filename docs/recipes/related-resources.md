@@ -5,7 +5,7 @@ a request for a single `author` may also include the author's `books`.
 
 Because different backends return related resources in many different ways,
 Redux Resource couldn't possibly include a single built-in solution that works for every
-API. Instead, [plugins](/docs/other-guides/custom-action-types.md) can be used to support related resources
+API. Instead, [plugins](../other-guides/custom-action-types.md) can be used to support related resources
 in a way that works for for your specific backend.
 
 The rest of this guide will describe supporting related resources for the following
@@ -20,7 +20,7 @@ technologies:
 
 ### normalizr
 
-The [Included Resources Plugin](/docs/extras/included-resources-plugin.md) works
+The [Included Resources Plugin](../extras/included-resources-plugin.md) works
 well with [normalizr](https://github.com/paularmstrong/normalizr) data. Refer to
 the Included Resources Plugin documentation to familiarize yourself with its API.
 
@@ -74,7 +74,7 @@ const action = {
 store.dispatch(action);
 ```
 
-If you're using the [`redux-resource-xhr`](/docs/extras/redux-resource-xhr.md) library,
+If you're using the [`redux-resource-xhr`](../extras/redux-resource-xhr.md) library,
 you can perform this normalization in the `onSucceeded` callback:
 
 ```js
@@ -124,7 +124,7 @@ would likely work in 2 steps:
 
 1. Filter the Array of `included` resources to find _just_ the resources whose
   JSON API `type` matches the `resourceType` of the slice.
-2. Use [`upsertResources`](/docs/api-reference/upsert-resources.md) to add those resources to the slice.
+2. Use [`upsertResources`](../api-reference/upsert-resources.md) to add those resources to the slice.
 
 You would also want to place the each individual resource's `meta` into the `meta` section of the
 slice.

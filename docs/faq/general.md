@@ -4,7 +4,7 @@
 
 If you feel that you're writing too much boilerplate when using Redux by itself,
 then it might be worth giving a library like Redux Resource a try. There are
-[similar projects](/docs/introduction/similar-projects.md) that also aim to
+[similar projects](../introduction/similar-projects.md) that also aim to
 reduce Redux boilerplate, which are also worth your consideration.
 
 #### Does this only work with React?
@@ -35,7 +35,7 @@ For instance, if you're working with a books resource, then it might instead
 have an id attribute called `bookId`. In these situations, you will need to
 write a transform that maps that key to be `id` instead.
 
-For more, refer to [the Resource objects guide](/docs/resources/resource-objects.md).
+For more, refer to [the Resource objects guide](../resources/resource-objects.md).
 
 #### Does this work with a backend that adheres to a well-defined format, such as JSON API?
 
@@ -49,7 +49,7 @@ Yes. The only requirement is that the data returned can be reasonably mapped to
 the concept of a "resource." A resource, from this library's perspective, is
 a JavaScript object with an `id` attribute.
 
-For more on this, refer to [the Resource objects guide](/docs/resources/resource-objects.md).
+For more on this, refer to [the Resource objects guide](../resources/resource-objects.md).
 
 #### Does Redux Resource handle forms, or client-side changes to data?
 

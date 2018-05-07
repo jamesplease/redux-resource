@@ -33,7 +33,7 @@ const book = state.books.resources[102];
 ```
 
 > Note: For more advanced retrieval of resources from the store, you can use the
-  [`getResources` method](/docs/api-reference/get-resources.md).
+  [`getResources` method](../api-reference/get-resources.md).
 
 ### What is a Resource?
 
@@ -169,7 +169,7 @@ how you can change them into Redux Resource compatible resources.
 ### Modifying Resources
 
 There are two ways to modify resources: synchronously and asynchronously. The guide on
-[modifying resources](/docs/resources/modifying-resources.md) describes both of these
+[modifying resources](modifying-resources.md) describes both of these
 approaches.
 
 ### Best Practices

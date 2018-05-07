@@ -69,7 +69,7 @@ This might look like:
 ```
 
 If the backend does not return this data with the author's primary data, then you may choose to store
-the list of IDs on the author's [resource metadata](/docs/resources/meta.md) instead:
+the list of IDs on the author's [resource metadata](meta.md) instead:
 
 ```js
 // An author metadata object
@@ -85,7 +85,7 @@ the list of IDs on the author's [resource metadata](/docs/resources/meta.md) ins
 ### Accessing the Resources in a List
 
 To retrieve the resources in a list, you can use
-[`getResources`](/docs/api-reference/get-resources.md).
+[`getResources`](../api-reference/get-resources.md).
 
 ```js
 import { getResources } from 'redux-resource';
@@ -97,5 +97,5 @@ const favoriteBooks = getResources(state.books, 'favorites');
 
 ### Updating Lists
 
-In the [next guide](/docs/resources/modifying-resources.md), we will cover how you can
+In the [next guide](modifying-resources.md), we will cover how you can
 modify data within a resource slice, including lists.

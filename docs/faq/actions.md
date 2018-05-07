@@ -5,26 +5,26 @@
 Not in the core library.
 
 When it comes to making requests, there is an
-[HTTP Action Creators library](/docs/extras/redux-resource-xhr.md).
+[HTTP Action Creators library](../extras/redux-resource-xhr.md).
 
 Developers have different preferences when it comes to making requests, so
 we made this library easy to use with any library that you choose. We've
 had great success with the library linked to above, but should you choose to
 write your own, we have guides to help you.
 
-Refer to the [Request Actions](/docs/requests/request-actions.md) guide to learn more
+Refer to the [Request Actions](../requests/request-actions.md) guide to learn more
 about how to build your own action creator, or the four CRUD guides for examples
 of action creators:
 
-- [Reading resources](/docs/requests/reading-resources.md)
-- [Updating resources](/docs/requests/reading-resources.md)
-- [Creating resources](/docs/requests/reading-resources.md)
-- [Deleting resources](/docs/requests/reading-resources.md)
+- [Reading resources](../requests/reading-resources.md)
+- [Updating resources](../requests/reading-resources.md)
+- [Creating resources](../requests/reading-resources.md)
+- [Deleting resources](../requests/reading-resources.md)
 
 #### Does Redux Resource require you to use a specific tool for making HTTP requests?
 
 No, you can use any system for making requests that you'd like. We do strongly encourage
-you to use a library that supports [cancellation](/docs/recipes/canceling-requests).
+you to use a library that supports [cancellation](../recipes/canceling-requests).
 
 #### Should all Actions include a request key?
 
@@ -45,7 +45,7 @@ and that's fine.
 
 A handy rule of thumb for when to use request objects, as well as much more
 information about requests, can be found in
-[Request Keys and Names guide](/docs/requests/keys-and-names.md#when-to-use-request-keys).
+[Request Keys and Names guide](../requests/keys-and-names.md#when-to-use-request-keys).
 
 #### When is setting the `mergeMeta` action attribute to `false` useful?
 
