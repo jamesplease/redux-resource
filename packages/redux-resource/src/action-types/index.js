@@ -9,7 +9,7 @@ const allTypes = {
 
 if (process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line
-  function warn(propName) {
+  const warn = function(propName) {
     const newPropName = propName
       .split('_')
       .slice(0, 2)
