@@ -1,6 +1,6 @@
 {
   "name": "redux-resource",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Resource management for Redux.",
   "main": "lib/index.js",
   "module": "es/index.js",
