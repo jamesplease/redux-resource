@@ -1,5 +1,11 @@
 ## 4/26/18
 
+##### `redux-resource@3.0.3`
+
+**Bug Fixes**
+
+- Fixes an error that was thrown in certain environments, such as React Native
+
 ##### `redux-resource@3.0.2`
 
 **Bug Fixes**
