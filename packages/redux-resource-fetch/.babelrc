@@ -1,0 +1,35 @@
+{
+  "env": {
+    "build": {
+      "presets": [
+        ["env", {"modules": false}],
+        "stage-3"
+      ],
+      "plugins": ["external-helpers"]
+    },
+    "es": {
+      "presets": [
+        ["env", {"modules": false}],
+        "stage-3"
+      ]
+    },
+    "commonjs": {
+      "plugins": [
+        ["transform-es2015-modules-commonjs", {"loose": true}]
+      ],
+      "presets": [
+        "stage-3"
+      ]
+    },
+    "test": {
+      "presets": [
+        "env",
+        "stage-3"
+      ],
+      "plugins": [
+        "istanbul",
+        "rewire"
+      ]
+    }
+  }
+}
