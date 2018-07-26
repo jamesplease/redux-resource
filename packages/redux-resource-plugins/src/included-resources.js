@@ -13,7 +13,7 @@ export default function includedResources(resourceType, options = {}) {
     const { includedResources, mergeMeta, mergeResources, type } = action;
 
     // This plugin only works for successful reads at the moment
-    if (type !== actionTypes.READ_RESOURCES_SUCCEEDED) {
+    if (type !== actionTypes.READ_RESOURCES_SUCCEEDED && type !== actionTypes.CREATE_RESOURCES_SUCCEEDED) {
       return state;
     }
 
