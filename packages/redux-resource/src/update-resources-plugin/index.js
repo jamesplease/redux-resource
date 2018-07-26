@@ -12,8 +12,27 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
     return state;
   }
 
-  const naiveNewResources = action.resources && action.resources[resourceType];
-  const naiveNewMeta = action.meta && action.meta[resourceType];
+  if (process.env.NODE_ENV !== 'production') {
+    if (!action.resources && !action.meta) {
+      warning(
+        `You dispatched a ${action.type} action without any resources or meta, ` +
+          `so the store will not be updated. ` +
+          `For more information, refer to the documentation on this action at: ` +
+          `https://redux-resource.js.org/docs/resources/modifying-resources.html`,
+        'UPDATE_OR_DELETE_RESOURCES_NO_OP'
+      );
+    }
+  }
+
+  const naiveNewResources = action.resources[resourceType];
+  const naiveNewMeta = action.meta[resourceType];
+
+  if (!naiveNewResources && !naiveNewMeta) {
+    // this action doesn't concerne the current resource type
+    // so we can return the state and avoid useless code exection
+    return state;
+  }
+
   const additionalLists = action.lists && action.lists[resourceType];
 
   if (action.type === 'UPDATE_RESOURCES') {
@@ -89,18 +108,6 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
       lists: newLists,
     };
   } else {
-    if (process.env.NODE_ENV !== 'production') {
-      if (!naiveNewResources && !naiveNewMeta) {
-        warning(
-          `You dispatched a DELETE_RESOURCES action without any resources or meta, ` +
-            `so the store will not be updated. ` +
-            `For more information, refer to the documentation on this action at: ` +
-            `https://redux-resource.js.org/docs/resources/modifying-resources.html`,
-          'DELETE_RESOURCES_NO_OP'
-        );
-      }
-    }
-
     let idList;
     if (naiveNewResources && naiveNewResources.map) {
       idList = naiveNewResources.map(r => {
