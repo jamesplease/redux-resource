@@ -7,6 +7,12 @@
 - Fixes an issue where the `DELETE_RESOURCES` action type could log an invalid warning message
   to the console in certain situations.
 
+##### `redux-resource-plugins@3.1.0`
+
+**New Features**
+
+- The `includedResources` plugin now supports create requests in addition to update requests.
+
 ## 4/26/18
 
 ##### `redux-resource@3.0.3`
