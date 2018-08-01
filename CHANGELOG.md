@@ -1,3 +1,12 @@
+## 7/31/18
+
+##### `redux-resource@3.0.4`
+
+**Bug Fixes**
+
+- Fixes an issue where the `DELETE_RESOURCES` action type could log an invalid warning message
+  to the console in certain situations.
+
 ## 4/26/18
 
 ##### `redux-resource@3.0.3`
