@@ -90,10 +90,10 @@ export default (resourceType, { initialResourceMeta }) => (state, action) => {
     };
   } else {
     if (process.env.NODE_ENV !== 'production') {
-      if (!naiveNewResources && !naiveNewMeta) {
+      if (!action.resources && !action.meta) {
         warning(
-          `You dispatched a DELETE_RESOURCES action without any resources or meta, ` +
-            `so the store will not be updated. ` +
+          `You dispatched a DELETE_RESOURCES action without any resources ` +
+            `or meta, so the store will not be updated. ` +
             `For more information, refer to the documentation on this action at: ` +
             `https://redux-resource.js.org/docs/resources/modifying-resources.html`,
           'DELETE_RESOURCES_NO_OP'
