@@ -422,4 +422,52 @@ describe('reducers: DELETE_RESOURCES', function() {
     });
     expect(console.error.callCount).to.equal(0);
   });
+
+  it('does not warn when another resource type is attempted to be deleted', () => {
+    stub(console, 'error');
+    const initialState = {
+      resources: {
+        1: { id: 1 },
+        3: { id: 3 },
+        4: { id: 4 },
+      },
+      requests: {
+        pasta: {
+          hungry: true,
+        },
+      },
+      lists: {
+        bookmarks: [1, 2, 3],
+      },
+      meta: {
+        1: {
+          name: 'what',
+        },
+        3: {
+          deleteStatus: 'sandwiches',
+        },
+      },
+    };
+
+    const reducer = resourceReducer('hellos', { initialState });
+
+    const reduced = reducer(undefined, {
+      type: 'DELETE_RESOURCES',
+      resources: {
+        sandwiches: [
+          1,
+          {
+            id: 13,
+            name: 'Test3',
+          },
+        ],
+      },
+    });
+
+    expect(reduced).to.deep.equal({
+      ...initialState,
+      resourceType: 'hellos',
+    });
+    expect(console.error.callCount).to.equal(0);
+  });
 });
