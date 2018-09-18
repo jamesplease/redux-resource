@@ -25,7 +25,7 @@ it can lead to bugs when requests aren't cancelled.
 
 Let's look at two examples that demonstrate the problem.
 
-#### Example: A Typehead
+#### Example: A Typeahead
 
 Consider a "typeahead" component that allows a user to type to search for books.
 Even when the user's input is debounced, there are situations where two (or more)
