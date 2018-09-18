@@ -1,6 +1,6 @@
 # Related Resources
 
-Endpoints frequently more than one resource type in a single response. For instance,
+Endpoints frequently return more than one resource type in a single response. For instance,
 a request for a single `author` may also include the author's `books`.
 
 Because different backends return related resources in many different ways,
