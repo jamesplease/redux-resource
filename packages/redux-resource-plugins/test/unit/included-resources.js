@@ -187,6 +187,57 @@ describe('includedResources', function() {
     });
   });
 
+  it('should add included resources when passed as an object with UPDATE_RESOURCES_SUCCEEDED', () => {
+    const reducer = includedResources('books');
+
+    const state = {
+      selectedIds: [24],
+      resources: {
+        23: { id: 23, color: 'blue' },
+        24: { id: 24, name: 'Book24' },
+      },
+      meta: {
+        24: { oinky: true },
+        23: { oinky: false },
+      },
+      lists: {},
+      requests: {},
+    };
+
+    const action = {
+      type: actionTypes.UPDATE_RESOURCES_SUCCEEDED,
+      resourceName: 'authors',
+      resources: [10, 200],
+      includedResources: {
+        books: {
+          23: {
+            id: 23,
+            name: 'Book23',
+          },
+        },
+      },
+    };
+
+    const result = reducer(state, action);
+    expect(result).to.deep.equal({
+      selectedIds: [24],
+      resources: {
+        24: { id: 24, name: 'Book24' },
+        23: { id: 23, name: 'Book23', color: 'blue' },
+      },
+      meta: {
+        23: {
+          readStatus: 'SUCCEEDED',
+          updateStatus: 'SUCCEEDED',
+          oinky: false,
+        },
+        24: { oinky: true },
+      },
+      lists: {},
+      requests: {},
+    });
+  });
+
   it('should not merge meta with mergeMeta: false', () => {
     const reducer = includedResources('books');
 
