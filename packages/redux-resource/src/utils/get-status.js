@@ -82,7 +82,7 @@ function getSingleStatus(state, statusLocation, treatIdleAsPending) {
 // Note that at most _one_ of those properties will be true. It is
 // possible for them to all be false.
 export default function getStatus(state, statusLocations, treatIdleAsPending) {
-  if (!(statusLocations instanceof Array)) {
+  if (!Array.isArray(statusLocations)) {
     const status = getSingleStatus(state, statusLocations, treatIdleAsPending);
 
     if (process.env.NODE_ENV !== 'production') {

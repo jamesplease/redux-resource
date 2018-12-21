@@ -16,7 +16,7 @@ export default function setResourceMeta(options) {
 
   let mergeMetaOption = typeof mergeMeta !== 'undefined' ? mergeMeta : true;
   const resourcesArray =
-    resources instanceof Array ? resources : Object.values(resources);
+    Array.isArray(resources) ? resources : Object.values(resources);
 
   if (!resourcesArray.length) {
     return next;

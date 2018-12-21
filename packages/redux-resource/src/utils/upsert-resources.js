@@ -14,7 +14,7 @@ export default function upsertResources(
     typeof mergeResources !== 'undefined' ? mergeResources : true;
   const shallowClone = Object.assign({}, resources);
 
-  if (newResources instanceof Array) {
+  if (Array.isArray(newResources)) {
     newResources.forEach(resource => {
       const resourceIsObject = typeof resource === 'object';
       const id = resourceIsObject ? resource.id : resource;
