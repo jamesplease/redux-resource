@@ -1,3 +1,12 @@
+## 2/11/19
+
+##### `redux-resource@3.0.5`
+
+**Bug Fixes**
+
+- `instanceof Array` calls have been replaced with `Array.isArray` to improve support for multiple global
+  environments.
+
 ## 7/31/18
 
 ##### `redux-resource@3.0.4`
