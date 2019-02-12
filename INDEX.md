@@ -1,6 +1,6 @@
-[![Travis build status](https://badges.gitter.im/jmeas/redux-resource.svg)](https://gitter.im/jmeas/redux-resource?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Travis build status](http://img.shields.io/travis/jamesplease/redux-resource.svg?style=flat)](https://travis-ci.org/jamesplease/redux-resource)
 [![npm version](https://img.shields.io/npm/v/redux-resource.svg)](https://www.npmjs.com/package/redux-resource)
+[![npm downloads](https://img.shields.io/npm/dm/redux-resource.svg)](https://www.npmjs.com/package/redux-resource)
 [![Test Coverage](https://coveralls.io/repos/github/jamesplease/redux-resource/badge.svg?branch=master)](https://coveralls.io/github/jamesplease/redux-resource?branch=master)
 [![gzip size](http://img.badgesize.io/https://unpkg.com/redux-resource/dist/redux-resource.min.js?compression=gzip)](https://unpkg.com/redux-resource/dist/redux-resource.min.js)
 

@@ -5,14 +5,14 @@
 </p>
 
 <p align="center">
-  <a href="https://gitter.im/jmeas/redux-resource?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
-    <img src="https://badges.gitter.im/jmeas/redux-resource.svg" alt="Redux Resource on Gitter" />
-  </a>
   <a href="https://travis-ci.org/jamesplease/redux-resource">
     <img src="http://img.shields.io/travis/jamesplease/redux-resource.svg?style=flat" alt="Redux Resource Travis Builds" />
   </a>
   <a href="https://www.npmjs.com/package/redux-resource">
     <img src="https://img.shields.io/npm/v/redux-resource.svg" alt="Redux Resource NPM Package" />
+  </a>
+  <a href="https://www.npmjs.com/package/redux-resource">
+    <img src="https://img.shields.io/npm/dm/redux-resource.svg" alt="Redux Resource NPM Download Count" />
   </a>
   <a href="https://coveralls.io/github/jamesplease/redux-resource?branch=master">
     <img src="https://coveralls.io/repos/github/jamesplease/redux-resource/badge.svg?branch=master" alt="Redux Resource Code Coverage" />
