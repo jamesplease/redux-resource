@@ -28,8 +28,8 @@ const booksReducer = resourceReducer('books', {
 ```
 
 This plugin doesn't come with any custom action types. Instead, it changes the
-way the state is tranformed with the built-in successful create or read CRUD
-[action type](../api-reference/action-types.md): `CREATE_RESOURCES_SUCCEEDED` and
+way the state is tranformed with the built-in successful create, update or read CRUD
+[action type](../api-reference/action-types.md): `CREATE_RESOURCES_SUCCEEDED`, `UPDATE_RESOURCES_SUCCEEDED` and
 `READ_RESOURCES_SUCCEEDED`.
 
 When your actions have an `includedResources` object, they will be added to the
