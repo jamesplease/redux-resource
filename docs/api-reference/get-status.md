@@ -96,6 +96,6 @@ const bookReadStatus = getStatus(
 
 - The first argument, `state`, doesn't always need to be the state of your
   Redux store. For instance, if you're using this method within your component's
-  lifecycle methods, such as `componentWillReceiveProps`, you may instead pass
+  lifecycle methods, such as `componentDidUpdate`, you may instead pass
   it an object that is a subset of the state. This can be useful when you're
-  comparing a previous status against an upcoming status.
+  comparing a previous status against the current status.
