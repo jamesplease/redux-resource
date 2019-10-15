@@ -56,7 +56,7 @@ class BooksList extends Component {
     );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { getUserBooks, getLatestBooks } = this.props;
     getUserBooks();
     getLatestBooks();
