@@ -139,6 +139,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "GuillaumeJasmin",
+      "name": "Guillaume Jasmin",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3513444?v=4",
+      "profile": "http://www.guillaume-jasmin.fr",
+      "contributions": [
+        "code",
+        "plugin"
+      ]
     }
-  ]
+  ],
+  "repoType": "github"
 }
