@@ -9,3 +9,7 @@ build
 # misc
 .DS_Store
 npm-debug.log
+
+package-lock.json
+package-lock.json.*
+yarn.lock
