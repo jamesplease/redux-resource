@@ -69,3 +69,33 @@ In older versions of Redux Resource, `getResources` accepted `state` as the firs
 with this approach is that it really only worked well when you were using `combineReducers`. Although we
 believe that most people are likely using `combineReducers`, we didn't want that to be a hard requirement
 for using Redux Resource.
+
+### What is the area that needs the most improvement in the Redux Resource API?
+
+There should be an API that does the following, all at once:
+
+1. Makes network requests (while also handling caching and request deduplication for you)
+2. Places resources into the store
+3. Makes those resources available to you in your Components
+
+With React Hooks, this might look like:
+
+```jsx
+function BookComponent({ bookId }) {
+  const books = useResources(() => fetchBooks({ bookId }));
+
+  return (
+    <div>
+      {/* Render this component using the `books` resources */}
+    </div>
+  )
+}
+```
+
+Right now, the process of doing these 3 steps is unnecessarily verbose using the out-of-the-box
+Redux Resource API.
+
+Note that there is nothing about the API that prevents you from writing your code like this. It
+is just that the library does not provide this API for you, and it should.
+
+This is the biggest improvement that we would like to make to the API.
