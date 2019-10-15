@@ -46,7 +46,7 @@ Sometimes, you want to know the exact moment that a request succeeds. You can do
 within your components by comparing the previous state with the next state to determine
 when a request changes from one status to another.
 
-We recommend performing this check within `componentWillReceiveProps`. This
+We recommend performing this check within `componentDidUpdate`. This
 might look like:
 
 ```js
@@ -58,8 +58,8 @@ class BooksList extends Component {
   }
 
   // Let's log to the console whenever a search result succeeds
-  componentWillReceiveProps(nextProps) {
-    if (this.props.searchStatus.pending && nextProps.searchStatus.succeeded) {
+  componentDidUpdate(prevProps) {
+    if (this.props.searchStatus.succeeded && prevProps.searchStatus.pending) {
       console.log('The search request just succeeded.');
     }
   }
