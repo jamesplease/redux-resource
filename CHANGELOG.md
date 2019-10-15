@@ -1,3 +1,11 @@
+## 10/14/19
+
+##### `redux-resource-plugins@3.2.0`
+
+**New Features**
+
+- The `includedResources` plugin now supports update requests in addition to create and read requests.
+
 ## 2/11/19
 
 ##### `redux-resource@3.0.5`
@@ -20,7 +28,7 @@
 
 **New Features**
 
-- The `includedResources` plugin now supports create requests in addition to update requests.
+- The `includedResources` plugin now supports create requests in addition to read requests.
 
 ## 4/26/18
 
