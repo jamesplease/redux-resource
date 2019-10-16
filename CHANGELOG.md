@@ -1,3 +1,12 @@
+## 10/15/19
+
+##### `redux-resource@3.1.0`
+
+**New Features**
+
+- `getResources` now supports a third argument, `options`. Pass `{ byId: true }` to receive the resources
+  as an object rather than an array.
+
 ## 10/14/19
 
 ##### `redux-resource-plugins@3.2.0`
