@@ -41,7 +41,9 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
     } else if (!Array.isArray(resources)) {
       warning(
         `A non-array 'resources' value was passed to a Redux Resource ` +
-          `"success" action with type "${action.type}". 'resources' must be an ` +
+          `"success" action with type "${
+            action.type
+          }". 'resources' must be an ` +
           `array. If your backend returned a single object, be sure to wrap it ` +
           `inside of an array. If you're using the Redux Resource XHR ` +
           `library, you can do this using the "transformData" option. ` +
@@ -121,11 +123,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
       resources.forEach(resource => {
         const id = typeof resource === 'object' ? resource.id : resource;
         if (!newList.includes(id)) {
-          if (action.unshiftList) {
-            newList.unshift(id);
-          } else {
-            newList.push(id);
-          }
+          newList.push(id);
         }
       });
     }
