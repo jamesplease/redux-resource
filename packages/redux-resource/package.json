@@ -1,5 +1,5 @@
 {
-  "name": "redux-resource-support-unshift-for-lists",
+  "name": "redux-resource",
   "version": "3.1.0",
   "description": "Resource management for Redux.",
   "main": "lib/index.js",
