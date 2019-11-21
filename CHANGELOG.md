@@ -1,3 +1,12 @@
+## 11/20/19
+
+- All packages are now distributed with licenses. The list of package versions is as follows:
+  - `redux-resource@3.1.1`
+  - `redux-resource-action-creators@2.0.2`
+  - `redux-resource-prop-types@4.0.2`
+  - `redux-resource-plugins@3.2.1`
+  - `redux-resource-xhr@4.0.2`
+
 ## 10/15/19
 
 ##### `redux-resource@3.1.0`
