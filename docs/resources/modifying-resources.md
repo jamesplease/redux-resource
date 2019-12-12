@@ -35,7 +35,7 @@ You can pass the following properties to this action:
     resources: {
       books: {
         24: {
-          title: 'The Hobbit
+          title: 'The Hobbit'
         }
       },
       authors: {
@@ -94,7 +94,7 @@ You can pass the following properties to this action:
     mergeResources: {
       books: false
     }
-    // Note: you can also pass `mergeREsources: false` to apply it to every resource type.
+    // Note: you can also pass `mergeResources: false` to apply it to every resource type.
   }
   ```
 
@@ -149,7 +149,7 @@ You can pass the following properties to this action:
   }
   ```
 
-When resources are deleted, they will be removed from all of the lists in the store as well..
+When resources are deleted, they will be removed from all of the lists in the store as well.
 
 ### Asynchronous Actions
 
