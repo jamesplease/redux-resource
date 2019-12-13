@@ -11,7 +11,7 @@ Automatically-generated request keys are useful for advanced networking features
 such as response caching and request deduplication, but they are often an inconvenience
 when it comes to debugging code.
 
-For instance, if you have an endpoint that allows a user to run a user, two
+For instance, if you have an endpoint that allows a user to run a search, two
 searches against the endpoint may have the keys "aBui9Xc" and "9d8cdd3". These keys
 don't communicate the _purpose_ of these requests; they are just arbitrary strings.
 
