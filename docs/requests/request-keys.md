@@ -232,7 +232,7 @@ Now when you call `getStatus` using this request key, you get the following obje
 ### "Reusing" a Request Key
 
 Request keys differ from IDs in that they don't need to be unique for every request. They can be,
-and will frequently be, reused between different requests of the same 'type.'
+and will frequently be, reused between different requests of the same 'type'.
 
 For instance, if a user can create books in your application, then you could just use the key `createBook`
 for every creation request. This works really well if you can assume that a user is only able to send off
@@ -243,7 +243,7 @@ For instance, if a user can create favorite books, as well as delete favorite bo
 you should use something like `createFavorite` and `deleteFavorite` for these two
 actions, rather than, say, using `changeFavorites` for both. This makes your code more
 expressive, and also allows you to track both requests in the event that they are both
-are in flight at the same time.
+in flight at the same time.
 
 #### A Note on Dynamic Keys
 
