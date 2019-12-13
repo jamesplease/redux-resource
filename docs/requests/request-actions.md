@@ -35,7 +35,7 @@ These are the following properties that you may include on a request action:
 
 - `type`: The action type. The full list of request action types can be viewed
   [here.](../api-reference/action-types.md)
-- `resourceType`: The type the resource that is primarily being affected by this request
+- `resourceType`: The type of the resource that is primarily being affected by this request
 - `resources`: An array of affected resources
 - `requestKey`: The request key
 - `requestName`: The request name
@@ -247,8 +247,6 @@ The following Request Action properties are all optional.
 - `requestProperties` *(Object)*: An object that will be merged onto the request
   object. Use this to add additional data onto the request object, such as HTTP
   status codes, gRPC error codes, or any other information related to the request.
-
-- `request` *(String)*: A shorthand for setting
 
 ### Dreprecated Request Action Properties
 
