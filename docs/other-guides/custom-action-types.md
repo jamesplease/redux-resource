@@ -12,7 +12,7 @@ then you know how to write a plugin.
 
 You define plugins for each resource type when you call
 [`resourceReducer`](../api-reference/resource-reducer.md). The second
-argument to that function is an `options` options, and within it you can pass
+argument to that function is an `options` option, and within it you can pass
 `plugins` as an array:
 
 ```js
