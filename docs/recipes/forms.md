@@ -16,7 +16,7 @@ manage your form data, it should work well alongside Redux Resource.
 ### Using Resource Slices
 
 You can also store form information inside of the resource slice. A  Redux best practice is to
-separate your client-side data separate from your server-side data, so form information should
+separate your client-side data from your server-side data, so form information should
 be kept separate from the actual resource objects themselves.
 
 Instead, you might choose to use [`meta`](../resources/meta.md) for form information, or
