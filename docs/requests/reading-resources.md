@@ -53,7 +53,7 @@ will happen:
   merging it, specify `mergeMeta: false` on the action.
 
 3. When a `list` is passed, the IDs from the `resources` array on the action will
-  added to the list. You may specify `mergeListIds: false` to _replace_ the existing
+  be added to the list. You may specify `mergeListIds: false` to _replace_ the existing
   list instead.
 
 ### Redux Resource XHR
