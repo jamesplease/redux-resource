@@ -24,11 +24,11 @@ of action creators:
 #### Does Redux Resource require you to use a specific tool for making HTTP requests?
 
 No, you can use any system for making requests that you'd like. We do strongly encourage
-you to use a library that supports [cancellation](../recipes/canceling-requests).
+you to use a library that supports [cancellation](../recipes/canceling-requests.md).
 
 #### Should all Actions include a request key?
 
-If you're manually coming up with the the request keys, then it is typically extra boilerplate
+If you're manually coming up with the request keys, then it is typically extra boilerplate
 to _always_ use them. In those situations, we recommend only using request keys
 when they provide you value.
 
