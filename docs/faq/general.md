@@ -55,7 +55,7 @@ For more on this, refer to [the Resource objects guide](../resources/resource-ob
 
 This library complements, but does not replace, solutions for managing forms
 and other ways to manipulate resource data on the client. Redux Resource
-works will with any system for managing forms, such as view state,
+works well with any system for managing forms, such as view state,
 [react-redux-form](https://github.com/davidkpiano/react-redux-form),
 or [redux-form](https://github.com/erikras/redux-form).
 
