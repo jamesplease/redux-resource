@@ -99,13 +99,13 @@ The rule of thumb is:
 **You can track CRUD operation requests on resource metadata anytime you have an
 ID when you fire the "start" action type.**
 
-Although using request objects is optional, we encourage their use beuause they provide
+Although using request objects is optional, we encourage their use because they provide
 consistency across your code base. Request objects allow you to track the status of _every_
 request, whereas resource metadata only works in a subset of situations.
 
 ### Using Statuses
 
 You now know how to _store_ the request statuses in your store. There is a
-separate guide on using
+separate guide on 
 [Using Request Statuses](using-request-statuses.md) in your
 view layer.
