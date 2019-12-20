@@ -48,7 +48,7 @@ This library has a single export, `createActionCreators`.
   [CRUD Action types](../api-reference/action-types.md) that are dispatched.
 
 2. `actionDefaults` *(Object)*: Properties that will be included on each dispatched
-    action. The [the Request Action guide](../requests/request-actions.md) lists possible
+    action. The [Request Action guide](../requests/request-actions.md) lists possible
     options, such as `resourceType` and `resources`. You *must* include `resourceType`.
 
 #### Returns
