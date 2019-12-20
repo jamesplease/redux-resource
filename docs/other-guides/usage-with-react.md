@@ -1,6 +1,6 @@
 # Usage With React
 
-It is not a requirement you you use React to use Redux Resource, but the two work
+It is not a requirement you should use React to use Redux Resource, but the two work
 well together. We recommend using the [react-redux](https://github.com/reactjs/react-redux)
 library to [link Redux with React](http://redux.js.org/docs/basics/UsageWithReact.html).
 
