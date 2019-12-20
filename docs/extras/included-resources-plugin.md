@@ -28,7 +28,7 @@ const booksReducer = resourceReducer('books', {
 ```
 
 This plugin doesn't come with any custom action types. Instead, it changes the
-way the state is tranformed with the built-in successful create, update or read CRUD
+way the state is transformed with the built-in successful create, update or read CRUD
 [action type](../api-reference/action-types.md): `CREATE_RESOURCES_SUCCEEDED`, `UPDATE_RESOURCES_SUCCEEDED` and
 `READ_RESOURCES_SUCCEEDED`.
 
@@ -89,6 +89,6 @@ This plugin will respect the `mergeResources` and `mergeMeta` action properties.
 
 Not every API returns included resources in a normalized manner, so a different plugin may be more
 appropriate for certain backends. As an example, JSON API does not provide included resources in a
-format that can interpreted by this plugin.
+format that can be interpreted by this plugin.
 
 For more on this subject, refer to the [Related Resources recipe](../recipes/related-resources.md).
