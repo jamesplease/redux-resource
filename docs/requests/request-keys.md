@@ -243,7 +243,7 @@ For instance, if a user can create favorite books, as well as delete favorite bo
 you should use something like `createFavorite` and `deleteFavorite` for these two
 actions, rather than, say, using `changeFavorites` for both. This makes your code more
 expressive, and also allows you to track both requests in the event that they are both
-are in flight at the same time.
+in flight at the same time.
 
 #### A Note on Dynamic Keys
 
