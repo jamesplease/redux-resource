@@ -64,11 +64,11 @@ An action creator for CRUD requests.
     supported, such as `resourceType` and `resources`.
 
   * `dispatch`: *(Function)* The `dispatch` function of a Redux store. If you're using
-    [`redux-thunk`]((https://github.com/gaearon/redux-thunk)), this will be the first
+    [`redux-thunk`](https://github.com/gaearon/redux-thunk), this will be the first
     argument of the thunk.
 
   * `xhrOptions`: *(Object)* Options to pass to the [`xhr`](#xhr-options-) library.
-    You must pass a a `url` (or `uri`) option. You will typically also want to pass
+    You must pass an `url` (or `uri`) option. You will typically also want to pass
     `json: true`, which will serialize your request body into JSON, as well as
     parse the response body as JSON. For more, see the examples below and
     [the xhr documentation](https://github.com/naugtur/xhr).
