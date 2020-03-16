@@ -1,3 +1,13 @@
+## 3/16/20
+
+##### `redux-resource-plugins@4.0.0`
+
+**Improvements**
+
+- The plugin is now faster, supporting considerably larger lists of resources. Although the API remains the same,
+  this is a major version bump because there is now a dependency on [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set).
+  Be sure to include a polyfill for Set if you need to support legacy browsers, such as IE < 11.
+
 ## 11/20/19
 
 - All packages are now distributed with licenses. The list of package versions is as follows:
