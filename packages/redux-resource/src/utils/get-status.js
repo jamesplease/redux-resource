@@ -87,6 +87,7 @@ export default function getStatus(state, statusLocations, treatIdleAsPending) {
 
     if (process.env.NODE_ENV !== 'production') {
       Object.defineProperty(status, 'null', {
+        // eslint-disable-next-line getter-return
         get() {
           warning(
             `You attempted to access a property named "null" from the object returned by ` +
@@ -142,6 +143,7 @@ export default function getStatus(state, statusLocations, treatIdleAsPending) {
 
   if (process.env.NODE_ENV !== 'production') {
     Object.defineProperty(status, 'null', {
+      // eslint-disable-next-line getter-return
       get() {
         warning(
           `You attempted to access a property named "null" from the object returned by ` +

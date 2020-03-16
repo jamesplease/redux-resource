@@ -31,21 +31,25 @@ if (process.env.NODE_ENV !== 'production') {
 
   Object.defineProperties(allTypes, {
     READ_RESOURCES_NULL: {
+      // eslint-disable-next-line getter-return
       get() {
         warn('READ_RESOURCES_NULL');
       },
     },
     CREATE_RESOURCES_NULL: {
+      // eslint-disable-next-line getter-return
       get() {
         warn('READ_RESOURCES_NULL');
       },
     },
     UPDATE_RESOURCES_NULL: {
+      // eslint-disable-next-line getter-return
       get() {
         warn('READ_RESOURCES_NULL');
       },
     },
     DELETE_RESOURCES_NULL: {
+      // eslint-disable-next-line getter-return
       get() {
         warn('READ_RESOURCES_NULL');
       },

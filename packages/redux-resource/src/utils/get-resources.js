@@ -15,9 +15,13 @@ export default function(resourceSlice, filter, options) {
     // eslint-disable-next-line no-inner-declarations
     function validateSlice(slice = {}) {
       return (
+        // eslint-disable-next-line no-prototype-builtins
         slice.hasOwnProperty('resources') &&
+        // eslint-disable-next-line no-prototype-builtins
         slice.hasOwnProperty('meta') &&
+        // eslint-disable-next-line no-prototype-builtins
         slice.hasOwnProperty('requests') &&
+        // eslint-disable-next-line no-prototype-builtins
         slice.hasOwnProperty('lists')
       );
     }

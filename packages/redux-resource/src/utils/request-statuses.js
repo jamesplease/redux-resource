@@ -9,6 +9,7 @@ const requestStatuses = {
 
 if (process.env.NODE_ENV !== 'production') {
   Object.defineProperty(requestStatuses, 'NULL', {
+    // eslint-disable-next-line getter-return
     get() {
       warning(
         `You attempted to access the NULL request status from the requestStatus object ` +
