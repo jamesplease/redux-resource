@@ -46,8 +46,10 @@ function selection(resourceType) {
       selectedIds = [...state.selectedIds] || [];
       resourceIds = resources.map(r => (typeof r === 'object' ? r.id : r));
 
+      const selectedIdsSet = new Set(selectedIds);
+
       resourceIds.forEach(id => {
-        if (!selectedIds.includes(id)) {
+        if (!selectedIdsSet.has(id)) {
           selectedIds.push(id);
         }
       });
@@ -59,10 +61,11 @@ function selection(resourceType) {
     } else if (action.type === actionTypes.DESELECT_RESOURCES) {
       selectedIds = [...state.selectedIds] || [];
       resourceIds = resources.map(r => (typeof r === 'object' ? r.id : r));
+      const resourceIdsSet = new Set(resourceIds);
 
       return {
         ...state,
-        selectedIds: selectedIds.filter(id => !resourceIds.includes(id)),
+        selectedIds: selectedIds.filter(id => !resourceIdsSet.has(id)),
       };
     } else if (action.type === actionTypes.CLEAR_SELECTED_RESOURCES) {
       return {
