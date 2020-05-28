@@ -96,7 +96,7 @@ want to use the list name in the request key/name as well. For instance, if the 
 > better.
 
 If you're using a networking library that provides you with caching and/or request
-deduplication features, then it may provide you with an identifying string that it generats
+deduplication features, then it may provide you with an identifying string that it generates
 for each request. It may even call that string a key.
 
 For instance, the libraries [React Request](https://github.com/jamesplease/react-request) and
