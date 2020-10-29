@@ -205,13 +205,14 @@ const searchStatus = getStatus(state, 'books.requests.search.status');
 When the request succeeds, you dispatch the following action:
 
 ```js
-import { actionTypes } fom 'redux-resource';
+import { actionTypes } from 'redux-resource';
 import store from './store';
 
 store.dispatch({
   type: actionTypes.READ_RESOURCES_SUCCEEDED,
   resourceType: 'books',
   request: 'search',
+  requestKey: 'books.requests.search.status',
   // `newResources` are the list of books that were returned by the server
   // for this query.
   resources: newResources
