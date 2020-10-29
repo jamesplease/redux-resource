@@ -10,7 +10,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
   const resourcesIsUndefined = typeof resources === 'undefined';
   const hasResources = resources && resources.length;
 
-  let requestKey, requestName;
+  let requestKey, requestName, _newMeta = updatedMeta;
   if (action.request && typeof action.request === 'string') {
     requestKey = requestName = action.request;
   }
@@ -19,6 +19,12 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
   }
   if (action.requestName && typeof action.requestName === 'string') {
     requestName = action.requestName;
+  }
+  if (action.meta && typeof action.meta === 'string') {
+    _newMeta = {
+      ...action.meta,
+      ...updatedMeta,
+    }
   }
 
   let list;
@@ -67,7 +73,7 @@ export default function(state, action, { initialResourceMeta }, updatedMeta) {
   const newMeta = setResourceMeta({
     resources,
     meta: state.meta,
-    newMeta: updatedMeta,
+    newMeta: _newMeta,
     mergeMeta: action.mergeMeta,
     initialResourceMeta,
   });
