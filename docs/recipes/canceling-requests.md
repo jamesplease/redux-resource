@@ -159,7 +159,7 @@ constructor.
 import xhr from 'xhr';
 
 const request = xhr.get('/books/23', (err, res) => {
-  if (req.aborted) {
+  if (res.aborted) {
     console.log('Request cancelled');
   }
 });
